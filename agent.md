@@ -104,7 +104,7 @@ Mọi luồng nghiệp vụ trong tài liệu và mã nguồn phải tuân thủ
   * Luôn dùng **`Warehouse Issue Request`**, không dùng `Sales Order` trong tầng WMS.
   * Luôn dùng **`Put-away Task`** và **`Picking Task`**, không dùng `Transfer Order (TO)` cho các thao tác nội bộ cùng kho.
 * **Cấu trúc thư mục tài liệu tham chiếu**:
-  * `@De_xuat_7_quy_trinh_sau_review1.md`: Căn cứ thiết kế To-be và phân tích lỗi.
-  * `docs/WMSD_Report1_Fix.docx.txt`: Báo cáo giới thiệu dự án (Report 1).
-  * `docs/WMSD_Report2.docx.txt`: Kế hoạch quản lý dự án (Report 2).
-  * `docs/WMSD_Report3_Fix.docx.txt`: Đặc tả yêu cầu phần mềm SRS (Report 3).
+  * `@docs/02_nghiep_vu/De_xuat_7_quy_trinh_sau_review1.md`: Căn cứ thiết kế To-be và phân tích lỗi.
+  * `docs/01_bao_cao/WMSD_Report1_Fix.docx.txt`: Báo cáo giới thiệu dự án (Report 1).
+  * `docs/01_bao_cao/WMSD_Report2.docx.txt`: Kế hoạch quản lý dự án (Report 2).
+  * `docs/01_bao_cao/WMSD_Report3_Fix.docx.txt`: Đặc tả yêu cầu phần mềm SRS (Report 3).
