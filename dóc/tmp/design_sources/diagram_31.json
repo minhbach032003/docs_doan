@@ -1,0 +1,101 @@
+{
+  "index": 31,
+  "name": "BF05 Mới",
+  "id": "clHPAiEUWDbycuFizPf-",
+  "nodes": [],
+  "edges": [
+    {
+      "from": "NvTsOsmYXIcEtAkBMRxb-27",
+      "to": "NvTsOsmYXIcEtAkBMRxb-44",
+      "label": ""
+    },
+    {
+      "from": "NvTsOsmYXIcEtAkBMRxb-22",
+      "to": "NvTsOsmYXIcEtAkBMRxb-25",
+      "label": ""
+    },
+    {
+      "from": "NvTsOsmYXIcEtAkBMRxb-25",
+      "to": "NvTsOsmYXIcEtAkBMRxb-27",
+      "label": ""
+    },
+    {
+      "from": "NvTsOsmYXIcEtAkBMRxb-38",
+      "to": "NvTsOsmYXIcEtAkBMRxb-44",
+      "label": ""
+    },
+    {
+      "from": "NvTsOsmYXIcEtAkBMRxb-13",
+      "to": "NvTsOsmYXIcEtAkBMRxb-15",
+      "label": ""
+    },
+    {
+      "from": "NvTsOsmYXIcEtAkBMRxb-5",
+      "to": "NvTsOsmYXIcEtAkBMRxb-7",
+      "label": ""
+    },
+    {
+      "from": "NvTsOsmYXIcEtAkBMRxb-7",
+      "to": "NvTsOsmYXIcEtAkBMRxb-9",
+      "label": ""
+    },
+    {
+      "from": "NvTsOsmYXIcEtAkBMRxb-9",
+      "to": "NvTsOsmYXIcEtAkBMRxb-11",
+      "label": ""
+    },
+    {
+      "from": "NvTsOsmYXIcEtAkBMRxb-11",
+      "to": "NvTsOsmYXIcEtAkBMRxb-13",
+      "label": ""
+    },
+    {
+      "from": "NvTsOsmYXIcEtAkBMRxb-15",
+      "to": "NvTsOsmYXIcEtAkBMRxb-17",
+      "label": ""
+    },
+    {
+      "from": "NvTsOsmYXIcEtAkBMRxb-17",
+      "to": "NvTsOsmYXIcEtAkBMRxb-19",
+      "label": ""
+    },
+    {
+      "from": "NvTsOsmYXIcEtAkBMRxb-19",
+      "to": "NvTsOsmYXIcEtAkBMRxb-21",
+      "label": ""
+    },
+    {
+      "from": "NvTsOsmYXIcEtAkBMRxb-19",
+      "to": "NvTsOsmYXIcEtAkBMRxb-30",
+      "label": ""
+    },
+    {
+      "from": "NvTsOsmYXIcEtAkBMRxb-21",
+      "to": "NvTsOsmYXIcEtAkBMRxb-22",
+      "label": ""
+    },
+    {
+      "from": "NvTsOsmYXIcEtAkBMRxb-30",
+      "to": "NvTsOsmYXIcEtAkBMRxb-31",
+      "label": ""
+    },
+    {
+      "from": "NvTsOsmYXIcEtAkBMRxb-36",
+      "to": "NvTsOsmYXIcEtAkBMRxb-38",
+      "label": ""
+    },
+    {
+      "from": "NvTsOsmYXIcEtAkBMRxb-31",
+      "to": "NvTsOsmYXIcEtAkBMRxb-34",
+      "label": ""
+    },
+    {
+      "from": "NvTsOsmYXIcEtAkBMRxb-34",
+      "to": "NvTsOsmYXIcEtAkBMRxb-36",
+      "label": ""
+    }
+  ],
+  "uml": [
+    "@startuml\ntitle BF-05 - Warehouse Issue\n\n|Sales Staff|\nstart\n:Create issue request;\n\n|WMSD|\n:Record source reference,\nproduct and requested quantity;\n:Show request to Inventory Staff;\n\n|Inventory Staff|\n:Create goods issue;\n:Select lot and storage location;\n\n|WMSD|\n:Check usable inventory\nby lot and location;\n\nif (Eligible stock sufficient?) then (Yes)\n\n  |Inventory Staff|\n  :Confirm actual issued quantity;\n\n  |WMSD|\n  :Reduce inventory from selected\nlot and location;\n  :Update issue request status;\n  :Record inventory movement;\n\nelse (No)\n\n  |WMSD|\n  :Show insufficient stock information;\n\n  |Inventory Staff|\n  :Adjust lot selection\n  or issued quantity;\n\n  |WMSD|\n  :Validate available quantity again;\n\n  |Inventory Staff|\n  :Confirm actual issued quantity;\n\n  |WMSD|\n  :Update inventory and issue status;\n\nendif\n\nstop\n@enduml"
+  ]
+}

@@ -1,0 +1,201 @@
+{
+  "index": 8,
+  "name": "Stock Count, Reconciliation and Inventory Adjustment",
+  "id": "YGMxktGPn6WhAOxGkLHn",
+  "nodes": [],
+  "edges": [
+    {
+      "from": "-j32AQ_OwbPkN_G5dATZ-75",
+      "to": "-j32AQ_OwbPkN_G5dATZ-77",
+      "label": ""
+    },
+    {
+      "from": "-j32AQ_OwbPkN_G5dATZ-73",
+      "to": "-j32AQ_OwbPkN_G5dATZ-75",
+      "label": ""
+    },
+    {
+      "from": "-j32AQ_OwbPkN_G5dATZ-147",
+      "to": "-j32AQ_OwbPkN_G5dATZ-148",
+      "label": ""
+    },
+    {
+      "from": "-j32AQ_OwbPkN_G5dATZ-122",
+      "to": "-j32AQ_OwbPkN_G5dATZ-124",
+      "label": ""
+    },
+    {
+      "from": "-j32AQ_OwbPkN_G5dATZ-126",
+      "to": "-j32AQ_OwbPkN_G5dATZ-154",
+      "label": ""
+    },
+    {
+      "from": "-j32AQ_OwbPkN_G5dATZ-124",
+      "to": "-j32AQ_OwbPkN_G5dATZ-126",
+      "label": ""
+    },
+    {
+      "from": "-j32AQ_OwbPkN_G5dATZ-139",
+      "to": "-j32AQ_OwbPkN_G5dATZ-141",
+      "label": ""
+    },
+    {
+      "from": "-j32AQ_OwbPkN_G5dATZ-141",
+      "to": "-j32AQ_OwbPkN_G5dATZ-154",
+      "label": ""
+    },
+    {
+      "from": "-j32AQ_OwbPkN_G5dATZ-93",
+      "to": "-j32AQ_OwbPkN_G5dATZ-94",
+      "label": ""
+    },
+    {
+      "from": "-j32AQ_OwbPkN_G5dATZ-94",
+      "to": "-j32AQ_OwbPkN_G5dATZ-103",
+      "label": ""
+    },
+    {
+      "from": "-j32AQ_OwbPkN_G5dATZ-94",
+      "to": "-j32AQ_OwbPkN_G5dATZ-97",
+      "label": ""
+    },
+    {
+      "from": "-j32AQ_OwbPkN_G5dATZ-97",
+      "to": "-j32AQ_OwbPkN_G5dATZ-98",
+      "label": ""
+    },
+    {
+      "from": "-j32AQ_OwbPkN_G5dATZ-130",
+      "to": "-j32AQ_OwbPkN_G5dATZ-133",
+      "label": ""
+    },
+    {
+      "from": "-j32AQ_OwbPkN_G5dATZ-133",
+      "to": "-j32AQ_OwbPkN_G5dATZ-135",
+      "label": ""
+    },
+    {
+      "from": "-j32AQ_OwbPkN_G5dATZ-135",
+      "to": "-j32AQ_OwbPkN_G5dATZ-137",
+      "label": ""
+    },
+    {
+      "from": "-j32AQ_OwbPkN_G5dATZ-77",
+      "to": "-j32AQ_OwbPkN_G5dATZ-79",
+      "label": ""
+    },
+    {
+      "from": "-j32AQ_OwbPkN_G5dATZ-79",
+      "to": "-j32AQ_OwbPkN_G5dATZ-81",
+      "label": ""
+    },
+    {
+      "from": "-j32AQ_OwbPkN_G5dATZ-81",
+      "to": "-j32AQ_OwbPkN_G5dATZ-83",
+      "label": ""
+    },
+    {
+      "from": "-j32AQ_OwbPkN_G5dATZ-83",
+      "to": "-j32AQ_OwbPkN_G5dATZ-85",
+      "label": ""
+    },
+    {
+      "from": "-j32AQ_OwbPkN_G5dATZ-85",
+      "to": "-j32AQ_OwbPkN_G5dATZ-87",
+      "label": ""
+    },
+    {
+      "from": "-j32AQ_OwbPkN_G5dATZ-87",
+      "to": "-j32AQ_OwbPkN_G5dATZ-89",
+      "label": ""
+    },
+    {
+      "from": "-j32AQ_OwbPkN_G5dATZ-89",
+      "to": "-j32AQ_OwbPkN_G5dATZ-91",
+      "label": ""
+    },
+    {
+      "from": "-j32AQ_OwbPkN_G5dATZ-91",
+      "to": "-j32AQ_OwbPkN_G5dATZ-93",
+      "label": ""
+    },
+    {
+      "from": "-j32AQ_OwbPkN_G5dATZ-98",
+      "to": "-j32AQ_OwbPkN_G5dATZ-100",
+      "label": ""
+    },
+    {
+      "from": "-j32AQ_OwbPkN_G5dATZ-100",
+      "to": "-j32AQ_OwbPkN_G5dATZ-104",
+      "label": ""
+    },
+    {
+      "from": "-j32AQ_OwbPkN_G5dATZ-103",
+      "to": "-j32AQ_OwbPkN_G5dATZ-104",
+      "label": ""
+    },
+    {
+      "from": "-j32AQ_OwbPkN_G5dATZ-104",
+      "to": "-j32AQ_OwbPkN_G5dATZ-107",
+      "label": ""
+    },
+    {
+      "from": "-j32AQ_OwbPkN_G5dATZ-107",
+      "to": "-j32AQ_OwbPkN_G5dATZ-109",
+      "label": ""
+    },
+    {
+      "from": "-j32AQ_OwbPkN_G5dATZ-109",
+      "to": "-j32AQ_OwbPkN_G5dATZ-111",
+      "label": ""
+    },
+    {
+      "from": "-j32AQ_OwbPkN_G5dATZ-111",
+      "to": "-j32AQ_OwbPkN_G5dATZ-113",
+      "label": ""
+    },
+    {
+      "from": "-j32AQ_OwbPkN_G5dATZ-113",
+      "to": "-j32AQ_OwbPkN_G5dATZ-115",
+      "label": ""
+    },
+    {
+      "from": "-j32AQ_OwbPkN_G5dATZ-115",
+      "to": "-j32AQ_OwbPkN_G5dATZ-118",
+      "label": ""
+    },
+    {
+      "from": "-j32AQ_OwbPkN_G5dATZ-115",
+      "to": "-j32AQ_OwbPkN_G5dATZ-129",
+      "label": ""
+    },
+    {
+      "from": "-j32AQ_OwbPkN_G5dATZ-91",
+      "to": "-j32AQ_OwbPkN_G5dATZ-147",
+      "label": ""
+    },
+    {
+      "from": "-j32AQ_OwbPkN_G5dATZ-118",
+      "to": "-j32AQ_OwbPkN_G5dATZ-119",
+      "label": ""
+    },
+    {
+      "from": "-j32AQ_OwbPkN_G5dATZ-119",
+      "to": "-j32AQ_OwbPkN_G5dATZ-122",
+      "label": ""
+    },
+    {
+      "from": "-j32AQ_OwbPkN_G5dATZ-129",
+      "to": "-j32AQ_OwbPkN_G5dATZ-130",
+      "label": ""
+    },
+    {
+      "from": "-j32AQ_OwbPkN_G5dATZ-137",
+      "to": "-j32AQ_OwbPkN_G5dATZ-139",
+      "label": ""
+    }
+  ],
+  "uml": [
+    "@startuml\ntitle 2.6 Stock Count, Reconciliation and Inventory Adjustment (BF-06)\n\nscale 2000 width\n\nskinparam shadowing false\nskinparam defaultFontName Arial\nskinparam defaultFontSize 11\nskinparam activityFontSize 11\nskinparam swimlaneWidth 260\nskinparam activityBorderColor #666666\nskinparam activityBackgroundColor #FDFDFD\nskinparam activityDiamondBackgroundColor #FFF4D6\nskinparam activityDiamondBorderColor #888888\nskinparam activityArrowColor #666666\n\n|Store Owner|\nstart\n:Create Stock Count Plan;\n:Select warehouse,\\nlocation and scope;\n\n|System|\n:Create Stock Count Session;\n:Capture book stock snapshot;\n\n|Inventory Staff|\n:Perform physical count;\n:Enter actual quantity\\nby product, lot and location;\n\n|System|\n:Compare actual quantity\\nwith book quantity;\n:Calculate variance;\n\nif (Variance found?) then (Yes)\n\n    |Inventory Staff|\n    :Review variance;\n\n    if (Recount required?) then (Yes)\n\n        :Perform recount;\n        :Update actual quantity;\n\n        |System|\n        :Recalculate variance;\n\n    else (No)\n\n        |Inventory Staff|\n        :Keep current count result;\n\n    endif\n\n    |Inventory Staff|\n    :Enter variance reason;\n    :Submit count result;\n\n    |System|\n    :Record count result\\nand variance details;\n\n    |Store Owner|\n    :Review count result;\n\n    if (Approve adjustment?) then (Yes)\n\n        |System|\n        :Create approved\\nInventory Adjustment;\n\n        |Inventory Staff|\n        :Confirm Inventory Adjustment;\n\n        |System|\n        :Update stock by warehouse,\\nlot and location;\n        :Record adjustment history;\n        :Close Stock Count Session;\n\n    else (No)\n\n        |System|\n        :Return result for recount;\n\n        |Inventory Staff|\n        :Review rejected result;\n        :Perform recount;\n        :Update actual quantity;\n        :Resubmit count result;\n\n        |System|\n        :Recalculate variance;\n        :Record revised count result;\n\n    endif\n\nelse (No)\n\n    |System|\n    :Confirm no variance;\n    :Close Stock Count Session\\nwithout adjustment;\n\nendif\n\nstop\n@enduml"
+  ]
+}

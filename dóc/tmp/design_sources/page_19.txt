@@ -1,0 +1,21 @@
+PAGE 19 UC SS
+g548fqpoRLsQli3Ggmqx-1: WMSD
+g548fqpoRLsQli3Ggmqx-2: Sales Staff
+g548fqpoRLsQli3Ggmqx-3: UC-08  View Product List
+g548fqpoRLsQli3Ggmqx-5: UC-09  View Product Detail
+g548fqpoRLsQli3Ggmqx-6: UC-47  View Inventory List by Lot, Location and Status
+g548fqpoRLsQli3Ggmqx-8: UC-82  View Issue Request List
+g548fqpoRLsQli3Ggmqx-10: UC-83  View Issue Request Detail
+g548fqpoRLsQli3Ggmqx-11: UC-84  Create Issue Request
+g548fqpoRLsQli3Ggmqx-12: UC-92  Record Customer Return into Warehouse
+g548fqpoRLsQli3Ggmqx-14: «extend»
+g548fqpoRLsQli3Ggmqx-15: «extend»
+g548fqpoRLsQli3Ggmqx-16: «extend»
+EDGES
+Sales Staff --> UC-08  View Product List | 
+Sales Staff --> UC-47  View Inventory List by Lot, Location and Status | 
+Sales Staff --> UC-82  View Issue Request List | 
+Sales Staff --> UC-92  Record Customer Return into Warehouse | 
+UC-09  View Product Detail --> UC-08  View Product List | «extend»
+UC-83  View Issue Request Detail --> UC-82  View Issue Request List | «extend»
+UC-84  Create Issue Request --> UC-82  View Issue Request List | «extend»

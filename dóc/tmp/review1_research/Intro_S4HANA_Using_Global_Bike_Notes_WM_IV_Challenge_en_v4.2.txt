@@ -1,0 +1,394 @@
+=== PAGE 1 ===
+ 
+ 
+© SAP UCC Magdeburg Page 1 
+ 
+LECTURER NOTES 
+ Solution: WM IV Challenge 
+Learning Objective Conduct a physical inventory in the warehouse management. 
+  
+You have successfully gone through the Case Study Warehouse 
+Management IV. Now you are able to demonstrate and to apply your 
+knowledge. For this purpose, you should solve the following additional task 
+on your own.  
+Scenario As a warehouse manager, you are in control of the necessary 
+physical inventories within your warehouse. The San Diego warehouse 
+applies the method of continuous inventory. In the course of this inventory, 
+your aim is to check all storage locations of the storage type pallet storage.  
+In the course of the physical inventory of the storage bin STBN-9-###, 
+which is listed as empty, 120 units of your off-road helmets (OHMT1###) 
+are found in storage location TG00. Strict investigations revealed that they 
+were part of the last delivery and were not entered into the system at all. The 
+goods were also put away into the wrong storage bin, as STBN-3-### would 
+be the standard bin for them. Start this physical inventory within the system, 
+add the count and clear it.  
+To reconcile the stocks, use a transportation order in order to restore the 120 
+units from the storage bin STBN-9-### to the storage bin STBN-3-###.  
+Task Information You are free to use the Case Study Warehouse 
+Management IV as an aid. It is however recommended to accomplish this 
+advanced task without any help in order to thus put your acquired knowledge 
+to a test. 
+ 
+  
+Create and activate a physical inventory document 
+ 
+To create a physical inventory document, use in the Warehouse Management 
+area on the Physical Inventory page in the Warehouse Supervisor role the 
+app Carry out Continuous Inventory. 
+ 
+Fiori App 
+ 
+ 
+In the screen Carry out Continuous Inventory , enter 100 as Warehouse 
+number, 002 as Storage type, STBN-*-### (do not forget to replace ### with 
+your number) as Storage bin and LEARN-### as Name of counter. Also make 
+ 
+100 
+002 
+STBN-*-### 
+LEARN-### 
+Deselect only bins not 
+yet counted 
+
+
+=== PAGE 2 ===
+ 
+ 
+© SAP UCC Magdeburg Page 2 
+ 
+LECTURER NOTES 
+sure that the value Only bins not yet counted is not selected (this also displays 
+storage bins from completed inventories).  
+ 
+Confirm your entries with . 
+ 
+ 
+ 
+In the following screen, deselect all storage bins except for STBN-9-###. 
+ 
+STBN-9-### 
+ 
+ 
+
+
+=== PAGE 3 ===
+ 
+ 
+© SAP UCC Magdeburg Page 3 
+ 
+LECTURER NOTES 
+Now click on  to activate your selection and thus create a physical 
+inventory document. Through this process, the selected storage bins are 
+blocked against stock putaways and stock removals.  
+ 
+Click on  to return to the SAP Fiori Launchpad. 
+ 
+Enter count results 
+ 
+To enter your count results , use in the Warehouse Management area on the 
+Physical Inventory  page in the Warehouse Employee  role the app  Enter 
+Inventory Count. 
+ 
+Fiori App 
+ 
+ 
+In the screen Enter Inventory Count: Initial Screen , enter 100 as Warehouse 
+Number and today’s date  as Count date. Enter your Inventory Record 
+number if it is not entered automatically. If you cannot remember your 
+inventory record, please re -simulate the transaction of the previous step in 
+order to find it. Also please enter LEARN-### as name of counter. Press Enter 
+to confirm your entries. 
+ 
+100 
+Inventory Record 
+Number 
+Today’s date 
+ 
+ 
+LEARN-### 
+ 
+ 
+In Enter Inventory Count: Overview click on . In Enter Inventory 
+Count: New Items screen, enter STBN-9-### as Storage Bin, OHMT1### as 
+Material, SD00 as Plant, 120 as Counted quantity. Please enter LEARN-### 
+as name of counter. TG00 must be specified as Storage Location (cause off -
+road helmets are classified as trading goods). Then press Enter. 
+ 
+STBN-9-### 
+OHMT1### 
+SD00 
+120 
+LEARN-### 
+TG00 
+ 
+
+
+=== PAGE 4 ===
+ 
+ 
+© SAP UCC Magdeburg Page 4 
+ 
+LECTURER NOTES 
+ 
+A screen will open in which you will have to enter today’s date as the goods 
+receipt date (GR Date) and confirm the value of the counted quantity by 
+pressing Enter. 
+ 
+Today’s date 
+ 
+ 
+You will receive the following message: 
+ 
+ 
+Press Enter again. 
+ 
+Afterwards you will be in the screen Enter Inventory Count: New Items. 
+Click on  and you will get back to the Enter Inventory Count: 
+Overview. 
+ 
+For the materials already stored in the case study, enter the same quantities 
+as in the case study as Counted quantity  (for ORMN1### enter 30, for 
+ORWN1### enter 10). Please also enter LEARN-### as name of counter for 
+both positions. 
+ 
+ 
+Same quantities 
+30 
+10 
+LEARN-### 
+ 
+ 
+Press  to update your physical inventory document with the count 
+results.  
+ 
+Click on  to return to the SAP Fiori Launchpad. 
+ 
+Start recount 
+ 
+
+
+=== PAGE 5 ===
+ 
+ 
+© SAP UCC Magdeburg Page 5 
+ 
+LECTURER NOTES 
+To order to enter the recount, use in the Warehouse Management area on the 
+Physical Inventory page in the Warehouse Supervisor role the app Start 
+recount. 
+ 
+Fiori App 
+ 
+ 
+In the screen Start Recount: Initial Screen , the number of your Inventory 
+record and 100 as Warehouse Number should already be listed. If they are not 
+listed, please fill in the boxes. Click Enter. 
+ 
+Your inventory record 
+100 
+ 
+ 
+Make sure that your storage bin STBN -9-### is selected for the recount and 
+start it by clicking . 
+ 
+ 
+STBN-9-### 
+ 
+ 
+Click on  to return to the SAP Fiori Launchpad. 
+ 
+
+
+=== PAGE 6 ===
+ 
+ 
+© SAP UCC Magdeburg Page 6 
+ 
+LECTURER NOTES 
+Enter recount 
+ 
+To enter the count result of the recount, use in the Warehouse Management 
+area on the Physical Inventory page in the Warehouse Employee role the app 
+Enter Inventory Count. 
+ 
+Fiori App 
+ 
+ 
+In the screen Enter Inventory Count: Initial Screen , enter 100 as Warehouse 
+Number, 1 as Recount version and today’s date as Count date. Please enter 
+your Inventory Record Number  if it is not already listed. C onfirm your 
+entries by pressing Enter. 
+ 
+100 
+1 
+Today’s date 
+Inventory Record 
+Number 
+In the screen Enter Inventory Count: Overview, enter for your the Materials 
+OHMT1###, ORMN1###, ORWN1### the same data that was entered in the 
+first count. Please enter LEARN-### as Name of counter for the positions . 
+Press Enter. 
+ 
+ 
+120, 30, 10 
+ 
+LEARN-### 
+ 
+ 
+A new screen that will open subsequently.  You have to confirm the data by 
+pressing Enter. Click  in order to update your physical inventory 
+document with the recount results.   
+ 
+Click on  to return to the SAP Fiori Launchpad. 
+ 
+Clear differences in the warehouse management 
+ 
+To order to clear the differences, use in the Warehouse Management area on 
+the Physical Inventory page in the Warehouse Supervisor role the app Clear 
+Differences in WM. 
+ 
+Fiori App 
+
+
+=== PAGE 7 ===
+ 
+ 
+© SAP UCC Magdeburg Page 7 
+ 
+LECTURER NOTES 
+  
+ 
+ 
+In the screen Clear Differences in WM: Initial Screen, the Warehouse Number 
+100 and the number of your Inventory record should already be entered. If 
+this is not the case, please enter the corresponding figures. Press Enter. 
+ 
+100 
+Your Inventory  Record 
+ 
+ 
+In the list of differences, select your storage bin STBN-9-###. Afterwards, 
+press . 
+ 
+STBN-9-### 
+ 
+ 
+Click on  to return to the SAP Fiori Launchpad. 
+ 
+
+
+=== PAGE 8 ===
+ 
+ 
+© SAP UCC Magdeburg Page 8 
+ 
+LECTURER NOTES 
+Clear the differences in the inventory management 
+ 
+To clear the differences in the inventory management , use in the Warehouse 
+Management area on the Physical Inventory page in the Warehouse Supervisor 
+role the app Clear Differences in Inventory Management. 
+ 
+Fiori App 
+ 
+ 
+ 
+In the screen Clearing of Differences in Inventory Management, enter 100 as 
+Warehouse number and 999 as Storage type. Press . 
+ 
+100 
+999 
+ 
+ 
+In the screen List of Quants for Difference Posting in Inventory Management, 
+select your Material OHMT1###. Make sure that no other elements are 
+selected.  
+ 
+ 
+OHMT1### 
+ 
+ 
+The following protocol appears after clicking . 
+ 
+
+
+=== PAGE 9 ===
+ 
+ 
+© SAP UCC Magdeburg Page 9 
+ 
+LECTURER NOTES 
+ 
+ 
+Click on  to return to the SAP Fiori Launchpad. 
+ 
+Create transportation order and restore material 
+ 
+To transfer the 120 Off Road Helmets from storage bin STBN-9-#### to 
+storage bin STBN-3-###, you must create a transportation order. Use in the 
+Warehouse Management area on the Physical Inventory page in the 
+Warehouse Employee role the app  Stock Transfer. 
+ 
+Fiori App 
+ 
+ 
+ 
+In the Stock Transfer: Start screen, enter 100 for the warehouse number, 002 
+for the storage type and STBN*### for the storage bin. Then click on 
+. 
+ 
+100 
+002 
+STBN*### 
+ 
+ 
+ 
+Select your Off Road Helmets OHMT1### in the view Display Quant. Then 
+click on  (Stock Transf. Frgrnd). 
+ 
+ 
+Stock Transfer 
+Foreground 
+
+
+=== PAGE 10 ===
+ 
+ 
+© SAP UCC Magdeburg Page 10 
+ 
+LECTURER NOTES 
+ 
+ 
+In the Specify Destination Data pop-up window, enter 001 for storage type 
+and STBN-3-### for storage bin. Select Confirm immed. Confirm your 
+entry by clicking on . 
+ 
+001 
+STBN-3-### 
+Confirm immediately 
+ 
+ 
+Your transportation order has been successfully created and executed. 
+ 
+ 
+
+
+=== PAGE 11 ===
+ 
+ 
+© SAP UCC Magdeburg Page 11 
+ 
+LECTURER NOTES 
+ 
+ 
+ 
+Click on  to return to the SAP Fiori Launchpad. 
+ 
+Note You can use App Run Bin Status Report to check your Bin Status 
+Report. There all Off Road Helmets should be located on the Storage Bin 
+STBN-3-###. 
+ 
+ 
+  
+ 
+ 

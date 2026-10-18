@@ -1,0 +1,890 @@
+{
+  "index": 18,
+  "name": "Bản sao của UC SO",
+  "id": "fxGsZDFecDaiHGp-85tr",
+  "nodes": [
+    {
+      "id": "xIuA4-Ypp8usv5CW9yNR-3",
+      "text": "Store Owner",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "OZOpjA5FuumkqSCTXCzl-0",
+      "text": "%3CmxGraphModel%3E%3Croot%3E%3CmxCell%20id%3D%220%22%2F%3E%3CmxCell%20id%3D%221%22%20parent%3D%220%22%2F%3E%3CmxCell%20id%3D%222%22%20edge%3D%221%22%20parent%3D%221%22%20style%3D%22endArrow%3Dclassic%3Bhtml%3D1%3Brounded%3D0%3Bdashed%3D1%3BdashPattern%3D8%208%3BentryX%3D1%3BentryY%3D0%3BentryDx%3D0%3BentryDy%3D0%3BexitX%3D0%3BexitY%3D0.5%3BexitDx%3D0%3BexitDy%3D0%3BstartArrow%3Dnone%3BstartFill%3D0%3BendFill%3D1%3BfontSize%3D14%3B%22%20value%3D%22%22%3E%3CmxGeometry%20height%3D%2250%22%20relative%3D%221%22%20width%3D%2250%22%20as%3D%22geometry%22%3E%3CmxPoint%20x%3D%221235%22%20y%3D%223000%22%20as%3D%22sourcePoint%22%2F%3E%3CmxPoint%20x%3D%221102%22%20y%3D%223022%22%20as%3D%22targetPoint%22%2F%3E%3C%2FmxGeometry%3E%3C%2FmxCell%3E%3CmxCell%20id%3D%223%22%20connectable%3D%220%22%20parent%3D%222%22%20style%3D%22edgeLabel%3Bhtml%3D1%3Balign%3Dcenter%3BverticalAlign%3Dmiddle%3Bresizable%3D0%3Bpoints%3D%5B%5D%3BfontSize%3D14%3B%22%20value%3D%22%26amp%3Blt%3B%26amp%3Blt%3Bextend%26amp%3Bgt%3B%26amp%3Bgt%3B%22%20vertex%3D%221%22%3E%3CmxGeometry%20relative%3D%221%22%20x%3D%220.1496%22%20y%3D%222%22%20as%3D%22geometry%22%3E%3CmxPoint%20x%3D%2212%22%20as%3D%22offset%22%2F%3E%3C%2FmxGeometry%3E%3C%2FmxCell%3E%3C%2Froot%3E%3C%2FmxGraphModel%3E  %3CmxGraphModel%3E%3Croot%3E%3CmxCell%20id%3D%220%22%2F%3E%3CmxCell%20id%3D%221%22%20parent%3D%220%22%2F%3E%3CmxCell%20id%3D%222%22%20edge%3D%221%22%20parent%3D%221%22%20style%3D%22endArrow%3Dclassic%3Bhtml%3D1%3Brounded%3D0%3Bdashed%3D1%3BdashPattern%3D8%208%3BentryX%3D1%3BentryY%3D0%3BentryDx%3D0%3BentryDy%3D0%3BexitX%3D0%3BexitY%3D0.5%3BexitDx%3D0%3BexitDy%3D0%3BstartArrow%3Dnone%3BstartFill%3D0%3BendFill%3D1%3BfontSize%3D14%3B%22%20value%3D%22%22%3E%3CmxGeometry%20height%3D%2250%22%20relative%3D%221%22%20width%3D%2250%22%20as%3D%22geometry%22%3E%3CmxPoint%20x%3D%221235%22%20y%3D%223000%22%20as%3D%22sourcePoint%22%2F%3E%3CmxPoint%20x%3D%221102%22%20y%3D%223022%22%20as%3D%22targetPoint%22%2F%3E%3C%2FmxGeometry%3E%3C%2FmxCell%3E%3CmxCell%20id%3D%223%22%20connectable%3D%220%22%20parent%3D%222%22%20style%3D%22edgeLabel%3Bhtml%3D1%3Balign%3Dcenter%3BverticalAlign%3Dmiddle%3Bresizable%3D0%3Bpoints%3D%5B%5D%3BfontSize%3D14%3B%22%20value%3D%22%26amp%3Blt%3B%26amp%3Blt%3Bextend%26amp%3Bgt%3B%26amp%3Bgt%3B%22%20vertex%3D%221%22%3E%3CmxGeometry%20relative%3D%221%22%20x%3D%220.1496%22%20y%3D%222%22%20as%3D%22geometry%22%3E%3CmxPoint%20x%3D%2212%22%20as%3D%22offset%22%2F%3E%3C%2FmxGeometry%3E%3C%2FmxCell%3E%3C%2Froot%3E%3C%2FmxGraphModel%3E",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "kamrMcuHiCsjuW3uJDa_-0",
+      "text": "View Product List",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "kBLyFiikW_ZbDjLcrjcq-0",
+      "text": "Maintain Product and Packaging",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "kBLyFiikW_ZbDjLcrjcq-1",
+      "text": "View product details",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "kBLyFiikW_ZbDjLcrjcq-4",
+      "text": "View Lot List",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "kBLyFiikW_ZbDjLcrjcq-5",
+      "text": "Maintain Product Lot",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "kBLyFiikW_ZbDjLcrjcq-7",
+      "text": "View Supplier List",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "kBLyFiikW_ZbDjLcrjcq-8",
+      "text": "Maintain Supplier",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "kBLyFiikW_ZbDjLcrjcq-9",
+      "text": "View Supplier Detail",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "kBLyFiikW_ZbDjLcrjcq-11",
+      "text": "View Replenishment Request List",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "kBLyFiikW_ZbDjLcrjcq-12",
+      "text": "View replenishment request details",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "kBLyFiikW_ZbDjLcrjcq-13",
+      "text": "Approve or Reject Replenishment Request",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "kBLyFiikW_ZbDjLcrjcq-14",
+      "text": "View Warehouse and Location List",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "kBLyFiikW_ZbDjLcrjcq-15",
+      "text": "Maintain Storage Location",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "kBLyFiikW_ZbDjLcrjcq-18",
+      "text": "View storage location details",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "kBLyFiikW_ZbDjLcrjcq-20",
+      "text": "View Operational Reports",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "kBLyFiikW_ZbDjLcrjcq-21",
+      "text": "View Warehouse Transfer List",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "kBLyFiikW_ZbDjLcrjcq-22",
+      "text": "Review Transfer Difference Resolution",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "kBLyFiikW_ZbDjLcrjcq-23",
+      "text": "View Stocktake List",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "kBLyFiikW_ZbDjLcrjcq-24",
+      "text": "Create Stocktake Session",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "kBLyFiikW_ZbDjLcrjcq-25",
+      "text": "View Adjustment Request List",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "kBLyFiikW_ZbDjLcrjcq-26",
+      "text": "View Adjustment Request Detail",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "kBLyFiikW_ZbDjLcrjcq-27",
+      "text": "Approve Inventory Adjustment",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "arebo_6lRIpXyMd3PIw3-1",
+      "text": "<<extend>>",
+      "parent": "arebo_6lRIpXyMd3PIw3-0"
+    },
+    {
+      "id": "Krf7P9YnzeOS2yjaFI99-1",
+      "text": "<<extend>>",
+      "parent": "Krf7P9YnzeOS2yjaFI99-0"
+    },
+    {
+      "id": "eNTP-RdpRo8Rvypi0cJh-1",
+      "text": "<<extend>>",
+      "parent": "eNTP-RdpRo8Rvypi0cJh-0"
+    },
+    {
+      "id": "eNTP-RdpRo8Rvypi0cJh-5",
+      "text": "<<extend>>",
+      "parent": "eNTP-RdpRo8Rvypi0cJh-4"
+    },
+    {
+      "id": "ygtEkzYAHmjpBd0akIJK-1",
+      "text": "<<extend>>",
+      "parent": "ygtEkzYAHmjpBd0akIJK-0"
+    },
+    {
+      "id": "ygtEkzYAHmjpBd0akIJK-3",
+      "text": "<<extend>>",
+      "parent": "ygtEkzYAHmjpBd0akIJK-2"
+    },
+    {
+      "id": "ygtEkzYAHmjpBd0akIJK-5",
+      "text": "<<extend>>",
+      "parent": "ygtEkzYAHmjpBd0akIJK-4"
+    },
+    {
+      "id": "ygtEkzYAHmjpBd0akIJK-7",
+      "text": "<<extend>>",
+      "parent": "ygtEkzYAHmjpBd0akIJK-6"
+    },
+    {
+      "id": "YBcNRY6xK7HCUvkrqzwG-1",
+      "text": "<<extend>>",
+      "parent": "YBcNRY6xK7HCUvkrqzwG-0"
+    },
+    {
+      "id": "XYeG3q442GB7ML1v3aZX-1",
+      "text": "<<extend>>",
+      "parent": "XYeG3q442GB7ML1v3aZX-0"
+    },
+    {
+      "id": "XYeG3q442GB7ML1v3aZX-3",
+      "text": "<<extend>>",
+      "parent": "XYeG3q442GB7ML1v3aZX-2"
+    },
+    {
+      "id": "BmE0s8VETuzHzQEqSZ1q-1",
+      "text": "<<extend>>",
+      "parent": "BmE0s8VETuzHzQEqSZ1q-0"
+    },
+    {
+      "id": "MgW68i-kJkqXd84xVdBL-3",
+      "text": "WMSD",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-1",
+      "text": "View lot details",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-3",
+      "text": "View stocktake details",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-4",
+      "text": "View warehouse transfer details",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-5",
+      "text": "Review Transfer Request",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-6",
+      "text": "View supplier return request list",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-8",
+      "text": "View supplier return request details",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-10",
+      "text": "View Customer List",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-11",
+      "text": "View Customer Details",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-12",
+      "text": "View Selling Price List",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-13",
+      "text": "View Selling Price Details",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-14",
+      "text": "Maintain Selling Price",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-15",
+      "text": "View defective goods list",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-16",
+      "text": "View defective goods details",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-17",
+      "text": "Approve or reject defective goods disposition",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-18",
+      "text": "View customer return list",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-19",
+      "text": "View customer return details",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-20",
+      "text": "Review Customer Return Request",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-21",
+      "text": "View Refund Request List",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-22",
+      "text": "View Refund Request Details",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-23",
+      "text": "Review Customer Return Refund Request",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-24",
+      "text": "View Sales Order List",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-25",
+      "text": "View Sales Order Details",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-26",
+      "text": "View Outbound Delivery List",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-27",
+      "text": "View Outbound Delivery Details",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-28",
+      "text": "View Picking Transfer Order List",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-29",
+      "text": "View Picking Transfer Order Details",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-30",
+      "text": "View goods issue list",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-31",
+      "text": "View goods issue details",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-32",
+      "text": "View Internal Invoice List",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-33",
+      "text": "View Internal Invoice Details",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-34",
+      "text": "Issue Internal Invoice and Produce PDF",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-35",
+      "text": "View purchase order list",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-36",
+      "text": "View purchase order details",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-37",
+      "text": "View goods receipt list",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-38",
+      "text": "View goods receipt details",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-39",
+      "text": "View stock",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-40",
+      "text": "View inventory balance details",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-41",
+      "text": "View location movement list",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-42",
+      "text": "View location movement details",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-43",
+      "text": "View stock movement log",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-44",
+      "text": "View stock movement details",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-45",
+      "text": "Trace a product lot through source documents",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-63",
+      "text": "<<extend>>",
+      "parent": "PqCnBH7wbcUkmVy1Z-jO-62"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-65",
+      "text": "<<extend>>",
+      "parent": "PqCnBH7wbcUkmVy1Z-jO-64"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-67",
+      "text": "<<extend>>",
+      "parent": "PqCnBH7wbcUkmVy1Z-jO-66"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-69",
+      "text": "<<extend>>",
+      "parent": "PqCnBH7wbcUkmVy1Z-jO-68"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-71",
+      "text": "<<extend>>",
+      "parent": "PqCnBH7wbcUkmVy1Z-jO-70"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-73",
+      "text": "<<extend>>",
+      "parent": "PqCnBH7wbcUkmVy1Z-jO-72"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-75",
+      "text": "<<extend>>",
+      "parent": "PqCnBH7wbcUkmVy1Z-jO-74"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-77",
+      "text": "<<extend>>",
+      "parent": "PqCnBH7wbcUkmVy1Z-jO-76"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-79",
+      "text": "<<extend>>",
+      "parent": "PqCnBH7wbcUkmVy1Z-jO-78"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-81",
+      "text": "<<extend>>",
+      "parent": "PqCnBH7wbcUkmVy1Z-jO-80"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-83",
+      "text": "<<extend>>",
+      "parent": "PqCnBH7wbcUkmVy1Z-jO-82"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-87",
+      "text": "<<extend>>",
+      "parent": "PqCnBH7wbcUkmVy1Z-jO-86"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-89",
+      "text": "<<extend>>",
+      "parent": "PqCnBH7wbcUkmVy1Z-jO-88"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-91",
+      "text": "<<extend>>",
+      "parent": "PqCnBH7wbcUkmVy1Z-jO-90"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-93",
+      "text": "<<extend>>",
+      "parent": "PqCnBH7wbcUkmVy1Z-jO-92"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-95",
+      "text": "<<extend>>",
+      "parent": "PqCnBH7wbcUkmVy1Z-jO-94"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-97",
+      "text": "<<extend>>",
+      "parent": "PqCnBH7wbcUkmVy1Z-jO-96"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-99",
+      "text": "<<extend>>",
+      "parent": "PqCnBH7wbcUkmVy1Z-jO-98"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-101",
+      "text": "<<extend>>",
+      "parent": "PqCnBH7wbcUkmVy1Z-jO-100"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-103",
+      "text": "<<extend>>",
+      "parent": "PqCnBH7wbcUkmVy1Z-jO-102"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-105",
+      "text": "<<extend>>",
+      "parent": "PqCnBH7wbcUkmVy1Z-jO-104"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-107",
+      "text": "<<extend>>",
+      "parent": "PqCnBH7wbcUkmVy1Z-jO-106"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-111",
+      "text": "<<extend>>",
+      "parent": "PqCnBH7wbcUkmVy1Z-jO-110"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-113",
+      "text": "<<extend>>",
+      "parent": "PqCnBH7wbcUkmVy1Z-jO-112"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-115",
+      "text": "<<extend>>",
+      "parent": "PqCnBH7wbcUkmVy1Z-jO-114"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-119",
+      "text": "<<extend>>",
+      "parent": "PqCnBH7wbcUkmVy1Z-jO-118"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-120",
+      "text": "Review Supplier Return Closure",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "PqCnBH7wbcUkmVy1Z-jO-123",
+      "text": "<<extend>>",
+      "parent": "PqCnBH7wbcUkmVy1Z-jO-122"
+    },
+    {
+      "id": "zs6uyelwTtoh2K9-SBSy-2",
+      "text": "<<extend>>",
+      "parent": "zs6uyelwTtoh2K9-SBSy-1"
+    },
+    {
+      "id": "zs6uyelwTtoh2K9-SBSy-3",
+      "text": "Clear Stocktake Difference",
+      "parent": "xIuA4-Ypp8usv5CW9yNR-1"
+    },
+    {
+      "id": "zs6uyelwTtoh2K9-SBSy-5",
+      "text": "<<extend>>",
+      "parent": "zs6uyelwTtoh2K9-SBSy-4"
+    }
+  ],
+  "edges": [
+    {
+      "from": "Store Owner",
+      "to": "View Product List",
+      "label": ""
+    },
+    {
+      "from": "Store Owner",
+      "to": "View Lot List",
+      "label": ""
+    },
+    {
+      "from": "Store Owner",
+      "to": "View Supplier List",
+      "label": ""
+    },
+    {
+      "from": "Store Owner",
+      "to": "View Replenishment Request List",
+      "label": ""
+    },
+    {
+      "from": "Store Owner",
+      "to": "View supplier return request list",
+      "label": ""
+    },
+    {
+      "from": "Store Owner",
+      "to": "View Warehouse and Location List",
+      "label": ""
+    },
+    {
+      "from": "Store Owner",
+      "to": "View Operational Reports",
+      "label": ""
+    },
+    {
+      "from": "Store Owner",
+      "to": "View Warehouse Transfer List",
+      "label": ""
+    },
+    {
+      "from": "Store Owner",
+      "to": "View Stocktake List",
+      "label": ""
+    },
+    {
+      "from": "Store Owner",
+      "to": "View Adjustment Request List",
+      "label": ""
+    },
+    {
+      "from": "Maintain Product and Packaging",
+      "to": "View Product List",
+      "label": ""
+    },
+    {
+      "from": "View product details",
+      "to": "View Product List",
+      "label": ""
+    },
+    {
+      "from": "Maintain Product Lot",
+      "to": "View Lot List",
+      "label": ""
+    },
+    {
+      "from": "Maintain Supplier",
+      "to": "View Supplier List",
+      "label": ""
+    },
+    {
+      "from": "View Supplier Detail",
+      "to": "View Supplier List",
+      "label": ""
+    },
+    {
+      "from": "View replenishment request details",
+      "to": "View Replenishment Request List",
+      "label": ""
+    },
+    {
+      "from": "Approve or Reject Replenishment Request",
+      "to": "View Replenishment Request List",
+      "label": ""
+    },
+    {
+      "from": "Maintain Storage Location",
+      "to": "View Warehouse and Location List",
+      "label": ""
+    },
+    {
+      "from": "View storage location details",
+      "to": "View Warehouse and Location List",
+      "label": ""
+    },
+    {
+      "from": "Review Transfer Difference Resolution",
+      "to": "View Warehouse Transfer List",
+      "label": ""
+    },
+    {
+      "from": "Create Stocktake Session",
+      "to": "View Stocktake List",
+      "label": ""
+    },
+    {
+      "from": "Approve Inventory Adjustment",
+      "to": "View Adjustment Request List",
+      "label": ""
+    },
+    {
+      "from": "Store Owner",
+      "to": "View Customer List",
+      "label": ""
+    },
+    {
+      "from": "Store Owner",
+      "to": "View Selling Price List",
+      "label": ""
+    },
+    {
+      "from": "Store Owner",
+      "to": "View defective goods list",
+      "label": ""
+    },
+    {
+      "from": "Store Owner",
+      "to": "View customer return list",
+      "label": ""
+    },
+    {
+      "from": "Store Owner",
+      "to": "View Refund Request List",
+      "label": ""
+    },
+    {
+      "from": "Store Owner",
+      "to": "View Sales Order List",
+      "label": ""
+    },
+    {
+      "from": "Store Owner",
+      "to": "View Outbound Delivery List",
+      "label": ""
+    },
+    {
+      "from": "Store Owner",
+      "to": "View Picking Transfer Order List",
+      "label": ""
+    },
+    {
+      "from": "Store Owner",
+      "to": "View goods issue list",
+      "label": ""
+    },
+    {
+      "from": "Store Owner",
+      "to": "View Internal Invoice List",
+      "label": ""
+    },
+    {
+      "from": "Store Owner",
+      "to": "View purchase order list",
+      "label": ""
+    },
+    {
+      "from": "Store Owner",
+      "to": "View goods receipt list",
+      "label": ""
+    },
+    {
+      "from": "Store Owner",
+      "to": "View stock",
+      "label": ""
+    },
+    {
+      "from": "Store Owner",
+      "to": "View location movement list",
+      "label": ""
+    },
+    {
+      "from": "Store Owner",
+      "to": "View stock movement log",
+      "label": ""
+    },
+    {
+      "from": "View stocktake details",
+      "to": "View Stocktake List",
+      "label": ""
+    },
+    {
+      "from": "View Customer Details",
+      "to": "View Customer List",
+      "label": ""
+    },
+    {
+      "from": "View Selling Price Details",
+      "to": "View Selling Price List",
+      "label": ""
+    },
+    {
+      "from": "Maintain Selling Price",
+      "to": "View Selling Price List",
+      "label": ""
+    },
+    {
+      "from": "View defective goods details",
+      "to": "View defective goods list",
+      "label": ""
+    },
+    {
+      "from": "Approve or reject defective goods disposition",
+      "to": "View defective goods list",
+      "label": ""
+    },
+    {
+      "from": "View customer return details",
+      "to": "View customer return list",
+      "label": ""
+    },
+    {
+      "from": "Review Customer Return Request",
+      "to": "View customer return list",
+      "label": ""
+    },
+    {
+      "from": "View Refund Request Details",
+      "to": "View Refund Request List",
+      "label": ""
+    },
+    {
+      "from": "Review Customer Return Refund Request",
+      "to": "View Refund Request List",
+      "label": ""
+    },
+    {
+      "from": "View Sales Order Details",
+      "to": "View Sales Order List",
+      "label": ""
+    },
+    {
+      "from": "View Outbound Delivery Details",
+      "to": "View Outbound Delivery List",
+      "label": ""
+    },
+    {
+      "from": "View Picking Transfer Order Details",
+      "to": "View Picking Transfer Order List",
+      "label": ""
+    },
+    {
+      "from": "View goods issue details",
+      "to": "View goods issue list",
+      "label": ""
+    },
+    {
+      "from": "View Internal Invoice Details",
+      "to": "View Internal Invoice List",
+      "label": ""
+    },
+    {
+      "from": "Issue Internal Invoice and Produce PDF",
+      "to": "View Internal Invoice List",
+      "label": ""
+    },
+    {
+      "from": "View purchase order details",
+      "to": "View purchase order list",
+      "label": ""
+    },
+    {
+      "from": "View goods receipt details",
+      "to": "View goods receipt list",
+      "label": ""
+    },
+    {
+      "from": "View inventory balance details",
+      "to": "View stock",
+      "label": ""
+    },
+    {
+      "from": "View location movement details",
+      "to": "View location movement list",
+      "label": ""
+    },
+    {
+      "from": "View stock movement details",
+      "to": "View stock movement log",
+      "label": ""
+    },
+    {
+      "from": "Trace a product lot through source documents",
+      "to": "View stock movement log",
+      "label": ""
+    },
+    {
+      "from": "View warehouse transfer details",
+      "to": "View Warehouse Transfer List",
+      "label": ""
+    },
+    {
+      "from": "Review Transfer Request",
+      "to": "View Warehouse Transfer List",
+      "label": ""
+    },
+    {
+      "from": "View supplier return request details",
+      "to": "View supplier return request list",
+      "label": ""
+    },
+    {
+      "from": "View lot details",
+      "to": "View Lot List",
+      "label": ""
+    },
+    {
+      "from": "Review Supplier Return Closure",
+      "to": "View supplier return request list",
+      "label": ""
+    },
+    {
+      "from": "View Adjustment Request Detail",
+      "to": "View Adjustment Request List",
+      "label": ""
+    },
+    {
+      "from": "Clear Stocktake Difference",
+      "to": "View Adjustment Request List",
+      "label": ""
+    }
+  ],
+  "uml": []
+}

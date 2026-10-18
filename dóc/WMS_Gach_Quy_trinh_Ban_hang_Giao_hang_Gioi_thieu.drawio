@@ -1,0 +1,127 @@
+<mxfile host="app.diagrams.net">
+  <diagram id="wms-sales-intro" name="Sales and Delivery Process - Overview">
+    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="1625" pageHeight="880" background="#F8FAFC" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="card1" parent="1" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;strokeWidth=1.5;shadow=1;" value="" vertex="1">
+          <mxGeometry height="175" width="340" x="65" y="245" as="geometry" />
+        </mxCell>
+        <mxCell id="heading1" parent="1" style="text;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=20;fontStyle=1;" value="Understand Customer Needs" vertex="1">
+          <mxGeometry height="34" width="295" x="87" y="276" as="geometry" />
+        </mxCell>
+        <mxCell id="desc1" parent="1" style="text;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontFamily=Arial;fontSize=15;" value="Advise customers on products, pricing, and available stock." vertex="1">
+          <mxGeometry height="58" width="295" x="87" y="321" as="geometry" />
+        </mxCell>
+        <mxCell id="role1" parent="1" style="text;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=11;fontStyle=1;" value="SALES STAFF" vertex="1">
+          <mxGeometry height="20" width="295" x="87" y="389" as="geometry" />
+        </mxCell>
+        <mxCell id="card2" parent="1" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;strokeWidth=1.5;shadow=1;" value="" vertex="1">
+          <mxGeometry height="175" width="340" x="450" y="245" as="geometry" />
+        </mxCell>
+        <mxCell id="heading2" parent="1" style="text;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=20;fontStyle=1;" value="Create Sales Order" vertex="1">
+          <mxGeometry height="34" width="295" x="472" y="276" as="geometry" />
+        </mxCell>
+        <mxCell id="desc2" parent="1" style="text;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontFamily=Arial;fontSize=15;" value="Confirm products, quantities, prices, and delivery details." vertex="1">
+          <mxGeometry height="58" width="295" x="472" y="321" as="geometry" />
+        </mxCell>
+        <mxCell id="role2" parent="1" style="text;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=11;fontStyle=1;" value="SALES STAFF" vertex="1">
+          <mxGeometry height="20" width="295" x="472" y="389" as="geometry" />
+        </mxCell>
+        <mxCell id="card3" parent="1" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;strokeWidth=1.5;shadow=1;" value="" vertex="1">
+          <mxGeometry height="175" width="340" x="835" y="245" as="geometry" />
+        </mxCell>
+        <mxCell id="heading3" parent="1" style="text;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=20;fontStyle=1;" value="Check &amp; Reserve Stock" vertex="1">
+          <mxGeometry height="34" width="295" x="857" y="276" as="geometry" />
+        </mxCell>
+        <mxCell id="desc3" parent="1" style="text;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontFamily=Arial;fontSize=15;" value="Confirm availability, assign warehouse and batch, and reserve stock." vertex="1">
+          <mxGeometry height="58" width="295" x="857" y="321" as="geometry" />
+        </mxCell>
+        <mxCell id="role3" parent="1" style="text;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=11;fontStyle=1;" value="SALES / SYSTEM" vertex="1">
+          <mxGeometry height="20" width="295" x="857" y="389" as="geometry" />
+        </mxCell>
+        <mxCell id="card4" parent="1" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;strokeWidth=1.5;shadow=1;" value="" vertex="1">
+          <mxGeometry height="175" width="340" x="1220" y="245" as="geometry" />
+        </mxCell>
+        <mxCell id="heading4" parent="1" style="text;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=20;fontStyle=1;" value="Approve Dispatch Request" vertex="1">
+          <mxGeometry height="34" width="295" x="1242" y="276" as="geometry" />
+        </mxCell>
+        <mxCell id="desc4" parent="1" style="text;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontFamily=Arial;fontSize=15;" value="Create a dispatch request from the sales order for store owner approval." vertex="1">
+          <mxGeometry height="58" width="295" x="1242" y="321" as="geometry" />
+        </mxCell>
+        <mxCell id="role4" parent="1" style="text;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=11;fontStyle=1;" value="STORE OWNER" vertex="1">
+          <mxGeometry height="20" width="295" x="1242" y="389" as="geometry" />
+        </mxCell>
+        <mxCell id="card5" parent="1" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;strokeWidth=1.5;shadow=1;" value="" vertex="1">
+          <mxGeometry height="175" width="340" x="1220" y="570" as="geometry" />
+        </mxCell>
+        <mxCell id="heading5" parent="1" style="text;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=20;fontStyle=1;" value="Pick &amp; Inspect Items" vertex="1">
+          <mxGeometry height="34" width="295" x="1242" y="601" as="geometry" />
+        </mxCell>
+        <mxCell id="desc5" parent="1" style="text;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontFamily=Arial;fontSize=15;" value="Pick items from the assigned batch and location; check quantity and condition." vertex="1">
+          <mxGeometry height="58" width="295" x="1242" y="646" as="geometry" />
+        </mxCell>
+        <mxCell id="role5" parent="1" style="text;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=11;fontStyle=1;" value="WAREHOUSE STAFF" vertex="1">
+          <mxGeometry height="20" width="295" x="1242" y="714" as="geometry" />
+        </mxCell>
+        <mxCell id="card6" parent="1" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;strokeWidth=1.5;shadow=1;" value="" vertex="1">
+          <mxGeometry height="175" width="340" x="835" y="570" as="geometry" />
+        </mxCell>
+        <mxCell id="heading6" parent="1" style="text;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=20;fontStyle=1;" value="Confirm Warehouse Dispatch" vertex="1">
+          <mxGeometry height="34" width="295" x="857" y="601" as="geometry" />
+        </mxCell>
+        <mxCell id="desc6" parent="1" style="text;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontFamily=Arial;fontSize=15;" value="Create a dispatch note, deduct stock, and update order progress." vertex="1">
+          <mxGeometry height="58" width="295" x="857" y="646" as="geometry" />
+        </mxCell>
+        <mxCell id="role6" parent="1" style="text;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=11;fontStyle=1;" value="WAREHOUSE / SYSTEM" vertex="1">
+          <mxGeometry height="20" width="295" x="857" y="714" as="geometry" />
+        </mxCell>
+        <mxCell id="card7" parent="1" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;strokeWidth=1.5;shadow=1;" value="" vertex="1">
+          <mxGeometry height="175" width="340" x="450" y="570" as="geometry" />
+        </mxCell>
+        <mxCell id="heading7" parent="1" style="text;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=20;fontStyle=1;" value="Coordinate Delivery" vertex="1">
+          <mxGeometry height="34" width="295" x="472" y="601" as="geometry" />
+        </mxCell>
+        <mxCell id="desc7" parent="1" style="text;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontFamily=Arial;fontSize=15;" value="Schedule the delivery, assign a vehicle, and hand off the shipment." vertex="1">
+          <mxGeometry height="58" width="295" x="472" y="646" as="geometry" />
+        </mxCell>
+        <mxCell id="role7" parent="1" style="text;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=11;fontStyle=1;" value="SALES STAFF" vertex="1">
+          <mxGeometry height="20" width="295" x="472" y="714" as="geometry" />
+        </mxCell>
+        <mxCell id="card8" parent="1" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;strokeWidth=1.5;shadow=1;" value="" vertex="1">
+          <mxGeometry height="175" width="340" x="65" y="570" as="geometry" />
+        </mxCell>
+        <mxCell id="heading8" parent="1" style="text;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=20;fontStyle=1;" value="Confirm Delivery" vertex="1">
+          <mxGeometry height="34" width="295" x="87" y="601" as="geometry" />
+        </mxCell>
+        <mxCell id="desc8" parent="1" style="text;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontFamily=Arial;fontSize=15;" value="Record delivered quantities; close the order or track outstanding items." vertex="1">
+          <mxGeometry height="58" width="295" x="87" y="646" as="geometry" />
+        </mxCell>
+        <mxCell id="role8" parent="1" style="text;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=11;fontStyle=1;" value="SALES / SYSTEM" vertex="1">
+          <mxGeometry height="20" width="295" x="87" y="714" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="card1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;endArrow=block;endSize=8;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="card2" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="card2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;endArrow=block;endSize=8;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="card3" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="card3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;endArrow=block;endSize=8;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="card4" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="card4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;endArrow=block;endSize=8;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="card5" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="card5" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;endArrow=block;endSize=8;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="card6" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" edge="1" parent="1" source="card6" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;endArrow=block;endSize=8;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="card7" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" edge="1" parent="1" source="card7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;endArrow=block;endSize=8;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="card8" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

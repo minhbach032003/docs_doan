@@ -1,0 +1,108 @@
+PAGE 31 BF05 Mới
+NvTsOsmYXIcEtAkBMRxb-2: Sales Staff
+NvTsOsmYXIcEtAkBMRxb-3: WMSD
+NvTsOsmYXIcEtAkBMRxb-30: Show insufficient stock information
+NvTsOsmYXIcEtAkBMRxb-22: Reduce inventory from selected
+lot and location
+NvTsOsmYXIcEtAkBMRxb-27: Record inventory movement
+NvTsOsmYXIcEtAkBMRxb-25: Update issue request status
+NvTsOsmYXIcEtAkBMRxb-34: Validate available quantity again
+NvTsOsmYXIcEtAkBMRxb-38: Update inventory and issue status
+NvTsOsmYXIcEtAkBMRxb-4: Inventory Staff
+NvTsOsmYXIcEtAkBMRxb-13: Create goods issue
+NvTsOsmYXIcEtAkBMRxb-15: Select lot and storage location
+NvTsOsmYXIcEtAkBMRxb-21: Confirm actual issued quantity
+NvTsOsmYXIcEtAkBMRxb-31: Adjust lot selection
+or issued quantity
+NvTsOsmYXIcEtAkBMRxb-7: Create issue request
+NvTsOsmYXIcEtAkBMRxb-9: Record source reference,
+product and requested quantity
+NvTsOsmYXIcEtAkBMRxb-11: Show request to Inventory Staff
+NvTsOsmYXIcEtAkBMRxb-17: Check usable inventory
+by lot and location
+NvTsOsmYXIcEtAkBMRxb-19: Eligible stock sufficient?
+NvTsOsmYXIcEtAkBMRxb-20: Yes
+NvTsOsmYXIcEtAkBMRxb-29: No
+NvTsOsmYXIcEtAkBMRxb-45: BF-05 - Warehouse Issue
+NvTsOsmYXIcEtAkBMRxb-36: Confirm actual issued quantity
+EDGES
+Record inventory movement --> NvTsOsmYXIcEtAkBMRxb-44 | 
+Reduce inventory from selected
+lot and location --> Update issue request status | 
+Update issue request status --> Record inventory movement | 
+Update inventory and issue status --> NvTsOsmYXIcEtAkBMRxb-44 | 
+Create goods issue --> Select lot and storage location | 
+NvTsOsmYXIcEtAkBMRxb-5 --> Create issue request | 
+Create issue request --> Record source reference,
+product and requested quantity | 
+Record source reference,
+product and requested quantity --> Show request to Inventory Staff | 
+Show request to Inventory Staff --> Create goods issue | 
+Select lot and storage location --> Check usable inventory
+by lot and location | 
+Check usable inventory
+by lot and location --> Eligible stock sufficient? | 
+Eligible stock sufficient? --> Confirm actual issued quantity | 
+Eligible stock sufficient? --> Show insufficient stock information | 
+Confirm actual issued quantity --> Reduce inventory from selected
+lot and location | 
+Show insufficient stock information --> Adjust lot selection
+or issued quantity | 
+Confirm actual issued quantity --> Update inventory and issue status | 
+Adjust lot selection
+or issued quantity --> Validate available quantity again | 
+Validate available quantity again --> Confirm actual issued quantity | 
+PLANTUML
+@startuml
+title BF-05 - Warehouse Issue
+
+|Sales Staff|
+start
+:Create issue request;
+
+|WMSD|
+:Record source reference,
+product and requested quantity;
+:Show request to Inventory Staff;
+
+|Inventory Staff|
+:Create goods issue;
+:Select lot and storage location;
+
+|WMSD|
+:Check usable inventory
+by lot and location;
+
+if (Eligible stock sufficient?) then (Yes)
+
+  |Inventory Staff|
+  :Confirm actual issued quantity;
+
+  |WMSD|
+  :Reduce inventory from selected
+lot and location;
+  :Update issue request status;
+  :Record inventory movement;
+
+else (No)
+
+  |WMSD|
+  :Show insufficient stock information;
+
+  |Inventory Staff|
+  :Adjust lot selection
+  or issued quantity;
+
+  |WMSD|
+  :Validate available quantity again;
+
+  |Inventory Staff|
+  :Confirm actual issued quantity;
+
+  |WMSD|
+  :Update inventory and issue status;
+
+endif
+
+stop
+@enduml

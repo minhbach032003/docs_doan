@@ -1,0 +1,127 @@
+PAGE 11 Product, Warehouse and Access Setup
+OAweg91SQIayhQ689jW1-2: Admin
+OAweg91SQIayhQ689jW1-3: System
+OAweg91SQIayhQ689jW1-4: Store Owner
+OAweg91SQIayhQ689jW1-21: Define category, material,
+size, usage, color code,
+packaging specification,
+and unit conversion
+OAweg91SQIayhQ689jW1-7: Create employee accounts
+OAweg91SQIayhQ689jW1-9: Assign roles and permissions
+OAweg91SQIayhQ689jW1-11: Validate account information and role mapping
+OAweg91SQIayhQ689jW1-13: Activate user accounts
+OAweg91SQIayhQ689jW1-15: Define warehouse structure,
+branch warehouses, and storage locations
+OAweg91SQIayhQ689jW1-17: Register warehouse and location master data
+OAweg91SQIayhQ689jW1-19: Create product master data
+OAweg91SQIayhQ689jW1-23: Validate product master data
+OAweg91SQIayhQ689jW1-25: Register product master data
+OAweg91SQIayhQ689jW1-27: Create supplier and customer master data
+OAweg91SQIayhQ689jW1-29: Validate business partner information
+OAweg91SQIayhQ689jW1-31: Activate supplier and customer records
+OAweg91SQIayhQ689jW1-33: Create initial lot data if needed
+OAweg91SQIayhQ689jW1-35: Register lot master data and audit history
+OAweg91SQIayhQ689jW1-37: Review access and configuration readiness
+OAweg91SQIayhQ689jW1-39: Configuration complete?
+OAweg91SQIayhQ689jW1-40: Yes
+OAweg91SQIayhQ689jW1-41: Publish master data for transaction use
+OAweg91SQIayhQ689jW1-42: No
+OAweg91SQIayhQ689jW1-43: Update missing setup information
+OAweg91SQIayhQ689jW1-44: Revalidate configuration
+EDGES
+OAweg91SQIayhQ689jW1-5 --> Create employee accounts | 
+Create employee accounts --> Assign roles and permissions | 
+Assign roles and permissions --> Validate account information and role mapping | 
+Validate account information and role mapping --> Activate user accounts | 
+Activate user accounts --> Define warehouse structure,
+branch warehouses, and storage locations | 
+Define warehouse structure,
+branch warehouses, and storage locations --> Register warehouse and location master data | 
+Register warehouse and location master data --> Create product master data | 
+Create product master data --> Define category, material,
+size, usage, color code,
+packaging specification,
+and unit conversion | 
+Define category, material,
+size, usage, color code,
+packaging specification,
+and unit conversion --> Validate product master data | 
+Validate product master data --> Register product master data | 
+Register product master data --> Create supplier and customer master data | 
+Create supplier and customer master data --> Validate business partner information | 
+Validate business partner information --> Activate supplier and customer records | 
+Activate supplier and customer records --> Create initial lot data if needed | 
+Create initial lot data if needed --> Register lot master data and audit history | 
+Register lot master data and audit history --> Review access and configuration readiness | 
+Review access and configuration readiness --> Configuration complete? | 
+Configuration complete? --> Publish master data for transaction use | 
+Configuration complete? --> Update missing setup information | 
+Update missing setup information --> Revalidate configuration | 
+Publish master data for transaction use --> OAweg91SQIayhQ689jW1-46 | 
+Revalidate configuration --> OAweg91SQIayhQ689jW1-46 | 
+OAweg91SQIayhQ689jW1-46 --> OAweg91SQIayhQ689jW1-50 | 
+PLANTUML
+@startuml
+title 2.7 Product, Warehouse and Access Setup (BF-07)
+
+scale 1400 width
+
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam activityBorderColor #666666
+skinparam activityBackgroundColor #FDFDFD
+skinparam activityDiamondBackgroundColor #FFF4D6
+skinparam activityDiamondBorderColor #888888
+skinparam activityArrowColor #666666
+
+|Admin|
+start
+:Create employee accounts;
+:Assign roles and permissions;
+
+|System|
+:Validate account information and role mapping;
+:Activate user accounts;
+
+|Store Owner|
+:Define warehouse structure,\nbranch warehouses, and storage locations;
+
+|System|
+:Register warehouse and location master data;
+
+|Store Owner|
+:Create product master data;
+:Define category, material,\nsize, usage, color code,\npackaging specification,\nand unit conversion;
+
+|System|
+:Validate product master data;
+:Register product master data;
+
+|Store Owner|
+:Create supplier and customer master data;
+
+|System|
+:Validate business partner information;
+:Activate supplier and customer records;
+
+|Store Owner|
+:Create initial lot data if needed;
+
+|System|
+:Register lot master data and audit history;
+
+|Admin|
+:Review access and configuration readiness;
+
+if (Configuration complete?) then (Yes)
+    |System|
+    :Publish master data for transaction use;
+else (No)
+    |Store Owner|
+    :Update missing setup information;
+    |System|
+    :Revalidate configuration;
+endif
+
+stop
+@enduml

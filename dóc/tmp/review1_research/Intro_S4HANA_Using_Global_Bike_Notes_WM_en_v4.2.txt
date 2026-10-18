@@ -1,0 +1,757 @@
+=== PAGE 1 ===
+ 
+© SAP UCC Magdeburg 
+ 
+ 
+LECTURER NOTES 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+Product 
+SAP S/4HANA 2022 
+Global Bike 
+ 
+Fiori 3.0 
+ 
+Level 
+Instructor 
+ 
+Focus 
+Warehouse Management 
+ 
+Authors 
+Chris Bernhardt 
+ 
+Version 
+4.2 
+ 
+Last Update 
+August 2023 
+MOTIVATION 
+Theoretical lectures explain 
+concepts, principles, and theories 
+through reading and discussion. 
+They, therefore, enable students to 
+acquire knowledge and gain 
+theoretical insights. 
+In contrast, case studies allow them 
+to develop their abilities to analyze 
+enterprise problems, learn and 
+develop possible solutions, and 
+make sound decisions. 
+ 
+The main objective of the Global 
+Bike case studies in general is for 
+students to understand the concept 
+of integration. These descriptive 
+and explanatory case studies will 
+allow students to understand the 
+importance and the advantages of 
+integrating enterprise areas using 
+an S/4HANA system. 
+ 
+  
+The main goal of this document is to 
+help instructors prepare the SAP 
+system for the Warehouse 
+Management case study process and 
+to support them trouble -shoot 
+problems that might occur during the 
+course. 
+ 
+Beside technical and didactic 
+prerequisites, the lecturer notes list 
+SAP transactions for testing and 
+correcting student results in the SAP 
+system. In addit ion, this document 
+describes common problems and 
+explains their reason and solution.  
+ 
+ 
+Warehouse Management (WM)  
+This document is intended to help instructors understand the case study 
+process and manage the learning process in and outside the classroom. 
+The main focus lies on prerequisites and common tasks such as testing 
+and trouble-shooting. 
+
+=== PAGE 2 ===
+ 
+© SAP UCC Magdeburg Page 2 
+ 
+LECTURER NOTES 
+ Prerequisites 
+Note Before using this case study in your classroom please make sure that all technical (month-end 
+closing, user management etc.) and didactic prerequisites are fulfilled. Such prerequisites are 
+briefly pointed out below. Detailed documentation can be displaye d at and downloaded from the 
+Learning Hub of SAP UA or the UCC web sites. 
+ 
+Technical Prerequisites 
+ 
+ 
+ 
+The Warehouse Management  case stu dy is based on a standard SAP 
+S/4HANA client with the current Global Bike dataset. Before processing the 
+case study on  your own or with your students all general setting should be 
+checked. 
+ 
+ 
+ 
+This includes month-end closing  in Materials Management (transaction 
+MMPV) which is documented on the UCC web sites. 
+ 
+Month-end closing in 
+MM 
+MMPV 
+Note: With the current version of the Global Bike client a year-end closing is 
+not necessary , because it has already been automated or because it is not 
+needed for the process described in the curriculum material. 
+ 
+Year-end closing 
+User accounts in the SAP system need to be created or unlocked.  
+ 
+User management 
+These student user accounts should end with a three -digit numeric number 
+(e.g. LEARN-001, LEARN-002 etc.). This number will be represented by ### 
+in the case study and helps differentiate customer accounts, products etc.  
+ 
+In an SAP S/4HANA Global Bike client already exist 1000 user accounts from 
+LEARN-000 to LEARN-999. These users need to be unlocked. The initial 
+password for each LEARN-### account is set to tlestart. 
+ 
+LEARN-000 to  
+LEARN-999 
+ 
+ 
+tlestart 
+Transaction ZUSR was developed in the Global Bike client in order to mass 
+maintain SAP user accounts. For a detailed description of this and SAP 
+standard transactions for user management ( SU01 and SU10) please refer to 
+the lecturer notes “User Management“ (see: current Global Bike curriculum 
+ chapter 99 – Instructor Tools). 
+ 
+ZUSR 
+ 
+ 
+SU01 
+SU10 
+All LEARN -### user accounts have been assigned to the role 
+Z_UCC_GBI_SCC and have authorizations to use all applicative transactions 
+in the SAP S/4HANA system. The role allows access to all transactions 
+necessary for Global Bike exercises and case studies. If you need access to 
+system-critical transactions, i.e. for development purposes, you may assign the 
+composite profile SAP_ALL to your student accounts. 
+ 
+ 
+It is useful for the instructor to have a user account available for testing that 
+has the same authorizations as the student accounts. You may use the 
+predefined instructor account LEARN-000 for this purpose. 
+ 
+ 
+ 
+ 
+Instructor account 
+LEARN-000 
+
+=== PAGE 3 ===
+ 
+© SAP UCC Magdeburg Page 3 
+ 
+LECTURER NOTES 
+ 
+  
+ 
+Didactic Prerequisites 
+ 
+In order to successfully process this case study, students should be familiar 
+with the navigation in SAP systems, especially the SAP Easy Access menu, 
+the SAP transaction concept as well as possible documentation and help 
+options. We highly recommend using the navigation slides and the navigation 
+course (see: current Global Bike curriculum  chapter 2 – Navigation). 
+ 
+ 
+Navigation 
+In addition, it has been proven beneficial that students have a thorough 
+understanding of the historic background and the enterprise structure of the 
+Global Bike concern before they start working on the SAP system. F or this 
+purpose we recommend the case study „Global Bike Inc.“ (see: current Global 
+Bike curriculum  chapter 3 – Global Bike). 
+ 
+ 
+Company background 
+Because the case study is not based on the exercises, it is not necessary to have 
+processed the WM exercises before you start with the case study. However, it 
+is recommended. 
+ 
+In order to function properly this case study needs a Global Bike  client 
+version that is equal to or higher than the case study version (see cover page). 
+Please check. If you do not know the client version please use the transaction 
+ZGBIVERSION within your SAP S/4HANA system or contact your UCC 
+team. 
+ 
+Global Bike client 
+version 
+Global Feedback 
+ 
+Do you have any suggestions or feedback about Global Bike? Please send it 
+to our new email-address gbi@ucc.ovgu.de which is used to gather feedback 
+globally. All emails will be evaluated by the persons responsible for the 
+curriculum bi-weekly. This way your feedback might influence future releases 
+directly. 
+ 
+ 
+Please note that any support requests send to this email -address will be 
+ignored. Please keep using the common support channels for your support 
+requests. 
+ 
+ 
+ 
+
+=== PAGE 4 ===
+ 
+© SAP UCC Magdeburg Page 4 
+ 
+LECTURER NOTES 
+ 
+  
+ Student Assessment 
+Note With the app described below you can check and correct master and transactional data that 
+your students have created during your course. 
+ 
+Global Bike Monitoring Tool (beta) 
+ 
+We are developing a Global Bike Monitor, which is available for the SD case 
+study. 
+A detailed tutorial for this tool is available in the module 99 Instructor Tools 
+of the current Global Bike curriculum.  
+Please keep in mind that this transaction is an additional functionality designed 
+by the UCC Magdeburg and still in development. Theref ore, we kindly ask 
+you to send any feedback or detailed error descriptions to the following 
+address: gbi@ucc.ovgu.de 
+ 
+ 
+ 
+
+=== PAGE 5 ===
+ 
+© SAP UCC Magdeburg Page 5 
+ 
+LECTURER NOTES 
+ 
+  
+ Learning Snacks WM 
+Note With the Learning Snacks WM you can check your learning success in the module WM. 
+ 
+What is Learning Snacks ? 
+ 
+Learning Snacks offers the possibility to check the knowledge 
+gained during the case studies and exercises by means of small 
+single-choice questions. Depending on the selected module, 
+you can play through a Learning Snacks (WM here). Learning 
+Snacks can be used with or without prior registration. By 
+having your own account, you can create snacks yourself, like 
+other snacks and receive some kind of points for each question 
+you answer correctly. 
+You can find detailed instructions on Learning Snacks in the 
+module "98 Cross-Module". 
+ 
+ 
+ 
+
+
+=== PAGE 6 ===
+ 
+© SAP UCC Magdeburg Page 6 
+ 
+LECTURER NOTES 
+ Process Monitoring 
+Valid for: WM I, WM II, WM III 
+Note During the case study the SAP system creates documents which are automatically logging 
+all business process steps. These documents rely on master data that were either predefined by the 
+curriculum development team or created by your students. 
+ 
+Display Document Flow 
+ 
+Document flow 
+ 
+Open the Material Document Overview app using the search . You can 
+use the app to find all material documents and jump to subsequent 
+documents. 
+ 
+ 
+ 
+In the view Material Documents Overview, use the field Material as the 
+preferred search criterion. Add further criteria as required. 
+ 
+  
+Case Study Material 
+WM I KPAD1### 
+EPAD1### 
+WM II DXTR1### 
+WM III PRTR2### 
+  
+ 
+For example, search for WM I documents on knee pads. Open the document 
+to view detailed information. 
+ 
+
+
+=== PAGE 7 ===
+ 
+© SAP UCC Magdeburg Page 7 
+ 
+LECTURER NOTES 
+  
+ 
+ 
+In the material document view, navigate to the process flow area. There you 
+can find further apps for the documents and thus have additional evaluation 
+options. 
+ 
+ 
+ 
+ 
+ 
+
+
+=== PAGE 8 ===
+ 
+© SAP UCC Magdeburg Page 8 
+ 
+LECTURER NOTES 
+  
+ Problem: Review Transfer Orders 
+Valid for: WM I, WM II, WM III 
+Symptom You would like to check the transfer orders of your participants. 
+Reason The material inventory or the material inventory value seems to be wrong because the 
+confirmation of a transfer order is missing. 
+Solution Check the transfer orders and confirm them if necessary. 
+ 
+Solution 
+ 
+ 
+ 
+Use the Document Overview app (in the Warehouse Supervisor role) to get 
+an overview of open or confirmed transfer orders. 
+ 
+ 
+ 
+In the Transfer Order: List of Resident Documents screen, enter 100 as 
+Warehouse number. Within the areas Confirmation status and Program 
+parameters you may filter the transfer orders by status and date. 
+ 
+100 
+ 
+ 
+Afterwards please execute the report by pressing F8 or . 
+ 
+  
+
+
+=== PAGE 9 ===
+ 
+© SAP UCC Magdeburg Page 9 
+ 
+LECTURER NOTES 
+  
+ Problem: Check the amount of ordered goods 
+Valid for: WM I, WM II, WM III 
+Symptom The material inventory or the material inventory value seems to be wrong. 
+Reason Shortage of goods could be an indicator for input or typing errors during the creation of 
+purchase orders. 
+Solution Check if your participants ordered a wrong amount of goods. 
+ 
+Warehouse Stocks of Material 
+ 
+ 
+ 
+Use the app Display Warehouse Stock to get an overview of the stock levels, 
+as well as their value, for a specific material. 
+ 
+ 
+ 
+In the Display Warehouse Stocks of Material screen, enter SD00 as Plant 
+and use the following materials for each case study. 
+SD00 
+ 
+ 
+  
+Case Study Material 
+WM I KPAD1XXX bis KPAD1YYY 
+WM II DXTR1XXX bis DXTR1YYY 
+WM III PRTR2XXX bis PRTR2YYY 
+  
+ 
+Afterwards please execute the report by pressing F8 or . 
+ 
+ 
+ 
+  
+
+
+=== PAGE 10 ===
+ 
+© SAP UCC Magdeburg Page 10 
+ 
+LECTURER NOTES 
+  
+ Problem: Missing storage bins 
+Valid for: WM II, WM III 
+Problem The storage bins STBN-7-### and STBN-9-### don’t exist. 
+Reason The storage bins weren’t created. 
+Solution Create the storage bins automatically  
+ 
+Storage Bin Structure for Automatic Creation 
+ 
+ 
+ 
+Please use the transaction LS10 to get an overview about the storage bin 
+structure 
+ 
+LS10 
+In the Change View “Storage Bin Structure for Automatic Creation“: 
+Overview click twice on the row for your STBN-7-### storage bins. 
+ 
+ 
+STBN-7-### 
+ 
+ 
+In the detail view choose Environment  Create Bins. 
+ 
+ 
+ 
+In the view Automatic Creation of Storage bins choose 
+. 
+ 
+You will get a success message after the bins were created. 
+ 
+Repeat this process for the storage bins STBN-9-###. 
+ 
+STBN-9-### 
+  
+
+
+=== PAGE 11 ===
+ 
+© SAP UCC Magdeburg Page 11 
+ 
+LECTURER NOTES 
+  
+ Problem: Review the storage bins 
+Valid for: WM I, WM II, WM III, WM IV 
+Symptom You would like to check if the materials are stored into the right storage bin. If the 
+participants use the wrong storage bin, they may run into errors on later goods issue. 
+Reason Incorrect storage bins can be filled due to incorrect entries. 
+Solution Check the storage bins. 
+ 
+View storage bins 
+ 
+ 
+ 
+Please use the app Run Bin Status Report to check the storage bins of your 
+participants. 
+ 
+ 
+ 
+ 
+In the Bin Status Report: Initial Screen, enter 100 as Warehouse number and 
+limit the storage bins to ones your participants by restricting the storage bins 
+as follows: 
+100 
+ 
+  
+Case Study Lagerplatz 
+WM I STBN-1-XXX bis STBN-1-YYY 
+WM II STBN-7-XXX bis STBN-7-YYY 
+WM III und WM IV STBN-8-XXX bis STBN-8-YYY 
+  
+ 
+Afterwards please execute the report by pressing F8 or . 
+ 
+  
+ 
+ 
+ 
+
+
+=== PAGE 12 ===
+ 
+© SAP UCC Magdeburg Page 12 
+ 
+LECTURER NOTES 
+ Problem: Goods stored into wrong storage bin 
+Valid for: WM I, WM II, WM III 
+Symptom The bin status report shows that some goods were stored into a wrong storage bin. 
+Reason While storing process a wrong storage bin number was entered. 
+Solution Use a stock transfer order to store the affected goods into the right storage bin. 
+ 
+Stock transfer of goods 
+ 
+ 
+ 
+Open the Stock Transfer app using the search .  
+ 
+ 
+ 
+In the Stock Transfer: Start screen enter 100 as Warehouse number. Add the 
+following data depending on the selected case study: 
+ 
+100 
+ 
+  
+Fallstudie Storage Type 
+WM I und WM III 001 (Shelf Storage) 
+WM II 002 (Pallet Storage) 
+  
+ 
+Specify the material to be transferred (e.g. KPAD1##) and add movement 
+type 999 in the Program control area.   
+ 
+Material 
+999 
+
+
+=== PAGE 13 ===
+ 
+© SAP UCC Magdeburg Page 13 
+ 
+LECTURER NOTES 
+  
+ 
+ 
+Compare your entries with the screenshot shown above and then press 
+. 
+ 
+In the following view Stock Transfer: Overview. Select the corresponding 
+line and then choose  (Stock Transfer Foreground). 
+ 
+ 
+ 
+
+
+=== PAGE 14 ===
+ 
+© SAP UCC Magdeburg Page 14 
+ 
+LECTURER NOTES 
+  
+The Specify Destination Data popup opens. According to your case study, 
+enter the following data as storage type and storage bin: 
+ 
+  
+Case Study Storage Type Storage Bin 
+WM I 001 STBN-1-### 
+WM II 002 STBN-7-### 
+WM III 002 STBN-8-### 
+  
+ 
+Independent of the case study, you then enter 001 as the storage area. Check 
+that 999 is selected as the movement type and also select Confirm 
+immediately. Then click on Apply. 
+ 
+001 
+999 
+Confirm immediately 
+ 
+ 
+  
+
+
+=== PAGE 15 ===
+ 
+© SAP UCC Magdeburg Page 15 
+ 
+LECTURER NOTES 
+ 
+  
+ Problem: Review purchasing documents 
+Valid for: WM I, WM II 
+Symptom You would like to compare the purchase orders with the expected results. 
+Reason Common causes of errors in this case study are misentries by participants.  
+Solution Review the purchase order documents of your participants to verify that all inputs are 
+correct. 
+ 
+View purchasing documents 
+ 
+ 
+ 
+Use the Manage Purchase Orders app to view your students' purchase 
+receipts. 
+ 
+ 
+ 
+ 
+In the Manage Purchase Orders view, you can specify the search by material 
+(e.g. KPAD1*). Then select   to initiate the search. 
+ 
+ 
+KPAD1* 
+ 
+ 
+ 
+ 
+
+
+=== PAGE 16 ===
+ 
+© SAP UCC Magdeburg Page 16 
+ 
+LECTURER NOTES 
+  
+ Problem: Insufficient material stock level (Dallas) 
+Valid for: WM II 
+Symptom An insufficient amount of materials on stock lead to the situation that the good issue 
+can’t be posted. 
+Reason Frequent causes for this are, too high order quantities of the participants, repeated 
+execution of the case studies in the same number range and the outsourcing of own material by 
+other participants. 
+Solution Post the required amount of the material to the corresponding plant. 
+ 
+Posting goods receipt 
+ 
+ 
+ 
+Open the app Post Goods Movement.  
+ 
+ 
+ 
+In the first drop down menu select Goods Receipt and Other in the second 
+one. Check if the movement type changed to 501. Afterwards enter the 
+needed material as Material Short Text, the needed amount as Qty in UnE, 
+the plant you want the material to be delivered as Plnt and the storage 
+location you want the materials to be stored to as SLoc. For example 
+DXTR1### as material DL00 as plant and FG00 as storage location.  
+ 
+Goods Receipt 
+Other 
+ 
+ 
+ 
+ 
+DXTR1### 
+DL00 
+FG00 
+ 
+ 
+ 
+Then press Enter. Post your goods receipt by clicking  . 
+ 
+ 
+ 
+
+
+=== PAGE 17 ===
+ 
+© SAP UCC Magdeburg Page 17 
+ 
+LECTURER NOTES 
+ Problem: Insufficient material stock level (San Diego) 
+Valid for: WM III 
+Symptom An insufficient amount of materials on stock lead to the situation that the good issue 
+can’t be posted. 
+Reason Frequent causes for this are, too high order quantities of the participants, repeated 
+execution of the case studies in the same number range and the outsourcing of own material by 
+other participants. 
+Solution Post the required amount of the material to the corresponding plant. 
+ 
+Posting goods receipt 
+ 
+ 
+ 
+Because San Diego has a warehouse management system, the quick putaway 
+of materials is implemented differently than in the previous case study. 
+ 
+First, proceed as described in the previous problem case. After you have 
+defined your material (PRTR2###), the quantity, the plant (SD00) and the 
+storage location (FG00), expand the detailed data   in 
+the lower screen area.  
+ 
+Then navigate to the LE-WM tab and set the No transfer requirement 
+indicator, so that no transfer order is triggered. 
+ 
+ 
+ 
+Post your goods receipt by clicking  . 
+ 
+Store goods 
+ 
+Proceed in the same way as for the problem Goods stored into wrong storage 
+bin and store the goods correctly. To do this, use the Stock Transfer app. 
+Enter 003 as storage type, PRTR2### as material and 999 as movement 
+type. Then start the process with . In the view Stock Transfer: 
+Overview you can see that the goods are currently stored in the storage bin 
+WE-ZONE. 
+ 
+ 
+ 
+003 
+PRTR2### 
+999 
+Select the corresponding line and then choose  (Stock Transfer 
+Foreground). 
+ 
+
+
+=== PAGE 18 ===
+ 
+© SAP UCC Magdeburg Page 18 
+ 
+LECTURER NOTES 
+  
+ 
+ 
+The Specify Destination Data  popup opens. Enter 002 as Storage Type , 
+STBN-8-### as Storage Bin and 001 as the storage area. Check that 999 is 
+selected as the movement type and also select Confirm immediately. Then 
+click on Apply. 
+ 
+002 
+STBN-8-### 
+001 
+999 
+Confirm immediately 
+ 
+ 
+
+
+=== PAGE 19 ===
+ 
+© SAP UCC Magdeburg Page 19 
+ 
+LECTURER NOTES 
+ 
+ 
+ Problem: Review sales orders 
+Valid for: WM III 
+Symptom You would like to compare the sales orders with the expected results. 
+Reason Wrong inputs or typing errors are common mistakes of participants. They may lead to 
+serious errors while processing later parts of a case study. 
+Solution Review the sales order documents of your participants to verify that all inputs are 
+correct. 
+ 
+View sales orders 
+ 
+ 
+ 
+Open the Manage Sales Orders app by using the search  to display your 
+students' orders. You can use your Material (PRTR2*) as a search criterion. 
+ 
+ 
+ 
+PRTR2* 
+ 
+ 
+ 
+ 

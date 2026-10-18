@@ -1,0 +1,532 @@
+{
+  "index": 1,
+  "name": "Process",
+  "id": "Q2seSnPpGRZtrvwF2RRF",
+  "nodes": [
+    {
+      "id": "UkZ6TXPV2fwDIUL-Jf66-4",
+      "text": "Phải qua chủ cửa hàng xác nhận",
+      "parent": "LdCWyUKHQ3eP7mPYMKX1-46"
+    },
+    {
+      "id": "UkZ6TXPV2fwDIUL-Jf66-5",
+      "text": "khách hàng xác nhận và bàn giao hàng sau khi yêu cầu được tiếp nhận",
+      "parent": "1"
+    }
+  ],
+  "edges": [
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-27",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-29",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-29",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-31",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-31",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-33",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-33",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-35",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-35",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-37",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-37",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-39",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-39",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-43",
+      "label": ""
+    },
+    {
+      "from": "t8NDRqA9R31VhBSEFNKt-13",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-19",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-9",
+      "to": "t8NDRqA9R31VhBSEFNKt-7",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-21",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-23",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-23",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-25",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-5",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-7",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-7",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-9",
+      "label": ""
+    },
+    {
+      "from": "t8NDRqA9R31VhBSEFNKt-9",
+      "to": "t8NDRqA9R31VhBSEFNKt-10",
+      "label": ""
+    },
+    {
+      "from": "t8NDRqA9R31VhBSEFNKt-7",
+      "to": "t8NDRqA9R31VhBSEFNKt-9",
+      "label": ""
+    },
+    {
+      "from": "t8NDRqA9R31VhBSEFNKt-10",
+      "to": "t8NDRqA9R31VhBSEFNKt-13",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-19",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-21",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-25",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-27",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-53",
+      "to": "Phải qua chủ cửa hàng xác nhận",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-49",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-53",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-53",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-55",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-55",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-57",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-57",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-59",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-59",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-61",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-61",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-63",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-63",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-65",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-65",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-67",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-67",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-69",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-69",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-71",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-71",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-73",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-73",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-75",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-75",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-77",
+      "label": ""
+    },
+    {
+      "from": "Phải qua chủ cửa hàng xác nhận",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-55",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-86",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-88",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-88",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-94",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-94",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-96",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-96",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-98",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-98",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-100",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-100",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-102",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-102",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-104",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-104",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-106",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-106",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-108",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-108",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-110",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-110",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-112",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-112",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-114",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-114",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-116",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-116",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-118",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-118",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-120",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-120",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-122",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-122",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-124",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-124",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-126",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-126",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-128",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-136",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-138",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-138",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-140",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-140",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-142",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-142",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-144",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-144",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-146",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-146",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-148",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-148",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-150",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-150",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-152",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-152",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-154",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-154",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-156",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-156",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-158",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-158",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-160",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-160",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-162",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-162",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-164",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-164",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-166",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-173",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-175",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-175",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-177",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-177",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-179",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-179",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-181",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-181",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-183",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-183",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-185",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-185",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-187",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-187",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-189",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-189",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-191",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-191",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-193",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-193",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-195",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-195",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-197",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-197",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-199",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-199",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-201",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-201",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-203",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-203",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-205",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-205",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-207",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-207",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-209",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-209",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-211",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-211",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-215",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-220",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-222",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-222",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-224",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-224",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-226",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-226",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-228",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-228",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-230",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-230",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-232",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-232",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-234",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-234",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-236",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-236",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-238",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-238",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-240",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-240",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-242",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-242",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-244",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-244",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-248",
+      "label": ""
+    },
+    {
+      "from": "LdCWyUKHQ3eP7mPYMKX1-248",
+      "to": "LdCWyUKHQ3eP7mPYMKX1-250",
+      "label": ""
+    }
+  ],
+  "uml": [
+    "@startuml BP01_Procurement_Inbound\ntitle BP-01 - Quy trình Mua hàng và Nhập kho\n\nscale 2000 width\n\nskinparam backgroundColor #FFFFFF\nskinparam defaultFontName Arial\nskinparam defaultFontSize 15\nskinparam shadowing false\nskinparam roundcorner 10\nskinparam activity {\n    BackgroundColor #F8F9FA\n    BorderColor #374151\n    FontColor #111827\n    ArrowColor #4B5563\n}\nskinparam swimlane {\n    BorderColor #6B7280\n    TitleBackgroundColor #E5E7EB\n}\n\n|Nhân viên kho|\nstart\n:Kiểm tra tình hình tồn kho;\n:Xác định hàng hóa cần bổ sung;\n:Lập yêu cầu mua hàng;\n\n|Kế toán|\n:Tiếp nhận yêu cầu mua hàng;\n:Xác nhận nhu cầu mua;\n:Liên hệ nhà cung cấp;\n:Đặt hàng với nhà cung cấp;\n\n|Nhà cung cấp|\n:Xác nhận đơn đặt hàng;\n:Chuẩn bị hàng;\n:Giao hàng và chứng từ;\n\n|Nhân viên kho|\n:Tiếp nhận hàng;\n:Kiểm đếm hàng thực tế;\n:Nhập hàng vào kho;\n:Xác nhận kết quả nhận hàng;\n\n|Kế toán|\n:Tiếp nhận chứng từ mua hàng;\n:Đối chiếu hàng nhận và chứng từ;\n:Ghi nhận công nợ / thanh toán;\n:Hoàn tất nghiệp vụ mua hàng;\n\nstop\n@enduml\n",
+    "@startuml BP02_Internal_Transfer\ntitle BP-02 - Quy trình Điều chuyển hàng giữa các kho\n\nscale 2000 width\n\nskinparam backgroundColor #FFFFFF\nskinparam defaultFontName Arial\nskinparam defaultFontSize 15\nskinparam shadowing false\nskinparam roundcorner 10\nskinparam activity {\n    BackgroundColor #F8F9FA\n    BorderColor #374151\n    FontColor #111827\n    ArrowColor #4B5563\n}\nskinparam swimlane {\n    BorderColor #6B7280\n    TitleBackgroundColor #E5E7EB\n}\n\n|Nhân viên kho nhận|\nstart\n:Xác định nhu cầu bổ sung hàng;\n:Lập yêu cầu điều chuyển hàng;\n\n|Nhân viên kho xuất|\n:Tiếp nhận yêu cầu điều chuyển;\n:Chuẩn bị hàng cần điều chuyển;\n:Kiểm đếm hàng xuất;\n:Bàn giao hàng điều chuyển;\n\n|Nhân viên giao hàng|\n:Tiếp nhận hàng;\n:Vận chuyển hàng đến kho nhận;\n:Bàn giao hàng;\n\n|Nhân viên kho nhận|\n:Tiếp nhận hàng điều chuyển;\n:Kiểm đếm số lượng thực nhận;\n:Nhập hàng vào kho;\n:Xác nhận hoàn tất điều chuyển;\n\nstop\n@enduml",
+    "@startuml BP03_Sales_Delivery\ntitle BP-03 - Quy trình Bán hàng và Giao hàng\n\nscale 2000 width\n\nskinparam backgroundColor #FFFFFF\nskinparam defaultFontName Arial\nskinparam defaultFontSize 15\nskinparam shadowing false\nskinparam roundcorner 10\nskinparam activity {\n    BackgroundColor #F8F9FA\n    BorderColor #374151\n    FontColor #111827\n    ArrowColor #4B5563\n}\nskinparam swimlane {\n    BorderColor #6B7280\n    TitleBackgroundColor #E5E7EB\n}\n\n|Khách hàng|\nstart\n:Cung cấp nhu cầu mua hàng;\n\n|Nhân viên bán hàng|\n:Tư vấn sản phẩm;\n:Xác nhận sản phẩm và số lượng;\n:Lập đơn bán hàng;\n\n|Thu ngân|\n:Tiếp nhận thông tin thanh toán;\n:Thu tiền khách hàng;\n:Xác nhận thanh toán;\n\n|Nhân viên kho|\n:Tiếp nhận yêu cầu xuất hàng;\n:Chuẩn bị hàng;\n:Kiểm đếm số lượng xuất;\n:Bàn giao hàng cho nhân viên giao hàng;\n\n|Nhân viên giao hàng|\n:Tiếp nhận hàng;\n:Vận chuyển hàng đến khách hàng;\n\n|Khách hàng|\n:Kiểm nhận hàng;\n:Xác nhận nhận hàng;\n\n|Nhân viên giao hàng|\n:Ghi nhận số lượng đã bàn giao;\n:Hoàn tất giao hàng;\n\n|Kế toán|\n:Đối chiếu số lượng giao thực tế;\n:Lập hóa đơn theo hàng thực giao;\n:Ghi nhận doanh thu;\n\nstop\n@enduml",
+    "@startuml BP04_Customer_Return\ntitle BP-04 - Quy trình Khách hàng Trả hàng\n\nscale 2000 width\n\nskinparam backgroundColor #FFFFFF\nskinparam defaultFontName Arial\nskinparam defaultFontSize 15\nskinparam shadowing false\nskinparam roundcorner 10\nskinparam activity {\n    BackgroundColor #F8F9FA\n    BorderColor #374151\n    FontColor #111827\n    ArrowColor #4B5563\n}\nskinparam swimlane {\n    BorderColor #6B7280\n    TitleBackgroundColor #E5E7EB\n}\n\n|Khách hàng|\nstart\n:Yêu cầu trả hàng;\n:Bàn giao hàng cần trả;\n\n|Nhân viên bán hàng|\n:Tiếp nhận yêu cầu trả hàng;\n:Xác nhận thông tin đơn bán;\n\n|Nhân viên kho|\n:Tiếp nhận hàng trả;\n:Kiểm đếm và kiểm tra hàng;\n:Nhập lại hàng vào kho;\n:Xác nhận số lượng hàng nhận lại;\n\n|Kế toán|\n:Tiếp nhận kết quả trả hàng;\n:Điều chỉnh chứng từ bán hàng;\n:Xác định số tiền hoàn trả;\n\n|Thu ngân|\n:Thực hiện hoàn tiền cho khách hàng;\n\n|Khách hàng|\n:Nhận tiền hoàn;\n:Xác nhận hoàn tất trả hàng;\n\nstop\n@enduml",
+    "@startuml BP05_Supplier_Return\ntitle BP-05 - Quy trình Trả hàng Nhà cung cấp\n\nscale 2000 width\n\nskinparam backgroundColor #FFFFFF\nskinparam defaultFontName Arial\nskinparam defaultFontSize 15\nskinparam shadowing false\nskinparam roundcorner 10\nskinparam activity {\n    BackgroundColor #F8F9FA\n    BorderColor #374151\n    FontColor #111827\n    ArrowColor #4B5563\n}\nskinparam swimlane {\n    BorderColor #6B7280\n    TitleBackgroundColor #E5E7EB\n}\n\n|Nhân viên kho|\nstart\n:Xác định hàng cần trả nhà cung cấp;\n:Ghi nhận số lượng hàng cần trả;\n:Gửi thông tin trả hàng;\n\n|Kế toán|\n:Tiếp nhận thông tin hàng trả;\n:Đối chiếu đơn mua và chứng từ;\n:Liên hệ nhà cung cấp;\n:Xác nhận phương án trả hàng;\n\n|Nhân viên kho|\n:Chuẩn bị hàng trả;\n:Kiểm đếm hàng;\n:Bàn giao hàng trả;\n\n|Nhân viên giao hàng|\n:Tiếp nhận hàng;\n:Vận chuyển đến nhà cung cấp;\n:Bàn giao hàng;\n\n|Nhà cung cấp|\n:Tiếp nhận hàng trả;\n:Xác nhận số lượng nhận lại;\n:Phát hành chứng từ điều chỉnh;\n\n|Kế toán|\n:Tiếp nhận chứng từ điều chỉnh;\n:Đối chiếu công nợ;\n:Điều chỉnh giá trị mua hàng;\n:Hoàn tất nghiệp vụ trả hàng;\n\nstop\n@enduml",
+    "@startuml BP06_Stock_Count\ntitle BP-06 - Quy trình Kiểm kê và Điều chỉnh tồn kho\n\nscale 2000 width\n\nskinparam backgroundColor #FFFFFF\nskinparam defaultFontName Arial\nskinparam defaultFontSize 15\nskinparam shadowing false\nskinparam roundcorner 10\nskinparam activity {\n    BackgroundColor #F8F9FA\n    BorderColor #374151\n    FontColor #111827\n    ArrowColor #4B5563\n}\nskinparam swimlane {\n    BorderColor #6B7280\n    TitleBackgroundColor #E5E7EB\n}\n\n|Kế toán|\nstart\n:Lập kế hoạch kiểm kê;\n:Xác định phạm vi kiểm kê;\n:Thông báo thực hiện kiểm kê;\n\n|Nhân viên kho|\n:Chuẩn bị khu vực kiểm kê;\n:Kiểm đếm hàng hóa thực tế;\n:Ghi nhận kết quả kiểm kê;\n:Tổng hợp số lượng thực tế;\n\n|Kế toán|\n:Tiếp nhận kết quả kiểm kê;\n:Đối chiếu số liệu;\n:Lập biên bản kiểm kê;\n:Ghi nhận điều chỉnh tồn kho;\n:Ghi nhận giá trị chênh lệch;\n\n|Nhân viên kho|\n:Xác nhận số liệu tồn sau kiểm kê;\n\n|Kế toán|\n:Hoàn tất kỳ kiểm kê;\n\nstop\n@enduml\n"
+  ]
+}

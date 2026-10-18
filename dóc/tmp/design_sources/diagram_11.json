@@ -1,0 +1,126 @@
+{
+  "index": 11,
+  "name": "Product, Warehouse and Access Setup",
+  "id": "dIvex_5Er9Dsv1Qj45oO",
+  "nodes": [],
+  "edges": [
+    {
+      "from": "OAweg91SQIayhQ689jW1-5",
+      "to": "OAweg91SQIayhQ689jW1-7",
+      "label": ""
+    },
+    {
+      "from": "OAweg91SQIayhQ689jW1-7",
+      "to": "OAweg91SQIayhQ689jW1-9",
+      "label": ""
+    },
+    {
+      "from": "OAweg91SQIayhQ689jW1-9",
+      "to": "OAweg91SQIayhQ689jW1-11",
+      "label": ""
+    },
+    {
+      "from": "OAweg91SQIayhQ689jW1-11",
+      "to": "OAweg91SQIayhQ689jW1-13",
+      "label": ""
+    },
+    {
+      "from": "OAweg91SQIayhQ689jW1-13",
+      "to": "OAweg91SQIayhQ689jW1-15",
+      "label": ""
+    },
+    {
+      "from": "OAweg91SQIayhQ689jW1-15",
+      "to": "OAweg91SQIayhQ689jW1-17",
+      "label": ""
+    },
+    {
+      "from": "OAweg91SQIayhQ689jW1-17",
+      "to": "OAweg91SQIayhQ689jW1-19",
+      "label": ""
+    },
+    {
+      "from": "OAweg91SQIayhQ689jW1-19",
+      "to": "OAweg91SQIayhQ689jW1-21",
+      "label": ""
+    },
+    {
+      "from": "OAweg91SQIayhQ689jW1-21",
+      "to": "OAweg91SQIayhQ689jW1-23",
+      "label": ""
+    },
+    {
+      "from": "OAweg91SQIayhQ689jW1-23",
+      "to": "OAweg91SQIayhQ689jW1-25",
+      "label": ""
+    },
+    {
+      "from": "OAweg91SQIayhQ689jW1-25",
+      "to": "OAweg91SQIayhQ689jW1-27",
+      "label": ""
+    },
+    {
+      "from": "OAweg91SQIayhQ689jW1-27",
+      "to": "OAweg91SQIayhQ689jW1-29",
+      "label": ""
+    },
+    {
+      "from": "OAweg91SQIayhQ689jW1-29",
+      "to": "OAweg91SQIayhQ689jW1-31",
+      "label": ""
+    },
+    {
+      "from": "OAweg91SQIayhQ689jW1-31",
+      "to": "OAweg91SQIayhQ689jW1-33",
+      "label": ""
+    },
+    {
+      "from": "OAweg91SQIayhQ689jW1-33",
+      "to": "OAweg91SQIayhQ689jW1-35",
+      "label": ""
+    },
+    {
+      "from": "OAweg91SQIayhQ689jW1-35",
+      "to": "OAweg91SQIayhQ689jW1-37",
+      "label": ""
+    },
+    {
+      "from": "OAweg91SQIayhQ689jW1-37",
+      "to": "OAweg91SQIayhQ689jW1-39",
+      "label": ""
+    },
+    {
+      "from": "OAweg91SQIayhQ689jW1-39",
+      "to": "OAweg91SQIayhQ689jW1-41",
+      "label": ""
+    },
+    {
+      "from": "OAweg91SQIayhQ689jW1-39",
+      "to": "OAweg91SQIayhQ689jW1-43",
+      "label": ""
+    },
+    {
+      "from": "OAweg91SQIayhQ689jW1-43",
+      "to": "OAweg91SQIayhQ689jW1-44",
+      "label": ""
+    },
+    {
+      "from": "OAweg91SQIayhQ689jW1-41",
+      "to": "OAweg91SQIayhQ689jW1-46",
+      "label": ""
+    },
+    {
+      "from": "OAweg91SQIayhQ689jW1-44",
+      "to": "OAweg91SQIayhQ689jW1-46",
+      "label": ""
+    },
+    {
+      "from": "OAweg91SQIayhQ689jW1-46",
+      "to": "OAweg91SQIayhQ689jW1-50",
+      "label": ""
+    }
+  ],
+  "uml": [
+    "@startuml\ntitle 2.7 Product, Warehouse and Access Setup (BF-07)\n\nscale 1400 width\n\nskinparam shadowing false\nskinparam defaultFontName Arial\nskinparam activityBorderColor #666666\nskinparam activityBackgroundColor #FDFDFD\nskinparam activityDiamondBackgroundColor #FFF4D6\nskinparam activityDiamondBorderColor #888888\nskinparam activityArrowColor #666666\n\n|Admin|\nstart\n:Create employee accounts;\n:Assign roles and permissions;\n\n|System|\n:Validate account information and role mapping;\n:Activate user accounts;\n\n|Store Owner|\n:Define warehouse structure,\\nbranch warehouses, and storage locations;\n\n|System|\n:Register warehouse and location master data;\n\n|Store Owner|\n:Create product master data;\n:Define category, material,\\nsize, usage, color code,\\npackaging specification,\\nand unit conversion;\n\n|System|\n:Validate product master data;\n:Register product master data;\n\n|Store Owner|\n:Create supplier and customer master data;\n\n|System|\n:Validate business partner information;\n:Activate supplier and customer records;\n\n|Store Owner|\n:Create initial lot data if needed;\n\n|System|\n:Register lot master data and audit history;\n\n|Admin|\n:Review access and configuration readiness;\n\nif (Configuration complete?) then (Yes)\n    |System|\n    :Publish master data for transaction use;\nelse (No)\n    |Store Owner|\n    :Update missing setup information;\n    |System|\n    :Revalidate configuration;\nendif\n\nstop\n@enduml"
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "index": 34,
+  "name": "SƠ ĐỒ NHÓM",
+  "id": "ry6yXi4ky9jBESR83Tuf",
+  "nodes": [
+    {
+      "id": "MPCM0wi4EUjeTzL9plb6-1",
+      "text": "Nguyễn Thị Hải Năng Supervisor",
+      "parent": "1"
+    },
+    {
+      "id": "MPCM0wi4EUjeTzL9plb6-2",
+      "text": "Đặng Trung Hiếu Project Manager/Business Analyst",
+      "parent": "1"
+    },
+    {
+      "id": "MPCM0wi4EUjeTzL9plb6-3",
+      "text": "Trần Đức Minh Business Analyst",
+      "parent": "1"
+    },
+    {
+      "id": "MPCM0wi4EUjeTzL9plb6-4",
+      "text": "Hoàng Minh Bách Frontend Developer",
+      "parent": "1"
+    },
+    {
+      "id": "MPCM0wi4EUjeTzL9plb6-5",
+      "text": "Hoa Hải Đăng Backend Developer",
+      "parent": "1"
+    },
+    {
+      "id": "MPCM0wi4EUjeTzL9plb6-6",
+      "text": "Phạm Hải Trung Tester / QA",
+      "parent": "1"
+    }
+  ],
+  "edges": [
+    {
+      "from": "Nguyễn Thị Hải Năng Supervisor",
+      "to": "Đặng Trung Hiếu Project Manager/Business Analyst",
+      "label": ""
+    },
+    {
+      "from": "Đặng Trung Hiếu Project Manager/Business Analyst",
+      "to": "Trần Đức Minh Business Analyst",
+      "label": ""
+    },
+    {
+      "from": "Đặng Trung Hiếu Project Manager/Business Analyst",
+      "to": "Hoàng Minh Bách Frontend Developer",
+      "label": ""
+    },
+    {
+      "from": "Đặng Trung Hiếu Project Manager/Business Analyst",
+      "to": "Hoa Hải Đăng Backend Developer",
+      "label": ""
+    },
+    {
+      "from": "Đặng Trung Hiếu Project Manager/Business Analyst",
+      "to": "Phạm Hải Trung Tester / QA",
+      "label": ""
+    }
+  ],
+  "uml": []
+}

@@ -1,0 +1,1025 @@
+{
+  "index": 2,
+  "name": "Process_V2",
+  "id": "jyJj52QriayyqGmQ3f9a",
+  "nodes": [],
+  "edges": [
+    {
+      "from": "V6bqPGVECdbrquAe35J8-81",
+      "to": "V6bqPGVECdbrquAe35J8-83",
+      "label": ""
+    },
+    {
+      "from": "V6bqPGVECdbrquAe35J8-83",
+      "to": "V6bqPGVECdbrquAe35J8-85",
+      "label": ""
+    },
+    {
+      "from": "V6bqPGVECdbrquAe35J8-6",
+      "to": "V6bqPGVECdbrquAe35J8-8",
+      "label": ""
+    },
+    {
+      "from": "V6bqPGVECdbrquAe35J8-8",
+      "to": "V6bqPGVECdbrquAe35J8-10",
+      "label": ""
+    },
+    {
+      "from": "V6bqPGVECdbrquAe35J8-20",
+      "to": "V6bqPGVECdbrquAe35J8-22",
+      "label": ""
+    },
+    {
+      "from": "V6bqPGVECdbrquAe35J8-22",
+      "to": "V6bqPGVECdbrquAe35J8-24",
+      "label": ""
+    },
+    {
+      "from": "V6bqPGVECdbrquAe35J8-35",
+      "to": "V6bqPGVECdbrquAe35J8-37",
+      "label": ""
+    },
+    {
+      "from": "V6bqPGVECdbrquAe35J8-37",
+      "to": "V6bqPGVECdbrquAe35J8-39",
+      "label": ""
+    },
+    {
+      "from": "V6bqPGVECdbrquAe35J8-58",
+      "to": "V6bqPGVECdbrquAe35J8-60",
+      "label": ""
+    },
+    {
+      "from": "V6bqPGVECdbrquAe35J8-62",
+      "to": "V6bqPGVECdbrquAe35J8-64",
+      "label": ""
+    },
+    {
+      "from": "V6bqPGVECdbrquAe35J8-60",
+      "to": "V6bqPGVECdbrquAe35J8-62",
+      "label": ""
+    },
+    {
+      "from": "V6bqPGVECdbrquAe35J8-64",
+      "to": "V6bqPGVECdbrquAe35J8-65",
+      "label": ""
+    },
+    {
+      "from": "V6bqPGVECdbrquAe35J8-62",
+      "to": "V6bqPGVECdbrquAe35J8-68",
+      "label": ""
+    },
+    {
+      "from": "V6bqPGVECdbrquAe35J8-68",
+      "to": "V6bqPGVECdbrquAe35J8-69",
+      "label": ""
+    },
+    {
+      "from": "V6bqPGVECdbrquAe35J8-10",
+      "to": "V6bqPGVECdbrquAe35J8-12",
+      "label": ""
+    },
+    {
+      "from": "V6bqPGVECdbrquAe35J8-12",
+      "to": "V6bqPGVECdbrquAe35J8-14",
+      "label": ""
+    },
+    {
+      "from": "V6bqPGVECdbrquAe35J8-14",
+      "to": "V6bqPGVECdbrquAe35J8-16",
+      "label": ""
+    },
+    {
+      "from": "V6bqPGVECdbrquAe35J8-16",
+      "to": "V6bqPGVECdbrquAe35J8-27",
+      "label": ""
+    },
+    {
+      "from": "V6bqPGVECdbrquAe35J8-16",
+      "to": "V6bqPGVECdbrquAe35J8-19",
+      "label": ""
+    },
+    {
+      "from": "V6bqPGVECdbrquAe35J8-19",
+      "to": "V6bqPGVECdbrquAe35J8-20",
+      "label": ""
+    },
+    {
+      "from": "V6bqPGVECdbrquAe35J8-27",
+      "to": "V6bqPGVECdbrquAe35J8-29",
+      "label": ""
+    },
+    {
+      "from": "V6bqPGVECdbrquAe35J8-29",
+      "to": "V6bqPGVECdbrquAe35J8-31",
+      "label": ""
+    },
+    {
+      "from": "V6bqPGVECdbrquAe35J8-31",
+      "to": "V6bqPGVECdbrquAe35J8-42",
+      "label": ""
+    },
+    {
+      "from": "V6bqPGVECdbrquAe35J8-31",
+      "to": "V6bqPGVECdbrquAe35J8-34",
+      "label": ""
+    },
+    {
+      "from": "V6bqPGVECdbrquAe35J8-34",
+      "to": "V6bqPGVECdbrquAe35J8-35",
+      "label": ""
+    },
+    {
+      "from": "V6bqPGVECdbrquAe35J8-42",
+      "to": "V6bqPGVECdbrquAe35J8-44",
+      "label": ""
+    },
+    {
+      "from": "V6bqPGVECdbrquAe35J8-44",
+      "to": "V6bqPGVECdbrquAe35J8-46",
+      "label": ""
+    },
+    {
+      "from": "V6bqPGVECdbrquAe35J8-46",
+      "to": "V6bqPGVECdbrquAe35J8-48",
+      "label": ""
+    },
+    {
+      "from": "V6bqPGVECdbrquAe35J8-48",
+      "to": "V6bqPGVECdbrquAe35J8-50",
+      "label": ""
+    },
+    {
+      "from": "V6bqPGVECdbrquAe35J8-50",
+      "to": "V6bqPGVECdbrquAe35J8-52",
+      "label": ""
+    },
+    {
+      "from": "V6bqPGVECdbrquAe35J8-52",
+      "to": "V6bqPGVECdbrquAe35J8-54",
+      "label": ""
+    },
+    {
+      "from": "V6bqPGVECdbrquAe35J8-54",
+      "to": "V6bqPGVECdbrquAe35J8-56",
+      "label": ""
+    },
+    {
+      "from": "V6bqPGVECdbrquAe35J8-56",
+      "to": "V6bqPGVECdbrquAe35J8-58",
+      "label": ""
+    },
+    {
+      "from": "V6bqPGVECdbrquAe35J8-69",
+      "to": "V6bqPGVECdbrquAe35J8-71",
+      "label": ""
+    },
+    {
+      "from": "V6bqPGVECdbrquAe35J8-71",
+      "to": "V6bqPGVECdbrquAe35J8-73",
+      "label": ""
+    },
+    {
+      "from": "V6bqPGVECdbrquAe35J8-73",
+      "to": "V6bqPGVECdbrquAe35J8-75",
+      "label": ""
+    },
+    {
+      "from": "V6bqPGVECdbrquAe35J8-75",
+      "to": "V6bqPGVECdbrquAe35J8-77",
+      "label": ""
+    },
+    {
+      "from": "V6bqPGVECdbrquAe35J8-77",
+      "to": "V6bqPGVECdbrquAe35J8-79",
+      "label": ""
+    },
+    {
+      "from": "V6bqPGVECdbrquAe35J8-79",
+      "to": "V6bqPGVECdbrquAe35J8-81",
+      "label": ""
+    },
+    {
+      "from": "V6bqPGVECdbrquAe35J8-65",
+      "to": "V6bqPGVECdbrquAe35J8-91",
+      "label": ""
+    },
+    {
+      "from": "V6bqPGVECdbrquAe35J8-85",
+      "to": "V6bqPGVECdbrquAe35J8-91",
+      "label": ""
+    },
+    {
+      "from": "Cor8dTnaGjwrEmxt-jgw-25",
+      "to": "Cor8dTnaGjwrEmxt-jgw-27",
+      "label": ""
+    },
+    {
+      "from": "Cor8dTnaGjwrEmxt-jgw-27",
+      "to": "Cor8dTnaGjwrEmxt-jgw-29",
+      "label": ""
+    },
+    {
+      "from": "Cor8dTnaGjwrEmxt-jgw-29",
+      "to": "Cor8dTnaGjwrEmxt-jgw-31",
+      "label": ""
+    },
+    {
+      "from": "Cor8dTnaGjwrEmxt-jgw-31",
+      "to": "Cor8dTnaGjwrEmxt-jgw-32",
+      "label": ""
+    },
+    {
+      "from": "Cor8dTnaGjwrEmxt-jgw-29",
+      "to": "Cor8dTnaGjwrEmxt-jgw-35",
+      "label": ""
+    },
+    {
+      "from": "Cor8dTnaGjwrEmxt-jgw-35",
+      "to": "Cor8dTnaGjwrEmxt-jgw-36",
+      "label": ""
+    },
+    {
+      "from": "Cor8dTnaGjwrEmxt-jgw-7",
+      "to": "Cor8dTnaGjwrEmxt-jgw-9",
+      "label": ""
+    },
+    {
+      "from": "Cor8dTnaGjwrEmxt-jgw-9",
+      "to": "Cor8dTnaGjwrEmxt-jgw-11",
+      "label": ""
+    },
+    {
+      "from": "Cor8dTnaGjwrEmxt-jgw-11",
+      "to": "Cor8dTnaGjwrEmxt-jgw-13",
+      "label": ""
+    },
+    {
+      "from": "Cor8dTnaGjwrEmxt-jgw-13",
+      "to": "Cor8dTnaGjwrEmxt-jgw-15",
+      "label": ""
+    },
+    {
+      "from": "Cor8dTnaGjwrEmxt-jgw-15",
+      "to": "Cor8dTnaGjwrEmxt-jgw-17",
+      "label": ""
+    },
+    {
+      "from": "Cor8dTnaGjwrEmxt-jgw-17",
+      "to": "Cor8dTnaGjwrEmxt-jgw-19",
+      "label": ""
+    },
+    {
+      "from": "Cor8dTnaGjwrEmxt-jgw-17",
+      "to": "Cor8dTnaGjwrEmxt-jgw-21",
+      "label": ""
+    },
+    {
+      "from": "Cor8dTnaGjwrEmxt-jgw-21",
+      "to": "Cor8dTnaGjwrEmxt-jgw-22",
+      "label": ""
+    },
+    {
+      "from": "Cor8dTnaGjwrEmxt-jgw-19",
+      "to": "Cor8dTnaGjwrEmxt-jgw-25",
+      "label": ""
+    },
+    {
+      "from": "Cor8dTnaGjwrEmxt-jgw-32",
+      "to": "Cor8dTnaGjwrEmxt-jgw-42",
+      "label": ""
+    },
+    {
+      "from": "Cor8dTnaGjwrEmxt-jgw-36",
+      "to": "Cor8dTnaGjwrEmxt-jgw-42",
+      "label": ""
+    },
+    {
+      "from": "Cor8dTnaGjwrEmxt-jgw-42",
+      "to": "Cor8dTnaGjwrEmxt-jgw-44",
+      "label": ""
+    },
+    {
+      "from": "Cor8dTnaGjwrEmxt-jgw-44",
+      "to": "Cor8dTnaGjwrEmxt-jgw-46",
+      "label": ""
+    },
+    {
+      "from": "Cor8dTnaGjwrEmxt-jgw-46",
+      "to": "Cor8dTnaGjwrEmxt-jgw-48",
+      "label": ""
+    },
+    {
+      "from": "Cor8dTnaGjwrEmxt-jgw-48",
+      "to": "Cor8dTnaGjwrEmxt-jgw-50",
+      "label": ""
+    },
+    {
+      "from": "Cor8dTnaGjwrEmxt-jgw-50",
+      "to": "Cor8dTnaGjwrEmxt-jgw-52",
+      "label": ""
+    },
+    {
+      "from": "Cor8dTnaGjwrEmxt-jgw-52",
+      "to": "Cor8dTnaGjwrEmxt-jgw-54",
+      "label": ""
+    },
+    {
+      "from": "Cor8dTnaGjwrEmxt-jgw-54",
+      "to": "Cor8dTnaGjwrEmxt-jgw-56",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-6",
+      "to": "1yfFOPsddYNPeIz41Ct0-8",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-8",
+      "to": "1yfFOPsddYNPeIz41Ct0-10",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-10",
+      "to": "1yfFOPsddYNPeIz41Ct0-12",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-12",
+      "to": "1yfFOPsddYNPeIz41Ct0-14",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-14",
+      "to": "1yfFOPsddYNPeIz41Ct0-16",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-16",
+      "to": "1yfFOPsddYNPeIz41Ct0-18",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-18",
+      "to": "1yfFOPsddYNPeIz41Ct0-20",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-20",
+      "to": "1yfFOPsddYNPeIz41Ct0-22",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-22",
+      "to": "1yfFOPsddYNPeIz41Ct0-23",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-23",
+      "to": "1yfFOPsddYNPeIz41Ct0-25",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-25",
+      "to": "1yfFOPsddYNPeIz41Ct0-20",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-20",
+      "to": "1yfFOPsddYNPeIz41Ct0-29",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-29",
+      "to": "1yfFOPsddYNPeIz41Ct0-31",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-31",
+      "to": "1yfFOPsddYNPeIz41Ct0-33",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-33",
+      "to": "1yfFOPsddYNPeIz41Ct0-35",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-35",
+      "to": "1yfFOPsddYNPeIz41Ct0-37",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-37",
+      "to": "1yfFOPsddYNPeIz41Ct0-38",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-38",
+      "to": "1yfFOPsddYNPeIz41Ct0-40",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-40",
+      "to": "1yfFOPsddYNPeIz41Ct0-35",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-35",
+      "to": "1yfFOPsddYNPeIz41Ct0-44",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-44",
+      "to": "1yfFOPsddYNPeIz41Ct0-46",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-46",
+      "to": "1yfFOPsddYNPeIz41Ct0-48",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-48",
+      "to": "1yfFOPsddYNPeIz41Ct0-50",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-50",
+      "to": "1yfFOPsddYNPeIz41Ct0-52",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-52",
+      "to": "1yfFOPsddYNPeIz41Ct0-54",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-54",
+      "to": "1yfFOPsddYNPeIz41Ct0-56",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-56",
+      "to": "1yfFOPsddYNPeIz41Ct0-58",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-58",
+      "to": "1yfFOPsddYNPeIz41Ct0-60",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-60",
+      "to": "1yfFOPsddYNPeIz41Ct0-61",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-61",
+      "to": "1yfFOPsddYNPeIz41Ct0-63",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-63",
+      "to": "1yfFOPsddYNPeIz41Ct0-65",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-65",
+      "to": "1yfFOPsddYNPeIz41Ct0-56",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-58",
+      "to": "1yfFOPsddYNPeIz41Ct0-71",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-71",
+      "to": "1yfFOPsddYNPeIz41Ct0-73",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-73",
+      "to": "1yfFOPsddYNPeIz41Ct0-75",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-75",
+      "to": "1yfFOPsddYNPeIz41Ct0-77",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-77",
+      "to": "1yfFOPsddYNPeIz41Ct0-79",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-79",
+      "to": "1yfFOPsddYNPeIz41Ct0-81",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-81",
+      "to": "1yfFOPsddYNPeIz41Ct0-82",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-82",
+      "to": "1yfFOPsddYNPeIz41Ct0-84",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-84",
+      "to": "1yfFOPsddYNPeIz41Ct0-86",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-86",
+      "to": "1yfFOPsddYNPeIz41Ct0-88",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-88",
+      "to": "1yfFOPsddYNPeIz41Ct0-77",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-79",
+      "to": "1yfFOPsddYNPeIz41Ct0-94",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-94",
+      "to": "1yfFOPsddYNPeIz41Ct0-96",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-109",
+      "to": "1yfFOPsddYNPeIz41Ct0-111",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-111",
+      "to": "1yfFOPsddYNPeIz41Ct0-113",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-113",
+      "to": "1yfFOPsddYNPeIz41Ct0-115",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-115",
+      "to": "1yfFOPsddYNPeIz41Ct0-117",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-117",
+      "to": "1yfFOPsddYNPeIz41Ct0-118",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-118",
+      "to": "1yfFOPsddYNPeIz41Ct0-120",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-120",
+      "to": "1yfFOPsddYNPeIz41Ct0-115",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-115",
+      "to": "1yfFOPsddYNPeIz41Ct0-124",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-133",
+      "to": "1yfFOPsddYNPeIz41Ct0-135",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-135",
+      "to": "1yfFOPsddYNPeIz41Ct0-137",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-101",
+      "to": "1yfFOPsddYNPeIz41Ct0-103",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-103",
+      "to": "1yfFOPsddYNPeIz41Ct0-105",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-105",
+      "to": "1yfFOPsddYNPeIz41Ct0-107",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-107",
+      "to": "1yfFOPsddYNPeIz41Ct0-109",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-124",
+      "to": "1yfFOPsddYNPeIz41Ct0-126",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-126",
+      "to": "1yfFOPsddYNPeIz41Ct0-128",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-128",
+      "to": "1yfFOPsddYNPeIz41Ct0-130",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-130",
+      "to": "1yfFOPsddYNPeIz41Ct0-132",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-132",
+      "to": "1yfFOPsddYNPeIz41Ct0-133",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-137",
+      "to": "1yfFOPsddYNPeIz41Ct0-139",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-139",
+      "to": "1yfFOPsddYNPeIz41Ct0-141",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-141",
+      "to": "1yfFOPsddYNPeIz41Ct0-130",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-130",
+      "to": "1yfFOPsddYNPeIz41Ct0-145",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-145",
+      "to": "1yfFOPsddYNPeIz41Ct0-147",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-147",
+      "to": "1yfFOPsddYNPeIz41Ct0-149",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-149",
+      "to": "1yfFOPsddYNPeIz41Ct0-150",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-150",
+      "to": "1yfFOPsddYNPeIz41Ct0-152",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-152",
+      "to": "1yfFOPsddYNPeIz41Ct0-154",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-154",
+      "to": "1yfFOPsddYNPeIz41Ct0-156",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-147",
+      "to": "1yfFOPsddYNPeIz41Ct0-159",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-159",
+      "to": "1yfFOPsddYNPeIz41Ct0-160",
+      "label": ""
+    },
+    {
+      "from": "1yfFOPsddYNPeIz41Ct0-160",
+      "to": "1yfFOPsddYNPeIz41Ct0-156",
+      "label": ""
+    },
+    {
+      "from": "_nHWRcjk6mqiDZ4cdoyC-9",
+      "to": "_nHWRcjk6mqiDZ4cdoyC-11",
+      "label": ""
+    },
+    {
+      "from": "_nHWRcjk6mqiDZ4cdoyC-11",
+      "to": "_nHWRcjk6mqiDZ4cdoyC-13",
+      "label": ""
+    },
+    {
+      "from": "_nHWRcjk6mqiDZ4cdoyC-13",
+      "to": "_nHWRcjk6mqiDZ4cdoyC-15",
+      "label": ""
+    },
+    {
+      "from": "_nHWRcjk6mqiDZ4cdoyC-15",
+      "to": "_nHWRcjk6mqiDZ4cdoyC-17",
+      "label": ""
+    },
+    {
+      "from": "_nHWRcjk6mqiDZ4cdoyC-17",
+      "to": "_nHWRcjk6mqiDZ4cdoyC-19",
+      "label": ""
+    },
+    {
+      "from": "_nHWRcjk6mqiDZ4cdoyC-19",
+      "to": "_nHWRcjk6mqiDZ4cdoyC-21",
+      "label": ""
+    },
+    {
+      "from": "_nHWRcjk6mqiDZ4cdoyC-21",
+      "to": "_nHWRcjk6mqiDZ4cdoyC-23",
+      "label": ""
+    },
+    {
+      "from": "_nHWRcjk6mqiDZ4cdoyC-23",
+      "to": "_nHWRcjk6mqiDZ4cdoyC-24",
+      "label": ""
+    },
+    {
+      "from": "_nHWRcjk6mqiDZ4cdoyC-24",
+      "to": "_nHWRcjk6mqiDZ4cdoyC-26",
+      "label": ""
+    },
+    {
+      "from": "_nHWRcjk6mqiDZ4cdoyC-26",
+      "to": "_nHWRcjk6mqiDZ4cdoyC-28",
+      "label": ""
+    },
+    {
+      "from": "_nHWRcjk6mqiDZ4cdoyC-28",
+      "to": "_nHWRcjk6mqiDZ4cdoyC-30",
+      "label": ""
+    },
+    {
+      "from": "_nHWRcjk6mqiDZ4cdoyC-30",
+      "to": "_nHWRcjk6mqiDZ4cdoyC-21",
+      "label": ""
+    },
+    {
+      "from": "_nHWRcjk6mqiDZ4cdoyC-21",
+      "to": "_nHWRcjk6mqiDZ4cdoyC-34",
+      "label": ""
+    },
+    {
+      "from": "_nHWRcjk6mqiDZ4cdoyC-34",
+      "to": "_nHWRcjk6mqiDZ4cdoyC-36",
+      "label": ""
+    },
+    {
+      "from": "_nHWRcjk6mqiDZ4cdoyC-36",
+      "to": "_nHWRcjk6mqiDZ4cdoyC-38",
+      "label": ""
+    },
+    {
+      "from": "_nHWRcjk6mqiDZ4cdoyC-38",
+      "to": "_nHWRcjk6mqiDZ4cdoyC-40",
+      "label": ""
+    },
+    {
+      "from": "_nHWRcjk6mqiDZ4cdoyC-40",
+      "to": "_nHWRcjk6mqiDZ4cdoyC-42",
+      "label": ""
+    },
+    {
+      "from": "_nHWRcjk6mqiDZ4cdoyC-42",
+      "to": "_nHWRcjk6mqiDZ4cdoyC-44",
+      "label": ""
+    },
+    {
+      "from": "_nHWRcjk6mqiDZ4cdoyC-44",
+      "to": "_nHWRcjk6mqiDZ4cdoyC-45",
+      "label": ""
+    },
+    {
+      "from": "_nHWRcjk6mqiDZ4cdoyC-45",
+      "to": "_nHWRcjk6mqiDZ4cdoyC-47",
+      "label": ""
+    },
+    {
+      "from": "_nHWRcjk6mqiDZ4cdoyC-47",
+      "to": "_nHWRcjk6mqiDZ4cdoyC-49",
+      "label": ""
+    },
+    {
+      "from": "_nHWRcjk6mqiDZ4cdoyC-49",
+      "to": "_nHWRcjk6mqiDZ4cdoyC-51",
+      "label": ""
+    },
+    {
+      "from": "_nHWRcjk6mqiDZ4cdoyC-51",
+      "to": "_nHWRcjk6mqiDZ4cdoyC-53",
+      "label": ""
+    },
+    {
+      "from": "_nHWRcjk6mqiDZ4cdoyC-53",
+      "to": "_nHWRcjk6mqiDZ4cdoyC-55",
+      "label": ""
+    },
+    {
+      "from": "_nHWRcjk6mqiDZ4cdoyC-55",
+      "to": "_nHWRcjk6mqiDZ4cdoyC-42",
+      "label": ""
+    },
+    {
+      "from": "_nHWRcjk6mqiDZ4cdoyC-42",
+      "to": "_nHWRcjk6mqiDZ4cdoyC-59",
+      "label": ""
+    },
+    {
+      "from": "_nHWRcjk6mqiDZ4cdoyC-59",
+      "to": "_nHWRcjk6mqiDZ4cdoyC-61",
+      "label": ""
+    },
+    {
+      "from": "_nHWRcjk6mqiDZ4cdoyC-61",
+      "to": "_nHWRcjk6mqiDZ4cdoyC-63",
+      "label": ""
+    },
+    {
+      "from": "_nHWRcjk6mqiDZ4cdoyC-63",
+      "to": "_nHWRcjk6mqiDZ4cdoyC-65",
+      "label": ""
+    },
+    {
+      "from": "_nHWRcjk6mqiDZ4cdoyC-65",
+      "to": "_nHWRcjk6mqiDZ4cdoyC-67",
+      "label": ""
+    },
+    {
+      "from": "_nHWRcjk6mqiDZ4cdoyC-67",
+      "to": "_nHWRcjk6mqiDZ4cdoyC-69",
+      "label": ""
+    },
+    {
+      "from": "_nHWRcjk6mqiDZ4cdoyC-69",
+      "to": "_nHWRcjk6mqiDZ4cdoyC-71",
+      "label": ""
+    },
+    {
+      "from": "_nHWRcjk6mqiDZ4cdoyC-71",
+      "to": "_nHWRcjk6mqiDZ4cdoyC-73",
+      "label": ""
+    },
+    {
+      "from": "_nHWRcjk6mqiDZ4cdoyC-73",
+      "to": "_nHWRcjk6mqiDZ4cdoyC-75",
+      "label": ""
+    },
+    {
+      "from": "_nHWRcjk6mqiDZ4cdoyC-75",
+      "to": "_nHWRcjk6mqiDZ4cdoyC-76",
+      "label": ""
+    },
+    {
+      "from": "_nHWRcjk6mqiDZ4cdoyC-76",
+      "to": "_nHWRcjk6mqiDZ4cdoyC-78",
+      "label": ""
+    },
+    {
+      "from": "_nHWRcjk6mqiDZ4cdoyC-78",
+      "to": "_nHWRcjk6mqiDZ4cdoyC-80",
+      "label": ""
+    },
+    {
+      "from": "_nHWRcjk6mqiDZ4cdoyC-80",
+      "to": "_nHWRcjk6mqiDZ4cdoyC-82",
+      "label": ""
+    },
+    {
+      "from": "_nHWRcjk6mqiDZ4cdoyC-82",
+      "to": "_nHWRcjk6mqiDZ4cdoyC-84",
+      "label": ""
+    },
+    {
+      "from": "_nHWRcjk6mqiDZ4cdoyC-84",
+      "to": "_nHWRcjk6mqiDZ4cdoyC-86",
+      "label": ""
+    },
+    {
+      "from": "_nHWRcjk6mqiDZ4cdoyC-86",
+      "to": "_nHWRcjk6mqiDZ4cdoyC-88",
+      "label": ""
+    },
+    {
+      "from": "_nHWRcjk6mqiDZ4cdoyC-88",
+      "to": "_nHWRcjk6mqiDZ4cdoyC-90",
+      "label": ""
+    },
+    {
+      "from": "_nHWRcjk6mqiDZ4cdoyC-90",
+      "to": "_nHWRcjk6mqiDZ4cdoyC-92",
+      "label": ""
+    },
+    {
+      "from": "_nHWRcjk6mqiDZ4cdoyC-92",
+      "to": "_nHWRcjk6mqiDZ4cdoyC-73",
+      "label": ""
+    },
+    {
+      "from": "_nHWRcjk6mqiDZ4cdoyC-73",
+      "to": "_nHWRcjk6mqiDZ4cdoyC-96",
+      "label": ""
+    },
+    {
+      "from": "_nHWRcjk6mqiDZ4cdoyC-96",
+      "to": "_nHWRcjk6mqiDZ4cdoyC-98",
+      "label": ""
+    },
+    {
+      "from": "_nHWRcjk6mqiDZ4cdoyC-98",
+      "to": "_nHWRcjk6mqiDZ4cdoyC-100",
+      "label": ""
+    },
+    {
+      "from": "_nHWRcjk6mqiDZ4cdoyC-100",
+      "to": "_nHWRcjk6mqiDZ4cdoyC-102",
+      "label": ""
+    },
+    {
+      "from": "_nHWRcjk6mqiDZ4cdoyC-102",
+      "to": "_nHWRcjk6mqiDZ4cdoyC-104",
+      "label": ""
+    },
+    {
+      "from": "_nHWRcjk6mqiDZ4cdoyC-104",
+      "to": "_nHWRcjk6mqiDZ4cdoyC-106",
+      "label": ""
+    },
+    {
+      "from": "_nHWRcjk6mqiDZ4cdoyC-106",
+      "to": "_nHWRcjk6mqiDZ4cdoyC-108",
+      "label": ""
+    },
+    {
+      "from": "_nHWRcjk6mqiDZ4cdoyC-108",
+      "to": "_nHWRcjk6mqiDZ4cdoyC-109",
+      "label": ""
+    },
+    {
+      "from": "_nHWRcjk6mqiDZ4cdoyC-109",
+      "to": "_nHWRcjk6mqiDZ4cdoyC-111",
+      "label": ""
+    },
+    {
+      "from": "_nHWRcjk6mqiDZ4cdoyC-111",
+      "to": "_nHWRcjk6mqiDZ4cdoyC-113",
+      "label": ""
+    },
+    {
+      "from": "_nHWRcjk6mqiDZ4cdoyC-113",
+      "to": "_nHWRcjk6mqiDZ4cdoyC-115",
+      "label": ""
+    },
+    {
+      "from": "_nHWRcjk6mqiDZ4cdoyC-115",
+      "to": "_nHWRcjk6mqiDZ4cdoyC-117",
+      "label": ""
+    },
+    {
+      "from": "_nHWRcjk6mqiDZ4cdoyC-117",
+      "to": "_nHWRcjk6mqiDZ4cdoyC-119",
+      "label": ""
+    },
+    {
+      "from": "_nHWRcjk6mqiDZ4cdoyC-119",
+      "to": "_nHWRcjk6mqiDZ4cdoyC-106",
+      "label": ""
+    },
+    {
+      "from": "_nHWRcjk6mqiDZ4cdoyC-106",
+      "to": "_nHWRcjk6mqiDZ4cdoyC-123",
+      "label": ""
+    },
+    {
+      "from": "_nHWRcjk6mqiDZ4cdoyC-123",
+      "to": "_nHWRcjk6mqiDZ4cdoyC-125",
+      "label": ""
+    }
+  ],
+  "uml": [
+    "@startuml BP02_Internal_Transfer\n\ntitle BP-02 - Quy trình Điều chuyển hàng giữa các kho\n\nscale 2000 width\n\n!pragma useVerticalIf on\n\nskinparam backgroundColor #FFFFFF\nskinparam defaultFontName Arial\nskinparam defaultFontSize 14\nskinparam shadowing false\nskinparam roundcorner 8\nskinparam wrapWidth 250\nskinparam swimlaneWidth 360\n\nskinparam activity {\n    BackgroundColor #FFFFFF\n    BorderColor #9CA3AF\n    FontColor #111827\n    ArrowColor #6B7280\n}\n\nskinparam swimlane {\n    BorderColor #9CA3AF\n    TitleBackgroundColor #E5E7EB\n}\n\n\n|Nhân viên kho nhận|\nstart\n:Lập yêu cầu điều chuyển hàng;\n:Ghi rõ mặt hàng,\\nsố lượng và kho xuất;\n\n\n|Chủ cửa hàng|\n:Tiếp nhận yêu cầu điều chuyển;\n:Xem xét nhu cầu điều chuyển;\n\nif (Yêu cầu điều chuyển được xác nhận?) then (Có)\n\nelse (Không)\n\n    :Ghi nhận lý do\\nkhông xác nhận;\n\n    |Nhân viên kho nhận|\n    :Tiếp nhận phản hồi;\n    :Hủy yêu cầu điều chuyển;\n\n    stop\n\nendif\n\n\n|Nhân viên kho xuất|\n:Tiếp nhận yêu cầu điều chuyển;\n:Kiểm tra hàng cần điều chuyển;\n\nif (Đủ hàng để điều chuyển?) then (Có)\n\nelse (Không)\n\n    :Ghi nhận số lượng\\nkhông đáp ứng;\n\n    |Nhân viên kho nhận|\n    :Tiếp nhận thông tin thiếu hàng;\n    :Điều chỉnh hoặc hủy\\nyêu cầu điều chuyển;\n\n    stop\n\nendif\n\n\n|Nhân viên kho xuất|\n:Chuẩn bị hàng cần điều chuyển;\n:Kiểm đếm hàng xuất;\n:Kiểm tra mã hàng, lô,\\nmàu và tình trạng hàng;\n:Bàn giao hàng điều chuyển;\n\n\n|Nhân viên giao hàng|\n:Tiếp nhận hàng;\n:Kiểm tra số lượng hàng bàn giao;\n:Vận chuyển hàng đến kho nhận;\n:Bàn giao hàng;\n\n\n|Nhân viên kho nhận|\n:Tiếp nhận hàng điều chuyển;\n:Kiểm đếm số lượng thực nhận;\n\nif (Hàng nhận đúng và đủ?) then (Có)\n\n    :Nhập hàng vào kho;\n    :Xác nhận hoàn tất điều chuyển;\n\nelse (Không)\n\n    :Ghi nhận chênh lệch\\nhoặc hàng không đạt;\n    :Thông báo kết quả\\ncho Chủ cửa hàng;\n\n    |Chủ cửa hàng|\n    :Xem xét chênh lệch điều chuyển;\n    :Xác nhận phương án xử lý;\n\n    |Nhân viên kho xuất|\n    :Kiểm tra lại hàng đã xuất;\n    :Phối hợp xử lý chênh lệch;\n\n    |Nhân viên giao hàng|\n    :Đối chiếu hàng đã nhận\\nvà đã bàn giao;\n\n    |Nhân viên kho nhận|\n    :Xác nhận số lượng\\nthực nhận cuối cùng;\n    :Nhập số lượng được chấp nhận\\nvào kho;\n    :Xác nhận hoàn tất điều chuyển;\n\nendif\n\nstop\n\n@enduml",
+    "@startuml BP04_Customer_Return\n\ntitle BP-04 - Quy trình Khách hàng Trả hàng\n\nscale 2000 width\n\n!pragma useVerticalIf on\n\nskinparam backgroundColor #FFFFFF\nskinparam defaultFontName Arial\nskinparam defaultFontSize 14\nskinparam shadowing false\nskinparam roundcorner 8\nskinparam wrapWidth 250\nskinparam swimlaneWidth 320\n\nskinparam activity {\n    BackgroundColor #FFFFFF\n    BorderColor #9CA3AF\n    FontColor #111827\n    ArrowColor #6B7280\n}\n\nskinparam swimlane {\n    BorderColor #9CA3AF\n    TitleBackgroundColor #E5E7EB\n}\n\n|Khách hàng|\nstart\n:Yêu cầu trả hàng;\n\n|Nhân viên bán hàng|\n:Tiếp nhận yêu cầu trả hàng;\n:Xác nhận thông tin đơn bán;\n:Thông báo điều kiện\\nvà quy trình trả hàng;\n\n|Khách hàng|\nif (Khách hàng xác nhận trả hàng?) then (Có)\n\n    :Bàn giao hàng cần trả;\n\nelse (Không)\n\n    :Hủy yêu cầu trả hàng;\n    stop\n\nendif\n\n\n|Nhân viên kho|\n:Tiếp nhận hàng trả;\n:Kiểm đếm và kiểm tra hàng;\n\nif (Hàng trả đủ điều kiện tiếp nhận?) then (Có)\n\n    :Nhập lại hàng vào kho;\n    :Xác nhận số lượng hàng nhận lại;\n\nelse (Không)\n\n    :Ghi nhận hàng không đạt\\nhoặc số lượng không phù hợp;\n    :Xác nhận số lượng\\nđược chấp nhận nhận lại;\n\nendif\n\n\n|Kế toán|\n:Tiếp nhận kết quả trả hàng;\n:Điều chỉnh chứng từ bán hàng;\n:Xác định số tiền hoàn trả;\n\n\n|Thu ngân|\n:Tiếp nhận thông tin hoàn tiền;\n:Thực hiện hoàn tiền\\ncho khách hàng;\n\n\n|Khách hàng|\n:Nhận tiền hoàn;\n:Xác nhận hoàn tất trả hàng;\n\nstop\n\n@enduml",
+    "@startuml BP05_Supplier_Return\n\ntitle BP-05 - Quy trình Trả hàng Nhà cung cấp\n\nscale 2000 width\n\n!pragma useVerticalIf on\n\nskinparam backgroundColor #FFFFFF\nskinparam defaultFontName Arial\nskinparam defaultFontSize 14\nskinparam shadowing false\nskinparam roundcorner 8\nskinparam wrapWidth 250\nskinparam swimlaneWidth 340\n\nskinparam activity {\n    BackgroundColor #FFFFFF\n    BorderColor #9CA3AF\n    FontColor #111827\n    ArrowColor #6B7280\n}\n\nskinparam swimlane {\n    BorderColor #9CA3AF\n    TitleBackgroundColor #E5E7EB\n}\n\n\n|Nhân viên kho|\nstart\n:Xác định hàng cần trả\\nnhà cung cấp;\n:Ghi nhận số lượng hàng cần trả;\n:Gửi thông tin trả hàng;\n\n\n|Kế toán|\n:Tiếp nhận thông tin hàng trả;\n:Đối chiếu đơn mua\\nvà chứng từ;\n:Liên hệ nhà cung cấp;\n\n\nwhile (Chưa thống nhất phương án trả hàng?) is (Có)\n\n    |Nhà cung cấp|\n    :Trao đổi điều kiện\\nvà phương án nhận lại hàng;\n\n    |Kế toán|\n    :Xem xét phương án;\n    :Trao đổi lại số lượng,\\nthời gian hoặc cách thức trả;\n\nendwhile (Không)\n\n\n|Kế toán|\n:Xác nhận phương án trả hàng;\n\n\n|Nhân viên kho|\n:Chuẩn bị hàng trả;\n:Kiểm đếm hàng;\n\n\nwhile (Số lượng hàng trả chưa khớp?) is (Có)\n\n    :Kiểm tra lại hàng cần trả;\n    :Điều chỉnh số lượng\\nhàng chuẩn bị trả;\n    :Kiểm đếm lại;\n\nendwhile (Không)\n\n\n|Nhân viên kho|\n:Bàn giao hàng trả;\n\n\n|Nhân viên giao hàng|\n:Tiếp nhận hàng;\n:Kiểm tra số lượng được bàn giao;\n:Vận chuyển đến nhà cung cấp;\n:Bàn giao hàng;\n\n\n|Nhà cung cấp|\n:Tiếp nhận hàng trả;\n:Kiểm đếm số lượng nhận lại;\n\n\nwhile (Hàng nhận lại chưa khớp?) is (Có)\n\n    :Ghi nhận chênh lệch\\nhàng nhận lại;\n\n    |Nhân viên giao hàng|\n    :Đối chiếu số lượng\\nđã vận chuyển và bàn giao;\n\n    |Nhân viên kho|\n    :Đối chiếu số lượng\\nđã xuất trả;\n\n    |Kế toán|\n    :Trao đổi kết quả đối chiếu\\nvới nhà cung cấp;\n\n    |Nhà cung cấp|\n    :Kiểm tra lại số lượng\\nthực tế nhận lại;\n\nendwhile (Không)\n\n\n|Nhà cung cấp|\n:Xác nhận số lượng nhận lại;\n:Phát hành chứng từ điều chỉnh;\n\n\n|Kế toán|\n:Tiếp nhận chứng từ điều chỉnh;\n:Đối chiếu công nợ;\n\n\nwhile (Chứng từ chưa khớp hàng trả?) is (Có)\n\n    :Xác định nội dung chênh lệch;\n    :Yêu cầu nhà cung cấp\\nđiều chỉnh chứng từ;\n\n    |Nhà cung cấp|\n    :Điều chỉnh chứng từ;\n    :Gửi lại chứng từ;\n\n    |Kế toán|\n    :Tiếp nhận chứng từ mới;\n    :Đối chiếu lại công nợ;\n\nendwhile (Không)\n\n\n|Kế toán|\n:Điều chỉnh giá trị mua hàng;\n\nstop\n\n@enduml",
+    "@startuml BP06_Stock_Count_Adjustment\n\ntitle BP-06 - Quy trình Kiểm kê và Điều chỉnh tồn kho\n\nscale 2000 width\n\n!pragma useVerticalIf on\n\nskinparam backgroundColor #FFFFFF\nskinparam defaultFontName Arial\nskinparam defaultFontSize 14\nskinparam shadowing false\nskinparam roundcorner 8\nskinparam wrapWidth 250\nskinparam swimlaneWidth 380\n\nskinparam activity {\n    BackgroundColor #FFFFFF\n    BorderColor #9CA3AF\n    FontColor #111827\n    ArrowColor #6B7280\n}\n\nskinparam swimlane {\n    BorderColor #9CA3AF\n    TitleBackgroundColor #E5E7EB\n}\n\n\n|Kế toán|\nstart\n:Lập kế hoạch kiểm kê;\n:Xác định phạm vi kiểm kê;\n:Thông báo thực hiện kiểm kê;\n\n\n|Nhân viên kho|\n:Chuẩn bị khu vực kiểm kê;\n:Kiểm đếm hàng hóa thực tế;\n:Ghi nhận kết quả kiểm kê;\n\n\nwhile (Kết quả kiểm đếm chưa rõ ràng?) is (Có)\n\n    :Kiểm tra lại vị trí,\\nlô và hàng hóa;\n    :Thực hiện kiểm đếm lại;\n    :Cập nhật kết quả kiểm kê;\n\nendwhile (Không)\n\n\n|Nhân viên kho|\n:Tổng hợp số lượng thực tế;\n\n\n|Kế toán|\n:Tiếp nhận kết quả kiểm kê;\n:Đối chiếu số liệu;\n\n\nwhile (Còn chênh lệch chưa xác định?) is (Có)\n\n    :Xác định mặt hàng\\nvà số lượng chênh lệch;\n\n    |Nhân viên kho|\n    :Kiểm tra lại hàng hóa,\\nlô và vị trí lưu kho;\n    :Kiểm đếm lại hàng chênh lệch;\n    :Gửi kết quả kiểm tra lại;\n\n    |Kế toán|\n    :Tiếp nhận kết quả kiểm tra;\n    :Đối chiếu lại số liệu;\n\nendwhile (Không)\n\n\n|Kế toán|\n:Lập biên bản kiểm kê;\n\n\nif (Có chênh lệch tồn kho?) then (Có)\n\n    :Xác định số lượng\\ncần điều chỉnh;\n    :Ghi nhận điều chỉnh tồn kho;\n    :Ghi nhận giá trị chênh lệch;\n    :Hoàn tất kỳ kiểm kê;\n\n    stop\n\nelse (Không)\n\n    :Xác nhận tồn kho\\nkhớp kết quả kiểm kê;\n    :Hoàn tất kỳ kiểm kê;\n\n    stop\n\nendif\n\n@enduml",
+    "@startuml BP01_Procurement_Inbound_Detailed\n\ntitle BP-01 - Quy trình Mua hàng và Nhập kho\n\nscale 2400 width\n\n!pragma useVerticalIf on\n\nskinparam backgroundColor #FFFFFF\nskinparam defaultFontName Arial\nskinparam defaultFontSize 14\nskinparam shadowing false\nskinparam roundcorner 8\n\nskinparam wrapWidth 320\nskinparam swimlaneWidth 480\n\nskinparam activity {\n    BackgroundColor #FFFFFF\n    BorderColor #9CA3AF\n    FontColor #111827\n    ArrowColor #6B7280\n}\n\nskinparam swimlane {\n    BorderColor #9CA3AF\n    TitleBackgroundColor #E5E7EB\n}\n\n\n|Nhân viên kho|\nstart\n:Kiểm tra tình hình tồn kho;\n\n\n|Kế toán|\n:Xác định hàng hóa\\ncần bổ sung;\n:Lập đề xuất mua hàng;\n\n\n|Chủ cửa hàng|\n:Tiếp nhận đề xuất mua hàng;\n:Xem xét và phê duyệt;\n\n\nwhile (Đề xuất chưa được phê duyệt?) is (Có)\n\n    |Kế toán|\n    :Tiếp nhận lý do\\nchưa được phê duyệt;\n    :Điều chỉnh mặt hàng,\\nsố lượng hoặc nhu cầu mua;\n    :Gửi lại đề xuất mua hàng;\n\n    |Chủ cửa hàng|\n    :Tiếp nhận đề xuất\\nđã điều chỉnh;\n    :Xem xét và phê duyệt lại;\n\nendwhile (Không)\n\n\n|Kế toán|\n:Lập đơn mua hàng;\n:Đặt hàng với nhà cung cấp;\n\n\n|Nhà cung cấp|\n:Tiếp nhận đơn đặt hàng;\n:Kiểm tra khả năng cung ứng;\n\n\nwhile (Chưa đáp ứng đầy đủ đơn hàng?) is (Có)\n\n    :Thông báo khả năng cung ứng;\n    :Đề xuất điều chỉnh số lượng,\\nmặt hàng hoặc thời gian giao;\n\n    |Kế toán|\n    :Tiếp nhận phương án cung ứng;\n    :Trao đổi với nhà cung cấp;\n    :Điều chỉnh nội dung đơn mua;\n\n    |Nhà cung cấp|\n    :Tiếp nhận nội dung điều chỉnh;\n    :Kiểm tra lại khả năng cung ứng;\n\nendwhile (Không)\n\n\n|Nhà cung cấp|\n:Xác nhận đơn đặt hàng;\n:Chuẩn bị hàng;\n:Chuẩn bị chứng từ giao hàng;\n:Giao hàng và chứng từ;\n\n\n|Nhân viên kho|\n:Tiếp nhận hàng;\n:Kiểm đếm hàng thực tế;\n:Kiểm tra mã hàng, lô, màu,\\nquy cách và tình trạng hàng;\n\n\nwhile (Hàng chưa đúng hoặc chưa đủ?) is (Có)\n\n    :Ghi nhận số lượng chênh lệch,\\nhàng sai hoặc hàng không đạt;\n    :Thông báo kết quả kiểm nhận\\ncho Kế toán;\n\n    |Kế toán|\n    :Tiếp nhận thông tin chênh lệch;\n    :Đối chiếu với đơn mua;\n    :Trao đổi phương án xử lý\\nvới nhà cung cấp;\n\n    |Nhà cung cấp|\n    :Tiếp nhận thông tin chênh lệch;\n    :Xác định phương án xử lý;\n    :Thực hiện giao bổ sung,\\nđổi hàng hoặc thu hồi hàng;\n\n    |Nhân viên kho|\n    :Tiếp nhận kết quả xử lý;\n    :Kiểm đếm và kiểm tra lại\\nhàng hóa;\n\nendwhile (Không)\n\n\n|Nhân viên kho|\n:Nhập hàng vào kho;\n:Sắp xếp hàng theo lô\\nvà vị trí lưu trữ;\n:Xác nhận kết quả nhận hàng;\n\n\n|Kế toán|\n:Tiếp nhận chứng từ mua hàng;\n:Đối chiếu hàng nhận\\nvà chứng từ;\n\n\nwhile (Chứng từ chưa khớp\\nvới hàng thực nhận?) is (Có)\n\n    :Xác định nội dung\\nchênh lệch chứng từ;\n    :Trao đổi và yêu cầu\\nđiều chỉnh chứng từ;\n\n    |Nhà cung cấp|\n    :Tiếp nhận yêu cầu điều chỉnh;\n    :Điều chỉnh chứng từ;\n    :Gửi lại chứng từ điều chỉnh;\n\n    |Kế toán|\n    :Tiếp nhận chứng từ mới;\n    :Đối chiếu lại với\\nhàng thực nhận;\n\nendwhile (Không)\n\n\n|Kế toán|\n:Ghi nhận công nợ /\\nthanh toán;\n\nstop\n\n@enduml"
+  ]
+}

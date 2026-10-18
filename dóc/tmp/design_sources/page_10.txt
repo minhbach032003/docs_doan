@@ -1,0 +1,497 @@
+PAGE 10 Supplier Return and Purchase Reconciliation
+ZuwLx6SfuSEybS6lOhaf-288: Inventory Staff
+ZuwLx6SfuSEybS6lOhaf-289: System
+ZuwLx6SfuSEybS6lOhaf-290: Accountant
+ZuwLx6SfuSEybS6lOhaf-291: Store Owner
+ZuwLx6SfuSEybS6lOhaf-294: Identify defective, damaged,
+excess or non-conforming goods
+ZuwLx6SfuSEybS6lOhaf-296: Check product, lot,
+warehouse and location
+ZuwLx6SfuSEybS6lOhaf-298: Look up related Purchase Order
+and Goods Receipt
+ZuwLx6SfuSEybS6lOhaf-300: Enter return quantity
+and return reason
+ZuwLx6SfuSEybS6lOhaf-302: Create Supplier Return Request
+ZuwLx6SfuSEybS6lOhaf-304: Validate purchase reference,
+lot and return quantity
+ZuwLx6SfuSEybS6lOhaf-306: Return request valid?
+ZuwLx6SfuSEybS6lOhaf-307: Yes
+ZuwLx6SfuSEybS6lOhaf-308: Create Supplier Return Request
+ZuwLx6SfuSEybS6lOhaf-309: Set status to Pending Review
+ZuwLx6SfuSEybS6lOhaf-311: No
+ZuwLx6SfuSEybS6lOhaf-312: Reject invalid Return Request
+ZuwLx6SfuSEybS6lOhaf-313: Display validation errors
+ZuwLx6SfuSEybS6lOhaf-315: Review invalid return data
+ZuwLx6SfuSEybS6lOhaf-320: Review Purchase Order,
+Goods Receipt and invoice
+ZuwLx6SfuSEybS6lOhaf-322: Contact supplier
+through external channel
+ZuwLx6SfuSEybS6lOhaf-324: Record supplier response
+ZuwLx6SfuSEybS6lOhaf-326: Supplier accepts return?
+ZuwLx6SfuSEybS6lOhaf-327: Yes
+ZuwLx6SfuSEybS6lOhaf-328: Record agreed return terms
+ZuwLx6SfuSEybS6lOhaf-329: Record return method
+and expected return date
+ZuwLx6SfuSEybS6lOhaf-331: No
+ZuwLx6SfuSEybS6lOhaf-332: Record supplier rejection
+and follow-up note
+ZuwLx6SfuSEybS6lOhaf-333: Set Supplier Return Request
+as Supplier Rejected
+ZuwLx6SfuSEybS6lOhaf-335: Notify Inventory Staff
+and Store Owner
+ZuwLx6SfuSEybS6lOhaf-340: Submit Supplier Return Request
+for approval
+ZuwLx6SfuSEybS6lOhaf-342: Review return reason,
+quantity and supplier agreement
+ZuwLx6SfuSEybS6lOhaf-344: Approve supplier return?
+ZuwLx6SfuSEybS6lOhaf-345: Yes
+ZuwLx6SfuSEybS6lOhaf-346: Set Supplier Return Request
+as Approved
+ZuwLx6SfuSEybS6lOhaf-347: Notify Inventory Staff
+ZuwLx6SfuSEybS6lOhaf-349: No
+ZuwLx6SfuSEybS6lOhaf-350: Set Supplier Return Request
+as Rejected
+ZuwLx6SfuSEybS6lOhaf-351: Record rejection result
+ZuwLx6SfuSEybS6lOhaf-353: Notify Inventory Staff
+and Accountant
+ZuwLx6SfuSEybS6lOhaf-358: Review approved Return Request
+ZuwLx6SfuSEybS6lOhaf-360: Locate goods by warehouse,
+lot and storage location
+ZuwLx6SfuSEybS6lOhaf-362: Pick approved goods
+ZuwLx6SfuSEybS6lOhaf-364: Check actual return quantity
+ZuwLx6SfuSEybS6lOhaf-366: Compare actual quantity
+with approved quantity
+ZuwLx6SfuSEybS6lOhaf-368: Quantity discrepancy?
+ZuwLx6SfuSEybS6lOhaf-369: Yes
+ZuwLx6SfuSEybS6lOhaf-370: Record actual quantity
+ZuwLx6SfuSEybS6lOhaf-371: Record discrepancy reason
+ZuwLx6SfuSEybS6lOhaf-373: Calculate revised
+return quantity
+ZuwLx6SfuSEybS6lOhaf-375: Review revised quantity
+ZuwLx6SfuSEybS6lOhaf-377: Approve revised quantity?
+ZuwLx6SfuSEybS6lOhaf-379: Yes
+ZuwLx6SfuSEybS6lOhaf-380: Update approved
+return quantity
+ZuwLx6SfuSEybS6lOhaf-381: No
+ZuwLx6SfuSEybS6lOhaf-382: Set Return Request
+to Adjustment Required
+ZuwLx6SfuSEybS6lOhaf-383: Notify Inventory Staff
+and Accountant
+ZuwLx6SfuSEybS6lOhaf-387: No
+ZuwLx6SfuSEybS6lOhaf-388: Keep approved
+return quantity
+ZuwLx6SfuSEybS6lOhaf-393: Prepare return shipment
+ZuwLx6SfuSEybS6lOhaf-395: Check product, lot,
+quantity and packaging
+ZuwLx6SfuSEybS6lOhaf-397: Confirm physical handover
+ZuwLx6SfuSEybS6lOhaf-399: Confirm Supplier Return Issue
+ZuwLx6SfuSEybS6lOhaf-401: Validate return issue
+ZuwLx6SfuSEybS6lOhaf-403: Create Return Goods Issue Note
+ZuwLx6SfuSEybS6lOhaf-405: Deduct returned quantity
+from warehouse stock
+ZuwLx6SfuSEybS6lOhaf-407: Update inventory history
+ZuwLx6SfuSEybS6lOhaf-409: Set Supplier Return Request
+as Dispatched
+ZuwLx6SfuSEybS6lOhaf-411: Track supplier return
+offline
+ZuwLx6SfuSEybS6lOhaf-413: Receive supplier acknowledgement
+ZuwLx6SfuSEybS6lOhaf-415: Record acknowledged quantity
+ZuwLx6SfuSEybS6lOhaf-417: Attach supporting documents
+ZuwLx6SfuSEybS6lOhaf-419: Compare acknowledged quantity
+with dispatched quantity
+ZuwLx6SfuSEybS6lOhaf-421: Acknowledged quantity matches?
+ZuwLx6SfuSEybS6lOhaf-422: Yes
+ZuwLx6SfuSEybS6lOhaf-423: Confirm supplier
+return acknowledgement
+ZuwLx6SfuSEybS6lOhaf-424: No
+ZuwLx6SfuSEybS6lOhaf-425: Record acknowledgement discrepancy
+ZuwLx6SfuSEybS6lOhaf-426: Contact supplier externally
+ZuwLx6SfuSEybS6lOhaf-428: Record resolution result
+ZuwLx6SfuSEybS6lOhaf-430: Validate resolved quantity
+ZuwLx6SfuSEybS6lOhaf-432: Discrepancy resolved?
+ZuwLx6SfuSEybS6lOhaf-434: Yes
+ZuwLx6SfuSEybS6lOhaf-435: Update accepted
+return quantity
+ZuwLx6SfuSEybS6lOhaf-436: No
+ZuwLx6SfuSEybS6lOhaf-437: Set Supplier Return Request
+to Pending Reconciliation
+ZuwLx6SfuSEybS6lOhaf-438: Notify Accountant
+and Store Owner
+ZuwLx6SfuSEybS6lOhaf-446: Review final return result
+ZuwLx6SfuSEybS6lOhaf-448: Review original supplier invoice
+ZuwLx6SfuSEybS6lOhaf-450: Record supplier credit,
+payable adjustment or refund
+ZuwLx6SfuSEybS6lOhaf-452: Update supplier payable balance
+ZuwLx6SfuSEybS6lOhaf-454: Link financial adjustment
+to Supplier Return Request
+ZuwLx6SfuSEybS6lOhaf-456: Update purchase reconciliation
+ZuwLx6SfuSEybS6lOhaf-458: Set Supplier Return Request
+as Completed
+ZuwLx6SfuSEybS6lOhaf-460: Update inventory and
+payables reports
+ZuwLx6SfuSEybS6lOhaf-462: Notify related staff
+ZuwLx6SfuSEybS6lOhaf-465: 2.5 Supplier Return and Purchase Reconciliation (BF-05)
+EDGES
+ZuwLx6SfuSEybS6lOhaf-292 --> Identify defective, damaged,
+excess or non-conforming goods | 
+Identify defective, damaged,
+excess or non-conforming goods --> Check product, lot,
+warehouse and location | 
+Check product, lot,
+warehouse and location --> Look up related Purchase Order
+and Goods Receipt | 
+Look up related Purchase Order
+and Goods Receipt --> Enter return quantity
+and return reason | 
+Enter return quantity
+and return reason --> Create Supplier Return Request | 
+Create Supplier Return Request --> Validate purchase reference,
+lot and return quantity | 
+Validate purchase reference,
+lot and return quantity --> Return request valid? | 
+Return request valid? --> Create Supplier Return Request | 
+Create Supplier Return Request --> Set status to Pending Review | 
+Return request valid? --> Reject invalid Return Request | 
+Reject invalid Return Request --> Display validation errors | 
+Display validation errors --> Review invalid return data | 
+Review invalid return data --> ZuwLx6SfuSEybS6lOhaf-317 | 
+Set status to Pending Review --> Review Purchase Order,
+Goods Receipt and invoice | 
+Review Purchase Order,
+Goods Receipt and invoice --> Contact supplier
+through external channel | 
+Contact supplier
+through external channel --> Record supplier response | 
+Record supplier response --> Supplier accepts return? | 
+Supplier accepts return? --> Record agreed return terms | 
+Record agreed return terms --> Record return method
+and expected return date | 
+Supplier accepts return? --> Record supplier rejection
+and follow-up note | 
+Record supplier rejection
+and follow-up note --> Set Supplier Return Request
+as Supplier Rejected | 
+Set Supplier Return Request
+as Supplier Rejected --> Notify Inventory Staff
+and Store Owner | 
+Notify Inventory Staff
+and Store Owner --> ZuwLx6SfuSEybS6lOhaf-337 | 
+Record return method
+and expected return date --> Submit Supplier Return Request
+for approval | 
+Submit Supplier Return Request
+for approval --> Review return reason,
+quantity and supplier agreement | 
+Review return reason,
+quantity and supplier agreement --> Approve supplier return? | 
+Approve supplier return? --> Set Supplier Return Request
+as Approved | 
+Set Supplier Return Request
+as Approved --> Notify Inventory Staff | 
+Approve supplier return? --> Set Supplier Return Request
+as Rejected | 
+Set Supplier Return Request
+as Rejected --> Record rejection result | 
+Record rejection result --> Notify Inventory Staff
+and Accountant | 
+Notify Inventory Staff
+and Accountant --> ZuwLx6SfuSEybS6lOhaf-355 | 
+Notify Inventory Staff --> Review approved Return Request | 
+Review approved Return Request --> Locate goods by warehouse,
+lot and storage location | 
+Locate goods by warehouse,
+lot and storage location --> Pick approved goods | 
+Pick approved goods --> Check actual return quantity | 
+Check actual return quantity --> Compare actual quantity
+with approved quantity | 
+Compare actual quantity
+with approved quantity --> Quantity discrepancy? | 
+Quantity discrepancy? --> Record actual quantity | 
+Record actual quantity --> Record discrepancy reason | 
+Record discrepancy reason --> Calculate revised
+return quantity | 
+Calculate revised
+return quantity --> Review revised quantity | 
+Review revised quantity --> Approve revised quantity? | 
+Approve revised quantity? --> Update approved
+return quantity | 
+Approve revised quantity? --> Set Return Request
+to Adjustment Required | 
+Set Return Request
+to Adjustment Required --> Notify Inventory Staff
+and Accountant | 
+Notify Inventory Staff
+and Accountant --> ZuwLx6SfuSEybS6lOhaf-385 | 
+Quantity discrepancy? --> Keep approved
+return quantity | 
+Update approved
+return quantity --> ZuwLx6SfuSEybS6lOhaf-389 | 
+Keep approved
+return quantity --> ZuwLx6SfuSEybS6lOhaf-389 | 
+ZuwLx6SfuSEybS6lOhaf-389 --> Prepare return shipment | 
+Prepare return shipment --> Check product, lot,
+quantity and packaging | 
+Check product, lot,
+quantity and packaging --> Confirm physical handover | 
+Confirm physical handover --> Confirm Supplier Return Issue | 
+Confirm Supplier Return Issue --> Validate return issue | 
+Validate return issue --> Create Return Goods Issue Note | 
+Create Return Goods Issue Note --> Deduct returned quantity
+from warehouse stock | 
+Deduct returned quantity
+from warehouse stock --> Update inventory history | 
+Update inventory history --> Set Supplier Return Request
+as Dispatched | 
+Set Supplier Return Request
+as Dispatched --> Track supplier return
+offline | 
+Track supplier return
+offline --> Receive supplier acknowledgement | 
+Receive supplier acknowledgement --> Record acknowledged quantity | 
+Record acknowledged quantity --> Attach supporting documents | 
+Attach supporting documents --> Compare acknowledged quantity
+with dispatched quantity | 
+Compare acknowledged quantity
+with dispatched quantity --> Acknowledged quantity matches? | 
+Acknowledged quantity matches? --> Confirm supplier
+return acknowledgement | 
+Acknowledged quantity matches? --> Record acknowledgement discrepancy | 
+Record acknowledgement discrepancy --> Contact supplier externally | 
+Contact supplier externally --> Record resolution result | 
+Record resolution result --> Validate resolved quantity | 
+Validate resolved quantity --> Discrepancy resolved? | 
+Discrepancy resolved? --> Update accepted
+return quantity | 
+Discrepancy resolved? --> Set Supplier Return Request
+to Pending Reconciliation | 
+Set Supplier Return Request
+to Pending Reconciliation --> Notify Accountant
+and Store Owner | 
+Notify Accountant
+and Store Owner --> ZuwLx6SfuSEybS6lOhaf-440 | 
+Confirm supplier
+return acknowledgement --> ZuwLx6SfuSEybS6lOhaf-442 | 
+Update accepted
+return quantity --> ZuwLx6SfuSEybS6lOhaf-442 | 
+ZuwLx6SfuSEybS6lOhaf-442 --> Review final return result | 
+Review final return result --> Review original supplier invoice | 
+Review original supplier invoice --> Record supplier credit,
+payable adjustment or refund | 
+Record supplier credit,
+payable adjustment or refund --> Update supplier payable balance | 
+Update supplier payable balance --> Link financial adjustment
+to Supplier Return Request | 
+Link financial adjustment
+to Supplier Return Request --> Update purchase reconciliation | 
+Update purchase reconciliation --> Set Supplier Return Request
+as Completed | 
+Set Supplier Return Request
+as Completed --> Update inventory and
+payables reports | 
+Update inventory and
+payables reports --> Notify related staff | 
+Notify related staff --> ZuwLx6SfuSEybS6lOhaf-464 | 
+PLANTUML
+@startuml
+title 2.5 Supplier Return and Purchase Reconciliation (BF-05)
+
+scale 2000 width
+
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam defaultFontSize 11
+skinparam activityFontSize 11
+skinparam swimlaneWidth 320
+skinparam activityBorderColor #666666
+skinparam activityBackgroundColor #FDFDFD
+skinparam activityDiamondBackgroundColor #FFF4D6
+skinparam activityDiamondBorderColor #888888
+skinparam activityArrowColor #666666
+
+|Inventory Staff|
+start
+:Identify defective, damaged,\nexcess or non-conforming goods;
+:Check product, lot,\nwarehouse and location;
+:Look up related Purchase Order\nand Goods Receipt;
+:Enter return quantity\nand return reason;
+:Create Supplier Return Request;
+
+|System|
+:Validate purchase reference,\nlot and return quantity;
+
+if (Return request valid?) then (Yes)
+
+    :Create Supplier Return Request;
+    :Set status to Pending Review;
+
+else (No)
+
+    :Reject invalid Return Request;
+    :Display validation errors;
+
+    |Inventory Staff|
+    :Review invalid return data;
+
+    stop
+
+endif
+
+
+|Accountant|
+:Review Purchase Order,\nGoods Receipt and invoice;
+:Contact supplier\nthrough external channel;
+:Record supplier response;
+
+if (Supplier accepts return?) then (Yes)
+
+    :Record agreed return terms;
+    :Record return method\nand expected return date;
+
+else (No)
+
+    :Record supplier rejection\nand follow-up note;
+
+    |System|
+    :Set Supplier Return Request\nas Supplier Rejected;
+    :Notify Inventory Staff\nand Store Owner;
+
+    stop
+
+endif
+
+
+|System|
+:Submit Supplier Return Request\nfor approval;
+
+|Store Owner|
+:Review return reason,\nquantity and supplier agreement;
+
+if (Approve supplier return?) then (Yes)
+
+    |System|
+    :Set Supplier Return Request\nas Approved;
+    :Notify Inventory Staff;
+
+else (No)
+
+    |System|
+    :Set Supplier Return Request\nas Rejected;
+    :Record rejection result;
+    :Notify Inventory Staff\nand Accountant;
+
+    stop
+
+endif
+
+
+|Inventory Staff|
+:Review approved Return Request;
+:Locate goods by warehouse,\nlot and storage location;
+:Pick approved goods;
+:Check actual return quantity;
+
+|System|
+:Compare actual quantity\nwith approved quantity;
+
+if (Quantity discrepancy?) then (Yes)
+
+    |Inventory Staff|
+    :Record actual quantity;
+    :Record discrepancy reason;
+
+    |System|
+    :Calculate revised\nreturn quantity;
+
+    |Store Owner|
+    :Review revised quantity;
+
+    if (Approve revised quantity?) then (Yes)
+
+        |System|
+        :Update approved\nreturn quantity;
+
+    else (No)
+
+        :Set Return Request\nto Adjustment Required;
+        :Notify Inventory Staff\nand Accountant;
+
+        stop
+
+    endif
+
+else (No)
+
+    |System|
+    :Keep approved\nreturn quantity;
+
+endif
+
+
+|Inventory Staff|
+:Prepare return shipment;
+:Check product, lot,\nquantity and packaging;
+:Confirm physical handover;
+:Confirm Supplier Return Issue;
+
+|System|
+:Validate return issue;
+:Create Return Goods Issue Note;
+:Deduct returned quantity\nfrom warehouse stock;
+:Update inventory history;
+:Set Supplier Return Request\nas Dispatched;
+
+
+|Accountant|
+:Track supplier return\noffline;
+:Receive supplier acknowledgement;
+:Record acknowledged quantity;
+:Attach supporting documents;
+
+|System|
+:Compare acknowledged quantity\nwith dispatched quantity;
+
+if (Acknowledged quantity matches?) then (Yes)
+
+    :Confirm supplier\nreturn acknowledgement;
+
+else (No)
+
+    |Accountant|
+    :Record acknowledgement discrepancy;
+    :Contact supplier externally;
+    :Record resolution result;
+
+    |System|
+    :Validate resolved quantity;
+
+    if (Discrepancy resolved?) then (Yes)
+
+        :Update accepted\nreturn quantity;
+
+    else (No)
+
+        :Set Supplier Return Request\nto Pending Reconciliation;
+        :Notify Accountant\nand Store Owner;
+
+        stop
+
+    endif
+
+endif
+
+
+|Accountant|
+:Review final return result;
+:Review original supplier invoice;
+:Record supplier credit,\npayable adjustment or refund;
+
+|System|
+:Update supplier payable balance;
+:Link financial adjustment\nto Supplier Return Request;
+:Update purchase reconciliation;
+:Set Supplier Return Request\nas Completed;
+:Update inventory and\npayables reports;
+:Notify related staff;
+
+stop
+@enduml

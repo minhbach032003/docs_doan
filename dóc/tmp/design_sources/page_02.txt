@@ -1,0 +1,1189 @@
+PAGE 2 Process_V2
+V6bqPGVECdbrquAe35J8-2: Nhân viên kho nhận
+V6bqPGVECdbrquAe35J8-81: Xác nhận số lượng
+thực nhận cuối cùng
+V6bqPGVECdbrquAe35J8-83: Nhập số lượng được chấp nhận
+vào kho
+V6bqPGVECdbrquAe35J8-85: Xác nhận hoàn tất điều chuyển
+V6bqPGVECdbrquAe35J8-8: Lập yêu cầu điều chuyển hàng
+V6bqPGVECdbrquAe35J8-10: Ghi rõ mặt hàng,
+số lượng và kho xuất
+V6bqPGVECdbrquAe35J8-20: Tiếp nhận phản hồi
+V6bqPGVECdbrquAe35J8-22: Hủy yêu cầu điều chuyển
+V6bqPGVECdbrquAe35J8-35: Tiếp nhận thông tin thiếu hàng
+V6bqPGVECdbrquAe35J8-37: Điều chỉnh hoặc hủy
+yêu cầu điều chuyển
+V6bqPGVECdbrquAe35J8-58: Tiếp nhận hàng điều chuyển
+V6bqPGVECdbrquAe35J8-60: Kiểm đếm số lượng thực nhận
+V6bqPGVECdbrquAe35J8-64: Nhập hàng vào kho
+V6bqPGVECdbrquAe35J8-62: Hàng nhận đúng và đủ?
+V6bqPGVECdbrquAe35J8-63: Có
+V6bqPGVECdbrquAe35J8-65: Xác nhận hoàn tất điều chuyển
+V6bqPGVECdbrquAe35J8-68: Ghi nhận chênh lệch
+hoặc hàng không đạt
+V6bqPGVECdbrquAe35J8-67: Không
+V6bqPGVECdbrquAe35J8-69: Thông báo kết quả
+cho Chủ cửa hàng
+V6bqPGVECdbrquAe35J8-3: Chủ cửa hàng
+V6bqPGVECdbrquAe35J8-19: Ghi nhận lý do
+không xác nhận
+V6bqPGVECdbrquAe35J8-4: Nhân viên kho xuất
+V6bqPGVECdbrquAe35J8-34: Ghi nhận số lượng
+không đáp ứng
+V6bqPGVECdbrquAe35J8-5: Nhân viên giao hàng
+V6bqPGVECdbrquAe35J8-12: Tiếp nhận yêu cầu điều chuyển
+V6bqPGVECdbrquAe35J8-14: Xem xét nhu cầu điều chuyển
+V6bqPGVECdbrquAe35J8-16: Yêu cầu điều chuyển được xác nhận?
+V6bqPGVECdbrquAe35J8-17: Có
+V6bqPGVECdbrquAe35J8-18: Không
+V6bqPGVECdbrquAe35J8-27: Tiếp nhận yêu cầu điều chuyển
+V6bqPGVECdbrquAe35J8-29: Kiểm tra hàng cần điều chuyển
+V6bqPGVECdbrquAe35J8-31: Đủ hàng để điều chuyển?
+V6bqPGVECdbrquAe35J8-32: Có
+V6bqPGVECdbrquAe35J8-33: Không
+V6bqPGVECdbrquAe35J8-42: Chuẩn bị hàng cần điều chuyển
+V6bqPGVECdbrquAe35J8-44: Kiểm đếm hàng xuất
+V6bqPGVECdbrquAe35J8-46: Kiểm tra mã hàng, lô,
+màu và tình trạng hàng
+V6bqPGVECdbrquAe35J8-48: Bàn giao hàng điều chuyển
+V6bqPGVECdbrquAe35J8-50: Tiếp nhận hàng
+V6bqPGVECdbrquAe35J8-52: Kiểm tra số lượng hàng bàn giao
+V6bqPGVECdbrquAe35J8-54: Vận chuyển hàng đến kho nhận
+V6bqPGVECdbrquAe35J8-56: Bàn giao hàng
+V6bqPGVECdbrquAe35J8-71: Xem xét chênh lệch điều chuyển
+V6bqPGVECdbrquAe35J8-73: Xác nhận phương án xử lý
+V6bqPGVECdbrquAe35J8-75: Kiểm tra lại hàng đã xuất
+V6bqPGVECdbrquAe35J8-77: Phối hợp xử lý chênh lệch
+V6bqPGVECdbrquAe35J8-79: Đối chiếu hàng đã nhận
+và đã bàn giao
+V6bqPGVECdbrquAe35J8-92: BP-02 - Quy trình Điều chuyển hàng giữa các kho
+Cor8dTnaGjwrEmxt-jgw-2: Khách hàng
+Cor8dTnaGjwrEmxt-jgw-3: Nhân viên bán hàng
+Cor8dTnaGjwrEmxt-jgw-4: Nhân viên kho
+Cor8dTnaGjwrEmxt-jgw-25: Tiếp nhận hàng trả
+Cor8dTnaGjwrEmxt-jgw-27: Kiểm đếm và kiểm tra hàng
+Cor8dTnaGjwrEmxt-jgw-29: Hàng trả đủ điều kiện tiếp nhận?
+Cor8dTnaGjwrEmxt-jgw-30: Có
+Cor8dTnaGjwrEmxt-jgw-31: Nhập lại hàng vào kho
+Cor8dTnaGjwrEmxt-jgw-32: Xác nhận số lượng hàng nhận lại
+Cor8dTnaGjwrEmxt-jgw-34: Không
+Cor8dTnaGjwrEmxt-jgw-35: Ghi nhận hàng không đạt
+hoặc số lượng không phù hợp
+Cor8dTnaGjwrEmxt-jgw-36: Xác nhận số lượng
+được chấp nhận nhận lại
+Cor8dTnaGjwrEmxt-jgw-5: Kế toán
+Cor8dTnaGjwrEmxt-jgw-6: Thu ngân
+Cor8dTnaGjwrEmxt-jgw-9: Yêu cầu trả hàng
+Cor8dTnaGjwrEmxt-jgw-11: Tiếp nhận yêu cầu trả hàng
+Cor8dTnaGjwrEmxt-jgw-13: Xác nhận thông tin đơn bán
+Cor8dTnaGjwrEmxt-jgw-15: Thông báo điều kiện
+và quy trình trả hàng
+Cor8dTnaGjwrEmxt-jgw-17: Khách hàng xác nhận trả hàng?
+Cor8dTnaGjwrEmxt-jgw-18: Có
+Cor8dTnaGjwrEmxt-jgw-19: Bàn giao hàng cần trả
+Cor8dTnaGjwrEmxt-jgw-20: Không
+Cor8dTnaGjwrEmxt-jgw-21: Hủy yêu cầu trả hàng
+Cor8dTnaGjwrEmxt-jgw-42: Tiếp nhận kết quả trả hàng
+Cor8dTnaGjwrEmxt-jgw-44: Điều chỉnh chứng từ bán hàng
+Cor8dTnaGjwrEmxt-jgw-46: Xác định số tiền hoàn trả
+Cor8dTnaGjwrEmxt-jgw-48: Tiếp nhận thông tin hoàn tiền
+Cor8dTnaGjwrEmxt-jgw-50: Thực hiện hoàn tiền
+cho khách hàng
+Cor8dTnaGjwrEmxt-jgw-52: Nhận tiền hoàn
+Cor8dTnaGjwrEmxt-jgw-54: Xác nhận hoàn tất trả hàng
+Cor8dTnaGjwrEmxt-jgw-57: BP-04 - Quy trình Khách hàng Trả hàng
+1yfFOPsddYNPeIz41Ct0-2: Nhân viên kho
+1yfFOPsddYNPeIz41Ct0-63: Đối chiếu số lượng
+đã xuất trả
+1yfFOPsddYNPeIz41Ct0-3: Kế toán
+1yfFOPsddYNPeIz41Ct0-4: Nhà cung cấp
+1yfFOPsddYNPeIz41Ct0-60: Ghi nhận chênh lệch
+hàng nhận lại
+1yfFOPsddYNPeIz41Ct0-5: Nhân viên giao hàng
+1yfFOPsddYNPeIz41Ct0-8: Xác định hàng cần trả
+nhà cung cấp
+1yfFOPsddYNPeIz41Ct0-10: Ghi nhận số lượng hàng cần trả
+1yfFOPsddYNPeIz41Ct0-12: Gửi thông tin trả hàng
+1yfFOPsddYNPeIz41Ct0-14: Tiếp nhận thông tin hàng trả
+1yfFOPsddYNPeIz41Ct0-16: Đối chiếu đơn mua
+và chứng từ
+1yfFOPsddYNPeIz41Ct0-18: Liên hệ nhà cung cấp
+1yfFOPsddYNPeIz41Ct0-20: Chưa thống nhất phương án trả hàng?
+1yfFOPsddYNPeIz41Ct0-21: Có
+1yfFOPsddYNPeIz41Ct0-22: Trao đổi điều kiện
+và phương án nhận lại hàng
+1yfFOPsddYNPeIz41Ct0-23: Xem xét phương án
+1yfFOPsddYNPeIz41Ct0-25: Trao đổi lại số lượng,
+thời gian hoặc cách thức trả
+1yfFOPsddYNPeIz41Ct0-28: Không
+1yfFOPsddYNPeIz41Ct0-29: Xác nhận phương án trả hàng
+1yfFOPsddYNPeIz41Ct0-31: Chuẩn bị hàng trả
+1yfFOPsddYNPeIz41Ct0-33: Kiểm đếm hàng
+1yfFOPsddYNPeIz41Ct0-35: Số lượng hàng trả chưa khớp?
+1yfFOPsddYNPeIz41Ct0-36: Có
+1yfFOPsddYNPeIz41Ct0-37: Kiểm tra lại hàng cần trả
+1yfFOPsddYNPeIz41Ct0-38: Điều chỉnh số lượng
+hàng chuẩn bị trả
+1yfFOPsddYNPeIz41Ct0-40: Kiểm đếm lại
+1yfFOPsddYNPeIz41Ct0-43: Không
+1yfFOPsddYNPeIz41Ct0-44: Bàn giao hàng trả
+1yfFOPsddYNPeIz41Ct0-46: Tiếp nhận hàng
+1yfFOPsddYNPeIz41Ct0-48: Kiểm tra số lượng được bàn giao
+1yfFOPsddYNPeIz41Ct0-50: Vận chuyển đến nhà cung cấp
+1yfFOPsddYNPeIz41Ct0-52: Bàn giao hàng
+1yfFOPsddYNPeIz41Ct0-54: Tiếp nhận hàng trả
+1yfFOPsddYNPeIz41Ct0-56: Kiểm đếm số lượng nhận lại
+1yfFOPsddYNPeIz41Ct0-58: Hàng nhận lại chưa khớp?
+1yfFOPsddYNPeIz41Ct0-59: Có
+1yfFOPsddYNPeIz41Ct0-61: Đối chiếu số lượng
+đã vận chuyển và bàn giao
+1yfFOPsddYNPeIz41Ct0-65: Trao đổi kết quả đối chiếu
+với nhà cung cấp
+1yfFOPsddYNPeIz41Ct0-70: Không
+1yfFOPsddYNPeIz41Ct0-71: Xác nhận số lượng nhận lại
+1yfFOPsddYNPeIz41Ct0-73: Phát hành chứng từ điều chỉnh
+1yfFOPsddYNPeIz41Ct0-75: Tiếp nhận chứng từ điều chỉnh
+1yfFOPsddYNPeIz41Ct0-77: Đối chiếu công nợ
+1yfFOPsddYNPeIz41Ct0-79: Chứng từ chưa khớp hàng trả?
+1yfFOPsddYNPeIz41Ct0-80: Có
+1yfFOPsddYNPeIz41Ct0-81: Xác định nội dung chênh lệch
+1yfFOPsddYNPeIz41Ct0-82: Yêu cầu nhà cung cấp
+điều chỉnh chứng từ
+1yfFOPsddYNPeIz41Ct0-84: Điều chỉnh chứng từ
+1yfFOPsddYNPeIz41Ct0-86: Gửi lại chứng từ
+1yfFOPsddYNPeIz41Ct0-88: Tiếp nhận chứng từ mới
+1yfFOPsddYNPeIz41Ct0-93: Không
+1yfFOPsddYNPeIz41Ct0-94: Điều chỉnh giá trị mua hàng
+1yfFOPsddYNPeIz41Ct0-97: BP-05 - Quy trình Trả hàng Nhà cung cấp
+1yfFOPsddYNPeIz41Ct0-99: Kế toán
+1yfFOPsddYNPeIz41Ct0-100: Nhân viên kho
+1yfFOPsddYNPeIz41Ct0-109: Chuẩn bị khu vực kiểm kê
+1yfFOPsddYNPeIz41Ct0-111: Kiểm đếm hàng hóa thực tế
+1yfFOPsddYNPeIz41Ct0-113: Ghi nhận kết quả kiểm kê
+1yfFOPsddYNPeIz41Ct0-115: Kết quả kiểm đếm chưa rõ ràng?
+1yfFOPsddYNPeIz41Ct0-116: Có
+1yfFOPsddYNPeIz41Ct0-117: Kiểm tra lại vị trí,
+lô và hàng hóa
+1yfFOPsddYNPeIz41Ct0-118: Thực hiện kiểm đếm lại
+1yfFOPsddYNPeIz41Ct0-120: Cập nhật kết quả kiểm kê
+1yfFOPsddYNPeIz41Ct0-123: Không
+1yfFOPsddYNPeIz41Ct0-124: Tổng hợp số lượng thực tế
+1yfFOPsddYNPeIz41Ct0-133: Kiểm tra lại hàng hóa,
+lô và vị trí lưu kho
+1yfFOPsddYNPeIz41Ct0-135: Kiểm đếm lại hàng chênh lệch
+1yfFOPsddYNPeIz41Ct0-137: Gửi kết quả kiểm tra lại
+1yfFOPsddYNPeIz41Ct0-103: Lập kế hoạch kiểm kê
+1yfFOPsddYNPeIz41Ct0-105: Xác định phạm vi kiểm kê
+1yfFOPsddYNPeIz41Ct0-107: Thông báo thực hiện kiểm kê
+1yfFOPsddYNPeIz41Ct0-126: Tiếp nhận kết quả kiểm kê
+1yfFOPsddYNPeIz41Ct0-128: Đối chiếu số liệu
+1yfFOPsddYNPeIz41Ct0-130: Còn chênh lệch chưa xác định?
+1yfFOPsddYNPeIz41Ct0-131: Có
+1yfFOPsddYNPeIz41Ct0-132: Xác định mặt hàng
+và số lượng chênh lệch
+1yfFOPsddYNPeIz41Ct0-139: Tiếp nhận kết quả kiểm tra
+1yfFOPsddYNPeIz41Ct0-141: Đối chiếu lại số liệu
+1yfFOPsddYNPeIz41Ct0-144: Không
+1yfFOPsddYNPeIz41Ct0-145: Lập biên bản kiểm kê
+1yfFOPsddYNPeIz41Ct0-147: Có chênh lệch tồn kho?
+1yfFOPsddYNPeIz41Ct0-148: Có
+1yfFOPsddYNPeIz41Ct0-149: Xác định số lượng
+cần điều chỉnh
+1yfFOPsddYNPeIz41Ct0-150: Ghi nhận điều chỉnh tồn kho
+1yfFOPsddYNPeIz41Ct0-152: Ghi nhận giá trị chênh lệch
+1yfFOPsddYNPeIz41Ct0-154: Hoàn tất kỳ kiểm kê
+1yfFOPsddYNPeIz41Ct0-158: Không
+1yfFOPsddYNPeIz41Ct0-159: Xác nhận tồn kho
+khớp kết quả kiểm kê
+1yfFOPsddYNPeIz41Ct0-160: Hoàn tất kỳ kiểm kê
+1yfFOPsddYNPeIz41Ct0-165: BP-06 - Quy trình Kiểm kê và Điều chỉnh tồn kho
+_nHWRcjk6mqiDZ4cdoyC-5: Nhân viên kho
+_nHWRcjk6mqiDZ4cdoyC-6: Kế toán
+_nHWRcjk6mqiDZ4cdoyC-7: Chủ cửa hàng
+_nHWRcjk6mqiDZ4cdoyC-8: Nhà cung cấp
+_nHWRcjk6mqiDZ4cdoyC-11: Kiểm tra tình hình tồn kho
+_nHWRcjk6mqiDZ4cdoyC-13: Xác định hàng hóa
+cần bổ sung
+_nHWRcjk6mqiDZ4cdoyC-15: Lập đề xuất mua hàng
+_nHWRcjk6mqiDZ4cdoyC-17: Tiếp nhận đề xuất mua hàng
+_nHWRcjk6mqiDZ4cdoyC-19: Xem xét và phê duyệt
+_nHWRcjk6mqiDZ4cdoyC-21: Đề xuất chưa được phê duyệt?
+_nHWRcjk6mqiDZ4cdoyC-22: Có
+_nHWRcjk6mqiDZ4cdoyC-23: Tiếp nhận lý do
+chưa được phê duyệt
+_nHWRcjk6mqiDZ4cdoyC-24: Điều chỉnh mặt hàng,
+số lượng hoặc nhu cầu mua
+_nHWRcjk6mqiDZ4cdoyC-26: Gửi lại đề xuất mua hàng
+_nHWRcjk6mqiDZ4cdoyC-28: Tiếp nhận đề xuất
+đã điều chỉnh
+_nHWRcjk6mqiDZ4cdoyC-30: Xem xét và phê duyệt lại
+_nHWRcjk6mqiDZ4cdoyC-33: Không
+_nHWRcjk6mqiDZ4cdoyC-34: Lập đơn mua hàng
+_nHWRcjk6mqiDZ4cdoyC-36: Đặt hàng với nhà cung cấp
+_nHWRcjk6mqiDZ4cdoyC-38: Tiếp nhận đơn đặt hàng
+_nHWRcjk6mqiDZ4cdoyC-40: Kiểm tra khả năng cung ứng
+_nHWRcjk6mqiDZ4cdoyC-42: Chưa đáp ứng đầy đủ đơn hàng?
+_nHWRcjk6mqiDZ4cdoyC-43: Có
+_nHWRcjk6mqiDZ4cdoyC-44: Thông báo khả năng cung ứng
+_nHWRcjk6mqiDZ4cdoyC-45: Đề xuất điều chỉnh số lượng,
+mặt hàng hoặc thời gian giao
+_nHWRcjk6mqiDZ4cdoyC-47: Tiếp nhận phương án cung ứng
+_nHWRcjk6mqiDZ4cdoyC-49: Trao đổi với nhà cung cấp
+_nHWRcjk6mqiDZ4cdoyC-51: Điều chỉnh nội dung đơn mua
+_nHWRcjk6mqiDZ4cdoyC-53: Tiếp nhận nội dung điều chỉnh
+_nHWRcjk6mqiDZ4cdoyC-55: Kiểm tra lại khả năng cung ứng
+_nHWRcjk6mqiDZ4cdoyC-58: Không
+_nHWRcjk6mqiDZ4cdoyC-59: Xác nhận đơn đặt hàng
+_nHWRcjk6mqiDZ4cdoyC-61: Chuẩn bị hàng
+_nHWRcjk6mqiDZ4cdoyC-63: Chuẩn bị chứng từ giao hàng
+_nHWRcjk6mqiDZ4cdoyC-65: Giao hàng và chứng từ
+_nHWRcjk6mqiDZ4cdoyC-67: Tiếp nhận hàng
+_nHWRcjk6mqiDZ4cdoyC-69: Kiểm đếm hàng thực tế
+_nHWRcjk6mqiDZ4cdoyC-71: Kiểm tra mã hàng, lô, màu,
+quy cách và tình trạng hàng
+_nHWRcjk6mqiDZ4cdoyC-73: Hàng chưa đúng hoặc chưa đủ?
+_nHWRcjk6mqiDZ4cdoyC-74: Có
+_nHWRcjk6mqiDZ4cdoyC-75: Ghi nhận số lượng chênh lệch,
+hàng sai hoặc hàng không đạt
+_nHWRcjk6mqiDZ4cdoyC-76: Thông báo kết quả kiểm nhận
+cho Kế toán
+_nHWRcjk6mqiDZ4cdoyC-78: Tiếp nhận thông tin chênh lệch
+_nHWRcjk6mqiDZ4cdoyC-80: Đối chiếu với đơn mua
+_nHWRcjk6mqiDZ4cdoyC-82: Trao đổi phương án xử lý
+với nhà cung cấp
+_nHWRcjk6mqiDZ4cdoyC-84: Tiếp nhận thông tin chênh lệch
+_nHWRcjk6mqiDZ4cdoyC-86: Xác định phương án xử lý
+_nHWRcjk6mqiDZ4cdoyC-88: Thực hiện giao bổ sung,
+đổi hàng hoặc thu hồi hàng
+_nHWRcjk6mqiDZ4cdoyC-90: Tiếp nhận kết quả xử lý
+_nHWRcjk6mqiDZ4cdoyC-92: Kiểm đếm và kiểm tra lại
+hàng hóa
+_nHWRcjk6mqiDZ4cdoyC-95: Không
+_nHWRcjk6mqiDZ4cdoyC-96: Nhập hàng vào kho
+_nHWRcjk6mqiDZ4cdoyC-98: Sắp xếp hàng theo lô
+và vị trí lưu trữ
+_nHWRcjk6mqiDZ4cdoyC-100: Xác nhận kết quả nhận hàng
+_nHWRcjk6mqiDZ4cdoyC-102: Tiếp nhận chứng từ mua hàng
+_nHWRcjk6mqiDZ4cdoyC-104: Đối chiếu hàng nhận
+và chứng từ
+_nHWRcjk6mqiDZ4cdoyC-106: Chứng từ chưa khớp
+với hàng thực nhận?
+_nHWRcjk6mqiDZ4cdoyC-107: Có
+_nHWRcjk6mqiDZ4cdoyC-108: Xác định nội dung
+chênh lệch chứng từ
+_nHWRcjk6mqiDZ4cdoyC-109: Trao đổi và yêu cầu
+điều chỉnh chứng từ
+_nHWRcjk6mqiDZ4cdoyC-111: Tiếp nhận yêu cầu điều chỉnh
+_nHWRcjk6mqiDZ4cdoyC-113: Điều chỉnh chứng từ
+_nHWRcjk6mqiDZ4cdoyC-115: Gửi lại chứng từ điều chỉnh
+_nHWRcjk6mqiDZ4cdoyC-117: Tiếp nhận chứng từ mới
+_nHWRcjk6mqiDZ4cdoyC-119: Đối chiếu lại với
+hàng thực nhận
+_nHWRcjk6mqiDZ4cdoyC-122: Không
+_nHWRcjk6mqiDZ4cdoyC-123: Ghi nhận công nợ /
+thanh toán
+_nHWRcjk6mqiDZ4cdoyC-126: BP-01 - Quy trình Mua hàng và Nhập kho
+EDGES
+Xác nhận số lượng
+thực nhận cuối cùng --> Nhập số lượng được chấp nhận
+vào kho | 
+Nhập số lượng được chấp nhận
+vào kho --> Xác nhận hoàn tất điều chuyển | 
+V6bqPGVECdbrquAe35J8-6 --> Lập yêu cầu điều chuyển hàng | 
+Lập yêu cầu điều chuyển hàng --> Ghi rõ mặt hàng,
+số lượng và kho xuất | 
+Tiếp nhận phản hồi --> Hủy yêu cầu điều chuyển | 
+Hủy yêu cầu điều chuyển --> V6bqPGVECdbrquAe35J8-24 | 
+Tiếp nhận thông tin thiếu hàng --> Điều chỉnh hoặc hủy
+yêu cầu điều chuyển | 
+Điều chỉnh hoặc hủy
+yêu cầu điều chuyển --> V6bqPGVECdbrquAe35J8-39 | 
+Tiếp nhận hàng điều chuyển --> Kiểm đếm số lượng thực nhận | 
+Hàng nhận đúng và đủ? --> Nhập hàng vào kho | 
+Kiểm đếm số lượng thực nhận --> Hàng nhận đúng và đủ? | 
+Nhập hàng vào kho --> Xác nhận hoàn tất điều chuyển | 
+Hàng nhận đúng và đủ? --> Ghi nhận chênh lệch
+hoặc hàng không đạt | 
+Ghi nhận chênh lệch
+hoặc hàng không đạt --> Thông báo kết quả
+cho Chủ cửa hàng | 
+Ghi rõ mặt hàng,
+số lượng và kho xuất --> Tiếp nhận yêu cầu điều chuyển | 
+Tiếp nhận yêu cầu điều chuyển --> Xem xét nhu cầu điều chuyển | 
+Xem xét nhu cầu điều chuyển --> Yêu cầu điều chuyển được xác nhận? | 
+Yêu cầu điều chuyển được xác nhận? --> Tiếp nhận yêu cầu điều chuyển | 
+Yêu cầu điều chuyển được xác nhận? --> Ghi nhận lý do
+không xác nhận | 
+Ghi nhận lý do
+không xác nhận --> Tiếp nhận phản hồi | 
+Tiếp nhận yêu cầu điều chuyển --> Kiểm tra hàng cần điều chuyển | 
+Kiểm tra hàng cần điều chuyển --> Đủ hàng để điều chuyển? | 
+Đủ hàng để điều chuyển? --> Chuẩn bị hàng cần điều chuyển | 
+Đủ hàng để điều chuyển? --> Ghi nhận số lượng
+không đáp ứng | 
+Ghi nhận số lượng
+không đáp ứng --> Tiếp nhận thông tin thiếu hàng | 
+Chuẩn bị hàng cần điều chuyển --> Kiểm đếm hàng xuất | 
+Kiểm đếm hàng xuất --> Kiểm tra mã hàng, lô,
+màu và tình trạng hàng | 
+Kiểm tra mã hàng, lô,
+màu và tình trạng hàng --> Bàn giao hàng điều chuyển | 
+Bàn giao hàng điều chuyển --> Tiếp nhận hàng | 
+Tiếp nhận hàng --> Kiểm tra số lượng hàng bàn giao | 
+Kiểm tra số lượng hàng bàn giao --> Vận chuyển hàng đến kho nhận | 
+Vận chuyển hàng đến kho nhận --> Bàn giao hàng | 
+Bàn giao hàng --> Tiếp nhận hàng điều chuyển | 
+Thông báo kết quả
+cho Chủ cửa hàng --> Xem xét chênh lệch điều chuyển | 
+Xem xét chênh lệch điều chuyển --> Xác nhận phương án xử lý | 
+Xác nhận phương án xử lý --> Kiểm tra lại hàng đã xuất | 
+Kiểm tra lại hàng đã xuất --> Phối hợp xử lý chênh lệch | 
+Phối hợp xử lý chênh lệch --> Đối chiếu hàng đã nhận
+và đã bàn giao | 
+Đối chiếu hàng đã nhận
+và đã bàn giao --> Xác nhận số lượng
+thực nhận cuối cùng | 
+Xác nhận hoàn tất điều chuyển --> V6bqPGVECdbrquAe35J8-91 | 
+Xác nhận hoàn tất điều chuyển --> V6bqPGVECdbrquAe35J8-91 | 
+Tiếp nhận hàng trả --> Kiểm đếm và kiểm tra hàng | 
+Kiểm đếm và kiểm tra hàng --> Hàng trả đủ điều kiện tiếp nhận? | 
+Hàng trả đủ điều kiện tiếp nhận? --> Nhập lại hàng vào kho | 
+Nhập lại hàng vào kho --> Xác nhận số lượng hàng nhận lại | 
+Hàng trả đủ điều kiện tiếp nhận? --> Ghi nhận hàng không đạt
+hoặc số lượng không phù hợp | 
+Ghi nhận hàng không đạt
+hoặc số lượng không phù hợp --> Xác nhận số lượng
+được chấp nhận nhận lại | 
+Cor8dTnaGjwrEmxt-jgw-7 --> Yêu cầu trả hàng | 
+Yêu cầu trả hàng --> Tiếp nhận yêu cầu trả hàng | 
+Tiếp nhận yêu cầu trả hàng --> Xác nhận thông tin đơn bán | 
+Xác nhận thông tin đơn bán --> Thông báo điều kiện
+và quy trình trả hàng | 
+Thông báo điều kiện
+và quy trình trả hàng --> Khách hàng xác nhận trả hàng? | 
+Khách hàng xác nhận trả hàng? --> Bàn giao hàng cần trả | 
+Khách hàng xác nhận trả hàng? --> Hủy yêu cầu trả hàng | 
+Hủy yêu cầu trả hàng --> Cor8dTnaGjwrEmxt-jgw-22 | 
+Bàn giao hàng cần trả --> Tiếp nhận hàng trả | 
+Xác nhận số lượng hàng nhận lại --> Tiếp nhận kết quả trả hàng | 
+Xác nhận số lượng
+được chấp nhận nhận lại --> Tiếp nhận kết quả trả hàng | 
+Tiếp nhận kết quả trả hàng --> Điều chỉnh chứng từ bán hàng | 
+Điều chỉnh chứng từ bán hàng --> Xác định số tiền hoàn trả | 
+Xác định số tiền hoàn trả --> Tiếp nhận thông tin hoàn tiền | 
+Tiếp nhận thông tin hoàn tiền --> Thực hiện hoàn tiền
+cho khách hàng | 
+Thực hiện hoàn tiền
+cho khách hàng --> Nhận tiền hoàn | 
+Nhận tiền hoàn --> Xác nhận hoàn tất trả hàng | 
+Xác nhận hoàn tất trả hàng --> Cor8dTnaGjwrEmxt-jgw-56 | 
+1yfFOPsddYNPeIz41Ct0-6 --> Xác định hàng cần trả
+nhà cung cấp | 
+Xác định hàng cần trả
+nhà cung cấp --> Ghi nhận số lượng hàng cần trả | 
+Ghi nhận số lượng hàng cần trả --> Gửi thông tin trả hàng | 
+Gửi thông tin trả hàng --> Tiếp nhận thông tin hàng trả | 
+Tiếp nhận thông tin hàng trả --> Đối chiếu đơn mua
+và chứng từ | 
+Đối chiếu đơn mua
+và chứng từ --> Liên hệ nhà cung cấp | 
+Liên hệ nhà cung cấp --> Chưa thống nhất phương án trả hàng? | 
+Chưa thống nhất phương án trả hàng? --> Trao đổi điều kiện
+và phương án nhận lại hàng | 
+Trao đổi điều kiện
+và phương án nhận lại hàng --> Xem xét phương án | 
+Xem xét phương án --> Trao đổi lại số lượng,
+thời gian hoặc cách thức trả | 
+Trao đổi lại số lượng,
+thời gian hoặc cách thức trả --> Chưa thống nhất phương án trả hàng? | 
+Chưa thống nhất phương án trả hàng? --> Xác nhận phương án trả hàng | 
+Xác nhận phương án trả hàng --> Chuẩn bị hàng trả | 
+Chuẩn bị hàng trả --> Kiểm đếm hàng | 
+Kiểm đếm hàng --> Số lượng hàng trả chưa khớp? | 
+Số lượng hàng trả chưa khớp? --> Kiểm tra lại hàng cần trả | 
+Kiểm tra lại hàng cần trả --> Điều chỉnh số lượng
+hàng chuẩn bị trả | 
+Điều chỉnh số lượng
+hàng chuẩn bị trả --> Kiểm đếm lại | 
+Kiểm đếm lại --> Số lượng hàng trả chưa khớp? | 
+Số lượng hàng trả chưa khớp? --> Bàn giao hàng trả | 
+Bàn giao hàng trả --> Tiếp nhận hàng | 
+Tiếp nhận hàng --> Kiểm tra số lượng được bàn giao | 
+Kiểm tra số lượng được bàn giao --> Vận chuyển đến nhà cung cấp | 
+Vận chuyển đến nhà cung cấp --> Bàn giao hàng | 
+Bàn giao hàng --> Tiếp nhận hàng trả | 
+Tiếp nhận hàng trả --> Kiểm đếm số lượng nhận lại | 
+Kiểm đếm số lượng nhận lại --> Hàng nhận lại chưa khớp? | 
+Hàng nhận lại chưa khớp? --> Ghi nhận chênh lệch
+hàng nhận lại | 
+Ghi nhận chênh lệch
+hàng nhận lại --> Đối chiếu số lượng
+đã vận chuyển và bàn giao | 
+Đối chiếu số lượng
+đã vận chuyển và bàn giao --> Đối chiếu số lượng
+đã xuất trả | 
+Đối chiếu số lượng
+đã xuất trả --> Trao đổi kết quả đối chiếu
+với nhà cung cấp | 
+Trao đổi kết quả đối chiếu
+với nhà cung cấp --> Kiểm đếm số lượng nhận lại | 
+Hàng nhận lại chưa khớp? --> Xác nhận số lượng nhận lại | 
+Xác nhận số lượng nhận lại --> Phát hành chứng từ điều chỉnh | 
+Phát hành chứng từ điều chỉnh --> Tiếp nhận chứng từ điều chỉnh | 
+Tiếp nhận chứng từ điều chỉnh --> Đối chiếu công nợ | 
+Đối chiếu công nợ --> Chứng từ chưa khớp hàng trả? | 
+Chứng từ chưa khớp hàng trả? --> Xác định nội dung chênh lệch | 
+Xác định nội dung chênh lệch --> Yêu cầu nhà cung cấp
+điều chỉnh chứng từ | 
+Yêu cầu nhà cung cấp
+điều chỉnh chứng từ --> Điều chỉnh chứng từ | 
+Điều chỉnh chứng từ --> Gửi lại chứng từ | 
+Gửi lại chứng từ --> Tiếp nhận chứng từ mới | 
+Tiếp nhận chứng từ mới --> Đối chiếu công nợ | 
+Chứng từ chưa khớp hàng trả? --> Điều chỉnh giá trị mua hàng | 
+Điều chỉnh giá trị mua hàng --> 1yfFOPsddYNPeIz41Ct0-96 | 
+Chuẩn bị khu vực kiểm kê --> Kiểm đếm hàng hóa thực tế | 
+Kiểm đếm hàng hóa thực tế --> Ghi nhận kết quả kiểm kê | 
+Ghi nhận kết quả kiểm kê --> Kết quả kiểm đếm chưa rõ ràng? | 
+Kết quả kiểm đếm chưa rõ ràng? --> Kiểm tra lại vị trí,
+lô và hàng hóa | 
+Kiểm tra lại vị trí,
+lô và hàng hóa --> Thực hiện kiểm đếm lại | 
+Thực hiện kiểm đếm lại --> Cập nhật kết quả kiểm kê | 
+Cập nhật kết quả kiểm kê --> Kết quả kiểm đếm chưa rõ ràng? | 
+Kết quả kiểm đếm chưa rõ ràng? --> Tổng hợp số lượng thực tế | 
+Kiểm tra lại hàng hóa,
+lô và vị trí lưu kho --> Kiểm đếm lại hàng chênh lệch | 
+Kiểm đếm lại hàng chênh lệch --> Gửi kết quả kiểm tra lại | 
+1yfFOPsddYNPeIz41Ct0-101 --> Lập kế hoạch kiểm kê | 
+Lập kế hoạch kiểm kê --> Xác định phạm vi kiểm kê | 
+Xác định phạm vi kiểm kê --> Thông báo thực hiện kiểm kê | 
+Thông báo thực hiện kiểm kê --> Chuẩn bị khu vực kiểm kê | 
+Tổng hợp số lượng thực tế --> Tiếp nhận kết quả kiểm kê | 
+Tiếp nhận kết quả kiểm kê --> Đối chiếu số liệu | 
+Đối chiếu số liệu --> Còn chênh lệch chưa xác định? | 
+Còn chênh lệch chưa xác định? --> Xác định mặt hàng
+và số lượng chênh lệch | 
+Xác định mặt hàng
+và số lượng chênh lệch --> Kiểm tra lại hàng hóa,
+lô và vị trí lưu kho | 
+Gửi kết quả kiểm tra lại --> Tiếp nhận kết quả kiểm tra | 
+Tiếp nhận kết quả kiểm tra --> Đối chiếu lại số liệu | 
+Đối chiếu lại số liệu --> Còn chênh lệch chưa xác định? | 
+Còn chênh lệch chưa xác định? --> Lập biên bản kiểm kê | 
+Lập biên bản kiểm kê --> Có chênh lệch tồn kho? | 
+Có chênh lệch tồn kho? --> Xác định số lượng
+cần điều chỉnh | 
+Xác định số lượng
+cần điều chỉnh --> Ghi nhận điều chỉnh tồn kho | 
+Ghi nhận điều chỉnh tồn kho --> Ghi nhận giá trị chênh lệch | 
+Ghi nhận giá trị chênh lệch --> Hoàn tất kỳ kiểm kê | 
+Hoàn tất kỳ kiểm kê --> 1yfFOPsddYNPeIz41Ct0-156 | 
+Có chênh lệch tồn kho? --> Xác nhận tồn kho
+khớp kết quả kiểm kê | 
+Xác nhận tồn kho
+khớp kết quả kiểm kê --> Hoàn tất kỳ kiểm kê | 
+Hoàn tất kỳ kiểm kê --> 1yfFOPsddYNPeIz41Ct0-156 | 
+_nHWRcjk6mqiDZ4cdoyC-9 --> Kiểm tra tình hình tồn kho | 
+Kiểm tra tình hình tồn kho --> Xác định hàng hóa
+cần bổ sung | 
+Xác định hàng hóa
+cần bổ sung --> Lập đề xuất mua hàng | 
+Lập đề xuất mua hàng --> Tiếp nhận đề xuất mua hàng | 
+Tiếp nhận đề xuất mua hàng --> Xem xét và phê duyệt | 
+Xem xét và phê duyệt --> Đề xuất chưa được phê duyệt? | 
+Đề xuất chưa được phê duyệt? --> Tiếp nhận lý do
+chưa được phê duyệt | 
+Tiếp nhận lý do
+chưa được phê duyệt --> Điều chỉnh mặt hàng,
+số lượng hoặc nhu cầu mua | 
+Điều chỉnh mặt hàng,
+số lượng hoặc nhu cầu mua --> Gửi lại đề xuất mua hàng | 
+Gửi lại đề xuất mua hàng --> Tiếp nhận đề xuất
+đã điều chỉnh | 
+Tiếp nhận đề xuất
+đã điều chỉnh --> Xem xét và phê duyệt lại | 
+Xem xét và phê duyệt lại --> Đề xuất chưa được phê duyệt? | 
+Đề xuất chưa được phê duyệt? --> Lập đơn mua hàng | 
+Lập đơn mua hàng --> Đặt hàng với nhà cung cấp | 
+Đặt hàng với nhà cung cấp --> Tiếp nhận đơn đặt hàng | 
+Tiếp nhận đơn đặt hàng --> Kiểm tra khả năng cung ứng | 
+Kiểm tra khả năng cung ứng --> Chưa đáp ứng đầy đủ đơn hàng? | 
+Chưa đáp ứng đầy đủ đơn hàng? --> Thông báo khả năng cung ứng | 
+Thông báo khả năng cung ứng --> Đề xuất điều chỉnh số lượng,
+mặt hàng hoặc thời gian giao | 
+Đề xuất điều chỉnh số lượng,
+mặt hàng hoặc thời gian giao --> Tiếp nhận phương án cung ứng | 
+Tiếp nhận phương án cung ứng --> Trao đổi với nhà cung cấp | 
+Trao đổi với nhà cung cấp --> Điều chỉnh nội dung đơn mua | 
+Điều chỉnh nội dung đơn mua --> Tiếp nhận nội dung điều chỉnh | 
+Tiếp nhận nội dung điều chỉnh --> Kiểm tra lại khả năng cung ứng | 
+Kiểm tra lại khả năng cung ứng --> Chưa đáp ứng đầy đủ đơn hàng? | 
+Chưa đáp ứng đầy đủ đơn hàng? --> Xác nhận đơn đặt hàng | 
+Xác nhận đơn đặt hàng --> Chuẩn bị hàng | 
+Chuẩn bị hàng --> Chuẩn bị chứng từ giao hàng | 
+Chuẩn bị chứng từ giao hàng --> Giao hàng và chứng từ | 
+Giao hàng và chứng từ --> Tiếp nhận hàng | 
+Tiếp nhận hàng --> Kiểm đếm hàng thực tế | 
+Kiểm đếm hàng thực tế --> Kiểm tra mã hàng, lô, màu,
+quy cách và tình trạng hàng | 
+Kiểm tra mã hàng, lô, màu,
+quy cách và tình trạng hàng --> Hàng chưa đúng hoặc chưa đủ? | 
+Hàng chưa đúng hoặc chưa đủ? --> Ghi nhận số lượng chênh lệch,
+hàng sai hoặc hàng không đạt | 
+Ghi nhận số lượng chênh lệch,
+hàng sai hoặc hàng không đạt --> Thông báo kết quả kiểm nhận
+cho Kế toán | 
+Thông báo kết quả kiểm nhận
+cho Kế toán --> Tiếp nhận thông tin chênh lệch | 
+Tiếp nhận thông tin chênh lệch --> Đối chiếu với đơn mua | 
+Đối chiếu với đơn mua --> Trao đổi phương án xử lý
+với nhà cung cấp | 
+Trao đổi phương án xử lý
+với nhà cung cấp --> Tiếp nhận thông tin chênh lệch | 
+Tiếp nhận thông tin chênh lệch --> Xác định phương án xử lý | 
+Xác định phương án xử lý --> Thực hiện giao bổ sung,
+đổi hàng hoặc thu hồi hàng | 
+Thực hiện giao bổ sung,
+đổi hàng hoặc thu hồi hàng --> Tiếp nhận kết quả xử lý | 
+Tiếp nhận kết quả xử lý --> Kiểm đếm và kiểm tra lại
+hàng hóa | 
+Kiểm đếm và kiểm tra lại
+hàng hóa --> Hàng chưa đúng hoặc chưa đủ? | 
+Hàng chưa đúng hoặc chưa đủ? --> Nhập hàng vào kho | 
+Nhập hàng vào kho --> Sắp xếp hàng theo lô
+và vị trí lưu trữ | 
+Sắp xếp hàng theo lô
+và vị trí lưu trữ --> Xác nhận kết quả nhận hàng | 
+Xác nhận kết quả nhận hàng --> Tiếp nhận chứng từ mua hàng | 
+Tiếp nhận chứng từ mua hàng --> Đối chiếu hàng nhận
+và chứng từ | 
+Đối chiếu hàng nhận
+và chứng từ --> Chứng từ chưa khớp
+với hàng thực nhận? | 
+Chứng từ chưa khớp
+với hàng thực nhận? --> Xác định nội dung
+chênh lệch chứng từ | 
+Xác định nội dung
+chênh lệch chứng từ --> Trao đổi và yêu cầu
+điều chỉnh chứng từ | 
+Trao đổi và yêu cầu
+điều chỉnh chứng từ --> Tiếp nhận yêu cầu điều chỉnh | 
+Tiếp nhận yêu cầu điều chỉnh --> Điều chỉnh chứng từ | 
+Điều chỉnh chứng từ --> Gửi lại chứng từ điều chỉnh | 
+Gửi lại chứng từ điều chỉnh --> Tiếp nhận chứng từ mới | 
+Tiếp nhận chứng từ mới --> Đối chiếu lại với
+hàng thực nhận | 
+Đối chiếu lại với
+hàng thực nhận --> Chứng từ chưa khớp
+với hàng thực nhận? | 
+Chứng từ chưa khớp
+với hàng thực nhận? --> Ghi nhận công nợ /
+thanh toán | 
+Ghi nhận công nợ /
+thanh toán --> _nHWRcjk6mqiDZ4cdoyC-125 | 
+PLANTUML
+@startuml BP02_Internal_Transfer
+
+title BP-02 - Quy trình Điều chuyển hàng giữa các kho
+
+scale 2000 width
+
+!pragma useVerticalIf on
+
+skinparam backgroundColor #FFFFFF
+skinparam defaultFontName Arial
+skinparam defaultFontSize 14
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam wrapWidth 250
+skinparam swimlaneWidth 360
+
+skinparam activity {
+    BackgroundColor #FFFFFF
+    BorderColor #9CA3AF
+    FontColor #111827
+    ArrowColor #6B7280
+}
+
+skinparam swimlane {
+    BorderColor #9CA3AF
+    TitleBackgroundColor #E5E7EB
+}
+
+
+|Nhân viên kho nhận|
+start
+:Lập yêu cầu điều chuyển hàng;
+:Ghi rõ mặt hàng,\nsố lượng và kho xuất;
+
+
+|Chủ cửa hàng|
+:Tiếp nhận yêu cầu điều chuyển;
+:Xem xét nhu cầu điều chuyển;
+
+if (Yêu cầu điều chuyển được xác nhận?) then (Có)
+
+else (Không)
+
+    :Ghi nhận lý do\nkhông xác nhận;
+
+    |Nhân viên kho nhận|
+    :Tiếp nhận phản hồi;
+    :Hủy yêu cầu điều chuyển;
+
+    stop
+
+endif
+
+
+|Nhân viên kho xuất|
+:Tiếp nhận yêu cầu điều chuyển;
+:Kiểm tra hàng cần điều chuyển;
+
+if (Đủ hàng để điều chuyển?) then (Có)
+
+else (Không)
+
+    :Ghi nhận số lượng\nkhông đáp ứng;
+
+    |Nhân viên kho nhận|
+    :Tiếp nhận thông tin thiếu hàng;
+    :Điều chỉnh hoặc hủy\nyêu cầu điều chuyển;
+
+    stop
+
+endif
+
+
+|Nhân viên kho xuất|
+:Chuẩn bị hàng cần điều chuyển;
+:Kiểm đếm hàng xuất;
+:Kiểm tra mã hàng, lô,\nmàu và tình trạng hàng;
+:Bàn giao hàng điều chuyển;
+
+
+|Nhân viên giao hàng|
+:Tiếp nhận hàng;
+:Kiểm tra số lượng hàng bàn giao;
+:Vận chuyển hàng đến kho nhận;
+:Bàn giao hàng;
+
+
+|Nhân viên kho nhận|
+:Tiếp nhận hàng điều chuyển;
+:Kiểm đếm số lượng thực nhận;
+
+if (Hàng nhận đúng và đủ?) then (Có)
+
+    :Nhập hàng vào kho;
+    :Xác nhận hoàn tất điều chuyển;
+
+else (Không)
+
+    :Ghi nhận chênh lệch\nhoặc hàng không đạt;
+    :Thông báo kết quả\ncho Chủ cửa hàng;
+
+    |Chủ cửa hàng|
+    :Xem xét chênh lệch điều chuyển;
+    :Xác nhận phương án xử lý;
+
+    |Nhân viên kho xuất|
+    :Kiểm tra lại hàng đã xuất;
+    :Phối hợp xử lý chênh lệch;
+
+    |Nhân viên giao hàng|
+    :Đối chiếu hàng đã nhận\nvà đã bàn giao;
+
+    |Nhân viên kho nhận|
+    :Xác nhận số lượng\nthực nhận cuối cùng;
+    :Nhập số lượng được chấp nhận\nvào kho;
+    :Xác nhận hoàn tất điều chuyển;
+
+endif
+
+stop
+
+@enduml
+PLANTUML
+@startuml BP04_Customer_Return
+
+title BP-04 - Quy trình Khách hàng Trả hàng
+
+scale 2000 width
+
+!pragma useVerticalIf on
+
+skinparam backgroundColor #FFFFFF
+skinparam defaultFontName Arial
+skinparam defaultFontSize 14
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam wrapWidth 250
+skinparam swimlaneWidth 320
+
+skinparam activity {
+    BackgroundColor #FFFFFF
+    BorderColor #9CA3AF
+    FontColor #111827
+    ArrowColor #6B7280
+}
+
+skinparam swimlane {
+    BorderColor #9CA3AF
+    TitleBackgroundColor #E5E7EB
+}
+
+|Khách hàng|
+start
+:Yêu cầu trả hàng;
+
+|Nhân viên bán hàng|
+:Tiếp nhận yêu cầu trả hàng;
+:Xác nhận thông tin đơn bán;
+:Thông báo điều kiện\nvà quy trình trả hàng;
+
+|Khách hàng|
+if (Khách hàng xác nhận trả hàng?) then (Có)
+
+    :Bàn giao hàng cần trả;
+
+else (Không)
+
+    :Hủy yêu cầu trả hàng;
+    stop
+
+endif
+
+
+|Nhân viên kho|
+:Tiếp nhận hàng trả;
+:Kiểm đếm và kiểm tra hàng;
+
+if (Hàng trả đủ điều kiện tiếp nhận?) then (Có)
+
+    :Nhập lại hàng vào kho;
+    :Xác nhận số lượng hàng nhận lại;
+
+else (Không)
+
+    :Ghi nhận hàng không đạt\nhoặc số lượng không phù hợp;
+    :Xác nhận số lượng\nđược chấp nhận nhận lại;
+
+endif
+
+
+|Kế toán|
+:Tiếp nhận kết quả trả hàng;
+:Điều chỉnh chứng từ bán hàng;
+:Xác định số tiền hoàn trả;
+
+
+|Thu ngân|
+:Tiếp nhận thông tin hoàn tiền;
+:Thực hiện hoàn tiền\ncho khách hàng;
+
+
+|Khách hàng|
+:Nhận tiền hoàn;
+:Xác nhận hoàn tất trả hàng;
+
+stop
+
+@enduml
+PLANTUML
+@startuml BP05_Supplier_Return
+
+title BP-05 - Quy trình Trả hàng Nhà cung cấp
+
+scale 2000 width
+
+!pragma useVerticalIf on
+
+skinparam backgroundColor #FFFFFF
+skinparam defaultFontName Arial
+skinparam defaultFontSize 14
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam wrapWidth 250
+skinparam swimlaneWidth 340
+
+skinparam activity {
+    BackgroundColor #FFFFFF
+    BorderColor #9CA3AF
+    FontColor #111827
+    ArrowColor #6B7280
+}
+
+skinparam swimlane {
+    BorderColor #9CA3AF
+    TitleBackgroundColor #E5E7EB
+}
+
+
+|Nhân viên kho|
+start
+:Xác định hàng cần trả\nnhà cung cấp;
+:Ghi nhận số lượng hàng cần trả;
+:Gửi thông tin trả hàng;
+
+
+|Kế toán|
+:Tiếp nhận thông tin hàng trả;
+:Đối chiếu đơn mua\nvà chứng từ;
+:Liên hệ nhà cung cấp;
+
+
+while (Chưa thống nhất phương án trả hàng?) is (Có)
+
+    |Nhà cung cấp|
+    :Trao đổi điều kiện\nvà phương án nhận lại hàng;
+
+    |Kế toán|
+    :Xem xét phương án;
+    :Trao đổi lại số lượng,\nthời gian hoặc cách thức trả;
+
+endwhile (Không)
+
+
+|Kế toán|
+:Xác nhận phương án trả hàng;
+
+
+|Nhân viên kho|
+:Chuẩn bị hàng trả;
+:Kiểm đếm hàng;
+
+
+while (Số lượng hàng trả chưa khớp?) is (Có)
+
+    :Kiểm tra lại hàng cần trả;
+    :Điều chỉnh số lượng\nhàng chuẩn bị trả;
+    :Kiểm đếm lại;
+
+endwhile (Không)
+
+
+|Nhân viên kho|
+:Bàn giao hàng trả;
+
+
+|Nhân viên giao hàng|
+:Tiếp nhận hàng;
+:Kiểm tra số lượng được bàn giao;
+:Vận chuyển đến nhà cung cấp;
+:Bàn giao hàng;
+
+
+|Nhà cung cấp|
+:Tiếp nhận hàng trả;
+:Kiểm đếm số lượng nhận lại;
+
+
+while (Hàng nhận lại chưa khớp?) is (Có)
+
+    :Ghi nhận chênh lệch\nhàng nhận lại;
+
+    |Nhân viên giao hàng|
+    :Đối chiếu số lượng\nđã vận chuyển và bàn giao;
+
+    |Nhân viên kho|
+    :Đối chiếu số lượng\nđã xuất trả;
+
+    |Kế toán|
+    :Trao đổi kết quả đối chiếu\nvới nhà cung cấp;
+
+    |Nhà cung cấp|
+    :Kiểm tra lại số lượng\nthực tế nhận lại;
+
+endwhile (Không)
+
+
+|Nhà cung cấp|
+:Xác nhận số lượng nhận lại;
+:Phát hành chứng từ điều chỉnh;
+
+
+|Kế toán|
+:Tiếp nhận chứng từ điều chỉnh;
+:Đối chiếu công nợ;
+
+
+while (Chứng từ chưa khớp hàng trả?) is (Có)
+
+    :Xác định nội dung chênh lệch;
+    :Yêu cầu nhà cung cấp\nđiều chỉnh chứng từ;
+
+    |Nhà cung cấp|
+    :Điều chỉnh chứng từ;
+    :Gửi lại chứng từ;
+
+    |Kế toán|
+    :Tiếp nhận chứng từ mới;
+    :Đối chiếu lại công nợ;
+
+endwhile (Không)
+
+
+|Kế toán|
+:Điều chỉnh giá trị mua hàng;
+
+stop
+
+@enduml
+PLANTUML
+@startuml BP06_Stock_Count_Adjustment
+
+title BP-06 - Quy trình Kiểm kê và Điều chỉnh tồn kho
+
+scale 2000 width
+
+!pragma useVerticalIf on
+
+skinparam backgroundColor #FFFFFF
+skinparam defaultFontName Arial
+skinparam defaultFontSize 14
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam wrapWidth 250
+skinparam swimlaneWidth 380
+
+skinparam activity {
+    BackgroundColor #FFFFFF
+    BorderColor #9CA3AF
+    FontColor #111827
+    ArrowColor #6B7280
+}
+
+skinparam swimlane {
+    BorderColor #9CA3AF
+    TitleBackgroundColor #E5E7EB
+}
+
+
+|Kế toán|
+start
+:Lập kế hoạch kiểm kê;
+:Xác định phạm vi kiểm kê;
+:Thông báo thực hiện kiểm kê;
+
+
+|Nhân viên kho|
+:Chuẩn bị khu vực kiểm kê;
+:Kiểm đếm hàng hóa thực tế;
+:Ghi nhận kết quả kiểm kê;
+
+
+while (Kết quả kiểm đếm chưa rõ ràng?) is (Có)
+
+    :Kiểm tra lại vị trí,\nlô và hàng hóa;
+    :Thực hiện kiểm đếm lại;
+    :Cập nhật kết quả kiểm kê;
+
+endwhile (Không)
+
+
+|Nhân viên kho|
+:Tổng hợp số lượng thực tế;
+
+
+|Kế toán|
+:Tiếp nhận kết quả kiểm kê;
+:Đối chiếu số liệu;
+
+
+while (Còn chênh lệch chưa xác định?) is (Có)
+
+    :Xác định mặt hàng\nvà số lượng chênh lệch;
+
+    |Nhân viên kho|
+    :Kiểm tra lại hàng hóa,\nlô và vị trí lưu kho;
+    :Kiểm đếm lại hàng chênh lệch;
+    :Gửi kết quả kiểm tra lại;
+
+    |Kế toán|
+    :Tiếp nhận kết quả kiểm tra;
+    :Đối chiếu lại số liệu;
+
+endwhile (Không)
+
+
+|Kế toán|
+:Lập biên bản kiểm kê;
+
+
+if (Có chênh lệch tồn kho?) then (Có)
+
+    :Xác định số lượng\ncần điều chỉnh;
+    :Ghi nhận điều chỉnh tồn kho;
+    :Ghi nhận giá trị chênh lệch;
+    :Hoàn tất kỳ kiểm kê;
+
+    stop
+
+else (Không)
+
+    :Xác nhận tồn kho\nkhớp kết quả kiểm kê;
+    :Hoàn tất kỳ kiểm kê;
+
+    stop
+
+endif
+
+@enduml
+PLANTUML
+@startuml BP01_Procurement_Inbound_Detailed
+
+title BP-01 - Quy trình Mua hàng và Nhập kho
+
+scale 2400 width
+
+!pragma useVerticalIf on
+
+skinparam backgroundColor #FFFFFF
+skinparam defaultFontName Arial
+skinparam defaultFontSize 14
+skinparam shadowing false
+skinparam roundcorner 8
+
+skinparam wrapWidth 320
+skinparam swimlaneWidth 480
+
+skinparam activity {
+    BackgroundColor #FFFFFF
+    BorderColor #9CA3AF
+    FontColor #111827
+    ArrowColor #6B7280
+}
+
+skinparam swimlane {
+    BorderColor #9CA3AF
+    TitleBackgroundColor #E5E7EB
+}
+
+
+|Nhân viên kho|
+start
+:Kiểm tra tình hình tồn kho;
+
+
+|Kế toán|
+:Xác định hàng hóa\ncần bổ sung;
+:Lập đề xuất mua hàng;
+
+
+|Chủ cửa hàng|
+:Tiếp nhận đề xuất mua hàng;
+:Xem xét và phê duyệt;
+
+
+while (Đề xuất chưa được phê duyệt?) is (Có)
+
+    |Kế toán|
+    :Tiếp nhận lý do\nchưa được phê duyệt;
+    :Điều chỉnh mặt hàng,\nsố lượng hoặc nhu cầu mua;
+    :Gửi lại đề xuất mua hàng;
+
+    |Chủ cửa hàng|
+    :Tiếp nhận đề xuất\nđã điều chỉnh;
+    :Xem xét và phê duyệt lại;
+
+endwhile (Không)
+
+
+|Kế toán|
+:Lập đơn mua hàng;
+:Đặt hàng với nhà cung cấp;
+
+
+|Nhà cung cấp|
+:Tiếp nhận đơn đặt hàng;
+:Kiểm tra khả năng cung ứng;
+
+
+while (Chưa đáp ứng đầy đủ đơn hàng?) is (Có)
+
+    :Thông báo khả năng cung ứng;
+    :Đề xuất điều chỉnh số lượng,\nmặt hàng hoặc thời gian giao;
+
+    |Kế toán|
+    :Tiếp nhận phương án cung ứng;
+    :Trao đổi với nhà cung cấp;
+    :Điều chỉnh nội dung đơn mua;
+
+    |Nhà cung cấp|
+    :Tiếp nhận nội dung điều chỉnh;
+    :Kiểm tra lại khả năng cung ứng;
+
+endwhile (Không)
+
+
+|Nhà cung cấp|
+:Xác nhận đơn đặt hàng;
+:Chuẩn bị hàng;
+:Chuẩn bị chứng từ giao hàng;
+:Giao hàng và chứng từ;
+
+
+|Nhân viên kho|
+:Tiếp nhận hàng;
+:Kiểm đếm hàng thực tế;
+:Kiểm tra mã hàng, lô, màu,\nquy cách và tình trạng hàng;
+
+
+while (Hàng chưa đúng hoặc chưa đủ?) is (Có)
+
+    :Ghi nhận số lượng chênh lệch,\nhàng sai hoặc hàng không đạt;
+    :Thông báo kết quả kiểm nhận\ncho Kế toán;
+
+    |Kế toán|
+    :Tiếp nhận thông tin chênh lệch;
+    :Đối chiếu với đơn mua;
+    :Trao đổi phương án xử lý\nvới nhà cung cấp;
+
+    |Nhà cung cấp|
+    :Tiếp nhận thông tin chênh lệch;
+    :Xác định phương án xử lý;
+    :Thực hiện giao bổ sung,\nđổi hàng hoặc thu hồi hàng;
+
+    |Nhân viên kho|
+    :Tiếp nhận kết quả xử lý;
+    :Kiểm đếm và kiểm tra lại\nhàng hóa;
+
+endwhile (Không)
+
+
+|Nhân viên kho|
+:Nhập hàng vào kho;
+:Sắp xếp hàng theo lô\nvà vị trí lưu trữ;
+:Xác nhận kết quả nhận hàng;
+
+
+|Kế toán|
+:Tiếp nhận chứng từ mua hàng;
+:Đối chiếu hàng nhận\nvà chứng từ;
+
+
+while (Chứng từ chưa khớp\nvới hàng thực nhận?) is (Có)
+
+    :Xác định nội dung\nchênh lệch chứng từ;
+    :Trao đổi và yêu cầu\nđiều chỉnh chứng từ;
+
+    |Nhà cung cấp|
+    :Tiếp nhận yêu cầu điều chỉnh;
+    :Điều chỉnh chứng từ;
+    :Gửi lại chứng từ điều chỉnh;
+
+    |Kế toán|
+    :Tiếp nhận chứng từ mới;
+    :Đối chiếu lại với\nhàng thực nhận;
+
+endwhile (Không)
+
+
+|Kế toán|
+:Ghi nhận công nợ /\nthanh toán;
+
+stop
+
+@enduml

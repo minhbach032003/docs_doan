@@ -1,0 +1,157 @@
+PAGE 22 Bản sao của UC_IS
+Ecjad9tho3xIgOrPxFfz-3: Inventory Staff
+HnQSMyF9S4ewjtUpsama-0: View Product List
+HnQSMyF9S4ewjtUpsama-1: View Product Detail
+HnQSMyF9S4ewjtUpsama-2: View Lot List
+HnQSMyF9S4ewjtUpsama-3: Maintain Product Lot
+HnQSMyF9S4ewjtUpsama-4: View Lot Detail
+HnQSMyF9S4ewjtUpsama-5: View Supplier Return Request List
+HnQSMyF9S4ewjtUpsama-6: View Supplier Return Request Detail
+HnQSMyF9S4ewjtUpsama-7: View Purchase Order List
+HnQSMyF9S4ewjtUpsama-8: View Purchase Order Detail
+HnQSMyF9S4ewjtUpsama-10: View Receipt List
+HnQSMyF9S4ewjtUpsama-11: View Receipt Detail
+HnQSMyF9S4ewjtUpsama-13: Create Receipt from Purchase Order
+HnQSMyF9S4ewjtUpsama-17: Inspect and Post Goods Receipt
+HnQSMyF9S4ewjtUpsama-18: View Warehouse and Location List
+HnQSMyF9S4ewjtUpsama-19: View Location Detail
+HnQSMyF9S4ewjtUpsama-21: View Stock
+HnQSMyF9S4ewjtUpsama-22: View Inventory Balance Detail
+HnQSMyF9S4ewjtUpsama-25: View Defective Goods List
+Zl-le8VQUt3N608skt6E-0: View Defective Goods Detail
+Zl-le8VQUt3N608skt6E-1: View stock movement log
+Zl-le8VQUt3N608skt6E-2: View stock movement details
+Zl-le8VQUt3N608skt6E-3: Trace a product lot through source documents
+Zl-le8VQUt3N608skt6E-7: View Location Move List
+Zl-le8VQUt3N608skt6E-8: View Location Move Detail
+Zl-le8VQUt3N608skt6E-9: View Warehouse Transfer List
+Zl-le8VQUt3N608skt6E-10: View Warehouse Transfer Detail
+Zl-le8VQUt3N608skt6E-11: View Stocktake List
+Zl-le8VQUt3N608skt6E-12: View Stocktake Detail
+Zl-le8VQUt3N608skt6E-13: Perform Stocktake Count and Record Results
+Zl-le8VQUt3N608skt6E-14: View Adjustment Request List
+Zl-le8VQUt3N608skt6E-15: View Adjustment Request Detail
+ik64cCI8z0DGjGiqKu_s-1: <<extend>>
+ik64cCI8z0DGjGiqKu_s-3: <<extend>>
+ik64cCI8z0DGjGiqKu_s-5: <<extend>>
+ik64cCI8z0DGjGiqKu_s-7: <<extend>>
+ik64cCI8z0DGjGiqKu_s-10: <<extend>>
+ik64cCI8z0DGjGiqKu_s-14: <<extend>>
+ik64cCI8z0DGjGiqKu_s-18: <<extend>>
+ik64cCI8z0DGjGiqKu_s-30: <<extend>>
+ik64cCI8z0DGjGiqKu_s-32: <<extend>>
+ik64cCI8z0DGjGiqKu_s-34: <<extend>>
+ik64cCI8z0DGjGiqKu_s-38: <<extend>>
+ik64cCI8z0DGjGiqKu_s-40: <<extend>>
+ik64cCI8z0DGjGiqKu_s-42: <<extend>>
+ik64cCI8z0DGjGiqKu_s-44: <<extend>>
+ik64cCI8z0DGjGiqKu_s-46: <<extend>>
+ik64cCI8z0DGjGiqKu_s-48: <<extend>>
+ik64cCI8z0DGjGiqKu_s-50: <<extend>>
+ik64cCI8z0DGjGiqKu_s-54: <<extend>>
+ik64cCI8z0DGjGiqKu_s-56: <<extend>>
+ik64cCI8z0DGjGiqKu_s-58: <<extend>>
+tjbHrmk1uP8qtIL42BBU-0: WMSD
+bC61M1RO7_ksDillrWli-1: Create location movement
+bC61M1RO7_ksDillrWli-2: Confirm actual location movement
+bC61M1RO7_ksDillrWli-3: Create Transfer Request
+bC61M1RO7_ksDillrWli-4: Create Warehouse Transfer Order
+bC61M1RO7_ksDillrWli-5: Confirm Warehouse Transfer Order
+bC61M1RO7_ksDillrWli-6: View Outbound Delivery List
+bC61M1RO7_ksDillrWli-8: View Outbound Delivery Details
+bC61M1RO7_ksDillrWli-9: View Picking Transfer Order List
+bC61M1RO7_ksDillrWli-10: View Picking Transfer Order Details
+bC61M1RO7_ksDillrWli-11: Create Picking Transfer Order
+bC61M1RO7_ksDillrWli-12: Confirm Picking Transfer Order
+bC61M1RO7_ksDillrWli-13: View goods issue list
+bC61M1RO7_ksDillrWli-14: View goods issue details
+bC61M1RO7_ksDillrWli-15: Post Goods Issue
+bC61M1RO7_ksDillrWli-16: Inspect Defective Goods and Submit Disposition
+bC61M1RO7_ksDillrWli-17: Record approved defective goods disposition
+bC61M1RO7_ksDillrWli-18: View customer return list
+bC61M1RO7_ksDillrWli-19: View customer return details
+bC61M1RO7_ksDillrWli-22: Create Customer Return Request
+bC61M1RO7_ksDillrWli-23: Inspect Customer Return
+bC61M1RO7_ksDillrWli-24: Confirm Customer Return Receipt
+bC61M1RO7_ksDillrWli-25: Confirm Supplier Return Dispatch
+bC61M1RO7_ksDillrWli-26: Create Supplier Return Request
+bC61M1RO7_ksDillrWli-28: Reconcile Stocktake
+bC61M1RO7_ksDillrWli-29: Create Inventory Adjustment Request
+bC61M1RO7_ksDillrWli-33: <<extend>>
+bC61M1RO7_ksDillrWli-35: <<extend>>
+bC61M1RO7_ksDillrWli-37: <<extend>>
+bC61M1RO7_ksDillrWli-39: <<extend>>
+bC61M1RO7_ksDillrWli-41: <<extend>>
+bC61M1RO7_ksDillrWli-43: <<extend>>
+bC61M1RO7_ksDillrWli-45: <<extend>>
+bC61M1RO7_ksDillrWli-47: <<extend>>
+bC61M1RO7_ksDillrWli-49: <<extend>>
+bC61M1RO7_ksDillrWli-51: <<extend>>
+bC61M1RO7_ksDillrWli-53: <<extend>>
+bC61M1RO7_ksDillrWli-55: <<extend>>
+bC61M1RO7_ksDillrWli-57: <<extend>>
+bC61M1RO7_ksDillrWli-59: <<extend>>
+bC61M1RO7_ksDillrWli-61: <<extend>>
+bC61M1RO7_ksDillrWli-63: <<extend>>
+bC61M1RO7_ksDillrWli-65: <<extend>>
+bC61M1RO7_ksDillrWli-67: <<extend>>
+bC61M1RO7_ksDillrWli-69: <<extend>>
+lu9Gxf2gZ-IrakDMEqYD-0: Create Put-away Transfer Order
+lu9Gxf2gZ-IrakDMEqYD-1: Confirm Put-away Transfer Order
+EDGES
+View Product Detail --> View Product List | 
+Maintain Product Lot --> View Lot List | 
+View Lot Detail --> View Lot List | 
+View Supplier Return Request Detail --> View Supplier Return Request List | 
+View Purchase Order Detail --> View Purchase Order List | 
+View Receipt Detail --> View Receipt List | 
+Create Receipt from Purchase Order --> View Receipt Detail | 
+Inspect and Post Goods Receipt --> View Receipt Detail | 
+View Location Detail --> View Warehouse and Location List | 
+View Inventory Balance Detail --> View Stock | 
+View Defective Goods List --> View Stock | 
+View Defective Goods Detail --> View Defective Goods List | 
+View stock movement log --> View Stock | 
+View stock movement details --> View stock movement log | 
+Trace a product lot through source documents --> View stock movement details | 
+View Location Move Detail --> View Location Move List | 
+View Warehouse Transfer Detail --> View Warehouse Transfer List | 
+View Stocktake Detail --> View Stocktake List | 
+Perform Stocktake Count and Record Results --> View Stocktake List | 
+View Adjustment Request Detail --> View Adjustment Request List | 
+Inventory Staff --> View Product List | 
+Inventory Staff --> View Lot List | 
+Inventory Staff --> View Supplier Return Request List | 
+Inventory Staff --> View Purchase Order List | 
+Inventory Staff --> View Receipt List | 
+Inventory Staff --> View Warehouse and Location List | 
+Inventory Staff --> View Stock | 
+Inventory Staff --> View Location Move List | 
+Inventory Staff --> View Warehouse Transfer List | 
+Inventory Staff --> View Stocktake List | 
+Inventory Staff --> View Adjustment Request List | 
+Inspect Defective Goods and Submit Disposition --> View Defective Goods Detail | 
+Record approved defective goods disposition --> View Defective Goods Detail | 
+Create location movement --> View Location Move List | 
+Confirm actual location movement --> View Location Move List | 
+Create Warehouse Transfer Order --> View Warehouse Transfer List | 
+Create Transfer Request --> View Warehouse Transfer List | 
+Confirm Warehouse Transfer Order --> View Warehouse Transfer List | 
+Reconcile Stocktake --> View Stocktake List | 
+Create Inventory Adjustment Request --> View Adjustment Request List | 
+View Outbound Delivery Details --> View Outbound Delivery List | 
+View Picking Transfer Order Details --> View Picking Transfer Order List | 
+Create Picking Transfer Order --> View Picking Transfer Order List | 
+Confirm Picking Transfer Order --> View goods issue list | 
+View goods issue details --> View goods issue list | 
+Post Goods Issue --> View goods issue list | 
+View customer return details --> View customer return list | 
+Create Customer Return Request --> View customer return list | 
+Inspect Customer Return --> View customer return list | 
+Confirm Customer Return Receipt --> View customer return list | 
+Inventory Staff --> View Outbound Delivery List | 
+Inventory Staff --> View customer return list | 
+Inventory Staff --> View goods issue list | 
+Inventory Staff --> View Picking Transfer Order List | 
+Create Put-away Transfer Order --> Inventory Staff | 
+Confirm Put-away Transfer Order --> Inventory Staff | 

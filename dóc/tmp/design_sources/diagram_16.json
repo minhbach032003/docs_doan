@@ -1,0 +1,90 @@
+{
+  "index": 16,
+  "name": "Bản sao của UC Admin",
+  "id": "5AiNLnsWrdKt5xPlOqeq",
+  "nodes": [
+    {
+      "id": "1vtr7URh1HQybIvis97v-3",
+      "text": "Admin",
+      "parent": "1vtr7URh1HQybIvis97v-1"
+    },
+    {
+      "id": "7mLoecg2P2hMXIFEABnu-1",
+      "text": "View account list",
+      "parent": "1vtr7URh1HQybIvis97v-1"
+    },
+    {
+      "id": "WpD3YWBne-XsjOHtgX1Z-0",
+      "text": "Create Staff Account",
+      "parent": "1vtr7URh1HQybIvis97v-1"
+    },
+    {
+      "id": "WpD3YWBne-XsjOHtgX1Z-1",
+      "text": "Maintain Staff Account",
+      "parent": "1vtr7URh1HQybIvis97v-1"
+    },
+    {
+      "id": "WpD3YWBne-XsjOHtgX1Z-2",
+      "text": "View account details",
+      "parent": "1vtr7URh1HQybIvis97v-1"
+    },
+    {
+      "id": "RwubbPNKZzGkUJqShngo-1",
+      "text": "<<extend>>",
+      "parent": "RwubbPNKZzGkUJqShngo-0"
+    },
+    {
+      "id": "RwubbPNKZzGkUJqShngo-9",
+      "text": "<<extend>>",
+      "parent": "RwubbPNKZzGkUJqShngo-8"
+    },
+    {
+      "id": "WyPjqLsa6HJu-KRZHq8X-3",
+      "text": "<<extend>>",
+      "parent": "WyPjqLsa6HJu-KRZHq8X-2"
+    },
+    {
+      "id": "QDZECgM8pX22BYw2RWlB-1",
+      "text": "WMSD",
+      "parent": "1vtr7URh1HQybIvis97v-1"
+    },
+    {
+      "id": "y8ApAoX_r6B1nIgxRp3b-0",
+      "text": "Assign roles and operation permissions",
+      "parent": "1vtr7URh1HQybIvis97v-1"
+    },
+    {
+      "id": "y8ApAoX_r6B1nIgxRp3b-2",
+      "text": "<<extend>>",
+      "parent": "y8ApAoX_r6B1nIgxRp3b-1"
+    }
+  ],
+  "edges": [
+    {
+      "from": "Admin",
+      "to": "View account list",
+      "label": ""
+    },
+    {
+      "from": "View account details",
+      "to": "View account list",
+      "label": ""
+    },
+    {
+      "from": "Maintain Staff Account",
+      "to": "View account details",
+      "label": ""
+    },
+    {
+      "from": "Create Staff Account",
+      "to": "View account list",
+      "label": ""
+    },
+    {
+      "from": "Assign roles and operation permissions",
+      "to": "View account details",
+      "label": ""
+    }
+  ],
+  "uml": []
+}

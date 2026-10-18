@@ -1,0 +1,39 @@
+PAGE 26 Đề xuất hệ thống
+lKZfcly1K4QOlUXZGSHr-1: Accounting / Purchasing
+lKZfcly1K4QOlUXZGSHr-3: Create PO; record supplier confirmation
+lKZfcly1K4QOlUXZGSHr-4: Warehouse
+lKZfcly1K4QOlUXZGSHr-5: Record actual delivery; inspect lot and quality
+lKZfcly1K4QOlUXZGSHr-6: Separate pending, damaged or rejected goods
+lKZfcly1K4QOlUXZGSHr-7: Issue / move / transfer / return / count
+lKZfcly1K4QOlUXZGSHr-8: WMSD
+lKZfcly1K4QOlUXZGSHr-9: Show confirmed and outstanding quantity
+lKZfcly1K4QOlUXZGSHr-10: Accepted?
+lKZfcly1K4QOlUXZGSHr-11: Post accepted stock by lot and location
+lKZfcly1K4QOlUXZGSHr-12: Show usable, pending, damaged and in-transit balances
+lKZfcly1K4QOlUXZGSHr-13: Record stock change, status and history
+lKZfcly1K4QOlUXZGSHr-14: Difference or exception?
+lKZfcly1K4QOlUXZGSHr-15: Warehouse reports and traceability
+lKZfcly1K4QOlUXZGSHr-17: Owner / Store staff
+lKZfcly1K4QOlUXZGSHr-18: Request warehouse operation
+lKZfcly1K4QOlUXZGSHr-19: Review cause and adjustment
+lKZfcly1K4QOlUXZGSHr-24: No
+lKZfcly1K4QOlUXZGSHr-25: Yes
+lKZfcly1K4QOlUXZGSHr-32: Yes
+lKZfcly1K4QOlUXZGSHr-33: No
+EDGES
+3CaAtnLfTuetPmq8Q12P-1 --> Create PO; record supplier confirmation | 
+Warehouse reports and traceability --> 3CaAtnLfTuetPmq8Q12P-3 | 
+Create PO; record supplier confirmation --> Show confirmed and outstanding quantity | 
+Show confirmed and outstanding quantity --> Record actual delivery; inspect lot and quality | 
+Record actual delivery; inspect lot and quality --> Accepted? | 
+Accepted? --> Separate pending, damaged or rejected goods | No
+Accepted? --> Post accepted stock by lot and location | Yes
+Separate pending, damaged or rejected goods --> Show usable, pending, damaged and in-transit balances | 
+Post accepted stock by lot and location --> Show usable, pending, damaged and in-transit balances | 
+Show usable, pending, damaged and in-transit balances --> Request warehouse operation | 
+Request warehouse operation --> Issue / move / transfer / return / count | 
+Issue / move / transfer / return / count --> Record stock change, status and history | 
+Record stock change, status and history --> Difference or exception? | 
+Difference or exception? --> Review cause and adjustment | Yes
+Difference or exception? --> Warehouse reports and traceability | No
+Review cause and adjustment --> Warehouse reports and traceability | 

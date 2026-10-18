@@ -1,0 +1,460 @@
+{
+  "index": 14,
+  "name": "Bản sao của UC Accountants",
+  "id": "gw9AI3Sb3Bxrp9-Y_uep",
+  "nodes": [
+    {
+      "id": "5JE5XvVgu9_8TSCM1Qv4-3",
+      "text": "Accountant",
+      "parent": "5JE5XvVgu9_8TSCM1Qv4-1"
+    },
+    {
+      "id": "djV5wjn2JARHuLGwhc0a-1",
+      "text": "View Product List",
+      "parent": "5JE5XvVgu9_8TSCM1Qv4-1"
+    },
+    {
+      "id": "djV5wjn2JARHuLGwhc0a-2",
+      "text": "View Product Detail",
+      "parent": "5JE5XvVgu9_8TSCM1Qv4-1"
+    },
+    {
+      "id": "djV5wjn2JARHuLGwhc0a-3",
+      "text": "View Supplier List",
+      "parent": "5JE5XvVgu9_8TSCM1Qv4-1"
+    },
+    {
+      "id": "djV5wjn2JARHuLGwhc0a-4",
+      "text": "View Supplier Detail",
+      "parent": "5JE5XvVgu9_8TSCM1Qv4-1"
+    },
+    {
+      "id": "djV5wjn2JARHuLGwhc0a-8",
+      "text": "View Receipt List",
+      "parent": "5JE5XvVgu9_8TSCM1Qv4-1"
+    },
+    {
+      "id": "djV5wjn2JARHuLGwhc0a-9",
+      "text": "View Receipt Detail",
+      "parent": "5JE5XvVgu9_8TSCM1Qv4-1"
+    },
+    {
+      "id": "djV5wjn2JARHuLGwhc0a-10",
+      "text": "View stock",
+      "parent": "5JE5XvVgu9_8TSCM1Qv4-1"
+    },
+    {
+      "id": "djV5wjn2JARHuLGwhc0a-11",
+      "text": "View Return List",
+      "parent": "5JE5XvVgu9_8TSCM1Qv4-1"
+    },
+    {
+      "id": "djV5wjn2JARHuLGwhc0a-12",
+      "text": "View Return Detail",
+      "parent": "5JE5XvVgu9_8TSCM1Qv4-1"
+    },
+    {
+      "id": "djV5wjn2JARHuLGwhc0a-13",
+      "text": "View Supplier Return Request List",
+      "parent": "5JE5XvVgu9_8TSCM1Qv4-1"
+    },
+    {
+      "id": "djV5wjn2JARHuLGwhc0a-14",
+      "text": "View Supplier Return Request Detail",
+      "parent": "5JE5XvVgu9_8TSCM1Qv4-1"
+    },
+    {
+      "id": "P6PqGaSMakOXByM-6BJ0-0",
+      "text": "View replenishment request list",
+      "parent": "5JE5XvVgu9_8TSCM1Qv4-1"
+    },
+    {
+      "id": "OiBjZi4-b5B3QhKJki2p-0",
+      "text": "View Purchase Order List",
+      "parent": "5JE5XvVgu9_8TSCM1Qv4-1"
+    },
+    {
+      "id": "fXGo_9UGOzXs_fXfxmi3-0",
+      "text": "View Purchase Order Detail",
+      "parent": "5JE5XvVgu9_8TSCM1Qv4-1"
+    },
+    {
+      "id": "1nkmX8gLarwekJAEDY6Y-1",
+      "text": "<<extend>>",
+      "parent": "1nkmX8gLarwekJAEDY6Y-0"
+    },
+    {
+      "id": "1nkmX8gLarwekJAEDY6Y-3",
+      "text": "<<extend>>",
+      "parent": "1nkmX8gLarwekJAEDY6Y-2"
+    },
+    {
+      "id": "1nkmX8gLarwekJAEDY6Y-7",
+      "text": "<<extend>>",
+      "parent": "1nkmX8gLarwekJAEDY6Y-6"
+    },
+    {
+      "id": "1nkmX8gLarwekJAEDY6Y-11",
+      "text": "<<extend>>",
+      "parent": "1nkmX8gLarwekJAEDY6Y-10"
+    },
+    {
+      "id": "1nkmX8gLarwekJAEDY6Y-15",
+      "text": "<<extend>>",
+      "parent": "1nkmX8gLarwekJAEDY6Y-14"
+    },
+    {
+      "id": "Zj0430dctbhGvrM9QxCX-4",
+      "text": "<<extend>>",
+      "parent": "Zj0430dctbhGvrM9QxCX-3"
+    },
+    {
+      "id": "UiF_IyCJTQUlsZS66Cd8-1",
+      "text": "<<extend>>",
+      "parent": "UiF_IyCJTQUlsZS66Cd8-0"
+    },
+    {
+      "id": "UiF_IyCJTQUlsZS66Cd8-3",
+      "text": "<<extend>>",
+      "parent": "UiF_IyCJTQUlsZS66Cd8-2"
+    },
+    {
+      "id": "xDYCqkfDY9G_adAXbGBo-0",
+      "text": "WMSD",
+      "parent": "5JE5XvVgu9_8TSCM1Qv4-1"
+    },
+    {
+      "id": "VCjwgFzhUoLsKfYjCzjB-0",
+      "text": "View Operational Reports",
+      "parent": "5JE5XvVgu9_8TSCM1Qv4-1"
+    },
+    {
+      "id": "GSLvDh7ppzMoTg07_oWF-0",
+      "text": "Maintain Supplier",
+      "parent": "5JE5XvVgu9_8TSCM1Qv4-1"
+    },
+    {
+      "id": "GSLvDh7ppzMoTg07_oWF-1",
+      "text": "View replenishment request details",
+      "parent": "5JE5XvVgu9_8TSCM1Qv4-1"
+    },
+    {
+      "id": "GSLvDh7ppzMoTg07_oWF-3",
+      "text": "<<extend>>",
+      "parent": "GSLvDh7ppzMoTg07_oWF-2"
+    },
+    {
+      "id": "GSLvDh7ppzMoTg07_oWF-4",
+      "text": "Create replenishment request",
+      "parent": "5JE5XvVgu9_8TSCM1Qv4-1"
+    },
+    {
+      "id": "GSLvDh7ppzMoTg07_oWF-6",
+      "text": "<<extend>>",
+      "parent": "GSLvDh7ppzMoTg07_oWF-5"
+    },
+    {
+      "id": "GSLvDh7ppzMoTg07_oWF-7",
+      "text": "Manage Purchase Order and Supplier Confirmation",
+      "parent": "5JE5XvVgu9_8TSCM1Qv4-1"
+    },
+    {
+      "id": "GSLvDh7ppzMoTg07_oWF-8",
+      "text": "View Customer List",
+      "parent": "5JE5XvVgu9_8TSCM1Qv4-1"
+    },
+    {
+      "id": "GSLvDh7ppzMoTg07_oWF-9",
+      "text": "View Customer Details",
+      "parent": "5JE5XvVgu9_8TSCM1Qv4-1"
+    },
+    {
+      "id": "GSLvDh7ppzMoTg07_oWF-10",
+      "text": "View Selling Price List",
+      "parent": "5JE5XvVgu9_8TSCM1Qv4-1"
+    },
+    {
+      "id": "GSLvDh7ppzMoTg07_oWF-12",
+      "text": "View Selling Price Details",
+      "parent": "5JE5XvVgu9_8TSCM1Qv4-1"
+    },
+    {
+      "id": "GSLvDh7ppzMoTg07_oWF-13",
+      "text": "View Internal Invoice List",
+      "parent": "5JE5XvVgu9_8TSCM1Qv4-1"
+    },
+    {
+      "id": "GSLvDh7ppzMoTg07_oWF-14",
+      "text": "View Internal Invoice Details",
+      "parent": "5JE5XvVgu9_8TSCM1Qv4-1"
+    },
+    {
+      "id": "GSLvDh7ppzMoTg07_oWF-15",
+      "text": "Create Internal Invoice",
+      "parent": "5JE5XvVgu9_8TSCM1Qv4-1"
+    },
+    {
+      "id": "GSLvDh7ppzMoTg07_oWF-16",
+      "text": "Issue Internal Invoice and Produce PDF",
+      "parent": "5JE5XvVgu9_8TSCM1Qv4-1"
+    },
+    {
+      "id": "GSLvDh7ppzMoTg07_oWF-19",
+      "text": "View Refund Request List",
+      "parent": "5JE5XvVgu9_8TSCM1Qv4-1"
+    },
+    {
+      "id": "GSLvDh7ppzMoTg07_oWF-22",
+      "text": "View Refund Request Details",
+      "parent": "5JE5XvVgu9_8TSCM1Qv4-1"
+    },
+    {
+      "id": "GSLvDh7ppzMoTg07_oWF-23",
+      "text": "Create Customer Return Refund Request",
+      "parent": "5JE5XvVgu9_8TSCM1Qv4-1"
+    },
+    {
+      "id": "GSLvDh7ppzMoTg07_oWF-24",
+      "text": "Record Refund Completion",
+      "parent": "5JE5XvVgu9_8TSCM1Qv4-1"
+    },
+    {
+      "id": "GSLvDh7ppzMoTg07_oWF-25",
+      "text": "View stock movement log",
+      "parent": "5JE5XvVgu9_8TSCM1Qv4-1"
+    },
+    {
+      "id": "GSLvDh7ppzMoTg07_oWF-26",
+      "text": "View stock movement details",
+      "parent": "5JE5XvVgu9_8TSCM1Qv4-1"
+    },
+    {
+      "id": "GSLvDh7ppzMoTg07_oWF-27",
+      "text": "Trace a product lot through source documents",
+      "parent": "5JE5XvVgu9_8TSCM1Qv4-1"
+    },
+    {
+      "id": "GSLvDh7ppzMoTg07_oWF-29",
+      "text": "<<extend>>",
+      "parent": "GSLvDh7ppzMoTg07_oWF-28"
+    },
+    {
+      "id": "GSLvDh7ppzMoTg07_oWF-31",
+      "text": "<<extend>>",
+      "parent": "GSLvDh7ppzMoTg07_oWF-30"
+    },
+    {
+      "id": "GSLvDh7ppzMoTg07_oWF-33",
+      "text": "<<extend>>",
+      "parent": "GSLvDh7ppzMoTg07_oWF-32"
+    },
+    {
+      "id": "GSLvDh7ppzMoTg07_oWF-35",
+      "text": "<<extend>>",
+      "parent": "GSLvDh7ppzMoTg07_oWF-34"
+    },
+    {
+      "id": "GSLvDh7ppzMoTg07_oWF-37",
+      "text": "<<extend>>",
+      "parent": "GSLvDh7ppzMoTg07_oWF-36"
+    },
+    {
+      "id": "GSLvDh7ppzMoTg07_oWF-39",
+      "text": "<<extend>>",
+      "parent": "GSLvDh7ppzMoTg07_oWF-38"
+    },
+    {
+      "id": "GSLvDh7ppzMoTg07_oWF-41",
+      "text": "<<extend>>",
+      "parent": "GSLvDh7ppzMoTg07_oWF-40"
+    },
+    {
+      "id": "GSLvDh7ppzMoTg07_oWF-43",
+      "text": "<<extend>>",
+      "parent": "GSLvDh7ppzMoTg07_oWF-42"
+    },
+    {
+      "id": "GSLvDh7ppzMoTg07_oWF-45",
+      "text": "<<extend>>",
+      "parent": "GSLvDh7ppzMoTg07_oWF-44"
+    },
+    {
+      "id": "GSLvDh7ppzMoTg07_oWF-47",
+      "text": "<<extend>>",
+      "parent": "GSLvDh7ppzMoTg07_oWF-46"
+    }
+  ],
+  "edges": [
+    {
+      "from": "Accountant",
+      "to": "View Supplier List",
+      "label": ""
+    },
+    {
+      "from": "Accountant",
+      "to": "View Receipt List",
+      "label": ""
+    },
+    {
+      "from": "Accountant",
+      "to": "View Product List",
+      "label": ""
+    },
+    {
+      "from": "Accountant",
+      "to": "View stock",
+      "label": ""
+    },
+    {
+      "from": "Accountant",
+      "to": "View Return List",
+      "label": ""
+    },
+    {
+      "from": "Accountant",
+      "to": "View Supplier Return Request List",
+      "label": ""
+    },
+    {
+      "from": "Accountant",
+      "to": "View Purchase Order List",
+      "label": ""
+    },
+    {
+      "from": "View Purchase Order Detail",
+      "to": "View Purchase Order List",
+      "label": ""
+    },
+    {
+      "from": "Maintain Supplier",
+      "to": "View Supplier List",
+      "label": ""
+    },
+    {
+      "from": "View Supplier Detail",
+      "to": "View Supplier List",
+      "label": ""
+    },
+    {
+      "from": "View Product Detail",
+      "to": "View Product List",
+      "label": ""
+    },
+    {
+      "from": "View Receipt Detail",
+      "to": "View Receipt List",
+      "label": ""
+    },
+    {
+      "from": "View replenishment request list",
+      "to": "Accountant",
+      "label": ""
+    },
+    {
+      "from": "View replenishment request details",
+      "to": "View replenishment request list",
+      "label": ""
+    },
+    {
+      "from": "View Return Detail",
+      "to": "View Return List",
+      "label": ""
+    },
+    {
+      "from": "View Supplier Return Request Detail",
+      "to": "View Supplier Return Request List",
+      "label": ""
+    },
+    {
+      "from": "View Operational Reports",
+      "to": "Accountant",
+      "label": ""
+    },
+    {
+      "from": "Manage Purchase Order and Supplier Confirmation",
+      "to": "View Purchase Order List",
+      "label": ""
+    },
+    {
+      "from": "Create replenishment request",
+      "to": "View replenishment request list",
+      "label": ""
+    },
+    {
+      "from": "View Customer Details",
+      "to": "View Customer List",
+      "label": ""
+    },
+    {
+      "from": "View Selling Price Details",
+      "to": "View Selling Price List",
+      "label": ""
+    },
+    {
+      "from": "View Internal Invoice Details",
+      "to": "View Internal Invoice List",
+      "label": ""
+    },
+    {
+      "from": "Create Internal Invoice",
+      "to": "View Internal Invoice List",
+      "label": ""
+    },
+    {
+      "from": "Issue Internal Invoice and Produce PDF",
+      "to": "View Internal Invoice List",
+      "label": ""
+    },
+    {
+      "from": "View Refund Request Details",
+      "to": "View Refund Request List",
+      "label": ""
+    },
+    {
+      "from": "Create Customer Return Refund Request",
+      "to": "View Refund Request List",
+      "label": ""
+    },
+    {
+      "from": "Record Refund Completion",
+      "to": "View Refund Request List",
+      "label": ""
+    },
+    {
+      "from": "View stock movement details",
+      "to": "View stock movement log",
+      "label": ""
+    },
+    {
+      "from": "Trace a product lot through source documents",
+      "to": "View stock movement log",
+      "label": ""
+    },
+    {
+      "from": "Accountant",
+      "to": "View Customer List",
+      "label": ""
+    },
+    {
+      "from": "Accountant",
+      "to": "View Selling Price List",
+      "label": ""
+    },
+    {
+      "from": "Accountant",
+      "to": "View Refund Request List",
+      "label": ""
+    },
+    {
+      "from": "Accountant",
+      "to": "View Internal Invoice List",
+      "label": ""
+    },
+    {
+      "from": "Accountant",
+      "to": "View stock movement log",
+      "label": ""
+    }
+  ],
+  "uml": []
+}

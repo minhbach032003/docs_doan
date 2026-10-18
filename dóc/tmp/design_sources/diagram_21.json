@@ -1,0 +1,565 @@
+{
+  "index": 21,
+  "name": "UC_IS",
+  "id": "YCl4LXnSsJz5FAlBISEf",
+  "nodes": [
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-1",
+      "text": "WMSD",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-2",
+      "text": "Inventory Staff",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-3",
+      "text": "UC-08  View Product List",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-5",
+      "text": "UC-09  View Product Detail",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-11",
+      "text": "UC-14  View Lot List",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-13",
+      "text": "UC-15  View Lot Detail",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-14",
+      "text": "UC-16  Create Lot",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-23",
+      "text": "UC-27  View Purchase Order List",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-24",
+      "text": "UC-28  View Purchase Order Detail",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-25",
+      "text": "UC-32  View Outstanding Purchase Quantity",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-26",
+      "text": "UC-33  View Receipt List",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-27",
+      "text": "UC-34  View Receipt Detail",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-28",
+      "text": "UC-41  View Warehouse and Location List",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-29",
+      "text": "UC-42  View Location Detail",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-33",
+      "text": "UC-47  View Inventory List by Lot, Location and Status",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-34",
+      "text": "UC-48  View Inventory Balance Detail",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-35",
+      "text": "UC-51  View Defective Goods List",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-36",
+      "text": "UC-52  View Defective Goods Detail",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-38",
+      "text": "UC-57  View Location Move List",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-39",
+      "text": "UC-58  View Location Move Detail",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-40",
+      "text": "UC-61  View Warehouse Transfer List",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-41",
+      "text": "UC-62  View Warehouse Transfer Detail",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-43",
+      "text": "UC-70  View Stocktake List",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-44",
+      "text": "UC-71  View Stocktake Detail",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-46",
+      "text": "UC-73  Capture Book Balance at Cut-off",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-47",
+      "text": "UC-77  View Adjustment Request List",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-48",
+      "text": "UC-78  View Adjustment Request Detail",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-50",
+      "text": "UC-96  View Supplier Return Request List",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-51",
+      "text": "UC-97  View Supplier Return Request Detail",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-53",
+      "text": "UC-102  View Stock In-Out Balance Report",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-54",
+      "text": "UC-103  View Inventory by Lot and Location Report",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-56",
+      "text": "UC-105  View Transfer Report",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-57",
+      "text": "UC-106  View Stocktake and Adjustment Report",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-58",
+      "text": "UC-107  View Inventory Movement List",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-59",
+      "text": "UC-108  View Inventory Movement Detail",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-60",
+      "text": "UC-109  Trace Lot by Source Document",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-61",
+      "text": "«extend»",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-64",
+      "text": "«extend»",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-68",
+      "text": "«extend»",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-69",
+      "text": "«extend» [check remainder]",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-70",
+      "text": "«extend»",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-71",
+      "text": "«extend»",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-74",
+      "text": "«extend»",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-75",
+      "text": "«extend»",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-76",
+      "text": "«extend» [selected defect]",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-78",
+      "text": "«extend»",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-79",
+      "text": "«extend»",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-81",
+      "text": "«extend»",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-83",
+      "text": "«extend»",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-85",
+      "text": "«extend» [selected supplier return]",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-87",
+      "text": "«extend» [selected movement]",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-88",
+      "text": "«extend» [trace requested]",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-92",
+      "text": "«extend»",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-95",
+      "text": "«extend»",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-96",
+      "text": "«extend»",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-111",
+      "text": "«extend»",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-113",
+      "text": "UC-35 Create Receipt from Purchase Order",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-114",
+      "text": "UC-36 Record Actual Receipt Characteristics",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-115",
+      "text": "UC-37 Classify Inspection Result",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-116",
+      "text": "UC-38 Record Defective Goods on Receipt",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-117",
+      "text": "UC-39 Record Receipt Discrepancy",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-118",
+      "text": "UC-40 Complete Accepted Receipt",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-119",
+      "text": "«extend»",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-123",
+      "text": "«extend»",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-124",
+      "text": "«extend»",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-125",
+      "text": "«extend»",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-126",
+      "text": "«extend»",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-127",
+      "text": "«extend»",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-128",
+      "text": "UC-49 Move Goods to Pending or Damaged Status",
+      "parent": "1"
+    },
+    {
+      "id": "hnvXY7pMrTnNXEOp2S06-129",
+      "text": "«extend»",
+      "parent": "1"
+    }
+  ],
+  "edges": [
+    {
+      "from": "Inventory Staff",
+      "to": "UC-08  View Product List",
+      "label": ""
+    },
+    {
+      "from": "Inventory Staff",
+      "to": "UC-14  View Lot List",
+      "label": ""
+    },
+    {
+      "from": "UC-09  View Product Detail",
+      "to": "UC-08  View Product List",
+      "label": "«extend»"
+    },
+    {
+      "from": "UC-15  View Lot Detail",
+      "to": "UC-14  View Lot List",
+      "label": "«extend»"
+    },
+    {
+      "from": "UC-28  View Purchase Order Detail",
+      "to": "UC-27  View Purchase Order List",
+      "label": "«extend»"
+    },
+    {
+      "from": "UC-32  View Outstanding Purchase Quantity",
+      "to": "UC-28  View Purchase Order Detail",
+      "label": "«extend» [check remainder]"
+    },
+    {
+      "from": "UC-34  View Receipt Detail",
+      "to": "UC-33  View Receipt List",
+      "label": "«extend»"
+    },
+    {
+      "from": "UC-42  View Location Detail",
+      "to": "UC-41  View Warehouse and Location List",
+      "label": "«extend»"
+    },
+    {
+      "from": "UC-48  View Inventory Balance Detail",
+      "to": "UC-47  View Inventory List by Lot, Location and Status",
+      "label": "«extend»"
+    },
+    {
+      "from": "UC-51  View Defective Goods List",
+      "to": "UC-47  View Inventory List by Lot, Location and Status",
+      "label": "«extend»"
+    },
+    {
+      "from": "UC-52  View Defective Goods Detail",
+      "to": "UC-51  View Defective Goods List",
+      "label": "«extend» [selected defect]"
+    },
+    {
+      "from": "UC-58  View Location Move Detail",
+      "to": "UC-57  View Location Move List",
+      "label": "«extend»"
+    },
+    {
+      "from": "UC-62  View Warehouse Transfer Detail",
+      "to": "UC-61  View Warehouse Transfer List",
+      "label": "«extend»"
+    },
+    {
+      "from": "UC-71  View Stocktake Detail",
+      "to": "UC-70  View Stocktake List",
+      "label": "«extend»"
+    },
+    {
+      "from": "UC-78  View Adjustment Request Detail",
+      "to": "UC-77  View Adjustment Request List",
+      "label": "«extend»"
+    },
+    {
+      "from": "UC-97  View Supplier Return Request Detail",
+      "to": "UC-96  View Supplier Return Request List",
+      "label": "«extend» [selected supplier return]"
+    },
+    {
+      "from": "UC-108  View Inventory Movement Detail",
+      "to": "UC-107  View Inventory Movement List",
+      "label": "«extend» [selected movement]"
+    },
+    {
+      "from": "UC-109  Trace Lot by Source Document",
+      "to": "UC-108  View Inventory Movement Detail",
+      "label": "«extend» [trace requested]"
+    },
+    {
+      "from": "UC-16  Create Lot",
+      "to": "UC-14  View Lot List",
+      "label": "«extend»"
+    },
+    {
+      "from": "UC-107  View Inventory Movement List",
+      "to": "UC-47  View Inventory List by Lot, Location and Status",
+      "label": "«extend»"
+    },
+    {
+      "from": "UC-96  View Supplier Return Request List",
+      "to": "UC-14  View Lot List",
+      "label": "«extend»"
+    },
+    {
+      "from": "Inventory Staff",
+      "to": "UC-27  View Purchase Order List",
+      "label": ""
+    },
+    {
+      "from": "Inventory Staff",
+      "to": "UC-33  View Receipt List",
+      "label": ""
+    },
+    {
+      "from": "Inventory Staff",
+      "to": "UC-41  View Warehouse and Location List",
+      "label": ""
+    },
+    {
+      "from": "Inventory Staff",
+      "to": "UC-47  View Inventory List by Lot, Location and Status",
+      "label": ""
+    },
+    {
+      "from": "Inventory Staff",
+      "to": "UC-57  View Location Move List",
+      "label": ""
+    },
+    {
+      "from": "Inventory Staff",
+      "to": "UC-61  View Warehouse Transfer List",
+      "label": ""
+    },
+    {
+      "from": "Inventory Staff",
+      "to": "UC-70  View Stocktake List",
+      "label": ""
+    },
+    {
+      "from": "Inventory Staff",
+      "to": "UC-77  View Adjustment Request List",
+      "label": ""
+    },
+    {
+      "from": "Inventory Staff",
+      "to": "UC-102  View Stock In-Out Balance Report",
+      "label": ""
+    },
+    {
+      "from": "Inventory Staff",
+      "to": "UC-103  View Inventory by Lot and Location Report",
+      "label": ""
+    },
+    {
+      "from": "Inventory Staff",
+      "to": "UC-105  View Transfer Report",
+      "label": ""
+    },
+    {
+      "from": "Inventory Staff",
+      "to": "UC-106  View Stocktake and Adjustment Report",
+      "label": ""
+    },
+    {
+      "from": "UC-73  Capture Book Balance at Cut-off",
+      "to": "UC-70  View Stocktake List",
+      "label": "«extend»"
+    },
+    {
+      "from": "UC-36 Record Actual Receipt Characteristics",
+      "to": "UC-34  View Receipt Detail",
+      "label": "«extend»"
+    },
+    {
+      "from": "UC-35 Create Receipt from Purchase Order",
+      "to": "UC-34  View Receipt Detail",
+      "label": "«extend»"
+    },
+    {
+      "from": "UC-37 Classify Inspection Result",
+      "to": "UC-34  View Receipt Detail",
+      "label": "«extend»"
+    },
+    {
+      "from": "UC-38 Record Defective Goods on Receipt",
+      "to": "UC-34  View Receipt Detail",
+      "label": "«extend»"
+    },
+    {
+      "from": "UC-39 Record Receipt Discrepancy",
+      "to": "UC-34  View Receipt Detail",
+      "label": "«extend»"
+    },
+    {
+      "from": "UC-40 Complete Accepted Receipt",
+      "to": "UC-34  View Receipt Detail",
+      "label": "«extend»"
+    },
+    {
+      "from": "UC-49 Move Goods to Pending or Damaged Status",
+      "to": "UC-47  View Inventory List by Lot, Location and Status",
+      "label": "«extend»"
+    }
+  ],
+  "uml": []
+}

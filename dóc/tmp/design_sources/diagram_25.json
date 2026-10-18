@@ -1,0 +1,235 @@
+{
+  "index": 25,
+  "name": "Kho - Hiện tại",
+  "id": "gEUesGC2L4KJ1nOHwLb2",
+  "nodes": [
+    {
+      "id": "2vsmv7KolJS_8Es9j0dh-1",
+      "text": "Store staff",
+      "parent": "1"
+    },
+    {
+      "id": "2vsmv7KolJS_8Es9j0dh-3",
+      "text": "Request goods issue",
+      "parent": "2vsmv7KolJS_8Es9j0dh-1"
+    },
+    {
+      "id": "2vsmv7KolJS_8Es9j0dh-4",
+      "text": "Revise requested quantity",
+      "parent": "2vsmv7KolJS_8Es9j0dh-1"
+    },
+    {
+      "id": "2vsmv7KolJS_8Es9j0dh-6",
+      "text": "Receive return request",
+      "parent": "2vsmv7KolJS_8Es9j0dh-1"
+    },
+    {
+      "id": "2vsmv7KolJS_8Es9j0dh-7",
+      "text": "Warehouse",
+      "parent": "1"
+    },
+    {
+      "id": "2vsmv7KolJS_8Es9j0dh-8",
+      "text": "Find lot and location",
+      "parent": "2vsmv7KolJS_8Es9j0dh-7"
+    },
+    {
+      "id": "2vsmv7KolJS_8Es9j0dh-9",
+      "text": "Usable stock enough?",
+      "parent": "2vsmv7KolJS_8Es9j0dh-7"
+    },
+    {
+      "id": "2vsmv7KolJS_8Es9j0dh-10",
+      "text": "Pick and issue actual quantity",
+      "parent": "2vsmv7KolJS_8Es9j0dh-7"
+    },
+    {
+      "id": "2vsmv7KolJS_8Es9j0dh-13",
+      "text": "Move position or dispatch to other warehouse",
+      "parent": "2vsmv7KolJS_8Es9j0dh-7"
+    },
+    {
+      "id": "2vsmv7KolJS_8Es9j0dh-14",
+      "text": "Cross-warehouse?",
+      "parent": "2vsmv7KolJS_8Es9j0dh-7"
+    },
+    {
+      "id": "2vsmv7KolJS_8Es9j0dh-15",
+      "text": "Record new position",
+      "parent": "2vsmv7KolJS_8Es9j0dh-7"
+    },
+    {
+      "id": "2vsmv7KolJS_8Es9j0dh-17",
+      "text": "Inspect goods and condition",
+      "parent": "2vsmv7KolJS_8Es9j0dh-7"
+    },
+    {
+      "id": "2vsmv7KolJS_8Es9j0dh-18",
+      "text": "Keep pending / damaged separate; decide disposition",
+      "parent": "2vsmv7KolJS_8Es9j0dh-7"
+    },
+    {
+      "id": "2vsmv7KolJS_8Es9j0dh-21",
+      "text": "Count / recount by lot, location and status",
+      "parent": "2vsmv7KolJS_8Es9j0dh-7"
+    },
+    {
+      "id": "2vsmv7KolJS_8Es9j0dh-22",
+      "text": "Accounting",
+      "parent": "1"
+    },
+    {
+      "id": "2vsmv7KolJS_8Es9j0dh-23",
+      "text": "Reconcile dispatch with destination receipt",
+      "parent": "2vsmv7KolJS_8Es9j0dh-22"
+    },
+    {
+      "id": "2vsmv7KolJS_8Es9j0dh-24",
+      "text": "Compare and note variance",
+      "parent": "2vsmv7KolJS_8Es9j0dh-22"
+    },
+    {
+      "id": "2vsmv7KolJS_8Es9j0dh-25",
+      "text": "Owner",
+      "parent": "1"
+    },
+    {
+      "id": "2vsmv7KolJS_8Es9j0dh-26",
+      "text": "Investigate shortage / damage if different",
+      "parent": "2vsmv7KolJS_8Es9j0dh-25"
+    },
+    {
+      "id": "2vsmv7KolJS_8Es9j0dh-27",
+      "text": "Review cause / approve adjustment if needed",
+      "parent": "2vsmv7KolJS_8Es9j0dh-25"
+    },
+    {
+      "id": "2vsmv7KolJS_8Es9j0dh-32",
+      "text": "No",
+      "parent": "1"
+    },
+    {
+      "id": "2vsmv7KolJS_8Es9j0dh-33",
+      "text": "Yes",
+      "parent": "1"
+    },
+    {
+      "id": "2vsmv7KolJS_8Es9j0dh-38",
+      "text": "No",
+      "parent": "1"
+    },
+    {
+      "id": "2vsmv7KolJS_8Es9j0dh-39",
+      "text": "Yes",
+      "parent": "1"
+    }
+  ],
+  "edges": [
+    {
+      "from": "",
+      "to": "Request goods issue",
+      "label": ""
+    },
+    {
+      "from": "Keep pending / damaged separate; decide disposition",
+      "to": "Count / recount by lot, location and status",
+      "label": ""
+    },
+    {
+      "from": "Pick and issue actual quantity",
+      "to": "",
+      "label": ""
+    },
+    {
+      "from": "",
+      "to": "Move position or dispatch to other warehouse",
+      "label": ""
+    },
+    {
+      "from": "Record new position",
+      "to": "",
+      "label": ""
+    },
+    {
+      "from": "Review cause / approve adjustment if needed",
+      "to": "",
+      "label": ""
+    },
+    {
+      "from": "Request goods issue",
+      "to": "Find lot and location",
+      "label": ""
+    },
+    {
+      "from": "Find lot and location",
+      "to": "Usable stock enough?",
+      "label": ""
+    },
+    {
+      "from": "Usable stock enough?",
+      "to": "Revise requested quantity",
+      "label": "No"
+    },
+    {
+      "from": "Usable stock enough?",
+      "to": "Pick and issue actual quantity",
+      "label": "Yes"
+    },
+    {
+      "from": "Revise requested quantity",
+      "to": "",
+      "label": ""
+    },
+    {
+      "from": "Move position or dispatch to other warehouse",
+      "to": "Cross-warehouse?",
+      "label": ""
+    },
+    {
+      "from": "Cross-warehouse?",
+      "to": "Record new position",
+      "label": "No"
+    },
+    {
+      "from": "Cross-warehouse?",
+      "to": "Reconcile dispatch with destination receipt",
+      "label": "Yes"
+    },
+    {
+      "from": "Reconcile dispatch with destination receipt",
+      "to": "Investigate shortage / damage if different",
+      "label": ""
+    },
+    {
+      "from": "Investigate shortage / damage if different",
+      "to": "",
+      "label": ""
+    },
+    {
+      "from": "",
+      "to": "Receive return request",
+      "label": ""
+    },
+    {
+      "from": "Receive return request",
+      "to": "Inspect goods and condition",
+      "label": ""
+    },
+    {
+      "from": "Inspect goods and condition",
+      "to": "Keep pending / damaged separate; decide disposition",
+      "label": ""
+    },
+    {
+      "from": "Count / recount by lot, location and status",
+      "to": "Compare and note variance",
+      "label": ""
+    },
+    {
+      "from": "Compare and note variance",
+      "to": "Review cause / approve adjustment if needed",
+      "label": ""
+    }
+  ],
+  "uml": []
+}

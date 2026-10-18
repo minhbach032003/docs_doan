@@ -1,0 +1,164 @@
+PAGE 27 BF01 Mới
+ZxRsHPQNPQhP5LSLKB3s-3: Accountant
+ZxRsHPQNPQhP5LSLKB3s-9: Review stock replenishment need
+ZxRsHPQNPQhP5LSLKB3s-11: Create replenishment request
+ZxRsHPQNPQhP5LSLKB3s-22: Create purchase order
+ZxRsHPQNPQhP5LSLKB3s-28: Record supplier confirmation
+Ile9ekywh-2buuYT2m_F-4: Revise replenishment request
+ZxRsHPQNPQhP5LSLKB3s-4: System
+ZxRsHPQNPQhP5LSLKB3s-13: Record replenishment request
+ZxRsHPQNPQhP5LSLKB3s-15: Show request and current stock information
+ZxRsHPQNPQhP5LSLKB3s-49: Increase inventory by lot,
+location and status
+ZxRsHPQNPQhP5LSLKB3s-51: Update outstanding purchase quantity
+ZxRsHPQNPQhP5LSLKB3s-43: Record accepted quantity
+ZxRsHPQNPQhP5LSLKB3s-58: Record discrepancy information
+ZxRsHPQNPQhP5LSLKB3s-55: Keep non-usable quantity
+outside usable inventory
+ZxRsHPQNPQhP5LSLKB3s-66: Update request status to Rejected
+ZxRsHPQNPQhP5LSLKB3s-21: Update request status to Approved
+ZxRsHPQNPQhP5LSLKB3s-24: Link purchase order to approved request
+ZxRsHPQNPQhP5LSLKB3s-30: Update confirmed quantity
+and expected delivery date
+ZxRsHPQNPQhP5LSLKB3s-44: Complete goods receipt
+ZxRsHPQNPQhP5LSLKB3s-47: Put accepted goods away
+ZxRsHPQNPQhP5LSLKB3s-32: Create goods receipt from purchase order
+ZxRsHPQNPQhP5LSLKB3s-38: Inspect received goods
+ZxRsHPQNPQhP5LSLKB3s-26: Track ordered and outstanding quantities
+ZxRsHPQNPQhP5LSLKB3s-34: Record actual received quantity, lot and condition
+ZxRsHPQNPQhP5LSLKB3s-36: Compare received quantity
+with purchase order
+ZxRsHPQNPQhP5LSLKB3s-40: Goods accepted?
+ZxRsHPQNPQhP5LSLKB3s-42: Yes
+ZxRsHPQNPQhP5LSLKB3s-5: Store Owner
+ZxRsHPQNPQhP5LSLKB3s-17: Review replenishment request
+ZxRsHPQNPQhP5LSLKB3s-6: Inventory Staff
+ZxRsHPQNPQhP5LSLKB3s-54: Record discrepancy / defective goods
+Ile9ekywh-2buuYT2m_F-3: Yes
+ZxRsHPQNPQhP5LSLKB3s-19: Request approved?
+ZxRsHPQNPQhP5LSLKB3s-72: BF-01 - Replenishment, Purchasing & Goods Receiving
+ZxRsHPQNPQhP5LSLKB3s-65: No
+ZxRsHPQNPQhP5LSLKB3s-53: No
+EDGES
+ZxRsHPQNPQhP5LSLKB3s-7 --> Review stock replenishment need | 
+Review stock replenishment need --> Create replenishment request | 
+Revise replenishment request --> Ile9ekywh-2buuYT2m_F-7 | 
+Record replenishment request --> Show request and current stock information | 
+None --> None | 
+Update outstanding purchase quantity --> Ile9ekywh-2buuYT2m_F-1 | 
+Increase inventory by lot,
+location and status --> Update outstanding purchase quantity | 
+Record discrepancy information --> Ile9ekywh-2buuYT2m_F-14 | 
+Keep non-usable quantity
+outside usable inventory --> Record discrepancy information | 
+Complete goods receipt --> Put accepted goods away | 
+Link purchase order to approved request --> Track ordered and outstanding quantities | 
+Update confirmed quantity
+and expected delivery date --> Create goods receipt from purchase order | 
+Create goods receipt from purchase order --> Record actual received quantity, lot and condition | 
+Record actual received quantity, lot and condition --> Compare received quantity
+with purchase order | 
+Compare received quantity
+with purchase order --> Inspect received goods | 
+Inspect received goods --> Goods accepted? | 
+Goods accepted? --> Record accepted quantity | 
+Record accepted quantity --> Complete goods receipt | 
+Put accepted goods away --> Increase inventory by lot,
+location and status | 
+Link purchase order to approved request --> Track ordered and outstanding quantities | 
+Create replenishment request --> Record replenishment request | 
+Show request and current stock information --> Review replenishment request | 
+Review replenishment request --> Request approved? | 
+Request approved? --> Update request status to Approved | 
+Request approved? --> Update request status to Rejected | 
+Update request status to Approved --> Create purchase order | 
+Create purchase order --> Link purchase order to approved request | 
+Track ordered and outstanding quantities --> Record supplier confirmation | 
+Record supplier confirmation --> Update confirmed quantity
+and expected delivery date | 
+Update request status to Rejected --> Revise replenishment request | 
+Goods accepted? --> Record discrepancy / defective goods | 
+Record discrepancy / defective goods --> Keep non-usable quantity
+outside usable inventory | 
+PLANTUML
+@startuml
+title BF-01 - Replenishment, Purchasing & Goods Receiving
+
+|Accountant|
+start
+:Review stock replenishment need;
+:Create replenishment request;
+
+|WMSD|
+:Record replenishment request;
+:Show request and current stock information;
+
+|Store Owner|
+:Review replenishment request;
+
+if (Request approved?) then (Yes)
+
+  |WMSD|
+  :Update request status to Approved;
+
+  |Accountant|
+  :Create purchase order;
+
+  |WMSD|
+  :Link purchase order to approved request;
+  :Track ordered and outstanding quantities;
+
+  |Accountant|
+  :Record supplier confirmation;
+
+  |WMSD|
+  :Update confirmed quantity
+  and expected delivery date;
+
+  |Inventory Staff|
+  :Create goods receipt from purchase order;
+  :Record actual received quantity,
+  lot and condition;
+
+  |WMSD|
+  :Compare received quantity
+  with purchase order;
+
+  |Inventory Staff|
+  :Inspect received goods;
+
+  if (Goods accepted?) then (Yes)
+
+    |WMSD|
+    :Record accepted quantity;
+
+    |Inventory Staff|
+    :Complete goods receipt;
+    :Put accepted goods away;
+
+    |WMSD|
+    :Increase inventory by lot,
+    location and status;
+    :Update outstanding purchase quantity;
+
+  else (No)
+
+    |Inventory Staff|
+    :Record discrepancy / defective goods;
+
+    |WMSD|
+    :Keep non-usable quantity
+    outside usable inventory;
+    :Record discrepancy information;
+
+  endif
+
+else (No)
+
+  |WMSD|
+  :Update request status to Rejected;
+
+endif
+
+stop
+@enduml

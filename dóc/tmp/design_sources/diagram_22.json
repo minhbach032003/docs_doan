@@ -1,0 +1,785 @@
+{
+  "index": 22,
+  "name": "Bản sao của UC_IS",
+  "id": "541KH5Vek0yf63fw1OLG",
+  "nodes": [
+    {
+      "id": "Ecjad9tho3xIgOrPxFfz-3",
+      "text": "Inventory Staff",
+      "parent": "Ecjad9tho3xIgOrPxFfz-1"
+    },
+    {
+      "id": "HnQSMyF9S4ewjtUpsama-0",
+      "text": "View Product List",
+      "parent": "Ecjad9tho3xIgOrPxFfz-1"
+    },
+    {
+      "id": "HnQSMyF9S4ewjtUpsama-1",
+      "text": "View Product Detail",
+      "parent": "Ecjad9tho3xIgOrPxFfz-1"
+    },
+    {
+      "id": "HnQSMyF9S4ewjtUpsama-2",
+      "text": "View Lot List",
+      "parent": "Ecjad9tho3xIgOrPxFfz-1"
+    },
+    {
+      "id": "HnQSMyF9S4ewjtUpsama-3",
+      "text": "Maintain Product Lot",
+      "parent": "Ecjad9tho3xIgOrPxFfz-1"
+    },
+    {
+      "id": "HnQSMyF9S4ewjtUpsama-4",
+      "text": "View Lot Detail",
+      "parent": "Ecjad9tho3xIgOrPxFfz-1"
+    },
+    {
+      "id": "HnQSMyF9S4ewjtUpsama-5",
+      "text": "View Supplier Return Request List",
+      "parent": "Ecjad9tho3xIgOrPxFfz-1"
+    },
+    {
+      "id": "HnQSMyF9S4ewjtUpsama-6",
+      "text": "View Supplier Return Request Detail",
+      "parent": "Ecjad9tho3xIgOrPxFfz-1"
+    },
+    {
+      "id": "HnQSMyF9S4ewjtUpsama-7",
+      "text": "View Purchase Order List",
+      "parent": "Ecjad9tho3xIgOrPxFfz-1"
+    },
+    {
+      "id": "HnQSMyF9S4ewjtUpsama-8",
+      "text": "View Purchase Order Detail",
+      "parent": "Ecjad9tho3xIgOrPxFfz-1"
+    },
+    {
+      "id": "HnQSMyF9S4ewjtUpsama-10",
+      "text": "View Receipt List",
+      "parent": "Ecjad9tho3xIgOrPxFfz-1"
+    },
+    {
+      "id": "HnQSMyF9S4ewjtUpsama-11",
+      "text": "View Receipt Detail",
+      "parent": "Ecjad9tho3xIgOrPxFfz-1"
+    },
+    {
+      "id": "HnQSMyF9S4ewjtUpsama-13",
+      "text": "Create Receipt from Purchase Order",
+      "parent": "Ecjad9tho3xIgOrPxFfz-1"
+    },
+    {
+      "id": "HnQSMyF9S4ewjtUpsama-17",
+      "text": "Inspect and Post Goods Receipt",
+      "parent": "Ecjad9tho3xIgOrPxFfz-1"
+    },
+    {
+      "id": "HnQSMyF9S4ewjtUpsama-18",
+      "text": "View Warehouse and Location List",
+      "parent": "Ecjad9tho3xIgOrPxFfz-1"
+    },
+    {
+      "id": "HnQSMyF9S4ewjtUpsama-19",
+      "text": "View Location Detail",
+      "parent": "Ecjad9tho3xIgOrPxFfz-1"
+    },
+    {
+      "id": "HnQSMyF9S4ewjtUpsama-21",
+      "text": "View Stock",
+      "parent": "Ecjad9tho3xIgOrPxFfz-1"
+    },
+    {
+      "id": "HnQSMyF9S4ewjtUpsama-22",
+      "text": "View Inventory Balance Detail",
+      "parent": "Ecjad9tho3xIgOrPxFfz-1"
+    },
+    {
+      "id": "HnQSMyF9S4ewjtUpsama-25",
+      "text": "View Defective Goods List",
+      "parent": "Ecjad9tho3xIgOrPxFfz-1"
+    },
+    {
+      "id": "Zl-le8VQUt3N608skt6E-0",
+      "text": "View Defective Goods Detail",
+      "parent": "Ecjad9tho3xIgOrPxFfz-1"
+    },
+    {
+      "id": "Zl-le8VQUt3N608skt6E-1",
+      "text": "View stock movement log",
+      "parent": "Ecjad9tho3xIgOrPxFfz-1"
+    },
+    {
+      "id": "Zl-le8VQUt3N608skt6E-2",
+      "text": "View stock movement details",
+      "parent": "Ecjad9tho3xIgOrPxFfz-1"
+    },
+    {
+      "id": "Zl-le8VQUt3N608skt6E-3",
+      "text": "Trace a product lot through source documents",
+      "parent": "Ecjad9tho3xIgOrPxFfz-1"
+    },
+    {
+      "id": "Zl-le8VQUt3N608skt6E-7",
+      "text": "View Location Move List",
+      "parent": "Ecjad9tho3xIgOrPxFfz-1"
+    },
+    {
+      "id": "Zl-le8VQUt3N608skt6E-8",
+      "text": "View Location Move Detail",
+      "parent": "Ecjad9tho3xIgOrPxFfz-1"
+    },
+    {
+      "id": "Zl-le8VQUt3N608skt6E-9",
+      "text": "View Warehouse Transfer List",
+      "parent": "Ecjad9tho3xIgOrPxFfz-1"
+    },
+    {
+      "id": "Zl-le8VQUt3N608skt6E-10",
+      "text": "View Warehouse Transfer Detail",
+      "parent": "Ecjad9tho3xIgOrPxFfz-1"
+    },
+    {
+      "id": "Zl-le8VQUt3N608skt6E-11",
+      "text": "View Stocktake List",
+      "parent": "Ecjad9tho3xIgOrPxFfz-1"
+    },
+    {
+      "id": "Zl-le8VQUt3N608skt6E-12",
+      "text": "View Stocktake Detail",
+      "parent": "Ecjad9tho3xIgOrPxFfz-1"
+    },
+    {
+      "id": "Zl-le8VQUt3N608skt6E-13",
+      "text": "Perform Stocktake Count and Record Results",
+      "parent": "Ecjad9tho3xIgOrPxFfz-1"
+    },
+    {
+      "id": "Zl-le8VQUt3N608skt6E-14",
+      "text": "View Adjustment Request List",
+      "parent": "Ecjad9tho3xIgOrPxFfz-1"
+    },
+    {
+      "id": "Zl-le8VQUt3N608skt6E-15",
+      "text": "View Adjustment Request Detail",
+      "parent": "Ecjad9tho3xIgOrPxFfz-1"
+    },
+    {
+      "id": "ik64cCI8z0DGjGiqKu_s-1",
+      "text": "<<extend>>",
+      "parent": "ik64cCI8z0DGjGiqKu_s-0"
+    },
+    {
+      "id": "ik64cCI8z0DGjGiqKu_s-3",
+      "text": "<<extend>>",
+      "parent": "ik64cCI8z0DGjGiqKu_s-2"
+    },
+    {
+      "id": "ik64cCI8z0DGjGiqKu_s-5",
+      "text": "<<extend>>",
+      "parent": "ik64cCI8z0DGjGiqKu_s-4"
+    },
+    {
+      "id": "ik64cCI8z0DGjGiqKu_s-7",
+      "text": "<<extend>>",
+      "parent": "ik64cCI8z0DGjGiqKu_s-6"
+    },
+    {
+      "id": "ik64cCI8z0DGjGiqKu_s-10",
+      "text": "<<extend>>",
+      "parent": "ik64cCI8z0DGjGiqKu_s-9"
+    },
+    {
+      "id": "ik64cCI8z0DGjGiqKu_s-14",
+      "text": "<<extend>>",
+      "parent": "ik64cCI8z0DGjGiqKu_s-13"
+    },
+    {
+      "id": "ik64cCI8z0DGjGiqKu_s-18",
+      "text": "<<extend>>",
+      "parent": "ik64cCI8z0DGjGiqKu_s-17"
+    },
+    {
+      "id": "ik64cCI8z0DGjGiqKu_s-30",
+      "text": "<<extend>>",
+      "parent": "ik64cCI8z0DGjGiqKu_s-29"
+    },
+    {
+      "id": "ik64cCI8z0DGjGiqKu_s-32",
+      "text": "<<extend>>",
+      "parent": "ik64cCI8z0DGjGiqKu_s-31"
+    },
+    {
+      "id": "ik64cCI8z0DGjGiqKu_s-34",
+      "text": "<<extend>>",
+      "parent": "ik64cCI8z0DGjGiqKu_s-33"
+    },
+    {
+      "id": "ik64cCI8z0DGjGiqKu_s-38",
+      "text": "<<extend>>",
+      "parent": "ik64cCI8z0DGjGiqKu_s-37"
+    },
+    {
+      "id": "ik64cCI8z0DGjGiqKu_s-40",
+      "text": "<<extend>>",
+      "parent": "ik64cCI8z0DGjGiqKu_s-39"
+    },
+    {
+      "id": "ik64cCI8z0DGjGiqKu_s-42",
+      "text": "<<extend>>",
+      "parent": "ik64cCI8z0DGjGiqKu_s-41"
+    },
+    {
+      "id": "ik64cCI8z0DGjGiqKu_s-44",
+      "text": "<<extend>>",
+      "parent": "ik64cCI8z0DGjGiqKu_s-43"
+    },
+    {
+      "id": "ik64cCI8z0DGjGiqKu_s-46",
+      "text": "<<extend>>",
+      "parent": "ik64cCI8z0DGjGiqKu_s-45"
+    },
+    {
+      "id": "ik64cCI8z0DGjGiqKu_s-48",
+      "text": "<<extend>>",
+      "parent": "ik64cCI8z0DGjGiqKu_s-47"
+    },
+    {
+      "id": "ik64cCI8z0DGjGiqKu_s-50",
+      "text": "<<extend>>",
+      "parent": "ik64cCI8z0DGjGiqKu_s-49"
+    },
+    {
+      "id": "ik64cCI8z0DGjGiqKu_s-54",
+      "text": "<<extend>>",
+      "parent": "ik64cCI8z0DGjGiqKu_s-53"
+    },
+    {
+      "id": "ik64cCI8z0DGjGiqKu_s-56",
+      "text": "<<extend>>",
+      "parent": "ik64cCI8z0DGjGiqKu_s-55"
+    },
+    {
+      "id": "ik64cCI8z0DGjGiqKu_s-58",
+      "text": "<<extend>>",
+      "parent": "ik64cCI8z0DGjGiqKu_s-57"
+    },
+    {
+      "id": "tjbHrmk1uP8qtIL42BBU-0",
+      "text": "WMSD",
+      "parent": "Ecjad9tho3xIgOrPxFfz-1"
+    },
+    {
+      "id": "bC61M1RO7_ksDillrWli-1",
+      "text": "Create location movement",
+      "parent": "Ecjad9tho3xIgOrPxFfz-1"
+    },
+    {
+      "id": "bC61M1RO7_ksDillrWli-2",
+      "text": "Confirm actual location movement",
+      "parent": "Ecjad9tho3xIgOrPxFfz-1"
+    },
+    {
+      "id": "bC61M1RO7_ksDillrWli-3",
+      "text": "Create Transfer Request",
+      "parent": "Ecjad9tho3xIgOrPxFfz-1"
+    },
+    {
+      "id": "bC61M1RO7_ksDillrWli-4",
+      "text": "Create Warehouse Transfer Order",
+      "parent": "Ecjad9tho3xIgOrPxFfz-1"
+    },
+    {
+      "id": "bC61M1RO7_ksDillrWli-5",
+      "text": "Confirm Warehouse Transfer Order",
+      "parent": "Ecjad9tho3xIgOrPxFfz-1"
+    },
+    {
+      "id": "bC61M1RO7_ksDillrWli-6",
+      "text": "View Outbound Delivery List",
+      "parent": "Ecjad9tho3xIgOrPxFfz-1"
+    },
+    {
+      "id": "bC61M1RO7_ksDillrWli-8",
+      "text": "View Outbound Delivery Details",
+      "parent": "Ecjad9tho3xIgOrPxFfz-1"
+    },
+    {
+      "id": "bC61M1RO7_ksDillrWli-9",
+      "text": "View Picking Transfer Order List",
+      "parent": "Ecjad9tho3xIgOrPxFfz-1"
+    },
+    {
+      "id": "bC61M1RO7_ksDillrWli-10",
+      "text": "View Picking Transfer Order Details",
+      "parent": "Ecjad9tho3xIgOrPxFfz-1"
+    },
+    {
+      "id": "bC61M1RO7_ksDillrWli-11",
+      "text": "Create Picking Transfer Order",
+      "parent": "Ecjad9tho3xIgOrPxFfz-1"
+    },
+    {
+      "id": "bC61M1RO7_ksDillrWli-12",
+      "text": "Confirm Picking Transfer Order",
+      "parent": "Ecjad9tho3xIgOrPxFfz-1"
+    },
+    {
+      "id": "bC61M1RO7_ksDillrWli-13",
+      "text": "View goods issue list",
+      "parent": "Ecjad9tho3xIgOrPxFfz-1"
+    },
+    {
+      "id": "bC61M1RO7_ksDillrWli-14",
+      "text": "View goods issue details",
+      "parent": "Ecjad9tho3xIgOrPxFfz-1"
+    },
+    {
+      "id": "bC61M1RO7_ksDillrWli-15",
+      "text": "Post Goods Issue",
+      "parent": "Ecjad9tho3xIgOrPxFfz-1"
+    },
+    {
+      "id": "bC61M1RO7_ksDillrWli-16",
+      "text": "Inspect Defective Goods and Submit Disposition",
+      "parent": "Ecjad9tho3xIgOrPxFfz-1"
+    },
+    {
+      "id": "bC61M1RO7_ksDillrWli-17",
+      "text": "Record approved defective goods disposition",
+      "parent": "Ecjad9tho3xIgOrPxFfz-1"
+    },
+    {
+      "id": "bC61M1RO7_ksDillrWli-18",
+      "text": "View customer return list",
+      "parent": "Ecjad9tho3xIgOrPxFfz-1"
+    },
+    {
+      "id": "bC61M1RO7_ksDillrWli-19",
+      "text": "View customer return details",
+      "parent": "Ecjad9tho3xIgOrPxFfz-1"
+    },
+    {
+      "id": "bC61M1RO7_ksDillrWli-22",
+      "text": "Create Customer Return Request",
+      "parent": "Ecjad9tho3xIgOrPxFfz-1"
+    },
+    {
+      "id": "bC61M1RO7_ksDillrWli-23",
+      "text": "Inspect Customer Return",
+      "parent": "Ecjad9tho3xIgOrPxFfz-1"
+    },
+    {
+      "id": "bC61M1RO7_ksDillrWli-24",
+      "text": "Confirm Customer Return Receipt",
+      "parent": "Ecjad9tho3xIgOrPxFfz-1"
+    },
+    {
+      "id": "bC61M1RO7_ksDillrWli-25",
+      "text": "Confirm Supplier Return Dispatch",
+      "parent": "Ecjad9tho3xIgOrPxFfz-1"
+    },
+    {
+      "id": "bC61M1RO7_ksDillrWli-26",
+      "text": "Create Supplier Return Request",
+      "parent": "Ecjad9tho3xIgOrPxFfz-1"
+    },
+    {
+      "id": "bC61M1RO7_ksDillrWli-28",
+      "text": "Reconcile Stocktake",
+      "parent": "Ecjad9tho3xIgOrPxFfz-1"
+    },
+    {
+      "id": "bC61M1RO7_ksDillrWli-29",
+      "text": "Create Inventory Adjustment Request",
+      "parent": "Ecjad9tho3xIgOrPxFfz-1"
+    },
+    {
+      "id": "bC61M1RO7_ksDillrWli-33",
+      "text": "<<extend>>",
+      "parent": "bC61M1RO7_ksDillrWli-32"
+    },
+    {
+      "id": "bC61M1RO7_ksDillrWli-35",
+      "text": "<<extend>>",
+      "parent": "bC61M1RO7_ksDillrWli-34"
+    },
+    {
+      "id": "bC61M1RO7_ksDillrWli-37",
+      "text": "<<extend>>",
+      "parent": "bC61M1RO7_ksDillrWli-36"
+    },
+    {
+      "id": "bC61M1RO7_ksDillrWli-39",
+      "text": "<<extend>>",
+      "parent": "bC61M1RO7_ksDillrWli-38"
+    },
+    {
+      "id": "bC61M1RO7_ksDillrWli-41",
+      "text": "<<extend>>",
+      "parent": "bC61M1RO7_ksDillrWli-40"
+    },
+    {
+      "id": "bC61M1RO7_ksDillrWli-43",
+      "text": "<<extend>>",
+      "parent": "bC61M1RO7_ksDillrWli-42"
+    },
+    {
+      "id": "bC61M1RO7_ksDillrWli-45",
+      "text": "<<extend>>",
+      "parent": "bC61M1RO7_ksDillrWli-44"
+    },
+    {
+      "id": "bC61M1RO7_ksDillrWli-47",
+      "text": "<<extend>>",
+      "parent": "bC61M1RO7_ksDillrWli-46"
+    },
+    {
+      "id": "bC61M1RO7_ksDillrWli-49",
+      "text": "<<extend>>",
+      "parent": "bC61M1RO7_ksDillrWli-48"
+    },
+    {
+      "id": "bC61M1RO7_ksDillrWli-51",
+      "text": "<<extend>>",
+      "parent": "bC61M1RO7_ksDillrWli-50"
+    },
+    {
+      "id": "bC61M1RO7_ksDillrWli-53",
+      "text": "<<extend>>",
+      "parent": "bC61M1RO7_ksDillrWli-52"
+    },
+    {
+      "id": "bC61M1RO7_ksDillrWli-55",
+      "text": "<<extend>>",
+      "parent": "bC61M1RO7_ksDillrWli-54"
+    },
+    {
+      "id": "bC61M1RO7_ksDillrWli-57",
+      "text": "<<extend>>",
+      "parent": "bC61M1RO7_ksDillrWli-56"
+    },
+    {
+      "id": "bC61M1RO7_ksDillrWli-59",
+      "text": "<<extend>>",
+      "parent": "bC61M1RO7_ksDillrWli-58"
+    },
+    {
+      "id": "bC61M1RO7_ksDillrWli-61",
+      "text": "<<extend>>",
+      "parent": "bC61M1RO7_ksDillrWli-60"
+    },
+    {
+      "id": "bC61M1RO7_ksDillrWli-63",
+      "text": "<<extend>>",
+      "parent": "bC61M1RO7_ksDillrWli-62"
+    },
+    {
+      "id": "bC61M1RO7_ksDillrWli-65",
+      "text": "<<extend>>",
+      "parent": "bC61M1RO7_ksDillrWli-64"
+    },
+    {
+      "id": "bC61M1RO7_ksDillrWli-67",
+      "text": "<<extend>>",
+      "parent": "bC61M1RO7_ksDillrWli-66"
+    },
+    {
+      "id": "bC61M1RO7_ksDillrWli-69",
+      "text": "<<extend>>",
+      "parent": "bC61M1RO7_ksDillrWli-68"
+    },
+    {
+      "id": "lu9Gxf2gZ-IrakDMEqYD-0",
+      "text": "Create Put-away Transfer Order",
+      "parent": "Ecjad9tho3xIgOrPxFfz-1"
+    },
+    {
+      "id": "lu9Gxf2gZ-IrakDMEqYD-1",
+      "text": "Confirm Put-away Transfer Order",
+      "parent": "Ecjad9tho3xIgOrPxFfz-1"
+    }
+  ],
+  "edges": [
+    {
+      "from": "View Product Detail",
+      "to": "View Product List",
+      "label": ""
+    },
+    {
+      "from": "Maintain Product Lot",
+      "to": "View Lot List",
+      "label": ""
+    },
+    {
+      "from": "View Lot Detail",
+      "to": "View Lot List",
+      "label": ""
+    },
+    {
+      "from": "View Supplier Return Request Detail",
+      "to": "View Supplier Return Request List",
+      "label": ""
+    },
+    {
+      "from": "View Purchase Order Detail",
+      "to": "View Purchase Order List",
+      "label": ""
+    },
+    {
+      "from": "View Receipt Detail",
+      "to": "View Receipt List",
+      "label": ""
+    },
+    {
+      "from": "Create Receipt from Purchase Order",
+      "to": "View Receipt Detail",
+      "label": ""
+    },
+    {
+      "from": "Inspect and Post Goods Receipt",
+      "to": "View Receipt Detail",
+      "label": ""
+    },
+    {
+      "from": "View Location Detail",
+      "to": "View Warehouse and Location List",
+      "label": ""
+    },
+    {
+      "from": "View Inventory Balance Detail",
+      "to": "View Stock",
+      "label": ""
+    },
+    {
+      "from": "View Defective Goods List",
+      "to": "View Stock",
+      "label": ""
+    },
+    {
+      "from": "View Defective Goods Detail",
+      "to": "View Defective Goods List",
+      "label": ""
+    },
+    {
+      "from": "View stock movement log",
+      "to": "View Stock",
+      "label": ""
+    },
+    {
+      "from": "View stock movement details",
+      "to": "View stock movement log",
+      "label": ""
+    },
+    {
+      "from": "Trace a product lot through source documents",
+      "to": "View stock movement details",
+      "label": ""
+    },
+    {
+      "from": "View Location Move Detail",
+      "to": "View Location Move List",
+      "label": ""
+    },
+    {
+      "from": "View Warehouse Transfer Detail",
+      "to": "View Warehouse Transfer List",
+      "label": ""
+    },
+    {
+      "from": "View Stocktake Detail",
+      "to": "View Stocktake List",
+      "label": ""
+    },
+    {
+      "from": "Perform Stocktake Count and Record Results",
+      "to": "View Stocktake List",
+      "label": ""
+    },
+    {
+      "from": "View Adjustment Request Detail",
+      "to": "View Adjustment Request List",
+      "label": ""
+    },
+    {
+      "from": "Inventory Staff",
+      "to": "View Product List",
+      "label": ""
+    },
+    {
+      "from": "Inventory Staff",
+      "to": "View Lot List",
+      "label": ""
+    },
+    {
+      "from": "Inventory Staff",
+      "to": "View Supplier Return Request List",
+      "label": ""
+    },
+    {
+      "from": "Inventory Staff",
+      "to": "View Purchase Order List",
+      "label": ""
+    },
+    {
+      "from": "Inventory Staff",
+      "to": "View Receipt List",
+      "label": ""
+    },
+    {
+      "from": "Inventory Staff",
+      "to": "View Warehouse and Location List",
+      "label": ""
+    },
+    {
+      "from": "Inventory Staff",
+      "to": "View Stock",
+      "label": ""
+    },
+    {
+      "from": "Inventory Staff",
+      "to": "View Location Move List",
+      "label": ""
+    },
+    {
+      "from": "Inventory Staff",
+      "to": "View Warehouse Transfer List",
+      "label": ""
+    },
+    {
+      "from": "Inventory Staff",
+      "to": "View Stocktake List",
+      "label": ""
+    },
+    {
+      "from": "Inventory Staff",
+      "to": "View Adjustment Request List",
+      "label": ""
+    },
+    {
+      "from": "Inspect Defective Goods and Submit Disposition",
+      "to": "View Defective Goods Detail",
+      "label": ""
+    },
+    {
+      "from": "Record approved defective goods disposition",
+      "to": "View Defective Goods Detail",
+      "label": ""
+    },
+    {
+      "from": "Create location movement",
+      "to": "View Location Move List",
+      "label": ""
+    },
+    {
+      "from": "Confirm actual location movement",
+      "to": "View Location Move List",
+      "label": ""
+    },
+    {
+      "from": "Create Warehouse Transfer Order",
+      "to": "View Warehouse Transfer List",
+      "label": ""
+    },
+    {
+      "from": "Create Transfer Request",
+      "to": "View Warehouse Transfer List",
+      "label": ""
+    },
+    {
+      "from": "Confirm Warehouse Transfer Order",
+      "to": "View Warehouse Transfer List",
+      "label": ""
+    },
+    {
+      "from": "Reconcile Stocktake",
+      "to": "View Stocktake List",
+      "label": ""
+    },
+    {
+      "from": "Create Inventory Adjustment Request",
+      "to": "View Adjustment Request List",
+      "label": ""
+    },
+    {
+      "from": "View Outbound Delivery Details",
+      "to": "View Outbound Delivery List",
+      "label": ""
+    },
+    {
+      "from": "View Picking Transfer Order Details",
+      "to": "View Picking Transfer Order List",
+      "label": ""
+    },
+    {
+      "from": "Create Picking Transfer Order",
+      "to": "View Picking Transfer Order List",
+      "label": ""
+    },
+    {
+      "from": "Confirm Picking Transfer Order",
+      "to": "View goods issue list",
+      "label": ""
+    },
+    {
+      "from": "View goods issue details",
+      "to": "View goods issue list",
+      "label": ""
+    },
+    {
+      "from": "Post Goods Issue",
+      "to": "View goods issue list",
+      "label": ""
+    },
+    {
+      "from": "View customer return details",
+      "to": "View customer return list",
+      "label": ""
+    },
+    {
+      "from": "Create Customer Return Request",
+      "to": "View customer return list",
+      "label": ""
+    },
+    {
+      "from": "Inspect Customer Return",
+      "to": "View customer return list",
+      "label": ""
+    },
+    {
+      "from": "Confirm Customer Return Receipt",
+      "to": "View customer return list",
+      "label": ""
+    },
+    {
+      "from": "Inventory Staff",
+      "to": "View Outbound Delivery List",
+      "label": ""
+    },
+    {
+      "from": "Inventory Staff",
+      "to": "View customer return list",
+      "label": ""
+    },
+    {
+      "from": "Inventory Staff",
+      "to": "View goods issue list",
+      "label": ""
+    },
+    {
+      "from": "Inventory Staff",
+      "to": "View Picking Transfer Order List",
+      "label": ""
+    },
+    {
+      "from": "Create Put-away Transfer Order",
+      "to": "Inventory Staff",
+      "label": ""
+    },
+    {
+      "from": "Confirm Put-away Transfer Order",
+      "to": "Inventory Staff",
+      "label": ""
+    }
+  ],
+  "uml": []
+}

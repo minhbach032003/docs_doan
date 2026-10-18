@@ -1,0 +1,113 @@
+PAGE 21 UC_IS
+hnvXY7pMrTnNXEOp2S06-1: WMSD
+hnvXY7pMrTnNXEOp2S06-2: Inventory Staff
+hnvXY7pMrTnNXEOp2S06-3: UC-08  View Product List
+hnvXY7pMrTnNXEOp2S06-5: UC-09  View Product Detail
+hnvXY7pMrTnNXEOp2S06-11: UC-14  View Lot List
+hnvXY7pMrTnNXEOp2S06-13: UC-15  View Lot Detail
+hnvXY7pMrTnNXEOp2S06-14: UC-16  Create Lot
+hnvXY7pMrTnNXEOp2S06-23: UC-27  View Purchase Order List
+hnvXY7pMrTnNXEOp2S06-24: UC-28  View Purchase Order Detail
+hnvXY7pMrTnNXEOp2S06-25: UC-32  View Outstanding Purchase Quantity
+hnvXY7pMrTnNXEOp2S06-26: UC-33  View Receipt List
+hnvXY7pMrTnNXEOp2S06-27: UC-34  View Receipt Detail
+hnvXY7pMrTnNXEOp2S06-28: UC-41  View Warehouse and Location List
+hnvXY7pMrTnNXEOp2S06-29: UC-42  View Location Detail
+hnvXY7pMrTnNXEOp2S06-33: UC-47  View Inventory List by Lot, Location and Status
+hnvXY7pMrTnNXEOp2S06-34: UC-48  View Inventory Balance Detail
+hnvXY7pMrTnNXEOp2S06-35: UC-51  View Defective Goods List
+hnvXY7pMrTnNXEOp2S06-36: UC-52  View Defective Goods Detail
+hnvXY7pMrTnNXEOp2S06-38: UC-57  View Location Move List
+hnvXY7pMrTnNXEOp2S06-39: UC-58  View Location Move Detail
+hnvXY7pMrTnNXEOp2S06-40: UC-61  View Warehouse Transfer List
+hnvXY7pMrTnNXEOp2S06-41: UC-62  View Warehouse Transfer Detail
+hnvXY7pMrTnNXEOp2S06-43: UC-70  View Stocktake List
+hnvXY7pMrTnNXEOp2S06-44: UC-71  View Stocktake Detail
+hnvXY7pMrTnNXEOp2S06-46: UC-73  Capture Book Balance at Cut-off
+hnvXY7pMrTnNXEOp2S06-47: UC-77  View Adjustment Request List
+hnvXY7pMrTnNXEOp2S06-48: UC-78  View Adjustment Request Detail
+hnvXY7pMrTnNXEOp2S06-50: UC-96  View Supplier Return Request List
+hnvXY7pMrTnNXEOp2S06-51: UC-97  View Supplier Return Request Detail
+hnvXY7pMrTnNXEOp2S06-53: UC-102  View Stock In-Out Balance Report
+hnvXY7pMrTnNXEOp2S06-54: UC-103  View Inventory by Lot and Location Report
+hnvXY7pMrTnNXEOp2S06-56: UC-105  View Transfer Report
+hnvXY7pMrTnNXEOp2S06-57: UC-106  View Stocktake and Adjustment Report
+hnvXY7pMrTnNXEOp2S06-58: UC-107  View Inventory Movement List
+hnvXY7pMrTnNXEOp2S06-59: UC-108  View Inventory Movement Detail
+hnvXY7pMrTnNXEOp2S06-60: UC-109  Trace Lot by Source Document
+hnvXY7pMrTnNXEOp2S06-61: «extend»
+hnvXY7pMrTnNXEOp2S06-64: «extend»
+hnvXY7pMrTnNXEOp2S06-68: «extend»
+hnvXY7pMrTnNXEOp2S06-69: «extend» [check remainder]
+hnvXY7pMrTnNXEOp2S06-70: «extend»
+hnvXY7pMrTnNXEOp2S06-71: «extend»
+hnvXY7pMrTnNXEOp2S06-74: «extend»
+hnvXY7pMrTnNXEOp2S06-75: «extend»
+hnvXY7pMrTnNXEOp2S06-76: «extend» [selected defect]
+hnvXY7pMrTnNXEOp2S06-78: «extend»
+hnvXY7pMrTnNXEOp2S06-79: «extend»
+hnvXY7pMrTnNXEOp2S06-81: «extend»
+hnvXY7pMrTnNXEOp2S06-83: «extend»
+hnvXY7pMrTnNXEOp2S06-85: «extend» [selected supplier return]
+hnvXY7pMrTnNXEOp2S06-87: «extend» [selected movement]
+hnvXY7pMrTnNXEOp2S06-88: «extend» [trace requested]
+hnvXY7pMrTnNXEOp2S06-92: «extend»
+hnvXY7pMrTnNXEOp2S06-95: «extend»
+hnvXY7pMrTnNXEOp2S06-96: «extend»
+hnvXY7pMrTnNXEOp2S06-111: «extend»
+hnvXY7pMrTnNXEOp2S06-113: UC-35 Create Receipt from Purchase Order
+hnvXY7pMrTnNXEOp2S06-114: UC-36 Record Actual Receipt Characteristics
+hnvXY7pMrTnNXEOp2S06-115: UC-37 Classify Inspection Result
+hnvXY7pMrTnNXEOp2S06-116: UC-38 Record Defective Goods on Receipt
+hnvXY7pMrTnNXEOp2S06-117: UC-39 Record Receipt Discrepancy
+hnvXY7pMrTnNXEOp2S06-118: UC-40 Complete Accepted Receipt
+hnvXY7pMrTnNXEOp2S06-119: «extend»
+hnvXY7pMrTnNXEOp2S06-123: «extend»
+hnvXY7pMrTnNXEOp2S06-124: «extend»
+hnvXY7pMrTnNXEOp2S06-125: «extend»
+hnvXY7pMrTnNXEOp2S06-126: «extend»
+hnvXY7pMrTnNXEOp2S06-127: «extend»
+hnvXY7pMrTnNXEOp2S06-128: UC-49 Move Goods to Pending or Damaged Status
+hnvXY7pMrTnNXEOp2S06-129: «extend»
+EDGES
+Inventory Staff --> UC-08  View Product List | 
+Inventory Staff --> UC-14  View Lot List | 
+UC-09  View Product Detail --> UC-08  View Product List | «extend»
+UC-15  View Lot Detail --> UC-14  View Lot List | «extend»
+UC-28  View Purchase Order Detail --> UC-27  View Purchase Order List | «extend»
+UC-32  View Outstanding Purchase Quantity --> UC-28  View Purchase Order Detail | «extend» [check remainder]
+UC-34  View Receipt Detail --> UC-33  View Receipt List | «extend»
+UC-42  View Location Detail --> UC-41  View Warehouse and Location List | «extend»
+UC-48  View Inventory Balance Detail --> UC-47  View Inventory List by Lot, Location and Status | «extend»
+UC-51  View Defective Goods List --> UC-47  View Inventory List by Lot, Location and Status | «extend»
+UC-52  View Defective Goods Detail --> UC-51  View Defective Goods List | «extend» [selected defect]
+UC-58  View Location Move Detail --> UC-57  View Location Move List | «extend»
+UC-62  View Warehouse Transfer Detail --> UC-61  View Warehouse Transfer List | «extend»
+UC-71  View Stocktake Detail --> UC-70  View Stocktake List | «extend»
+UC-78  View Adjustment Request Detail --> UC-77  View Adjustment Request List | «extend»
+UC-97  View Supplier Return Request Detail --> UC-96  View Supplier Return Request List | «extend» [selected supplier return]
+UC-108  View Inventory Movement Detail --> UC-107  View Inventory Movement List | «extend» [selected movement]
+UC-109  Trace Lot by Source Document --> UC-108  View Inventory Movement Detail | «extend» [trace requested]
+UC-16  Create Lot --> UC-14  View Lot List | «extend»
+UC-107  View Inventory Movement List --> UC-47  View Inventory List by Lot, Location and Status | «extend»
+UC-96  View Supplier Return Request List --> UC-14  View Lot List | «extend»
+Inventory Staff --> UC-27  View Purchase Order List | 
+Inventory Staff --> UC-33  View Receipt List | 
+Inventory Staff --> UC-41  View Warehouse and Location List | 
+Inventory Staff --> UC-47  View Inventory List by Lot, Location and Status | 
+Inventory Staff --> UC-57  View Location Move List | 
+Inventory Staff --> UC-61  View Warehouse Transfer List | 
+Inventory Staff --> UC-70  View Stocktake List | 
+Inventory Staff --> UC-77  View Adjustment Request List | 
+Inventory Staff --> UC-102  View Stock In-Out Balance Report | 
+Inventory Staff --> UC-103  View Inventory by Lot and Location Report | 
+Inventory Staff --> UC-105  View Transfer Report | 
+Inventory Staff --> UC-106  View Stocktake and Adjustment Report | 
+UC-73  Capture Book Balance at Cut-off --> UC-70  View Stocktake List | «extend»
+UC-36 Record Actual Receipt Characteristics --> UC-34  View Receipt Detail | «extend»
+UC-35 Create Receipt from Purchase Order --> UC-34  View Receipt Detail | «extend»
+UC-37 Classify Inspection Result --> UC-34  View Receipt Detail | «extend»
+UC-38 Record Defective Goods on Receipt --> UC-34  View Receipt Detail | «extend»
+UC-39 Record Receipt Discrepancy --> UC-34  View Receipt Detail | «extend»
+UC-40 Complete Accepted Receipt --> UC-34  View Receipt Detail | «extend»
+UC-49 Move Goods to Pending or Damaged Status --> UC-47  View Inventory List by Lot, Location and Status | «extend»

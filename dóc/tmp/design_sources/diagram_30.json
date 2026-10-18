@@ -1,0 +1,126 @@
+{
+  "index": 30,
+  "name": "BF04 Mới",
+  "id": "cgOVGXXjEJiPQmt8FiAg",
+  "nodes": [],
+  "edges": [
+    {
+      "from": "tYOHVjUy58ouDNk6KBcP-48",
+      "to": "tYOHVjUy58ouDNk6KBcP-53",
+      "label": ""
+    },
+    {
+      "from": "tYOHVjUy58ouDNk6KBcP-43",
+      "to": "tYOHVjUy58ouDNk6KBcP-53",
+      "label": ""
+    },
+    {
+      "from": "tYOHVjUy58ouDNk6KBcP-38",
+      "to": "tYOHVjUy58ouDNk6KBcP-40",
+      "label": ""
+    },
+    {
+      "from": "tYOHVjUy58ouDNk6KBcP-40",
+      "to": "tYOHVjUy58ouDNk6KBcP-53",
+      "label": ""
+    },
+    {
+      "from": "tYOHVjUy58ouDNk6KBcP-5",
+      "to": "tYOHVjUy58ouDNk6KBcP-7",
+      "label": ""
+    },
+    {
+      "from": "tYOHVjUy58ouDNk6KBcP-7",
+      "to": "tYOHVjUy58ouDNk6KBcP-9",
+      "label": ""
+    },
+    {
+      "from": "tYOHVjUy58ouDNk6KBcP-9",
+      "to": "tYOHVjUy58ouDNk6KBcP-11",
+      "label": ""
+    },
+    {
+      "from": "tYOHVjUy58ouDNk6KBcP-11",
+      "to": "tYOHVjUy58ouDNk6KBcP-13",
+      "label": ""
+    },
+    {
+      "from": "tYOHVjUy58ouDNk6KBcP-13",
+      "to": "tYOHVjUy58ouDNk6KBcP-15",
+      "label": ""
+    },
+    {
+      "from": "tYOHVjUy58ouDNk6KBcP-15",
+      "to": "tYOHVjUy58ouDNk6KBcP-17",
+      "label": ""
+    },
+    {
+      "from": "tYOHVjUy58ouDNk6KBcP-17",
+      "to": "tYOHVjUy58ouDNk6KBcP-19",
+      "label": ""
+    },
+    {
+      "from": "tYOHVjUy58ouDNk6KBcP-19",
+      "to": "tYOHVjUy58ouDNk6KBcP-21",
+      "label": ""
+    },
+    {
+      "from": "tYOHVjUy58ouDNk6KBcP-21",
+      "to": "tYOHVjUy58ouDNk6KBcP-22",
+      "label": ""
+    },
+    {
+      "from": "tYOHVjUy58ouDNk6KBcP-22",
+      "to": "tYOHVjUy58ouDNk6KBcP-24",
+      "label": ""
+    },
+    {
+      "from": "tYOHVjUy58ouDNk6KBcP-24",
+      "to": "tYOHVjUy58ouDNk6KBcP-26",
+      "label": ""
+    },
+    {
+      "from": "tYOHVjUy58ouDNk6KBcP-26",
+      "to": "tYOHVjUy58ouDNk6KBcP-28",
+      "label": ""
+    },
+    {
+      "from": "tYOHVjUy58ouDNk6KBcP-28",
+      "to": "tYOHVjUy58ouDNk6KBcP-30",
+      "label": ""
+    },
+    {
+      "from": "tYOHVjUy58ouDNk6KBcP-30",
+      "to": "tYOHVjUy58ouDNk6KBcP-32",
+      "label": ""
+    },
+    {
+      "from": "tYOHVjUy58ouDNk6KBcP-32",
+      "to": "tYOHVjUy58ouDNk6KBcP-35",
+      "label": ""
+    },
+    {
+      "from": "tYOHVjUy58ouDNk6KBcP-35",
+      "to": "tYOHVjUy58ouDNk6KBcP-36",
+      "label": ""
+    },
+    {
+      "from": "tYOHVjUy58ouDNk6KBcP-36",
+      "to": "tYOHVjUy58ouDNk6KBcP-38",
+      "label": ""
+    },
+    {
+      "from": "tYOHVjUy58ouDNk6KBcP-32",
+      "to": "tYOHVjUy58ouDNk6KBcP-43",
+      "label": ""
+    },
+    {
+      "from": "tYOHVjUy58ouDNk6KBcP-19",
+      "to": "tYOHVjUy58ouDNk6KBcP-48",
+      "label": ""
+    }
+  ],
+  "uml": [
+    "@startuml\ntitle BF-04 - Stocktake & Inventory Adjustment\n\n|Store Owner|\nstart\n:Create stocktake;\n\n|WMSD|\n:Create stocktake scope;\n:Capture book balance at cut-off;\n\n|Inventory Staff|\n:Enter physical count;\n\n|WMSD|\n:Compare physical count\nwith book balance;\n:Calculate variance;\n\nif (Variance detected?) then (Yes)\n\n  |Inventory Staff|\n  :Perform recount;\n  :Record variance cause;\n\n  |WMSD|\n  :Update verified variance;\n\n  |Inventory Staff|\n  :Create adjustment request;\n\n  |WMSD|\n  :Record before/after quantities\n  and adjustment request;\n\n  |Store Owner|\n  :Review adjustment request;\n\n  if (Adjustment approved?) then (Yes)\n\n    |WMSD|\n    :Record approval;\n\n    |Inventory Staff|\n    :Post approved adjustment;\n\n    |WMSD|\n    :Update inventory balance;\n    :Record adjustment history;\n\n  else (No)\n\n    |WMSD|\n    :Keep current inventory balance;\n\n  endif\n\nelse (No)\n\n  |WMSD|\n  :Mark stocktake as completed;\n\nendif\n\nstop\n@enduml"
+  ]
+}

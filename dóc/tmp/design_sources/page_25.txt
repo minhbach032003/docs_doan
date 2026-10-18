@@ -1,0 +1,47 @@
+PAGE 25 Kho - Hiện tại
+2vsmv7KolJS_8Es9j0dh-1: Store staff
+2vsmv7KolJS_8Es9j0dh-3: Request goods issue
+2vsmv7KolJS_8Es9j0dh-4: Revise requested quantity
+2vsmv7KolJS_8Es9j0dh-6: Receive return request
+2vsmv7KolJS_8Es9j0dh-7: Warehouse
+2vsmv7KolJS_8Es9j0dh-8: Find lot and location
+2vsmv7KolJS_8Es9j0dh-9: Usable stock enough?
+2vsmv7KolJS_8Es9j0dh-10: Pick and issue actual quantity
+2vsmv7KolJS_8Es9j0dh-13: Move position or dispatch to other warehouse
+2vsmv7KolJS_8Es9j0dh-14: Cross-warehouse?
+2vsmv7KolJS_8Es9j0dh-15: Record new position
+2vsmv7KolJS_8Es9j0dh-17: Inspect goods and condition
+2vsmv7KolJS_8Es9j0dh-18: Keep pending / damaged separate; decide disposition
+2vsmv7KolJS_8Es9j0dh-21: Count / recount by lot, location and status
+2vsmv7KolJS_8Es9j0dh-22: Accounting
+2vsmv7KolJS_8Es9j0dh-23: Reconcile dispatch with destination receipt
+2vsmv7KolJS_8Es9j0dh-24: Compare and note variance
+2vsmv7KolJS_8Es9j0dh-25: Owner
+2vsmv7KolJS_8Es9j0dh-26: Investigate shortage / damage if different
+2vsmv7KolJS_8Es9j0dh-27: Review cause / approve adjustment if needed
+2vsmv7KolJS_8Es9j0dh-32: No
+2vsmv7KolJS_8Es9j0dh-33: Yes
+2vsmv7KolJS_8Es9j0dh-38: No
+2vsmv7KolJS_8Es9j0dh-39: Yes
+EDGES
+ly0VHov-A0zAGPuIiJbs-3 --> Request goods issue | 
+Keep pending / damaged separate; decide disposition --> Count / recount by lot, location and status | 
+Pick and issue actual quantity --> ly0VHov-A0zAGPuIiJbs-5 | 
+ly0VHov-A0zAGPuIiJbs-5 --> Move position or dispatch to other warehouse | 
+Record new position --> ly0VHov-A0zAGPuIiJbs-6 | 
+Review cause / approve adjustment if needed --> ly0VHov-A0zAGPuIiJbs-8 | 
+Request goods issue --> Find lot and location | 
+Find lot and location --> Usable stock enough? | 
+Usable stock enough? --> Revise requested quantity | No
+Usable stock enough? --> Pick and issue actual quantity | Yes
+Revise requested quantity --> ly0VHov-A0zAGPuIiJbs-5 | 
+Move position or dispatch to other warehouse --> Cross-warehouse? | 
+Cross-warehouse? --> Record new position | No
+Cross-warehouse? --> Reconcile dispatch with destination receipt | Yes
+Reconcile dispatch with destination receipt --> Investigate shortage / damage if different | 
+Investigate shortage / damage if different --> ly0VHov-A0zAGPuIiJbs-6 | 
+ly0VHov-A0zAGPuIiJbs-6 --> Receive return request | 
+Receive return request --> Inspect goods and condition | 
+Inspect goods and condition --> Keep pending / damaged separate; decide disposition | 
+Count / recount by lot, location and status --> Compare and note variance | 
+Compare and note variance --> Review cause / approve adjustment if needed | 
