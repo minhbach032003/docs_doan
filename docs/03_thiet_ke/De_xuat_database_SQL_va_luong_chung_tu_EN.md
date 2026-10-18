@@ -1,5 +1,7 @@
 # WMSD — SQL Database, Business Flow and Document Proposal
 
+> **Note:** The use of SQL (3NF relational model and reference DDL) in this document is strictly for **design purposes** (normalizing entities, clarifying relationships, defining integrity constraints, and specifying transaction flows); in **actual implementation**, the system will use **MongoDB**.
+
 ## 1. Warehouse terminology
 
 | Term | Meaning and use in WMSD |
@@ -56,7 +58,7 @@ Priority: the user's current requirements → S1 proposal → compatible S2/S3 r
 
 ### 2.2 Design decisions
 
-1. Use a **3NF relational model**, with reference DDL targeting **PostgreSQL 16+**. This is a concrete illustrative dialect, not a claim that version 16 is the newest release. A SQL Server implementation must adapt identity, timestamp, boolean, filtered indexes and locking syntax.
+1. Use a **3NF relational model**, with reference DDL targeting **PostgreSQL 16+** *(note: SQL is used here for design modeling and specifying data constraints, whereas the actual implementation will use **MongoDB**).* This is a concrete illustrative dialect, not a claim that version 16 is the newest release. A SQL Server implementation must adapt identity, timestamp, boolean, filtered indexes and locking syntax.
 2. One store, multiple locations; enable inter-warehouse transfer only when at least two physical warehouses are confirmed. Do not add an unnecessary branch/company hierarchy.
 3. WMSD handles externally referenced issue requests, not commercial SOs, selling prices, internal/tax invoices, payment collection or refund calculations in this MVP. The Accountant records external follow-up references.
 4. No live MISA API. Manual entry/import requires unique source references and quantity validation. WMSD owns detailed physical warehouse events.

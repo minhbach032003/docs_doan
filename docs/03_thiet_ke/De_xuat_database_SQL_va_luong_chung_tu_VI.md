@@ -1,5 +1,7 @@
 # WMSD — Đề xuất database SQL, luồng nghiệp vụ và chứng từ
 
+> **Ghi chú:** Việc sử dụng SQL (mô hình quan hệ 3NF và DDL tham chiếu) trong tài liệu này chỉ phục vụ mục đích **thiết kế** (chuẩn hóa thực thể, làm rõ quan hệ, ràng buộc toàn vẹn và luồng giao dịch); trong triển khai **thực tế**, hệ thống sẽ sử dụng **MongoDB**.
+
 ## 1. Thuật ngữ quản lý kho
 
 | Thuật ngữ | Nghĩa và cách dùng trong WMSD |
@@ -56,7 +58,7 @@ Thứ tự áp dụng: yêu cầu mới của người dùng → phương án S1
 
 ### 2.2 Quyết định thiết kế
 
-1. Dùng **mô hình quan hệ 3NF**, DDL tham chiếu chạy trên **PostgreSQL 16+**; đây là lựa chọn minh họa cụ thể, không khẳng định PostgreSQL 16 là bản mới nhất. Nếu chọn SQL Server, chuyển identity, timestamp, boolean, filtered index và cơ chế khóa theo dialect tương ứng.
+1. Dùng **mô hình quan hệ 3NF**, DDL tham chiếu chạy trên **PostgreSQL 16+** *(lưu ý: SQL được sử dụng ở đây để phục vụ việc thiết kế và đặc tả ràng buộc dữ liệu, còn khi triển khai thực tế hệ thống sẽ sử dụng **MongoDB**)*; đây là lựa chọn minh họa cụ thể, không khẳng định PostgreSQL 16 là bản mới nhất. Nếu chọn SQL Server, chuyển identity, timestamp, boolean, filtered index và cơ chế khóa theo dialect tương ứng.
 2. Một cửa hàng, nhiều location, chỉ bật liên kho khi có ít nhất hai kho vật lý đã xác nhận. Không thêm branch/company hierarchy chưa cần thiết.
 3. WMSD quản lý yêu cầu xuất có mã nguồn, không tạo SO thương mại, giá bán, hóa đơn nội bộ/thuế, thu tiền hoặc tính hoàn tiền trong MVP này. Accountant lưu tham chiếu xử lý bên ngoài.
 4. Không live API MISA. Import/nhập tay có mã nguồn duy nhất và kiểm tra lượng; WMS là nguồn chi tiết thao tác kho.
