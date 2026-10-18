@@ -1,85 +1,77 @@
+---
+config:
+  flowchart:
+    curve: basis
+    nodeSpacing: 60
+    rankSpacing: 120
+---
 flowchart LR
-    %% Định nghĩa hệ thống trung tâm (Hình tròn)
-    WMSD((WMSD))
-
-    %% Định nghĩa các tác nhân bên ngoài (Hình chữ nhật)
-    SO[Store Owner]
-    IS[Inventory Staff]
-    ACC[Accountant]
-    ADM[Admin]
-    SS[Sales Staff]
-    SMTP["EMAIL SERVICE<br/>(SMTP)"]
-
     %% ==========================================
-    %% 1. Luồng dữ liệu của Store Owner
+    %% ĐỊNH NGHĨA CÁC TÁC NHÂN & HỆ THỐNG
     %% ==========================================
-    SO <-->|Store Configuration Data| WMSD
-    SO <-->|Product & Pricing Configuration Data| WMSD
-    SO <-->|Purchasing & Sales Policy Management| WMSD
-    SO <-->|Inventory management| WMSD
-    SO <-->|Supplier management| WMSD
-    WMSD -->|Receivables & Payables Report| SO
-    SO -->|Report Request| WMSD
-    WMSD -->|Analytics Report| SO
-    WMSD -->|Dashboard and notification information| SO
-    WMSD -->|Purchase Approval Request| SO
-    SO -->|Purchase Approval Decision| WMSD
+    subgraph LeftSide [" "]
+        direction TB
+        SO["<b>Store Owner</b>"]
+        IS["<b>Inventory Staff</b>"]
+        ADM["<b>Admin</b>"]
+    end
+
+    WMSD((("<b>WMSD</b><br/>System")))
+
+    subgraph RightSide [" "]
+        direction TB
+        ACC["<b>Accountant</b>"]
+        SS["<b>Sales Staff</b>"]
+        SMTP["<b>EMAIL SERVICE</b><br/>(SMTP)"]
+        CLD["<b>Cloudinary</b>"]
+    end
 
     %% ==========================================
-    %% 2. Luồng dữ liệu của Inventory Staff
+    %% LUỒNG BÊN TRÁI (Store Owner, Inventory, Admin)
     %% ==========================================
-    WMSD -->|Purchase Replenishment Request Status| IS
-    IS -->|Purchase Replenishment Request Data| WMSD
-    IS -->|Goods receipt data| WMSD
-    WMSD -->|Goods receipt information| IS
-    IS -->|Goods issue data| WMSD
-    WMSD -->|Goods issue information| IS
-    IS -->|Inventory check data| WMSD
-    WMSD -->|Inventory check information| IS
-    WMSD -->|Inventory report and notification information| IS
-    IS -->|Storage Location Data| WMSD
-    WMSD -->|Lot & Location Inventory Information| IS
-    IS -->|Physical Stock Count Data| WMSD
-    WMSD -->|Stock Discrepancy Data| IS
-    IS -->|Stock Status Update| WMSD
-    IS -->|Damaged / Inspection Goods Data| WMSD
+    
+    %% 1. Store Owner
+    SO -->|"• Product/Lot Configuration Data<br/>• Replenishment Approval Decision"| WMSD
+    WMSD -->|"• Purchase Request for Review<br/>• Replenishment & Purchase Info<br/>• Inventory & Exception Info<br/>• Warehouse Reports & Audit Info"| SO
+
+    %% 2. Inventory Staff
+    IS -->|"• Receipt & Inspection Data<br/>• Inventory/Location Movement Data<br/>• Transfer Data<br/>• Stocktake & Adjustment Data<br/>• Issue & Return Data"| WMSD
+    WMSD -->|"• Purchase/Receipt Information<br/>• Inventory by Lot/Location/Status<br/>• Issue Request Information<br/>• Transfer/Stocktake/Return Info"| IS
+
+    %% 3. Admin
+    ADM -->|"• User management data"| WMSD
+    WMSD -->|"• Role & permission management data"| ADM
 
     %% ==========================================
-    %% 3. Luồng dữ liệu của Accountant
+    %% LUỒNG BÊN PHẢI (Accountant, Sales, SMTP, Cloudinary)
     %% ==========================================
-    WMSD <-->|Invoice Verification & Recording Data| ACC
-    WMSD <-->|Receivables & Payables Data| ACC
-    ACC -->|Purchase Request Data| WMSD
-    WMSD -->|Purchase Request Information| ACC
-    WMSD <-->|Purchase Order Management| ACC
-    ACC -->|Supplier Order Confirmation Data| WMSD
-    ACC -->|Supplier Invoice Data| WMSD
-    WMSD -->|Invoice Verification Information| ACC
-    ACC -->|Supplier Payment Data| WMSD
-    WMSD -->|Supplier Payables Information| ACC
+
+    %% 4. Accountant
+    WMSD -->|"• Purchase & Receipt Information<br/>• Outstanding Purchase Information<br/>• Supplier Return Information<br/>• Purchase & Receipt Report"| ACC
+    ACC -->|"• Supplier Data<br/>• Replenishment Request Data<br/>• Purchase Order Management<br/>• Supplier Return Request Data"| WMSD
+
+    %% 5. Sales Staff
+    WMSD -->|"• Sales Order Status<br/>• Product, Pricing & Available Stock"| SS
+    SS -->|"• Warehouse Issue Request<br/>• Sales Order Information<br/>• Customer Delivery Request<br/>• Sales Return Data"| WMSD
+
+    %% 6. EMAIL SERVICE (SMTP)
+    WMSD -->|"• Email delivery data"| SMTP
+    SMTP -->|"• Email delivery status"| WMSD
+
+    %% 7. Cloudinary
+    WMSD -->|"• Evidence Upload"| CLD
+    CLD -->|"• Asset URL / Upload Status"| WMSD
 
     %% ==========================================
-    %% 4. Luồng dữ liệu của Admin
+    %% TÙY CHỈNH GIAO DIỆN (STYLING)
     %% ==========================================
-    ADM -->|Role and permission management data| WMSD
-    ADM -->|User management data| WMSD
+    style LeftSide fill:none,stroke:none
+    style RightSide fill:none,stroke:none
 
-    %% ==========================================
-    %% 5. Luồng dữ liệu của Sales Staff
-    %% ==========================================
-    WMSD <-->|Quotation Management| SS
-    WMSD <-->|Sales Order Management| SS
-    SS -->|Delivery Request| WMSD
-    SS -->|Sales Return Data| WMSD
-    WMSD -->|Product, Pricing & Available Stock| SS
-
-    %% ==========================================
-    %% 6. Luồng dữ liệu của EMAIL SERVICE (SMTP)
-    %% ==========================================
-    WMSD -->|Email delivery data| SMTP
-    SMTP -->|Email delivery result| WMSD
-
-    %% Tùy chỉnh giao diện (Styling)
-    style WMSD fill:#ffffff,stroke:#333333,stroke-width:2px,color:#000000
-    classDef entity fill:#ffffff,stroke:#333333,stroke-width:1px,color:#000000;
-    class SO,IS,ACC,ADM,SS,SMTP entity;
+    style WMSD fill:#1e293b,stroke:#0f172a,stroke-width:3px,color:#ffffff,font-size:16px
+    
+    classDef actor fill:#f8fafc,stroke:#334155,stroke-width:2px,color:#0f172a,rx:6,ry:6;
+    classDef extService fill:#eff6ff,stroke:#2563eb,stroke-width:2px,color:#1e3a8a,rx:6,ry:6;
+    
+    class SO,IS,ACC,ADM,SS actor;
+    class SMTP,CLD extService;
