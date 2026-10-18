@@ -71,7 +71,7 @@ Tài liệu tham khảo hỗ trợ phân tích; không tự động trở thành
 3. **Chuẩn bị triển khai:** thiết kế hệ thống chi tiết → đối chiếu các thay đổi đề xuất và những quyết định chưa chốt.
 4. **Kiểm tra căn cứ:** biên bản họp → tài liệu SAP, tổng hợp quy trình và nguồn MISA.
 
-[`agent.md`](agent.md) được giữ tại thư mục gốc để agent dễ tìm hướng dẫn làm việc. Đây không phải biên bản phê duyệt yêu cầu nghiệp vụ.
+Hướng dẫn làm việc cho agent đã chuyển ra `DOMAIN.md` ở thư mục cha của 3 repo (cũ: `agent.md` trong repo này). Đây không phải biên bản phê duyệt yêu cầu nghiệp vụ.
 
 ## Các tham chiếu còn thiếu trong bộ tài liệu gốc
 
