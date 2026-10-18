@@ -27,8 +27,13 @@ Thư mục: [`docs/02_nghiep_vu/`](docs/02_nghiep_vu/)
 Thư mục: [`docs/03_thiet_ke/`](docs/03_thiet_ke/)
 
 - [Thiết kế hệ thống chi tiết](docs/03_thiet_ke/WMSD_Thiet_ke_he_thong_chi_tiet.md): phạm vi, luồng xử lý, dữ liệu, trạng thái chứng từ, kiến trúc, API và kịch bản kiểm thử.
+- [Đề xuất database SQL và luồng chứng từ — tiếng Việt](docs/03_thiet_ke/De_xuat_database_SQL_va_luong_chung_tu_VI.md): thuật ngữ ở đầu, BF-01–07, TO/GR/MWTR, mô hình quan hệ và kiểm soát tồn.
+- [SQL database and document-flow proposal — English](docs/03_thiet_ke/De_xuat_database_SQL_va_luong_chung_tu_EN.md): bản tiếng Anh tương ứng.
+- [DDL SQL tham chiếu](docs/03_thiet_ke/WMSD_SQL_schema.sql): 63 bảng, 2 view, PostgreSQL 16+; chưa bao gồm posting service và phân quyền thực thi.
 
-**Trạng thái:** phiên bản 1.0 ngày 16/10/2026. Có khác biệt với đề xuất sau review ngày 17/10/2026, đặc biệt về phạm vi bán hàng, hóa đơn và trách nhiệm các vai trò. Cần đối chiếu và chốt với nhóm trước khi triển khai; lần sắp xếp này giữ nguyên cả hai tài liệu.
+**Đề xuất SQL ngày 18/10/2026:** ưu tiên phương án 7 quy trình sau review và yêu cầu SQL mới; ghi rõ khác biệt với MongoDB trong Report 3. Đây là phương án review, chưa phải SRS được cửa hàng phê duyệt.
+
+**Tài liệu thiết kế hệ thống chi tiết cũ:** phiên bản 1.0 ngày 16/10/2026. Có khác biệt với đề xuất sau review ngày 17/10/2026, đặc biệt về phạm vi bán hàng, hóa đơn và trách nhiệm các vai trò. Cần đối chiếu và chốt với nhóm trước khi triển khai; bản cũ được giữ nguyên để đối chiếu.
 
 ## 4. Sơ đồ
 
@@ -36,6 +41,7 @@ Thư mục: [`docs/04_so_do/`](docs/04_so_do/)
 
 - [Business_Process.drawio](docs/04_so_do/Business_Process.drawio)
 - [WMSD_Bangach.drawio](docs/04_so_do/WMSD_Bangach.drawio)
+- [Mainflow SQL — VI và EN](docs/04_so_do/WMSD_Mainflows_SQL_VI_EN.drawio): 16 trang, chỉ có lane actor; BF-03 tách chuyển vị trí và điều chuyển liên kho.
 - [context-diagrem.mermaid](docs/04_so_do/context-diagrem.mermaid)
 
 Mở file `.drawio` bằng diagrams.net hoặc ứng dụng tương thích; file `.mermaid` bằng công cụ hỗ trợ Mermaid. Tên file gốc được giữ nguyên để thuận tiện đối chiếu.

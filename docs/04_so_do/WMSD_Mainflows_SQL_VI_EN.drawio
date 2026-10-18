@@ -1,0 +1,1381 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" version="26.0.0">
+  <diagram id="BF-01-VI" name="BF-01 VI">
+    <mxGraphModel dx="1400" dy="1319" grid="1" gridSize="10" page="1" pageWidth="1400" pageHeight="1319" background="#ffffff">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="BF-01 — Bổ sung, mua và nhập hàng" style="text;align=left;fontSize=25;fontStyle=1;fontColor=#17304d;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="20" width="1320" height="45" />
+        </mxCell>
+        <mxCell id="subtitle" value="Đề xuất SQL • 18/10/2026 • Mainflow; ngoại lệ xem mục 4 của tài liệu VI" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="66" width="1320" height="30" />
+        </mxCell>
+        <mxCell id="lane-sales" value="Nhân viên bán hàng" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40.0" y="115" width="330.0" height="1014" />
+        </mxCell>
+        <mxCell id="lane-owner" value="Chủ cửa hàng" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="370.0" y="115" width="330.0" height="1014" />
+        </mxCell>
+        <mxCell id="lane-acc" value="Kế toán" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="700.0" y="115" width="330.0" height="1014" />
+        </mxCell>
+        <mxCell id="lane-wh" value="Nhân viên kho" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1030.0" y="115" width="330.0" height="1014" />
+        </mxCell>
+        <mxCell id="step-0" value="&lt;b&gt;1. Ghi nhu cầu thiếu hàng¹&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;RR&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-sales">
+          <mxGeometry as="geometry" x="25.0" y="66" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-1" value="&lt;b&gt;2. Duyệt nhu cầu và số lượng&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;Approval&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-owner">
+          <mxGeometry as="geometry" x="25.0" y="198" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-2" value="&lt;b&gt;3. Lập PO; ghi NCC xác nhận&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;PO&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-acc">
+          <mxGeometry as="geometry" x="25.0" y="330" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-3" value="&lt;b&gt;4. Nhận, đếm và phân loại&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;ARR / INS / VAR&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
+          <mxGeometry as="geometry" x="25.0" y="462" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-4" value="&lt;b&gt;5. Ghi nhận lượng chấp nhận&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;GR-P / CUS-IN&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#e8f4ed;strokeColor=#438463;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
+          <mxGeometry as="geometry" x="25.0" y="594" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-5" value="&lt;b&gt;6. Xếp đúng vị trí; xác nhận&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;TO-PUTAWAY&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#e8f4ed;strokeColor=#438463;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
+          <mxGeometry as="geometry" x="25.0" y="726" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-6" value="&lt;b&gt;7. Đối chiếu; theo dõi phần còn lại²&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;PO ↔ GR&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-acc">
+          <mxGeometry as="geometry" x="25.0" y="858" width="280" height="86" />
+        </mxCell>
+        <mxCell id="edge-0" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-0" target="step-1">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="205.0" y="290" />
+              <mxPoint x="535.0" y="290" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-1" target="step-2">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="535.0" y="422" />
+              <mxPoint x="865.0" y="422" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-2" target="step-3">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="865.0" y="554" />
+              <mxPoint x="1195.0" y="554" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-3" target="step-4">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge-4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-4" target="step-5">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-5" target="step-6">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1195.0" y="950" />
+              <mxPoint x="865.0" y="950" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="legend" value="Xanh dương: thao tác/chứng từ • Xanh lá: thao tác có thể ghi biến động kho hoặc giữ hộ" style="text;align=left;fontSize=13;fontColor=#43566f;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="1147" width="1320" height="35" />
+        </mxCell>
+        <mxCell id="note" value="¹ Nhu cầu dự trữ: Warehouse Staff lập RR. ² Owner duyệt bỏ phần không giao. Không có lượng nhận hợp lệ: giữ hồ sơ, không post GR." style="rounded=1;fillColor=#f3f5f8;strokeColor=#d6dde6;align=left;spacing=12;fontSize=13;fontColor=#34465e;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="1190" width="1320" height="86" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="BF-02-VI" name="BF-02 VI">
+    <mxGraphModel dx="1060" dy="1187" grid="1" gridSize="10" page="1" pageWidth="1060" pageHeight="1187" background="#ffffff">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="BF-02 — Phát hiện và xử lý hàng lỗi" style="text;align=left;fontSize=25;fontStyle=1;fontColor=#17304d;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="20" width="980" height="45" />
+        </mxCell>
+        <mxCell id="subtitle" value="Đề xuất SQL • 18/10/2026 • Mainflow; ngoại lệ xem mục 4 của tài liệu VI" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="66" width="980" height="30" />
+        </mxCell>
+        <mxCell id="lane-wh" value="Nhân viên kho" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40.0" y="115" width="490.0" height="882" />
+        </mxCell>
+        <mxCell id="lane-owner" value="Chủ cửa hàng" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="530.0" y="115" width="490.0" height="882" />
+        </mxCell>
+        <mxCell id="step-0" value="&lt;b&gt;1. Ghi lỗi và nguồn hàng&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;DC&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
+          <mxGeometry as="geometry" x="105.0" y="66" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-1" value="&lt;b&gt;2. Chặn xuất; cách ly ngay&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;TO-QUARANTINE&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#e8f4ed;strokeColor=#438463;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
+          <mxGeometry as="geometry" x="105.0" y="198" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-2" value="&lt;b&gt;3. Kiểm tra; đề xuất từng lượng&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;INS / DISP&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
+          <mxGeometry as="geometry" x="105.0" y="330" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-3" value="&lt;b&gt;4. Duyệt phương án xử lý&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;Approval&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-owner">
+          <mxGeometry as="geometry" x="105.0" y="462" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-4" value="&lt;b&gt;5. Thực hiện đúng phương án¹&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;SCRAP / Movement / SR&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#e8f4ed;strokeColor=#438463;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
+          <mxGeometry as="geometry" x="105.0" y="594" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-5" value="&lt;b&gt;6. Đối chiếu lượng đã xử lý&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;DC / linked case&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
+          <mxGeometry as="geometry" x="105.0" y="726" width="280" height="86" />
+        </mxCell>
+        <mxCell id="edge-0" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-0" target="step-1">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge-1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-1" target="step-2">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge-2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-2" target="step-3">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="285.0" y="554" />
+              <mxPoint x="775.0" y="554" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-3" target="step-4">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="775.0" y="686" />
+              <mxPoint x="285.0" y="686" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-4" target="step-5">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="legend" value="Xanh dương: thao tác/chứng từ • Xanh lá: thao tác có thể ghi biến động kho hoặc giữ hộ" style="text;align=left;fontSize=13;fontColor=#43566f;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="1015" width="980" height="35" />
+        </mxCell>
+        <mxCell id="note" value="¹ Hủy: giảm lượng thực hủy. Trả NCC: chuyển BF-07, chưa giảm tại BF-02. Release/regrade: bảo toàn tổng. Từ chối duyệt: giữ cách ly." style="rounded=1;fillColor=#f3f5f8;strokeColor=#d6dde6;align=left;spacing=12;fontSize=13;fontColor=#34465e;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="1058" width="980" height="86" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="BF-03A-VI" name="BF-03A VI">
+    <mxGraphModel dx="1060" dy="923" grid="1" gridSize="10" page="1" pageWidth="1060" pageHeight="923" background="#ffffff">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="BF-03A — Chuyển vị trí cùng kho" style="text;align=left;fontSize=25;fontStyle=1;fontColor=#17304d;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="20" width="980" height="45" />
+        </mxCell>
+        <mxCell id="subtitle" value="Đề xuất SQL • 18/10/2026 • Mainflow; ngoại lệ xem mục 4 của tài liệu VI" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="66" width="980" height="30" />
+        </mxCell>
+        <mxCell id="lane-wh" value="Nhân viên kho" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40.0" y="115" width="980.0" height="618" />
+        </mxCell>
+        <mxCell id="step-0" value="&lt;b&gt;1. Chọn nguồn–đích cùng kho&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;TO-RELOCATE&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
+          <mxGeometry as="geometry" x="350.0" y="66" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-1" value="&lt;b&gt;2. Kiểm đủ lượng và khóa kiểm kê&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;TO validation&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
+          <mxGeometry as="geometry" x="350.0" y="198" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-2" value="&lt;b&gt;3. Di chuyển; xác nhận lượng thực&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;TO confirmation&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#e8f4ed;strokeColor=#438463;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
+          <mxGeometry as="geometry" x="350.0" y="330" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-3" value="&lt;b&gt;4. Giữ phân bổ theo hàng; hoàn tất&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;TO / reservation&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
+          <mxGeometry as="geometry" x="350.0" y="462" width="280" height="86" />
+        </mxCell>
+        <mxCell id="edge-0" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-0" target="step-1">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge-1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-1" target="step-2">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge-2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-2" target="step-3">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="legend" value="Xanh dương: thao tác/chứng từ • Xanh lá: thao tác có thể ghi biến động kho hoặc giữ hộ" style="text;align=left;fontSize=13;fontColor=#43566f;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="751" width="980" height="35" />
+        </mxCell>
+        <mxCell id="note" value="Không TR liên kho; không Owner duyệt. Nguồn −q, đích +q; giữ nguyên lot, quality và chủ hàng." style="rounded=1;fillColor=#f3f5f8;strokeColor=#d6dde6;align=left;spacing=12;fontSize=13;fontColor=#34465e;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="794" width="980" height="86" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="BF-03B-VI" name="BF-03B VI">
+    <mxGraphModel dx="1070" dy="1583" grid="1" gridSize="10" page="1" pageWidth="1070" pageHeight="1583" background="#ffffff">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="BF-03B — Xuất và nhận điều chuyển liên kho" style="text;align=left;fontSize=25;fontStyle=1;fontColor=#17304d;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="20" width="990" height="45" />
+        </mxCell>
+        <mxCell id="subtitle" value="Đề xuất SQL • 18/10/2026 • Mainflow; ngoại lệ xem mục 4 của tài liệu VI" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="66" width="990" height="30" />
+        </mxCell>
+        <mxCell id="lane-src" value="Nhân viên kho nguồn" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40.0" y="115" width="330.0" height="1278" />
+        </mxCell>
+        <mxCell id="lane-owner" value="Chủ cửa hàng" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="370.0" y="115" width="330.0" height="1278" />
+        </mxCell>
+        <mxCell id="lane-dst" value="Nhân viên kho đích" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="700.0" y="115" width="330.0" height="1278" />
+        </mxCell>
+        <mxCell id="step-0" value="&lt;b&gt;1. Lập đề nghị chuyển vật lý¹&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;TR&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-src">
+          <mxGeometry as="geometry" x="25.0" y="66" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-1" value="&lt;b&gt;2. Duyệt kho, lượng và phiên bản&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;Approval&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-owner">
+          <mxGeometry as="geometry" x="25.0" y="198" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-2" value="&lt;b&gt;3. Soạn; kiểm đếm tại nguồn&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;TO-PICK / TD draft&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-src">
+          <mxGeometry as="geometry" x="25.0" y="330" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-3" value="&lt;b&gt;4. Bàn giao; ghi xuất điều chuyển&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;TD + HO&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#e8f4ed;strokeColor=#438463;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-src">
+          <mxGeometry as="geometry" x="25.0" y="462" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-4" value="&lt;b&gt;5. Kiểm độc lập; ghi lượng thực nhận&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;INS / MWTR draft&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-dst">
+          <mxGeometry as="geometry" x="25.0" y="594" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-5" value="&lt;b&gt;6. Ghi nhận nhập điều chuyển&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;MWTR&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#e8f4ed;strokeColor=#438463;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-dst">
+          <mxGeometry as="geometry" x="25.0" y="726" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-6" value="&lt;b&gt;7. Xếp hàng; đối chiếu kết quả²&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;TO-PUTAWAY / VAR&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#e8f4ed;strokeColor=#438463;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-dst">
+          <mxGeometry as="geometry" x="25.0" y="858" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-7" value="&lt;b&gt;8. Duyệt xử lý nếu có sai lệch²&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;Approval / resolution&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-owner">
+          <mxGeometry as="geometry" x="25.0" y="990" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-8" value="&lt;b&gt;9. Xác nhận mọi lượng có kết quả³&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;TR / TD completion&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-dst">
+          <mxGeometry as="geometry" x="25.0" y="1122" width="280" height="86" />
+        </mxCell>
+        <mxCell id="edge-0" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-0" target="step-1">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="205.0" y="290" />
+              <mxPoint x="535.0" y="290" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-1" target="step-2">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="535.0" y="422" />
+              <mxPoint x="205.0" y="422" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-2" target="step-3">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-3" target="step-4">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="205.0" y="686" />
+              <mxPoint x="865.0" y="686" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-4" target="step-5">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-5" target="step-6">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge-6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-6" target="step-7">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="865.0" y="1082" />
+              <mxPoint x="535.0" y="1082" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-7" target="step-8">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="535.0" y="1214" />
+              <mxPoint x="865.0" y="1214" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="legend" value="Xanh dương: thao tác/chứng từ • Xanh lá: thao tác có thể ghi biến động kho hoặc giữ hộ" style="text;align=left;fontSize=13;fontColor=#43566f;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="1411" width="990" height="35" />
+        </mxCell>
+        <mxCell id="note" value="¹ Sales chọn phương án khi phục vụ khách. ² Kho thực hiện quyết định bằng chứng từ mới. ³ Chỉ đóng sau xử lý; không lệch thì bỏ qua duyệt sai lệch." style="rounded=1;fillColor=#f3f5f8;strokeColor=#d6dde6;align=left;spacing=12;fontSize=13;fontColor=#34465e;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="1454" width="990" height="86" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="BF-04-VI" name="BF-04 VI">
+    <mxGraphModel dx="1060" dy="1319" grid="1" gridSize="10" page="1" pageWidth="1060" pageHeight="1319" background="#ffffff">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="BF-04 — Kiểm kê và điều chỉnh" style="text;align=left;fontSize=25;fontStyle=1;fontColor=#17304d;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="20" width="980" height="45" />
+        </mxCell>
+        <mxCell id="subtitle" value="Đề xuất SQL • 18/10/2026 • Mainflow; ngoại lệ xem mục 4 của tài liệu VI" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="66" width="980" height="30" />
+        </mxCell>
+        <mxCell id="lane-owner" value="Chủ cửa hàng" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40.0" y="115" width="490.0" height="1014" />
+        </mxCell>
+        <mxCell id="lane-wh" value="Nhân viên kho" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="530.0" y="115" width="490.0" height="1014" />
+        </mxCell>
+        <mxCell id="step-0" value="&lt;b&gt;1. Lập phạm vi và người đếm&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;ST&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-owner">
+          <mxGeometry as="geometry" x="105.0" y="66" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-1" value="&lt;b&gt;2. Kích hoạt khóa; lấy phiếu đếm&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;Snapshot / COUNT&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
+          <mxGeometry as="geometry" x="105.0" y="198" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-2" value="&lt;b&gt;3. Đếm; đếm lại khi cần&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;Count attempts&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
+          <mxGeometry as="geometry" x="105.0" y="330" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-3" value="&lt;b&gt;4. Giải trình; đề nghị điều chỉnh¹&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;VAR / ADJ&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
+          <mxGeometry as="geometry" x="105.0" y="462" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-4" value="&lt;b&gt;5. Duyệt đúng phiên bản kết quả&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;Approval&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-owner">
+          <mxGeometry as="geometry" x="105.0" y="594" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-5" value="&lt;b&gt;6. Clear Difference; ghi delta&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;ADJ posting&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#e8f4ed;strokeColor=#438463;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-owner">
+          <mxGeometry as="geometry" x="105.0" y="726" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-6" value="&lt;b&gt;7. Hoàn tất; xác nhận mở khóa¹&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;ST CLOSED&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
+          <mxGeometry as="geometry" x="105.0" y="858" width="280" height="86" />
+        </mxCell>
+        <mxCell id="edge-0" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-0" target="step-1">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="285.0" y="290" />
+              <mxPoint x="775.0" y="290" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-1" target="step-2">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge-2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-2" target="step-3">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-3" target="step-4">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="775.0" y="686" />
+              <mxPoint x="285.0" y="686" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-4" target="step-5">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-5" target="step-6">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="285.0" y="950" />
+              <mxPoint x="775.0" y="950" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="legend" value="Xanh dương: thao tác/chứng từ • Xanh lá: thao tác có thể ghi biến động kho hoặc giữ hộ" style="text;align=left;fontSize=13;fontColor=#43566f;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="1147" width="980" height="35" />
+        </mxCell>
+        <mxCell id="note" value="¹ Không chênh lệch: đóng/mở khóa, không ADJ0. Không đếm transit như bin. Chưa đếm ≠ 0. Từ chối: quay lại giải trình/đếm." style="rounded=1;fillColor=#f3f5f8;strokeColor=#d6dde6;align=left;spacing=12;fontSize=13;fontColor=#34465e;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="1190" width="980" height="86" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="BF-05-VI" name="BF-05 VI">
+    <mxGraphModel dx="1070" dy="1451" grid="1" gridSize="10" page="1" pageWidth="1070" pageHeight="1451" background="#ffffff">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="BF-05 — Yêu cầu xuất, soạn và bàn giao" style="text;align=left;fontSize=25;fontStyle=1;fontColor=#17304d;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="20" width="990" height="45" />
+        </mxCell>
+        <mxCell id="subtitle" value="Đề xuất SQL • 18/10/2026 • Mainflow; ngoại lệ xem mục 4 của tài liệu VI" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="66" width="990" height="30" />
+        </mxCell>
+        <mxCell id="lane-sales" value="Nhân viên bán hàng" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40.0" y="115" width="330.0" height="1146" />
+        </mxCell>
+        <mxCell id="lane-wh" value="Nhân viên kho" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="370.0" y="115" width="330.0" height="1146" />
+        </mxCell>
+        <mxCell id="lane-acc" value="Kế toán" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="700.0" y="115" width="330.0" height="1146" />
+        </mxCell>
+        <mxCell id="step-0" value="&lt;b&gt;1. Nhập yêu cầu từ đơn nguồn&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;WIR&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-sales">
+          <mxGeometry as="geometry" x="25.0" y="66" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-1" value="&lt;b&gt;2. Chọn nguồn và đợt giao¹&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;OD / allocation&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-sales">
+          <mxGeometry as="geometry" x="25.0" y="198" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-2" value="&lt;b&gt;3. Giữ hàng; giao việc soạn&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;Reservation / TO-PICK&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
+          <mxGeometry as="geometry" x="25.0" y="330" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-3" value="&lt;b&gt;4. Soạn; xác nhận về staging&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;TO confirmation&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#e8f4ed;strokeColor=#438463;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
+          <mxGeometry as="geometry" x="25.0" y="462" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-4" value="&lt;b&gt;5. Kiểm cuối; lập phiếu xuất&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;GI-S draft&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
+          <mxGeometry as="geometry" x="25.0" y="594" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-5" value="&lt;b&gt;6. Bàn giao thực tế; PGI&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;GI-S + HO&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#e8f4ed;strokeColor=#438463;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
+          <mxGeometry as="geometry" x="25.0" y="726" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-6" value="&lt;b&gt;7. Theo dõi phần đã giao/còn thiếu&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;WIR / OD&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-sales">
+          <mxGeometry as="geometry" x="25.0" y="858" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-7" value="&lt;b&gt;8. Đối chiếu chứng từ bên ngoài&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;External references&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-acc">
+          <mxGeometry as="geometry" x="25.0" y="990" width="280" height="86" />
+        </mxCell>
+        <mxCell id="edge-0" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-0" target="step-1">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge-1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-1" target="step-2">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="205.0" y="422" />
+              <mxPoint x="535.0" y="422" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-2" target="step-3">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-3" target="step-4">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge-4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-4" target="step-5">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-5" target="step-6">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="535.0" y="950" />
+              <mxPoint x="205.0" y="950" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-6" target="step-7">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="205.0" y="1082" />
+              <mxPoint x="865.0" y="1082" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="legend" value="Xanh dương: thao tác/chứng từ • Xanh lá: thao tác có thể ghi biến động kho hoặc giữ hộ" style="text;align=left;fontSize=13;fontColor=#43566f;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="1279" width="990" height="35" />
+        </mxCell>
+        <mxCell id="note" value="¹ Thiếu hàng: BF-03 hoặc BF-01. Picking không giảm tổng; PGI mới giảm. Hỏng: BF-02. Bàn giao thất bại trước PGI: giữ staging/unpick." style="rounded=1;fillColor=#f3f5f8;strokeColor=#d6dde6;align=left;spacing=12;fontSize=13;fontColor=#34465e;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="1322" width="990" height="86" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="BF-06-VI" name="BF-06 VI">
+    <mxGraphModel dx="1400" dy="1451" grid="1" gridSize="10" page="1" pageWidth="1400" pageHeight="1451" background="#ffffff">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="BF-06 — Khách trả hàng và nhập lại" style="text;align=left;fontSize=25;fontStyle=1;fontColor=#17304d;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="20" width="1320" height="45" />
+        </mxCell>
+        <mxCell id="subtitle" value="Đề xuất SQL • 18/10/2026 • Mainflow; ngoại lệ xem mục 4 của tài liệu VI" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="66" width="1320" height="30" />
+        </mxCell>
+        <mxCell id="lane-sales" value="Nhân viên bán hàng" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40.0" y="115" width="330.0" height="1146" />
+        </mxCell>
+        <mxCell id="lane-wh" value="Nhân viên kho" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="370.0" y="115" width="330.0" height="1146" />
+        </mxCell>
+        <mxCell id="lane-owner" value="Chủ cửa hàng" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="700.0" y="115" width="330.0" height="1146" />
+        </mxCell>
+        <mxCell id="lane-acc" value="Kế toán" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1030.0" y="115" width="330.0" height="1146" />
+        </mxCell>
+        <mxCell id="step-0" value="&lt;b&gt;1. Lập đề nghị theo nguồn gốc&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;CR&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-sales">
+          <mxGeometry as="geometry" x="25.0" y="66" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-1" value="&lt;b&gt;2. Nhận giữ hộ chờ quyết định&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;CUS-IN&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#e8f4ed;strokeColor=#438463;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
+          <mxGeometry as="geometry" x="25.0" y="198" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-2" value="&lt;b&gt;3. Kiểm lô, chất lượng và lượng&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;INS&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
+          <mxGeometry as="geometry" x="25.0" y="330" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-3" value="&lt;b&gt;4. Duyệt nhận từng lượng&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;Approval&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-owner">
+          <mxGeometry as="geometry" x="25.0" y="462" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-4" value="&lt;b&gt;5. Nhập phần nhận; trả phần từ chối&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;GR-CR / CUS-OUT&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#e8f4ed;strokeColor=#438463;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
+          <mxGeometry as="geometry" x="25.0" y="594" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-5" value="&lt;b&gt;6. Xếp đạt; giữ riêng hàng lỗi&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;TO / DC&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#e8f4ed;strokeColor=#438463;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
+          <mxGeometry as="geometry" x="25.0" y="726" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-6" value="&lt;b&gt;7. Thông báo kết quả phần kho&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;CR warehouse status&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-sales">
+          <mxGeometry as="geometry" x="25.0" y="858" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-7" value="&lt;b&gt;8. Ghi tham chiếu xử lý bên ngoài&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;External references&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-acc">
+          <mxGeometry as="geometry" x="25.0" y="990" width="280" height="86" />
+        </mxCell>
+        <mxCell id="edge-0" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-0" target="step-1">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="205.0" y="290" />
+              <mxPoint x="535.0" y="290" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-1" target="step-2">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge-2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-2" target="step-3">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="535.0" y="554" />
+              <mxPoint x="865.0" y="554" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-3" target="step-4">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="865.0" y="686" />
+              <mxPoint x="535.0" y="686" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-4" target="step-5">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-5" target="step-6">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="535.0" y="950" />
+              <mxPoint x="205.0" y="950" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-6" target="step-7">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="205.0" y="1082" />
+              <mxPoint x="1195.0" y="1082" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="legend" value="Xanh dương: thao tác/chứng từ • Xanh lá: thao tác có thể ghi biến động kho hoặc giữ hộ" style="text;align=left;fontSize=13;fontColor=#43566f;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="1279" width="1320" height="35" />
+        </mxCell>
+        <mxCell id="note" value="CUS-IN chưa tăng owned. GR-CR chuyển quyền quản lý đúng lượng được duyệt. Hàng lỗi có thể được nhận nhưng không usable. Không tính/chi hoàn tiền." style="rounded=1;fillColor=#f3f5f8;strokeColor=#d6dde6;align=left;spacing=12;fontSize=13;fontColor=#34465e;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="1322" width="1320" height="86" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="BF-07-VI" name="BF-07 VI">
+    <mxGraphModel dx="1070" dy="1451" grid="1" gridSize="10" page="1" pageWidth="1070" pageHeight="1451" background="#ffffff">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="BF-07 — Trả nhà cung cấp và đối chiếu" style="text;align=left;fontSize=25;fontStyle=1;fontColor=#17304d;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="20" width="990" height="45" />
+        </mxCell>
+        <mxCell id="subtitle" value="Đề xuất SQL • 18/10/2026 • Mainflow; ngoại lệ xem mục 4 của tài liệu VI" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="66" width="990" height="30" />
+        </mxCell>
+        <mxCell id="lane-wh" value="Nhân viên kho" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40.0" y="115" width="330.0" height="1146" />
+        </mxCell>
+        <mxCell id="lane-acc" value="Kế toán" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="370.0" y="115" width="330.0" height="1146" />
+        </mxCell>
+        <mxCell id="lane-owner" value="Chủ cửa hàng" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="700.0" y="115" width="330.0" height="1146" />
+        </mxCell>
+        <mxCell id="step-0" value="&lt;b&gt;1. Đề nghị trả; giữ đúng nguồn&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;SR&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
+          <mxGeometry as="geometry" x="25.0" y="66" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-1" value="&lt;b&gt;2. Ghi NCC đồng ý nhận hàng&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;Agreement / evidence&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-acc">
+          <mxGeometry as="geometry" x="25.0" y="198" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-2" value="&lt;b&gt;3. Duyệt xuất hoặc dùng DISP hợp lệ&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;Approval&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-owner">
+          <mxGeometry as="geometry" x="25.0" y="330" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-3" value="&lt;b&gt;4. Soạn và bàn giao thực tế&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;GI-SR / CUS-OUT + HO&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#e8f4ed;strokeColor=#438463;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
+          <mxGeometry as="geometry" x="25.0" y="462" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-4" value="&lt;b&gt;5. Ghi NCC xác nhận nhận&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;ACK / VAR&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-acc">
+          <mxGeometry as="geometry" x="25.0" y="594" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-5" value="&lt;b&gt;6. Duyệt sai lệch nếu có¹&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;Resolution approval&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-owner">
+          <mxGeometry as="geometry" x="25.0" y="726" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-6" value="&lt;b&gt;7. Đối chiếu kết quả bên ngoài&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;External references&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-acc">
+          <mxGeometry as="geometry" x="25.0" y="858" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-7" value="&lt;b&gt;8. Đóng khi mọi lượng đã rõ¹&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;SR CLOSED&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-owner">
+          <mxGeometry as="geometry" x="25.0" y="990" width="280" height="86" />
+        </mxCell>
+        <mxCell id="edge-0" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-0" target="step-1">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="205.0" y="290" />
+              <mxPoint x="535.0" y="290" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-1" target="step-2">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="535.0" y="422" />
+              <mxPoint x="865.0" y="422" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-2" target="step-3">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="865.0" y="554" />
+              <mxPoint x="205.0" y="554" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-3" target="step-4">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="205.0" y="686" />
+              <mxPoint x="535.0" y="686" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-4" target="step-5">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="535.0" y="818" />
+              <mxPoint x="865.0" y="818" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-5" target="step-6">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="865.0" y="950" />
+              <mxPoint x="535.0" y="950" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-6" target="step-7">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="535.0" y="1082" />
+              <mxPoint x="865.0" y="1082" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="legend" value="Xanh dương: thao tác/chứng từ • Xanh lá: thao tác có thể ghi biến động kho hoặc giữ hộ" style="text;align=left;fontSize=13;fontColor=#43566f;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="1279" width="990" height="35" />
+        </mxCell>
+        <mxCell id="note" value="¹ Kho thực hiện quyết định bằng chứng từ mới trước đóng. ACK/đóng không trừ tồn nữa. Hàng giữ hộ NCC chỉ giảm custody." style="rounded=1;fillColor=#f3f5f8;strokeColor=#d6dde6;align=left;spacing=12;fontSize=13;fontColor=#34465e;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="1322" width="990" height="86" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="BF-01-EN" name="BF-01 EN">
+    <mxGraphModel dx="1400" dy="1319" grid="1" gridSize="10" page="1" pageWidth="1400" pageHeight="1319" background="#ffffff">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="BF-01 — Replenishment, purchase and receipt" style="text;align=left;fontSize=25;fontStyle=1;fontColor=#17304d;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="20" width="1320" height="45" />
+        </mxCell>
+        <mxCell id="subtitle" value="SQL proposal • 18 Oct 2026 • Mainflow; exceptions in section 4 of the EN proposal" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="66" width="1320" height="30" />
+        </mxCell>
+        <mxCell id="lane-sales" value="Sales Staff" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40.0" y="115" width="330.0" height="1014" />
+        </mxCell>
+        <mxCell id="lane-owner" value="Store Owner" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="370.0" y="115" width="330.0" height="1014" />
+        </mxCell>
+        <mxCell id="lane-acc" value="Accountant" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="700.0" y="115" width="330.0" height="1014" />
+        </mxCell>
+        <mxCell id="lane-wh" value="Warehouse Staff" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1030.0" y="115" width="330.0" height="1014" />
+        </mxCell>
+        <mxCell id="step-0" value="&lt;b&gt;1. Record shortage demand¹&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;RR&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-sales">
+          <mxGeometry as="geometry" x="25.0" y="66" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-1" value="&lt;b&gt;2. Approve demand and quantity&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;Approval&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-owner">
+          <mxGeometry as="geometry" x="25.0" y="198" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-2" value="&lt;b&gt;3. Create PO; record supplier confirmation&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;PO&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-acc">
+          <mxGeometry as="geometry" x="25.0" y="330" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-3" value="&lt;b&gt;4. Receive, count and inspect&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;ARR / INS / VAR&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
+          <mxGeometry as="geometry" x="25.0" y="462" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-4" value="&lt;b&gt;5. Post accepted quantities&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;GR-P / CUS-IN&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#e8f4ed;strokeColor=#438463;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
+          <mxGeometry as="geometry" x="25.0" y="594" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-5" value="&lt;b&gt;6. Put away; confirm locations&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;TO-PUTAWAY&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#e8f4ed;strokeColor=#438463;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
+          <mxGeometry as="geometry" x="25.0" y="726" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-6" value="&lt;b&gt;7. Reconcile; track remainder²&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;PO ↔ GR&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-acc">
+          <mxGeometry as="geometry" x="25.0" y="858" width="280" height="86" />
+        </mxCell>
+        <mxCell id="edge-0" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-0" target="step-1">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="205.0" y="290" />
+              <mxPoint x="535.0" y="290" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-1" target="step-2">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="535.0" y="422" />
+              <mxPoint x="865.0" y="422" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-2" target="step-3">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="865.0" y="554" />
+              <mxPoint x="1195.0" y="554" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-3" target="step-4">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge-4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-4" target="step-5">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-5" target="step-6">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1195.0" y="950" />
+              <mxPoint x="865.0" y="950" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="legend" value="Blue: action/document • Green: action that may post inventory or custody movements" style="text;align=left;fontSize=13;fontColor=#43566f;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="1147" width="1320" height="35" />
+        </mxCell>
+        <mxCell id="note" value="¹ Warehouse Staff raises RR for storage demand. ² Owner approves undelivered-remainder cancellation. No accepted quantity: keep case open, no GR." style="rounded=1;fillColor=#f3f5f8;strokeColor=#d6dde6;align=left;spacing=12;fontSize=13;fontColor=#34465e;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="1190" width="1320" height="86" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="BF-02-EN" name="BF-02 EN">
+    <mxGraphModel dx="1060" dy="1187" grid="1" gridSize="10" page="1" pageWidth="1060" pageHeight="1187" background="#ffffff">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="BF-02 — Defect isolation and disposition" style="text;align=left;fontSize=25;fontStyle=1;fontColor=#17304d;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="20" width="980" height="45" />
+        </mxCell>
+        <mxCell id="subtitle" value="SQL proposal • 18 Oct 2026 • Mainflow; exceptions in section 4 of the EN proposal" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="66" width="980" height="30" />
+        </mxCell>
+        <mxCell id="lane-wh" value="Warehouse Staff" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40.0" y="115" width="490.0" height="882" />
+        </mxCell>
+        <mxCell id="lane-owner" value="Store Owner" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="530.0" y="115" width="490.0" height="882" />
+        </mxCell>
+        <mxCell id="step-0" value="&lt;b&gt;1. Record defect and origin&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;DC&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
+          <mxGeometry as="geometry" x="105.0" y="66" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-1" value="&lt;b&gt;2. Block allocation; isolate immediately&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;TO-QUARANTINE&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#e8f4ed;strokeColor=#438463;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
+          <mxGeometry as="geometry" x="105.0" y="198" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-2" value="&lt;b&gt;3. Inspect; propose quantity-level outcomes&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;INS / DISP&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
+          <mxGeometry as="geometry" x="105.0" y="330" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-3" value="&lt;b&gt;4. Approve disposition&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;Approval&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-owner">
+          <mxGeometry as="geometry" x="105.0" y="462" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-4" value="&lt;b&gt;5. Execute authorized outcome¹&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;SCRAP / Movement / SR&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#e8f4ed;strokeColor=#438463;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
+          <mxGeometry as="geometry" x="105.0" y="594" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-5" value="&lt;b&gt;6. Reconcile resolved quantities&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;DC / linked case&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
+          <mxGeometry as="geometry" x="105.0" y="726" width="280" height="86" />
+        </mxCell>
+        <mxCell id="edge-0" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-0" target="step-1">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge-1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-1" target="step-2">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge-2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-2" target="step-3">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="285.0" y="554" />
+              <mxPoint x="775.0" y="554" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-3" target="step-4">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="775.0" y="686" />
+              <mxPoint x="285.0" y="686" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-4" target="step-5">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="legend" value="Blue: action/document • Green: action that may post inventory or custody movements" style="text;align=left;fontSize=13;fontColor=#43566f;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="1015" width="980" height="35" />
+        </mxCell>
+        <mxCell id="note" value="¹ Scrap deducts actual destruction. Supplier return continues in BF-07 without deduction here. Release/regrade preserves total. Rejected proposals remain isolated." style="rounded=1;fillColor=#f3f5f8;strokeColor=#d6dde6;align=left;spacing=12;fontSize=13;fontColor=#34465e;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="1058" width="980" height="86" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="BF-03A-EN" name="BF-03A EN">
+    <mxGraphModel dx="1060" dy="923" grid="1" gridSize="10" page="1" pageWidth="1060" pageHeight="923" background="#ffffff">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="BF-03A — Relocation within one warehouse" style="text;align=left;fontSize=25;fontStyle=1;fontColor=#17304d;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="20" width="980" height="45" />
+        </mxCell>
+        <mxCell id="subtitle" value="SQL proposal • 18 Oct 2026 • Mainflow; exceptions in section 4 of the EN proposal" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="66" width="980" height="30" />
+        </mxCell>
+        <mxCell id="lane-wh" value="Warehouse Staff" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40.0" y="115" width="980.0" height="618" />
+        </mxCell>
+        <mxCell id="step-0" value="&lt;b&gt;1. Select locations in one warehouse&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;TO-RELOCATE&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
+          <mxGeometry as="geometry" x="350.0" y="66" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-1" value="&lt;b&gt;2. Check quantity and stocktake freeze&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;TO validation&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
+          <mxGeometry as="geometry" x="350.0" y="198" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-2" value="&lt;b&gt;3. Move; confirm actual quantity&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;TO confirmation&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#e8f4ed;strokeColor=#438463;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
+          <mxGeometry as="geometry" x="350.0" y="330" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-3" value="&lt;b&gt;4. Preserve reservation; complete task&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;TO / reservation&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
+          <mxGeometry as="geometry" x="350.0" y="462" width="280" height="86" />
+        </mxCell>
+        <mxCell id="edge-0" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-0" target="step-1">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge-1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-1" target="step-2">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge-2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-2" target="step-3">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="legend" value="Blue: action/document • Green: action that may post inventory or custody movements" style="text;align=left;fontSize=13;fontColor=#43566f;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="751" width="980" height="35" />
+        </mxCell>
+        <mxCell id="note" value="No inter-warehouse TR or Owner approval. Source −q, destination +q; retain lot, quality and ownership." style="rounded=1;fillColor=#f3f5f8;strokeColor=#d6dde6;align=left;spacing=12;fontSize=13;fontColor=#34465e;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="794" width="980" height="86" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="BF-03B-EN" name="BF-03B EN">
+    <mxGraphModel dx="1070" dy="1583" grid="1" gridSize="10" page="1" pageWidth="1070" pageHeight="1583" background="#ffffff">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="BF-03B — Inter-warehouse dispatch and receipt" style="text;align=left;fontSize=25;fontStyle=1;fontColor=#17304d;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="20" width="990" height="45" />
+        </mxCell>
+        <mxCell id="subtitle" value="SQL proposal • 18 Oct 2026 • Mainflow; exceptions in section 4 of the EN proposal" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="66" width="990" height="30" />
+        </mxCell>
+        <mxCell id="lane-src" value="Source Warehouse Staff" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40.0" y="115" width="330.0" height="1278" />
+        </mxCell>
+        <mxCell id="lane-owner" value="Store Owner" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="370.0" y="115" width="330.0" height="1278" />
+        </mxCell>
+        <mxCell id="lane-dst" value="Destination Warehouse Staff" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="700.0" y="115" width="330.0" height="1278" />
+        </mxCell>
+        <mxCell id="step-0" value="&lt;b&gt;1. Request physical transfer¹&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;TR&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-src">
+          <mxGeometry as="geometry" x="25.0" y="66" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-1" value="&lt;b&gt;2. Approve warehouses, quantity and version&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;Approval&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-owner">
+          <mxGeometry as="geometry" x="25.0" y="198" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-2" value="&lt;b&gt;3. Pick and check at source&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;TO-PICK / TD draft&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-src">
+          <mxGeometry as="geometry" x="25.0" y="330" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-3" value="&lt;b&gt;4. Hand over; post transfer dispatch&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;TD + HO&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#e8f4ed;strokeColor=#438463;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-src">
+          <mxGeometry as="geometry" x="25.0" y="462" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-4" value="&lt;b&gt;5. Inspect independently; record receipt&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;INS / MWTR draft&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-dst">
+          <mxGeometry as="geometry" x="25.0" y="594" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-5" value="&lt;b&gt;6. Post inter-warehouse receipt&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;MWTR&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#e8f4ed;strokeColor=#438463;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-dst">
+          <mxGeometry as="geometry" x="25.0" y="726" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-6" value="&lt;b&gt;7. Put away; reconcile outcome²&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;TO-PUTAWAY / VAR&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#e8f4ed;strokeColor=#438463;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-dst">
+          <mxGeometry as="geometry" x="25.0" y="858" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-7" value="&lt;b&gt;8. Approve variance resolution if needed²&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;Approval / resolution&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-owner">
+          <mxGeometry as="geometry" x="25.0" y="990" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-8" value="&lt;b&gt;9. Confirm all quantities accounted for³&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;TR / TD completion&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-dst">
+          <mxGeometry as="geometry" x="25.0" y="1122" width="280" height="86" />
+        </mxCell>
+        <mxCell id="edge-0" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-0" target="step-1">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="205.0" y="290" />
+              <mxPoint x="535.0" y="290" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-1" target="step-2">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="535.0" y="422" />
+              <mxPoint x="205.0" y="422" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-2" target="step-3">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-3" target="step-4">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="205.0" y="686" />
+              <mxPoint x="865.0" y="686" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-4" target="step-5">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-5" target="step-6">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge-6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-6" target="step-7">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="865.0" y="1082" />
+              <mxPoint x="535.0" y="1082" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-7" target="step-8">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="535.0" y="1214" />
+              <mxPoint x="865.0" y="1214" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="legend" value="Blue: action/document • Green: action that may post inventory or custody movements" style="text;align=left;fontSize=13;fontColor=#43566f;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="1411" width="990" height="35" />
+        </mxCell>
+        <mxCell id="note" value="¹ Sales selects the fulfilment option when needed. ² Warehouse executes decisions with new documents. ³ Close only after resolution; skip variance approval when matched." style="rounded=1;fillColor=#f3f5f8;strokeColor=#d6dde6;align=left;spacing=12;fontSize=13;fontColor=#34465e;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="1454" width="990" height="86" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="BF-04-EN" name="BF-04 EN">
+    <mxGraphModel dx="1060" dy="1319" grid="1" gridSize="10" page="1" pageWidth="1060" pageHeight="1319" background="#ffffff">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="BF-04 — Stocktake and adjustment" style="text;align=left;fontSize=25;fontStyle=1;fontColor=#17304d;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="20" width="980" height="45" />
+        </mxCell>
+        <mxCell id="subtitle" value="SQL proposal • 18 Oct 2026 • Mainflow; exceptions in section 4 of the EN proposal" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="66" width="980" height="30" />
+        </mxCell>
+        <mxCell id="lane-owner" value="Store Owner" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40.0" y="115" width="490.0" height="1014" />
+        </mxCell>
+        <mxCell id="lane-wh" value="Warehouse Staff" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="530.0" y="115" width="490.0" height="1014" />
+        </mxCell>
+        <mxCell id="step-0" value="&lt;b&gt;1. Plan scope and assign counters&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;ST&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-owner">
+          <mxGeometry as="geometry" x="105.0" y="66" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-1" value="&lt;b&gt;2. Activate freeze; obtain count sheet&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;Snapshot / COUNT&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
+          <mxGeometry as="geometry" x="105.0" y="198" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-2" value="&lt;b&gt;3. Count; recount if required&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;Count attempts&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
+          <mxGeometry as="geometry" x="105.0" y="330" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-3" value="&lt;b&gt;4. Explain; propose adjustment¹&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;VAR / ADJ&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
+          <mxGeometry as="geometry" x="105.0" y="462" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-4" value="&lt;b&gt;5. Approve the result version&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;Approval&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-owner">
+          <mxGeometry as="geometry" x="105.0" y="594" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-5" value="&lt;b&gt;6. Clear Difference; post delta&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;ADJ posting&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#e8f4ed;strokeColor=#438463;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-owner">
+          <mxGeometry as="geometry" x="105.0" y="726" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-6" value="&lt;b&gt;7. Complete; confirm freeze release¹&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;ST CLOSED&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
+          <mxGeometry as="geometry" x="105.0" y="858" width="280" height="86" />
+        </mxCell>
+        <mxCell id="edge-0" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-0" target="step-1">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="285.0" y="290" />
+              <mxPoint x="775.0" y="290" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-1" target="step-2">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge-2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-2" target="step-3">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-3" target="step-4">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="775.0" y="686" />
+              <mxPoint x="285.0" y="686" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-4" target="step-5">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-5" target="step-6">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="285.0" y="950" />
+              <mxPoint x="775.0" y="950" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="legend" value="Blue: action/document • Green: action that may post inventory or custody movements" style="text;align=left;fontSize=13;fontColor=#43566f;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="1147" width="980" height="35" />
+        </mxCell>
+        <mxCell id="note" value="¹ No difference: close/unlock without ADJ0. Do not count transit as a bin. Uncounted ≠ zero. Rejection returns to explanation/recount." style="rounded=1;fillColor=#f3f5f8;strokeColor=#d6dde6;align=left;spacing=12;fontSize=13;fontColor=#34465e;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="1190" width="980" height="86" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="BF-05-EN" name="BF-05 EN">
+    <mxGraphModel dx="1070" dy="1451" grid="1" gridSize="10" page="1" pageWidth="1070" pageHeight="1451" background="#ffffff">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="BF-05 — Issue request, picking and handover" style="text;align=left;fontSize=25;fontStyle=1;fontColor=#17304d;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="20" width="990" height="45" />
+        </mxCell>
+        <mxCell id="subtitle" value="SQL proposal • 18 Oct 2026 • Mainflow; exceptions in section 4 of the EN proposal" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="66" width="990" height="30" />
+        </mxCell>
+        <mxCell id="lane-sales" value="Sales Staff" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40.0" y="115" width="330.0" height="1146" />
+        </mxCell>
+        <mxCell id="lane-wh" value="Warehouse Staff" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="370.0" y="115" width="330.0" height="1146" />
+        </mxCell>
+        <mxCell id="lane-acc" value="Accountant" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="700.0" y="115" width="330.0" height="1146" />
+        </mxCell>
+        <mxCell id="step-0" value="&lt;b&gt;1. Enter externally referenced demand&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;WIR&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-sales">
+          <mxGeometry as="geometry" x="25.0" y="66" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-1" value="&lt;b&gt;2. Choose source and delivery release¹&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;OD / allocation&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-sales">
+          <mxGeometry as="geometry" x="25.0" y="198" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-2" value="&lt;b&gt;3. Reserve stock; assign picking&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;Reservation / TO-PICK&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
+          <mxGeometry as="geometry" x="25.0" y="330" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-3" value="&lt;b&gt;4. Pick; confirm into staging&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;TO confirmation&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#e8f4ed;strokeColor=#438463;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
+          <mxGeometry as="geometry" x="25.0" y="462" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-4" value="&lt;b&gt;5. Check goods; draft issue&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;GI-S draft&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
+          <mxGeometry as="geometry" x="25.0" y="594" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-5" value="&lt;b&gt;6. Physically hand over; post GI&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;GI-S + HO&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#e8f4ed;strokeColor=#438463;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
+          <mxGeometry as="geometry" x="25.0" y="726" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-6" value="&lt;b&gt;7. Track fulfilment and remainder&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;WIR / OD&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-sales">
+          <mxGeometry as="geometry" x="25.0" y="858" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-7" value="&lt;b&gt;8. Reconcile external documents&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;External references&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-acc">
+          <mxGeometry as="geometry" x="25.0" y="990" width="280" height="86" />
+        </mxCell>
+        <mxCell id="edge-0" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-0" target="step-1">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge-1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-1" target="step-2">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="205.0" y="422" />
+              <mxPoint x="535.0" y="422" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-2" target="step-3">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-3" target="step-4">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge-4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-4" target="step-5">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-5" target="step-6">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="535.0" y="950" />
+              <mxPoint x="205.0" y="950" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-6" target="step-7">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="205.0" y="1082" />
+              <mxPoint x="865.0" y="1082" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="legend" value="Blue: action/document • Green: action that may post inventory or custody movements" style="text;align=left;fontSize=13;fontColor=#43566f;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="1279" width="990" height="35" />
+        </mxCell>
+        <mxCell id="note" value="¹ Shortage: BF-03 or BF-01. Picking preserves total; PGI deducts. Defects: BF-02. Failed handover before PGI: keep staged or unpick." style="rounded=1;fillColor=#f3f5f8;strokeColor=#d6dde6;align=left;spacing=12;fontSize=13;fontColor=#34465e;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="1322" width="990" height="86" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="BF-06-EN" name="BF-06 EN">
+    <mxGraphModel dx="1400" dy="1451" grid="1" gridSize="10" page="1" pageWidth="1400" pageHeight="1451" background="#ffffff">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="BF-06 — Customer return and accepted receipt" style="text;align=left;fontSize=25;fontStyle=1;fontColor=#17304d;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="20" width="1320" height="45" />
+        </mxCell>
+        <mxCell id="subtitle" value="SQL proposal • 18 Oct 2026 • Mainflow; exceptions in section 4 of the EN proposal" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="66" width="1320" height="30" />
+        </mxCell>
+        <mxCell id="lane-sales" value="Sales Staff" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40.0" y="115" width="330.0" height="1146" />
+        </mxCell>
+        <mxCell id="lane-wh" value="Warehouse Staff" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="370.0" y="115" width="330.0" height="1146" />
+        </mxCell>
+        <mxCell id="lane-owner" value="Store Owner" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="700.0" y="115" width="330.0" height="1146" />
+        </mxCell>
+        <mxCell id="lane-acc" value="Accountant" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1030.0" y="115" width="330.0" height="1146" />
+        </mxCell>
+        <mxCell id="step-0" value="&lt;b&gt;1. Request return against source&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;CR&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-sales">
+          <mxGeometry as="geometry" x="25.0" y="66" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-1" value="&lt;b&gt;2. Take custody pending decision&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;CUS-IN&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#e8f4ed;strokeColor=#438463;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
+          <mxGeometry as="geometry" x="25.0" y="198" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-2" value="&lt;b&gt;3. Inspect lot, quality and quantity&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;INS&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
+          <mxGeometry as="geometry" x="25.0" y="330" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-3" value="&lt;b&gt;4. Accept/reject by quantity&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;Approval&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-owner">
+          <mxGeometry as="geometry" x="25.0" y="462" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-4" value="&lt;b&gt;5. Receive accepted; hand back rejected&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;GR-CR / CUS-OUT&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#e8f4ed;strokeColor=#438463;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
+          <mxGeometry as="geometry" x="25.0" y="594" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-5" value="&lt;b&gt;6. Put away good; isolate damaged&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;TO / DC&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#e8f4ed;strokeColor=#438463;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
+          <mxGeometry as="geometry" x="25.0" y="726" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-6" value="&lt;b&gt;7. Communicate warehouse outcome&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;CR warehouse status&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-sales">
+          <mxGeometry as="geometry" x="25.0" y="858" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-7" value="&lt;b&gt;8. Record external financial follow-up&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;External references&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-acc">
+          <mxGeometry as="geometry" x="25.0" y="990" width="280" height="86" />
+        </mxCell>
+        <mxCell id="edge-0" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-0" target="step-1">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="205.0" y="290" />
+              <mxPoint x="535.0" y="290" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-1" target="step-2">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge-2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-2" target="step-3">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="535.0" y="554" />
+              <mxPoint x="865.0" y="554" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-3" target="step-4">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="865.0" y="686" />
+              <mxPoint x="535.0" y="686" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-4" target="step-5">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-5" target="step-6">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="535.0" y="950" />
+              <mxPoint x="205.0" y="950" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-6" target="step-7">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="205.0" y="1082" />
+              <mxPoint x="1195.0" y="1082" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="legend" value="Blue: action/document • Green: action that may post inventory or custody movements" style="text;align=left;fontSize=13;fontColor=#43566f;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="1279" width="1320" height="35" />
+        </mxCell>
+        <mxCell id="note" value="CUS-IN does not increase owned stock. GR-CR transfers accepted ownership. Accepted damaged goods remain unavailable. No refund calculation or payment." style="rounded=1;fillColor=#f3f5f8;strokeColor=#d6dde6;align=left;spacing=12;fontSize=13;fontColor=#34465e;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="1322" width="1320" height="86" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="BF-07-EN" name="BF-07 EN">
+    <mxGraphModel dx="1070" dy="1451" grid="1" gridSize="10" page="1" pageWidth="1070" pageHeight="1451" background="#ffffff">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="BF-07 — Supplier return and reconciliation" style="text;align=left;fontSize=25;fontStyle=1;fontColor=#17304d;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="20" width="990" height="45" />
+        </mxCell>
+        <mxCell id="subtitle" value="SQL proposal • 18 Oct 2026 • Mainflow; exceptions in section 4 of the EN proposal" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="66" width="990" height="30" />
+        </mxCell>
+        <mxCell id="lane-wh" value="Warehouse Staff" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40.0" y="115" width="330.0" height="1146" />
+        </mxCell>
+        <mxCell id="lane-acc" value="Accountant" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="370.0" y="115" width="330.0" height="1146" />
+        </mxCell>
+        <mxCell id="lane-owner" value="Store Owner" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="700.0" y="115" width="330.0" height="1146" />
+        </mxCell>
+        <mxCell id="step-0" value="&lt;b&gt;1. Request return; isolate source quantity&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;SR&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
+          <mxGeometry as="geometry" x="25.0" y="66" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-1" value="&lt;b&gt;2. Record supplier agreement&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;Agreement / evidence&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-acc">
+          <mxGeometry as="geometry" x="25.0" y="198" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-2" value="&lt;b&gt;3. Authorize dispatch or reuse valid DISP&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;Approval&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-owner">
+          <mxGeometry as="geometry" x="25.0" y="330" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-3" value="&lt;b&gt;4. Prepare and physically hand over&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;GI-SR / CUS-OUT + HO&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#e8f4ed;strokeColor=#438463;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
+          <mxGeometry as="geometry" x="25.0" y="462" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-4" value="&lt;b&gt;5. Record supplier acknowledgement&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;ACK / VAR&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-acc">
+          <mxGeometry as="geometry" x="25.0" y="594" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-5" value="&lt;b&gt;6. Approve variance resolution if any¹&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;Resolution approval&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-owner">
+          <mxGeometry as="geometry" x="25.0" y="726" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-6" value="&lt;b&gt;7. Reconcile external outcome&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;External references&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-acc">
+          <mxGeometry as="geometry" x="25.0" y="858" width="280" height="86" />
+        </mxCell>
+        <mxCell id="step-7" value="&lt;b&gt;8. Close when all quantities are resolved¹&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;SR CLOSED&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-owner">
+          <mxGeometry as="geometry" x="25.0" y="990" width="280" height="86" />
+        </mxCell>
+        <mxCell id="edge-0" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-0" target="step-1">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="205.0" y="290" />
+              <mxPoint x="535.0" y="290" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-1" target="step-2">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="535.0" y="422" />
+              <mxPoint x="865.0" y="422" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-2" target="step-3">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="865.0" y="554" />
+              <mxPoint x="205.0" y="554" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-3" target="step-4">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="205.0" y="686" />
+              <mxPoint x="535.0" y="686" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-4" target="step-5">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="535.0" y="818" />
+              <mxPoint x="865.0" y="818" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-5" target="step-6">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="865.0" y="950" />
+              <mxPoint x="535.0" y="950" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#667a92;strokeWidth=1.5;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="step-6" target="step-7">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="535.0" y="1082" />
+              <mxPoint x="865.0" y="1082" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="legend" value="Blue: action/document • Green: action that may post inventory or custody movements" style="text;align=left;fontSize=13;fontColor=#43566f;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="1279" width="990" height="35" />
+        </mxCell>
+        <mxCell id="note" value="¹ Warehouse executes resolution with new documents before closure. ACK/closure never deduct again. Supplier-owned goods reduce custody only." style="rounded=1;fillColor=#f3f5f8;strokeColor=#d6dde6;align=left;spacing=12;fontSize=13;fontColor=#34465e;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="1322" width="990" height="86" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
