@@ -1,0 +1,832 @@
+﻿CAPSTONE PROJECT REPORT
+Report 2 – Project Management Plan
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+– Hanoi, Oct 2026 –
+Table of Contents
+Change Log        3
+I. Project Overview        4
+1. Scope and Purpose        4
+2. Assumptions & Constraints        4
+3. Cost & Time Estimations        4
+4. Capacity Planning        6
+5. Project Objectives        6
+6. Risks and Mitigations        7
+II. Management Approach        7
+1. Project Process/Methodology        7
+2. Quality Management        10
+3. Project Training Plan        11
+4. Responsibility Assignments        12
+5. Project Communications        13
+6. Configuration Management        14
+6.1 Document Management        14
+6.2 Source Code Management        15
+6.3 Tools & Infrastructures        15
+________________
+
+
+Change Log
+Date
+	A*
+M, D
+	In charge
+	Change Description
+	07/10/2026
+	A
+	Project Team
+	Create Report 2 – Project Management Plan for WMSD.
+	07/10/2026
+	A
+	Project Team
+	Complete Project Overview, estimation, capacity, objectives and risks.
+	07/10/2026
+	A
+	Project Team
+	Complete Management Approach, RACI, communications and configuration management.
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	*A - Added M - Modified D - Deleted
+
+
+________________
+
+
+I. Project Overview
+1. Scope and Purpose
+Warehouse Management System Development (WMSD) is a responsive web application for the warehouse operations of Cửa hàng điện nước gạch ốp lát Tân Thương. The project focuses on physical-stock accuracy and traceability for one business establishment with configured warehouse areas and storage locations. The system records and links replenishment requests, purchase orders, supplier confirmations, goods receiving and inspection, lot/location inventory, defective goods, stock movements and transfers, stocktake and approved adjustments, warehouse issues, customer returns, supplier returns, reports and audit history.
+Tile inventory is controlled by product, unit of measure, lot, tone, actual calibre, quality status and storage location. Box, piece and square-metre quantities follow the product conversion rule. Stock-affecting transactions preserve their source document, responsible user, time, quantity and status so warehouse staff can trace how recorded inventory changed.
+Out of scope for the first release are full accounting, customer debt management, statutory electronic invoicing, and live integration with MISA eShop. MISA eShop remains the store’s existing retail system; WMSD keeps the references required to reconcile warehouse operations without replacing the full retail/accounting solution.
+WMSD is developed as the project’s warehouse-focused operational layer and is aligned with the approved Report 1 scope and the current SRS/use-case baseline.
+2. Assumptions & Constraints
+The project is planned under the following assumptions and constraints. The items below are limited to factors that directly affect scope, schedule, resources, quality and external-system boundaries.
+No
+	Description
+	Note
+	Assumptions
+	1
+	The store continues to use MISA eShop for existing retail records; WMSD does not replace full retail/accounting functions.
+	Existing software / Scope
+	2
+	Milestone requirements and warehouse rules are reviewed through the agreed review cycle; material changes are recorded and impact-assessed before implementation.
+	Review / Change control
+	Constraints
+	1
+	The project follows a 14-week capstone schedule with a five-member development team and three implementation iterations.
+	Schedule / Resources
+	2
+	The first release is limited to one business establishment with configured warehouse locations; statutory invoicing, full accounting and live MISA integration are excluded.
+	Scope / External interfaces
+	
+
+3. Cost & Time Estimations
+The following table estimates project effort in person-days (pds) and deadlines by project stage. The allocation follows the 14-week capstone plan and three implementation iterations.
+#
+	Work Package
+	Effort
+(pds)
+	Due Date
+	1
+	Stage 1: Project Initiating (week 1)
+	20
+	Week 1
+	1.1
+	Report 1 (Project Introduction)
+	20
+	Week 1
+	2.
+	Stage 2: Project Planning & Initial Requirements (weeks 2-3)
+	45
+	Weeks 2-3
+	2.1
+	Report 3: SRS v0.9 (Overall Requirement)
+	18
+	Week 2
+	2.2
+	Vertical Prototypes (Code Demo)
+	18
+	Week 3
+	2.3
+	Report 2: Project Management Plan v1.0
+	9
+	Week 3
+	3
+	Stage 3: Software Design (weeks 4-5)
+	45
+	Weeks 4-5
+	3.1
+	Vertical Prototypes (POC, or Proof Of Concepts)
+	18
+	Week 4
+	3.2
+	Report 4: SDS v1.0 (High Level Design Specifications)
+	12
+	Week 4
+	3.3
+	Report 5: Test Planning (ref Report5_Test Documentation)
+	10
+	Week 5
+	3.4
+	Report 3: SRS v1.0 (Detailed Requirements for Iteration 1)
+	5
+	Week 5
+	4
+	Stage 4: Implementation (weeks 6-11)
+(Ref: Project Tracking, WBS sheet)
+	180
+	Weeks 6-11
+	4.1
+	Implementation Iteration 1 (weeks 6-7)
+	60
+	Weeks 6-7
+	4.1.1
+	Report 4: Detailed Design Specifications (SDS) v1.1
+	5
+	Week 6
+	4.1.2
+	Code Package & Unit Testing Report
+	22
+	Week 6
+	4. 1.3
+	Report 5: Integration Test Cases
+	5
+	Week 6
+	4. 1.4
+	Report 5: Integration Test Report
+	5
+	Week 7
+	4.1.5
+	Report 3: SRS v1.1 (Detailed Requirements for Iteration 2)
+	3
+	Week 7
+	4.1.6
+	Software Package Version 1
+	20
+	Week 7
+	4.2
+	Implementation Iteration 2 (weeks 8-9)
+	60
+	Weeks 8-9
+	4.2.1
+	Report 4: Detailed Design Specifications (SDS) v1.2
+	5
+	Week 8
+	4.2.2
+	Code Package & Unit Testing Report
+	22
+	Week 8
+	4. 2.3
+	Report 5: Integration Test Cases
+	5
+	Week 8
+	4. 2.4
+	Report 5: Integration Test Report
+	5
+	Week 9
+	4.2.5
+	Report 3: SRS v1.2 (Detailed Requirements for Iteration 3)
+	3
+	Week 9
+	4.2.6
+	Software Package Version 2
+	20
+	Week 9
+	4.3
+	Implementation Iteration 3 (weeks 10-11)
+	60
+	Weeks 10-11
+	4.3.1
+	Report 4: Detailed Design Specifications (SDS) v1.3
+	5
+	Week 10
+	4.3.2
+	Code Package & Unit Testing Report
+	22
+	Week 10
+	4.3.3
+	Report 5: Integration Test Cases
+	4
+	Week 10
+	4.3.4
+	Report 5: Integration Test Report
+	4
+	Week 11
+	4.3.5
+	Report 5: System Test Cases
+	5
+	Week 11
+	4.3.6
+	Software Package Version 3
+	20
+	Week 11
+	5
+	Stage 5: Verification & Validation (weeks 12-13)
+	40
+	Weeks 12-13
+	5.1
+	Report 5: System Test Report
+	15
+	Week 12
+	5.2
+	Report 5: Acceptance Test Support
+	10
+	Week 13
+	5.3
+	Report 6: User Guides (Installation Guides, User Manuals)
+	10
+	Week 12
+	5.4
+	Final Software Package (Documents, Source Codes, etc.)
+	5
+	Week 13
+	6
+	Stage 6: Closing (week 14)
+	20
+	Week 14
+	6.1
+	Report 7: Final Project Report
+	15
+	Week 14
+	6.2
+	Presentation File
+	5
+	Week 14
+	
+
+4. Capacity Planning
+Item
+	Value
+	Hours per person per week
+	40 h (8 h/day × 5 days)
+	Team total per week
+	200 h/week (5 people × 40 h)
+	Total duration
+	14 weeks
+	Gross capacity
+	2,800 h (350 person-days)
+	Buffer (meetings, reviews, unplanned — 20%)
+	560 h
+	Effective working capacity
+	2,240 h
+	
+
+5. Project Objectives
+Planned values are used for project control. Actual values are updated at the end of the corresponding testing or delivery stage.
+#
+	Metric
+	Unit
+	Planned
+	Actual
+	Notes / References
+	1
+	Effort Usage
+	Person-day
+	350
+	TBD
+	Total planned effort for the 14-week project.
+	2
+	Review Defects
+	No of defects
+	≤ 20
+	TBD
+	Issues found during SRS/SDS/UI/test-document reviews.
+	3
+	Unit Test Defects
+	No of defects
+	≤ 10 per module
+	TBD
+	Unit-test defects; no critical defect remains before integration.
+	4
+	Integration Test Defects
+	No of defects
+	≤ 3 per module
+	TBD
+	Defects found in end-to-end module integration.
+	5
+	System Test Defects
+	No of defects
+	≤ 15 total
+	TBD
+	Product-level defects found during system testing.
+	6
+	Acceptance Test Defects
+	No of defects
+	≤ 5 total
+	TBD
+	Acceptance defects; no open critical defect at final release.
+	7
+	Timeliness
+	%
+	≥ 90%
+	TBD
+	Total on-time deliverables / Total project deliverables
+	8
+	Requirement Completeness
+	%
+	≥ 95%
+	TBD
+	Coverage of approved WMSD requirements; failed if <=75%
+	9
+	…
+	
+
+	
+
+	
+
+	
+
+	
+
+6. Risks and Mitigations 
+The project tracks a maximum of four major risks. Risks are reviewed during weekly project meetings and before each iteration release.
+#
+	Risk
+	Prob
+	Impact
+	Mitigation
+	R01
+	Requirements or warehouse rules change after the SRS baseline.
+	Medium
+	High
+	Record change requests, perform impact analysis, and defer non-critical additions if they threaten the 14-week scope.
+	R02
+	Incorrect box/piece/m² conversion or lot/tone/calibre handling causes inventory mismatch.
+	Medium
+	High
+	Centralize conversion rules and validate receipt, issue, transfer and stocktake quantities with reconciliation tests.
+	R03
+	Receiving, transfer or return exceptions are implemented only as happy paths.
+	Medium
+	High
+	Test shortage, surplus, damage, wrong characteristics, pending inspection, in-transit and rejected-return cases.
+	R04
+	Parallel development creates inconsistent stock-posting logic.
+	Medium
+	High
+	Use one stock-posting rule set, peer-review stock-affecting changes and test before merge.
+	II. Management Approach
+1. Project Process/Methodology
+The team applies Agile Scrum as the main software development methodology for WMSD. Scrum is selected because the project is implemented by a small capstone team within a fixed 14-week schedule, while warehouse requirements may still be refined after discussion with the client and supervisor. The methodology allows the team to implement, review, test, and improve the product incrementally instead of waiting until the end of the project to validate the complete warehouse solution.
+Scrum is suitable for WMSD for the following reasons:
+* The project contains multiple related warehouse modules, including product and unit management, replenishment and purchase orders, goods receiving and inspection, warehouse/location inventory, stock movements and transfers, stocktake and adjustment, stock issue, customer return, supplier return, reporting, and access/audit controls.
+*  Several warehouse rules are dependent on actual business practice, such as partial receiving, handling damaged goods, box-piece-m² conversion, lot/tone/actual-calibre tracking, in-transit quantities, and adjustment approval. These rules can be reviewed and refined progressively with feedback.
+* The implementation plan already divides the development stage into three iterations: Weeks 6-7, Weeks 8-9, and Weeks 10-11. Each iteration produces a software package and supporting SRS/SDS/testing updates.
+*  Frequent review reduces the risk of implementing warehouse flows that appear correct technically but do not match the actual receiving, storage, movement, stocktake, issue, and return processes.
+In this project, Scrum responsibilities are applied as follows:
+* Supervisor / Mentor: provides project direction, reviews milestone deliverables, gives feedback on scope and major design decisions, and acts similarly to a Product Owner from the academic supervision perspective.
+* Project Manager / Scrum Coordinator: maintains the project plan, tracks progress and risks, coordinates iteration planning, facilitates team communication, and ensures that unresolved blockers are handled before they affect milestone delivery.
+* Business Analyst: maintains the requirement baseline, use cases, business rules, process flows, and requirement traceability; clarifies warehouse scenarios with the client and converts confirmed business needs into implementable requirements.
+* Development Team: implements frontend and backend functions, performs unit testing, integrates modules, fixes defects, and updates technical documentation required for each iteration.
+* Tester / QA: reviews testability, prepares and executes integration/system test cases, records defects, verifies fixes, and checks that stock-affecting functions comply with the approved business rules.
+  
+
+Figure 2.1 Agile Scrum Process Model
+The Scrum process applied by the team is specifically organized as follows:
+* Product Backlog: The backlog contains the approved WMSD functions and supporting work items. Items are derived from the SRS and use-case list and are grouped by business capability. The backlog also includes document updates, testing activities, defect fixes, and technical tasks required to complete each software package.
+* Backlog Refinement: Before implementation, the team reviews unclear use cases, validation rules, status transitions, actor permissions, and dependencies between modules. For warehouse functions, refinement focuses particularly on how a transaction changes stock quantity, quality status, lot/location information, and source-document traceability.
+* Iteration Planning: At the beginning of each implementation iteration, the team selects the functions that can be completed within the two-week capacity. Dependencies are considered so that upstream functions are available before downstream flows are implemented.
+* Iteration 1 focuses on establishing the core data and operational foundation required for later warehouse transactions.
+* Iteration 2 extends the solution with connected stock movement, transfer, stocktake, issue, or return functions according to the approved iteration scope.
+* Iteration 3 completes the remaining functions, resolves integration issues, stabilizes the product, and prepares the software for system testing.
+* Iteration Execution: Team members perform detailed design, coding, unit testing, integration, defect correction, and document updates. Tasks are tracked in the agreed project-tracking tool. Functions are not considered complete only because the UI is available; the corresponding business rules and stock-posting behavior must also be verified.
+* Daily Coordination: Team members communicate progress, current tasks, blockers, and next actions on working days. Urgent technical or requirement issues are escalated immediately instead of waiting for the weekly meeting.
+* Iteration Review: At the end of each iteration, the team demonstrates the completed software package to the supervisor and checks the implemented functions against the agreed SRS and use cases. Feedback that changes scope or behavior is recorded before being added to the next iteration.
+* Iteration Retrospective: The team reviews what was completed, delayed, misunderstood, or repeatedly defective. Lessons learned are used to improve task allocation, review discipline, test coverage, and communication in the next iteration.
+2. Quality Management
+The team applies both Quality Assurance (QA) and Quality Control (QC) throughout the project lifecycle. For WMSD, quality management does not focus only on whether a screen works; it also verifies that inventory quantities, lot/location information, quality status, approvals, and source references remain consistent across connected warehouse transactions.
+Activity
+	Description
+	Quality Objective
+	Defect Prevention
+	• Define and review business rules before coding.
+• Apply coding conventions and shared validation rules.
+• Use Git-based version control and peer review to prevent accidental overwrite or inconsistent implementation.
+• Reuse common stock/UOM validation logic instead of duplicating calculation rules in different modules.
+	Reduce avoidable defects, especially defects that could create incorrect inventory balances or inconsistent transaction states.
+	Requirement & Use Case Review
+	• Review SRS, use cases, actors, preconditions, main flows and alternative flows.
+• Cross-check warehouse flows against confirmed client operations.
+• Review changes before adding them to an iteration backlog.
+	Ensure that implemented functions remain inside the approved scope and correctly represent the real warehouse process.
+	Design & UI Review
+	• Review SDS, data model, sequence/flow design and important screen prototypes before implementation.
+• Confirm that warehouse documents show the information required for traceability: source document, product, quantity, lot, location, status, actor and time where applicable.
+	Detect design gaps before coding and keep screen behavior consistent with the requirement specification.
+	Code Review
+	• Pull/merge requests are reviewed by at least one other team member before integration.
+• Stock-affecting code, permission checks and status-transition logic receive additional review attention.
+	Improve maintainability and reduce the probability that one module posts inventory differently from another module.
+	Unit Testing
+	• Each completed module is unit-tested before integration.
+• Tests cover validation, calculations, UOM conversion, permission checks and status rules where applicable.
+• Defects found during unit testing are corrected before the function is merged into the iteration package.
+	Verify individual functions and services before they participate in end-to-end warehouse flows.
+	Integration Testing
+	• Integration testing is performed after related modules are combined.
+• Test flows include purchase-to-receipt, receipt-to-stock, stock movement/transfer, stocktake-to-adjustment, issue, and return scenarios.
+• Each iteration maintains integration test evidence and defect results.
+	Verify that data, quantities, statuses and references are transferred correctly between connected modules.
+	System Testing
+	• Conducted during the Verification & Validation stage in Weeks 12-13.
+• Tests the complete WMSD against functional and non-functional requirements.
+• Includes normal flows and important exception cases such as shortage, surplus, damage, invalid conversion, insufficient stock and unresolved discrepancies.
+	Confirm that the integrated release is stable and satisfies the approved SRS before acceptance testing.
+	Regression Testing
+	• Re-execute affected test cases after important bug fixes or changes to stock-posting logic.
+• Prioritize previously passed end-to-end flows that share common inventory services or database transactions.
+	Ensure that fixes do not break previously working warehouse functions.
+	Table 2.1 Quality Management
+A defect is considered closed only after the fix is implemented and verified by re-test. Critical defects that can corrupt inventory quantity, expose unauthorized operations, or block a main warehouse flow must be resolved before the related software package is accepted for the next testing stage.
+3. Project Training Plan
+Training activities are planned according to the knowledge required by each project role. The objective is not to train every member on every technology in depth, but to ensure that the members responsible for a work package have enough knowledge to implement and review it correctly. Training is performed mainly during the early planning/design period and reinforced before the related iteration.
+Training Area
+	Participants
+	When, Duration
+	Waiver Criteria
+	Training Focus
+	WMSD Business Domain & Warehouse Rules
+	All members
+	Weeks 1-2; 2 internal sessions
+	Mandatory
+	Review purchase/receipt, lot-tone-calibre, UOM conversion, stock status, transfer, stocktake, issue and return rules.
+	Requirement Analysis & Use Case Consistency
+	Project Manager, Business Analyst, Tester
+	Weeks 1-3; 2-3 hours/week
+	Role-based
+	Standardize use-case wording, alternate flows, business rules, traceability and change handling.
+	Git / GitHub Workflow
+	All members
+	Week 1; 2 hours
+	Mandatory
+	Branching, commit convention, pull request, review, merge and release tagging.
+	Frontend Form & Validation Practices
+	Frontend Developer(s), Tester
+	Weeks 2-3; 3 hours/week
+	Role-based
+	Complex forms, validation feedback, permission-based actions and consistent warehouse document UI.
+	Backend API, Authorization & Transaction Handling
+	Backend Developer(s), Tester
+	Weeks 2-4; 3 hours/week
+	Role-based
+	API conventions, authorization, database transactions and safe handling of stock-affecting operations.
+	Database & Inventory Reconciliation
+	Backend Developer(s), Business Analyst, Tester
+	Weeks 3-4; 2 sessions
+	Role-based
+	Understand quantity posting, lot/location balances, status separation and reconciliation between source documents and inventory.
+	Test Design for Warehouse Exceptions
+	Business Analyst, Tester, Developers
+	Before each implementation iteration; 2 hours
+	Mandatory
+	Design cases for shortage, surplus, damaged goods, wrong characteristics, insufficient stock, transfer discrepancy and adjustment approval.
+	Table 3.1 Project Training Plan
+4. Responsibility Assignments
+Responsibility Assignments standardize ownership and accountability for the main project work packages. The project uses the RACI model: R - Responsible, A - Accountable, C - Consulted, and I - Informed. Because individual student names are not available in the supplied WMSD project data, assignments are presented by project role rather than by invented personal information.
+  
+
+Figure 4.1 Organization Structure & Role Allocation
+RACI Chart: R~Responsible, A~Accountable, C~Consulted, I~Informed
+Work Package
+	Project Manager
+	Business Analyst
+	Frontend Developer
+	Backend Developer
+	Tester / QA
+	Project Planning & Tracking
+	A/R
+	C
+	C
+	C
+	C
+	Risk Management
+	A/R
+	C
+	I
+	I
+	C
+	Client / Supervisor Requirement Review
+	A
+	R
+	I
+	I
+	C
+	Prepare Report 1 - Project Introduction
+	A
+	R
+	C
+	C
+	I
+	Prepare Report 2 - Project Management Plan
+	A/R
+	R
+	C
+	C
+	C
+	Prepare Report 3 - SRS Overview
+	A
+	R
+	C
+	C
+	C
+	Prepare Detailed Use Case Specifications
+	A
+	R
+	C
+	C
+	C
+	Business Process / Main Flow Diagrams
+	A
+	R
+	C
+	C
+	C
+	Prepare Report 4 - SDS
+	A
+	C
+	R
+	R
+	C
+	Database / Data Model Design
+	A
+	C
+	I
+	R
+	C
+	UI / Screen Design
+	A
+	C
+	R
+	C
+	C
+	Frontend Implementation
+	A
+	C
+	R
+	C
+	C
+	Backend Implementation
+	A
+	C
+	C
+	R
+	C
+	Stock Posting / Transaction Logic
+	A
+	C
+	C
+	R
+	C
+	Source Code Control & Merge Management
+	A/R
+	I
+	R
+	R
+	C
+	Unit Testing
+	A
+	I
+	R
+	R
+	C
+	Prepare Integration Test Cases
+	A
+	C
+	C
+	C
+	R
+	Execute Integration Testing
+	A
+	C
+	R
+	R
+	R
+	Prepare System Test Cases
+	A
+	C
+	C
+	C
+	R
+	Execute System Testing & Regression
+	A
+	I
+	C
+	C
+	R
+	Defect Tracking & Verification
+	A
+	C
+	R
+	R
+	R
+	Prepare Report 6 - User Guides
+	A
+	R
+	C
+	C
+	C
+	Deployment / Release Package
+	A/R
+	I
+	C
+	R
+	C
+	Final Report & Presentation
+	A/R
+	R
+	C
+	C
+	C
+	Table 4.1 Responsibility Assignments
+5. Project Communications
+Project communication is organized to support both day-to-day coordination and formal project control. Routine communication is used to identify blockers early, while milestone and requirement-review communication ensures that important decisions are traceable and reflected in project documents.
+Communication Item
+	Who / Target
+	Purpose
+	When, Frequency
+	Type, Tool, Method(s)
+	Team Daily Coordination
+	All team members
+	Report completed work, current tasks, blockers, and next actions; coordinate dependencies between analysis, frontend, backend and testing.
+	Working days
+	Group chat / short online meeting
+	Team Weekly Meeting
+	All team members
+	Review weekly progress, compare actual work with the plan, update risks/issues, rebalance workload and determine priorities for the next week.
+	Once per week
+	Online / Offline meeting + project tracker
+	Supervisor Review Meeting
+	Supervisor + project team
+	Report project progress, review milestone documents, discuss major requirement/design issues, and receive comments or directions.
+	According to supervisor schedule / at least at major milestones
+	Online / Offline meeting + meeting notes
+	Requirement Clarification
+	Project Manager, Business Analyst, relevant Developer/Tester, Client when required
+	Clarify warehouse operations, exception cases, business rules, actor permissions and scope changes before implementation.
+	When a requirement is unclear or changes
+	Meeting / chat + documented decision
+	Iteration Planning
+	All team members
+	Confirm iteration scope, dependencies, responsible members, testing needs and expected deliverables.
+	Beginning of each implementation iteration
+	Planning meeting + project tracking sheet
+	Iteration Review / Demo
+	All team members + Supervisor
+	Demonstrate completed software package, compare implemented functions with SRS/use cases, collect feedback and determine follow-up changes.
+	End of each implementation iteration
+	Live demo + meeting notes
+	Unscheduled / Emergency Meeting
+	Relevant team members
+	Discuss and resolve urgent issues that may block implementation, testing, integration, data integrity or delivery.
+	When needed
+	Google Meet / group chat
+	Table 5.1 Project Communications
+Important decisions that change requirement scope, use-case behavior, schedule, or design are not treated as chat-only agreements. They must be reflected in the relevant report, project tracker, change log, or meeting note so that all team members use the same baseline.
+6. Configuration Management
+6.1 Document Management
+All project-related documents are centrally stored and collaboratively maintained on Google Drive. This provides one controlled location for reports, project tracking, testing evidence, diagrams, meeting notes and release materials. Google Docs and Google Sheets are used where real-time collaboration is useful, while milestone deliverables are maintained in the required Word/Excel formats.
+The document repository is organized into the following main areas:
+* Reports - contains Report 1 to Report 7, supporting appendices and milestone submission versions.
+* Project Tracking - contains schedule, iteration tracking, work assignments, issue/risk tracking and progress records.
+* Requirements & Diagrams - contains approved use-case lists, process diagrams, Draw.io files, PlantUML sources and supporting requirement materials.
+* Testing - contains test plans, test cases, test reports, defect logs, evidence and regression results.
+* Meeting Notes - contains summaries of supervisor/client discussions, important decisions, action items and unresolved questions.
+* Weekly Reports - contains weekly progress reports and records of completed, ongoing and planned work.
+* Release Packages - contains milestone software packages and the corresponding approved document set.
+Document control rules are applied as follows:
+* Version control: Major milestone documents use explicit versions such as v0.9, v1.0, v1.1 and v1.2. A new milestone version is created when the document content changes substantially or is aligned with a new implementation iteration.
+* Change log: Significant additions, modifications and deletions are recorded in the Change Log section of the corresponding report.
+* Access control: Edit access is limited to the project team and authorized supervising stakeholders; shared review links are used when comments are required.
+* Baseline control: Once a report version is used as the baseline for implementation or testing, changes that affect scope or behavior must be reflected in the relevant project tracking record and communicated to the team.
+* Backup: Important milestone documents and final submission packages are retained as separate copies so that an earlier approved version can be recovered if necessary.
+6.2 Source Code Management
+GitHub is used as the central source-code repository and Git is used for version control. The repository is accessible only to authorized project members. The purpose of source-code management is to keep implementation changes traceable, reduce accidental code loss, support parallel development, and control what is integrated into each software package.
+The source-code management workflow includes:
+* Branch structure: The team maintains a stable main branch and a development/integration branch. New functions and bug fixes are developed on separate feature or fix branches so that unfinished work does not directly affect the stable release.
+* Commit convention: Commits use short, meaningful messages describing the change. A commit should represent one logical change where possible so that it can be reviewed or reverted more easily.
+* Pull request / merge review: Completed work is merged through a pull request or equivalent review flow. At least one other member reviews important changes before merge, especially changes involving stock quantity, UOM conversion, authorization, or transaction status.
+* Developer checks before merge: Relevant unit tests must pass, obvious build/runtime errors must be resolved, and the changed function must match the approved requirement or bug ticket.
+* Release control: The stable code corresponding to Software Package Version 1, Version 2 and Version 3 is tagged or otherwise clearly identified in the repository.
+* Defect fixes: Bug fixes are linked to the corresponding defect record where possible, and affected integration/system tests are re-executed after the fix.
+* Sensitive information: Passwords, secrets, environment credentials and private deployment configuration must not be committed directly to the repository.
+6.3 Tools & Infrastructures
+The project tools are selected to support collaboration, diagramming, documentation, source control and project tracking. Where the supplied WMSD sources do not confirm a specific implementation technology or deployment provider, the report keeps that item to be confirmed instead of introducing an unsupported technology decision.
+Category
+	Tools / Infrastructure
+	Technology
+	Node.js 
+	Database
+	MongoDB
+	IDEs / Editors
+	VS Code
+	Diagramming
+	Draw.io; PlantUML
+	Documentation
+	Microsoft Office; Google Docs / Sheets / Slides.
+	Version Control
+	GitHub (source code); Google Drive (documents).
+	Testing / API Verification
+	
+
+	Deployment Server
+	
+
+	Project Management
+	Project Tracking spreadsheet 
+	Communication
+	Google Meet and project group chat for daily coordination; formal decisions are recorded in meeting notes or project documents.
+	Table 6.1 Tools & Infrastructures
+Report 2 (Project Management Plan)                Page  / 13
