@@ -1,0 +1,890 @@
+=== PAGE 1 ===
+ 
+© SAP UCC Magdeburg 
+ 
+ 
+CASE STUDY 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ss 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+Product 
+S/4HANA 2022  
+Global Bike 
+ 
+Fiori 3.0 
+ 
+Level 
+Beginner 
+ 
+Focus 
+Warehouse Management 
+ 
+Authors 
+Simha Magal 
+Stefan Weidner 
+Chris Bernhardt 
+ 
+Version 
+4.2 
+ 
+Last Update 
+August 2023 
+MOTIVATION 
+Warehousing has significant value 
+for logistics. 
+ 
+Current trends such as higher cost 
+pressure, shorter cycles of 
+innovation, higher customer 
+expectations and globalization of 
+markets make great demands on 
+companies, particularly on 
+warehouse logistics. This is 
+especially difficult in industries with 
+high distinction like the consumer 
+goods industry. Furthermore, 
+customers have increasingly higher 
+demands on reliability, promptness 
+and flexibility of deliveries. 
+ 
+Warehouse management systems 
+support the global flow of goods 
+between the producer and the 
+purchaser and facilitate near fail -
+proof logistic operations in 
+increasingly complex supply 
+chains. 
+ PREREQUISITES 
+Before you use this case study, you 
+should be familiar with navigation in 
+the SAP system. 
+ 
+In order to  work successfully through 
+this case study, it is not necessary to 
+finish the WM exercises. Anyway, it is 
+recommended. 
+ 
+NOTES 
+This case study uses the Global Bike 
+(GBI) data set, which has been 
+exclusively created for SAP UA global 
+curricula. 
+ 
+ 
+ 
+                       
+Warehouse Management (WM) III 
+This case study explains an integrated warehouse management process , which is 
+triggered released/set off by a sales order for material, to be delivered to the customer 
+from a warehouse-managed storage location. 
+ 
+ 
+ 
+
+=== PAGE 2 ===
+ 
+ 
+© SAP UCC Magdeburg Page 2 
+ 
+CASE STUDY 
+  
+ Process Overview 
+Learning Objective Understand and perform a warehousing sales process 
+cycle. 
+Scenario Due to increasing sales output in your San Diego distribution center, 
+the management has decided to install a Warehouse Management System 
+there. After running some tests, you have some mate rial in your warehouse 
+and you can fulfill a new sales order. 
+Employees involved  Karim Messalem (Sales Person 1 US West) 
+    Carolin Bruzik (Warehouse Supervisor) 
+    Sunil Gupta (Warehouse Employee) 
+    Zarah Morello (Good Issue Clerk) 
+Time 70 min 
+ 
+First, you have to create a sales order. In order to fulfill this new sales order, you need to create an 
+outbound delivery. You may remember this part from the SD case study. However, this time the 
+process is slightly different, because you deliver from a warehouse-managed storage location. After 
+picking the materials, goods are shipped to the customer. Because this case study focuses on 
+Warehouse Management, detailed instructions of how to create the invoice and how to receive the 
+payment are not included.  However, you may use respective parts of the Sales and Distribution 
+(SD) case study to finalize the sales process and see the financial impact.  
+ 
+ 
+
+
+=== PAGE 3 ===
+ 
+ 
+© SAP UCC Magdeburg Page 3 
+ 
+CASE STUDY 
+ 
+  
+Table of Contents 
+Process Overview .................................................................................................................. 2 
+Step 1: Create Sales Order .................................................................................................... 4 
+Step 2: Display Material Inventory ....................................................................................... 6 
+Step 3: Create Outbound Delivery ........................................................................................ 8 
+Step 4: Change Outbound Delivery ...................................................................................... 9 
+Step 5: Display Material Inventory ..................................................................................... 11 
+Step 6: Pick Materials with Transfer Order ........................................................................ 12 
+Step 7: Run Bin Status Report............................................................................................. 14 
+Step 8: Confirm Transfer Order .......................................................................................... 16 
+Step 9: Run Bin Status Report............................................................................................. 18 
+Step 10: Display Material Inventory Value......................................................................... 20 
+Step 11: Ship Materials ....................................................................................................... 21 
+Step 12: Display Material Inventory ................................................................................... 23 
+Step 13: Display Material Inventory Value......................................................................... 24 
+WM III Challenge ............................................................................................................... 25 
+ 
+ 
+
+=== PAGE 4 ===
+ 
+ 
+© SAP UCC Magdeburg Page 4 
+ 
+CASE STUDY 
+ Step 1: Create Sales Order 
+Task Create a sales order. 
+Short Description Use the Fiori Launchpad to create a sales order. 
+Name (Position) Karim Messalem (Sales Person 1 US West) 
+Time 10 min 
+  
+To create a sales order, use in the Warehouse Management area on the Issue 
+from Storage page in the Sales Person role the app Manage Sales Order. 
+ 
+Fiori App 
+ 
+ 
+ 
+In the Manage Sales Orders view, click on the button  first, and then 
+select . This will switch the app, and you will navigate to 
+the Create Sales Documents view. 
+ 
+In the Create Sales Documents enter OR (Standard Order) as Order Type, 
+UW00 as Sales Organization, WH (Wholesale) as Distribution Channel, BI 
+(Bicycles) as Division, SD00 as Sales Office and US as Sales Group. Confirm 
+your entries by clicking  or pressing Enter. 
+ 
+OR 
+UW00 
+WH 
+BI 
+SD00 
+US 
+ 
+ 
+At the top of the  Create Standard Order: Overview screen, enter 133### 
+(SoCal Bikes Irvine; replace ### with your number)  as Sold-To Party and as 
+Ship-To-Party, 54321### as Cust. Reference  and leave the fields Standard 
+Order blank. 
+ 
+133### 
+54321### 
+ 
+
+
+=== PAGE 5 ===
+ 
+ 
+© SAP UCC Magdeburg Page 5 
+ 
+CASE STUDY 
+ 
+  
+In the Sales tab, enter one week from today  as Req. Deliv.Date and do the 
+same in the Pricing date field. Then, enter PRTR2### as Material and 5 as 
+Order Quantity.  Finally, confirm your entries by pressing Enter. You may 
+receive a warning message which you can ignore. 
+ 
+one week from today 
+one week from today 
+PRTR2### 
+5 
+ 
+ 
+Compare your entries with the screenshot above. Then, click on  to save 
+your order. The system will assign a unique standard order number. 
+ 
+ 
+ 
+Standard Order Number 
+Click on  to return to the SAP Fiori Launchpad. 
+ 
+ 
+ 
+
+
+=== PAGE 6 ===
+ 
+ 
+© SAP UCC Magdeburg Page 6 
+ 
+CASE STUDY 
+ Step 2: Display Material Inventory 
+Task View the inventory of your material. 
+Short Description Use the Fiori Launchpad to display the inventory of your 
+material. 
+Name (Position) Carolin Bruzik (Warehouse Supervisor) 
+Time 5 min 
+  
+To display the material inventory, use in the Warehouse Management area on 
+the Issue from Storage page in the Warehouse Supervisor role the app Display 
+Stock Overview. 
+ 
+Fiori App 
+  
+ 
+In the Stock Overview  screen, enter PRTR2### as Material (remember to 
+replace ### with your number).  
+ 
+PRTR2### 
+ 
+ 
+Choose . 
+ 
+ 
+ 
+
+
+=== PAGE 7 ===
+ 
+ 
+© SAP UCC Magdeburg Page 7 
+ 
+CASE STUDY 
+  
+Note that you still have the same amount of goods in San Diego.  
+ 
+Click on  to return to the SAP Fiori Launchpad. 
+ 
+ 
+ 
+
+
+=== PAGE 8 ===
+ 
+ 
+© SAP UCC Magdeburg Page 8 
+ 
+CASE STUDY 
+  
+ Step 3: Create Outbound Delivery 
+Task Create an outbound delivery. 
+Short Description Use the SAP Fiori Launchpad to create the outbound 
+delivery note for the sales order. 
+Name (Position) Carolin Bruzik (Warehouse Supervisor) 
+Time 10 min 
+  
+To create an outbound delivery, use in the Warehouse Management area on 
+the Issue from Storage page in the Warehouse Supervisor role the app Create 
+Outbound Delivery. 
+ 
+Fiori App 
+ 
+ 
+In the Create Outbound Delivery screen, enter 133### (SOCAL Bikes Irvine; 
+replace ### with your number) as Ship-To Party, SD00 as Shipping point, and 
+Due up until next week as Planned Creation Date. Start the search by pressing 
+. 
+ 
+133### 
+SD00 
+ 
+Due up until  
+next week 
+ 
+In the Create Outbound Deliveries screen, select the Sales Document and click 
+on the button  . You will receive a message that one log was 
+created. 
+ 
+ 
+ 
+Click on  to return to the SAP Fiori Launchpad. 
+ 
+ 
+ 
+
+
+=== PAGE 9 ===
+ 
+ 
+© SAP UCC Magdeburg Page 9 
+ 
+CASE STUDY 
+ Step 4: Change Outbound Delivery 
+Task Change the outbound delivery. 
+Short Description Use the SAP Fiori Launchpad to assign the storage 
+location to the outbound delivery note for the sales order. 
+Name (Position) Carolin Bruzik (Warehouse Supervisor) 
+Time 10 min 
+  
+To change the outbound delivery, use in the Warehouse Management area on 
+the Issue from Storage page in the Warehouse Supervisor role the app Change 
+Outbound Delivery. 
+ 
+Fiori App 
+ 
+ 
+ 
+In the Change Outbound Delivery screen, use the F4 help  in the field 
+Outbound Delivery. In the tab Outbound Delivery: Not Pasted for Goods Issue 
+enter 133### (SOCAL Bikes Irvine; replace ### with your number) as Ship -
+To Party and SD00 as Shipping point to find your Outbound Delivery number. 
+ 
+F4 
+133### 
+ 
+SD00 
+ 
+ 
+ 
+Confirm your entries by pressing .  
+ 
+ 
+ 
+Double-click on your outbound delivery to transfer it to the field Outbound 
+Delivery.  
+ 
+
+
+=== PAGE 10 ===
+ 
+ 
+© SAP UCC Magdeburg Page 10 
+ 
+CASE STUDY 
+  
+ 
+ 
+Confirm it with . 
+ 
+ 
+ 
+Enter your Storage Location Finished Goods  and confirm with  Enter. By 
+filling the field Storage Location, the SAP System realizes that you selected a 
+WM controlled warehouse. 
+ 
+FG00 
+Click on  to save your changes. 
+ 
+ 
+ 
+Click on  to return to the SAP Fiori Launchpad. 
+ 
+ 
+ 
+
+
+=== PAGE 11 ===
+ 
+ 
+© SAP UCC Magdeburg Page 11 
+ 
+CASE STUDY 
+  
+ Step 5: Display Material Inventory 
+Task View the inventory of your material again. 
+Short Description Use the Fiori Launchpad to display the inventory of your 
+material again. 
+Name (Position) Carolin Bruzik (Warehouse Supervisor) 
+Time 5 min 
+  
+To display the material inventory, use in the Warehouse Management area on 
+the Issue from Storage page in the Warehouse Supervisor role the app Display 
+Stock Overview. 
+ 
+ 
+ 
+ 
+Fiori App 
+In the Stock Overview  screen, enter  PRTR2### as Material  (remember to 
+replace ### with your number). Confirm with . 
+ 
+PRTR2### 
+ 
+ 
+Note that the amount of goods in San Diego has not changed yet. 
+ 
+Click on  to return to the SAP Fiori Launchpad. 
+ 
+ 
+ 
+
+
+=== PAGE 12 ===
+ 
+ 
+© SAP UCC Magdeburg Page 12 
+ 
+CASE STUDY 
+ Step 6: Pick Materials with Transfer Order 
+Task Create a transfer order to pick the materials. 
+Short Description Use the Fiori Launchpad to create a transfer order based 
+on the delivery note created previously. 
+Name (Position) Sunil Gupta (Warehouse Employee) 
+Time 10 min 
+  
+To create an outbound delivery , use in the Warehouse Management area on 
+the Issue from Storage  page in the Warehouse Employee role the app  
+Outbound Deliveries for Picking. 
+ 
+Fiori App 
+ 
+ 
+ 
+In the Outbound Deliveries for Picking  screen, enter SD00 as S hipping 
+Point/Receiving Pt and select Only WM Picking . Then, click on  or 
+press F8 to execute. 
+ 
+SD00 
+Only WM-Picking 
+ 
+ 
+
+
+=== PAGE 13 ===
+ 
+ 
+© SAP UCC Magdeburg Page 13 
+ 
+CASE STUDY 
+  
+In the Day’s Workload for Picking screen, you should see a line item with your 
+Outbound Delivery Number. Select it and click on the  button.  
+ 
+ 
+Outbound Delivery 
+Number 
+ 
+ 
+In the Create Transfer Order for Delivery Note: Initial Screen, press Enter to 
+create your transfer order to be able to pick your documents. This will produce 
+the following screen. 
+ 
+ 
+ 
+On the next screen, click on   to save your transfer order. The system 
+will save the transfer order automatically and assign  a unique t ransfer order 
+number. Please note your number: ________________ 
+ 
+ 
+ 
+ 
+Transfer Order Number 
+ 
+ 
+ 
+Click on  to return to the SAP Fiori Launchpad. 
+ 
+ 
+ 
+
+
+=== PAGE 14 ===
+ 
+ 
+© SAP UCC Magdeburg Page 14 
+ 
+CASE STUDY 
+ Step 7: Run Bin Status Report 
+Task Check the status of your bins. 
+Short Description Use the Fiori Launchpad to run a bin status report, which 
+will display a detailed report of each storage bin within the specified 
+warehouse. 
+Name (Position) Carolin Bruzik (Warehouse Supervisor) 
+Time 5 min 
+  
+To run a bin status report, use in the Warehouse Management area on the Issue 
+from Storage page in the Warehouse Supervisor role the app Run Bin Status 
+Report. 
+ 
+Fiori App 
+ 
+ 
+ 
+In the Bin Status Report: Initial Screen , enter 100 (for your San Diego 
+Warehouse) as Warehouse Number and STBN*### as Storage bin (replace 
+### with your number). Then, click on . 
+ 
+100 
+STBN*### 
+Note The warehouse number is the highest level of organizational unit in 
+warehouse management. In practice, the warehouse number usually 
+corresponds to a physical building or distribution center. Each warehouse 
+number has a substructure that maps the spatial relationship in the warehouse 
+complex in detail. 
+ 
+Storage bins are the lowest level of organizational structure. They are assigned 
+to a storage type and a storage section (if one exists). Storage bins represent 
+the physical location, where the goods are stored in the warehouse. 
+ 
+
+
+=== PAGE 15 ===
+ 
+ 
+© SAP UCC Magdeburg Page 15 
+ 
+CASE STUDY 
+ 
+  
+In the Bin Status Report: Overview screen you should see that the Storage Bin 
+STBN-8-### is filled.  
+ 
+ 
+ 
+Click on your material to display detailed information of this quant and check 
+whether 10 pieces of your good are stored in it. 
+ 
+Note As you can see 15 pieces of your material are marked as available stock 
+and the other 5 as pick quantity. 
+ 
+ 
+ 
+Click on  to return to the SAP Fiori Launchpad. 
+ 
+ 
+ 
+
+
+=== PAGE 16 ===
+ 
+ 
+© SAP UCC Magdeburg Page 16 
+ 
+CASE STUDY 
+ Step 8: Confirm Transfer Order 
+Task Confirm your transfer order. 
+Short Description Use the Fiori Launchpad to confirm the transfer order, you 
+created in the previous step. This confirms that the goods have been physically 
+picked from the storage bin, indicated in the transfer order. 
+Name (Position) Sunil Gupta (Warehouse Employee) 
+Time 5 min 
+  
+To confirm a transfer order , use in the Warehouse Management area on the 
+Issue from Storage  page in the Warehouse Employee role the app Confirm 
+Transfer Order. 
+ 
+ 
+ 
+ 
+Fiori App 
+In the Confirm Transfer Order: Initial Screen, enter the TO Number from the 
+previous task and 100 as Warehouse Number. Then, press Enter. 
+ 
+TO Number 
+100 
+Note If you have not written down the number, you can search for it using the 
+app Display Transfer Order. 
+In the Transfer Orders: List of Resident Documents you have to fill in 100 as 
+Warehouse number. Then, click on . 
+ 
+100 
+ 
+ 
+In the Confirm Transfer Order: Overview of Transfer Order Items screen, you 
+should see an overview of your transfer order created in the previous step. 
+Review all of the details to make sure you have the correct quantity and storage 
+bin. 
+ 
+
+
+=== PAGE 17 ===
+ 
+ 
+© SAP UCC Magdeburg Page 17 
+ 
+CASE STUDY 
+  
+ 
+ 
+Then, click on  to confirm your transfer order. The system will return a 
+success message. 
+ 
+ 
+ 
+Click on  to return to the SAP Fiori Launchpad. 
+ 
+ 
+ 
+
+
+=== PAGE 18 ===
+ 
+ 
+© SAP UCC Magdeburg Page 18 
+ 
+CASE STUDY 
+ Step 9: Run Bin Status Report 
+Task Check the status of your bins again. 
+Short Description Use the Fiori Launchpad to run a bin status report, which 
+displays a detailed report of each storage bin within the specified warehouse. 
+Name (Position) Carolin Bruzik (Warehouse Supervisor) 
+Time 5 min 
+  
+To run a bin status report, use in the Warehouse Management area on the Issue 
+from Storage page in the Warehouse Supervisor role the app Run Bin Status 
+Report. 
+ 
+Fiori App 
+ 
+ 
+ 
+In the Bin Status Report: Initial Screen , enter 100 (for your San Diego 
+Warehouse) as Warehouse Number and STBN*### as Storage bin (replace 
+### with your number). Then, click on . 
+ 
+100 
+STBN*### 
+ 
+ 
+In the Bin Status Report: Overview  screen click on your material in Storage 
+Bin STBN-8-### to display detailed information and check if there are just 15 
+pieces of your good left. 
+ 
+
+
+=== PAGE 19 ===
+ 
+ 
+© SAP UCC Magdeburg Page 19 
+ 
+CASE STUDY 
+  
+ 
+ 
+Click on  to return to the SAP Fiori Launchpad. 
+ 
+ 
+ 
+
+
+=== PAGE 20 ===
+ 
+ 
+© SAP UCC Magdeburg Page 20 
+ 
+CASE STUDY 
+  
+ Step 10: Display Material Inventory Value 
+Task View the value of your material inventory. 
+Short Description Use the Fiori Launchpad  to display the value of your 
+material inventory. 
+Name (Position) Carolin Bruzik (Warehouse Supervisor) 
+Time 5 min 
+  
+To display the material inventory value , use in the Warehouse Management 
+area on the Issue from Storage page in the Warehouse Supervisor role the app 
+Display Warehouse Stock. 
+ 
+ 
+ 
+Fiori App 
+In the Display Warehouse Stocks of Material  screen, enter PRTR2### as 
+Material (replace ### with your number)  and SD00 as Plant. Ensure that all 
+other search criteria fields are blank and click on . 
+ 
+PRTR2### 
+SD00 
+ 
+ 
+Note the total value associated with the DC in San Diego. 
+ 
+Click on  to return to the SAP Fiori Launchpad. 
+ 
+ 
+ 
+
+
+=== PAGE 21 ===
+ 
+ 
+© SAP UCC Magdeburg Page 21 
+ 
+CASE STUDY 
+ Step 11: Ship Materials 
+Task Ship the materials. 
+Short Description Use the Fiori Launchpad to ship the materials by posting a 
+goods issue. This will reduce unrestricted stock to reflect that the inventory is 
+shipped. It also indicates a change of ownership. 
+Name (Position) Zarah Morello (Good Issue Clerk) 
+Time 5 min 
+  
+To ship materials, use in the Warehouse Management area on the Issue from 
+Storage page in the Good Issue Clerk role the app Change Outbound Delivery. 
+ 
+ 
+ 
+ 
+ 
+Fiori App 
+In the  Change Outbound Delivery  screen, enter your Outbound Delivery 
+Number from the Create Outbound Delivery task and press . 
+ 
+Outbound Delivery 
+Number 
+ 
+ 
+Note If you have not written down the number you can search for it using the 
+F4 help by choosing   . 
+For doing it, please select the Ship-To Party field and press F4. In the Select: 
+Ship-To Party pop up, enter Irvine as City and *### as Customer. Then, click 
+on  . 
+ 
+ 
+ 
+ 
+ 
+Irvine 
+*### 
+
+
+=== PAGE 22 ===
+ 
+ 
+© SAP UCC Magdeburg Page 22 
+ 
+CASE STUDY 
+ 
+  
+ 
+ 
+Select your customer by double-clicking.. 
+ 
+In the Outbound Delivery ##### Change: Overview  screen, choose the Item 
+Overview tab and scroll to the right until you can see the Picked Qty column. 
+As you can see you picked the full amount to be delivered. 
+ 
+ 
+ 
+Then, click on the   button. The system will return a success 
+message. 
+ 
+ 
+ 
+Click on  to return to the SAP Fiori Launchpad. 
+ 
+ 
+ 
+
+
+=== PAGE 23 ===
+ 
+ 
+© SAP UCC Magdeburg Page 23 
+ 
+CASE STUDY 
+ 
+  
+ Step 12: Display Material Inventory 
+Task View the inventory of your material again. 
+Short Description  Use Fiori Launchpad  to display the inventory of your 
+material again. 
+Name (Position) Carolin Bruzik (Warehouse Supervisor) 
+Time 5 min 
+  
+To display the material inventory, use in the Warehouse Management area on 
+the Issue from Storage page in the Warehouse Supervisor role the app  Display 
+Stock Overview . 
+ 
+Fiori App 
+ 
+ 
+ 
+ 
+In the Stock Overview  screen, enter PRTR2### as Material (remember to 
+replace ### with your number). Choose . 
+ 
+PRTR2### 
+ 
+ 
+Note that the amount of your good s in San Diego has decreased. This 
+represents that 5 pieces of your material actually have been shipped. 
+ 
+Click on  to return to the SAP Fiori Launchpad. 
+ 
+ 
+ 
+
+
+=== PAGE 24 ===
+ 
+ 
+© SAP UCC Magdeburg Page 24 
+ 
+CASE STUDY 
+ 
+  
+ Step 13: Display Material Inventory Value 
+Task View the value of your material inventory again. 
+Short Description Use the SAP Fiori Launchpad to display the value of your 
+material inventory again. 
+Name (Position) Carolin Bruzik (Warehouse Supervisor) 
+Time 5 min 
+  
+To display the material inventory value , use in the Warehouse Management 
+area on the Issue from Storage page in the Warehouse Supervisor role the app 
+Display Warehouse Stock. 
+ 
+Fiori App 
+ 
+ 
+ 
+In the Display Warehouse Stocks of Material  screen, enter PRTR2### as 
+Material (remember to replace ### with your number)  and SD00 as Plant . 
+Ensure that all other search criteria fields are blank and click on . 
+ 
+PRTR2### 
+SD00 
+ 
+ 
+As you can see the values, associated with the material in San Diego, has been 
+decreased. So there is no value associated to the Transit/Transf. for San Diego. 
+This indicates the change of ownership after processing the shipping order. 
+ 
+Click on  to return to the SAP Fiori Launchpad. 
+ 
+ 
+ 
+
+
+=== PAGE 25 ===
+ 
+ 
+© SAP UCC Magdeburg Page 25 
+ 
+CASE STUDY 
+ 
+ WM III Challenge 
+Learning Objective Understand and perform a warehousing sales process 
+cycle. 
+Time 75 min 
+Motivation After having finished the Warehouse Management III  case study successfully , you 
+should now be able to solve the following challenge.  
+Scenario The warehouse management system has been tested without any problems, so the 
+management decided to use the system productively. Due to a higher demand of bikes for the Tour 
+de France , black Professional Touring Bikes are almost out of stock in Europe. They are still 
+available in the Distribution Center in San Diego, so the delivery of the wholesale sales order can 
+be managed by the new warehouse management system. 
+The customer VeloDOM from Magdeburg (Germany) ordered 20 black Professional Touring Bikes 
+with a delivery time of 10 days. 
+Task Information You can use the case study Warehouse Management III as a guideline, but it is 
+recommended to complete this challenge without further assistance to prove your WM skills. 
+  
+ 
+ 

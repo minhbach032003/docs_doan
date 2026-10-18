@@ -1,0 +1,395 @@
+{
+  "index": 17,
+  "name": "UC SO",
+  "id": "pr-yEz1CNZgkcXTLysVO",
+  "nodes": [
+    {
+      "id": "W9mRg3yAz_72ORoaodYb-1",
+      "text": "WMSD",
+      "parent": "1"
+    },
+    {
+      "id": "W9mRg3yAz_72ORoaodYb-2",
+      "text": "Store Owner",
+      "parent": "1"
+    },
+    {
+      "id": "W9mRg3yAz_72ORoaodYb-3",
+      "text": "UC-08  View Product List",
+      "parent": "1"
+    },
+    {
+      "id": "W9mRg3yAz_72ORoaodYb-6",
+      "text": "UC-10  Create Product",
+      "parent": "1"
+    },
+    {
+      "id": "W9mRg3yAz_72ORoaodYb-7",
+      "text": "UC-11  Update Product",
+      "parent": "1"
+    },
+    {
+      "id": "W9mRg3yAz_72ORoaodYb-8",
+      "text": "UC-12  Activate or Deactivate Product",
+      "parent": "1"
+    },
+    {
+      "id": "W9mRg3yAz_72ORoaodYb-9",
+      "text": "UC-13  Configure Packaging and Unit Conversion",
+      "parent": "1"
+    },
+    {
+      "id": "W9mRg3yAz_72ORoaodYb-11",
+      "text": "UC-14  View Lot List",
+      "parent": "1"
+    },
+    {
+      "id": "W9mRg3yAz_72ORoaodYb-15",
+      "text": "UC-17  Update Lot Information",
+      "parent": "1"
+    },
+    {
+      "id": "W9mRg3yAz_72ORoaodYb-16",
+      "text": "UC-18  View Supplier List",
+      "parent": "1"
+    },
+    {
+      "id": "W9mRg3yAz_72ORoaodYb-18",
+      "text": "UC-19  View Supplier Detail",
+      "parent": "1"
+    },
+    {
+      "id": "W9mRg3yAz_72ORoaodYb-19",
+      "text": "UC-22  Activate or Deactivate Supplier",
+      "parent": "1"
+    },
+    {
+      "id": "W9mRg3yAz_72ORoaodYb-20",
+      "text": "UC-23  View Replenishment Request List",
+      "parent": "1"
+    },
+    {
+      "id": "W9mRg3yAz_72ORoaodYb-21",
+      "text": "UC-24  View Replenishment Request Detail",
+      "parent": "1"
+    },
+    {
+      "id": "W9mRg3yAz_72ORoaodYb-22",
+      "text": "UC-26  Approve or Reject Replenishment Request",
+      "parent": "1"
+    },
+    {
+      "id": "W9mRg3yAz_72ORoaodYb-28",
+      "text": "UC-41  View Warehouse and Location List",
+      "parent": "1"
+    },
+    {
+      "id": "W9mRg3yAz_72ORoaodYb-30",
+      "text": "UC-43  Create Storage Location",
+      "parent": "1"
+    },
+    {
+      "id": "W9mRg3yAz_72ORoaodYb-31",
+      "text": "UC-44  Update Storage Location",
+      "parent": "1"
+    },
+    {
+      "id": "W9mRg3yAz_72ORoaodYb-32",
+      "text": "UC-45  Activate or Deactivate Location",
+      "parent": "1"
+    },
+    {
+      "id": "W9mRg3yAz_72ORoaodYb-41",
+      "text": "View Warehouse Transfer List",
+      "parent": "1"
+    },
+    {
+      "id": "W9mRg3yAz_72ORoaodYb-42",
+      "text": "UC-69  Approve or Reject Transfer Discrepancy Resolution",
+      "parent": "1"
+    },
+    {
+      "id": "W9mRg3yAz_72ORoaodYb-43",
+      "text": "UC-70  View Stocktake List",
+      "parent": "1"
+    },
+    {
+      "id": "W9mRg3yAz_72ORoaodYb-45",
+      "text": "UC-72  Create Stocktake",
+      "parent": "1"
+    },
+    {
+      "id": "W9mRg3yAz_72ORoaodYb-47",
+      "text": "UC-77  View Adjustment Request List",
+      "parent": "1"
+    },
+    {
+      "id": "W9mRg3yAz_72ORoaodYb-48",
+      "text": "UC-78  View Adjustment Request Detail",
+      "parent": "1"
+    },
+    {
+      "id": "W9mRg3yAz_72ORoaodYb-49",
+      "text": "UC-80  Approve or Reject Adjustment",
+      "parent": "1"
+    },
+    {
+      "id": "W9mRg3yAz_72ORoaodYb-52",
+      "text": "UC-100  Approve or Reject Supplier Return Request",
+      "parent": "1"
+    },
+    {
+      "id": "W9mRg3yAz_72ORoaodYb-53",
+      "text": "UC-102  View Stock In-Out Balance Report",
+      "parent": "1"
+    },
+    {
+      "id": "W9mRg3yAz_72ORoaodYb-56",
+      "text": "UC-105  View Transfer Report",
+      "parent": "1"
+    },
+    {
+      "id": "W9mRg3yAz_72ORoaodYb-60",
+      "text": "UC-109  Trace Lot by Source Document",
+      "parent": "1"
+    },
+    {
+      "id": "W9mRg3yAz_72ORoaodYb-66",
+      "text": "«extend»]",
+      "parent": "1"
+    },
+    {
+      "id": "W9mRg3yAz_72ORoaodYb-80",
+      "text": "«extend»",
+      "parent": "1"
+    },
+    {
+      "id": "W9mRg3yAz_72ORoaodYb-83",
+      "text": "«extend»",
+      "parent": "1"
+    },
+    {
+      "id": "W9mRg3yAz_72ORoaodYb-89",
+      "text": "«extend»",
+      "parent": "1"
+    },
+    {
+      "id": "W9mRg3yAz_72ORoaodYb-93",
+      "text": "«extend»",
+      "parent": "1"
+    },
+    {
+      "id": "W9mRg3yAz_72ORoaodYb-94",
+      "text": "«extend»",
+      "parent": "1"
+    },
+    {
+      "id": "7npXt6oqve3fvW8REw-h-1",
+      "text": "Inventory Staff",
+      "parent": "1"
+    },
+    {
+      "id": "7npXt6oqve3fvW8REw-h-3",
+      "text": "«extend»]",
+      "parent": "1"
+    },
+    {
+      "id": "7npXt6oqve3fvW8REw-h-4",
+      "text": "«extend»]",
+      "parent": "1"
+    },
+    {
+      "id": "7npXt6oqve3fvW8REw-h-5",
+      "text": "«extend»]",
+      "parent": "1"
+    },
+    {
+      "id": "7npXt6oqve3fvW8REw-h-6",
+      "text": "«extend»]",
+      "parent": "1"
+    },
+    {
+      "id": "7npXt6oqve3fvW8REw-h-7",
+      "text": "«extend»]",
+      "parent": "1"
+    },
+    {
+      "id": "7npXt6oqve3fvW8REw-h-8",
+      "text": "«extend»]",
+      "parent": "1"
+    },
+    {
+      "id": "7npXt6oqve3fvW8REw-h-9",
+      "text": "«extend»]",
+      "parent": "1"
+    },
+    {
+      "id": "7npXt6oqve3fvW8REw-h-10",
+      "text": "«extend»]",
+      "parent": "1"
+    },
+    {
+      "id": "7npXt6oqve3fvW8REw-h-11",
+      "text": "«extend»]",
+      "parent": "1"
+    },
+    {
+      "id": "7npXt6oqve3fvW8REw-h-14",
+      "text": "«extend»]",
+      "parent": "1"
+    },
+    {
+      "id": "7npXt6oqve3fvW8REw-h-15",
+      "text": "«extend»]",
+      "parent": "1"
+    }
+  ],
+  "edges": [
+    {
+      "from": "Store Owner",
+      "to": "UC-08  View Product List",
+      "label": ""
+    },
+    {
+      "from": "Store Owner",
+      "to": "UC-13  Configure Packaging and Unit Conversion",
+      "label": ""
+    },
+    {
+      "from": "Store Owner",
+      "to": "UC-14  View Lot List",
+      "label": ""
+    },
+    {
+      "from": "Store Owner",
+      "to": "UC-18  View Supplier List",
+      "label": ""
+    },
+    {
+      "from": "UC-19  View Supplier Detail",
+      "to": "UC-18  View Supplier List",
+      "label": "«extend»]"
+    },
+    {
+      "from": "UC-69  Approve or Reject Transfer Discrepancy Resolution",
+      "to": "View Warehouse Transfer List",
+      "label": "«extend»"
+    },
+    {
+      "from": "UC-78  View Adjustment Request Detail",
+      "to": "UC-77  View Adjustment Request List",
+      "label": "«extend»"
+    },
+    {
+      "from": "UC-24  View Replenishment Request Detail",
+      "to": "UC-23  View Replenishment Request List",
+      "label": "«extend»"
+    },
+    {
+      "from": "UC-43  Create Storage Location",
+      "to": "UC-41  View Warehouse and Location List",
+      "label": "«extend»"
+    },
+    {
+      "from": "UC-72  Create Stocktake",
+      "to": "UC-70  View Stocktake List",
+      "label": "«extend»"
+    },
+    {
+      "from": "Store Owner",
+      "to": "UC-23  View Replenishment Request List",
+      "label": ""
+    },
+    {
+      "from": "Store Owner",
+      "to": "UC-70  View Stocktake List",
+      "label": ""
+    },
+    {
+      "from": "Store Owner",
+      "to": "UC-77  View Adjustment Request List",
+      "label": ""
+    },
+    {
+      "from": "Store Owner",
+      "to": "UC-102  View Stock In-Out Balance Report",
+      "label": ""
+    },
+    {
+      "from": "Store Owner",
+      "to": "UC-105  View Transfer Report",
+      "label": ""
+    },
+    {
+      "from": "Inventory Staff",
+      "to": "Store Owner",
+      "label": ""
+    },
+    {
+      "from": "UC-10  Create Product",
+      "to": "UC-08  View Product List",
+      "label": "«extend»]"
+    },
+    {
+      "from": "UC-12  Activate or Deactivate Product",
+      "to": "UC-08  View Product List",
+      "label": "«extend»]"
+    },
+    {
+      "from": "UC-11  Update Product",
+      "to": "UC-08  View Product List",
+      "label": "«extend»]"
+    },
+    {
+      "from": "UC-17  Update Lot Information",
+      "to": "UC-14  View Lot List",
+      "label": "«extend»]"
+    },
+    {
+      "from": "UC-22  Activate or Deactivate Supplier",
+      "to": "UC-18  View Supplier List",
+      "label": "«extend»]"
+    },
+    {
+      "from": "UC-100  Approve or Reject Supplier Return Request",
+      "to": "UC-18  View Supplier List",
+      "label": "«extend»]"
+    },
+    {
+      "from": "UC-26  Approve or Reject Replenishment Request",
+      "to": "UC-24  View Replenishment Request Detail",
+      "label": "«extend»]"
+    },
+    {
+      "from": "UC-44  Update Storage Location",
+      "to": "UC-43  Create Storage Location",
+      "label": "«extend»]"
+    },
+    {
+      "from": "UC-45  Activate or Deactivate Location",
+      "to": "UC-43  Create Storage Location",
+      "label": "«extend»]"
+    },
+    {
+      "from": "Store Owner",
+      "to": "UC-41  View Warehouse and Location List",
+      "label": ""
+    },
+    {
+      "from": "Store Owner",
+      "to": "View Warehouse Transfer List",
+      "label": ""
+    },
+    {
+      "from": "UC-80  Approve or Reject Adjustment",
+      "to": "UC-78  View Adjustment Request Detail",
+      "label": "«extend»]"
+    },
+    {
+      "from": "UC-109  Trace Lot by Source Document",
+      "to": "UC-14  View Lot List",
+      "label": "«extend»]"
+    }
+  ],
+  "uml": []
+}

@@ -1,0 +1,178 @@
+PAGE 18 Bản sao của UC SO
+xIuA4-Ypp8usv5CW9yNR-3: Store Owner
+OZOpjA5FuumkqSCTXCzl-0: %3CmxGraphModel%3E%3Croot%3E%3CmxCell%20id%3D%220%22%2F%3E%3CmxCell%20id%3D%221%22%20parent%3D%220%22%2F%3E%3CmxCell%20id%3D%222%22%20edge%3D%221%22%20parent%3D%221%22%20style%3D%22endArrow%3Dclassic%3Bhtml%3D1%3Brounded%3D0%3Bdashed%3D1%3BdashPattern%3D8%208%3BentryX%3D1%3BentryY%3D0%3BentryDx%3D0%3BentryDy%3D0%3BexitX%3D0%3BexitY%3D0.5%3BexitDx%3D0%3BexitDy%3D0%3BstartArrow%3Dnone%3BstartFill%3D0%3BendFill%3D1%3BfontSize%3D14%3B%22%20value%3D%22%22%3E%3CmxGeometry%20height%3D%2250%22%20relative%3D%221%22%20width%3D%2250%22%20as%3D%22geometry%22%3E%3CmxPoint%20x%3D%221235%22%20y%3D%223000%22%20as%3D%22sourcePoint%22%2F%3E%3CmxPoint%20x%3D%221102%22%20y%3D%223022%22%20as%3D%22targetPoint%22%2F%3E%3C%2FmxGeometry%3E%3C%2FmxCell%3E%3CmxCell%20id%3D%223%22%20connectable%3D%220%22%20parent%3D%222%22%20style%3D%22edgeLabel%3Bhtml%3D1%3Balign%3Dcenter%3BverticalAlign%3Dmiddle%3Bresizable%3D0%3Bpoints%3D%5B%5D%3BfontSize%3D14%3B%22%20value%3D%22%26amp%3Blt%3B%26amp%3Blt%3Bextend%26amp%3Bgt%3B%26amp%3Bgt%3B%22%20vertex%3D%221%22%3E%3CmxGeometry%20relative%3D%221%22%20x%3D%220.1496%22%20y%3D%222%22%20as%3D%22geometry%22%3E%3CmxPoint%20x%3D%2212%22%20as%3D%22offset%22%2F%3E%3C%2FmxGeometry%3E%3C%2FmxCell%3E%3C%2Froot%3E%3C%2FmxGraphModel%3E  %3CmxGraphModel%3E%3Croot%3E%3CmxCell%20id%3D%220%22%2F%3E%3CmxCell%20id%3D%221%22%20parent%3D%220%22%2F%3E%3CmxCell%20id%3D%222%22%20edge%3D%221%22%20parent%3D%221%22%20style%3D%22endArrow%3Dclassic%3Bhtml%3D1%3Brounded%3D0%3Bdashed%3D1%3BdashPattern%3D8%208%3BentryX%3D1%3BentryY%3D0%3BentryDx%3D0%3BentryDy%3D0%3BexitX%3D0%3BexitY%3D0.5%3BexitDx%3D0%3BexitDy%3D0%3BstartArrow%3Dnone%3BstartFill%3D0%3BendFill%3D1%3BfontSize%3D14%3B%22%20value%3D%22%22%3E%3CmxGeometry%20height%3D%2250%22%20relative%3D%221%22%20width%3D%2250%22%20as%3D%22geometry%22%3E%3CmxPoint%20x%3D%221235%22%20y%3D%223000%22%20as%3D%22sourcePoint%22%2F%3E%3CmxPoint%20x%3D%221102%22%20y%3D%223022%22%20as%3D%22targetPoint%22%2F%3E%3C%2FmxGeometry%3E%3C%2FmxCell%3E%3CmxCell%20id%3D%223%22%20connectable%3D%220%22%20parent%3D%222%22%20style%3D%22edgeLabel%3Bhtml%3D1%3Balign%3Dcenter%3BverticalAlign%3Dmiddle%3Bresizable%3D0%3Bpoints%3D%5B%5D%3BfontSize%3D14%3B%22%20value%3D%22%26amp%3Blt%3B%26amp%3Blt%3Bextend%26amp%3Bgt%3B%26amp%3Bgt%3B%22%20vertex%3D%221%22%3E%3CmxGeometry%20relative%3D%221%22%20x%3D%220.1496%22%20y%3D%222%22%20as%3D%22geometry%22%3E%3CmxPoint%20x%3D%2212%22%20as%3D%22offset%22%2F%3E%3C%2FmxGeometry%3E%3C%2FmxCell%3E%3C%2Froot%3E%3C%2FmxGraphModel%3E
+kamrMcuHiCsjuW3uJDa_-0: View Product List
+kBLyFiikW_ZbDjLcrjcq-0: Maintain Product and Packaging
+kBLyFiikW_ZbDjLcrjcq-1: View product details
+kBLyFiikW_ZbDjLcrjcq-4: View Lot List
+kBLyFiikW_ZbDjLcrjcq-5: Maintain Product Lot
+kBLyFiikW_ZbDjLcrjcq-7: View Supplier List
+kBLyFiikW_ZbDjLcrjcq-8: Maintain Supplier
+kBLyFiikW_ZbDjLcrjcq-9: View Supplier Detail
+kBLyFiikW_ZbDjLcrjcq-11: View Replenishment Request List
+kBLyFiikW_ZbDjLcrjcq-12: View replenishment request details
+kBLyFiikW_ZbDjLcrjcq-13: Approve or Reject Replenishment Request
+kBLyFiikW_ZbDjLcrjcq-14: View Warehouse and Location List
+kBLyFiikW_ZbDjLcrjcq-15: Maintain Storage Location
+kBLyFiikW_ZbDjLcrjcq-18: View storage location details
+kBLyFiikW_ZbDjLcrjcq-20: View Operational Reports
+kBLyFiikW_ZbDjLcrjcq-21: View Warehouse Transfer List
+kBLyFiikW_ZbDjLcrjcq-22: Review Transfer Difference Resolution
+kBLyFiikW_ZbDjLcrjcq-23: View Stocktake List
+kBLyFiikW_ZbDjLcrjcq-24: Create Stocktake Session
+kBLyFiikW_ZbDjLcrjcq-25: View Adjustment Request List
+kBLyFiikW_ZbDjLcrjcq-26: View Adjustment Request Detail
+kBLyFiikW_ZbDjLcrjcq-27: Approve Inventory Adjustment
+arebo_6lRIpXyMd3PIw3-1: <<extend>>
+Krf7P9YnzeOS2yjaFI99-1: <<extend>>
+eNTP-RdpRo8Rvypi0cJh-1: <<extend>>
+eNTP-RdpRo8Rvypi0cJh-5: <<extend>>
+ygtEkzYAHmjpBd0akIJK-1: <<extend>>
+ygtEkzYAHmjpBd0akIJK-3: <<extend>>
+ygtEkzYAHmjpBd0akIJK-5: <<extend>>
+ygtEkzYAHmjpBd0akIJK-7: <<extend>>
+YBcNRY6xK7HCUvkrqzwG-1: <<extend>>
+XYeG3q442GB7ML1v3aZX-1: <<extend>>
+XYeG3q442GB7ML1v3aZX-3: <<extend>>
+BmE0s8VETuzHzQEqSZ1q-1: <<extend>>
+MgW68i-kJkqXd84xVdBL-3: WMSD
+PqCnBH7wbcUkmVy1Z-jO-1: View lot details
+PqCnBH7wbcUkmVy1Z-jO-3: View stocktake details
+PqCnBH7wbcUkmVy1Z-jO-4: View warehouse transfer details
+PqCnBH7wbcUkmVy1Z-jO-5: Review Transfer Request
+PqCnBH7wbcUkmVy1Z-jO-6: View supplier return request list
+PqCnBH7wbcUkmVy1Z-jO-8: View supplier return request details
+PqCnBH7wbcUkmVy1Z-jO-10: View Customer List
+PqCnBH7wbcUkmVy1Z-jO-11: View Customer Details
+PqCnBH7wbcUkmVy1Z-jO-12: View Selling Price List
+PqCnBH7wbcUkmVy1Z-jO-13: View Selling Price Details
+PqCnBH7wbcUkmVy1Z-jO-14: Maintain Selling Price
+PqCnBH7wbcUkmVy1Z-jO-15: View defective goods list
+PqCnBH7wbcUkmVy1Z-jO-16: View defective goods details
+PqCnBH7wbcUkmVy1Z-jO-17: Approve or reject defective goods disposition
+PqCnBH7wbcUkmVy1Z-jO-18: View customer return list
+PqCnBH7wbcUkmVy1Z-jO-19: View customer return details
+PqCnBH7wbcUkmVy1Z-jO-20: Review Customer Return Request
+PqCnBH7wbcUkmVy1Z-jO-21: View Refund Request List
+PqCnBH7wbcUkmVy1Z-jO-22: View Refund Request Details
+PqCnBH7wbcUkmVy1Z-jO-23: Review Customer Return Refund Request
+PqCnBH7wbcUkmVy1Z-jO-24: View Sales Order List
+PqCnBH7wbcUkmVy1Z-jO-25: View Sales Order Details
+PqCnBH7wbcUkmVy1Z-jO-26: View Outbound Delivery List
+PqCnBH7wbcUkmVy1Z-jO-27: View Outbound Delivery Details
+PqCnBH7wbcUkmVy1Z-jO-28: View Picking Transfer Order List
+PqCnBH7wbcUkmVy1Z-jO-29: View Picking Transfer Order Details
+PqCnBH7wbcUkmVy1Z-jO-30: View goods issue list
+PqCnBH7wbcUkmVy1Z-jO-31: View goods issue details
+PqCnBH7wbcUkmVy1Z-jO-32: View Internal Invoice List
+PqCnBH7wbcUkmVy1Z-jO-33: View Internal Invoice Details
+PqCnBH7wbcUkmVy1Z-jO-34: Issue Internal Invoice and Produce PDF
+PqCnBH7wbcUkmVy1Z-jO-35: View purchase order list
+PqCnBH7wbcUkmVy1Z-jO-36: View purchase order details
+PqCnBH7wbcUkmVy1Z-jO-37: View goods receipt list
+PqCnBH7wbcUkmVy1Z-jO-38: View goods receipt details
+PqCnBH7wbcUkmVy1Z-jO-39: View stock
+PqCnBH7wbcUkmVy1Z-jO-40: View inventory balance details
+PqCnBH7wbcUkmVy1Z-jO-41: View location movement list
+PqCnBH7wbcUkmVy1Z-jO-42: View location movement details
+PqCnBH7wbcUkmVy1Z-jO-43: View stock movement log
+PqCnBH7wbcUkmVy1Z-jO-44: View stock movement details
+PqCnBH7wbcUkmVy1Z-jO-45: Trace a product lot through source documents
+PqCnBH7wbcUkmVy1Z-jO-63: <<extend>>
+PqCnBH7wbcUkmVy1Z-jO-65: <<extend>>
+PqCnBH7wbcUkmVy1Z-jO-67: <<extend>>
+PqCnBH7wbcUkmVy1Z-jO-69: <<extend>>
+PqCnBH7wbcUkmVy1Z-jO-71: <<extend>>
+PqCnBH7wbcUkmVy1Z-jO-73: <<extend>>
+PqCnBH7wbcUkmVy1Z-jO-75: <<extend>>
+PqCnBH7wbcUkmVy1Z-jO-77: <<extend>>
+PqCnBH7wbcUkmVy1Z-jO-79: <<extend>>
+PqCnBH7wbcUkmVy1Z-jO-81: <<extend>>
+PqCnBH7wbcUkmVy1Z-jO-83: <<extend>>
+PqCnBH7wbcUkmVy1Z-jO-87: <<extend>>
+PqCnBH7wbcUkmVy1Z-jO-89: <<extend>>
+PqCnBH7wbcUkmVy1Z-jO-91: <<extend>>
+PqCnBH7wbcUkmVy1Z-jO-93: <<extend>>
+PqCnBH7wbcUkmVy1Z-jO-95: <<extend>>
+PqCnBH7wbcUkmVy1Z-jO-97: <<extend>>
+PqCnBH7wbcUkmVy1Z-jO-99: <<extend>>
+PqCnBH7wbcUkmVy1Z-jO-101: <<extend>>
+PqCnBH7wbcUkmVy1Z-jO-103: <<extend>>
+PqCnBH7wbcUkmVy1Z-jO-105: <<extend>>
+PqCnBH7wbcUkmVy1Z-jO-107: <<extend>>
+PqCnBH7wbcUkmVy1Z-jO-111: <<extend>>
+PqCnBH7wbcUkmVy1Z-jO-113: <<extend>>
+PqCnBH7wbcUkmVy1Z-jO-115: <<extend>>
+PqCnBH7wbcUkmVy1Z-jO-119: <<extend>>
+PqCnBH7wbcUkmVy1Z-jO-120: Review Supplier Return Closure
+PqCnBH7wbcUkmVy1Z-jO-123: <<extend>>
+zs6uyelwTtoh2K9-SBSy-2: <<extend>>
+zs6uyelwTtoh2K9-SBSy-3: Clear Stocktake Difference
+zs6uyelwTtoh2K9-SBSy-5: <<extend>>
+EDGES
+Store Owner --> View Product List | 
+Store Owner --> View Lot List | 
+Store Owner --> View Supplier List | 
+Store Owner --> View Replenishment Request List | 
+Store Owner --> View supplier return request list | 
+Store Owner --> View Warehouse and Location List | 
+Store Owner --> View Operational Reports | 
+Store Owner --> View Warehouse Transfer List | 
+Store Owner --> View Stocktake List | 
+Store Owner --> View Adjustment Request List | 
+Maintain Product and Packaging --> View Product List | 
+View product details --> View Product List | 
+Maintain Product Lot --> View Lot List | 
+Maintain Supplier --> View Supplier List | 
+View Supplier Detail --> View Supplier List | 
+View replenishment request details --> View Replenishment Request List | 
+Approve or Reject Replenishment Request --> View Replenishment Request List | 
+Maintain Storage Location --> View Warehouse and Location List | 
+View storage location details --> View Warehouse and Location List | 
+Review Transfer Difference Resolution --> View Warehouse Transfer List | 
+Create Stocktake Session --> View Stocktake List | 
+Approve Inventory Adjustment --> View Adjustment Request List | 
+Store Owner --> View Customer List | 
+Store Owner --> View Selling Price List | 
+Store Owner --> View defective goods list | 
+Store Owner --> View customer return list | 
+Store Owner --> View Refund Request List | 
+Store Owner --> View Sales Order List | 
+Store Owner --> View Outbound Delivery List | 
+Store Owner --> View Picking Transfer Order List | 
+Store Owner --> View goods issue list | 
+Store Owner --> View Internal Invoice List | 
+Store Owner --> View purchase order list | 
+Store Owner --> View goods receipt list | 
+Store Owner --> View stock | 
+Store Owner --> View location movement list | 
+Store Owner --> View stock movement log | 
+View stocktake details --> View Stocktake List | 
+View Customer Details --> View Customer List | 
+View Selling Price Details --> View Selling Price List | 
+Maintain Selling Price --> View Selling Price List | 
+View defective goods details --> View defective goods list | 
+Approve or reject defective goods disposition --> View defective goods list | 
+View customer return details --> View customer return list | 
+Review Customer Return Request --> View customer return list | 
+View Refund Request Details --> View Refund Request List | 
+Review Customer Return Refund Request --> View Refund Request List | 
+View Sales Order Details --> View Sales Order List | 
+View Outbound Delivery Details --> View Outbound Delivery List | 
+View Picking Transfer Order Details --> View Picking Transfer Order List | 
+View goods issue details --> View goods issue list | 
+View Internal Invoice Details --> View Internal Invoice List | 
+Issue Internal Invoice and Produce PDF --> View Internal Invoice List | 
+View purchase order details --> View purchase order list | 
+View goods receipt details --> View goods receipt list | 
+View inventory balance details --> View stock | 
+View location movement details --> View location movement list | 
+View stock movement details --> View stock movement log | 
+Trace a product lot through source documents --> View stock movement log | 
+View warehouse transfer details --> View Warehouse Transfer List | 
+Review Transfer Request --> View Warehouse Transfer List | 
+View supplier return request details --> View supplier return request list | 
+View lot details --> View Lot List | 
+Review Supplier Return Closure --> View supplier return request list | 
+View Adjustment Request Detail --> View Adjustment Request List | 
+Clear Stocktake Difference --> View Adjustment Request List | 

@@ -1,0 +1,24 @@
+=== PAGE 1 ===
+ 
+© SAP UCC Magdeburg Page 1 
+DATA SHEET 
+ 
+ 
+ 
+Master Data  
+Storage type 002 
+Storage bin STBN-9-### 
+Name of counter LEARN-### 
+Material ORMN1### / ORWN1### 
+ 
+Organizational Units  
+Warehouse number (San Diego) 100 
+ 
+Employees involved  
+Carolin Bruzik Warehouse Supervisor 
+Sunil Gupta Warehouse Employee 
+ 
+Document Numbers  
+Inventory document number _______________________ 
+ 
+ Warehouse Management (WM) IV 

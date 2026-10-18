@@ -1,0 +1,1123 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="drawio" version="31.5.3" type="device" pages="8" compressed="false">
+  <diagram id="actor-1" name="Store Owner">
+    <mxGraphModel dx="1400" dy="900" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="6210" math="0" shadow="0" background="#ffffff">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="system" value="" style="rounded=0;html=1;fillColor=none;strokeColor=#222222;strokeWidth=1.4;pointerEvents=0;container=1;collapsible=0;" vertex="1" parent="1">
+          <mxGeometry x="330" y="50" width="980" height="6060" as="geometry" />
+        </mxCell>
+        <mxCell id="title" value="WMSD — Warehouse Management System" style="text;html=1;align=center;fontFamily=Arial;fontSize=21;fontStyle=1;" vertex="1" parent="system">
+          <mxGeometry x="20.0" y="15.0" width="930" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" value="Store Owner Use Case Diagram" style="text;html=1;align=center;fontFamily=Arial;fontSize=17;" vertex="1" parent="system">
+          <mxGeometry x="20.0" y="50.0" width="930" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="actor" value="Store Owner" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;whiteSpace=wrap;strokeWidth=1.5;fillColor=#ffffff;strokeColor=#222222;fontFamily=Arial;fontSize=15;fontColor=#111111;" vertex="1" parent="1">
+          <mxGeometry x="100" y="2985" width="50" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="heading-170" value="Master Data Management" style="text;html=1;align=left;fontFamily=Arial;fontSize=16;fontStyle=1;fontColor=#555555;" vertex="1" parent="system">
+          <mxGeometry x="100.0" y="120.0" width="830" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="heading-2060" value="Purchasing Management" style="text;html=1;align=left;fontFamily=Arial;fontSize=16;fontStyle=1;fontColor=#555555;" vertex="1" parent="system">
+          <mxGeometry x="100.0" y="2010.0" width="830" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="heading-2390" value="Goods Receiving Management" style="text;html=1;align=left;fontFamily=Arial;fontSize=16;fontStyle=1;fontColor=#555555;" vertex="1" parent="system">
+          <mxGeometry x="100.0" y="2340.0" width="830" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="heading-2720" value="Inventory Management" style="text;html=1;align=left;fontFamily=Arial;fontSize=16;fontStyle=1;fontColor=#555555;" vertex="1" parent="system">
+          <mxGeometry x="100.0" y="2670.0" width="830" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="heading-3830" value="Stocktake Management" style="text;html=1;align=left;fontFamily=Arial;fontSize=16;fontStyle=1;fontColor=#555555;" vertex="1" parent="system">
+          <mxGeometry x="100.0" y="3780.0" width="830" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="heading-4160" value="Sales Management" style="text;html=1;align=left;fontFamily=Arial;fontSize=16;fontStyle=1;fontColor=#555555;" vertex="1" parent="system">
+          <mxGeometry x="100.0" y="4110.0" width="830" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="heading-4490" value="Customer Returns Management" style="text;html=1;align=left;fontFamily=Arial;fontSize=16;fontStyle=1;fontColor=#555555;" vertex="1" parent="system">
+          <mxGeometry x="100.0" y="4440.0" width="830" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="heading-4690" value="Reporting Management" style="text;html=1;align=left;fontFamily=Arial;fontSize=16;fontStyle=1;fontColor=#555555;" vertex="1" parent="system">
+          <mxGeometry x="100.0" y="4640.0" width="830" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="heading-5410" value="System Administration" style="text;html=1;align=left;fontFamily=Arial;fontSize=16;fontStyle=1;fontColor=#555555;" vertex="1" parent="system">
+          <mxGeometry x="100.0" y="5360.0" width="830" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-01" value="UC-01&#10;Create Product" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-01" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="1" sourceActors="Store Owner" description="Register the product code, name, brand, material, dimensions, application, color code, description, and technical specifications.">
+          <mxGeometry x="90.0" y="180.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-02" value="UC-02&#10;Update Product Information" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-02" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="1" sourceActors="Store Owner" description="Update product details while controlling changes affecting existing batches and inventory documents.">
+          <mxGeometry x="90.0" y="310.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-03" value="UC-03&#10;Discontinue Product" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-03" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="1" sourceActors="Store Owner" description="Prevent the product from being selected in new sales orders while retaining stock and transaction history.">
+          <mxGeometry x="90.0" y="440.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-04" value="UC-04&#10;Configure Tile Categories" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-04" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="1" sourceActors="Store Owner" description="Maintain tile types, applications, materials, and dimensions, such as 30 × 30, 40 × 40, and 60 × 60 cm.">
+          <mxGeometry x="90.0" y="570.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-05" value="UC-05&#10;Configure Packaging&#10;Specifications" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-05" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="1" sourceActors="Store Owner" description="Record pieces per box, area per piece, and area per box for each product.">
+          <mxGeometry x="90.0" y="700.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-06" value="UC-06&#10;Configure Unit Conversions" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-06" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="1" sourceActors="Store Owner" description="Define piece, box, and square-meter conversions for each product and identify its base inventory unit.">
+          <mxGeometry x="90.0" y="830.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-07" value="UC-07&#10;Create Product Batch" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-07" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="1" sourceActors="Store Owner, Inventory Staff" description="Record batch number, product code, color code, production date, and manufacturer; validate batch uniqueness.">
+          <mxGeometry x="90.0" y="960.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-08" value="UC-08&#10;Update Product Batch" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-08" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="2" sourceActors="Store Owner" description="Modify batch data and retain change history once inventory transactions exist for the batch.">
+          <mxGeometry x="90.0" y="1090.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-09" value="UC-09&#10;View and Trace Product Batch" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-09" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="2" sourceActors="Inventory Staff, Store Owner" description="View batch details, storage locations, inventory balances, and associated transaction history.">
+          <mxGeometry x="90.0" y="1220.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-11" value="UC-11&#10;Update Supplier" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-11" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="2" sourceActors="Purchasing Staff, Store Owner" description="Update supplier details and cooperation status and access related purchasing documents.">
+          <mxGeometry x="90.0" y="1350.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-14" value="UC-14&#10;Create Storage Location" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-14" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="2" sourceActors="Store Owner" description="Define area, aisle, rack, location code, and storage capacity within a warehouse.">
+          <mxGeometry x="90.0" y="1480.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-15" value="UC-15&#10;Update Storage Location Status" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-15" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="2" sourceActors="Store Owner" description="Edit or deactivate a storage location after checking whether any inventory remains there.">
+          <mxGeometry x="90.0" y="1610.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-69" value="UC-69&#10;Configure and Manage Warehouses" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-69" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="4" sourceActors="Store Owner" description="Maintain warehouse codes, names, addresses, statuses, and responsible personnel for multiple warehouses in one store.">
+          <mxGeometry x="90.0" y="1740.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-70" value="UC-70&#10;Configure Warehouse-Specific&#10;Locations" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-70" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="4" sourceActors="Store Owner" description="Assign each storage location to exactly one warehouse and enforce location-code uniqueness within that warehouse.">
+          <mxGeometry x="90.0" y="1870.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-18" value="UC-18&#10;Approve Purchase Order" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-18" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="2" sourceActors="Store Owner" description="Review a purchase order and approve, reject, or return it for revision.">
+          <mxGeometry x="90.0" y="2070.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-20" value="UC-20&#10;Track Purchase Order Progress" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-20" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="2" sourceActors="Purchasing Staff, Store Owner" description="Track ordered, confirmed, received, and outstanding quantities.">
+          <mxGeometry x="90.0" y="2200.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-25" value="UC-25&#10;Approve Receiving Discrepancy&#10;Resolution" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-25" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="2" sourceActors="Store Owner" description="Authorize quantities to receive, hold for resolution, or return to the supplier.">
+          <mxGeometry x="90.0" y="2400.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-28" value="UC-28&#10;Approve Supplier Return" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-28" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="2" sourceActors="Store Owner" description="Review supporting documents and approve or reject a supplier return request.">
+          <mxGeometry x="90.0" y="2530.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-35" value="UC-35&#10;Approve Release to Available&#10;Stock" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-35" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="2" sourceActors="Store Owner" description="Approve inspection results and release acceptable goods to available inventory.">
+          <mxGeometry x="90.0" y="2730.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-37" value="UC-37&#10;Resolve Isolated Goods" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-37" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="2" sourceActors="Store Owner" description="Decide whether to reinspect, return to the supplier, or adjust inventory using appropriate documents.">
+          <mxGeometry x="90.0" y="2860.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-38" value="UC-38&#10;View Inventory by Batch and&#10;Location" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-38" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="2" sourceActors="Inventory Staff, Sales Staff, Store Owner" description="View quantities by product, batch, color code, storage location, and stock status.">
+          <mxGeometry x="90.0" y="2990.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-40" value="UC-40&#10;Configure and Monitor Low-Stock&#10;Alerts" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-40" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="3" sourceActors="Store Owner, Inventory Staff" description="Set minimum inventory thresholds and view products below the configured levels.">
+          <mxGeometry x="90.0" y="3120.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-41" value="UC-41&#10;View Inventory Transaction&#10;History" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-41" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="3" sourceActors="Inventory Staff, Store Owner" description="Trace goods receipts, issues, location transfers, stock-status changes, and inventory adjustments.">
+          <mxGeometry x="90.0" y="3250.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-71" value="UC-71&#10;View Warehouse-Specific and&#10;Consolidated Inventory" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-71" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="4" sourceActors="Store Owner, Inventory Staff, Sales Staff" description="View stock by warehouse, batch, color, location, and status, with consolidated balances across warehouses.">
+          <mxGeometry x="90.0" y="3380.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-72" value="UC-72&#10;Create Inter-Warehouse Transfer&#10;Request" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-72" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="4" sourceActors="Inventory Staff, Store Owner" description="Specify source warehouse, destination warehouse, batch, quantity, stock status, and reason for the transfer.">
+          <mxGeometry x="90.0" y="3510.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-75" value="UC-75&#10;Reconcile Transfer Discrepancy" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-75" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="4" sourceActors="Store Owner, Inventory Staff" description="Record and resolve shortages, surpluses, or damage between transfer dispatch and receipt before closing the transfer.">
+          <mxGeometry x="90.0" y="3640.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-42" value="UC-42&#10;Create Stocktake" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-42" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="3" sourceActors="Store Owner" description="Define stocktake scope, schedule, and assigned personnel.">
+          <mxGeometry x="90.0" y="3840.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-45" value="UC-45&#10;Approve Stocktake Results" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-45" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="3" sourceActors="Store Owner" description="Review count results and either approve them or request a recount.">
+          <mxGeometry x="90.0" y="3970.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-51" value="UC-51&#10;Approve Goods Issue Request" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-51" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="3" sourceActors="Store Owner" description="Verify available stock, batches, and requested quantities; approve, reject, or return the request for revision.">
+          <mxGeometry x="90.0" y="4170.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-57" value="UC-57&#10;Track Sales Order Fulfillment" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-57" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="3" sourceActors="Sales Staff, Store Owner" description="Track ordered, reserved, issued, delivered, and outstanding quantities.">
+          <mxGeometry x="90.0" y="4300.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-60" value="UC-60&#10;Approve Customer Return Receipt" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-60" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="3" sourceActors="Store Owner" description="Approve restockable quantities and the handling of goods that do not meet acceptance criteria.">
+          <mxGeometry x="90.0" y="4500.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-62" value="UC-62&#10;View Inventory Movement Report" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-62" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="3" sourceActors="Store Owner, Inventory Staff" description="Report opening balances, receipts, issues, adjustments, and closing balances by product, batch, and period.">
+          <mxGeometry x="90.0" y="4700.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-63" value="UC-63&#10;View Inventory by Batch and&#10;Location Report" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-63" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="3" sourceActors="Store Owner, Inventory Staff" description="Report inventory by batch, location, status, stock age, and products with low or aging stock.">
+          <mxGeometry x="90.0" y="4830.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-64" value="UC-64&#10;View Purchasing and Receiving&#10;Report" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-64" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="3" sourceActors="Store Owner, Purchasing Staff" description="Report ordered, confirmed, received, outstanding, and supplier-returned quantities by supplier.">
+          <mxGeometry x="90.0" y="4960.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-65" value="UC-65&#10;View Sales and Dispatch Report" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-65" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="3" sourceActors="Store Owner, Sales Staff" description="Report ordered, reserved, issued, delivered, and outstanding quantities by product, sales order, and customer.">
+          <mxGeometry x="90.0" y="5090.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-66" value="UC-66&#10;View Stocktake and Adjustment&#10;Report" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-66" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="3" sourceActors="Store Owner, Inventory Staff" description="Report stocktake outcomes, variances, causes, and adjustment history.">
+          <mxGeometry x="90.0" y="5220.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-67" value="UC-67&#10;Manage Employee Accounts" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-67" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="3" sourceActors="Store Owner" description="Create, update, and lock employee accounts according to their assigned roles.">
+          <mxGeometry x="90.0" y="5540.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-68" value="UC-68&#10;Configure Roles and Permissions" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-68" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="4" sourceActors="Store Owner" description="Set access rights for viewing data, creating requests, approving records, and confirming business documents.">
+          <mxGeometry x="90.0" y="5780.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-01" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.0256;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-01" relationship="association" evidence="UC-01 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-02" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.0513;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-02" relationship="association" evidence="UC-02 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-03" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.0769;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-03" relationship="association" evidence="UC-03 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-04" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.1026;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-04" relationship="association" evidence="UC-04 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-05" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.1282;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-05" relationship="association" evidence="UC-05 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-06" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.1538;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-06" relationship="association" evidence="UC-06 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-07" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.1795;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-07" relationship="association" evidence="UC-07 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SUP-07-1" value="SUP-07-1&#10;Validate Batch Uniqueness" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#f4f4f4;" vertex="1" parent="system" provenance="derived" evidence="UC-07; GBR-01" condition="">
+          <mxGeometry x="640.0" y="940.0" width="290" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="relation-SUP-07-1" value="«include»" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=open;endFill=0;endSize=12;dashed=1;dashPattern=5 4;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="UC-07" target="SUP-07-1" relationship="include" evidence="UC-07; GBR-01" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-08" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.2051;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-08" relationship="association" evidence="UC-08 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-09" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.2308;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-09" relationship="association" evidence="UC-09 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-11" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.2564;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-11" relationship="association" evidence="UC-11 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-14" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.2821;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-14" relationship="association" evidence="UC-14 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-15" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.3077;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-15" relationship="association" evidence="UC-15 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SUP-15-1" value="SUP-15-1&#10;Check Remaining Location&#10;Inventory" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#f4f4f4;" vertex="1" parent="system" provenance="derived" evidence="UC-15" condition="">
+          <mxGeometry x="640.0" y="1590.0" width="290" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="relation-SUP-15-1" value="«include»" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=open;endFill=0;endSize=12;dashed=1;dashPattern=5 4;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="UC-15" target="SUP-15-1" relationship="include" evidence="UC-15" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-69" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.3333;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-69" relationship="association" evidence="UC-69 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-70" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.359;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-70" relationship="association" evidence="UC-70 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SUP-70-1" value="SUP-70-1&#10;Validate Warehouse Assignment&#10;and Location-Code Uniqueness" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#f4f4f4;" vertex="1" parent="system" provenance="derived" evidence="UC-70; GBR-11" condition="">
+          <mxGeometry x="640.0" y="1850.0" width="290" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="relation-SUP-70-1" value="«include»" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=open;endFill=0;endSize=12;dashed=1;dashPattern=5 4;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="UC-70" target="SUP-70-1" relationship="include" evidence="UC-70; GBR-11" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-18" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.3846;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-18" relationship="association" evidence="UC-18 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-20" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.4103;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-20" relationship="association" evidence="UC-20 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-25" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.4359;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-25" relationship="association" evidence="UC-25 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-28" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.4615;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-28" relationship="association" evidence="UC-28 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-35" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.4872;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-35" relationship="association" evidence="UC-35 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-37" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.5128;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-37" relationship="association" evidence="UC-37 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-38" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.5385;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-38" relationship="association" evidence="UC-38 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-40" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.5641;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-40" relationship="association" evidence="UC-40 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-41" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.5897;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-41" relationship="association" evidence="UC-41 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-71" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.6154;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-71" relationship="association" evidence="UC-71 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-72" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.641;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-72" relationship="association" evidence="UC-72 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SUP-72-1" value="SUP-72-1&#10;Validate Source and Destination&#10;Warehouses" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#f4f4f4;" vertex="1" parent="system" provenance="derived" evidence="UC-72; OR-01; OR-04" condition="">
+          <mxGeometry x="640.0" y="3490.0" width="290" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="relation-SUP-72-1" value="«include»" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=open;endFill=0;endSize=12;dashed=1;dashPattern=5 4;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="UC-72" target="SUP-72-1" relationship="include" evidence="UC-72; OR-01; OR-04" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-75" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.6667;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-75" relationship="association" evidence="UC-75 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-74-context" value="UC-74&#10;Confirm Transfer Receipt&#10;(context)" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#f4f4f4;" vertex="1" parent="system" ucId="UC-74" sourcePage="4" sourceActors="Inventory Staff" provenance="source-context">
+          <mxGeometry x="640.0" y="3620.0" width="290" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="extension-UC-75" value="«extend»&#10;[received and dispatched&#10;quantities or condition&#10;differ]" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=open;endFill=0;endSize=12;dashed=1;dashPattern=5 4;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="UC-75" target="UC-74-context" relationship="extend" evidence="UC-74; UC-75; GBR-13" condition="received and dispatched quantities or condition differ">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-42" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.6923;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-42" relationship="association" evidence="UC-42 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-45" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.7179;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-45" relationship="association" evidence="UC-45 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-51" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.7436;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-51" relationship="association" evidence="UC-51 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SUP-51-1" value="SUP-51-1&#10;Verify Stock, Batches and&#10;Requested Quantities" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#f4f4f4;" vertex="1" parent="system" provenance="derived" evidence="UC-51" condition="">
+          <mxGeometry x="640.0" y="4150.0" width="290" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="relation-SUP-51-1" value="«include»" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=open;endFill=0;endSize=12;dashed=1;dashPattern=5 4;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="UC-51" target="SUP-51-1" relationship="include" evidence="UC-51" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-57" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.7692;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-57" relationship="association" evidence="UC-57 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-60" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.7949;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-60" relationship="association" evidence="UC-60 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-62" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.8205;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-62" relationship="association" evidence="UC-62 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-63" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.8462;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-63" relationship="association" evidence="UC-63 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-64" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.8718;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-64" relationship="association" evidence="UC-64 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-65" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.8974;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-65" relationship="association" evidence="UC-65 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-66" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.9231;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-66" relationship="association" evidence="UC-66 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-67" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.9487;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-67" relationship="association" evidence="UC-67 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SUP-67-1" value="SUP-67-1&#10;Create Employee Account" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#f4f4f4;" vertex="1" parent="system" provenance="derived" evidence="UC-67" condition="">
+          <mxGeometry x="640.0" y="5400.0" width="290" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="relation-SUP-67-1" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=block;endFill=0;endSize=14;dashed=0;exitX=0;exitY=0.5;entryX=1;entryY=0.25;" edge="1" parent="1" source="SUP-67-1" target="UC-67" relationship="generalization" evidence="UC-67" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SUP-67-2" value="SUP-67-2&#10;Update Employee Account" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#f4f4f4;" vertex="1" parent="system" provenance="derived" evidence="UC-67" condition="">
+          <mxGeometry x="640.0" y="5520.0" width="290" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="relation-SUP-67-2" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=block;endFill=0;endSize=14;dashed=0;exitX=0;exitY=0.5;entryX=1;entryY=0.5;" edge="1" parent="1" source="SUP-67-2" target="UC-67" relationship="generalization" evidence="UC-67" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SUP-67-3" value="SUP-67-3&#10;Lock Employee Account" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#f4f4f4;" vertex="1" parent="system" provenance="derived" evidence="UC-67" condition="">
+          <mxGeometry x="640.0" y="5640.0" width="290" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="relation-SUP-67-3" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=block;endFill=0;endSize=14;dashed=0;exitX=0;exitY=0.5;entryX=1;entryY=0.75;" edge="1" parent="1" source="SUP-67-3" target="UC-67" relationship="generalization" evidence="UC-67" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-68" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.9744;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-68" relationship="association" evidence="UC-68 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="legend" value="Source: Report3.docx.pdf, §4.2 (pages 1–4).  UC-nn: original use case.  SUP-nn-n: derived support / specialization.&#10;Solid line: actor association.  Dashed open arrow: «include» (base → required behavior), «extend» (optional behavior → base).&#10;Solid hollow triangle: generalization (specialized → general).  Gray source UC marked (context): no actor assignment implied.&#10;Relationships are modeling interpretations of descriptions / business rules; sequential workflow steps remain separate." style="text;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontColor=#555555;" vertex="1" parent="system">
+          <mxGeometry x="30.0" y="5950.0" width="920" height="100" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="actor-2" name="Purchasing Staff">
+    <mxGraphModel dx="1400" dy="900" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="1960" math="0" shadow="0" background="#ffffff">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="system" value="" style="rounded=0;html=1;fillColor=none;strokeColor=#222222;strokeWidth=1.4;pointerEvents=0;container=1;collapsible=0;" vertex="1" parent="1">
+          <mxGeometry x="330" y="50" width="980" height="1810" as="geometry" />
+        </mxCell>
+        <mxCell id="title" value="WMSD — Warehouse Management System" style="text;html=1;align=center;fontFamily=Arial;fontSize=21;fontStyle=1;" vertex="1" parent="system">
+          <mxGeometry x="20.0" y="15.0" width="930" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" value="Purchasing Staff Use Case Diagram" style="text;html=1;align=center;fontFamily=Arial;fontSize=17;" vertex="1" parent="system">
+          <mxGeometry x="20.0" y="50.0" width="930" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="actor" value="Purchasing Staff" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;whiteSpace=wrap;strokeWidth=1.5;fillColor=#ffffff;strokeColor=#222222;fontFamily=Arial;fontSize=15;fontColor=#111111;" vertex="1" parent="1">
+          <mxGeometry x="100" y="860" width="50" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="heading-170" value="Master Data Management" style="text;html=1;align=left;fontFamily=Arial;fontSize=16;fontStyle=1;fontColor=#555555;" vertex="1" parent="system">
+          <mxGeometry x="100.0" y="120.0" width="830" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="heading-500" value="Purchasing Management" style="text;html=1;align=left;fontFamily=Arial;fontSize=16;fontStyle=1;fontColor=#555555;" vertex="1" parent="system">
+          <mxGeometry x="100.0" y="450.0" width="830" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="heading-1320" value="Goods Receiving Management" style="text;html=1;align=left;fontFamily=Arial;fontSize=16;fontStyle=1;fontColor=#555555;" vertex="1" parent="system">
+          <mxGeometry x="100.0" y="1270.0" width="830" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="heading-1520" value="Reporting Management" style="text;html=1;align=left;fontFamily=Arial;fontSize=16;fontStyle=1;fontColor=#555555;" vertex="1" parent="system">
+          <mxGeometry x="100.0" y="1470.0" width="830" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-10" value="UC-10&#10;Create Supplier" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-10" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="2" sourceActors="Purchasing Staff" description="Register supplier name, supplier code, address, telephone number, and contact person.">
+          <mxGeometry x="90.0" y="180.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-11" value="UC-11&#10;Update Supplier" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-11" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="2" sourceActors="Purchasing Staff, Store Owner" description="Update supplier details and cooperation status and access related purchasing documents.">
+          <mxGeometry x="90.0" y="310.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-16" value="UC-16&#10;Create Purchase Order" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-16" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="2" sourceActors="Purchasing Staff" description="Create a purchase order specifying supplier, products, quantities, units of measure, and expected receipt date.">
+          <mxGeometry x="90.0" y="510.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-17" value="UC-17&#10;Update or Cancel Purchase Order" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-17" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="2" sourceActors="Purchasing Staff" description="Amend or cancel a purchase order, subject to validation of quantities already received.">
+          <mxGeometry x="90.0" y="760.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-19" value="UC-19&#10;Record Supplier Confirmation" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-19" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="2" sourceActors="Purchasing Staff" description="Record confirmed quantities, shortfalls, and the supplier’s expected delivery schedule.">
+          <mxGeometry x="90.0" y="1000.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-20" value="UC-20&#10;Track Purchase Order Progress" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-20" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="2" sourceActors="Purchasing Staff, Store Owner" description="Track ordered, confirmed, received, and outstanding quantities.">
+          <mxGeometry x="90.0" y="1130.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-27" value="UC-27&#10;Create Supplier Return Request" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-27" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="2" sourceActors="Purchasing Staff, Inventory Staff" description="Request a supplier return referencing the purchase order or receiving record, batch, quantity, and return reason.">
+          <mxGeometry x="90.0" y="1330.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-64" value="UC-64&#10;View Purchasing and Receiving&#10;Report" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-64" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="3" sourceActors="Store Owner, Purchasing Staff" description="Report ordered, confirmed, received, outstanding, and supplier-returned quantities by supplier.">
+          <mxGeometry x="90.0" y="1530.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-10" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.1111;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-10" relationship="association" evidence="UC-10 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-11" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.2222;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-11" relationship="association" evidence="UC-11 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-16" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.3333;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-16" relationship="association" evidence="UC-16 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-17" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.4444;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-17" relationship="association" evidence="UC-17 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SUP-17-1" value="SUP-17-1&#10;Validate Already Received&#10;Quantities" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#f4f4f4;" vertex="1" parent="system" provenance="derived" evidence="UC-17; GBR-03" condition="">
+          <mxGeometry x="640.0" y="620.0" width="290" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="relation-SUP-17-1" value="«include»" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=open;endFill=0;endSize=12;dashed=1;dashPattern=5 4;exitX=1;exitY=0.25;entryX=0;entryY=0.5;" edge="1" parent="1" source="UC-17" target="SUP-17-1" relationship="include" evidence="UC-17; GBR-03" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SUP-17-2" value="SUP-17-2&#10;Update Purchase Order" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#f4f4f4;" vertex="1" parent="system" provenance="derived" evidence="UC-17" condition="">
+          <mxGeometry x="640.0" y="740.0" width="290" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="relation-SUP-17-2" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=block;endFill=0;endSize=14;dashed=0;exitX=0;exitY=0.5;entryX=1;entryY=0.5;" edge="1" parent="1" source="SUP-17-2" target="UC-17" relationship="generalization" evidence="UC-17" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SUP-17-3" value="SUP-17-3&#10;Cancel Purchase Order" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#f4f4f4;" vertex="1" parent="system" provenance="derived" evidence="UC-17" condition="">
+          <mxGeometry x="640.0" y="860.0" width="290" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="relation-SUP-17-3" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=block;endFill=0;endSize=14;dashed=0;exitX=0;exitY=0.5;entryX=1;entryY=0.75;" edge="1" parent="1" source="SUP-17-3" target="UC-17" relationship="generalization" evidence="UC-17" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-19" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.5556;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-19" relationship="association" evidence="UC-19 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-20" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.6667;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-20" relationship="association" evidence="UC-20 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-27" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.7778;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-27" relationship="association" evidence="UC-27 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-64" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.8889;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-64" relationship="association" evidence="UC-64 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="legend" value="Source: Report3.docx.pdf, §4.2 (pages 1–4).  UC-nn: original use case.  SUP-nn-n: derived support / specialization.&#10;Solid line: actor association.  Dashed open arrow: «include» (base → required behavior), «extend» (optional behavior → base).&#10;Solid hollow triangle: generalization (specialized → general).  Gray source UC marked (context): no actor assignment implied.&#10;Relationships are modeling interpretations of descriptions / business rules; sequential workflow steps remain separate." style="text;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontColor=#555555;" vertex="1" parent="system">
+          <mxGeometry x="30.0" y="1700.0" width="920" height="100" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="actor-3" name="Inventory Staff">
+    <mxGraphModel dx="1400" dy="900" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="6270" math="0" shadow="0" background="#ffffff">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="system" value="" style="rounded=0;html=1;fillColor=none;strokeColor=#222222;strokeWidth=1.4;pointerEvents=0;container=1;collapsible=0;" vertex="1" parent="1">
+          <mxGeometry x="330" y="50" width="980" height="6120" as="geometry" />
+        </mxCell>
+        <mxCell id="title" value="WMSD — Warehouse Management System" style="text;html=1;align=center;fontFamily=Arial;fontSize=21;fontStyle=1;" vertex="1" parent="system">
+          <mxGeometry x="20.0" y="15.0" width="930" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" value="Inventory Staff Use Case Diagram" style="text;html=1;align=center;fontFamily=Arial;fontSize=17;" vertex="1" parent="system">
+          <mxGeometry x="20.0" y="50.0" width="930" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="actor" value="Inventory Staff" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;whiteSpace=wrap;strokeWidth=1.5;fillColor=#ffffff;strokeColor=#222222;fontFamily=Arial;fontSize=15;fontColor=#111111;" vertex="1" parent="1">
+          <mxGeometry x="100" y="3015" width="50" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="heading-170" value="Master Data Management" style="text;html=1;align=left;fontFamily=Arial;fontSize=16;fontStyle=1;fontColor=#555555;" vertex="1" parent="system">
+          <mxGeometry x="100.0" y="120.0" width="830" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="heading-500" value="Goods Receiving Management" style="text;html=1;align=left;fontFamily=Arial;fontSize=16;fontStyle=1;fontColor=#555555;" vertex="1" parent="system">
+          <mxGeometry x="100.0" y="450.0" width="830" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="heading-1480" value="Inventory Management" style="text;html=1;align=left;fontFamily=Arial;fontSize=16;fontStyle=1;fontColor=#555555;" vertex="1" parent="system">
+          <mxGeometry x="100.0" y="1430.0" width="830" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="heading-3610" value="Stocktake Management" style="text;html=1;align=left;fontFamily=Arial;fontSize=16;fontStyle=1;fontColor=#555555;" vertex="1" parent="system">
+          <mxGeometry x="100.0" y="3560.0" width="830" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="heading-4180" value="Sales Management" style="text;html=1;align=left;fontFamily=Arial;fontSize=16;fontStyle=1;fontColor=#555555;" vertex="1" parent="system">
+          <mxGeometry x="100.0" y="4130.0" width="830" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="heading-4490" value="Goods Issue Management" style="text;html=1;align=left;fontFamily=Arial;fontSize=16;fontStyle=1;fontColor=#555555;" vertex="1" parent="system">
+          <mxGeometry x="100.0" y="4440.0" width="830" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="heading-4930" value="Delivery Management" style="text;html=1;align=left;fontFamily=Arial;fontSize=16;fontStyle=1;fontColor=#555555;" vertex="1" parent="system">
+          <mxGeometry x="100.0" y="4880.0" width="830" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="heading-5130" value="Customer Returns Management" style="text;html=1;align=left;fontFamily=Arial;fontSize=16;fontStyle=1;fontColor=#555555;" vertex="1" parent="system">
+          <mxGeometry x="100.0" y="5080.0" width="830" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="heading-5570" value="Reporting Management" style="text;html=1;align=left;fontFamily=Arial;fontSize=16;fontStyle=1;fontColor=#555555;" vertex="1" parent="system">
+          <mxGeometry x="100.0" y="5520.0" width="830" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-07" value="UC-07&#10;Create Product Batch" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-07" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="1" sourceActors="Store Owner, Inventory Staff" description="Record batch number, product code, color code, production date, and manufacturer; validate batch uniqueness.">
+          <mxGeometry x="90.0" y="180.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-09" value="UC-09&#10;View and Trace Product Batch" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-09" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="2" sourceActors="Inventory Staff, Store Owner" description="View batch details, storage locations, inventory balances, and associated transaction history.">
+          <mxGeometry x="90.0" y="310.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-21" value="UC-21&#10;Register Supplier Delivery" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-21" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="2" sourceActors="Inventory Staff" description="Receive supplier goods and delivery documents and link them to the corresponding purchase order.">
+          <mxGeometry x="90.0" y="510.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-22" value="UC-22&#10;Inspect Received Goods" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-22" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="2" sourceActors="Inventory Staff" description="Count and verify product, quantity, batch number, color code, production date, and goods condition.">
+          <mxGeometry x="90.0" y="640.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-23" value="UC-23&#10;Record Receiving Discrepancy" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-23" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="2" sourceActors="Inventory Staff" description="Record shortages, over-deliveries, incorrect products or batches, and broken or damaged goods.">
+          <mxGeometry x="90.0" y="770.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-24" value="UC-24&#10;Create Goods Receipt from&#10;Purchase Order" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-24" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="2" sourceActors="Inventory Staff" description="Prepare a goods receipt referencing the purchase order and receiving results, with batch, quantity, and stock status.">
+          <mxGeometry x="90.0" y="900.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-26" value="UC-26&#10;Confirm Goods Receipt" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-26" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="2" sourceActors="Inventory Staff" description="Finalize the goods receipt and increase inventory by product, batch, and stock status.">
+          <mxGeometry x="90.0" y="1030.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-27" value="UC-27&#10;Create Supplier Return Request" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-27" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="2" sourceActors="Purchasing Staff, Inventory Staff" description="Request a supplier return referencing the purchase order or receiving record, batch, quantity, and return reason.">
+          <mxGeometry x="90.0" y="1160.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-29" value="UC-29&#10;Confirm Supplier Return Dispatch" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-29" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="2" sourceActors="Inventory Staff" description="Confirm actual return quantities; reduce stock only when the goods were previously received into inventory.">
+          <mxGeometry x="90.0" y="1290.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-30" value="UC-30&#10;Allocate Storage Locations" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-30" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="2" sourceActors="Inventory Staff" description="Allocate newly received goods to storage locations by batch, color code, and quantity after capacity checks.">
+          <mxGeometry x="90.0" y="1490.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-31" value="UC-31&#10;Create Location Transfer" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-31" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="2" sourceActors="Inventory Staff" description="Create a transfer document for a batch and quantity between source and destination locations in the same warehouse.">
+          <mxGeometry x="90.0" y="1620.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-32" value="UC-32&#10;Confirm Location Transfer" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-32" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="2" sourceActors="Inventory Staff" description="Confirm physical relocation, decrease the source location balance, and increase the destination location balance without changing total stock.">
+          <mxGeometry x="90.0" y="1750.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-33" value="UC-33&#10;Move Goods to Pending Inspection" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-33" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="2" sourceActors="Inventory Staff" description="Mark quantities awaiting inspection as unavailable for sales allocation.">
+          <mxGeometry x="90.0" y="1880.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-34" value="UC-34&#10;Record Goods Inspection Results" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-34" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="2" sourceActors="Inventory Staff" description="Record inspected, accepted, and rejected quantities and reasons by batch.">
+          <mxGeometry x="90.0" y="2010.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-36" value="UC-36&#10;Record and Isolate Damaged Goods" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-36" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="2" sourceActors="Inventory Staff" description="Identify affected product, batch, quantity, and location and isolate goods with quality issues.">
+          <mxGeometry x="90.0" y="2140.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-38" value="UC-38&#10;View Inventory by Batch and&#10;Location" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-38" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="2" sourceActors="Inventory Staff, Sales Staff, Store Owner" description="View quantities by product, batch, color code, storage location, and stock status.">
+          <mxGeometry x="90.0" y="2270.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-39" value="UC-39&#10;Monitor Available and Reserved&#10;Inventory" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-39" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="3" sourceActors="Inventory Staff, Sales Staff" description="Distinguish physical, available, sales-reserved, and non-issuable stock.">
+          <mxGeometry x="90.0" y="2400.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-40" value="UC-40&#10;Configure and Monitor Low-Stock&#10;Alerts" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-40" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="3" sourceActors="Store Owner, Inventory Staff" description="Set minimum inventory thresholds and view products below the configured levels.">
+          <mxGeometry x="90.0" y="2530.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-41" value="UC-41&#10;View Inventory Transaction&#10;History" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-41" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="3" sourceActors="Inventory Staff, Store Owner" description="Trace goods receipts, issues, location transfers, stock-status changes, and inventory adjustments.">
+          <mxGeometry x="90.0" y="2660.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-71" value="UC-71&#10;View Warehouse-Specific and&#10;Consolidated Inventory" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-71" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="4" sourceActors="Store Owner, Inventory Staff, Sales Staff" description="View stock by warehouse, batch, color, location, and status, with consolidated balances across warehouses.">
+          <mxGeometry x="90.0" y="2790.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-72" value="UC-72&#10;Create Inter-Warehouse Transfer&#10;Request" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-72" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="4" sourceActors="Inventory Staff, Store Owner" description="Specify source warehouse, destination warehouse, batch, quantity, stock status, and reason for the transfer.">
+          <mxGeometry x="90.0" y="2920.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-73" value="UC-73&#10;Confirm Transfer Dispatch" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-73" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="4" sourceActors="Inventory Staff" description="Count and issue goods from the source warehouse and place dispatched quantities in in-transit status until received.">
+          <mxGeometry x="90.0" y="3050.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-74" value="UC-74&#10;Confirm Transfer Receipt" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-74" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="4" sourceActors="Inventory Staff" description="Compare quantities received with those dispatched and receive goods into the destination warehouse by batch, location, and condition.">
+          <mxGeometry x="90.0" y="3240.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-75" value="UC-75&#10;Reconcile Transfer Discrepancy" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-75" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="4" sourceActors="Store Owner, Inventory Staff" description="Record and resolve shortages, surpluses, or damage between transfer dispatch and receipt before closing the transfer.">
+          <mxGeometry x="90.0" y="3420.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-43" value="UC-43&#10;Record Stocktake Counts" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-43" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="3" sourceActors="Inventory Staff" description="Record physically counted quantities by product, batch, color code, and location.">
+          <mxGeometry x="90.0" y="3620.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-44" value="UC-44&#10;Reconcile Stocktake Variances" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-44" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="3" sourceActors="Inventory Staff" description="Compare physical counts with book stock and record discrepancies and their causes.">
+          <mxGeometry x="90.0" y="3750.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-46" value="UC-46&#10;Confirm Inventory Adjustment" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-46" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="3" sourceActors="Inventory Staff" description="Finalize an approved adjustment and update inventory by the correct batch and location.">
+          <mxGeometry x="90.0" y="3940.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-49" value="UC-49&#10;Allocate and Reserve Stock by&#10;Batch" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-49" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="3" sourceActors="Sales Staff, Inventory Staff" description="Select batches and reserve quantities for an order; indicate when multiple batches are needed.">
+          <mxGeometry x="90.0" y="4250.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-52" value="UC-52&#10;Pick and Inspect Outbound Goods" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-52" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="3" sourceActors="Inventory Staff" description="Pick the approved goods and verify quantities, batches, and color codes before dispatch.">
+          <mxGeometry x="90.0" y="4500.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-53" value="UC-53&#10;Confirm Goods Issue" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-53" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="3" sourceActors="Inventory Staff" description="Finalize goods issue, decrease inventory at the correct batch and location, and update quantities issued against the sales order.">
+          <mxGeometry x="90.0" y="4690.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-56" value="UC-56&#10;Handle Short or Failed Delivery" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-56" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="3" sourceActors="Delivery Staff, Sales Staff, Inventory Staff" description="Record undelivered quantities and arrange redelivery or return goods to inventory with appropriate documents.">
+          <mxGeometry x="90.0" y="4940.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-59" value="UC-59&#10;Inspect Customer Returns" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-59" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="3" sourceActors="Inventory Staff" description="Inspect returned quantities, batch numbers, color codes, and condition; identify goods eligible for restocking.">
+          <mxGeometry x="90.0" y="5140.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-61" value="UC-61&#10;Confirm Customer Return Receipt" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-61" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="3" sourceActors="Inventory Staff" description="Finalize the return receipt and update batch-level quantities and inventory status.">
+          <mxGeometry x="90.0" y="5330.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-62" value="UC-62&#10;View Inventory Movement Report" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-62" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="3" sourceActors="Store Owner, Inventory Staff" description="Report opening balances, receipts, issues, adjustments, and closing balances by product, batch, and period.">
+          <mxGeometry x="90.0" y="5580.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-63" value="UC-63&#10;View Inventory by Batch and&#10;Location Report" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-63" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="3" sourceActors="Store Owner, Inventory Staff" description="Report inventory by batch, location, status, stock age, and products with low or aging stock.">
+          <mxGeometry x="90.0" y="5710.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-66" value="UC-66&#10;View Stocktake and Adjustment&#10;Report" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-66" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="3" sourceActors="Store Owner, Inventory Staff" description="Report stocktake outcomes, variances, causes, and adjustment history.">
+          <mxGeometry x="90.0" y="5840.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-07" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.027;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-07" relationship="association" evidence="UC-07 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SUP-07-1" value="SUP-07-1&#10;Validate Batch Uniqueness" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#f4f4f4;" vertex="1" parent="system" provenance="derived" evidence="UC-07; GBR-01" condition="">
+          <mxGeometry x="640.0" y="160.0" width="290" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="relation-SUP-07-1" value="«include»" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=open;endFill=0;endSize=12;dashed=1;dashPattern=5 4;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="UC-07" target="SUP-07-1" relationship="include" evidence="UC-07; GBR-01" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-09" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.0541;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-09" relationship="association" evidence="UC-09 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-21" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.0811;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-21" relationship="association" evidence="UC-21 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-22" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.1081;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-22" relationship="association" evidence="UC-22 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-23" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.1351;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-23" relationship="association" evidence="UC-23 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-24" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.1622;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-24" relationship="association" evidence="UC-24 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-26" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.1892;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-26" relationship="association" evidence="UC-26 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SUP-26-1" value="SUP-26-1&#10;Post Goods Receipt to Inventory" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#f4f4f4;" vertex="1" parent="system" provenance="derived" evidence="UC-26; GBR-04" condition="">
+          <mxGeometry x="640.0" y="1010.0" width="290" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="relation-SUP-26-1" value="«include»" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=open;endFill=0;endSize=12;dashed=1;dashPattern=5 4;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="UC-26" target="SUP-26-1" relationship="include" evidence="UC-26; GBR-04" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-27" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.2162;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-27" relationship="association" evidence="UC-27 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-29" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.2432;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-29" relationship="association" evidence="UC-29 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SUP-29-1" value="SUP-29-1&#10;Reduce Previously Received&#10;Inventory&#10;[previously received goods]" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#f4f4f4;" vertex="1" parent="system" provenance="derived" evidence="UC-29; GBR-06" condition="goods previously received into inventory">
+          <mxGeometry x="640.0" y="1270.0" width="290" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="relation-SUP-29-1" value="«extend»" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=open;endFill=0;endSize=12;dashed=1;dashPattern=5 4;exitX=0;exitY=0.5;entryX=1;entryY=0.5;" edge="1" parent="1" source="SUP-29-1" target="UC-29" relationship="extend" evidence="UC-29; GBR-06" condition="goods previously received into inventory">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-30" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.2703;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-30" relationship="association" evidence="UC-30 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SUP-30-1" value="SUP-30-1&#10;Check Storage Capacity" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#f4f4f4;" vertex="1" parent="system" provenance="derived" evidence="UC-30" condition="">
+          <mxGeometry x="640.0" y="1470.0" width="290" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="relation-SUP-30-1" value="«include»" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=open;endFill=0;endSize=12;dashed=1;dashPattern=5 4;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="UC-30" target="SUP-30-1" relationship="include" evidence="UC-30" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-31" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.2973;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-31" relationship="association" evidence="UC-31 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-32" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.3243;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-32" relationship="association" evidence="UC-32 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SUP-32-1" value="SUP-32-1&#10;Update Source and Destination&#10;Location Balances" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#f4f4f4;" vertex="1" parent="system" provenance="derived" evidence="UC-32" condition="">
+          <mxGeometry x="640.0" y="1730.0" width="290" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="relation-SUP-32-1" value="«include»" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=open;endFill=0;endSize=12;dashed=1;dashPattern=5 4;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="UC-32" target="SUP-32-1" relationship="include" evidence="UC-32" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-33" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.3514;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-33" relationship="association" evidence="UC-33 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-34" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.3784;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-34" relationship="association" evidence="UC-34 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-36" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.4054;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-36" relationship="association" evidence="UC-36 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-38" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.4324;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-38" relationship="association" evidence="UC-38 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-39" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.4595;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-39" relationship="association" evidence="UC-39 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-40" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.4865;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-40" relationship="association" evidence="UC-40 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-41" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.5135;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-41" relationship="association" evidence="UC-41 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-71" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.5405;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-71" relationship="association" evidence="UC-71 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-72" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.5676;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-72" relationship="association" evidence="UC-72 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SUP-72-1" value="SUP-72-1&#10;Validate Source and Destination&#10;Warehouses" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#f4f4f4;" vertex="1" parent="system" provenance="derived" evidence="UC-72; OR-01; OR-04" condition="">
+          <mxGeometry x="640.0" y="2900.0" width="290" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="relation-SUP-72-1" value="«include»" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=open;endFill=0;endSize=12;dashed=1;dashPattern=5 4;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="UC-72" target="SUP-72-1" relationship="include" evidence="UC-72; OR-01; OR-04" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-73" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.5946;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-73" relationship="association" evidence="UC-73 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SUP-73-1" value="SUP-73-1&#10;Post Source Dispatch and&#10;In-Transit Stock" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#f4f4f4;" vertex="1" parent="system" provenance="derived" evidence="UC-73; GBR-12" condition="">
+          <mxGeometry x="640.0" y="3030.0" width="290" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="relation-SUP-73-1" value="«include»" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=open;endFill=0;endSize=12;dashed=1;dashPattern=5 4;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="UC-73" target="SUP-73-1" relationship="include" evidence="UC-73; GBR-12" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-74" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.6216;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-74" relationship="association" evidence="UC-74 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SUP-74-1" value="SUP-74-1&#10;Compare Received and Dispatched&#10;Quantities" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#f4f4f4;" vertex="1" parent="system" provenance="derived" evidence="UC-74" condition="">
+          <mxGeometry x="640.0" y="3160.0" width="290" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="relation-SUP-74-1" value="«include»" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=open;endFill=0;endSize=12;dashed=1;dashPattern=5 4;exitX=1;exitY=0.3333333333333333;entryX=0;entryY=0.5;" edge="1" parent="1" source="UC-74" target="SUP-74-1" relationship="include" evidence="UC-74" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SUP-74-2" value="SUP-74-2&#10;Post Destination Receipt by&#10;Batch and Location" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#f4f4f4;" vertex="1" parent="system" provenance="derived" evidence="UC-74; GBR-12" condition="">
+          <mxGeometry x="640.0" y="3280.0" width="290" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="relation-SUP-74-2" value="«include»" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=open;endFill=0;endSize=12;dashed=1;dashPattern=5 4;exitX=1;exitY=0.6666666666666666;entryX=0;entryY=0.5;" edge="1" parent="1" source="UC-74" target="SUP-74-2" relationship="include" evidence="UC-74; GBR-12" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-75" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.6486;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-75" relationship="association" evidence="UC-75 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-43" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.6757;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-43" relationship="association" evidence="UC-43 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-44" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.7027;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-44" relationship="association" evidence="UC-44 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SUP-44-1" value="SUP-44-1&#10;Compare Physical Counts with&#10;Book Stock" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#f4f4f4;" vertex="1" parent="system" provenance="derived" evidence="UC-44" condition="">
+          <mxGeometry x="640.0" y="3730.0" width="290" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="relation-SUP-44-1" value="«include»" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=open;endFill=0;endSize=12;dashed=1;dashPattern=5 4;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="UC-44" target="SUP-44-1" relationship="include" evidence="UC-44" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-46" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.7297;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-46" relationship="association" evidence="UC-46 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SUP-46-1" value="SUP-46-1&#10;Validate Stocktake Approval" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#f4f4f4;" vertex="1" parent="system" provenance="derived" evidence="UC-46; GBR-09" condition="">
+          <mxGeometry x="640.0" y="3860.0" width="290" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="relation-SUP-46-1" value="«include»" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=open;endFill=0;endSize=12;dashed=1;dashPattern=5 4;exitX=1;exitY=0.3333333333333333;entryX=0;entryY=0.5;" edge="1" parent="1" source="UC-46" target="SUP-46-1" relationship="include" evidence="UC-46; GBR-09" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SUP-46-2" value="SUP-46-2&#10;Post Approved Inventory&#10;Adjustment" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#f4f4f4;" vertex="1" parent="system" provenance="derived" evidence="UC-46; GBR-09" condition="">
+          <mxGeometry x="640.0" y="3980.0" width="290" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="relation-SUP-46-2" value="«include»" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=open;endFill=0;endSize=12;dashed=1;dashPattern=5 4;exitX=1;exitY=0.6666666666666666;entryX=0;entryY=0.5;" edge="1" parent="1" source="UC-46" target="SUP-46-2" relationship="include" evidence="UC-46; GBR-09" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-49" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.7568;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-49" relationship="association" evidence="UC-49 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SUP-49-1" value="SUP-49-1&#10;Validate Eligible Available&#10;Stock" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#f4f4f4;" vertex="1" parent="system" provenance="derived" evidence="UC-49; GBR-07" condition="">
+          <mxGeometry x="640.0" y="4170.0" width="290" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="relation-SUP-49-1" value="«include»" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=open;endFill=0;endSize=12;dashed=1;dashPattern=5 4;exitX=1;exitY=0.3333333333333333;entryX=0;entryY=0.5;" edge="1" parent="1" source="UC-49" target="SUP-49-1" relationship="include" evidence="UC-49; GBR-07" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SUP-49-2" value="SUP-49-2&#10;Select Batches and Reserve&#10;Quantities" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#f4f4f4;" vertex="1" parent="system" provenance="derived" evidence="UC-49" condition="">
+          <mxGeometry x="640.0" y="4290.0" width="290" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="relation-SUP-49-2" value="«include»" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=open;endFill=0;endSize=12;dashed=1;dashPattern=5 4;exitX=1;exitY=0.6666666666666666;entryX=0;entryY=0.5;" edge="1" parent="1" source="UC-49" target="SUP-49-2" relationship="include" evidence="UC-49" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-52" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.7838;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-52" relationship="association" evidence="UC-52 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SUP-52-1" value="SUP-52-1&#10;Verify Outbound Quantities,&#10;Batches and Color Codes" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#f4f4f4;" vertex="1" parent="system" provenance="derived" evidence="UC-52" condition="">
+          <mxGeometry x="640.0" y="4480.0" width="290" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="relation-SUP-52-1" value="«include»" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=open;endFill=0;endSize=12;dashed=1;dashPattern=5 4;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="UC-52" target="SUP-52-1" relationship="include" evidence="UC-52" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-53" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.8108;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-53" relationship="association" evidence="UC-53 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SUP-53-1" value="SUP-53-1&#10;Validate Eligible Issue Quantity" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#f4f4f4;" vertex="1" parent="system" provenance="derived" evidence="UC-53; GBR-08" condition="">
+          <mxGeometry x="640.0" y="4610.0" width="290" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="relation-SUP-53-1" value="«include»" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=open;endFill=0;endSize=12;dashed=1;dashPattern=5 4;exitX=1;exitY=0.3333333333333333;entryX=0;entryY=0.5;" edge="1" parent="1" source="UC-53" target="SUP-53-1" relationship="include" evidence="UC-53; GBR-08" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SUP-53-2" value="SUP-53-2&#10;Post Goods Issue and Update&#10;Order Quantities" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#f4f4f4;" vertex="1" parent="system" provenance="derived" evidence="UC-53; GBR-08" condition="">
+          <mxGeometry x="640.0" y="4730.0" width="290" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="relation-SUP-53-2" value="«include»" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=open;endFill=0;endSize=12;dashed=1;dashPattern=5 4;exitX=1;exitY=0.6666666666666666;entryX=0;entryY=0.5;" edge="1" parent="1" source="UC-53" target="SUP-53-2" relationship="include" evidence="UC-53; GBR-08" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-56" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.8378;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-56" relationship="association" evidence="UC-56 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-55-context" value="UC-55&#10;Confirm Delivery to Customer&#10;(context)" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#f4f4f4;" vertex="1" parent="system" ucId="UC-55" sourcePage="3" sourceActors="Delivery Staff" provenance="source-context">
+          <mxGeometry x="640.0" y="4920.0" width="290" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="extension-UC-56" value="«extend»&#10;[delivery is short or fails]" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=open;endFill=0;endSize=12;dashed=1;dashPattern=5 4;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="UC-56" target="UC-55-context" relationship="extend" evidence="UC-55; UC-56" condition="delivery is short or fails">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-59" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.8649;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-59" relationship="association" evidence="UC-59 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-61" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.8919;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-61" relationship="association" evidence="UC-61 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SUP-61-1" value="SUP-61-1&#10;Validate Inspection and Return&#10;Approval" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#f4f4f4;" vertex="1" parent="system" provenance="derived" evidence="UC-61; GBR-10" condition="">
+          <mxGeometry x="640.0" y="5250.0" width="290" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="relation-SUP-61-1" value="«include»" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=open;endFill=0;endSize=12;dashed=1;dashPattern=5 4;exitX=1;exitY=0.3333333333333333;entryX=0;entryY=0.5;" edge="1" parent="1" source="UC-61" target="SUP-61-1" relationship="include" evidence="UC-61; GBR-10" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SUP-61-2" value="SUP-61-2&#10;Post Customer Return to&#10;Inventory" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#f4f4f4;" vertex="1" parent="system" provenance="derived" evidence="UC-61" condition="">
+          <mxGeometry x="640.0" y="5370.0" width="290" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="relation-SUP-61-2" value="«include»" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=open;endFill=0;endSize=12;dashed=1;dashPattern=5 4;exitX=1;exitY=0.6666666666666666;entryX=0;entryY=0.5;" edge="1" parent="1" source="UC-61" target="SUP-61-2" relationship="include" evidence="UC-61" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-62" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.9189;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-62" relationship="association" evidence="UC-62 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-63" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.9459;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-63" relationship="association" evidence="UC-63 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-66" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.973;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-66" relationship="association" evidence="UC-66 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="extension-UC-23" value="«extend»" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=open;endFill=0;endSize=12;dashed=1;dashPattern=5 4;exitX=0.5;exitY=0;entryX=0.5;entryY=1;" edge="1" parent="1" source="UC-23" target="UC-22" relationship="extend" evidence="UC-22; UC-23; GBR-05" condition="a shortage, surplus, incorrect batch or damaged goods is found">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="100" y="0" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="condition-UC-23" value="[a shortage, surplus,&#10;incorrect batch or damaged&#10;goods is found]" style="text;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=#555555;" vertex="1" parent="system">
+          <mxGeometry x="385.0" y="705.0" width="215" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="extension-UC-75" value="«extend»" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=open;endFill=0;endSize=12;dashed=1;dashPattern=5 4;exitX=0.5;exitY=0;entryX=0.5;entryY=1;" edge="1" parent="1" source="UC-75" target="UC-74" relationship="extend" evidence="UC-74; UC-75; GBR-13" condition="received and dispatched quantities or condition differ">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="100" y="0" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="condition-UC-75" value="[received and dispatched&#10;quantities or condition&#10;differ]" style="text;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=#555555;" vertex="1" parent="system">
+          <mxGeometry x="385.0" y="3330.0" width="215" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="legend" value="Source: Report3.docx.pdf, §4.2 (pages 1–4).  UC-nn: original use case.  SUP-nn-n: derived support / specialization.&#10;Solid line: actor association.  Dashed open arrow: «include» (base → required behavior), «extend» (optional behavior → base).&#10;Solid hollow triangle: generalization (specialized → general).  Gray source UC marked (context): no actor assignment implied.&#10;Relationships are modeling interpretations of descriptions / business rules; sequential workflow steps remain separate." style="text;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontColor=#555555;" vertex="1" parent="system">
+          <mxGeometry x="30.0" y="6010.0" width="920" height="100" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="actor-4" name="Sales Staff">
+    <mxGraphModel dx="1400" dy="900" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="2990" math="0" shadow="0" background="#ffffff">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="system" value="" style="rounded=0;html=1;fillColor=none;strokeColor=#222222;strokeWidth=1.4;pointerEvents=0;container=1;collapsible=0;" vertex="1" parent="1">
+          <mxGeometry x="330" y="50" width="980" height="2840" as="geometry" />
+        </mxCell>
+        <mxCell id="title" value="WMSD — Warehouse Management System" style="text;html=1;align=center;fontFamily=Arial;fontSize=21;fontStyle=1;" vertex="1" parent="system">
+          <mxGeometry x="20.0" y="15.0" width="930" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" value="Sales Staff Use Case Diagram" style="text;html=1;align=center;fontFamily=Arial;fontSize=17;" vertex="1" parent="system">
+          <mxGeometry x="20.0" y="50.0" width="930" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="actor" value="Sales Staff" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;whiteSpace=wrap;strokeWidth=1.5;fillColor=#ffffff;strokeColor=#222222;fontFamily=Arial;fontSize=15;fontColor=#111111;" vertex="1" parent="1">
+          <mxGeometry x="100" y="1375" width="50" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="heading-170" value="Master Data Management" style="text;html=1;align=left;fontFamily=Arial;fontSize=16;fontStyle=1;fontColor=#555555;" vertex="1" parent="system">
+          <mxGeometry x="100.0" y="120.0" width="830" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="heading-500" value="Inventory Management" style="text;html=1;align=left;fontFamily=Arial;fontSize=16;fontStyle=1;fontColor=#555555;" vertex="1" parent="system">
+          <mxGeometry x="100.0" y="450.0" width="830" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="heading-960" value="Sales Management" style="text;html=1;align=left;fontFamily=Arial;fontSize=16;fontStyle=1;fontColor=#555555;" vertex="1" parent="system">
+          <mxGeometry x="100.0" y="910.0" width="830" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="heading-2020" value="Delivery Management" style="text;html=1;align=left;fontFamily=Arial;fontSize=16;fontStyle=1;fontColor=#555555;" vertex="1" parent="system">
+          <mxGeometry x="100.0" y="1970.0" width="830" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="heading-2350" value="Customer Returns Management" style="text;html=1;align=left;fontFamily=Arial;fontSize=16;fontStyle=1;fontColor=#555555;" vertex="1" parent="system">
+          <mxGeometry x="100.0" y="2300.0" width="830" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="heading-2550" value="Reporting Management" style="text;html=1;align=left;fontFamily=Arial;fontSize=16;fontStyle=1;fontColor=#555555;" vertex="1" parent="system">
+          <mxGeometry x="100.0" y="2500.0" width="830" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-12" value="UC-12&#10;Create Customer" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-12" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="2" sourceActors="Sales Staff" description="Register customer name, telephone number, contact information, and delivery address.">
+          <mxGeometry x="90.0" y="180.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-13" value="UC-13&#10;Update Customer" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-13" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="2" sourceActors="Sales Staff" description="Update customer information and view sales order history.">
+          <mxGeometry x="90.0" y="310.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-38" value="UC-38&#10;View Inventory by Batch and&#10;Location" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-38" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="2" sourceActors="Inventory Staff, Sales Staff, Store Owner" description="View quantities by product, batch, color code, storage location, and stock status.">
+          <mxGeometry x="90.0" y="510.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-39" value="UC-39&#10;Monitor Available and Reserved&#10;Inventory" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-39" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="3" sourceActors="Inventory Staff, Sales Staff" description="Distinguish physical, available, sales-reserved, and non-issuable stock.">
+          <mxGeometry x="90.0" y="640.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-71" value="UC-71&#10;View Warehouse-Specific and&#10;Consolidated Inventory" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-71" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="4" sourceActors="Store Owner, Inventory Staff, Sales Staff" description="View stock by warehouse, batch, color, location, and status, with consolidated balances across warehouses.">
+          <mxGeometry x="90.0" y="770.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-47" value="UC-47&#10;Create Sales Order" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-47" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="3" sourceActors="Sales Staff" description="Create a sales order with customer, products, quantities, units, reference prices, and expected delivery date.">
+          <mxGeometry x="90.0" y="970.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-48" value="UC-48&#10;Update or Cancel Sales Order" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-48" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="3" sourceActors="Sales Staff" description="Amend or cancel an order while checking previously reserved, issued, or delivered quantities.">
+          <mxGeometry x="90.0" y="1220.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-49" value="UC-49&#10;Allocate and Reserve Stock by&#10;Batch" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-49" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="3" sourceActors="Sales Staff, Inventory Staff" description="Select batches and reserve quantities for an order; indicate when multiple batches are needed.">
+          <mxGeometry x="90.0" y="1520.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-50" value="UC-50&#10;Create Goods Issue Request" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-50" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="3" sourceActors="Sales Staff" description="Create an issue request from a sales order specifying products, quantities, batches, and delivery installment.">
+          <mxGeometry x="90.0" y="1700.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-57" value="UC-57&#10;Track Sales Order Fulfillment" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-57" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="3" sourceActors="Sales Staff, Store Owner" description="Track ordered, reserved, issued, delivered, and outstanding quantities.">
+          <mxGeometry x="90.0" y="1830.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-54" value="UC-54&#10;Create Delivery Batch" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-54" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="3" sourceActors="Sales Staff" description="Define the related issue documents, delivery date, address, recipient, and planned delivery quantities.">
+          <mxGeometry x="90.0" y="2030.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-56" value="UC-56&#10;Handle Short or Failed Delivery" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-56" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="3" sourceActors="Delivery Staff, Sales Staff, Inventory Staff" description="Record undelivered quantities and arrange redelivery or return goods to inventory with appropriate documents.">
+          <mxGeometry x="90.0" y="2160.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-58" value="UC-58&#10;Create Customer Return Request" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-58" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="3" sourceActors="Sales Staff" description="Create a return request referring to a sales order or goods issue, with product, batch, quantity, and reason.">
+          <mxGeometry x="90.0" y="2360.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-65" value="UC-65&#10;View Sales and Dispatch Report" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-65" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="3" sourceActors="Store Owner, Sales Staff" description="Report ordered, reserved, issued, delivered, and outstanding quantities by product, sales order, and customer.">
+          <mxGeometry x="90.0" y="2560.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-12" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.0667;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-12" relationship="association" evidence="UC-12 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-13" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.1333;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-13" relationship="association" evidence="UC-13 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-38" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.2;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-38" relationship="association" evidence="UC-38 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-39" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.2667;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-39" relationship="association" evidence="UC-39 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-71" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.3333;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-71" relationship="association" evidence="UC-71 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-47" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.4;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-47" relationship="association" evidence="UC-47 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-48" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.4667;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-48" relationship="association" evidence="UC-48 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SUP-48-1" value="SUP-48-1&#10;Validate Reserved, Issued and&#10;Delivered Quantities" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#f4f4f4;" vertex="1" parent="system" provenance="derived" evidence="UC-48" condition="">
+          <mxGeometry x="640.0" y="1080.0" width="290" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="relation-SUP-48-1" value="«include»" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=open;endFill=0;endSize=12;dashed=1;dashPattern=5 4;exitX=1;exitY=0.25;entryX=0;entryY=0.5;" edge="1" parent="1" source="UC-48" target="SUP-48-1" relationship="include" evidence="UC-48" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SUP-48-2" value="SUP-48-2&#10;Update Sales Order" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#f4f4f4;" vertex="1" parent="system" provenance="derived" evidence="UC-48" condition="">
+          <mxGeometry x="640.0" y="1200.0" width="290" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="relation-SUP-48-2" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=block;endFill=0;endSize=14;dashed=0;exitX=0;exitY=0.5;entryX=1;entryY=0.5;" edge="1" parent="1" source="SUP-48-2" target="UC-48" relationship="generalization" evidence="UC-48" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SUP-48-3" value="SUP-48-3&#10;Cancel Sales Order" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#f4f4f4;" vertex="1" parent="system" provenance="derived" evidence="UC-48" condition="">
+          <mxGeometry x="640.0" y="1320.0" width="290" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="relation-SUP-48-3" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=block;endFill=0;endSize=14;dashed=0;exitX=0;exitY=0.5;entryX=1;entryY=0.75;" edge="1" parent="1" source="SUP-48-3" target="UC-48" relationship="generalization" evidence="UC-48" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-49" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.5333;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-49" relationship="association" evidence="UC-49 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SUP-49-1" value="SUP-49-1&#10;Validate Eligible Available&#10;Stock" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#f4f4f4;" vertex="1" parent="system" provenance="derived" evidence="UC-49; GBR-07" condition="">
+          <mxGeometry x="640.0" y="1440.0" width="290" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="relation-SUP-49-1" value="«include»" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=open;endFill=0;endSize=12;dashed=1;dashPattern=5 4;exitX=1;exitY=0.3333333333333333;entryX=0;entryY=0.5;" edge="1" parent="1" source="UC-49" target="SUP-49-1" relationship="include" evidence="UC-49; GBR-07" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SUP-49-2" value="SUP-49-2&#10;Select Batches and Reserve&#10;Quantities" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#f4f4f4;" vertex="1" parent="system" provenance="derived" evidence="UC-49" condition="">
+          <mxGeometry x="640.0" y="1560.0" width="290" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="relation-SUP-49-2" value="«include»" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=open;endFill=0;endSize=12;dashed=1;dashPattern=5 4;exitX=1;exitY=0.6666666666666666;entryX=0;entryY=0.5;" edge="1" parent="1" source="UC-49" target="SUP-49-2" relationship="include" evidence="UC-49" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-50" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.6;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-50" relationship="association" evidence="UC-50 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-57" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.6667;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-57" relationship="association" evidence="UC-57 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-54" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.7333;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-54" relationship="association" evidence="UC-54 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-56" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.8;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-56" relationship="association" evidence="UC-56 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-55-context" value="UC-55&#10;Confirm Delivery to Customer&#10;(context)" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#f4f4f4;" vertex="1" parent="system" ucId="UC-55" sourcePage="3" sourceActors="Delivery Staff" provenance="source-context">
+          <mxGeometry x="640.0" y="2140.0" width="290" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="extension-UC-56" value="«extend»&#10;[delivery is short or fails]" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=open;endFill=0;endSize=12;dashed=1;dashPattern=5 4;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="UC-56" target="UC-55-context" relationship="extend" evidence="UC-55; UC-56" condition="delivery is short or fails">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-58" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.8667;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-58" relationship="association" evidence="UC-58 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-65" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.9333;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-65" relationship="association" evidence="UC-65 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="legend" value="Source: Report3.docx.pdf, §4.2 (pages 1–4).  UC-nn: original use case.  SUP-nn-n: derived support / specialization.&#10;Solid line: actor association.  Dashed open arrow: «include» (base → required behavior), «extend» (optional behavior → base).&#10;Solid hollow triangle: generalization (specialized → general).  Gray source UC marked (context): no actor assignment implied.&#10;Relationships are modeling interpretations of descriptions / business rules; sequential workflow steps remain separate." style="text;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontColor=#555555;" vertex="1" parent="system">
+          <mxGeometry x="30.0" y="2730.0" width="920" height="100" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="actor-5" name="Delivery Staff">
+    <mxGraphModel dx="1400" dy="900" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="860" math="0" shadow="0" background="#ffffff">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="system" value="" style="rounded=0;html=1;fillColor=none;strokeColor=#222222;strokeWidth=1.4;pointerEvents=0;container=1;collapsible=0;" vertex="1" parent="1">
+          <mxGeometry x="330" y="50" width="980" height="710" as="geometry" />
+        </mxCell>
+        <mxCell id="title" value="WMSD — Warehouse Management System" style="text;html=1;align=center;fontFamily=Arial;fontSize=21;fontStyle=1;" vertex="1" parent="system">
+          <mxGeometry x="20.0" y="15.0" width="930" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" value="Delivery Staff Use Case Diagram" style="text;html=1;align=center;fontFamily=Arial;fontSize=17;" vertex="1" parent="system">
+          <mxGeometry x="20.0" y="50.0" width="930" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="actor" value="Delivery Staff" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;whiteSpace=wrap;strokeWidth=1.5;fillColor=#ffffff;strokeColor=#222222;fontFamily=Arial;fontSize=15;fontColor=#111111;" vertex="1" parent="1">
+          <mxGeometry x="100" y="310" width="50" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="heading-170" value="Delivery Management" style="text;html=1;align=left;fontFamily=Arial;fontSize=16;fontStyle=1;fontColor=#555555;" vertex="1" parent="system">
+          <mxGeometry x="100.0" y="120.0" width="830" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-55" value="UC-55&#10;Confirm Delivery to Customer" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-55" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="3" sourceActors="Delivery Staff" description="Record actual delivered quantity, time, recipient, goods condition, and proof of delivery.">
+          <mxGeometry x="90.0" y="180.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="UC-56" value="UC-56&#10;Handle Short or Failed Delivery" style="ellipse;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;strokeWidth=1.3;strokeColor=#333333;spacing=8;fontFamily=Arial;fontSize=15;fontColor=#111111;fillColor=#ffffff;" vertex="1" parent="system" ucId="UC-56" provenance="source" sourceFile="Report3.docx.pdf" sourcePage="3" sourceActors="Delivery Staff, Sales Staff, Inventory Staff" description="Record undelivered quantities and arrange redelivery or return goods to inventory with appropriate documents.">
+          <mxGeometry x="90.0" y="310.0" width="280" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-55" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.3333;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-55" relationship="association" evidence="UC-55 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="association-UC-56" value="" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=none;startArrow=none;exitX=1;exitY=0.6667;entryX=0;entryY=0.5;" edge="1" parent="1" source="actor" target="UC-56" relationship="association" evidence="UC-56 Primary Actor(s)" condition="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="extension-UC-56" value="«extend»" style="edgeStyle=none;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1.1;strokeColor=#444444;labelBackgroundColor=#ffffff;fontFamily=Arial;fontSize=13;fontColor=#111111;endArrow=open;endFill=0;endSize=12;dashed=1;dashPattern=5 4;exitX=0.5;exitY=0;entryX=0.5;entryY=1;" edge="1" parent="1" source="UC-56" target="UC-55" relationship="extend" evidence="UC-55; UC-56" condition="delivery is short or fails">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="100" y="0" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="condition-UC-56" value="[delivery is short or fails]" style="text;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=13;fontColor=#555555;" vertex="1" parent="system">
+          <mxGeometry x="385.0" y="245.0" width="215" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="legend" value="Source: Report3.docx.pdf, §4.2 (pages 1–4).  UC-nn: original use case.  SUP-nn-n: derived support / specialization.&#10;Solid line: actor association.  Dashed open arrow: «include» (base → required behavior), «extend» (optional behavior → base).&#10;Solid hollow triangle: generalization (specialized → general).  Gray source UC marked (context): no actor assignment implied.&#10;Relationships are modeling interpretations of descriptions / business rules; sequential workflow steps remain separate." style="text;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontColor=#555555;" vertex="1" parent="system">
+          <mxGeometry x="30.0" y="600.0" width="920" height="100" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="actor-6" name="Accountant">
+    <mxGraphModel dx="1400" dy="900" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="860" math="0" shadow="0" background="#ffffff">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="system" value="" style="rounded=0;html=1;fillColor=none;strokeColor=#222222;strokeWidth=1.4;pointerEvents=0;container=1;collapsible=0;" vertex="1" parent="1">
+          <mxGeometry x="330" y="50" width="980" height="710" as="geometry" />
+        </mxCell>
+        <mxCell id="title" value="WMSD — Warehouse Management System" style="text;html=1;align=center;fontFamily=Arial;fontSize=21;fontStyle=1;" vertex="1" parent="system">
+          <mxGeometry x="20.0" y="15.0" width="930" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" value="Accountant Use Case Diagram" style="text;html=1;align=center;fontFamily=Arial;fontSize=17;" vertex="1" parent="system">
+          <mxGeometry x="20.0" y="50.0" width="930" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="actor" value="Accountant" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;whiteSpace=wrap;strokeWidth=1.5;fillColor=#ffffff;strokeColor=#222222;fontFamily=Arial;fontSize=15;fontColor=#111111;" vertex="1" parent="1">
+          <mxGeometry x="100" y="300" width="50" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="gap-note" value="Actor appears in the system context (page 1).&#10;Invoice and receivable/payable interactions are mentioned in GBR-15 and OR-06.&#10;No use case in UC-01–UC-75 assigns Accountant as a primary actor.&#10;Detailed accounting use cases are not specified in this list." style="shape=note;size=20;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacing=25;fillColor=#fff8e6;strokeColor=#999999;fontFamily=Arial;fontSize=18;" vertex="1" parent="system">
+          <mxGeometry x="90.0" y="170.0" width="800" height="290" as="geometry" />
+        </mxCell>
+        <mxCell id="legend" value="Source: Report3.docx.pdf, §4.2 (pages 1–4).  UC-nn: original use case.  SUP-nn-n: derived support / specialization.&#10;Solid line: actor association.  Dashed open arrow: «include» (base → required behavior), «extend» (optional behavior → base).&#10;Solid hollow triangle: generalization (specialized → general).  Gray source UC marked (context): no actor assignment implied.&#10;Relationships are modeling interpretations of descriptions / business rules; sequential workflow steps remain separate." style="text;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontColor=#555555;" vertex="1" parent="system">
+          <mxGeometry x="30.0" y="600.0" width="920" height="100" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="actor-7" name="Administrator">
+    <mxGraphModel dx="1400" dy="900" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="860" math="0" shadow="0" background="#ffffff">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="system" value="" style="rounded=0;html=1;fillColor=none;strokeColor=#222222;strokeWidth=1.4;pointerEvents=0;container=1;collapsible=0;" vertex="1" parent="1">
+          <mxGeometry x="330" y="50" width="980" height="710" as="geometry" />
+        </mxCell>
+        <mxCell id="title" value="WMSD — Warehouse Management System" style="text;html=1;align=center;fontFamily=Arial;fontSize=21;fontStyle=1;" vertex="1" parent="system">
+          <mxGeometry x="20.0" y="15.0" width="930" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" value="Administrator Use Case Diagram" style="text;html=1;align=center;fontFamily=Arial;fontSize=17;" vertex="1" parent="system">
+          <mxGeometry x="20.0" y="50.0" width="930" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="actor" value="Administrator" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;whiteSpace=wrap;strokeWidth=1.5;fillColor=#ffffff;strokeColor=#222222;fontFamily=Arial;fontSize=15;fontColor=#111111;" vertex="1" parent="1">
+          <mxGeometry x="100" y="300" width="50" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="gap-note" value="Actor appears in the system context (page 1).&#10;UC-67 and UC-68 explicitly assign account and permission management to Store Owner.&#10;No use case in UC-01–UC-75 assigns Administrator as a primary actor.&#10;Administrator privileges must be clarified before adding associations." style="shape=note;size=20;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacing=25;fillColor=#fff8e6;strokeColor=#999999;fontFamily=Arial;fontSize=18;" vertex="1" parent="system">
+          <mxGeometry x="90.0" y="170.0" width="800" height="290" as="geometry" />
+        </mxCell>
+        <mxCell id="legend" value="Source: Report3.docx.pdf, §4.2 (pages 1–4).  UC-nn: original use case.  SUP-nn-n: derived support / specialization.&#10;Solid line: actor association.  Dashed open arrow: «include» (base → required behavior), «extend» (optional behavior → base).&#10;Solid hollow triangle: generalization (specialized → general).  Gray source UC marked (context): no actor assignment implied.&#10;Relationships are modeling interpretations of descriptions / business rules; sequential workflow steps remain separate." style="text;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontColor=#555555;" vertex="1" parent="system">
+          <mxGeometry x="30.0" y="600.0" width="920" height="100" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="actor-8" name="SMTP Service">
+    <mxGraphModel dx="1400" dy="900" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="860" math="0" shadow="0" background="#ffffff">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="system" value="" style="rounded=0;html=1;fillColor=none;strokeColor=#222222;strokeWidth=1.4;pointerEvents=0;container=1;collapsible=0;" vertex="1" parent="1">
+          <mxGeometry x="330" y="50" width="980" height="710" as="geometry" />
+        </mxCell>
+        <mxCell id="title" value="WMSD — Warehouse Management System" style="text;html=1;align=center;fontFamily=Arial;fontSize=21;fontStyle=1;" vertex="1" parent="system">
+          <mxGeometry x="20.0" y="15.0" width="930" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="subtitle" value="SMTP Service Use Case Diagram" style="text;html=1;align=center;fontFamily=Arial;fontSize=17;" vertex="1" parent="system">
+          <mxGeometry x="20.0" y="50.0" width="930" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="actor" value="SMTP Service" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;whiteSpace=wrap;strokeWidth=1.5;fillColor=#ffffff;strokeColor=#222222;fontFamily=Arial;fontSize=15;fontColor=#111111;" vertex="1" parent="1">
+          <mxGeometry x="100" y="300" width="50" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="gap-note" value="External actor appears in the system context (page 1).&#10;OR-08 requires notification requests, delivery attempts and delivery results to be distinguished.&#10;No email use case is defined in UC-01–UC-75.&#10;SMTP associations require a detailed email use case specification." style="shape=note;size=20;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacing=25;fillColor=#fff8e6;strokeColor=#999999;fontFamily=Arial;fontSize=18;" vertex="1" parent="system">
+          <mxGeometry x="90.0" y="170.0" width="800" height="290" as="geometry" />
+        </mxCell>
+        <mxCell id="legend" value="Source: Report3.docx.pdf, §4.2 (pages 1–4).  UC-nn: original use case.  SUP-nn-n: derived support / specialization.&#10;Solid line: actor association.  Dashed open arrow: «include» (base → required behavior), «extend» (optional behavior → base).&#10;Solid hollow triangle: generalization (specialized → general).  Gray source UC marked (context): no actor assignment implied.&#10;Relationships are modeling interpretations of descriptions / business rules; sequential workflow steps remain separate." style="text;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;fontFamily=Arial;fontSize=12;fontColor=#555555;" vertex="1" parent="system">
+          <mxGeometry x="30.0" y="600.0" width="920" height="100" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

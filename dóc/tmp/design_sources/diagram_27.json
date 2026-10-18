@@ -1,0 +1,182 @@
+{
+  "index": 27,
+  "name": "BF01 Mới",
+  "id": "R6AcAYQlAqFGTBuaylhU",
+  "nodes": [
+    {
+      "id": "Ile9ekywh-2buuYT2m_F-4",
+      "text": "Revise replenishment request",
+      "parent": "ZxRsHPQNPQhP5LSLKB3s-3"
+    },
+    {
+      "id": "Ile9ekywh-2buuYT2m_F-3",
+      "text": "Yes",
+      "parent": "Ile9ekywh-2buuYT2m_F-2"
+    }
+  ],
+  "edges": [
+    {
+      "from": "ZxRsHPQNPQhP5LSLKB3s-7",
+      "to": "ZxRsHPQNPQhP5LSLKB3s-9",
+      "label": ""
+    },
+    {
+      "from": "ZxRsHPQNPQhP5LSLKB3s-9",
+      "to": "ZxRsHPQNPQhP5LSLKB3s-11",
+      "label": ""
+    },
+    {
+      "from": "Revise replenishment request",
+      "to": "Ile9ekywh-2buuYT2m_F-7",
+      "label": ""
+    },
+    {
+      "from": "ZxRsHPQNPQhP5LSLKB3s-13",
+      "to": "ZxRsHPQNPQhP5LSLKB3s-15",
+      "label": ""
+    },
+    {
+      "from": "",
+      "to": "",
+      "label": ""
+    },
+    {
+      "from": "ZxRsHPQNPQhP5LSLKB3s-51",
+      "to": "Ile9ekywh-2buuYT2m_F-1",
+      "label": ""
+    },
+    {
+      "from": "ZxRsHPQNPQhP5LSLKB3s-49",
+      "to": "ZxRsHPQNPQhP5LSLKB3s-51",
+      "label": ""
+    },
+    {
+      "from": "ZxRsHPQNPQhP5LSLKB3s-58",
+      "to": "Ile9ekywh-2buuYT2m_F-14",
+      "label": ""
+    },
+    {
+      "from": "ZxRsHPQNPQhP5LSLKB3s-55",
+      "to": "ZxRsHPQNPQhP5LSLKB3s-58",
+      "label": ""
+    },
+    {
+      "from": "ZxRsHPQNPQhP5LSLKB3s-44",
+      "to": "ZxRsHPQNPQhP5LSLKB3s-47",
+      "label": ""
+    },
+    {
+      "from": "ZxRsHPQNPQhP5LSLKB3s-24",
+      "to": "ZxRsHPQNPQhP5LSLKB3s-26",
+      "label": ""
+    },
+    {
+      "from": "ZxRsHPQNPQhP5LSLKB3s-30",
+      "to": "ZxRsHPQNPQhP5LSLKB3s-32",
+      "label": ""
+    },
+    {
+      "from": "ZxRsHPQNPQhP5LSLKB3s-32",
+      "to": "ZxRsHPQNPQhP5LSLKB3s-34",
+      "label": ""
+    },
+    {
+      "from": "ZxRsHPQNPQhP5LSLKB3s-34",
+      "to": "ZxRsHPQNPQhP5LSLKB3s-36",
+      "label": ""
+    },
+    {
+      "from": "ZxRsHPQNPQhP5LSLKB3s-36",
+      "to": "ZxRsHPQNPQhP5LSLKB3s-38",
+      "label": ""
+    },
+    {
+      "from": "ZxRsHPQNPQhP5LSLKB3s-38",
+      "to": "ZxRsHPQNPQhP5LSLKB3s-40",
+      "label": ""
+    },
+    {
+      "from": "ZxRsHPQNPQhP5LSLKB3s-40",
+      "to": "ZxRsHPQNPQhP5LSLKB3s-43",
+      "label": ""
+    },
+    {
+      "from": "ZxRsHPQNPQhP5LSLKB3s-43",
+      "to": "ZxRsHPQNPQhP5LSLKB3s-44",
+      "label": ""
+    },
+    {
+      "from": "ZxRsHPQNPQhP5LSLKB3s-47",
+      "to": "ZxRsHPQNPQhP5LSLKB3s-49",
+      "label": ""
+    },
+    {
+      "from": "ZxRsHPQNPQhP5LSLKB3s-24",
+      "to": "ZxRsHPQNPQhP5LSLKB3s-26",
+      "label": ""
+    },
+    {
+      "from": "ZxRsHPQNPQhP5LSLKB3s-11",
+      "to": "ZxRsHPQNPQhP5LSLKB3s-13",
+      "label": ""
+    },
+    {
+      "from": "ZxRsHPQNPQhP5LSLKB3s-15",
+      "to": "ZxRsHPQNPQhP5LSLKB3s-17",
+      "label": ""
+    },
+    {
+      "from": "ZxRsHPQNPQhP5LSLKB3s-17",
+      "to": "ZxRsHPQNPQhP5LSLKB3s-19",
+      "label": ""
+    },
+    {
+      "from": "ZxRsHPQNPQhP5LSLKB3s-19",
+      "to": "ZxRsHPQNPQhP5LSLKB3s-21",
+      "label": ""
+    },
+    {
+      "from": "ZxRsHPQNPQhP5LSLKB3s-19",
+      "to": "ZxRsHPQNPQhP5LSLKB3s-66",
+      "label": ""
+    },
+    {
+      "from": "ZxRsHPQNPQhP5LSLKB3s-21",
+      "to": "ZxRsHPQNPQhP5LSLKB3s-22",
+      "label": ""
+    },
+    {
+      "from": "ZxRsHPQNPQhP5LSLKB3s-22",
+      "to": "ZxRsHPQNPQhP5LSLKB3s-24",
+      "label": ""
+    },
+    {
+      "from": "ZxRsHPQNPQhP5LSLKB3s-26",
+      "to": "ZxRsHPQNPQhP5LSLKB3s-28",
+      "label": ""
+    },
+    {
+      "from": "ZxRsHPQNPQhP5LSLKB3s-28",
+      "to": "ZxRsHPQNPQhP5LSLKB3s-30",
+      "label": ""
+    },
+    {
+      "from": "ZxRsHPQNPQhP5LSLKB3s-66",
+      "to": "Revise replenishment request",
+      "label": ""
+    },
+    {
+      "from": "ZxRsHPQNPQhP5LSLKB3s-40",
+      "to": "ZxRsHPQNPQhP5LSLKB3s-54",
+      "label": ""
+    },
+    {
+      "from": "ZxRsHPQNPQhP5LSLKB3s-54",
+      "to": "ZxRsHPQNPQhP5LSLKB3s-55",
+      "label": ""
+    }
+  ],
+  "uml": [
+    "@startuml\ntitle BF-01 - Replenishment, Purchasing & Goods Receiving\n\n|Accountant|\nstart\n:Review stock replenishment need;\n:Create replenishment request;\n\n|WMSD|\n:Record replenishment request;\n:Show request and current stock information;\n\n|Store Owner|\n:Review replenishment request;\n\nif (Request approved?) then (Yes)\n\n  |WMSD|\n  :Update request status to Approved;\n\n  |Accountant|\n  :Create purchase order;\n\n  |WMSD|\n  :Link purchase order to approved request;\n  :Track ordered and outstanding quantities;\n\n  |Accountant|\n  :Record supplier confirmation;\n\n  |WMSD|\n  :Update confirmed quantity\n  and expected delivery date;\n\n  |Inventory Staff|\n  :Create goods receipt from purchase order;\n  :Record actual received quantity,\n  lot and condition;\n\n  |WMSD|\n  :Compare received quantity\n  with purchase order;\n\n  |Inventory Staff|\n  :Inspect received goods;\n\n  if (Goods accepted?) then (Yes)\n\n    |WMSD|\n    :Record accepted quantity;\n\n    |Inventory Staff|\n    :Complete goods receipt;\n    :Put accepted goods away;\n\n    |WMSD|\n    :Increase inventory by lot,\n    location and status;\n    :Update outstanding purchase quantity;\n\n  else (No)\n\n    |Inventory Staff|\n    :Record discrepancy / defective goods;\n\n    |WMSD|\n    :Keep non-usable quantity\n    outside usable inventory;\n    :Record discrepancy information;\n\n  endif\n\nelse (No)\n\n  |WMSD|\n  :Update request status to Rejected;\n\nendif\n\nstop\n@enduml"
+  ]
+}

@@ -1,0 +1,250 @@
+{
+  "index": 24,
+  "name": "Mua - Nhận hiện tại ",
+  "id": "fzTO4rgWx2iGR6FzKCbG",
+  "nodes": [
+    {
+      "id": "XzaOgJmg_9-EEvm8nIEf-1",
+      "text": "Warehouse",
+      "parent": "1"
+    },
+    {
+      "id": "XzaOgJmg_9-EEvm8nIEf-3",
+      "text": "Check stock and need to replenish",
+      "parent": "XzaOgJmg_9-EEvm8nIEf-1"
+    },
+    {
+      "id": "XzaOgJmg_9-EEvm8nIEf-4",
+      "text": "Count and inspect item, lot, tone, calibre, condition",
+      "parent": "XzaOgJmg_9-EEvm8nIEf-1"
+    },
+    {
+      "id": "XzaOgJmg_9-EEvm8nIEf-5",
+      "text": "Separate accepted / pending; put accepted away",
+      "parent": "XzaOgJmg_9-EEvm8nIEf-1"
+    },
+    {
+      "id": "XzaOgJmg_9-EEvm8nIEf-6",
+      "text": "Wrong or damaged?",
+      "parent": "XzaOgJmg_9-EEvm8nIEf-1"
+    },
+    {
+      "id": "XzaOgJmg_9-EEvm8nIEf-7",
+      "text": "Accounting / Purchasing",
+      "parent": "1"
+    },
+    {
+      "id": "XzaOgJmg_9-EEvm8nIEf-8",
+      "text": "Prepare purchase proposal",
+      "parent": "XzaOgJmg_9-EEvm8nIEf-7"
+    },
+    {
+      "id": "XzaOgJmg_9-EEvm8nIEf-9",
+      "text": "Revise or stop proposal",
+      "parent": "XzaOgJmg_9-EEvm8nIEf-7"
+    },
+    {
+      "id": "XzaOgJmg_9-EEvm8nIEf-10",
+      "text": "Place supplier order",
+      "parent": "XzaOgJmg_9-EEvm8nIEf-7"
+    },
+    {
+      "id": "XzaOgJmg_9-EEvm8nIEf-11",
+      "text": "Agree revised quantity / date",
+      "parent": "XzaOgJmg_9-EEvm8nIEf-7"
+    },
+    {
+      "id": "XzaOgJmg_9-EEvm8nIEf-12",
+      "text": "Compare supplier documents with accepted quantity",
+      "parent": "XzaOgJmg_9-EEvm8nIEf-7"
+    },
+    {
+      "id": "XzaOgJmg_9-EEvm8nIEf-13",
+      "text": "Order complete?",
+      "parent": "XzaOgJmg_9-EEvm8nIEf-7"
+    },
+    {
+      "id": "XzaOgJmg_9-EEvm8nIEf-39",
+      "text": "Yes",
+      "parent": "XzaOgJmg_9-EEvm8nIEf-7"
+    },
+    {
+      "id": "XzaOgJmg_9-EEvm8nIEf-15",
+      "text": "Owner",
+      "parent": "1"
+    },
+    {
+      "id": "XzaOgJmg_9-EEvm8nIEf-16",
+      "text": "Review proposal",
+      "parent": "XzaOgJmg_9-EEvm8nIEf-15"
+    },
+    {
+      "id": "XzaOgJmg_9-EEvm8nIEf-17",
+      "text": "Approved?",
+      "parent": "XzaOgJmg_9-EEvm8nIEf-15"
+    },
+    {
+      "id": "XzaOgJmg_9-EEvm8nIEf-18",
+      "text": "Supplier",
+      "parent": "1"
+    },
+    {
+      "id": "XzaOgJmg_9-EEvm8nIEf-19",
+      "text": "Confirm quantity and delivery date",
+      "parent": "XzaOgJmg_9-EEvm8nIEf-18"
+    },
+    {
+      "id": "XzaOgJmg_9-EEvm8nIEf-20",
+      "text": "Full confirmation?",
+      "parent": "XzaOgJmg_9-EEvm8nIEf-18"
+    },
+    {
+      "id": "XzaOgJmg_9-EEvm8nIEf-21",
+      "text": "Deliver goods and documents",
+      "parent": "XzaOgJmg_9-EEvm8nIEf-18"
+    },
+    {
+      "id": "XzaOgJmg_9-EEvm8nIEf-22",
+      "text": "Resolve rejected goods with supplier",
+      "parent": "XzaOgJmg_9-EEvm8nIEf-18"
+    },
+    {
+      "id": "XzaOgJmg_9-EEvm8nIEf-27",
+      "text": "Yes",
+      "parent": "1"
+    },
+    {
+      "id": "XzaOgJmg_9-EEvm8nIEf-30",
+      "text": "Yes",
+      "parent": "1"
+    },
+    {
+      "id": "XzaOgJmg_9-EEvm8nIEf-35",
+      "text": "Yes",
+      "parent": "1"
+    },
+    {
+      "id": "XzaOgJmg_9-EEvm8nIEf-36",
+      "text": "No",
+      "parent": "1"
+    },
+    {
+      "id": "XzaOgJmg_9-EEvm8nIEf-40",
+      "text": "No",
+      "parent": "1"
+    },
+    {
+      "id": "XzaOgJmg_9-EEvm8nIEf-41",
+      "text": "No",
+      "parent": "1"
+    },
+    {
+      "id": "XzaOgJmg_9-EEvm8nIEf-42",
+      "text": "No / next delivery",
+      "parent": "1"
+    }
+  ],
+  "edges": [
+    {
+      "from": "",
+      "to": "Check stock and need to replenish",
+      "label": ""
+    },
+    {
+      "from": "Order complete?",
+      "to": "",
+      "label": "Yes"
+    },
+    {
+      "from": "Check stock and need to replenish",
+      "to": "Prepare purchase proposal",
+      "label": ""
+    },
+    {
+      "from": "Prepare purchase proposal",
+      "to": "Review proposal",
+      "label": ""
+    },
+    {
+      "from": "Review proposal",
+      "to": "Approved?",
+      "label": ""
+    },
+    {
+      "from": "Approved?",
+      "to": "Place supplier order",
+      "label": "Yes"
+    },
+    {
+      "from": "Place supplier order",
+      "to": "Confirm quantity and delivery date",
+      "label": ""
+    },
+    {
+      "from": "Confirm quantity and delivery date",
+      "to": "Full confirmation?",
+      "label": ""
+    },
+    {
+      "from": "Full confirmation?",
+      "to": "Deliver goods and documents",
+      "label": "Yes"
+    },
+    {
+      "from": "Agree revised quantity / date",
+      "to": "Deliver goods and documents",
+      "label": ""
+    },
+    {
+      "from": "Deliver goods and documents",
+      "to": "Count and inspect item, lot, tone, calibre, condition",
+      "label": ""
+    },
+    {
+      "from": "Count and inspect item, lot, tone, calibre, condition",
+      "to": "Separate accepted / pending; put accepted away",
+      "label": ""
+    },
+    {
+      "from": "Separate accepted / pending; put accepted away",
+      "to": "Wrong or damaged?",
+      "label": ""
+    },
+    {
+      "from": "Wrong or damaged?",
+      "to": "Resolve rejected goods with supplier",
+      "label": "Yes"
+    },
+    {
+      "from": "Wrong or damaged?",
+      "to": "Compare supplier documents with accepted quantity",
+      "label": "No"
+    },
+    {
+      "from": "Resolve rejected goods with supplier",
+      "to": "Compare supplier documents with accepted quantity",
+      "label": ""
+    },
+    {
+      "from": "Compare supplier documents with accepted quantity",
+      "to": "Order complete?",
+      "label": ""
+    },
+    {
+      "from": "Approved?",
+      "to": "Revise or stop proposal",
+      "label": "No"
+    },
+    {
+      "from": "Full confirmation?",
+      "to": "Agree revised quantity / date",
+      "label": "No"
+    },
+    {
+      "from": "Order complete?",
+      "to": "Deliver goods and documents",
+      "label": "No / next delivery"
+    }
+  ],
+  "uml": []
+}

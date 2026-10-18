@@ -1,0 +1,33 @@
+=== PAGE 1 ===
+ 
+© SAP UCC Magdeburg Page 1 
+DATA SHEET 
+ 
+  
+ 
+Master Data  
+Search Term Customer (The Bike Zone) ### 
+Material (Professional Touring Bike (silver)) PRTR2### 
+ 
+Organizational Units  
+Sales Office (San Diego) SD00 
+Plant (Miami) MI00 
+Plant (Dallas) DL00 
+Sales Organization (US West) UW00 
+Order Type (Standard Order) OR 
+Distribution Channel (Whole Sale) WH 
+Division (Bicycle) BI 
+Sales Group US 
+ 
+Employees involved  
+Karim Messalem Sales Person 1 
+Carolin Bruzik Warehouse Supervisor 
+Sunil Gupta Warehouse Employee 
+Zarah Morello Good Issue Clerk 
+ 
+Document Numbers  
+Standard Order Number _______________________ 
+Outbound Delivery Number _______________________ 
+Transfer Order Number _______________________ 
+ 
+ Warehouse Management (WM) III 

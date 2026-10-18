@@ -1,0 +1,310 @@
+{
+  "index": 23,
+  "name": "ERD",
+  "id": "aYQPDMKjvXdY5b2egSR2",
+  "nodes": [
+    {
+      "id": "9Tn0FXKMsF5ecXRnn70D-2",
+      "text": "Supplier",
+      "parent": "9Tn0FXKMsF5ecXRnn70D-1"
+    },
+    {
+      "id": "9Tn0FXKMsF5ecXRnn70D-3",
+      "text": "Supplier ID Name Status",
+      "parent": "9Tn0FXKMsF5ecXRnn70D-1"
+    },
+    {
+      "id": "9Tn0FXKMsF5ecXRnn70D-5",
+      "text": "Product",
+      "parent": "9Tn0FXKMsF5ecXRnn70D-4"
+    },
+    {
+      "id": "9Tn0FXKMsF5ecXRnn70D-6",
+      "text": "Product ID Code Name Unit Rule",
+      "parent": "9Tn0FXKMsF5ecXRnn70D-4"
+    },
+    {
+      "id": "9Tn0FXKMsF5ecXRnn70D-8",
+      "text": "Lot",
+      "parent": "9Tn0FXKMsF5ecXRnn70D-7"
+    },
+    {
+      "id": "9Tn0FXKMsF5ecXRnn70D-9",
+      "text": "Lot ID Lot No Tone Calibre",
+      "parent": "9Tn0FXKMsF5ecXRnn70D-7"
+    },
+    {
+      "id": "9Tn0FXKMsF5ecXRnn70D-11",
+      "text": "Warehouse",
+      "parent": "9Tn0FXKMsF5ecXRnn70D-10"
+    },
+    {
+      "id": "9Tn0FXKMsF5ecXRnn70D-12",
+      "text": "Warehouse ID Name Status",
+      "parent": "9Tn0FXKMsF5ecXRnn70D-10"
+    },
+    {
+      "id": "9Tn0FXKMsF5ecXRnn70D-14",
+      "text": "Location",
+      "parent": "9Tn0FXKMsF5ecXRnn70D-13"
+    },
+    {
+      "id": "9Tn0FXKMsF5ecXRnn70D-15",
+      "text": "Location ID Code Area Rack",
+      "parent": "9Tn0FXKMsF5ecXRnn70D-13"
+    },
+    {
+      "id": "9Tn0FXKMsF5ecXRnn70D-17",
+      "text": "Replenishment Request",
+      "parent": "9Tn0FXKMsF5ecXRnn70D-16"
+    },
+    {
+      "id": "9Tn0FXKMsF5ecXRnn70D-18",
+      "text": "Request ID Requested Qty Approval Status",
+      "parent": "9Tn0FXKMsF5ecXRnn70D-16"
+    },
+    {
+      "id": "9Tn0FXKMsF5ecXRnn70D-20",
+      "text": "Purchase Order",
+      "parent": "9Tn0FXKMsF5ecXRnn70D-19"
+    },
+    {
+      "id": "9Tn0FXKMsF5ecXRnn70D-21",
+      "text": "Order ID Order No Status",
+      "parent": "9Tn0FXKMsF5ecXRnn70D-19"
+    },
+    {
+      "id": "9Tn0FXKMsF5ecXRnn70D-23",
+      "text": "Goods Receipt",
+      "parent": "9Tn0FXKMsF5ecXRnn70D-22"
+    },
+    {
+      "id": "9Tn0FXKMsF5ecXRnn70D-24",
+      "text": "Receipt ID Receipt No Accepted Qty Status",
+      "parent": "9Tn0FXKMsF5ecXRnn70D-22"
+    },
+    {
+      "id": "9Tn0FXKMsF5ecXRnn70D-26",
+      "text": "Inventory Balance",
+      "parent": "9Tn0FXKMsF5ecXRnn70D-25"
+    },
+    {
+      "id": "9Tn0FXKMsF5ecXRnn70D-27",
+      "text": "Balance ID Usable Qty Quality Status",
+      "parent": "9Tn0FXKMsF5ecXRnn70D-25"
+    },
+    {
+      "id": "9Tn0FXKMsF5ecXRnn70D-29",
+      "text": "Defective Goods Case",
+      "parent": "9Tn0FXKMsF5ecXRnn70D-28"
+    },
+    {
+      "id": "9Tn0FXKMsF5ecXRnn70D-30",
+      "text": "Case ID Defective Qty Disposition Status",
+      "parent": "9Tn0FXKMsF5ecXRnn70D-28"
+    },
+    {
+      "id": "9Tn0FXKMsF5ecXRnn70D-32",
+      "text": "Warehouse Transfer",
+      "parent": "9Tn0FXKMsF5ecXRnn70D-31"
+    },
+    {
+      "id": "9Tn0FXKMsF5ecXRnn70D-33",
+      "text": "Transfer ID Source / Destination Dispatched / Received Status",
+      "parent": "9Tn0FXKMsF5ecXRnn70D-31"
+    },
+    {
+      "id": "9Tn0FXKMsF5ecXRnn70D-35",
+      "text": "Stocktake",
+      "parent": "9Tn0FXKMsF5ecXRnn70D-34"
+    },
+    {
+      "id": "9Tn0FXKMsF5ecXRnn70D-36",
+      "text": "Stocktake ID Cut-off Time Status",
+      "parent": "9Tn0FXKMsF5ecXRnn70D-34"
+    },
+    {
+      "id": "9Tn0FXKMsF5ecXRnn70D-38",
+      "text": "Inventory Adjustment",
+      "parent": "9Tn0FXKMsF5ecXRnn70D-37"
+    },
+    {
+      "id": "9Tn0FXKMsF5ecXRnn70D-39",
+      "text": "Adjustment ID Variance Cause Approval Status",
+      "parent": "9Tn0FXKMsF5ecXRnn70D-37"
+    },
+    {
+      "id": "9Tn0FXKMsF5ecXRnn70D-41",
+      "text": "Goods Issue",
+      "parent": "9Tn0FXKMsF5ecXRnn70D-40"
+    },
+    {
+      "id": "9Tn0FXKMsF5ecXRnn70D-42",
+      "text": "Issue ID Actual Qty Source Ref",
+      "parent": "9Tn0FXKMsF5ecXRnn70D-40"
+    },
+    {
+      "id": "9Tn0FXKMsF5ecXRnn70D-44",
+      "text": "Goods Return",
+      "parent": "9Tn0FXKMsF5ecXRnn70D-43"
+    },
+    {
+      "id": "9Tn0FXKMsF5ecXRnn70D-45",
+      "text": "Return ID Return Type Quantity Approval Status",
+      "parent": "9Tn0FXKMsF5ecXRnn70D-43"
+    },
+    {
+      "id": "9Tn0FXKMsF5ecXRnn70D-46",
+      "text": "supplies · 1:0..*",
+      "parent": "1"
+    },
+    {
+      "id": "9Tn0FXKMsF5ecXRnn70D-47",
+      "text": "approved into · 1:0..1",
+      "parent": "1"
+    },
+    {
+      "id": "9Tn0FXKMsF5ecXRnn70D-48",
+      "text": "received in · 1:0..*",
+      "parent": "1"
+    },
+    {
+      "id": "9Tn0FXKMsF5ecXRnn70D-49",
+      "text": "has · 1:0..*",
+      "parent": "1"
+    },
+    {
+      "id": "9Tn0FXKMsF5ecXRnn70D-50",
+      "text": "received as · 1:0..*",
+      "parent": "1"
+    },
+    {
+      "id": "9Tn0FXKMsF5ecXRnn70D-51",
+      "text": "contains · 1:0..*",
+      "parent": "1"
+    },
+    {
+      "id": "9Tn0FXKMsF5ecXRnn70D-52",
+      "text": "holds · 1:0..*",
+      "parent": "1"
+    },
+    {
+      "id": "9Tn0FXKMsF5ecXRnn70D-53",
+      "text": "balanced as · 1:0..*",
+      "parent": "1"
+    },
+    {
+      "id": "9Tn0FXKMsF5ecXRnn70D-54",
+      "text": "may identify · 1:0..*",
+      "parent": "1"
+    },
+    {
+      "id": "9Tn0FXKMsF5ecXRnn70D-55",
+      "text": "moves through · 1:0..*",
+      "parent": "1"
+    },
+    {
+      "id": "9Tn0FXKMsF5ecXRnn70D-56",
+      "text": "counted in · 1:0..*",
+      "parent": "1"
+    },
+    {
+      "id": "9Tn0FXKMsF5ecXRnn70D-57",
+      "text": "may result in · 1:0..*",
+      "parent": "1"
+    },
+    {
+      "id": "9Tn0FXKMsF5ecXRnn70D-58",
+      "text": "issued from · 1:0..*",
+      "parent": "1"
+    },
+    {
+      "id": "9Tn0FXKMsF5ecXRnn70D-59",
+      "text": "updated by · 1:0..*",
+      "parent": "1"
+    },
+    {
+      "id": "9Tn0FXKMsF5ecXRnn70D-60",
+      "text": "posts accepted qty · 1:0..*",
+      "parent": "1"
+    }
+  ],
+  "edges": [
+    {
+      "from": "",
+      "to": "",
+      "label": "supplies · 1:0..*"
+    },
+    {
+      "from": "",
+      "to": "",
+      "label": "approved into · 1:0..1"
+    },
+    {
+      "from": "",
+      "to": "",
+      "label": "received in · 1:0..*"
+    },
+    {
+      "from": "",
+      "to": "",
+      "label": "has · 1:0..*"
+    },
+    {
+      "from": "",
+      "to": "",
+      "label": "received as · 1:0..*"
+    },
+    {
+      "from": "",
+      "to": "",
+      "label": "contains · 1:0..*"
+    },
+    {
+      "from": "",
+      "to": "",
+      "label": "holds · 1:0..*"
+    },
+    {
+      "from": "",
+      "to": "",
+      "label": "balanced as · 1:0..*"
+    },
+    {
+      "from": "",
+      "to": "",
+      "label": "may identify · 1:0..*"
+    },
+    {
+      "from": "",
+      "to": "",
+      "label": "moves through · 1:0..*"
+    },
+    {
+      "from": "",
+      "to": "",
+      "label": "counted in · 1:0..*"
+    },
+    {
+      "from": "",
+      "to": "",
+      "label": "may result in · 1:0..*"
+    },
+    {
+      "from": "",
+      "to": "",
+      "label": "issued from · 1:0..*"
+    },
+    {
+      "from": null,
+      "to": "",
+      "label": "updated by · 1:0..*"
+    },
+    {
+      "from": "",
+      "to": "",
+      "label": "posts accepted qty · 1:0..*"
+    }
+  ],
+  "uml": []
+}

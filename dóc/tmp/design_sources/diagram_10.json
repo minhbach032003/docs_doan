@@ -1,0 +1,446 @@
+{
+  "index": 10,
+  "name": "Supplier Return and Purchase Reconciliation",
+  "id": "hnBnB3nOWboBsh6dkAqW",
+  "nodes": [],
+  "edges": [
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-292",
+      "to": "ZuwLx6SfuSEybS6lOhaf-294",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-294",
+      "to": "ZuwLx6SfuSEybS6lOhaf-296",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-296",
+      "to": "ZuwLx6SfuSEybS6lOhaf-298",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-298",
+      "to": "ZuwLx6SfuSEybS6lOhaf-300",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-300",
+      "to": "ZuwLx6SfuSEybS6lOhaf-302",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-302",
+      "to": "ZuwLx6SfuSEybS6lOhaf-304",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-304",
+      "to": "ZuwLx6SfuSEybS6lOhaf-306",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-306",
+      "to": "ZuwLx6SfuSEybS6lOhaf-308",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-308",
+      "to": "ZuwLx6SfuSEybS6lOhaf-309",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-306",
+      "to": "ZuwLx6SfuSEybS6lOhaf-312",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-312",
+      "to": "ZuwLx6SfuSEybS6lOhaf-313",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-313",
+      "to": "ZuwLx6SfuSEybS6lOhaf-315",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-315",
+      "to": "ZuwLx6SfuSEybS6lOhaf-317",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-309",
+      "to": "ZuwLx6SfuSEybS6lOhaf-320",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-320",
+      "to": "ZuwLx6SfuSEybS6lOhaf-322",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-322",
+      "to": "ZuwLx6SfuSEybS6lOhaf-324",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-324",
+      "to": "ZuwLx6SfuSEybS6lOhaf-326",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-326",
+      "to": "ZuwLx6SfuSEybS6lOhaf-328",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-328",
+      "to": "ZuwLx6SfuSEybS6lOhaf-329",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-326",
+      "to": "ZuwLx6SfuSEybS6lOhaf-332",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-332",
+      "to": "ZuwLx6SfuSEybS6lOhaf-333",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-333",
+      "to": "ZuwLx6SfuSEybS6lOhaf-335",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-335",
+      "to": "ZuwLx6SfuSEybS6lOhaf-337",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-329",
+      "to": "ZuwLx6SfuSEybS6lOhaf-340",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-340",
+      "to": "ZuwLx6SfuSEybS6lOhaf-342",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-342",
+      "to": "ZuwLx6SfuSEybS6lOhaf-344",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-344",
+      "to": "ZuwLx6SfuSEybS6lOhaf-346",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-346",
+      "to": "ZuwLx6SfuSEybS6lOhaf-347",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-344",
+      "to": "ZuwLx6SfuSEybS6lOhaf-350",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-350",
+      "to": "ZuwLx6SfuSEybS6lOhaf-351",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-351",
+      "to": "ZuwLx6SfuSEybS6lOhaf-353",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-353",
+      "to": "ZuwLx6SfuSEybS6lOhaf-355",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-347",
+      "to": "ZuwLx6SfuSEybS6lOhaf-358",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-358",
+      "to": "ZuwLx6SfuSEybS6lOhaf-360",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-360",
+      "to": "ZuwLx6SfuSEybS6lOhaf-362",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-362",
+      "to": "ZuwLx6SfuSEybS6lOhaf-364",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-364",
+      "to": "ZuwLx6SfuSEybS6lOhaf-366",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-366",
+      "to": "ZuwLx6SfuSEybS6lOhaf-368",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-368",
+      "to": "ZuwLx6SfuSEybS6lOhaf-370",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-370",
+      "to": "ZuwLx6SfuSEybS6lOhaf-371",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-371",
+      "to": "ZuwLx6SfuSEybS6lOhaf-373",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-373",
+      "to": "ZuwLx6SfuSEybS6lOhaf-375",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-375",
+      "to": "ZuwLx6SfuSEybS6lOhaf-377",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-377",
+      "to": "ZuwLx6SfuSEybS6lOhaf-380",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-377",
+      "to": "ZuwLx6SfuSEybS6lOhaf-382",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-382",
+      "to": "ZuwLx6SfuSEybS6lOhaf-383",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-383",
+      "to": "ZuwLx6SfuSEybS6lOhaf-385",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-368",
+      "to": "ZuwLx6SfuSEybS6lOhaf-388",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-380",
+      "to": "ZuwLx6SfuSEybS6lOhaf-389",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-388",
+      "to": "ZuwLx6SfuSEybS6lOhaf-389",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-389",
+      "to": "ZuwLx6SfuSEybS6lOhaf-393",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-393",
+      "to": "ZuwLx6SfuSEybS6lOhaf-395",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-395",
+      "to": "ZuwLx6SfuSEybS6lOhaf-397",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-397",
+      "to": "ZuwLx6SfuSEybS6lOhaf-399",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-399",
+      "to": "ZuwLx6SfuSEybS6lOhaf-401",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-401",
+      "to": "ZuwLx6SfuSEybS6lOhaf-403",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-403",
+      "to": "ZuwLx6SfuSEybS6lOhaf-405",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-405",
+      "to": "ZuwLx6SfuSEybS6lOhaf-407",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-407",
+      "to": "ZuwLx6SfuSEybS6lOhaf-409",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-409",
+      "to": "ZuwLx6SfuSEybS6lOhaf-411",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-411",
+      "to": "ZuwLx6SfuSEybS6lOhaf-413",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-413",
+      "to": "ZuwLx6SfuSEybS6lOhaf-415",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-415",
+      "to": "ZuwLx6SfuSEybS6lOhaf-417",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-417",
+      "to": "ZuwLx6SfuSEybS6lOhaf-419",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-419",
+      "to": "ZuwLx6SfuSEybS6lOhaf-421",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-421",
+      "to": "ZuwLx6SfuSEybS6lOhaf-423",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-421",
+      "to": "ZuwLx6SfuSEybS6lOhaf-425",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-425",
+      "to": "ZuwLx6SfuSEybS6lOhaf-426",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-426",
+      "to": "ZuwLx6SfuSEybS6lOhaf-428",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-428",
+      "to": "ZuwLx6SfuSEybS6lOhaf-430",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-430",
+      "to": "ZuwLx6SfuSEybS6lOhaf-432",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-432",
+      "to": "ZuwLx6SfuSEybS6lOhaf-435",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-432",
+      "to": "ZuwLx6SfuSEybS6lOhaf-437",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-437",
+      "to": "ZuwLx6SfuSEybS6lOhaf-438",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-438",
+      "to": "ZuwLx6SfuSEybS6lOhaf-440",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-423",
+      "to": "ZuwLx6SfuSEybS6lOhaf-442",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-435",
+      "to": "ZuwLx6SfuSEybS6lOhaf-442",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-442",
+      "to": "ZuwLx6SfuSEybS6lOhaf-446",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-446",
+      "to": "ZuwLx6SfuSEybS6lOhaf-448",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-448",
+      "to": "ZuwLx6SfuSEybS6lOhaf-450",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-450",
+      "to": "ZuwLx6SfuSEybS6lOhaf-452",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-452",
+      "to": "ZuwLx6SfuSEybS6lOhaf-454",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-454",
+      "to": "ZuwLx6SfuSEybS6lOhaf-456",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-456",
+      "to": "ZuwLx6SfuSEybS6lOhaf-458",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-458",
+      "to": "ZuwLx6SfuSEybS6lOhaf-460",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-460",
+      "to": "ZuwLx6SfuSEybS6lOhaf-462",
+      "label": ""
+    },
+    {
+      "from": "ZuwLx6SfuSEybS6lOhaf-462",
+      "to": "ZuwLx6SfuSEybS6lOhaf-464",
+      "label": ""
+    }
+  ],
+  "uml": [
+    "@startuml\ntitle 2.5 Supplier Return and Purchase Reconciliation (BF-05)\n\nscale 2000 width\n\nskinparam shadowing false\nskinparam defaultFontName Arial\nskinparam defaultFontSize 11\nskinparam activityFontSize 11\nskinparam swimlaneWidth 320\nskinparam activityBorderColor #666666\nskinparam activityBackgroundColor #FDFDFD\nskinparam activityDiamondBackgroundColor #FFF4D6\nskinparam activityDiamondBorderColor #888888\nskinparam activityArrowColor #666666\n\n|Inventory Staff|\nstart\n:Identify defective, damaged,\\nexcess or non-conforming goods;\n:Check product, lot,\\nwarehouse and location;\n:Look up related Purchase Order\\nand Goods Receipt;\n:Enter return quantity\\nand return reason;\n:Create Supplier Return Request;\n\n|System|\n:Validate purchase reference,\\nlot and return quantity;\n\nif (Return request valid?) then (Yes)\n\n    :Create Supplier Return Request;\n    :Set status to Pending Review;\n\nelse (No)\n\n    :Reject invalid Return Request;\n    :Display validation errors;\n\n    |Inventory Staff|\n    :Review invalid return data;\n\n    stop\n\nendif\n\n\n|Accountant|\n:Review Purchase Order,\\nGoods Receipt and invoice;\n:Contact supplier\\nthrough external channel;\n:Record supplier response;\n\nif (Supplier accepts return?) then (Yes)\n\n    :Record agreed return terms;\n    :Record return method\\nand expected return date;\n\nelse (No)\n\n    :Record supplier rejection\\nand follow-up note;\n\n    |System|\n    :Set Supplier Return Request\\nas Supplier Rejected;\n    :Notify Inventory Staff\\nand Store Owner;\n\n    stop\n\nendif\n\n\n|System|\n:Submit Supplier Return Request\\nfor approval;\n\n|Store Owner|\n:Review return reason,\\nquantity and supplier agreement;\n\nif (Approve supplier return?) then (Yes)\n\n    |System|\n    :Set Supplier Return Request\\nas Approved;\n    :Notify Inventory Staff;\n\nelse (No)\n\n    |System|\n    :Set Supplier Return Request\\nas Rejected;\n    :Record rejection result;\n    :Notify Inventory Staff\\nand Accountant;\n\n    stop\n\nendif\n\n\n|Inventory Staff|\n:Review approved Return Request;\n:Locate goods by warehouse,\\nlot and storage location;\n:Pick approved goods;\n:Check actual return quantity;\n\n|System|\n:Compare actual quantity\\nwith approved quantity;\n\nif (Quantity discrepancy?) then (Yes)\n\n    |Inventory Staff|\n    :Record actual quantity;\n    :Record discrepancy reason;\n\n    |System|\n    :Calculate revised\\nreturn quantity;\n\n    |Store Owner|\n    :Review revised quantity;\n\n    if (Approve revised quantity?) then (Yes)\n\n        |System|\n        :Update approved\\nreturn quantity;\n\n    else (No)\n\n        :Set Return Request\\nto Adjustment Required;\n        :Notify Inventory Staff\\nand Accountant;\n\n        stop\n\n    endif\n\nelse (No)\n\n    |System|\n    :Keep approved\\nreturn quantity;\n\nendif\n\n\n|Inventory Staff|\n:Prepare return shipment;\n:Check product, lot,\\nquantity and packaging;\n:Confirm physical handover;\n:Confirm Supplier Return Issue;\n\n|System|\n:Validate return issue;\n:Create Return Goods Issue Note;\n:Deduct returned quantity\\nfrom warehouse stock;\n:Update inventory history;\n:Set Supplier Return Request\\nas Dispatched;\n\n\n|Accountant|\n:Track supplier return\\noffline;\n:Receive supplier acknowledgement;\n:Record acknowledged quantity;\n:Attach supporting documents;\n\n|System|\n:Compare acknowledged quantity\\nwith dispatched quantity;\n\nif (Acknowledged quantity matches?) then (Yes)\n\n    :Confirm supplier\\nreturn acknowledgement;\n\nelse (No)\n\n    |Accountant|\n    :Record acknowledgement discrepancy;\n    :Contact supplier externally;\n    :Record resolution result;\n\n    |System|\n    :Validate resolved quantity;\n\n    if (Discrepancy resolved?) then (Yes)\n\n        :Update accepted\\nreturn quantity;\n\n    else (No)\n\n        :Set Supplier Return Request\\nto Pending Reconciliation;\n        :Notify Accountant\\nand Store Owner;\n\n        stop\n\n    endif\n\nendif\n\n\n|Accountant|\n:Review final return result;\n:Review original supplier invoice;\n:Record supplier credit,\\npayable adjustment or refund;\n\n|System|\n:Update supplier payable balance;\n:Link financial adjustment\\nto Supplier Return Request;\n:Update purchase reconciliation;\n:Set Supplier Return Request\\nas Completed;\n:Update inventory and\\npayables reports;\n:Notify related staff;\n\nstop\n@enduml"
+  ]
+}

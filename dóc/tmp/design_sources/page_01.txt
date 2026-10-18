@@ -1,0 +1,545 @@
+PAGE 1 Process
+LdCWyUKHQ3eP7mPYMKX1-2: Nhân viên kho
+LdCWyUKHQ3eP7mPYMKX1-7: Kiểm tra tình hình tồn kho
+LdCWyUKHQ3eP7mPYMKX1-3: Kế toán
+LdCWyUKHQ3eP7mPYMKX1-19: Đặt hàng với nhà cung cấp
+LdCWyUKHQ3eP7mPYMKX1-27: Tiếp nhận hàng
+LdCWyUKHQ3eP7mPYMKX1-29: Kiểm đếm hàng thực tế
+LdCWyUKHQ3eP7mPYMKX1-31: Nhập hàng vào kho
+LdCWyUKHQ3eP7mPYMKX1-33: Xác nhận kết quả nhận hàng
+LdCWyUKHQ3eP7mPYMKX1-35: Tiếp nhận chứng từ mua hàng
+LdCWyUKHQ3eP7mPYMKX1-37: Đối chiếu hàng nhận và chứng từ
+LdCWyUKHQ3eP7mPYMKX1-39: Ghi nhận công nợ / thanh toán
+t8NDRqA9R31VhBSEFNKt-7: Lập đề xuất mua hàng
+t8NDRqA9R31VhBSEFNKt-13: Lập đơn mua hàng
+LdCWyUKHQ3eP7mPYMKX1-9: Xác định hàng hóa cần bổ sung
+LdCWyUKHQ3eP7mPYMKX1-4: Nhà cung cấp
+LdCWyUKHQ3eP7mPYMKX1-21: Xác nhận đơn đặt hàng
+LdCWyUKHQ3eP7mPYMKX1-23: Chuẩn bị hàng
+LdCWyUKHQ3eP7mPYMKX1-25: Giao hàng và chứng từ
+LdCWyUKHQ3eP7mPYMKX1-44: BP-01 - Quy trình Mua hàng và Nhập kho
+t8NDRqA9R31VhBSEFNKt-1: Chủ cửa hàng
+t8NDRqA9R31VhBSEFNKt-9: Tiếp nhận đề xuất mua hàng
+t8NDRqA9R31VhBSEFNKt-10: Xem xét và phê duyệt
+LdCWyUKHQ3eP7mPYMKX1-46: Nhân viên kho nhận
+LdCWyUKHQ3eP7mPYMKX1-53: Lập yêu cầu điều chuyển hàng
+UkZ6TXPV2fwDIUL-Jf66-4: Phải qua chủ cửa hàng xác nhận
+LdCWyUKHQ3eP7mPYMKX1-47: Nhân viên kho xuất
+LdCWyUKHQ3eP7mPYMKX1-48: Nhân viên giao hàng
+LdCWyUKHQ3eP7mPYMKX1-55: Tiếp nhận yêu cầu điều chuyển
+LdCWyUKHQ3eP7mPYMKX1-57: Chuẩn bị hàng cần điều chuyển
+LdCWyUKHQ3eP7mPYMKX1-59: Kiểm đếm hàng xuất
+LdCWyUKHQ3eP7mPYMKX1-61: Bàn giao hàng điều chuyển
+LdCWyUKHQ3eP7mPYMKX1-63: Tiếp nhận hàng
+LdCWyUKHQ3eP7mPYMKX1-65: Vận chuyển hàng đến kho nhận
+LdCWyUKHQ3eP7mPYMKX1-67: Bàn giao hàng
+LdCWyUKHQ3eP7mPYMKX1-69: Tiếp nhận hàng điều chuyển
+LdCWyUKHQ3eP7mPYMKX1-71: Kiểm đếm số lượng thực nhận
+LdCWyUKHQ3eP7mPYMKX1-73: Nhập hàng vào kho
+LdCWyUKHQ3eP7mPYMKX1-75: Xác nhận hoàn tất điều chuyển
+LdCWyUKHQ3eP7mPYMKX1-78: BP-02 - Quy trình Điều chuyển hàng giữa các kho
+LdCWyUKHQ3eP7mPYMKX1-80: Khách hàng
+LdCWyUKHQ3eP7mPYMKX1-81: Nhân viên bán hàng
+LdCWyUKHQ3eP7mPYMKX1-94: Lập đơn bán hàng
+LdCWyUKHQ3eP7mPYMKX1-82: Thu ngân
+LdCWyUKHQ3eP7mPYMKX1-83: Nhân viên kho
+LdCWyUKHQ3eP7mPYMKX1-84: Nhân viên giao hàng
+LdCWyUKHQ3eP7mPYMKX1-85: Kế toán
+LdCWyUKHQ3eP7mPYMKX1-88: Cung cấp nhu cầu mua hàng
+LdCWyUKHQ3eP7mPYMKX1-96: Tiếp nhận thông tin thanh toán
+LdCWyUKHQ3eP7mPYMKX1-98: Thu tiền khách hàng
+LdCWyUKHQ3eP7mPYMKX1-100: Xác nhận thanh toán
+LdCWyUKHQ3eP7mPYMKX1-102: Tiếp nhận yêu cầu xuất hàng
+LdCWyUKHQ3eP7mPYMKX1-104: Chuẩn bị hàng
+LdCWyUKHQ3eP7mPYMKX1-106: Kiểm đếm số lượng xuất
+LdCWyUKHQ3eP7mPYMKX1-108: Bàn giao hàng cho nhân viên giao hàng
+LdCWyUKHQ3eP7mPYMKX1-110: Tiếp nhận hàng
+LdCWyUKHQ3eP7mPYMKX1-112: Vận chuyển hàng đến khách hàng
+LdCWyUKHQ3eP7mPYMKX1-114: Kiểm nhận hàng
+LdCWyUKHQ3eP7mPYMKX1-116: Xác nhận nhận hàng
+LdCWyUKHQ3eP7mPYMKX1-118: Ghi nhận số lượng đã bàn giao
+LdCWyUKHQ3eP7mPYMKX1-120: Hoàn tất giao hàng
+LdCWyUKHQ3eP7mPYMKX1-122: Đối chiếu số lượng giao thực tế
+LdCWyUKHQ3eP7mPYMKX1-124: Lập hóa đơn theo hàng thực giao
+LdCWyUKHQ3eP7mPYMKX1-126: Ghi nhận doanh thu
+LdCWyUKHQ3eP7mPYMKX1-129: BP-03 - Quy trình Bán hàng và Giao hàng
+LdCWyUKHQ3eP7mPYMKX1-131: Khách hàng
+LdCWyUKHQ3eP7mPYMKX1-132: Nhân viên bán hàng
+LdCWyUKHQ3eP7mPYMKX1-133: Nhân viên kho
+LdCWyUKHQ3eP7mPYMKX1-134: Kế toán
+LdCWyUKHQ3eP7mPYMKX1-160: Thực hiện hoàn tiền cho khách hàng
+LdCWyUKHQ3eP7mPYMKX1-135: Thu ngân
+LdCWyUKHQ3eP7mPYMKX1-138: Yêu cầu trả hàng
+LdCWyUKHQ3eP7mPYMKX1-140: Bàn giao hàng cần trả
+LdCWyUKHQ3eP7mPYMKX1-142: Tiếp nhận yêu cầu trả hàng
+LdCWyUKHQ3eP7mPYMKX1-144: Xác nhận thông tin đơn bán
+LdCWyUKHQ3eP7mPYMKX1-146: Tiếp nhận hàng trả
+LdCWyUKHQ3eP7mPYMKX1-148: Kiểm đếm và kiểm tra hàng
+LdCWyUKHQ3eP7mPYMKX1-150: Nhập lại hàng vào kho
+LdCWyUKHQ3eP7mPYMKX1-152: Xác nhận số lượng hàng nhận lại
+LdCWyUKHQ3eP7mPYMKX1-154: Tiếp nhận kết quả trả hàng
+LdCWyUKHQ3eP7mPYMKX1-156: Điều chỉnh chứng từ bán hàng
+LdCWyUKHQ3eP7mPYMKX1-162: Nhận tiền hoàn
+LdCWyUKHQ3eP7mPYMKX1-164: Xác nhận hoàn tất trả hàng
+LdCWyUKHQ3eP7mPYMKX1-167: BP-04 - Quy trình Khách hàng Trả hàng
+LdCWyUKHQ3eP7mPYMKX1-169: Nhân viên kho
+LdCWyUKHQ3eP7mPYMKX1-170: Kế toán
+LdCWyUKHQ3eP7mPYMKX1-171: Nhân viên giao hàng
+LdCWyUKHQ3eP7mPYMKX1-172: Nhà cung cấp
+LdCWyUKHQ3eP7mPYMKX1-175: Xác định hàng cần trả nhà cung cấp
+LdCWyUKHQ3eP7mPYMKX1-177: Ghi nhận số lượng hàng cần trả
+LdCWyUKHQ3eP7mPYMKX1-179: Gửi thông tin trả hàng
+LdCWyUKHQ3eP7mPYMKX1-181: Tiếp nhận thông tin hàng trả
+LdCWyUKHQ3eP7mPYMKX1-183: Đối chiếu đơn mua và chứng từ
+LdCWyUKHQ3eP7mPYMKX1-185: Liên hệ nhà cung cấp
+LdCWyUKHQ3eP7mPYMKX1-187: Xác nhận phương án trả hàng
+LdCWyUKHQ3eP7mPYMKX1-189: Chuẩn bị hàng trả
+LdCWyUKHQ3eP7mPYMKX1-191: Kiểm đếm hàng
+LdCWyUKHQ3eP7mPYMKX1-193: Bàn giao hàng trả
+LdCWyUKHQ3eP7mPYMKX1-195: Tiếp nhận hàng
+LdCWyUKHQ3eP7mPYMKX1-197: Vận chuyển đến nhà cung cấp
+LdCWyUKHQ3eP7mPYMKX1-199: Bàn giao hàng
+LdCWyUKHQ3eP7mPYMKX1-201: Tiếp nhận hàng trả
+LdCWyUKHQ3eP7mPYMKX1-203: Xác nhận số lượng nhận lại
+LdCWyUKHQ3eP7mPYMKX1-205: Phát hành chứng từ điều chỉnh
+LdCWyUKHQ3eP7mPYMKX1-207: Tiếp nhận chứng từ điều chỉnh
+LdCWyUKHQ3eP7mPYMKX1-209: Đối chiếu công nợ
+LdCWyUKHQ3eP7mPYMKX1-211: Điều chỉnh giá trị mua hàng
+LdCWyUKHQ3eP7mPYMKX1-216: BP-05 - Quy trình Trả hàng Nhà cung cấp
+LdCWyUKHQ3eP7mPYMKX1-218: Kế toán
+LdCWyUKHQ3eP7mPYMKX1-248: Hoàn tất kỳ kiểm kê
+LdCWyUKHQ3eP7mPYMKX1-219: Nhân viên kho
+LdCWyUKHQ3eP7mPYMKX1-222: Lập kế hoạch kiểm kê
+LdCWyUKHQ3eP7mPYMKX1-224: Xác định phạm vi kiểm kê
+LdCWyUKHQ3eP7mPYMKX1-226: Thông báo thực hiện kiểm kê
+LdCWyUKHQ3eP7mPYMKX1-228: Chuẩn bị khu vực kiểm kê
+LdCWyUKHQ3eP7mPYMKX1-230: Kiểm đếm hàng hóa thực tế
+LdCWyUKHQ3eP7mPYMKX1-232: Ghi nhận kết quả kiểm kê
+LdCWyUKHQ3eP7mPYMKX1-234: Tổng hợp số lượng thực tế
+LdCWyUKHQ3eP7mPYMKX1-236: Tiếp nhận kết quả kiểm kê
+LdCWyUKHQ3eP7mPYMKX1-238: Đối chiếu số liệu
+LdCWyUKHQ3eP7mPYMKX1-240: Lập biên bản kiểm kê
+LdCWyUKHQ3eP7mPYMKX1-242: Ghi nhận điều chỉnh tồn kho
+LdCWyUKHQ3eP7mPYMKX1-244: Ghi nhận giá trị chênh lệch
+LdCWyUKHQ3eP7mPYMKX1-251: BP-06 - Quy trình Kiểm kê và Điều chỉnh tồn kho
+UkZ6TXPV2fwDIUL-Jf66-5: khách hàng xác nhận và bàn giao hàng sau khi yêu cầu được tiếp nhận
+EDGES
+Tiếp nhận hàng --> Kiểm đếm hàng thực tế | 
+Kiểm đếm hàng thực tế --> Nhập hàng vào kho | 
+Nhập hàng vào kho --> Xác nhận kết quả nhận hàng | 
+Xác nhận kết quả nhận hàng --> Tiếp nhận chứng từ mua hàng | 
+Tiếp nhận chứng từ mua hàng --> Đối chiếu hàng nhận và chứng từ | 
+Đối chiếu hàng nhận và chứng từ --> Ghi nhận công nợ / thanh toán | 
+Ghi nhận công nợ / thanh toán --> LdCWyUKHQ3eP7mPYMKX1-43 | 
+Lập đơn mua hàng --> Đặt hàng với nhà cung cấp | 
+Xác định hàng hóa cần bổ sung --> Lập đề xuất mua hàng | 
+Xác nhận đơn đặt hàng --> Chuẩn bị hàng | 
+Chuẩn bị hàng --> Giao hàng và chứng từ | 
+LdCWyUKHQ3eP7mPYMKX1-5 --> Kiểm tra tình hình tồn kho | 
+Kiểm tra tình hình tồn kho --> Xác định hàng hóa cần bổ sung | 
+Tiếp nhận đề xuất mua hàng --> Xem xét và phê duyệt | 
+Lập đề xuất mua hàng --> Tiếp nhận đề xuất mua hàng | 
+Xem xét và phê duyệt --> Lập đơn mua hàng | 
+Đặt hàng với nhà cung cấp --> Xác nhận đơn đặt hàng | 
+Giao hàng và chứng từ --> Tiếp nhận hàng | 
+Lập yêu cầu điều chuyển hàng --> Phải qua chủ cửa hàng xác nhận | 
+LdCWyUKHQ3eP7mPYMKX1-49 --> Lập yêu cầu điều chuyển hàng | 
+Lập yêu cầu điều chuyển hàng --> Tiếp nhận yêu cầu điều chuyển | 
+Tiếp nhận yêu cầu điều chuyển --> Chuẩn bị hàng cần điều chuyển | 
+Chuẩn bị hàng cần điều chuyển --> Kiểm đếm hàng xuất | 
+Kiểm đếm hàng xuất --> Bàn giao hàng điều chuyển | 
+Bàn giao hàng điều chuyển --> Tiếp nhận hàng | 
+Tiếp nhận hàng --> Vận chuyển hàng đến kho nhận | 
+Vận chuyển hàng đến kho nhận --> Bàn giao hàng | 
+Bàn giao hàng --> Tiếp nhận hàng điều chuyển | 
+Tiếp nhận hàng điều chuyển --> Kiểm đếm số lượng thực nhận | 
+Kiểm đếm số lượng thực nhận --> Nhập hàng vào kho | 
+Nhập hàng vào kho --> Xác nhận hoàn tất điều chuyển | 
+Xác nhận hoàn tất điều chuyển --> LdCWyUKHQ3eP7mPYMKX1-77 | 
+Phải qua chủ cửa hàng xác nhận --> Tiếp nhận yêu cầu điều chuyển | 
+LdCWyUKHQ3eP7mPYMKX1-86 --> Cung cấp nhu cầu mua hàng | 
+Cung cấp nhu cầu mua hàng --> Lập đơn bán hàng | 
+Lập đơn bán hàng --> Tiếp nhận thông tin thanh toán | 
+Tiếp nhận thông tin thanh toán --> Thu tiền khách hàng | 
+Thu tiền khách hàng --> Xác nhận thanh toán | 
+Xác nhận thanh toán --> Tiếp nhận yêu cầu xuất hàng | 
+Tiếp nhận yêu cầu xuất hàng --> Chuẩn bị hàng | 
+Chuẩn bị hàng --> Kiểm đếm số lượng xuất | 
+Kiểm đếm số lượng xuất --> Bàn giao hàng cho nhân viên giao hàng | 
+Bàn giao hàng cho nhân viên giao hàng --> Tiếp nhận hàng | 
+Tiếp nhận hàng --> Vận chuyển hàng đến khách hàng | 
+Vận chuyển hàng đến khách hàng --> Kiểm nhận hàng | 
+Kiểm nhận hàng --> Xác nhận nhận hàng | 
+Xác nhận nhận hàng --> Ghi nhận số lượng đã bàn giao | 
+Ghi nhận số lượng đã bàn giao --> Hoàn tất giao hàng | 
+Hoàn tất giao hàng --> Đối chiếu số lượng giao thực tế | 
+Đối chiếu số lượng giao thực tế --> Lập hóa đơn theo hàng thực giao | 
+Lập hóa đơn theo hàng thực giao --> Ghi nhận doanh thu | 
+Ghi nhận doanh thu --> LdCWyUKHQ3eP7mPYMKX1-128 | 
+LdCWyUKHQ3eP7mPYMKX1-136 --> Yêu cầu trả hàng | 
+Yêu cầu trả hàng --> Bàn giao hàng cần trả | 
+Bàn giao hàng cần trả --> Tiếp nhận yêu cầu trả hàng | 
+Tiếp nhận yêu cầu trả hàng --> Xác nhận thông tin đơn bán | 
+Xác nhận thông tin đơn bán --> Tiếp nhận hàng trả | 
+Tiếp nhận hàng trả --> Kiểm đếm và kiểm tra hàng | 
+Kiểm đếm và kiểm tra hàng --> Nhập lại hàng vào kho | 
+Nhập lại hàng vào kho --> Xác nhận số lượng hàng nhận lại | 
+Xác nhận số lượng hàng nhận lại --> Tiếp nhận kết quả trả hàng | 
+Tiếp nhận kết quả trả hàng --> Điều chỉnh chứng từ bán hàng | 
+Điều chỉnh chứng từ bán hàng --> LdCWyUKHQ3eP7mPYMKX1-158 | 
+LdCWyUKHQ3eP7mPYMKX1-158 --> Thực hiện hoàn tiền cho khách hàng | 
+Thực hiện hoàn tiền cho khách hàng --> Nhận tiền hoàn | 
+Nhận tiền hoàn --> Xác nhận hoàn tất trả hàng | 
+Xác nhận hoàn tất trả hàng --> LdCWyUKHQ3eP7mPYMKX1-166 | 
+LdCWyUKHQ3eP7mPYMKX1-173 --> Xác định hàng cần trả nhà cung cấp | 
+Xác định hàng cần trả nhà cung cấp --> Ghi nhận số lượng hàng cần trả | 
+Ghi nhận số lượng hàng cần trả --> Gửi thông tin trả hàng | 
+Gửi thông tin trả hàng --> Tiếp nhận thông tin hàng trả | 
+Tiếp nhận thông tin hàng trả --> Đối chiếu đơn mua và chứng từ | 
+Đối chiếu đơn mua và chứng từ --> Liên hệ nhà cung cấp | 
+Liên hệ nhà cung cấp --> Xác nhận phương án trả hàng | 
+Xác nhận phương án trả hàng --> Chuẩn bị hàng trả | 
+Chuẩn bị hàng trả --> Kiểm đếm hàng | 
+Kiểm đếm hàng --> Bàn giao hàng trả | 
+Bàn giao hàng trả --> Tiếp nhận hàng | 
+Tiếp nhận hàng --> Vận chuyển đến nhà cung cấp | 
+Vận chuyển đến nhà cung cấp --> Bàn giao hàng | 
+Bàn giao hàng --> Tiếp nhận hàng trả | 
+Tiếp nhận hàng trả --> Xác nhận số lượng nhận lại | 
+Xác nhận số lượng nhận lại --> Phát hành chứng từ điều chỉnh | 
+Phát hành chứng từ điều chỉnh --> Tiếp nhận chứng từ điều chỉnh | 
+Tiếp nhận chứng từ điều chỉnh --> Đối chiếu công nợ | 
+Đối chiếu công nợ --> Điều chỉnh giá trị mua hàng | 
+Điều chỉnh giá trị mua hàng --> LdCWyUKHQ3eP7mPYMKX1-215 | 
+LdCWyUKHQ3eP7mPYMKX1-220 --> Lập kế hoạch kiểm kê | 
+Lập kế hoạch kiểm kê --> Xác định phạm vi kiểm kê | 
+Xác định phạm vi kiểm kê --> Thông báo thực hiện kiểm kê | 
+Thông báo thực hiện kiểm kê --> Chuẩn bị khu vực kiểm kê | 
+Chuẩn bị khu vực kiểm kê --> Kiểm đếm hàng hóa thực tế | 
+Kiểm đếm hàng hóa thực tế --> Ghi nhận kết quả kiểm kê | 
+Ghi nhận kết quả kiểm kê --> Tổng hợp số lượng thực tế | 
+Tổng hợp số lượng thực tế --> Tiếp nhận kết quả kiểm kê | 
+Tiếp nhận kết quả kiểm kê --> Đối chiếu số liệu | 
+Đối chiếu số liệu --> Lập biên bản kiểm kê | 
+Lập biên bản kiểm kê --> Ghi nhận điều chỉnh tồn kho | 
+Ghi nhận điều chỉnh tồn kho --> Ghi nhận giá trị chênh lệch | 
+Ghi nhận giá trị chênh lệch --> Hoàn tất kỳ kiểm kê | 
+Hoàn tất kỳ kiểm kê --> LdCWyUKHQ3eP7mPYMKX1-250 | 
+PLANTUML
+@startuml BP01_Procurement_Inbound
+title BP-01 - Quy trình Mua hàng và Nhập kho
+
+scale 2000 width
+
+skinparam backgroundColor #FFFFFF
+skinparam defaultFontName Arial
+skinparam defaultFontSize 15
+skinparam shadowing false
+skinparam roundcorner 10
+skinparam activity {
+    BackgroundColor #F8F9FA
+    BorderColor #374151
+    FontColor #111827
+    ArrowColor #4B5563
+}
+skinparam swimlane {
+    BorderColor #6B7280
+    TitleBackgroundColor #E5E7EB
+}
+
+|Nhân viên kho|
+start
+:Kiểm tra tình hình tồn kho;
+:Xác định hàng hóa cần bổ sung;
+:Lập yêu cầu mua hàng;
+
+|Kế toán|
+:Tiếp nhận yêu cầu mua hàng;
+:Xác nhận nhu cầu mua;
+:Liên hệ nhà cung cấp;
+:Đặt hàng với nhà cung cấp;
+
+|Nhà cung cấp|
+:Xác nhận đơn đặt hàng;
+:Chuẩn bị hàng;
+:Giao hàng và chứng từ;
+
+|Nhân viên kho|
+:Tiếp nhận hàng;
+:Kiểm đếm hàng thực tế;
+:Nhập hàng vào kho;
+:Xác nhận kết quả nhận hàng;
+
+|Kế toán|
+:Tiếp nhận chứng từ mua hàng;
+:Đối chiếu hàng nhận và chứng từ;
+:Ghi nhận công nợ / thanh toán;
+:Hoàn tất nghiệp vụ mua hàng;
+
+stop
+@enduml
+
+PLANTUML
+@startuml BP02_Internal_Transfer
+title BP-02 - Quy trình Điều chuyển hàng giữa các kho
+
+scale 2000 width
+
+skinparam backgroundColor #FFFFFF
+skinparam defaultFontName Arial
+skinparam defaultFontSize 15
+skinparam shadowing false
+skinparam roundcorner 10
+skinparam activity {
+    BackgroundColor #F8F9FA
+    BorderColor #374151
+    FontColor #111827
+    ArrowColor #4B5563
+}
+skinparam swimlane {
+    BorderColor #6B7280
+    TitleBackgroundColor #E5E7EB
+}
+
+|Nhân viên kho nhận|
+start
+:Xác định nhu cầu bổ sung hàng;
+:Lập yêu cầu điều chuyển hàng;
+
+|Nhân viên kho xuất|
+:Tiếp nhận yêu cầu điều chuyển;
+:Chuẩn bị hàng cần điều chuyển;
+:Kiểm đếm hàng xuất;
+:Bàn giao hàng điều chuyển;
+
+|Nhân viên giao hàng|
+:Tiếp nhận hàng;
+:Vận chuyển hàng đến kho nhận;
+:Bàn giao hàng;
+
+|Nhân viên kho nhận|
+:Tiếp nhận hàng điều chuyển;
+:Kiểm đếm số lượng thực nhận;
+:Nhập hàng vào kho;
+:Xác nhận hoàn tất điều chuyển;
+
+stop
+@enduml
+PLANTUML
+@startuml BP03_Sales_Delivery
+title BP-03 - Quy trình Bán hàng và Giao hàng
+
+scale 2000 width
+
+skinparam backgroundColor #FFFFFF
+skinparam defaultFontName Arial
+skinparam defaultFontSize 15
+skinparam shadowing false
+skinparam roundcorner 10
+skinparam activity {
+    BackgroundColor #F8F9FA
+    BorderColor #374151
+    FontColor #111827
+    ArrowColor #4B5563
+}
+skinparam swimlane {
+    BorderColor #6B7280
+    TitleBackgroundColor #E5E7EB
+}
+
+|Khách hàng|
+start
+:Cung cấp nhu cầu mua hàng;
+
+|Nhân viên bán hàng|
+:Tư vấn sản phẩm;
+:Xác nhận sản phẩm và số lượng;
+:Lập đơn bán hàng;
+
+|Thu ngân|
+:Tiếp nhận thông tin thanh toán;
+:Thu tiền khách hàng;
+:Xác nhận thanh toán;
+
+|Nhân viên kho|
+:Tiếp nhận yêu cầu xuất hàng;
+:Chuẩn bị hàng;
+:Kiểm đếm số lượng xuất;
+:Bàn giao hàng cho nhân viên giao hàng;
+
+|Nhân viên giao hàng|
+:Tiếp nhận hàng;
+:Vận chuyển hàng đến khách hàng;
+
+|Khách hàng|
+:Kiểm nhận hàng;
+:Xác nhận nhận hàng;
+
+|Nhân viên giao hàng|
+:Ghi nhận số lượng đã bàn giao;
+:Hoàn tất giao hàng;
+
+|Kế toán|
+:Đối chiếu số lượng giao thực tế;
+:Lập hóa đơn theo hàng thực giao;
+:Ghi nhận doanh thu;
+
+stop
+@enduml
+PLANTUML
+@startuml BP04_Customer_Return
+title BP-04 - Quy trình Khách hàng Trả hàng
+
+scale 2000 width
+
+skinparam backgroundColor #FFFFFF
+skinparam defaultFontName Arial
+skinparam defaultFontSize 15
+skinparam shadowing false
+skinparam roundcorner 10
+skinparam activity {
+    BackgroundColor #F8F9FA
+    BorderColor #374151
+    FontColor #111827
+    ArrowColor #4B5563
+}
+skinparam swimlane {
+    BorderColor #6B7280
+    TitleBackgroundColor #E5E7EB
+}
+
+|Khách hàng|
+start
+:Yêu cầu trả hàng;
+:Bàn giao hàng cần trả;
+
+|Nhân viên bán hàng|
+:Tiếp nhận yêu cầu trả hàng;
+:Xác nhận thông tin đơn bán;
+
+|Nhân viên kho|
+:Tiếp nhận hàng trả;
+:Kiểm đếm và kiểm tra hàng;
+:Nhập lại hàng vào kho;
+:Xác nhận số lượng hàng nhận lại;
+
+|Kế toán|
+:Tiếp nhận kết quả trả hàng;
+:Điều chỉnh chứng từ bán hàng;
+:Xác định số tiền hoàn trả;
+
+|Thu ngân|
+:Thực hiện hoàn tiền cho khách hàng;
+
+|Khách hàng|
+:Nhận tiền hoàn;
+:Xác nhận hoàn tất trả hàng;
+
+stop
+@enduml
+PLANTUML
+@startuml BP05_Supplier_Return
+title BP-05 - Quy trình Trả hàng Nhà cung cấp
+
+scale 2000 width
+
+skinparam backgroundColor #FFFFFF
+skinparam defaultFontName Arial
+skinparam defaultFontSize 15
+skinparam shadowing false
+skinparam roundcorner 10
+skinparam activity {
+    BackgroundColor #F8F9FA
+    BorderColor #374151
+    FontColor #111827
+    ArrowColor #4B5563
+}
+skinparam swimlane {
+    BorderColor #6B7280
+    TitleBackgroundColor #E5E7EB
+}
+
+|Nhân viên kho|
+start
+:Xác định hàng cần trả nhà cung cấp;
+:Ghi nhận số lượng hàng cần trả;
+:Gửi thông tin trả hàng;
+
+|Kế toán|
+:Tiếp nhận thông tin hàng trả;
+:Đối chiếu đơn mua và chứng từ;
+:Liên hệ nhà cung cấp;
+:Xác nhận phương án trả hàng;
+
+|Nhân viên kho|
+:Chuẩn bị hàng trả;
+:Kiểm đếm hàng;
+:Bàn giao hàng trả;
+
+|Nhân viên giao hàng|
+:Tiếp nhận hàng;
+:Vận chuyển đến nhà cung cấp;
+:Bàn giao hàng;
+
+|Nhà cung cấp|
+:Tiếp nhận hàng trả;
+:Xác nhận số lượng nhận lại;
+:Phát hành chứng từ điều chỉnh;
+
+|Kế toán|
+:Tiếp nhận chứng từ điều chỉnh;
+:Đối chiếu công nợ;
+:Điều chỉnh giá trị mua hàng;
+:Hoàn tất nghiệp vụ trả hàng;
+
+stop
+@enduml
+PLANTUML
+@startuml BP06_Stock_Count
+title BP-06 - Quy trình Kiểm kê và Điều chỉnh tồn kho
+
+scale 2000 width
+
+skinparam backgroundColor #FFFFFF
+skinparam defaultFontName Arial
+skinparam defaultFontSize 15
+skinparam shadowing false
+skinparam roundcorner 10
+skinparam activity {
+    BackgroundColor #F8F9FA
+    BorderColor #374151
+    FontColor #111827
+    ArrowColor #4B5563
+}
+skinparam swimlane {
+    BorderColor #6B7280
+    TitleBackgroundColor #E5E7EB
+}
+
+|Kế toán|
+start
+:Lập kế hoạch kiểm kê;
+:Xác định phạm vi kiểm kê;
+:Thông báo thực hiện kiểm kê;
+
+|Nhân viên kho|
+:Chuẩn bị khu vực kiểm kê;
+:Kiểm đếm hàng hóa thực tế;
+:Ghi nhận kết quả kiểm kê;
+:Tổng hợp số lượng thực tế;
+
+|Kế toán|
+:Tiếp nhận kết quả kiểm kê;
+:Đối chiếu số liệu;
+:Lập biên bản kiểm kê;
+:Ghi nhận điều chỉnh tồn kho;
+:Ghi nhận giá trị chênh lệch;
+
+|Nhân viên kho|
+:Xác nhận số liệu tồn sau kiểm kê;
+
+|Kế toán|
+:Hoàn tất kỳ kiểm kê;
+
+stop
+@enduml

@@ -1,0 +1,105 @@
+{
+  "index": 19,
+  "name": "UC SS",
+  "id": "fdoAKsM4-uvo_uLh91TO",
+  "nodes": [
+    {
+      "id": "g548fqpoRLsQli3Ggmqx-1",
+      "text": "WMSD",
+      "parent": "1"
+    },
+    {
+      "id": "g548fqpoRLsQli3Ggmqx-2",
+      "text": "Sales Staff",
+      "parent": "1"
+    },
+    {
+      "id": "g548fqpoRLsQli3Ggmqx-3",
+      "text": "UC-08  View Product List",
+      "parent": "1"
+    },
+    {
+      "id": "g548fqpoRLsQli3Ggmqx-5",
+      "text": "UC-09  View Product Detail",
+      "parent": "1"
+    },
+    {
+      "id": "g548fqpoRLsQli3Ggmqx-6",
+      "text": "UC-47  View Inventory List by Lot, Location and Status",
+      "parent": "1"
+    },
+    {
+      "id": "g548fqpoRLsQli3Ggmqx-8",
+      "text": "UC-82  View Issue Request List",
+      "parent": "1"
+    },
+    {
+      "id": "g548fqpoRLsQli3Ggmqx-10",
+      "text": "UC-83  View Issue Request Detail",
+      "parent": "1"
+    },
+    {
+      "id": "g548fqpoRLsQli3Ggmqx-11",
+      "text": "UC-84  Create Issue Request",
+      "parent": "1"
+    },
+    {
+      "id": "g548fqpoRLsQli3Ggmqx-12",
+      "text": "UC-92  Record Customer Return into Warehouse",
+      "parent": "1"
+    },
+    {
+      "id": "g548fqpoRLsQli3Ggmqx-14",
+      "text": "«extend»",
+      "parent": "1"
+    },
+    {
+      "id": "g548fqpoRLsQli3Ggmqx-15",
+      "text": "«extend»",
+      "parent": "1"
+    },
+    {
+      "id": "g548fqpoRLsQli3Ggmqx-16",
+      "text": "«extend»",
+      "parent": "1"
+    }
+  ],
+  "edges": [
+    {
+      "from": "Sales Staff",
+      "to": "UC-08  View Product List",
+      "label": ""
+    },
+    {
+      "from": "Sales Staff",
+      "to": "UC-47  View Inventory List by Lot, Location and Status",
+      "label": ""
+    },
+    {
+      "from": "Sales Staff",
+      "to": "UC-82  View Issue Request List",
+      "label": ""
+    },
+    {
+      "from": "Sales Staff",
+      "to": "UC-92  Record Customer Return into Warehouse",
+      "label": ""
+    },
+    {
+      "from": "UC-09  View Product Detail",
+      "to": "UC-08  View Product List",
+      "label": "«extend»"
+    },
+    {
+      "from": "UC-83  View Issue Request Detail",
+      "to": "UC-82  View Issue Request List",
+      "label": "«extend»"
+    },
+    {
+      "from": "UC-84  Create Issue Request",
+      "to": "UC-82  View Issue Request List",
+      "label": "«extend»"
+    }
+  ],
+  "uml": []
+}

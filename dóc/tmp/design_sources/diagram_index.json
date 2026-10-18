@@ -1,0 +1,224 @@
+[
+  {
+    "index": 1,
+    "name": "Process",
+    "nodes": 2,
+    "edges": 101
+  },
+  {
+    "index": 2,
+    "name": "Process_V2",
+    "nodes": 0,
+    "edges": 202
+  },
+  {
+    "index": 3,
+    "name": "Propose-Solution",
+    "nodes": 0,
+    "edges": 0
+  },
+  {
+    "index": 4,
+    "name": "ContextDiagram",
+    "nodes": 52,
+    "edges": 45
+  },
+  {
+    "index": 5,
+    "name": "Procurement and Inbound Receiving",
+    "nodes": 0,
+    "edges": 54
+  },
+  {
+    "index": 6,
+    "name": "Multi-Warehouse Replenishment and Internal Transfer",
+    "nodes": 0,
+    "edges": 41
+  },
+  {
+    "index": 7,
+    "name": "Sales Order Fulfillment and Delivery",
+    "nodes": 0,
+    "edges": 74
+  },
+  {
+    "index": 8,
+    "name": "Stock Count, Reconciliation and Inventory Adjustment",
+    "nodes": 0,
+    "edges": 38
+  },
+  {
+    "index": 9,
+    "name": "Customer Return and Reverse Logistics",
+    "nodes": 0,
+    "edges": 57
+  },
+  {
+    "index": 10,
+    "name": "Supplier Return and Purchase Reconciliation",
+    "nodes": 0,
+    "edges": 87
+  },
+  {
+    "index": 11,
+    "name": "Product, Warehouse and Access Setup",
+    "nodes": 0,
+    "edges": 23
+  },
+  {
+    "index": 12,
+    "name": "Mới - ContextDiagram",
+    "nodes": 39,
+    "edges": 32
+  },
+  {
+    "index": 13,
+    "name": "UC Accountants",
+    "nodes": 44,
+    "edges": 26
+  },
+  {
+    "index": 14,
+    "name": "Bản sao của UC Accountants",
+    "nodes": 56,
+    "edges": 34
+  },
+  {
+    "index": 15,
+    "name": "UC Admin",
+    "nodes": 14,
+    "edges": 7
+  },
+  {
+    "index": 16,
+    "name": "Bản sao của UC Admin",
+    "nodes": 11,
+    "edges": 5
+  },
+  {
+    "index": 17,
+    "name": "UC SO",
+    "nodes": 48,
+    "edges": 29
+  },
+  {
+    "index": 18,
+    "name": "Bản sao của UC SO",
+    "nodes": 110,
+    "edges": 66
+  },
+  {
+    "index": 19,
+    "name": "UC SS",
+    "nodes": 12,
+    "edges": 7
+  },
+  {
+    "index": 20,
+    "name": "Bản sao của UC SS",
+    "nodes": 29,
+    "edges": 17
+  },
+  {
+    "index": 21,
+    "name": "UC_IS",
+    "nodes": 70,
+    "edges": 41
+  },
+  {
+    "index": 22,
+    "name": "Bản sao của UC_IS",
+    "nodes": 99,
+    "edges": 56
+  },
+  {
+    "index": 23,
+    "name": "ERD",
+    "nodes": 45,
+    "edges": 15
+  },
+  {
+    "index": 24,
+    "name": "Mua - Nhận hiện tại ",
+    "nodes": 28,
+    "edges": 20
+  },
+  {
+    "index": 25,
+    "name": "Kho - Hiện tại",
+    "nodes": 24,
+    "edges": 21
+  },
+  {
+    "index": 26,
+    "name": "Đề xuất hệ thống",
+    "nodes": 21,
+    "edges": 16
+  },
+  {
+    "index": 27,
+    "name": "BF01 Mới",
+    "nodes": 2,
+    "edges": 32
+  },
+  {
+    "index": 28,
+    "name": "BF02 Mới",
+    "nodes": 0,
+    "edges": 19
+  },
+  {
+    "index": 29,
+    "name": "BF03 Mới",
+    "nodes": 0,
+    "edges": 25
+  },
+  {
+    "index": 30,
+    "name": "BF04 Mới",
+    "nodes": 0,
+    "edges": 23
+  },
+  {
+    "index": 31,
+    "name": "BF05 Mới",
+    "nodes": 0,
+    "edges": 18
+  },
+  {
+    "index": 32,
+    "name": "BF06a mới",
+    "nodes": 0,
+    "edges": 17
+  },
+  {
+    "index": 33,
+    "name": "BF06b Mới",
+    "nodes": 0,
+    "edges": 16
+  },
+  {
+    "index": 34,
+    "name": "SƠ ĐỒ NHÓM",
+    "nodes": 6,
+    "edges": 5
+  },
+  {
+    "index": 35,
+    "name": "Purchasing and Receiving_v3",
+    "nodes": 75,
+    "edges": 58
+  },
+  {
+    "index": 36,
+    "name": "Chuyển kho nội bộ",
+    "nodes": 33,
+    "edges": 25
+  },
+  {
+    "index": 37,
+    "name": "Trung Context Diagram",
+    "nodes": 43,
+    "edges": 35
+  }
+]

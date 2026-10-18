@@ -1,0 +1,300 @@
+{
+  "index": 36,
+  "name": "Chuyển kho nội bộ",
+  "id": "Z6em-dk3_pJtChrd2NSd",
+  "nodes": [
+    {
+      "id": "7FjawP-DiFjFkNnW3gTb-3",
+      "text": "Warehouse Transfer",
+      "parent": "1"
+    },
+    {
+      "id": "7FjawP-DiFjFkNnW3gTb-4",
+      "text": "Inventory Staff",
+      "parent": "7FjawP-DiFjFkNnW3gTb-3"
+    },
+    {
+      "id": "tmO7FIZ3rc8cFfcByFW6-1",
+      "text": "1. Create Transfer Request",
+      "parent": "7FjawP-DiFjFkNnW3gTb-4"
+    },
+    {
+      "id": "tmO7FIZ3rc8cFfcByFW6-4",
+      "text": "3. Check Source Stock",
+      "parent": "7FjawP-DiFjFkNnW3gTb-4"
+    },
+    {
+      "id": "tmO7FIZ3rc8cFfcByFW6-5",
+      "text": "4. Prepare Transfer Goods",
+      "parent": "7FjawP-DiFjFkNnW3gTb-4"
+    },
+    {
+      "id": "tmO7FIZ3rc8cFfcByFW6-6",
+      "text": "5. Confirm Transfer Dispatch",
+      "parent": "7FjawP-DiFjFkNnW3gTb-4"
+    },
+    {
+      "id": "tmO7FIZ3rc8cFfcByFW6-8",
+      "text": "6. Transport Goods",
+      "parent": "7FjawP-DiFjFkNnW3gTb-4"
+    },
+    {
+      "id": "tmO7FIZ3rc8cFfcByFW6-9",
+      "text": "7. Receive and Inspect Goods",
+      "parent": "7FjawP-DiFjFkNnW3gTb-4"
+    },
+    {
+      "id": "tmO7FIZ3rc8cFfcByFW6-11",
+      "text": "10. Confirm Accepted Quantity and Close Transfer",
+      "parent": "7FjawP-DiFjFkNnW3gTb-4"
+    },
+    {
+      "id": "w6cmMaoUknUvm8FDPRmQ-20",
+      "text": "Yes",
+      "parent": "w6cmMaoUknUvm8FDPRmQ-12"
+    },
+    {
+      "id": "w6cmMaoUknUvm8FDPRmQ-10",
+      "text": "Goods Matched?",
+      "parent": "7FjawP-DiFjFkNnW3gTb-4"
+    },
+    {
+      "id": "w6cmMaoUknUvm8FDPRmQ-13",
+      "text": "8. Record Transfer Differences",
+      "parent": "7FjawP-DiFjFkNnW3gTb-4"
+    },
+    {
+      "id": "w6cmMaoUknUvm8FDPRmQ-19",
+      "text": "No",
+      "parent": "w6cmMaoUknUvm8FDPRmQ-14"
+    },
+    {
+      "id": "w6cmMaoUknUvm8FDPRmQ-16",
+      "text": "Yes",
+      "parent": "w6cmMaoUknUvm8FDPRmQ-8"
+    },
+    {
+      "id": "7FjawP-DiFjFkNnW3gTb-5",
+      "text": "Store Owner",
+      "parent": "7FjawP-DiFjFkNnW3gTb-3"
+    },
+    {
+      "id": "tmO7FIZ3rc8cFfcByFW6-3",
+      "text": "2.  Review Transfer Request",
+      "parent": "7FjawP-DiFjFkNnW3gTb-5"
+    },
+    {
+      "id": "w6cmMaoUknUvm8FDPRmQ-18",
+      "text": "No",
+      "parent": "w6cmMaoUknUvm8FDPRmQ-17"
+    },
+    {
+      "id": "w6cmMaoUknUvm8FDPRmQ-3",
+      "text": "Request Approved?",
+      "parent": "7FjawP-DiFjFkNnW3gTb-5"
+    },
+    {
+      "id": "w6cmMaoUknUvm8FDPRmQ-4",
+      "text": "2a. Record Rejection Reason",
+      "parent": "7FjawP-DiFjFkNnW3gTb-5"
+    },
+    {
+      "id": "w6cmMaoUknUvm8FDPRmQ-21",
+      "text": "9. Review Difference Resolution",
+      "parent": "7FjawP-DiFjFkNnW3gTb-5"
+    },
+    {
+      "id": "b7fu6WuVaBBd_LF0k6t0-1",
+      "text": "Warehouse Transfer",
+      "parent": "1"
+    },
+    {
+      "id": "b7fu6WuVaBBd_LF0k6t0-108",
+      "text": "Yes",
+      "parent": "b7fu6WuVaBBd_LF0k6t0-92"
+    },
+    {
+      "id": "b7fu6WuVaBBd_LF0k6t0-2",
+      "text": "Inventory Staff",
+      "parent": "b7fu6WuVaBBd_LF0k6t0-1"
+    },
+    {
+      "id": "b7fu6WuVaBBd_LF0k6t0-5",
+      "text": "1. Create Transfer Request",
+      "parent": "b7fu6WuVaBBd_LF0k6t0-2"
+    },
+    {
+      "id": "b7fu6WuVaBBd_LF0k6t0-31",
+      "text": "3. Create Transfer Order",
+      "parent": "b7fu6WuVaBBd_LF0k6t0-2"
+    },
+    {
+      "id": "uLHLIC9e90bhVXCQwKMW-9",
+      "text": "4. Confirm Transfer Order",
+      "parent": "b7fu6WuVaBBd_LF0k6t0-2"
+    },
+    {
+      "id": "b7fu6WuVaBBd_LF0k6t0-29",
+      "text": "Store Owner",
+      "parent": "b7fu6WuVaBBd_LF0k6t0-1"
+    },
+    {
+      "id": "uLHLIC9e90bhVXCQwKMW-3",
+      "text": "2. Review Transfer Requirement",
+      "parent": "b7fu6WuVaBBd_LF0k6t0-29"
+    },
+    {
+      "id": "uLHLIC9e90bhVXCQwKMW-8",
+      "text": "No",
+      "parent": "uLHLIC9e90bhVXCQwKMW-6"
+    },
+    {
+      "id": "b7fu6WuVaBBd_LF0k6t0-89",
+      "text": "Approved?",
+      "parent": "b7fu6WuVaBBd_LF0k6t0-29"
+    },
+    {
+      "id": "uLHLIC9e90bhVXCQwKMW-7",
+      "text": "2a. Record Reject Reason",
+      "parent": "b7fu6WuVaBBd_LF0k6t0-29"
+    },
+    {
+      "id": "VcDuYA8d5KHWvTcaC4jU-1",
+      "text": "AS IS",
+      "parent": "1"
+    },
+    {
+      "id": "VcDuYA8d5KHWvTcaC4jU-2",
+      "text": "TO BE",
+      "parent": "1"
+    }
+  ],
+  "edges": [
+    {
+      "from": "WaZbKGPEA1vV-Fafj8u8-1",
+      "to": "1. Create Transfer Request",
+      "label": ""
+    },
+    {
+      "from": "3. Check Source Stock",
+      "to": "4. Prepare Transfer Goods",
+      "label": ""
+    },
+    {
+      "from": "4. Prepare Transfer Goods",
+      "to": "5. Confirm Transfer Dispatch",
+      "label": ""
+    },
+    {
+      "from": "5. Confirm Transfer Dispatch",
+      "to": "6. Transport Goods",
+      "label": ""
+    },
+    {
+      "from": "6. Transport Goods",
+      "to": "7. Receive and Inspect Goods",
+      "label": ""
+    },
+    {
+      "from": "7. Receive and Inspect Goods",
+      "to": "Goods Matched?",
+      "label": ""
+    },
+    {
+      "from": "10. Confirm Accepted Quantity and Close Transfer",
+      "to": "w6cmMaoUknUvm8FDPRmQ-1",
+      "label": ""
+    },
+    {
+      "from": "Goods Matched?",
+      "to": "10. Confirm Accepted Quantity and Close Transfer",
+      "label": ""
+    },
+    {
+      "from": "Goods Matched?",
+      "to": "8. Record Transfer Differences",
+      "label": ""
+    },
+    {
+      "from": "1. Create Transfer Request",
+      "to": "2.  Review Transfer Request",
+      "label": ""
+    },
+    {
+      "from": "2a. Record Rejection Reason",
+      "to": "w6cmMaoUknUvm8FDPRmQ-1",
+      "label": ""
+    },
+    {
+      "from": "Request Approved?",
+      "to": "3. Check Source Stock",
+      "label": ""
+    },
+    {
+      "from": "2.  Review Transfer Request",
+      "to": "Request Approved?",
+      "label": ""
+    },
+    {
+      "from": "Request Approved?",
+      "to": "2a. Record Rejection Reason",
+      "label": ""
+    },
+    {
+      "from": "Request Approved?",
+      "to": "2a. Record Rejection Reason",
+      "label": ""
+    },
+    {
+      "from": "8. Record Transfer Differences",
+      "to": "9. Review Difference Resolution",
+      "label": ""
+    },
+    {
+      "from": "9. Review Difference Resolution",
+      "to": "10. Confirm Accepted Quantity and Close Transfer",
+      "label": ""
+    },
+    {
+      "from": "Approved?",
+      "to": "3. Create Transfer Order",
+      "label": ""
+    },
+    {
+      "from": "b7fu6WuVaBBd_LF0k6t0-4",
+      "to": "1. Create Transfer Request",
+      "label": ""
+    },
+    {
+      "from": "3. Create Transfer Order",
+      "to": "4. Confirm Transfer Order",
+      "label": ""
+    },
+    {
+      "from": "4. Confirm Transfer Order",
+      "to": "b7fu6WuVaBBd_LF0k6t0-18",
+      "label": ""
+    },
+    {
+      "from": "1. Create Transfer Request",
+      "to": "2. Review Transfer Requirement",
+      "label": ""
+    },
+    {
+      "from": "2. Review Transfer Requirement",
+      "to": "Approved?",
+      "label": ""
+    },
+    {
+      "from": "Approved?",
+      "to": "2a. Record Reject Reason",
+      "label": ""
+    },
+    {
+      "from": "2a. Record Reject Reason",
+      "to": "b7fu6WuVaBBd_LF0k6t0-18",
+      "label": ""
+    }
+  ],
+  "uml": []
+}

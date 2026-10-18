@@ -1,0 +1,73 @@
+PAGE 12 Mới - ContextDiagram
+ZZjcNtz0bbfOOIJTSfHq-1: Email delivery result
+ZZjcNtz0bbfOOIJTSfHq-3: Purchase & Receipt Information
+ZZjcNtz0bbfOOIJTSfHq-5: Role and permission management data
+ZZjcNtz0bbfOOIJTSfHq-7: Purchasing & Sales Policy Management
+ZZjcNtz0bbfOOIJTSfHq-9: Replenishment & Purchase Information
+ZZjcNtz0bbfOOIJTSfHq-11: Warehouse Reports & Audit Information
+ZZjcNtz0bbfOOIJTSfHq-13: Receipt & Inspection Data
+ZZjcNtz0bbfOOIJTSfHq-21: Transfer/Stocktake/Return Information
+ZZjcNtz0bbfOOIJTSfHq-30: WMSD
+ZZjcNtz0bbfOOIJTSfHq-31: Store Owner
+ZZjcNtz0bbfOOIJTSfHq-33: Inventory by Lot/Location/Status
+ZZjcNtz0bbfOOIJTSfHq-35: Inventory/Location Movement Data
+ZZjcNtz0bbfOOIJTSfHq-36: Inventory Staff
+ZZjcNtz0bbfOOIJTSfHq-38: Transfer Data
+ZZjcNtz0bbfOOIJTSfHq-42: Purchase/Receipt Information
+ZZjcNtz0bbfOOIJTSfHq-43: Sales Staff
+ZZjcNtz0bbfOOIJTSfHq-45: Issue & Return Data
+ZZjcNtz0bbfOOIJTSfHq-47: Stocktake & Adjustment Data
+ZZjcNtz0bbfOOIJTSfHq-49: Quotation Management
+ZZjcNtz0bbfOOIJTSfHq-51: Sales Order Management
+ZZjcNtz0bbfOOIJTSfHq-53: Delivery Request
+ZZjcNtz0bbfOOIJTSfHq-55: Sales Return Data
+ZZjcNtz0bbfOOIJTSfHq-56: EMAIL SERVICE (SMTP)
+ZZjcNtz0bbfOOIJTSfHq-58: Email delivery data
+ZZjcNtz0bbfOOIJTSfHq-59: Accountant
+ZZjcNtz0bbfOOIJTSfHq-61: Outstanding Purchase Information
+ZZjcNtz0bbfOOIJTSfHq-63: User management data
+ZZjcNtz0bbfOOIJTSfHq-64: Admin
+ZZjcNtz0bbfOOIJTSfHq-66: Issue Request Information
+ZZjcNtz0bbfOOIJTSfHq-68: Inventory & Exception Information
+ZZjcNtz0bbfOOIJTSfHq-70: Replenishment Approval Decision
+ZZjcNtz0bbfOOIJTSfHq-72: Product/Lot Configuration Data
+ZZjcNtz0bbfOOIJTSfHq-74: Product, Pricing & Available Stock
+ZZjcNtz0bbfOOIJTSfHq-76: Supplier Return Information
+ZZjcNtz0bbfOOIJTSfHq-78: Purchase & Receipt Report
+ZZjcNtz0bbfOOIJTSfHq-80: Replenishment Request Data
+ZZjcNtz0bbfOOIJTSfHq-82: Purchase Order & Supplier Confirmation Data
+ZZjcNtz0bbfOOIJTSfHq-84: Supplier Return Request Data
+ZZjcNtz0bbfOOIJTSfHq-88: Supplier Data
+EDGES
+WMSD --> EMAIL SERVICE (SMTP) | 
+WMSD --> Accountant | 
+WMSD --> Admin | 
+WMSD --> Store Owner | 
+WMSD --> Store Owner | 
+WMSD --> Store Owner | 
+WMSD --> Inventory Staff | 
+WMSD --> Inventory Staff | 
+Inventory Staff --> WMSD | 
+Inventory Staff --> WMSD | 
+Inventory Staff --> WMSD | 
+WMSD --> Inventory Staff | 
+WMSD --> Inventory Staff | 
+Inventory Staff --> WMSD | 
+WMSD --> Sales Staff | 
+WMSD --> Sales Staff | 
+WMSD --> Sales Staff | 
+None --> None | 
+EMAIL SERVICE (SMTP) --> WMSD | 
+Accountant --> WMSD | 
+Admin --> WMSD | 
+WMSD --> Inventory Staff | 
+WMSD --> Store Owner | 
+Store Owner --> WMSD | 
+Store Owner --> WMSD | 
+Sales Staff --> WMSD | 
+Accountant --> WMSD | 
+WMSD --> Accountant | 
+Accountant --> WMSD | 
+Accountant --> WMSD | 
+WMSD --> Accountant | 
+Accountant --> WMSD | 

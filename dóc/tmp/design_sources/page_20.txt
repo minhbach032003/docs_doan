@@ -1,0 +1,48 @@
+PAGE 20 Bản sao của UC SS
+x7IynJcuumx05MLdajgA-3: Sales Staff
+P8CXBB-3dTW7oslTmrSD-0: View Product List
+SqhfUZaIVxwL9tRxV24A-0: View stock
+iUhP_Pydldlhf4WekUFK-0: View Product Detail
+H_Zc0R3BqllYMKDJgU2e-1: <<extend>>
+H_Zc0R3BqllYMKDJgU2e-3: <<extend>>
+H_Zc0R3BqllYMKDJgU2e-5: <<extend>>
+YqUg4cGItWHPrsGVvYUL-0: WMSD
+MUyve5LAkyNDHCJVi77U-1: View Customer List
+MUyve5LAkyNDHCJVi77U-2: View Customer Details
+MUyve5LAkyNDHCJVi77U-3: Maintain Customer
+MUyve5LAkyNDHCJVi77U-4: View Selling Price List
+MUyve5LAkyNDHCJVi77U-5: View Selling Price Details
+MUyve5LAkyNDHCJVi77U-6: View Sales Order List
+MUyve5LAkyNDHCJVi77U-7: View Sales Order Details
+MUyve5LAkyNDHCJVi77U-8: Create Sales Order
+MUyve5LAkyNDHCJVi77U-9: Update or Cancel Sales Order
+MUyve5LAkyNDHCJVi77U-10: View Outbound Delivery List
+MUyve5LAkyNDHCJVi77U-11: View Outbound Delivery Details
+MUyve5LAkyNDHCJVi77U-12: Create Outbound Delivery
+MUyve5LAkyNDHCJVi77U-13: View customer return list
+MUyve5LAkyNDHCJVi77U-14: View customer return details
+MUyve5LAkyNDHCJVi77U-17: <<extend>>
+MUyve5LAkyNDHCJVi77U-19: <<extend>>
+MUyve5LAkyNDHCJVi77U-21: <<extend>>
+MUyve5LAkyNDHCJVi77U-23: <<extend>>
+MUyve5LAkyNDHCJVi77U-25: <<extend>>
+MUyve5LAkyNDHCJVi77U-27: <<extend>>
+MUyve5LAkyNDHCJVi77U-29: <<extend>>
+EDGES
+Sales Staff --> View Product List | 
+Sales Staff --> View Customer List | 
+Sales Staff --> View stock | 
+View Product Detail --> View Product List | 
+Maintain Customer --> View Customer List | 
+View Customer Details --> View Customer List | 
+View Selling Price Details --> View Selling Price List | 
+View Sales Order Details --> View Selling Price List | 
+Create Sales Order --> View Sales Order List | 
+Update or Cancel Sales Order --> View Sales Order List | 
+View Outbound Delivery Details --> View Outbound Delivery List | 
+Create Outbound Delivery --> View Outbound Delivery List | 
+View customer return details --> View customer return list | 
+Sales Staff --> View Selling Price List | 
+Sales Staff --> View Sales Order List | 
+Sales Staff --> View Outbound Delivery List | 
+Sales Staff --> View customer return list | 

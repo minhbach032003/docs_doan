@@ -1,0 +1,79 @@
+PAGE 17 UC SO
+W9mRg3yAz_72ORoaodYb-1: WMSD
+W9mRg3yAz_72ORoaodYb-2: Store Owner
+W9mRg3yAz_72ORoaodYb-3: UC-08  View Product List
+W9mRg3yAz_72ORoaodYb-6: UC-10  Create Product
+W9mRg3yAz_72ORoaodYb-7: UC-11  Update Product
+W9mRg3yAz_72ORoaodYb-8: UC-12  Activate or Deactivate Product
+W9mRg3yAz_72ORoaodYb-9: UC-13  Configure Packaging and Unit Conversion
+W9mRg3yAz_72ORoaodYb-11: UC-14  View Lot List
+W9mRg3yAz_72ORoaodYb-15: UC-17  Update Lot Information
+W9mRg3yAz_72ORoaodYb-16: UC-18  View Supplier List
+W9mRg3yAz_72ORoaodYb-18: UC-19  View Supplier Detail
+W9mRg3yAz_72ORoaodYb-19: UC-22  Activate or Deactivate Supplier
+W9mRg3yAz_72ORoaodYb-20: UC-23  View Replenishment Request List
+W9mRg3yAz_72ORoaodYb-21: UC-24  View Replenishment Request Detail
+W9mRg3yAz_72ORoaodYb-22: UC-26  Approve or Reject Replenishment Request
+W9mRg3yAz_72ORoaodYb-28: UC-41  View Warehouse and Location List
+W9mRg3yAz_72ORoaodYb-30: UC-43  Create Storage Location
+W9mRg3yAz_72ORoaodYb-31: UC-44  Update Storage Location
+W9mRg3yAz_72ORoaodYb-32: UC-45  Activate or Deactivate Location
+W9mRg3yAz_72ORoaodYb-41: View Warehouse Transfer List
+W9mRg3yAz_72ORoaodYb-42: UC-69  Approve or Reject Transfer Discrepancy Resolution
+W9mRg3yAz_72ORoaodYb-43: UC-70  View Stocktake List
+W9mRg3yAz_72ORoaodYb-45: UC-72  Create Stocktake
+W9mRg3yAz_72ORoaodYb-47: UC-77  View Adjustment Request List
+W9mRg3yAz_72ORoaodYb-48: UC-78  View Adjustment Request Detail
+W9mRg3yAz_72ORoaodYb-49: UC-80  Approve or Reject Adjustment
+W9mRg3yAz_72ORoaodYb-52: UC-100  Approve or Reject Supplier Return Request
+W9mRg3yAz_72ORoaodYb-53: UC-102  View Stock In-Out Balance Report
+W9mRg3yAz_72ORoaodYb-56: UC-105  View Transfer Report
+W9mRg3yAz_72ORoaodYb-60: UC-109  Trace Lot by Source Document
+W9mRg3yAz_72ORoaodYb-66: «extend»]
+W9mRg3yAz_72ORoaodYb-80: «extend»
+W9mRg3yAz_72ORoaodYb-83: «extend»
+W9mRg3yAz_72ORoaodYb-89: «extend»
+W9mRg3yAz_72ORoaodYb-93: «extend»
+W9mRg3yAz_72ORoaodYb-94: «extend»
+7npXt6oqve3fvW8REw-h-1: Inventory Staff
+7npXt6oqve3fvW8REw-h-3: «extend»]
+7npXt6oqve3fvW8REw-h-4: «extend»]
+7npXt6oqve3fvW8REw-h-5: «extend»]
+7npXt6oqve3fvW8REw-h-6: «extend»]
+7npXt6oqve3fvW8REw-h-7: «extend»]
+7npXt6oqve3fvW8REw-h-8: «extend»]
+7npXt6oqve3fvW8REw-h-9: «extend»]
+7npXt6oqve3fvW8REw-h-10: «extend»]
+7npXt6oqve3fvW8REw-h-11: «extend»]
+7npXt6oqve3fvW8REw-h-14: «extend»]
+7npXt6oqve3fvW8REw-h-15: «extend»]
+EDGES
+Store Owner --> UC-08  View Product List | 
+Store Owner --> UC-13  Configure Packaging and Unit Conversion | 
+Store Owner --> UC-14  View Lot List | 
+Store Owner --> UC-18  View Supplier List | 
+UC-19  View Supplier Detail --> UC-18  View Supplier List | «extend»]
+UC-69  Approve or Reject Transfer Discrepancy Resolution --> View Warehouse Transfer List | «extend»
+UC-78  View Adjustment Request Detail --> UC-77  View Adjustment Request List | «extend»
+UC-24  View Replenishment Request Detail --> UC-23  View Replenishment Request List | «extend»
+UC-43  Create Storage Location --> UC-41  View Warehouse and Location List | «extend»
+UC-72  Create Stocktake --> UC-70  View Stocktake List | «extend»
+Store Owner --> UC-23  View Replenishment Request List | 
+Store Owner --> UC-70  View Stocktake List | 
+Store Owner --> UC-77  View Adjustment Request List | 
+Store Owner --> UC-102  View Stock In-Out Balance Report | 
+Store Owner --> UC-105  View Transfer Report | 
+Inventory Staff --> Store Owner | 
+UC-10  Create Product --> UC-08  View Product List | «extend»]
+UC-12  Activate or Deactivate Product --> UC-08  View Product List | «extend»]
+UC-11  Update Product --> UC-08  View Product List | «extend»]
+UC-17  Update Lot Information --> UC-14  View Lot List | «extend»]
+UC-22  Activate or Deactivate Supplier --> UC-18  View Supplier List | «extend»]
+UC-100  Approve or Reject Supplier Return Request --> UC-18  View Supplier List | «extend»]
+UC-26  Approve or Reject Replenishment Request --> UC-24  View Replenishment Request Detail | «extend»]
+UC-44  Update Storage Location --> UC-43  Create Storage Location | «extend»]
+UC-45  Activate or Deactivate Location --> UC-43  Create Storage Location | «extend»]
+Store Owner --> UC-41  View Warehouse and Location List | 
+Store Owner --> View Warehouse Transfer List | 
+UC-80  Approve or Reject Adjustment --> UC-78  View Adjustment Request Detail | «extend»]
+UC-109  Trace Lot by Source Document --> UC-14  View Lot List | «extend»]

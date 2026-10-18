@@ -1,0 +1,360 @@
+{
+  "index": 13,
+  "name": "UC Accountants",
+  "id": "MoHm_XFkgmkHQ95jLNy8",
+  "nodes": [
+    {
+      "id": "1jgjR0ex421RTEhdOeB1-1",
+      "text": "WMSD",
+      "parent": "1"
+    },
+    {
+      "id": "1jgjR0ex421RTEhdOeB1-2",
+      "text": "Accountant",
+      "parent": "1"
+    },
+    {
+      "id": "1jgjR0ex421RTEhdOeB1-3",
+      "text": "UC-01  Login",
+      "parent": "1"
+    },
+    {
+      "id": "1jgjR0ex421RTEhdOeB1-5",
+      "text": "UC-08  View Product List",
+      "parent": "1"
+    },
+    {
+      "id": "1jgjR0ex421RTEhdOeB1-7",
+      "text": "UC-09  View Product Detail",
+      "parent": "1"
+    },
+    {
+      "id": "1jgjR0ex421RTEhdOeB1-8",
+      "text": "UC-18  View Supplier List",
+      "parent": "1"
+    },
+    {
+      "id": "1jgjR0ex421RTEhdOeB1-9",
+      "text": "UC-19  View Supplier Detail",
+      "parent": "1"
+    },
+    {
+      "id": "1jgjR0ex421RTEhdOeB1-11",
+      "text": "UC-20  Create Supplier",
+      "parent": "1"
+    },
+    {
+      "id": "1jgjR0ex421RTEhdOeB1-12",
+      "text": "UC-21  Update Supplier",
+      "parent": "1"
+    },
+    {
+      "id": "1jgjR0ex421RTEhdOeB1-13",
+      "text": "UC-22  Activate or Deactivate Supplier",
+      "parent": "1"
+    },
+    {
+      "id": "1jgjR0ex421RTEhdOeB1-14",
+      "text": "UC-23  View Replenishment Request List",
+      "parent": "1"
+    },
+    {
+      "id": "1jgjR0ex421RTEhdOeB1-16",
+      "text": "UC-24  View Replenishment Request Detail",
+      "parent": "1"
+    },
+    {
+      "id": "1jgjR0ex421RTEhdOeB1-17",
+      "text": "UC-25  Create Replenishment Request",
+      "parent": "1"
+    },
+    {
+      "id": "1jgjR0ex421RTEhdOeB1-18",
+      "text": "UC-27  View Purchase Order List",
+      "parent": "1"
+    },
+    {
+      "id": "1jgjR0ex421RTEhdOeB1-20",
+      "text": "UC-28  View Purchase Order Detail",
+      "parent": "1"
+    },
+    {
+      "id": "1jgjR0ex421RTEhdOeB1-21",
+      "text": "UC-29  Create Purchase Order",
+      "parent": "1"
+    },
+    {
+      "id": "1jgjR0ex421RTEhdOeB1-22",
+      "text": "UC-30  Update or Cancel Purchase Order",
+      "parent": "1"
+    },
+    {
+      "id": "1jgjR0ex421RTEhdOeB1-23",
+      "text": "UC-31  Record Supplier Confirmation",
+      "parent": "1"
+    },
+    {
+      "id": "1jgjR0ex421RTEhdOeB1-24",
+      "text": "UC-32  View Outstanding Purchase Quantity",
+      "parent": "1"
+    },
+    {
+      "id": "1jgjR0ex421RTEhdOeB1-25",
+      "text": "UC-33  View Receipt List",
+      "parent": "1"
+    },
+    {
+      "id": "1jgjR0ex421RTEhdOeB1-27",
+      "text": "UC-34  View Receipt Detail",
+      "parent": "1"
+    },
+    {
+      "id": "1jgjR0ex421RTEhdOeB1-28",
+      "text": "UC-47  View Inventory List by Lot, Location and Status",
+      "parent": "1"
+    },
+    {
+      "id": "1jgjR0ex421RTEhdOeB1-30",
+      "text": "UC-90  View Return List",
+      "parent": "1"
+    },
+    {
+      "id": "1jgjR0ex421RTEhdOeB1-32",
+      "text": "UC-91  View Return Detail",
+      "parent": "1"
+    },
+    {
+      "id": "1jgjR0ex421RTEhdOeB1-33",
+      "text": "UC-96  View Supplier Return Request List",
+      "parent": "1"
+    },
+    {
+      "id": "1jgjR0ex421RTEhdOeB1-35",
+      "text": "UC-97  View Supplier Return Request Detail",
+      "parent": "1"
+    },
+    {
+      "id": "1jgjR0ex421RTEhdOeB1-36",
+      "text": "UC-98  Create Supplier Return Request",
+      "parent": "1"
+    },
+    {
+      "id": "1jgjR0ex421RTEhdOeB1-38",
+      "text": "UC-104  View Purchase and Receipt Report",
+      "parent": "1"
+    },
+    {
+      "id": "1jgjR0ex421RTEhdOeB1-40",
+      "text": "«extend»",
+      "parent": "1"
+    },
+    {
+      "id": "1jgjR0ex421RTEhdOeB1-41",
+      "text": "«extend»",
+      "parent": "1"
+    },
+    {
+      "id": "1jgjR0ex421RTEhdOeB1-44",
+      "text": "«extend»",
+      "parent": "1"
+    },
+    {
+      "id": "1jgjR0ex421RTEhdOeB1-45",
+      "text": "«include»",
+      "parent": "1"
+    },
+    {
+      "id": "1jgjR0ex421RTEhdOeB1-46",
+      "text": "«include»",
+      "parent": "1"
+    },
+    {
+      "id": "1jgjR0ex421RTEhdOeB1-47",
+      "text": "«extend» [check remainder]",
+      "parent": "1"
+    },
+    {
+      "id": "1jgjR0ex421RTEhdOeB1-48",
+      "text": "«extend»",
+      "parent": "1"
+    },
+    {
+      "id": "1jgjR0ex421RTEhdOeB1-49",
+      "text": "«extend»",
+      "parent": "1"
+    },
+    {
+      "id": "1jgjR0ex421RTEhdOeB1-50",
+      "text": "«extend»",
+      "parent": "1"
+    },
+    {
+      "id": "1jgjR0ex421RTEhdOeB1-51",
+      "text": "«extend»",
+      "parent": "1"
+    },
+    {
+      "id": "1jgjR0ex421RTEhdOeB1-52",
+      "text": "«include»",
+      "parent": "1"
+    },
+    {
+      "id": "1jgjR0ex421RTEhdOeB1-53",
+      "text": "«extend»]",
+      "parent": "1"
+    },
+    {
+      "id": "1jgjR0ex421RTEhdOeB1-54",
+      "text": "«extend»",
+      "parent": "1"
+    },
+    {
+      "id": "M74PjqsALs8KWfVF_oXt-2",
+      "text": "«extend»",
+      "parent": "1"
+    },
+    {
+      "id": "M74PjqsALs8KWfVF_oXt-3",
+      "text": "«extend»]",
+      "parent": "1"
+    },
+    {
+      "id": "M74PjqsALs8KWfVF_oXt-4",
+      "text": "«extend»",
+      "parent": "1"
+    }
+  ],
+  "edges": [
+    {
+      "from": "Accountant",
+      "to": "UC-01  Login",
+      "label": ""
+    },
+    {
+      "from": "Accountant",
+      "to": "UC-08  View Product List",
+      "label": ""
+    },
+    {
+      "from": "Accountant",
+      "to": "UC-18  View Supplier List",
+      "label": ""
+    },
+    {
+      "from": "Accountant",
+      "to": "UC-23  View Replenishment Request List",
+      "label": ""
+    },
+    {
+      "from": "Accountant",
+      "to": "UC-27  View Purchase Order List",
+      "label": ""
+    },
+    {
+      "from": "Accountant",
+      "to": "UC-33  View Receipt List",
+      "label": ""
+    },
+    {
+      "from": "Accountant",
+      "to": "UC-47  View Inventory List by Lot, Location and Status",
+      "label": ""
+    },
+    {
+      "from": "Accountant",
+      "to": "UC-90  View Return List",
+      "label": ""
+    },
+    {
+      "from": "Accountant",
+      "to": "UC-96  View Supplier Return Request List",
+      "label": ""
+    },
+    {
+      "from": "Accountant",
+      "to": "UC-104  View Purchase and Receipt Report",
+      "label": ""
+    },
+    {
+      "from": "UC-09  View Product Detail",
+      "to": "UC-08  View Product List",
+      "label": "«extend»"
+    },
+    {
+      "from": "UC-19  View Supplier Detail",
+      "to": "UC-18  View Supplier List",
+      "label": "«extend»"
+    },
+    {
+      "from": "UC-28  View Purchase Order Detail",
+      "to": "UC-27  View Purchase Order List",
+      "label": "«extend»"
+    },
+    {
+      "from": "UC-30  Update or Cancel Purchase Order",
+      "to": "UC-28  View Purchase Order Detail",
+      "label": "«include»"
+    },
+    {
+      "from": "UC-31  Record Supplier Confirmation",
+      "to": "UC-28  View Purchase Order Detail",
+      "label": "«include»"
+    },
+    {
+      "from": "UC-32  View Outstanding Purchase Quantity",
+      "to": "UC-28  View Purchase Order Detail",
+      "label": "«extend» [check remainder]"
+    },
+    {
+      "from": "UC-34  View Receipt Detail",
+      "to": "UC-33  View Receipt List",
+      "label": "«extend»"
+    },
+    {
+      "from": "UC-91  View Return Detail",
+      "to": "UC-90  View Return List",
+      "label": "«extend»"
+    },
+    {
+      "from": "UC-97  View Supplier Return Request Detail",
+      "to": "UC-96  View Supplier Return Request List",
+      "label": "«extend»"
+    },
+    {
+      "from": "UC-24  View Replenishment Request Detail",
+      "to": "UC-23  View Replenishment Request List",
+      "label": "«extend»"
+    },
+    {
+      "from": "UC-29  Create Purchase Order",
+      "to": "UC-24  View Replenishment Request Detail",
+      "label": "«include»"
+    },
+    {
+      "from": "UC-20  Create Supplier",
+      "to": "UC-19  View Supplier Detail",
+      "label": "«extend»]"
+    },
+    {
+      "from": "UC-25  Create Replenishment Request",
+      "to": "UC-23  View Replenishment Request List",
+      "label": "«extend»"
+    },
+    {
+      "from": "UC-22  Activate or Deactivate Supplier",
+      "to": "UC-19  View Supplier Detail",
+      "label": "«extend»"
+    },
+    {
+      "from": "UC-21  Update Supplier",
+      "to": "UC-19  View Supplier Detail",
+      "label": "«extend»]"
+    },
+    {
+      "from": "UC-98  Create Supplier Return Request",
+      "to": "UC-96  View Supplier Return Request List",
+      "label": "«extend»"
+    }
+  ],
+  "uml": []
+}

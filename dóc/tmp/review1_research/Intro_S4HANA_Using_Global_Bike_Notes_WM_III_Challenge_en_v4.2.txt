@@ -1,0 +1,303 @@
+=== PAGE 1 ===
+ 
+ 
+© SAP UCC Magdeburg Page 1 
+ 
+LECTURER NOTES 
+ Solution: WM III Challenge 
+Learning Objective Understand and perform a warehousing sales process cycle. 
+  
+Motivation After having finished the Warehouse Management III case study 
+successfully you should now be able to solve the following challenge.  
+Scenario The warehouse management system has been tested without any 
+problems, so the management decided to use the system productively. Due to 
+a higher demand of bikes for the Tour de France black Professional Touring 
+Bikes are almost out of stock in Europe. The Distribution Center in San 
+Diego still has them available so that the delivery of a wholesale sales order 
+has to be managed by the new warehouse management system. 
+The customer VeloDOM from Magdeburg (Germany) has ordered 20 black 
+Professional Touring Bikes with a delivery time of 10 days. 
+Task Information You can use the case study Warehouse Management III 
+as a guideline, but it is recommended to complete this challenge without 
+further assistance to prove your WM skills. 
+ 
+  
+Create Sales Order 
+ 
+To create a sales order, use in the Warehouse Management area on the Issue 
+from Storage page in the Sales Person role the app Manage Sales Order. 
+ 
+Fiori App 
+ 
+ 
+In the Manage Sales Order page, click on Create Sales Order – VA01
+. 
+ 
+In the Create Sales Document screen, enter OR (Standard Order) as Order 
+Type, UW00 as Sales Organization, WH (Wholesale) as Distribution 
+Channel, BI (Bicycles) as Division, SD00 as Sales Office and US as Sales 
+Group. Confirm your entries by clicking   or pressing Enter. 
+ 
+OR 
+UW00 
+WH 
+BI 
+SD00 
+US 
+
+
+=== PAGE 2 ===
+ 
+ 
+© SAP UCC Magdeburg Page 2 
+ 
+LECTURER NOTES 
+ 
+ 
+At the top of the Create Standard Order: Overview screen, enter 148### 
+(VeloDOM, Magdeburg (Germany); replace ### with your number) as Sold-
+To Party, 54321### as Cust. Reference and leave the fields Standard Order 
+and Ship-To Party blank. In the Sales tab, enter 10 days from today as Req. 
+Deliv.Date and do the same in the Pricing Date field. Then, enter PRTR1### 
+as Material and 20 as Order Quantity. Finally, confirm your entries by 
+pressing Enter. 
+ 
+148### 
+ 
+ 
+54321### 
+ 
+10 days from today 
+10 days from today 
+PRTR1### 
+20 
+You may receive a warning message which you can ignore. 
+ 
+ 
+ 
+
+
+=== PAGE 3 ===
+ 
+ 
+© SAP UCC Magdeburg Page 3 
+ 
+LECTURER NOTES 
+Compare your entries with the screenshot above. Then, click on  to 
+save your order. The system will assign a unique standard order number. 
+ 
+ 
+ 
+ 
+Standard Order Number 
+Click on  to return to the SAP Fiori Launchpad. 
+ 
+Create Outbound Delivery  
+To create an outbound delivery, use in the Warehouse Management area on 
+the Issue from Storage page in the Warehouse Supervisor role the app Create 
+Outbound Delivery. 
+ 
+Fiori App 
+ 
+ 
+In the Create Outbound Deliveries screen, enter 148### (VeloDOM 
+Magdeburg, replace ### with your number) as Ship-To Party, SD00 as 
+Shipping point, and Next 10 days as Planned Creation Date. Confirm your 
+entries by clicking .  
+ 
+SD00 
+Standard Order Number 
+In the result list, select your sales receipt and click on .  
+You will receive a message that one log was created. 
+ 
+ 
+ 
+Click on  to return to the SAP Fiori Launchpad. 
+ 
+Change Outbound Delivery 
+ 
+
+
+=== PAGE 4 ===
+ 
+ 
+© SAP UCC Magdeburg Page 4 
+ 
+LECTURER NOTES 
+Open now the Fiori App Change Outbound Delivery.  
+ 
+ 
+FG00 
+ 
+ 
+In the Change Outbound Delivery screen enter your delivery number and 
+click on . In the Outbound Delivery Change: Overview screen, 
+choose the Picking tab and enter FG00 as SLoc if its not already entered. 
+Then press Enter. 
+ 
+Note Due to the fact that we are using the San Diego warehouse picking has 
+to be done a little differently. Hence, the Picked Qty field is now grayed out. 
+ 
+ 
+ 
+Compare your entries with the screenshot above. Then, click on  to 
+save your outbound delivery. The system will assign a unique outbound 
+delivery number. 
+ 
+ 
+ 
+Outbound Delivery 
+Number 
+Click on  to return to the SAP Fiori Launchpad. 
+ 
+Pick Materials with Transfer Order 
+ 
+To create an outbound delivery, use the app Outbound Deliveries for 
+Picking. 
+ 
+Fiori App 
+
+
+=== PAGE 5 ===
+ 
+ 
+© SAP UCC Magdeburg Page 5 
+ 
+LECTURER NOTES 
+ 
+ 
+In the Outbound Deliveries for Picking screen, enter SD00 as Shipping 
+Point/Receiving Pt, select the Only WM Picking radio button and enter 10 
+days from today in Picking Date to. Otherwise your Outbound Delivery will 
+be out of the time data range. Then, click on  or press F8 to 
+execute. 
+ 
+SD00 
+Only WM Picking 
+10 days from today 
+ 
+ 
+In the Day’s Workload for Picking screen, you should see a line item with 
+your Outbound Delivery Number. Select it and click on the 
+ button. 
+ 
+ 
+Outbound Delivery 
+Number 
+
+
+=== PAGE 6 ===
+ 
+ 
+© SAP UCC Magdeburg Page 6 
+ 
+LECTURER NOTES 
+ 
+ 
+In the Create Transfer Order for Delivery Note: Initial Screen, press Enter to 
+create your transfer order to be able to pick your documents. 
+ 
+ 
+ 
+On the next screen, click on  to save your transfer order.  The system 
+will save the transfer order automatically and assign  a unique transfer order 
+number. 
+ 
+ 
+ 
+Transfer Order Number 
+Click on  to return to the SAP Fiori Launchpad. 
+ 
+Confirm Transfer Order 
+ 
+To confirm a transfer order, use the app Confirm Transfer Order. 
+ 
+Fiori App 
+ 
+ 
+
+
+=== PAGE 7 ===
+ 
+ 
+© SAP UCC Magdeburg Page 7 
+ 
+LECTURER NOTES 
+In the Confirm Transfer Order: Initial Screen, enter the TO Number from 
+the previous task and 100 as Warehouse Number. Then, press Enter. 
+ 
+TO Number 
+100 
+ 
+ 
+Note If you have not written down the number you can search for it using the 
+app Display Transfer Order. 
+ 
+In the Transfer Orders: List of Resident Documents you have to fill in 100 as 
+Warehouse number. Then, click on . 
+ 
+100 
+In the Confirm Transfer Order: Overview of Transfer Order Items screen, 
+you should see an overview of your transfer order created in the previous 
+step. Review all of the details to make sure you have the correct quantity and 
+storage bin. 
+ 
+ 
+ 
+Then, click on  to confirm your transfer order. The system will 
+return a success message. 
+ 
+ 
+ 
+Click on  to return to the SAP Fiori Launchpad. 
+ 
+Ship Materials 
+ 
+To ship materials,use the app Change Outbound Delivery. 
+ 
+Fiori App 
+
+
+=== PAGE 8 ===
+ 
+ 
+© SAP UCC Magdeburg Page 8 
+ 
+LECTURER NOTES 
+ 
+ 
+In the Change Outbound Delivery screen, enter your Outbound Delivery 
+Number from the Create Outbound Delivery task and press Enter or click on 
+. 
+ 
+Outbound Delivery 
+Number 
+ 
+ 
+Note If you have not written down the number you can search for it using the 
+F4 help. 
+ 
+In the Outbound Delivery ##### Change: Overview screen, choose the Item 
+Overview tab and scroll to the right until you can see the Picked Qty column. 
+As you can see you picked the full amount to be delivered. 
+ 
+ 
+ 
+Then, click on the  button. The system will return a 
+success message. 
+ 
+
+
+=== PAGE 9 ===
+ 
+ 
+© SAP UCC Magdeburg Page 9 
+ 
+LECTURER NOTES 
+ 
+ 
+ 
+Click on  to return to the SAP Fiori Launchpad. 
+ 
+ 
+ 

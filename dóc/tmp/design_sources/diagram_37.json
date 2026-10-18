@@ -1,0 +1,400 @@
+{
+  "index": 37,
+  "name": "Trung Context Diagram",
+  "id": "8ksnOCkYdx2nMD1EhnUR",
+  "nodes": [
+    {
+      "id": "7AdsbXn7a46QsII9WMaJ-2",
+      "text": "Email delivery status",
+      "parent": "7AdsbXn7a46QsII9WMaJ-1"
+    },
+    {
+      "id": "7AdsbXn7a46QsII9WMaJ-4",
+      "text": "Purchase & Receipt Information",
+      "parent": "7AdsbXn7a46QsII9WMaJ-3"
+    },
+    {
+      "id": "7AdsbXn7a46QsII9WMaJ-6",
+      "text": "Role and permission management data",
+      "parent": "7AdsbXn7a46QsII9WMaJ-5"
+    },
+    {
+      "id": "7AdsbXn7a46QsII9WMaJ-8",
+      "text": "Purchase Request for Review",
+      "parent": "7AdsbXn7a46QsII9WMaJ-7"
+    },
+    {
+      "id": "7AdsbXn7a46QsII9WMaJ-10",
+      "text": "Replenishment & Purchase Information",
+      "parent": "7AdsbXn7a46QsII9WMaJ-9"
+    },
+    {
+      "id": "7AdsbXn7a46QsII9WMaJ-12",
+      "text": "Warehouse Reports & Audit Information",
+      "parent": "7AdsbXn7a46QsII9WMaJ-11"
+    },
+    {
+      "id": "7AdsbXn7a46QsII9WMaJ-14",
+      "text": "Receipt & Inspection Data",
+      "parent": "7AdsbXn7a46QsII9WMaJ-13"
+    },
+    {
+      "id": "7AdsbXn7a46QsII9WMaJ-16",
+      "text": "Transfer/Stocktake/Return Information",
+      "parent": "7AdsbXn7a46QsII9WMaJ-15"
+    },
+    {
+      "id": "7AdsbXn7a46QsII9WMaJ-17",
+      "text": "WMSD",
+      "parent": "1"
+    },
+    {
+      "id": "7AdsbXn7a46QsII9WMaJ-18",
+      "text": "Store Owner",
+      "parent": "1"
+    },
+    {
+      "id": "7AdsbXn7a46QsII9WMaJ-20",
+      "text": "Inventory by Lot/Location/Status",
+      "parent": "7AdsbXn7a46QsII9WMaJ-19"
+    },
+    {
+      "id": "7AdsbXn7a46QsII9WMaJ-22",
+      "text": "Inventory/Location Movement Data",
+      "parent": "7AdsbXn7a46QsII9WMaJ-21"
+    },
+    {
+      "id": "7AdsbXn7a46QsII9WMaJ-23",
+      "text": "Inventory Staff",
+      "parent": "1"
+    },
+    {
+      "id": "7AdsbXn7a46QsII9WMaJ-25",
+      "text": "Transfer Data",
+      "parent": "7AdsbXn7a46QsII9WMaJ-24"
+    },
+    {
+      "id": "7AdsbXn7a46QsII9WMaJ-27",
+      "text": "Purchase/Receipt Information",
+      "parent": "7AdsbXn7a46QsII9WMaJ-26"
+    },
+    {
+      "id": "7AdsbXn7a46QsII9WMaJ-28",
+      "text": "Sales Staff",
+      "parent": "1"
+    },
+    {
+      "id": "7AdsbXn7a46QsII9WMaJ-30",
+      "text": "Issue & Return Data",
+      "parent": "7AdsbXn7a46QsII9WMaJ-29"
+    },
+    {
+      "id": "7AdsbXn7a46QsII9WMaJ-32",
+      "text": "Stocktake & Adjustment Data",
+      "parent": "7AdsbXn7a46QsII9WMaJ-31"
+    },
+    {
+      "id": "7AdsbXn7a46QsII9WMaJ-34",
+      "text": "Sales Order Information",
+      "parent": "7AdsbXn7a46QsII9WMaJ-33"
+    },
+    {
+      "id": "7AdsbXn7a46QsII9WMaJ-36",
+      "text": "Customer Delivery Request",
+      "parent": "7AdsbXn7a46QsII9WMaJ-35"
+    },
+    {
+      "id": "7AdsbXn7a46QsII9WMaJ-38",
+      "text": "Sales Return Data",
+      "parent": "7AdsbXn7a46QsII9WMaJ-37"
+    },
+    {
+      "id": "7AdsbXn7a46QsII9WMaJ-39",
+      "text": "EMAIL SERVICE (SMTP)",
+      "parent": "1"
+    },
+    {
+      "id": "7AdsbXn7a46QsII9WMaJ-41",
+      "text": "Email delivery data",
+      "parent": "7AdsbXn7a46QsII9WMaJ-40"
+    },
+    {
+      "id": "7AdsbXn7a46QsII9WMaJ-42",
+      "text": "Accountant",
+      "parent": "1"
+    },
+    {
+      "id": "7AdsbXn7a46QsII9WMaJ-44",
+      "text": "Outstanding Purchase Information",
+      "parent": "7AdsbXn7a46QsII9WMaJ-43"
+    },
+    {
+      "id": "7AdsbXn7a46QsII9WMaJ-46",
+      "text": "User management data",
+      "parent": "7AdsbXn7a46QsII9WMaJ-45"
+    },
+    {
+      "id": "7AdsbXn7a46QsII9WMaJ-47",
+      "text": "Admin",
+      "parent": "1"
+    },
+    {
+      "id": "7AdsbXn7a46QsII9WMaJ-49",
+      "text": "Issue Request Information",
+      "parent": "7AdsbXn7a46QsII9WMaJ-48"
+    },
+    {
+      "id": "7AdsbXn7a46QsII9WMaJ-51",
+      "text": "Inventory & Exception Information",
+      "parent": "7AdsbXn7a46QsII9WMaJ-50"
+    },
+    {
+      "id": "7AdsbXn7a46QsII9WMaJ-53",
+      "text": "Replenishment Approval Decision",
+      "parent": "7AdsbXn7a46QsII9WMaJ-52"
+    },
+    {
+      "id": "7AdsbXn7a46QsII9WMaJ-55",
+      "text": "Product/Lot Configuration Data",
+      "parent": "7AdsbXn7a46QsII9WMaJ-54"
+    },
+    {
+      "id": "7AdsbXn7a46QsII9WMaJ-57",
+      "text": "Product, Pricing & Available Stock",
+      "parent": "7AdsbXn7a46QsII9WMaJ-56"
+    },
+    {
+      "id": "7AdsbXn7a46QsII9WMaJ-59",
+      "text": "Supplier Return Information",
+      "parent": "7AdsbXn7a46QsII9WMaJ-58"
+    },
+    {
+      "id": "7AdsbXn7a46QsII9WMaJ-61",
+      "text": "Purchase & Receipt Report",
+      "parent": "7AdsbXn7a46QsII9WMaJ-60"
+    },
+    {
+      "id": "7AdsbXn7a46QsII9WMaJ-63",
+      "text": "Replenishment Request Data",
+      "parent": "7AdsbXn7a46QsII9WMaJ-62"
+    },
+    {
+      "id": "7AdsbXn7a46QsII9WMaJ-65",
+      "text": "Purchase Order Management",
+      "parent": "7AdsbXn7a46QsII9WMaJ-64"
+    },
+    {
+      "id": "7AdsbXn7a46QsII9WMaJ-67",
+      "text": "Supplier Return Request Data",
+      "parent": "7AdsbXn7a46QsII9WMaJ-66"
+    },
+    {
+      "id": "7AdsbXn7a46QsII9WMaJ-69",
+      "text": "Supplier Data",
+      "parent": "7AdsbXn7a46QsII9WMaJ-68"
+    },
+    {
+      "id": "7AdsbXn7a46QsII9WMaJ-70",
+      "text": "Cloudinary",
+      "parent": "1"
+    },
+    {
+      "id": "7AdsbXn7a46QsII9WMaJ-72",
+      "text": "Sales Order Status",
+      "parent": "7AdsbXn7a46QsII9WMaJ-71"
+    },
+    {
+      "id": "7AdsbXn7a46QsII9WMaJ-74",
+      "text": "Evidence Upload",
+      "parent": "1"
+    },
+    {
+      "id": "7AdsbXn7a46QsII9WMaJ-76",
+      "text": "Asset URL / Upload Status",
+      "parent": "1"
+    },
+    {
+      "id": "zBOrtLO1cTxaj-abLNrF-6",
+      "text": "Warehouse Issue Request",
+      "parent": "zBOrtLO1cTxaj-abLNrF-5"
+    }
+  ],
+  "edges": [
+    {
+      "from": "WMSD",
+      "to": "EMAIL SERVICE (SMTP)",
+      "label": ""
+    },
+    {
+      "from": "WMSD",
+      "to": "Accountant",
+      "label": ""
+    },
+    {
+      "from": "WMSD",
+      "to": "Admin",
+      "label": ""
+    },
+    {
+      "from": "WMSD",
+      "to": "Store Owner",
+      "label": ""
+    },
+    {
+      "from": "WMSD",
+      "to": "Store Owner",
+      "label": ""
+    },
+    {
+      "from": "WMSD",
+      "to": "Store Owner",
+      "label": ""
+    },
+    {
+      "from": "WMSD",
+      "to": "Inventory Staff",
+      "label": ""
+    },
+    {
+      "from": "WMSD",
+      "to": "Inventory Staff",
+      "label": ""
+    },
+    {
+      "from": "Inventory Staff",
+      "to": "WMSD",
+      "label": ""
+    },
+    {
+      "from": "Inventory Staff",
+      "to": "WMSD",
+      "label": ""
+    },
+    {
+      "from": "Inventory Staff",
+      "to": "WMSD",
+      "label": ""
+    },
+    {
+      "from": "WMSD",
+      "to": "Inventory Staff",
+      "label": ""
+    },
+    {
+      "from": "WMSD",
+      "to": "Inventory Staff",
+      "label": ""
+    },
+    {
+      "from": "Inventory Staff",
+      "to": "WMSD",
+      "label": ""
+    },
+    {
+      "from": "WMSD",
+      "to": "Sales Staff",
+      "label": ""
+    },
+    {
+      "from": null,
+      "to": null,
+      "label": ""
+    },
+    {
+      "from": "WMSD",
+      "to": "Sales Staff",
+      "label": ""
+    },
+    {
+      "from": "EMAIL SERVICE (SMTP)",
+      "to": "WMSD",
+      "label": ""
+    },
+    {
+      "from": "Accountant",
+      "to": "WMSD",
+      "label": ""
+    },
+    {
+      "from": "Admin",
+      "to": "WMSD",
+      "label": ""
+    },
+    {
+      "from": "WMSD",
+      "to": "Inventory Staff",
+      "label": ""
+    },
+    {
+      "from": "WMSD",
+      "to": "Store Owner",
+      "label": ""
+    },
+    {
+      "from": "Store Owner",
+      "to": "WMSD",
+      "label": ""
+    },
+    {
+      "from": "Store Owner",
+      "to": "WMSD",
+      "label": ""
+    },
+    {
+      "from": "Sales Staff",
+      "to": "WMSD",
+      "label": ""
+    },
+    {
+      "from": "Accountant",
+      "to": "WMSD",
+      "label": ""
+    },
+    {
+      "from": "WMSD",
+      "to": "Accountant",
+      "label": ""
+    },
+    {
+      "from": "Accountant",
+      "to": "WMSD",
+      "label": ""
+    },
+    {
+      "from": "Accountant",
+      "to": "WMSD",
+      "label": ""
+    },
+    {
+      "from": "WMSD",
+      "to": "Accountant",
+      "label": ""
+    },
+    {
+      "from": "Accountant",
+      "to": "WMSD",
+      "label": ""
+    },
+    {
+      "from": "WMSD",
+      "to": "Sales Staff",
+      "label": ""
+    },
+    {
+      "from": null,
+      "to": null,
+      "label": ""
+    },
+    {
+      "from": "Cloudinary",
+      "to": null,
+      "label": ""
+    },
+    {
+      "from": "WMSD",
+      "to": "Sales Staff",
+      "label": ""
+    }
+  ],
+  "uml": []
+}
