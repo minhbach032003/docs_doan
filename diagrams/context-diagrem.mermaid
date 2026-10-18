@@ -1,0 +1,85 @@
+flowchart LR
+    %% Định nghĩa hệ thống trung tâm (Hình tròn)
+    WMSD((WMSD))
+
+    %% Định nghĩa các tác nhân bên ngoài (Hình chữ nhật)
+    SO[Store Owner]
+    IS[Inventory Staff]
+    ACC[Accountant]
+    ADM[Admin]
+    SS[Sales Staff]
+    SMTP["EMAIL SERVICE<br/>(SMTP)"]
+
+    %% ==========================================
+    %% 1. Luồng dữ liệu của Store Owner
+    %% ==========================================
+    SO <-->|Store Configuration Data| WMSD
+    SO <-->|Product & Pricing Configuration Data| WMSD
+    SO <-->|Purchasing & Sales Policy Management| WMSD
+    SO <-->|Inventory management| WMSD
+    SO <-->|Supplier management| WMSD
+    WMSD -->|Receivables & Payables Report| SO
+    SO -->|Report Request| WMSD
+    WMSD -->|Analytics Report| SO
+    WMSD -->|Dashboard and notification information| SO
+    WMSD -->|Purchase Approval Request| SO
+    SO -->|Purchase Approval Decision| WMSD
+
+    %% ==========================================
+    %% 2. Luồng dữ liệu của Inventory Staff
+    %% ==========================================
+    WMSD -->|Purchase Replenishment Request Status| IS
+    IS -->|Purchase Replenishment Request Data| WMSD
+    IS -->|Goods receipt data| WMSD
+    WMSD -->|Goods receipt information| IS
+    IS -->|Goods issue data| WMSD
+    WMSD -->|Goods issue information| IS
+    IS -->|Inventory check data| WMSD
+    WMSD -->|Inventory check information| IS
+    WMSD -->|Inventory report and notification information| IS
+    IS -->|Storage Location Data| WMSD
+    WMSD -->|Lot & Location Inventory Information| IS
+    IS -->|Physical Stock Count Data| WMSD
+    WMSD -->|Stock Discrepancy Data| IS
+    IS -->|Stock Status Update| WMSD
+    IS -->|Damaged / Inspection Goods Data| WMSD
+
+    %% ==========================================
+    %% 3. Luồng dữ liệu của Accountant
+    %% ==========================================
+    WMSD <-->|Invoice Verification & Recording Data| ACC
+    WMSD <-->|Receivables & Payables Data| ACC
+    ACC -->|Purchase Request Data| WMSD
+    WMSD -->|Purchase Request Information| ACC
+    WMSD <-->|Purchase Order Management| ACC
+    ACC -->|Supplier Order Confirmation Data| WMSD
+    ACC -->|Supplier Invoice Data| WMSD
+    WMSD -->|Invoice Verification Information| ACC
+    ACC -->|Supplier Payment Data| WMSD
+    WMSD -->|Supplier Payables Information| ACC
+
+    %% ==========================================
+    %% 4. Luồng dữ liệu của Admin
+    %% ==========================================
+    ADM -->|Role and permission management data| WMSD
+    ADM -->|User management data| WMSD
+
+    %% ==========================================
+    %% 5. Luồng dữ liệu của Sales Staff
+    %% ==========================================
+    WMSD <-->|Quotation Management| SS
+    WMSD <-->|Sales Order Management| SS
+    SS -->|Delivery Request| WMSD
+    SS -->|Sales Return Data| WMSD
+    WMSD -->|Product, Pricing & Available Stock| SS
+
+    %% ==========================================
+    %% 6. Luồng dữ liệu của EMAIL SERVICE (SMTP)
+    %% ==========================================
+    WMSD -->|Email delivery data| SMTP
+    SMTP -->|Email delivery result| WMSD
+
+    %% Tùy chỉnh giao diện (Styling)
+    style WMSD fill:#ffffff,stroke:#333333,stroke-width:2px,color:#000000
+    classDef entity fill:#ffffff,stroke:#333333,stroke-width:1px,color:#000000;
+    class SO,IS,ACC,ADM,SS,SMTP entity;
