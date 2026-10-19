@@ -8,7 +8,7 @@
         <mxCell id="title" value="BF-01 — Bổ sung, mua và nhập hàng" style="text;align=left;fontSize=25;fontStyle=1;fontColor=#17304d;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="20" width="1320" height="45" />
         </mxCell>
-        <mxCell id="subtitle" value="Đề xuất SQL • 18/10/2026 • Mainflow; ngoại lệ xem mục 4 của tài liệu VI" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+        <mxCell id="subtitle" value="Đề xuất quy trình WMSD • 18/10/2026 • Mainflow; ngoại lệ xem mục 4 của tài liệu VI" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="66" width="1320" height="30" />
         </mxCell>
         <mxCell id="lane-sales" value="Nhân viên bán hàng" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
@@ -99,7 +99,7 @@
         <mxCell id="title" value="BF-02 — Phát hiện và xử lý hàng lỗi" style="text;align=left;fontSize=25;fontStyle=1;fontColor=#17304d;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="20" width="980" height="45" />
         </mxCell>
-        <mxCell id="subtitle" value="Đề xuất SQL • 18/10/2026 • Mainflow; ngoại lệ xem mục 4 của tài liệu VI" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+        <mxCell id="subtitle" value="Đề xuất quy trình WMSD • 18/10/2026 • Mainflow; ngoại lệ xem mục 4 của tài liệu VI" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="66" width="980" height="30" />
         </mxCell>
         <mxCell id="lane-wh" value="Nhân viên kho" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
@@ -168,7 +168,7 @@
         <mxCell id="title" value="BF-03A — Chuyển vị trí cùng kho" style="text;align=left;fontSize=25;fontStyle=1;fontColor=#17304d;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="20" width="980" height="45" />
         </mxCell>
-        <mxCell id="subtitle" value="Đề xuất SQL • 18/10/2026 • Mainflow; ngoại lệ xem mục 4 của tài liệu VI" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+        <mxCell id="subtitle" value="Đề xuất quy trình WMSD • 18/10/2026 • Mainflow; ngoại lệ xem mục 4 của tài liệu VI" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="66" width="980" height="30" />
         </mxCell>
         <mxCell id="lane-wh" value="Nhân viên kho" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
@@ -212,7 +212,7 @@
         <mxCell id="title" value="BF-03B — Xuất và nhận điều chuyển liên kho" style="text;align=left;fontSize=25;fontStyle=1;fontColor=#17304d;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="20" width="990" height="45" />
         </mxCell>
-        <mxCell id="subtitle" value="Đề xuất SQL • 18/10/2026 • Mainflow; ngoại lệ xem mục 4 của tài liệu VI" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+        <mxCell id="subtitle" value="Đề xuất quy trình WMSD • 18/10/2026 • Mainflow; ngoại lệ xem mục 4 của tài liệu VI" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="66" width="990" height="30" />
         </mxCell>
         <mxCell id="lane-src" value="Nhân viên kho nguồn" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
@@ -317,7 +317,7 @@
         <mxCell id="title" value="BF-04 — Kiểm kê và điều chỉnh" style="text;align=left;fontSize=25;fontStyle=1;fontColor=#17304d;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="20" width="980" height="45" />
         </mxCell>
-        <mxCell id="subtitle" value="Đề xuất SQL • 18/10/2026 • Mainflow; ngoại lệ xem mục 4 của tài liệu VI" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+        <mxCell id="subtitle" value="Đề xuất quy trình WMSD • 18/10/2026 • Mainflow; ngoại lệ xem mục 4 của tài liệu VI" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="66" width="980" height="30" />
         </mxCell>
         <mxCell id="lane-owner" value="Chủ cửa hàng" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
@@ -397,7 +397,7 @@
         <mxCell id="title" value="BF-05 — Yêu cầu xuất, soạn và bàn giao" style="text;align=left;fontSize=25;fontStyle=1;fontColor=#17304d;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="20" width="990" height="45" />
         </mxCell>
-        <mxCell id="subtitle" value="Đề xuất SQL • 18/10/2026 • Mainflow; ngoại lệ xem mục 4 của tài liệu VI" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+        <mxCell id="subtitle" value="Đề xuất quy trình WMSD • 18/10/2026 • Mainflow; ngoại lệ xem mục 4 của tài liệu VI" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="66" width="990" height="30" />
         </mxCell>
         <mxCell id="lane-sales" value="Nhân viên bán hàng" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
@@ -486,7 +486,7 @@
         <mxCell id="title" value="BF-06 — Khách trả hàng và nhập lại" style="text;align=left;fontSize=25;fontStyle=1;fontColor=#17304d;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="20" width="1320" height="45" />
         </mxCell>
-        <mxCell id="subtitle" value="Đề xuất SQL • 18/10/2026 • Mainflow; ngoại lệ xem mục 4 của tài liệu VI" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+        <mxCell id="subtitle" value="Đề xuất quy trình WMSD • 18/10/2026 • Mainflow; ngoại lệ xem mục 4 của tài liệu VI" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="66" width="1320" height="30" />
         </mxCell>
         <mxCell id="lane-sales" value="Nhân viên bán hàng" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
@@ -588,7 +588,7 @@
         <mxCell id="title" value="BF-07 — Trả nhà cung cấp và đối chiếu" style="text;align=left;fontSize=25;fontStyle=1;fontColor=#17304d;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="20" width="990" height="45" />
         </mxCell>
-        <mxCell id="subtitle" value="Đề xuất SQL • 18/10/2026 • Mainflow; ngoại lệ xem mục 4 của tài liệu VI" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+        <mxCell id="subtitle" value="Đề xuất quy trình WMSD • 18/10/2026 • Mainflow; ngoại lệ xem mục 4 của tài liệu VI" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="66" width="990" height="30" />
         </mxCell>
         <mxCell id="lane-wh" value="Nhân viên kho" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
@@ -697,7 +697,7 @@
         <mxCell id="title" value="BF-01 — Replenishment, purchase and receipt" style="text;align=left;fontSize=25;fontStyle=1;fontColor=#17304d;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="20" width="1320" height="45" />
         </mxCell>
-        <mxCell id="subtitle" value="SQL proposal • 18 Oct 2026 • Mainflow; exceptions in section 4 of the EN proposal" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+        <mxCell id="subtitle" value="WMSD process proposal • 18 Oct 2026 • Mainflow; exceptions in the Vietnamese process proposal" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="66" width="1320" height="30" />
         </mxCell>
         <mxCell id="lane-sales" value="Sales Staff" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
@@ -788,7 +788,7 @@
         <mxCell id="title" value="BF-02 — Defect isolation and disposition" style="text;align=left;fontSize=25;fontStyle=1;fontColor=#17304d;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="20" width="980" height="45" />
         </mxCell>
-        <mxCell id="subtitle" value="SQL proposal • 18 Oct 2026 • Mainflow; exceptions in section 4 of the EN proposal" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+        <mxCell id="subtitle" value="WMSD process proposal • 18 Oct 2026 • Mainflow; exceptions in the Vietnamese process proposal" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="66" width="980" height="30" />
         </mxCell>
         <mxCell id="lane-wh" value="Warehouse Staff" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
@@ -857,7 +857,7 @@
         <mxCell id="title" value="BF-03A — Relocation within one warehouse" style="text;align=left;fontSize=25;fontStyle=1;fontColor=#17304d;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="20" width="980" height="45" />
         </mxCell>
-        <mxCell id="subtitle" value="SQL proposal • 18 Oct 2026 • Mainflow; exceptions in section 4 of the EN proposal" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+        <mxCell id="subtitle" value="WMSD process proposal • 18 Oct 2026 • Mainflow; exceptions in the Vietnamese process proposal" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="66" width="980" height="30" />
         </mxCell>
         <mxCell id="lane-wh" value="Warehouse Staff" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
@@ -901,7 +901,7 @@
         <mxCell id="title" value="BF-03B — Inter-warehouse dispatch and receipt" style="text;align=left;fontSize=25;fontStyle=1;fontColor=#17304d;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="20" width="990" height="45" />
         </mxCell>
-        <mxCell id="subtitle" value="SQL proposal • 18 Oct 2026 • Mainflow; exceptions in section 4 of the EN proposal" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+        <mxCell id="subtitle" value="WMSD process proposal • 18 Oct 2026 • Mainflow; exceptions in the Vietnamese process proposal" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="66" width="990" height="30" />
         </mxCell>
         <mxCell id="lane-src" value="Source Warehouse Staff" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
@@ -1006,7 +1006,7 @@
         <mxCell id="title" value="BF-04 — Stocktake and adjustment" style="text;align=left;fontSize=25;fontStyle=1;fontColor=#17304d;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="20" width="980" height="45" />
         </mxCell>
-        <mxCell id="subtitle" value="SQL proposal • 18 Oct 2026 • Mainflow; exceptions in section 4 of the EN proposal" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+        <mxCell id="subtitle" value="WMSD process proposal • 18 Oct 2026 • Mainflow; exceptions in the Vietnamese process proposal" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="66" width="980" height="30" />
         </mxCell>
         <mxCell id="lane-owner" value="Store Owner" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
@@ -1086,7 +1086,7 @@
         <mxCell id="title" value="BF-05 — Issue request, picking and handover" style="text;align=left;fontSize=25;fontStyle=1;fontColor=#17304d;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="20" width="990" height="45" />
         </mxCell>
-        <mxCell id="subtitle" value="SQL proposal • 18 Oct 2026 • Mainflow; exceptions in section 4 of the EN proposal" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+        <mxCell id="subtitle" value="WMSD process proposal • 18 Oct 2026 • Mainflow; exceptions in the Vietnamese process proposal" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="66" width="990" height="30" />
         </mxCell>
         <mxCell id="lane-sales" value="Sales Staff" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
@@ -1175,7 +1175,7 @@
         <mxCell id="title" value="BF-06 — Customer return and accepted receipt" style="text;align=left;fontSize=25;fontStyle=1;fontColor=#17304d;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="20" width="1320" height="45" />
         </mxCell>
-        <mxCell id="subtitle" value="SQL proposal • 18 Oct 2026 • Mainflow; exceptions in section 4 of the EN proposal" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+        <mxCell id="subtitle" value="WMSD process proposal • 18 Oct 2026 • Mainflow; exceptions in the Vietnamese process proposal" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="66" width="1320" height="30" />
         </mxCell>
         <mxCell id="lane-sales" value="Sales Staff" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
@@ -1277,7 +1277,7 @@
         <mxCell id="title" value="BF-07 — Supplier return and reconciliation" style="text;align=left;fontSize=25;fontStyle=1;fontColor=#17304d;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="20" width="990" height="45" />
         </mxCell>
-        <mxCell id="subtitle" value="SQL proposal • 18 Oct 2026 • Mainflow; exceptions in section 4 of the EN proposal" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+        <mxCell id="subtitle" value="WMSD process proposal • 18 Oct 2026 • Mainflow; exceptions in the Vietnamese process proposal" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="66" width="990" height="30" />
         </mxCell>
         <mxCell id="lane-wh" value="Warehouse Staff" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">

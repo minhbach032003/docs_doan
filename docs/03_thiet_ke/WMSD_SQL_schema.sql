@@ -1,7 +1,9 @@
--- WMSD relational design proposal, 2026-10-18. Target: PostgreSQL 16+.
+-- WMSD relational analysis/reference DDL, 2026-10-18. NOT a production schema.
+-- Runtime persistence remains MongoDB (NoSQL), per Report 3 and the system design.
+-- PostgreSQL syntax is used only to make the proposed relational model executable for review.
 -- Schema only: posting/approval services and authorization are NOT implemented here.
 -- Read the VI/EN proposal for cross-row rules and transaction boundaries.
--- Run against an EMPTY database/schema. No destructive migration is included.
+-- Self-contained PostgreSQL reference DDL for design review only; never run as the MongoDB runtime schema.
 BEGIN;
 CREATE SCHEMA wmsd;
 SET search_path TO wmsd, public;
