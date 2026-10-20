@@ -1,14 +1,14 @@
 <?xml version='1.0' encoding='utf-8'?>
 <mxfile host="app.diagrams.net" version="26.0.0">
   <diagram id="BF-01-VI" name="BF-01 VI">
-    <mxGraphModel dx="1400" dy="1319" grid="1" gridSize="10" page="1" pageWidth="1400" pageHeight="1319" background="#ffffff">
+    <mxGraphModel dx="1400" dy="1353" grid="1" gridSize="10" page="1" pageWidth="1400" pageHeight="1353" background="#ffffff">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="title" value="BF-01 — Bổ sung, mua và nhập hàng" style="text;align=left;fontSize=25;fontStyle=1;fontColor=#17304d;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="20" width="1320" height="45" />
         </mxCell>
-        <mxCell id="subtitle" value="Đề xuất quy trình WMSD • 18/10/2026 • Mainflow; ngoại lệ xem mục 4 của tài liệu VI" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+        <mxCell id="subtitle" value="To-be D1–D8 • 20/10/2026 • Chi tiết/ngoại lệ: de_xuat_quy_trinh_2_VI.md, mục 4" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="66" width="1320" height="30" />
         </mxCell>
         <mxCell id="lane-sales" value="Nhân viên bán hàng" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
@@ -32,7 +32,7 @@
         <mxCell id="step-2" value="&lt;b&gt;3. Lập PO; ghi NCC xác nhận&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;PO&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-acc">
           <mxGeometry as="geometry" x="25.0" y="330" width="280" height="86" />
         </mxCell>
-        <mxCell id="step-3" value="&lt;b&gt;4. Nhận, đếm và phân loại&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;ARR / INS / VAR&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
+        <mxCell id="step-3" value="&lt;b&gt;4. Kiểm nhận; ghi người cùng kiểm&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;ARR / INS / VAR&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
           <mxGeometry as="geometry" x="25.0" y="462" width="280" height="86" />
         </mxCell>
         <mxCell id="step-4" value="&lt;b&gt;5. Ghi nhận lượng chấp nhận&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;GR-P / CUS-IN&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#e8f4ed;strokeColor=#438463;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
@@ -85,8 +85,8 @@
         <mxCell id="legend" value="Xanh dương: thao tác/chứng từ • Xanh lá: thao tác có thể ghi biến động kho hoặc giữ hộ" style="text;align=left;fontSize=13;fontColor=#43566f;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="1147" width="1320" height="35" />
         </mxCell>
-        <mxCell id="note" value="¹ Nhu cầu dự trữ: Warehouse Staff lập RR. ² Owner duyệt bỏ phần không giao. Không có lượng nhận hợp lệ: giữ hồ sơ, không post GR." style="rounded=1;fillColor=#f3f5f8;strokeColor=#d6dde6;align=left;spacing=12;fontSize=13;fontColor=#34465e;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
-          <mxGeometry as="geometry" x="40" y="1190" width="1320" height="86" />
+        <mxCell id="note" value="¹ Nhu cầu dự trữ: Warehouse Staff lập RR. ² Owner duyệt bỏ phần không giao. Không có lượng nhận hợp lệ: giữ hồ sơ, không post GR.&lt;br&gt;Chủ/kế toán có thể cùng kiểm; Warehouse vẫn xác nhận/post. Bao bì rách không tự đồng nghĩa gạch lỗi; đếm viên còn lại trong thùng mở." style="rounded=1;fillColor=#f3f5f8;strokeColor=#d6dde6;align=left;spacing=12;fontSize=13;fontColor=#34465e;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="1190" width="1320" height="120" />
         </mxCell>
       </root>
     </mxGraphModel>
@@ -99,7 +99,7 @@
         <mxCell id="title" value="BF-02 — Phát hiện và xử lý hàng lỗi" style="text;align=left;fontSize=25;fontStyle=1;fontColor=#17304d;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="20" width="980" height="45" />
         </mxCell>
-        <mxCell id="subtitle" value="Đề xuất quy trình WMSD • 18/10/2026 • Mainflow; ngoại lệ xem mục 4 của tài liệu VI" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+        <mxCell id="subtitle" value="To-be D1–D8 • 20/10/2026 • Chi tiết/ngoại lệ: de_xuat_quy_trinh_2_VI.md, mục 4" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="66" width="980" height="30" />
         </mxCell>
         <mxCell id="lane-wh" value="Nhân viên kho" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
@@ -168,7 +168,7 @@
         <mxCell id="title" value="BF-03A — Chuyển vị trí cùng kho" style="text;align=left;fontSize=25;fontStyle=1;fontColor=#17304d;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="20" width="980" height="45" />
         </mxCell>
-        <mxCell id="subtitle" value="Đề xuất quy trình WMSD • 18/10/2026 • Mainflow; ngoại lệ xem mục 4 của tài liệu VI" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+        <mxCell id="subtitle" value="To-be D1–D8 • 20/10/2026 • Chi tiết/ngoại lệ: de_xuat_quy_trinh_2_VI.md, mục 4" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="66" width="980" height="30" />
         </mxCell>
         <mxCell id="lane-wh" value="Nhân viên kho" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
@@ -205,14 +205,14 @@
     </mxGraphModel>
   </diagram>
   <diagram id="BF-03B-VI" name="BF-03B VI">
-    <mxGraphModel dx="1070" dy="1583" grid="1" gridSize="10" page="1" pageWidth="1070" pageHeight="1583" background="#ffffff">
+    <mxGraphModel dx="1070" dy="1617" grid="1" gridSize="10" page="1" pageWidth="1070" pageHeight="1617" background="#ffffff">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="title" value="BF-03B — Xuất và nhận điều chuyển liên kho" style="text;align=left;fontSize=25;fontStyle=1;fontColor=#17304d;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="20" width="990" height="45" />
         </mxCell>
-        <mxCell id="subtitle" value="Đề xuất quy trình WMSD • 18/10/2026 • Mainflow; ngoại lệ xem mục 4 của tài liệu VI" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+        <mxCell id="subtitle" value="To-be D1–D8 • 20/10/2026 • Chi tiết/ngoại lệ: de_xuat_quy_trinh_2_VI.md, mục 4" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="66" width="990" height="30" />
         </mxCell>
         <mxCell id="lane-src" value="Nhân viên kho nguồn" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
@@ -303,21 +303,21 @@
         <mxCell id="legend" value="Xanh dương: thao tác/chứng từ • Xanh lá: thao tác có thể ghi biến động kho hoặc giữ hộ" style="text;align=left;fontSize=13;fontColor=#43566f;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="1411" width="990" height="35" />
         </mxCell>
-        <mxCell id="note" value="¹ Sales chọn phương án khi phục vụ khách. ² Kho thực hiện quyết định bằng chứng từ mới. ³ Chỉ đóng sau xử lý; không lệch thì bỏ qua duyệt sai lệch." style="rounded=1;fillColor=#f3f5f8;strokeColor=#d6dde6;align=left;spacing=12;fontSize=13;fontColor=#34465e;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
-          <mxGeometry as="geometry" x="40" y="1454" width="990" height="86" />
+        <mxCell id="note" value="¹ Sales chọn phương án khi phục vụ khách. ² Kho thực hiện quyết định bằng chứng từ mới. ³ Chỉ đóng sau xử lý; không lệch thì bỏ qua duyệt sai lệch.&lt;br&gt;D4 xác nhận có chuyển liên kho; khảo sát khai từ 3 kho. Danh sách kho cụ thể còn cần xác minh. Hai đầu xác nhận độc lập." style="rounded=1;fillColor=#f3f5f8;strokeColor=#d6dde6;align=left;spacing=12;fontSize=13;fontColor=#34465e;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="1454" width="990" height="120" />
         </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
   <diagram id="BF-04-VI" name="BF-04 VI">
-    <mxGraphModel dx="1060" dy="1319" grid="1" gridSize="10" page="1" pageWidth="1060" pageHeight="1319" background="#ffffff">
+    <mxGraphModel dx="1060" dy="1353" grid="1" gridSize="10" page="1" pageWidth="1060" pageHeight="1353" background="#ffffff">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="title" value="BF-04 — Kiểm kê và điều chỉnh" style="text;align=left;fontSize=25;fontStyle=1;fontColor=#17304d;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="20" width="980" height="45" />
         </mxCell>
-        <mxCell id="subtitle" value="Đề xuất quy trình WMSD • 18/10/2026 • Mainflow; ngoại lệ xem mục 4 của tài liệu VI" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+        <mxCell id="subtitle" value="To-be D1–D8 • 20/10/2026 • Chi tiết/ngoại lệ: de_xuat_quy_trinh_2_VI.md, mục 4" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="66" width="980" height="30" />
         </mxCell>
         <mxCell id="lane-owner" value="Chủ cửa hàng" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
@@ -326,7 +326,7 @@
         <mxCell id="lane-wh" value="Nhân viên kho" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="530.0" y="115" width="490.0" height="1014" />
         </mxCell>
-        <mxCell id="step-0" value="&lt;b&gt;1. Lập phạm vi và người đếm&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;ST&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-owner">
+        <mxCell id="step-0" value="&lt;b&gt;1. Lập lịch tháng, phạm vi, người đếm&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;ST&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-owner">
           <mxGeometry as="geometry" x="105.0" y="66" width="280" height="86" />
         </mxCell>
         <mxCell id="step-1" value="&lt;b&gt;2. Kích hoạt khóa; lấy phiếu đếm&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;Snapshot / COUNT&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
@@ -383,21 +383,21 @@
         <mxCell id="legend" value="Xanh dương: thao tác/chứng từ • Xanh lá: thao tác có thể ghi biến động kho hoặc giữ hộ" style="text;align=left;fontSize=13;fontColor=#43566f;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="1147" width="980" height="35" />
         </mxCell>
-        <mxCell id="note" value="¹ Không chênh lệch: đóng/mở khóa, không ADJ0. Không đếm transit như bin. Chưa đếm ≠ 0. Từ chối: quay lại giải trình/đếm." style="rounded=1;fillColor=#f3f5f8;strokeColor=#d6dde6;align=left;spacing=12;fontSize=13;fontColor=#34465e;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
-          <mxGeometry as="geometry" x="40" y="1190" width="980" height="86" />
+        <mxCell id="note" value="¹ Không chênh lệch: đóng/mở khóa, không ADJ0. Không đếm transit như bin. Chưa đếm ≠ 0. Từ chối: quay lại giải trình/đếm.&lt;br&gt;D5 giữ khóa phạm vi đến khi hoàn tất xử lý. Không dùng chế độ vừa đếm vừa nhập/xuất. Kiểm hằng tháng hoặc kiểm mục tiêu." style="rounded=1;fillColor=#f3f5f8;strokeColor=#d6dde6;align=left;spacing=12;fontSize=13;fontColor=#34465e;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="1190" width="980" height="120" />
         </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
   <diagram id="BF-05-VI" name="BF-05 VI">
-    <mxGraphModel dx="1070" dy="1451" grid="1" gridSize="10" page="1" pageWidth="1070" pageHeight="1451" background="#ffffff">
+    <mxGraphModel dx="1070" dy="1485" grid="1" gridSize="10" page="1" pageWidth="1070" pageHeight="1485" background="#ffffff">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="title" value="BF-05 — Yêu cầu xuất, soạn và bàn giao" style="text;align=left;fontSize=25;fontStyle=1;fontColor=#17304d;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="20" width="990" height="45" />
         </mxCell>
-        <mxCell id="subtitle" value="Đề xuất quy trình WMSD • 18/10/2026 • Mainflow; ngoại lệ xem mục 4 của tài liệu VI" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+        <mxCell id="subtitle" value="To-be D1–D8 • 20/10/2026 • Chi tiết/ngoại lệ: de_xuat_quy_trinh_2_VI.md, mục 4" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="66" width="990" height="30" />
         </mxCell>
         <mxCell id="lane-sales" value="Nhân viên bán hàng" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
@@ -472,21 +472,21 @@
         <mxCell id="legend" value="Xanh dương: thao tác/chứng từ • Xanh lá: thao tác có thể ghi biến động kho hoặc giữ hộ" style="text;align=left;fontSize=13;fontColor=#43566f;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="1279" width="990" height="35" />
         </mxCell>
-        <mxCell id="note" value="¹ Thiếu hàng: BF-03 hoặc BF-01. Picking không giảm tổng; PGI mới giảm. Hỏng: BF-02. Bàn giao thất bại trước PGI: giữ staging/unpick." style="rounded=1;fillColor=#f3f5f8;strokeColor=#d6dde6;align=left;spacing=12;fontSize=13;fontColor=#34465e;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
-          <mxGeometry as="geometry" x="40" y="1322" width="990" height="86" />
+        <mxCell id="note" value="¹ Thiếu hàng: BF-03 hoặc BF-01. Picking không giảm tổng; PGI mới giảm. Hỏng: BF-02. Bàn giao thất bại trước PGI: giữ staging/unpick.&lt;br&gt;D1 giữ PGI dù khảo sát chọn giảm khi lập đơn. D2 giữ Sales nhập WIR từ nguồn được xác minh; mỗi bộ phận tự xác nhận, không nhập hộ." style="rounded=1;fillColor=#f3f5f8;strokeColor=#d6dde6;align=left;spacing=12;fontSize=13;fontColor=#34465e;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="1322" width="990" height="120" />
         </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
   <diagram id="BF-06-VI" name="BF-06 VI">
-    <mxGraphModel dx="1400" dy="1451" grid="1" gridSize="10" page="1" pageWidth="1400" pageHeight="1451" background="#ffffff">
+    <mxGraphModel dx="1400" dy="1535" grid="1" gridSize="10" page="1" pageWidth="1400" pageHeight="1535" background="#ffffff">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="title" value="BF-06 — Khách trả hàng và nhập lại" style="text;align=left;fontSize=25;fontStyle=1;fontColor=#17304d;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="20" width="1320" height="45" />
         </mxCell>
-        <mxCell id="subtitle" value="Đề xuất quy trình WMSD • 18/10/2026 • Mainflow; ngoại lệ xem mục 4 của tài liệu VI" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+        <mxCell id="subtitle" value="To-be D1–D8 • 20/10/2026 • Chi tiết/ngoại lệ: de_xuat_quy_trinh_2_VI.md, mục 4" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="66" width="1320" height="30" />
         </mxCell>
         <mxCell id="lane-sales" value="Nhân viên bán hàng" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
@@ -501,16 +501,16 @@
         <mxCell id="lane-acc" value="Kế toán" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="1030.0" y="115" width="330.0" height="1146" />
         </mxCell>
-        <mxCell id="step-0" value="&lt;b&gt;1. Lập đề nghị theo nguồn gốc&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;CR&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-sales">
+        <mxCell id="step-0" value="&lt;b&gt;1. Kiểm nguồn và điều kiện D6&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;CR&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-sales">
           <mxGeometry as="geometry" x="25.0" y="66" width="280" height="86" />
         </mxCell>
         <mxCell id="step-1" value="&lt;b&gt;2. Nhận giữ hộ chờ quyết định&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;CUS-IN&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#e8f4ed;strokeColor=#438463;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
           <mxGeometry as="geometry" x="25.0" y="198" width="280" height="86" />
         </mxCell>
-        <mxCell id="step-2" value="&lt;b&gt;3. Kiểm lô, chất lượng và lượng&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;INS&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
+        <mxCell id="step-2" value="&lt;b&gt;3. Kiểm từng lượng và điều kiện D6&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;INS&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
           <mxGeometry as="geometry" x="25.0" y="330" width="280" height="86" />
         </mxCell>
-        <mxCell id="step-3" value="&lt;b&gt;4. Duyệt nhận từng lượng&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;Approval&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-owner">
+        <mxCell id="step-3" value="&lt;b&gt;4. Duyệt lượng đủ điều kiện D6&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;Approval&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-owner">
           <mxGeometry as="geometry" x="25.0" y="462" width="280" height="86" />
         </mxCell>
         <mxCell id="step-4" value="&lt;b&gt;5. Nhập phần nhận; trả phần từ chối&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;GR-CR / CUS-OUT&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#e8f4ed;strokeColor=#438463;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
@@ -574,21 +574,21 @@
         <mxCell id="legend" value="Xanh dương: thao tác/chứng từ • Xanh lá: thao tác có thể ghi biến động kho hoặc giữ hộ" style="text;align=left;fontSize=13;fontColor=#43566f;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="1279" width="1320" height="35" />
         </mxCell>
-        <mxCell id="note" value="CUS-IN chưa tăng owned. GR-CR chuyển quyền quản lý đúng lượng được duyệt. Hàng lỗi có thể được nhận nhưng không usable. Không tính/chi hoàn tiền." style="rounded=1;fillColor=#f3f5f8;strokeColor=#d6dde6;align=left;spacing=12;fontSize=13;fontColor=#34465e;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
-          <mxGeometry as="geometry" x="40" y="1322" width="1320" height="86" />
+        <mxCell id="note" value="D6: nguyên thùng/viên lẻ chưa dùng xét từng trường hợp. Không nhận đã thi công, hỏng do khách hoặc đã xác minh quá hạn.&lt;br&gt;Chưa rõ điều kiện/thời hạn: chờ xác minh, không post GR-CR. Không tự đặt số ngày. Đã nhận vật lý nhưng bị từ chối: custody rồi bàn giao lại; có thể từ chối trước tiếp nhận nếu đã đủ căn cứ.&lt;br&gt;CUS-IN chưa tăng tồn sở hữu. GR-CR chỉ theo phiên bản đánh giá được duyệt. Lỗi do NCC có thể được nhận vào cách ly. Hoàn tiền trên MISA; WMS lưu tham chiếu." style="rounded=1;fillColor=#f3f5f8;strokeColor=#d6dde6;align=left;spacing=12;fontSize=13;fontColor=#34465e;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="1322" width="1320" height="170" />
         </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
   <diagram id="BF-07-VI" name="BF-07 VI">
-    <mxGraphModel dx="1070" dy="1451" grid="1" gridSize="10" page="1" pageWidth="1070" pageHeight="1451" background="#ffffff">
+    <mxGraphModel dx="1070" dy="1485" grid="1" gridSize="10" page="1" pageWidth="1070" pageHeight="1485" background="#ffffff">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="title" value="BF-07 — Trả nhà cung cấp và đối chiếu" style="text;align=left;fontSize=25;fontStyle=1;fontColor=#17304d;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="20" width="990" height="45" />
         </mxCell>
-        <mxCell id="subtitle" value="Đề xuất quy trình WMSD • 18/10/2026 • Mainflow; ngoại lệ xem mục 4 của tài liệu VI" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+        <mxCell id="subtitle" value="To-be D1–D8 • 20/10/2026 • Chi tiết/ngoại lệ: de_xuat_quy_trinh_2_VI.md, mục 4" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="66" width="990" height="30" />
         </mxCell>
         <mxCell id="lane-wh" value="Nhân viên kho" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
@@ -683,21 +683,21 @@
         <mxCell id="legend" value="Xanh dương: thao tác/chứng từ • Xanh lá: thao tác có thể ghi biến động kho hoặc giữ hộ" style="text;align=left;fontSize=13;fontColor=#43566f;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="1279" width="990" height="35" />
         </mxCell>
-        <mxCell id="note" value="¹ Kho thực hiện quyết định bằng chứng từ mới trước đóng. ACK/đóng không trừ tồn nữa. Hàng giữ hộ NCC chỉ giảm custody." style="rounded=1;fillColor=#f3f5f8;strokeColor=#d6dde6;align=left;spacing=12;fontSize=13;fontColor=#34465e;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
-          <mxGeometry as="geometry" x="40" y="1322" width="990" height="86" />
+        <mxCell id="note" value="¹ Kho thực hiện quyết định bằng chứng từ mới trước đóng. ACK/đóng không trừ tồn nữa. Hàng giữ hộ NCC chỉ giảm custody.&lt;br&gt;Chủ/nhân viên mua hàng có thể liên hệ NCC ngoài phần mềm; Accountant ghi thỏa thuận/ACK. Không thêm role mua hàng hoặc giao hàng." style="rounded=1;fillColor=#f3f5f8;strokeColor=#d6dde6;align=left;spacing=12;fontSize=13;fontColor=#34465e;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="1322" width="990" height="120" />
         </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
   <diagram id="BF-01-EN" name="BF-01 EN">
-    <mxGraphModel dx="1400" dy="1319" grid="1" gridSize="10" page="1" pageWidth="1400" pageHeight="1319" background="#ffffff">
+    <mxGraphModel dx="1400" dy="1353" grid="1" gridSize="10" page="1" pageWidth="1400" pageHeight="1353" background="#ffffff">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="title" value="BF-01 — Replenishment, purchase and receipt" style="text;align=left;fontSize=25;fontStyle=1;fontColor=#17304d;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="20" width="1320" height="45" />
         </mxCell>
-        <mxCell id="subtitle" value="WMSD process proposal • 18 Oct 2026 • Mainflow; exceptions in the Vietnamese process proposal" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+        <mxCell id="subtitle" value="To-be D1–D8 • 20 Oct 2026 • Details/exceptions: de_xuat_quy_trinh_2_EN.md, section 4" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="66" width="1320" height="30" />
         </mxCell>
         <mxCell id="lane-sales" value="Sales Staff" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
@@ -721,7 +721,7 @@
         <mxCell id="step-2" value="&lt;b&gt;3. Create PO; record supplier confirmation&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;PO&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-acc">
           <mxGeometry as="geometry" x="25.0" y="330" width="280" height="86" />
         </mxCell>
-        <mxCell id="step-3" value="&lt;b&gt;4. Receive, count and inspect&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;ARR / INS / VAR&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
+        <mxCell id="step-3" value="&lt;b&gt;4. Inspect; record co-inspectors&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;ARR / INS / VAR&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
           <mxGeometry as="geometry" x="25.0" y="462" width="280" height="86" />
         </mxCell>
         <mxCell id="step-4" value="&lt;b&gt;5. Post accepted quantities&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;GR-P / CUS-IN&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#e8f4ed;strokeColor=#438463;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
@@ -774,8 +774,8 @@
         <mxCell id="legend" value="Blue: action/document • Green: action that may post inventory or custody movements" style="text;align=left;fontSize=13;fontColor=#43566f;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="1147" width="1320" height="35" />
         </mxCell>
-        <mxCell id="note" value="¹ Warehouse Staff raises RR for storage demand. ² Owner approves undelivered-remainder cancellation. No accepted quantity: keep case open, no GR." style="rounded=1;fillColor=#f3f5f8;strokeColor=#d6dde6;align=left;spacing=12;fontSize=13;fontColor=#34465e;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
-          <mxGeometry as="geometry" x="40" y="1190" width="1320" height="86" />
+        <mxCell id="note" value="¹ Warehouse Staff raises RR for storage demand. ² Owner approves undelivered-remainder cancellation. No accepted quantity: keep case open, no GR.&lt;br&gt;Owner/Accountant may assist; Warehouse still confirms/posts. Torn packaging alone is not tile damage; count pieces left in opened boxes." style="rounded=1;fillColor=#f3f5f8;strokeColor=#d6dde6;align=left;spacing=12;fontSize=13;fontColor=#34465e;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="1190" width="1320" height="120" />
         </mxCell>
       </root>
     </mxGraphModel>
@@ -788,7 +788,7 @@
         <mxCell id="title" value="BF-02 — Defect isolation and disposition" style="text;align=left;fontSize=25;fontStyle=1;fontColor=#17304d;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="20" width="980" height="45" />
         </mxCell>
-        <mxCell id="subtitle" value="WMSD process proposal • 18 Oct 2026 • Mainflow; exceptions in the Vietnamese process proposal" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+        <mxCell id="subtitle" value="To-be D1–D8 • 20 Oct 2026 • Details/exceptions: de_xuat_quy_trinh_2_EN.md, section 4" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="66" width="980" height="30" />
         </mxCell>
         <mxCell id="lane-wh" value="Warehouse Staff" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
@@ -857,7 +857,7 @@
         <mxCell id="title" value="BF-03A — Relocation within one warehouse" style="text;align=left;fontSize=25;fontStyle=1;fontColor=#17304d;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="20" width="980" height="45" />
         </mxCell>
-        <mxCell id="subtitle" value="WMSD process proposal • 18 Oct 2026 • Mainflow; exceptions in the Vietnamese process proposal" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+        <mxCell id="subtitle" value="To-be D1–D8 • 20 Oct 2026 • Details/exceptions: de_xuat_quy_trinh_2_EN.md, section 4" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="66" width="980" height="30" />
         </mxCell>
         <mxCell id="lane-wh" value="Warehouse Staff" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
@@ -894,14 +894,14 @@
     </mxGraphModel>
   </diagram>
   <diagram id="BF-03B-EN" name="BF-03B EN">
-    <mxGraphModel dx="1070" dy="1583" grid="1" gridSize="10" page="1" pageWidth="1070" pageHeight="1583" background="#ffffff">
+    <mxGraphModel dx="1070" dy="1617" grid="1" gridSize="10" page="1" pageWidth="1070" pageHeight="1617" background="#ffffff">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="title" value="BF-03B — Inter-warehouse dispatch and receipt" style="text;align=left;fontSize=25;fontStyle=1;fontColor=#17304d;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="20" width="990" height="45" />
         </mxCell>
-        <mxCell id="subtitle" value="WMSD process proposal • 18 Oct 2026 • Mainflow; exceptions in the Vietnamese process proposal" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+        <mxCell id="subtitle" value="To-be D1–D8 • 20 Oct 2026 • Details/exceptions: de_xuat_quy_trinh_2_EN.md, section 4" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="66" width="990" height="30" />
         </mxCell>
         <mxCell id="lane-src" value="Source Warehouse Staff" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
@@ -992,21 +992,21 @@
         <mxCell id="legend" value="Blue: action/document • Green: action that may post inventory or custody movements" style="text;align=left;fontSize=13;fontColor=#43566f;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="1411" width="990" height="35" />
         </mxCell>
-        <mxCell id="note" value="¹ Sales selects the fulfilment option when needed. ² Warehouse executes decisions with new documents. ³ Close only after resolution; skip variance approval when matched." style="rounded=1;fillColor=#f3f5f8;strokeColor=#d6dde6;align=left;spacing=12;fontSize=13;fontColor=#34465e;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
-          <mxGeometry as="geometry" x="40" y="1454" width="990" height="86" />
+        <mxCell id="note" value="¹ Sales selects the fulfilment option when needed. ² Warehouse executes decisions with new documents. ³ Close only after resolution; skip variance approval when matched.&lt;br&gt;D4 confirms inter-warehouse transfers; the survey reports at least 3 warehouses. The actual warehouse list still needs verification. Separate source/destination confirmations." style="rounded=1;fillColor=#f3f5f8;strokeColor=#d6dde6;align=left;spacing=12;fontSize=13;fontColor=#34465e;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="1454" width="990" height="120" />
         </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
   <diagram id="BF-04-EN" name="BF-04 EN">
-    <mxGraphModel dx="1060" dy="1319" grid="1" gridSize="10" page="1" pageWidth="1060" pageHeight="1319" background="#ffffff">
+    <mxGraphModel dx="1060" dy="1353" grid="1" gridSize="10" page="1" pageWidth="1060" pageHeight="1353" background="#ffffff">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="title" value="BF-04 — Stocktake and adjustment" style="text;align=left;fontSize=25;fontStyle=1;fontColor=#17304d;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="20" width="980" height="45" />
         </mxCell>
-        <mxCell id="subtitle" value="WMSD process proposal • 18 Oct 2026 • Mainflow; exceptions in the Vietnamese process proposal" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+        <mxCell id="subtitle" value="To-be D1–D8 • 20 Oct 2026 • Details/exceptions: de_xuat_quy_trinh_2_EN.md, section 4" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="66" width="980" height="30" />
         </mxCell>
         <mxCell id="lane-owner" value="Store Owner" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
@@ -1015,7 +1015,7 @@
         <mxCell id="lane-wh" value="Warehouse Staff" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="530.0" y="115" width="490.0" height="1014" />
         </mxCell>
-        <mxCell id="step-0" value="&lt;b&gt;1. Plan scope and assign counters&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;ST&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-owner">
+        <mxCell id="step-0" value="&lt;b&gt;1. Plan monthly scope and counters&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;ST&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-owner">
           <mxGeometry as="geometry" x="105.0" y="66" width="280" height="86" />
         </mxCell>
         <mxCell id="step-1" value="&lt;b&gt;2. Activate freeze; obtain count sheet&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;Snapshot / COUNT&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
@@ -1072,21 +1072,21 @@
         <mxCell id="legend" value="Blue: action/document • Green: action that may post inventory or custody movements" style="text;align=left;fontSize=13;fontColor=#43566f;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="1147" width="980" height="35" />
         </mxCell>
-        <mxCell id="note" value="¹ No difference: close/unlock without ADJ0. Do not count transit as a bin. Uncounted ≠ zero. Rejection returns to explanation/recount." style="rounded=1;fillColor=#f3f5f8;strokeColor=#d6dde6;align=left;spacing=12;fontSize=13;fontColor=#34465e;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
-          <mxGeometry as="geometry" x="40" y="1190" width="980" height="86" />
+        <mxCell id="note" value="¹ No difference: close/unlock without ADJ0. Do not count transit as a bin. Uncounted ≠ zero. Rejection returns to explanation/recount.&lt;br&gt;D5 retains frozen scope until resolution. No concurrent-movement counting in this baseline. Monthly or targeted stocktakes." style="rounded=1;fillColor=#f3f5f8;strokeColor=#d6dde6;align=left;spacing=12;fontSize=13;fontColor=#34465e;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="1190" width="980" height="120" />
         </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
   <diagram id="BF-05-EN" name="BF-05 EN">
-    <mxGraphModel dx="1070" dy="1451" grid="1" gridSize="10" page="1" pageWidth="1070" pageHeight="1451" background="#ffffff">
+    <mxGraphModel dx="1070" dy="1485" grid="1" gridSize="10" page="1" pageWidth="1070" pageHeight="1485" background="#ffffff">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="title" value="BF-05 — Issue request, picking and handover" style="text;align=left;fontSize=25;fontStyle=1;fontColor=#17304d;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="20" width="990" height="45" />
         </mxCell>
-        <mxCell id="subtitle" value="WMSD process proposal • 18 Oct 2026 • Mainflow; exceptions in the Vietnamese process proposal" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+        <mxCell id="subtitle" value="To-be D1–D8 • 20 Oct 2026 • Details/exceptions: de_xuat_quy_trinh_2_EN.md, section 4" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="66" width="990" height="30" />
         </mxCell>
         <mxCell id="lane-sales" value="Sales Staff" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
@@ -1161,21 +1161,21 @@
         <mxCell id="legend" value="Blue: action/document • Green: action that may post inventory or custody movements" style="text;align=left;fontSize=13;fontColor=#43566f;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="1279" width="990" height="35" />
         </mxCell>
-        <mxCell id="note" value="¹ Shortage: BF-03 or BF-01. Picking preserves total; PGI deducts. Defects: BF-02. Failed handover before PGI: keep staged or unpick." style="rounded=1;fillColor=#f3f5f8;strokeColor=#d6dde6;align=left;spacing=12;fontSize=13;fontColor=#34465e;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
-          <mxGeometry as="geometry" x="40" y="1322" width="990" height="86" />
+        <mxCell id="note" value="¹ Shortage: BF-03 or BF-01. Picking preserves total; PGI deducts. Defects: BF-02. Failed handover before PGI: keep staged or unpick.&lt;br&gt;D1 retains PGI despite reported order-time deduction. D2 retains Sales entry of verified source demand and each department&#x27;s own confirmation; no proxy entry." style="rounded=1;fillColor=#f3f5f8;strokeColor=#d6dde6;align=left;spacing=12;fontSize=13;fontColor=#34465e;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="1322" width="990" height="120" />
         </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
   <diagram id="BF-06-EN" name="BF-06 EN">
-    <mxGraphModel dx="1400" dy="1451" grid="1" gridSize="10" page="1" pageWidth="1400" pageHeight="1451" background="#ffffff">
+    <mxGraphModel dx="1400" dy="1535" grid="1" gridSize="10" page="1" pageWidth="1400" pageHeight="1535" background="#ffffff">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="title" value="BF-06 — Customer return and accepted receipt" style="text;align=left;fontSize=25;fontStyle=1;fontColor=#17304d;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="20" width="1320" height="45" />
         </mxCell>
-        <mxCell id="subtitle" value="WMSD process proposal • 18 Oct 2026 • Mainflow; exceptions in the Vietnamese process proposal" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+        <mxCell id="subtitle" value="To-be D1–D8 • 20 Oct 2026 • Details/exceptions: de_xuat_quy_trinh_2_EN.md, section 4" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="66" width="1320" height="30" />
         </mxCell>
         <mxCell id="lane-sales" value="Sales Staff" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
@@ -1190,16 +1190,16 @@
         <mxCell id="lane-acc" value="Accountant" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="1030.0" y="115" width="330.0" height="1146" />
         </mxCell>
-        <mxCell id="step-0" value="&lt;b&gt;1. Request return against source&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;CR&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-sales">
+        <mxCell id="step-0" value="&lt;b&gt;1. Check source and D6 conditions&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;CR&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-sales">
           <mxGeometry as="geometry" x="25.0" y="66" width="280" height="86" />
         </mxCell>
         <mxCell id="step-1" value="&lt;b&gt;2. Take custody pending decision&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;CUS-IN&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#e8f4ed;strokeColor=#438463;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
           <mxGeometry as="geometry" x="25.0" y="198" width="280" height="86" />
         </mxCell>
-        <mxCell id="step-2" value="&lt;b&gt;3. Inspect lot, quality and quantity&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;INS&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
+        <mxCell id="step-2" value="&lt;b&gt;3. Inspect each quantity and D6&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;INS&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
           <mxGeometry as="geometry" x="25.0" y="330" width="280" height="86" />
         </mxCell>
-        <mxCell id="step-3" value="&lt;b&gt;4. Accept/reject by quantity&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;Approval&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-owner">
+        <mxCell id="step-3" value="&lt;b&gt;4. Decide D6-eligible quantities&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;Approval&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#eaf1fb;strokeColor=#6b88ac;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-owner">
           <mxGeometry as="geometry" x="25.0" y="462" width="280" height="86" />
         </mxCell>
         <mxCell id="step-4" value="&lt;b&gt;5. Receive accepted; hand back rejected&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#43566f&quot;&gt;GR-CR / CUS-OUT&lt;/font&gt;" style="rounded=1;arcSize=12;fontSize=15;spacing=10;strokeWidth=1.5;fillColor=#e8f4ed;strokeColor=#438463;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="lane-wh">
@@ -1263,21 +1263,21 @@
         <mxCell id="legend" value="Blue: action/document • Green: action that may post inventory or custody movements" style="text;align=left;fontSize=13;fontColor=#43566f;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="1279" width="1320" height="35" />
         </mxCell>
-        <mxCell id="note" value="CUS-IN does not increase owned stock. GR-CR transfers accepted ownership. Accepted damaged goods remain unavailable. No refund calculation or payment." style="rounded=1;fillColor=#f3f5f8;strokeColor=#d6dde6;align=left;spacing=12;fontSize=13;fontColor=#34465e;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
-          <mxGeometry as="geometry" x="40" y="1322" width="1320" height="86" />
+        <mxCell id="note" value="D6: sealed boxes/unused loose tiles are case-by-case. Reject installed, customer-damaged or confirmed overdue goods.&lt;br&gt;Unverified conditions/deadline: pending, no GR-CR. Do not invent return days. Physically received but rejected goods remain custody until handback; proven ineligible requests may be rejected before intake.&lt;br&gt;CUS-IN does not increase owned stock. GR-CR uses the approved assessment version. Supplier-defective goods may enter quarantine. Refunds stay in MISA; WMS records references." style="rounded=1;fillColor=#f3f5f8;strokeColor=#d6dde6;align=left;spacing=12;fontSize=13;fontColor=#34465e;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="1322" width="1320" height="170" />
         </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
   <diagram id="BF-07-EN" name="BF-07 EN">
-    <mxGraphModel dx="1070" dy="1451" grid="1" gridSize="10" page="1" pageWidth="1070" pageHeight="1451" background="#ffffff">
+    <mxGraphModel dx="1070" dy="1485" grid="1" gridSize="10" page="1" pageWidth="1070" pageHeight="1485" background="#ffffff">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="title" value="BF-07 — Supplier return and reconciliation" style="text;align=left;fontSize=25;fontStyle=1;fontColor=#17304d;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="20" width="990" height="45" />
         </mxCell>
-        <mxCell id="subtitle" value="WMSD process proposal • 18 Oct 2026 • Mainflow; exceptions in the Vietnamese process proposal" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+        <mxCell id="subtitle" value="To-be D1–D8 • 20 Oct 2026 • Details/exceptions: de_xuat_quy_trinh_2_EN.md, section 4" style="text;align=left;fontSize=13;fontColor=#58677c;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="66" width="990" height="30" />
         </mxCell>
         <mxCell id="lane-wh" value="Warehouse Staff" style="swimlane;horizontal=1;startSize=46;collapsible=0;container=1;fontSize=17;fontStyle=1;fillColor=#edf2f7;swimlaneFillColor=#fafbfd;strokeColor=#c9d3df;pointerEvents=0;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
@@ -1372,8 +1372,8 @@
         <mxCell id="legend" value="Blue: action/document • Green: action that may post inventory or custody movements" style="text;align=left;fontSize=13;fontColor=#43566f;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="40" y="1279" width="990" height="35" />
         </mxCell>
-        <mxCell id="note" value="¹ Warehouse executes resolution with new documents before closure. ACK/closure never deduct again. Supplier-owned goods reduce custody only." style="rounded=1;fillColor=#f3f5f8;strokeColor=#d6dde6;align=left;spacing=12;fontSize=13;fontColor=#34465e;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
-          <mxGeometry as="geometry" x="40" y="1322" width="990" height="86" />
+        <mxCell id="note" value="¹ Warehouse executes resolution with new documents before closure. ACK/closure never deduct again. Supplier-owned goods reduce custody only.&lt;br&gt;Owner/purchasing personnel may contact the supplier externally; Accountant records agreement/ACK. No purchasing or delivery application role is added." style="rounded=1;fillColor=#f3f5f8;strokeColor=#d6dde6;align=left;spacing=12;fontSize=13;fontColor=#34465e;html=1;fontFamily=Arial;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="1322" width="990" height="120" />
         </mxCell>
       </root>
     </mxGraphModel>
