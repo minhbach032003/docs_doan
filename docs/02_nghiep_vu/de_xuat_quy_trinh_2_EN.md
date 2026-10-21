@@ -1,10 +1,10 @@
 # Process Proposal 2 — WMSD — English
 
-Updated: 20 October 2026. This version carries forward the 17 October review and 19 October additions, and incorporates one survey response submitted at 09:04:25 on 20 October 2026 (GMT+7) and the user's D1–D8 decisions. This is the **To-be selected for this documentation update**, not a claim that the store already follows or has approved every software control.
+Updated: 21 October 2026. This version carries forward the 17 October review and 19 October additions, and incorporates one survey response submitted at 09:04:25 on 20 October 2026 (GMT+7) and the user's D1–D8 decisions. This is the **To-be selected for this documentation update**, not a claim that the store already follows or has approved every software control.
 
-The original proposal remains unchanged. This update covers the UC/actor/permission tables in the Report 3 `.docx.txt` extract, the draw.io flows and reference SQL; it does not edit Report 1 or the Word `.docx`. Vietnamese version: [de_xuat_quy_trinh_2_VI.md](de_xuat_quy_trinh_2_VI.md). Change log: [change_logs.md](../../change_logs.md).
+The original proposal remains unchanged. The 21 October update synchronizes the complete Report 1/Report 3 `.docx.txt` extracts, both process and database proposals, and reference SQL under D1–D8; each BF gains alternate/exception paths. Word `.docx`, embedded images and draw.io are not edited in this round; the text and Mermaid in this set specify the current behavior. Vietnamese version: [de_xuat_quy_trinh_2_VI.md](de_xuat_quy_trinh_2_VI.md). Change log: [change_logs.md](../../change_logs.md).
 
-**19 October additions carried forward:** warehouse terminology, document catalogue and posting rules. Database details remain in the [database design proposal](../03_thiet_ke/de_xuat_database_design_VI.md). SQL is a reference model; actual persistence remains MongoDB (NoSQL).
+**19 October additions carried forward:** warehouse terminology, document catalogue and posting rules. Database details remain in the [database design proposal — EN](../03_thiet_ke/de_xuat_database_design_EN.md). SQL is a reference model; actual persistence remains MongoDB (NoSQL).
 
 ## Warehouse terminology
 
@@ -103,7 +103,7 @@ Proposed MVP retirements do not delete historical data: selling prices UC-23–2
 
 ## 2. Differences identified in the earlier baseline
 
-The table preserves the 17 October findings for traceability; not every item remains unresolved in the tables updated on 20 October. Report 3 extract sections 4.1, 4.2 and 4.4 are synchronized; other report sections are tracked separately in the change log.
+The table preserves the 17 October findings for traceability; not every item remains unresolved in the tables updated on 20 October. The complete Report 3 text and Report 1 text are synchronized on 21 October; original Word/embedded figures remain separate artifacts.
 
 | Reviewed location | Finding | Correction |
 |---|---|---|
@@ -161,6 +161,19 @@ Authorization checks **role + operation + assigned warehouse + document state + 
 
 **Documents:** RR, PO, arrival/inspection, GR, put-away task and discrepancy record. Reference: SAP WM I pp. 10–11, 18–22 and [MISA purchase receipt](https://helpeshop.misa.vn/kb/huong-dan-su-dung-tinh-nang-nhap-kho-tren-phan-mem-misa-eshop). Tone/calibre and permissions are WMSD-specific proposed controls.
 
+#### 01.X — Alternate and exception flows
+
+A denotes an alternate path and E an exception; step numbers refer to the main flow above. Apply outcomes per quantity rather than forcing one result for the whole document.
+
+| ID | Condition | Responsible actor and action | Stock outcome / re-entry | UC |
+|---|---|---|---|---|
+| BF-01-A1 | Demand already covered | Sales/Warehouse checks allocations, timely PO/TD supply; submit only the uncovered balance, no duplicate RR. | No stock change; return to steps 1–2. | UC-03, UC-103 |
+| BF-01-A2 | Owner rejects or requests revision | Retain reason; reject closes the proposal, revision creates a new version for review; Accountant cannot create an unapproved PO. | No stock change; step 3 or end. | UC-04 |
+| BF-01-A3 | Supplier partial fulfilment | Accountant records quantities/dates; changes beyond approval need renewed review; Owner authorizes short closure; preserve posted GRs. | Receive each delivery at step 5; no fictitious receipt for cancelled quantities. | UC-07, UC-26 |
+| BF-01-E1 | Over or wrong delivery | Warehouse separates quantities, records discrepancy/custody if held; no automatic substitution or excess PO receipt. Accountant coordinates; Owner authorizes required changes before acceptance. | GR only eligible quantities; remainder pending or handed back. | UC-26 |
+| BF-01-E2 | Zero accepted quantity | Retain arrival/inspection, evidence and custody/handback outcome; PO outstanding and discrepancy remain open. | No zero-quantity GR; no increase in owned stock. | UC-10, UC-26 |
+| BF-01-A4 | Torn/open boxes; replacements | Count actual pieces; inspect quality independently. Supplier replacement is a new linked arrival/GR; never rewrite the original GR. | After GR, put-away at step 8; no second receipt on placement. | UC-26, UC-33 |
+
 ### BF-02 — Defect detection, isolation and disposition
 
 **Trigger:** cracks/quality defects discovered in BF-01/03/04/05/06 or routine work.
@@ -176,6 +189,17 @@ Authorization checks **role + operation + assigned warehouse + document state + 
 **Inventory effect:** quarantine/regrade preserves store-owned totals. Destruction reduces actual destroyed quantity; supplier return deducts in BF-07, not again here. Previously deducted quantities cannot be deducted through another case.
 
 **Documents:** defect case, inspection, disposition decision, destruction record/return issue. These controls address tiles and panel feedback; the four SAP cases do not provide this complete workflow to copy.
+
+#### 02.X — Alternate and exception flows
+
+A denotes an alternate path and E an exception; step numbers refer to the main flow above. Apply outcomes per quantity rather than forcing one result for the whole document.
+
+| ID | Condition | Responsible actor and action | Stock outcome / re-entry | UC |
+|---|---|---|---|---|
+| BF-02-E1 | Defect in reserved or picked stock | Warehouse immediately blocks defective quantity, preserves demand linkage and informs Sales; seek replacement supply without awaiting quarantine approval. | Owned total unchanged; BF-05 waits/replans. | UC-65, UC-103 |
+| BF-02-A1 | Ownership or cause unclear | Keep PENDING/BLOCKED quality and recorded owner; obtain evidence, never turn custody into store stock through a note. | Wait at steps 3–4; unavailable. | UC-65 |
+| BF-02-A2 | Rejected or partial disposition | Record line/quantity/version decision; unapproved quantity stays isolated; Warehouse executes only the approved portion. | Return to step 4 or execute eligible portion at step 6. | UC-66, UC-67 |
+| BF-02-E2 | Return or destruction not executed | Route to BF-07 with valid approval; supplier dispatch deducts at UC-82 only. Destruction needs actual quantity/evidence, not approval alone. | Keep open until execution; no duplicate deduction. | UC-67, UC-82, UC-106 |
 
 ### BF-03 — Relocation, inter-warehouse transfer and discrepancies
 
@@ -203,6 +227,18 @@ Authorization checks **role + operation + assigned warehouse + document state + 
 
 **Documents:** relocation log, TR, TD, handover, MWTR, discrepancy case. SAP WM II distinguishes STO, issue/receipt and put-away TO. [MISA transfer](https://helpeshop.misa.vn/kb/huong-dan-cach-chuyen-kho-tren-phan-mem-misa-eshop) distinguishes warehouse moves within a branch and inter-branch transfers. WMSD applies physical warehouses of one store and review1's two-document requirement without inferring multiple branches.
 
+#### 03.X — Alternate and exception flows
+
+A denotes an alternate path and E an exception; step numbers refer to the main flow above. Apply outcomes per quantity rather than forcing one result for the whole document.
+
+| ID | Condition | Responsible actor and action | Stock outcome / re-entry | UC |
+|---|---|---|---|---|
+| BF-03-A1 | Same-warehouse relocation | Warehouse validates same warehouse and lot/quality/owner; move reservations with stock, no TR or Owner approval. | Equal source/destination changes; total unchanged. | UC-36, UC-37 |
+| BF-03-A2 | Direct issue from another warehouse | Sales agrees with customer; split OD by actual warehouse and run BF-05 there, no fictitious receipt at the requested warehouse. | No transit without physical transfer. | UC-51, UC-103 |
+| BF-03-E1 | Rejected TR or unavailable resources | Owner records reason; Warehouse rechecks stock/freeze before dispatch. Wait or revise unexecuted quantity with authorization; absent an independent receiver, wait for staffing rather than using the dispatch user. | No posting without prerequisites; changed scope requires review. | UC-41, UC-43, UC-104 |
+| BF-03-E2 | Partial or damaged receipt | Destination posts actual quantities by quality; shortages remain transit and later MWTRs may receive them. Damaged stock physically received is quarantine, not also lost transit. | TD100, receive95GOOD+3DAMAGED → transit2. | UC-104 |
+| BF-03-E3 | Excess, wrong lot or evidenced loss | Record separate evidence; no negative transit or silent lot substitution. Owner resolves; Warehouse executes linked additional receipt, return or loss documents for authorized quantities. | Close only with accountable quantities; preserve original TD/MWTR. | UC-44, UC-43, UC-104 |
+
 ### BF-04 — Stocktake, reconciliation and adjustment
 
 **Trigger:** monthly periodic stocktake per Q14, area counts or suspected discrepancies.
@@ -210,7 +246,7 @@ Authorization checks **role + operation + assigned warehouse + document state + 
 1. Owner plans scope by warehouse/location/lot/status, schedule and counters. Adjustment requester cannot approve their own request.
 2. Resolve unfinished receipt/issue/transfer tasks in scope. Separate staged, quarantined, custody and transit stock; never count both ends of a transfer.
 3. Activate an **immutable cutoff snapshot** and export/print a **count sheet** by location/lot/status. Allow newly found items. Prefer blind count sheets without book quantities.
-4. **Selected MVP: lock quantity/location/status-changing transactions in the counted scope until the session is resolved.** Other areas continue. This deliberately differs from Report 3's post-cutoff reconciliation model. Do not implement partial locking without reconciliation.
+4. **Selected MVP: lock quantity/location/status-changing transactions in the counted scope until the session is resolved.** Other areas continue. This replaces the earlier Report 3 post-cutoff reconciliation model. Do not implement partial locking without reconciliation.
 5. Warehouse counts BOX/PIECE and condition with user/time. Blank means uncounted, not zero. Keep every recount attempt.
 6. Compare valid counts to snapshot. Recount unfamiliar lots/discrepancies and investigate documents/reasons. Physically present damaged stock may be a quality variance, not missing quantity.
 7. No variance: complete/unlock without a zero adjustment. Otherwise Warehouse proposes the delta against the correct version.
@@ -219,6 +255,18 @@ Authorization checks **role + operation + assigned warehouse + document state + 
 **Feasibility:** D5 selected locking; the following advanced alternative is **not selected**. Count small areas with Owner available to avoid prolonged locks. If operations must continue during counting, expected quantity at count time = snapshot + receipts after cutoff − issues after cutoff; delta = physical count − expected quantity. Apply delta to current stock, never replace current stock with an old count. This requires per-line count timestamps and late/backdated movement controls. These are distinct designs and cannot be mixed casually.
 
 **Documents:** session, count sheet, counts/recounts, variance record, adjustment request, approval and increase/decrease documents. SAP WM IV pp. 2, 4–6, 12–17, 20–21, 26–27 supports freeze/recount/clearing concepts, not a requirement to implement SAP WM/MM dual books or value accounting. [MISA stocktake](https://helpeshop.misa.vn/kb/huong-dan-cach-kiem-ke-kho-tren-phan-mem-misa-eshop) informs quantity/reason/document handling; immutable snapshot and approval controls are WMSD To-be.
+
+#### 04.X — Alternate and exception flows
+
+A denotes an alternate path and E an exception; step numbers refer to the main flow above. Apply outcomes per quantity rather than forcing one result for the whole document.
+
+| ID | Condition | Responsible actor and action | Stock outcome / re-entry | UC |
+|---|---|---|---|---|
+| BF-04-E1 | Open tasks or overlapping freeze | Owner/Warehouse resolve before activation; reject overlap with another frozen session. Freeze blocks receipt, issue, movement and quality changes in scope. | No snapshot until atomic freeze succeeds; other scope continues. | UC-86, UC-87 |
+| BF-04-A1 | Blank, zero or newly found stock | Warehouse distinguishes uncounted from valid zero. Verified found stock gets a flagged found_after_cutoff row with book=0; original snapshot rows remain immutable. | Blank never implies total loss; recount appends a new attempt. | UC-87, UC-88 |
+| BF-04-A2 | Quality variance or unexplained count | Warehouse recounts and checks lot/units/documents; damaged but present stock uses quality/BF-02, not an extra negative quantity adjustment. | Keep freeze; no final delta approval without evidence. | UC-88, UC-91 |
+| BF-04-A3 | No variance or returned adjustment | No variance closes/unlocks without ADJ0. Owner rejection/revision keeps session open; Warehouse adds evidence/recounts and resubmits a new version. | Approval does not post; UC-93 posts authorized delta and unlocks only after resolution. | UC-92, UC-93 |
+| BF-04-E2 | Interrupted clearing | Recover saved session/history and retain scope freeze. Check committed batch before retry with the same operation key; do not auto-unlock or switch to concurrent-movement counting. | Failed batch rolls back; committed batch returns prior result. | UC-87, UC-93 |
 
 ### BF-05 — Issue request, picking and handover
 
@@ -238,6 +286,18 @@ Authorization checks **role + operation + assigned warehouse + document state + 
 **Inventory effect:** reservation reduces availability; picking moves bin → staging without reducing warehouse total; PGI reduces total and consumes the matching reservation. Creating requests, printing or emailing does not deduct.
 
 **Documents:** WIR, delivery plan, picking task, shortage/defect record, GI and handover. SAP WM III p. 2 covers integrated SD–WM, pp. 12–17 picking and pp. 21–22 PGI; its WM instructions do not establish WMSD billing/payment scope. [MISA sales issue](https://helpsme.misa.vn/2022/kb/xuat_kho_ban_hang/) informs request/document/Warehouse responsibilities.
+
+#### 05.X — Alternate and exception flows
+
+A denotes an alternate path and E an exception; step numbers refer to the main flow above. Apply outcomes per quantity rather than forcing one result for the whole document.
+
+| ID | Condition | Responsible actor and action | Stock outcome / re-entry | UC |
+|---|---|---|---|---|
+| BF-05-E1 | Unverified source, duplicates or stock race | Sales/Accountant verifies external source; reject duplicate source+line+release. Reserve atomically; later demand gets remaining supply or waits. | No fabricated source/internal SO; no negative availability. | UC-47, UC-51, UC-108 |
+| BF-05-A1 | Partial, delayed or substituted delivery | Sales records customer agreement on quantities/compatible lots and splits OD releases; shortage uses UC-103→BF-01/03. Resolve bound tasks before changes. | Reserve covered quantity only; remainder stays outstanding. | UC-48, UC-51, UC-103 |
+| BF-05-E2 | Picking discrepancy | Warehouse records actuals and isolates defects/BF-02; unexplained mismatch triggers targeted BF-04. Sales chooses replacement/waiting; no direct balance edit. | Picking changes position/reservation only, not total. | UC-55, UC-65 |
+| BF-05-A2 | Cancelled or delayed handover before PGI | Keep staged stock or document Warehouse unpick to eligible storage; release corresponding reservation before Sales cancels unissued remainder. | No PGI without handover; warehouse total unchanged. | UC-48, UC-55, UC-58 |
+| BF-05-E3 | Cancellation or return after PGI | Do not restore stock through status edits. Actual returned goods use BF-06/inspection; posting errors use eligible linked reversal/correction. | Retain reconciliation state; carrier handover is not customer receipt. | UC-58, UC-70, UC-73 |
 
 ### BF-06 — Customer return and classification for receipt
 
@@ -263,6 +323,18 @@ Sales checks commercial conditions before intake when evidence permits; Warehous
 
 [MISA eShop invoice-linked returns](https://helpeshop.misa.vn/v1/kb/doi-tra-hang-cho-khach-theo-hoa-don-thi-thuc-hien-nhu-the-nao) informs source linkage and return receipts; automatic retail documents do not replace tile quality inspection.
 
+#### 06.X — Alternate and exception flows
+
+A denotes an alternate path and E an exception; step numbers refer to the main flow above. Apply outcomes per quantity rather than forcing one result for the whole document.
+
+| ID | Condition | Responsible actor and action | Stock outcome / re-entry | UC |
+|---|---|---|---|---|
+| BF-06-A1 | Historical sale without WMS GI | Sales references external history; Accountant UC-108 verifies dispatched, returned and open quantities; never fabricate a historical GI. | Unverified → pending source; held goods stay custody. | UC-70, UC-108 |
+| BF-06-E1 | Ineligible or unknown D6 conditions | Installed/customer-damaged/verified overdue → INELIGIBLE. Unknown without a proven exclusion → PENDING. Evidence-complete sealed/unused loose quantities → CASE_REVIEW, still subject to Owner decision. | No GR-CR for PENDING/INELIGIBLE; no invented return deadline. | UC-71, UC-72, UC-73 |
+| BF-06-A2 | Mixed return or partial acceptance | Warehouse splits lines by conditions/quality; Owner decides after inspection. Accept7good+2supplier-defective, reject1 → owned+9, custody1 until handback. | Only GOOD after put-away can become available; supplier defects stay quarantined. | UC-71, UC-72, UC-73 |
+| BF-06-E2 | Changed assessment or excess return | Serialize cumulative source claims. Changed conditions/quantities create a new assessment/document version and renewed review; old approval cannot authorize the changed receipt. | Reject over-claim/stale version; no half-posted failed batch. | UC-70, UC-71, UC-73 |
+| BF-06-A3 | Withdrawn request or delayed handback | Before intake, Sales closes unexecuted demand with reason; after intake, Warehouse records actual handback. External finance may remain pending through UC-108. | No custody release on a promise; no refund workflow. | UC-70, UC-73, UC-108 |
+
 ### BF-07 — Supplier return and quantity reconciliation
 
 **Trigger:** wrong/defective goods or other supplier-agreed returns from BF-01/02/06 or existing stock.
@@ -279,6 +351,31 @@ Sales checks commercial conditions before intake when evidence permits; Warehous
 **Inventory effect:** request/approval does not reduce total. Actual return dispatch reduces owned stock; acknowledgement/closure does not. Replacements are linked new receipts, never direct stock increases from supplier agreement.
 
 **Documents:** supplier-return request, agreement, approval, GI/handover, receipt acknowledgement, discrepancy case and external references. [MISA purchased-goods returns](https://helpsme.misa.vn/2022/kb/tralai_hangdamuave_nhapkho/) informs agreement/document/physical issue/reconciliation, not copied accounting entries or old invoice instructions.
+
+#### 07.X — Alternate and exception flows
+
+A denotes an alternate path and E an exception; step numbers refer to the main flow above. Apply outcomes per quantity rather than forcing one result for the whole document.
+
+| ID | Condition | Responsible actor and action | Stock outcome / re-entry | UC |
+|---|---|---|---|---|
+| BF-07-A1 | Pending, refused or partial supplier agreement | Accountant records UC-107; Warehouse prepares only agreed and Owner-authorized UC-106 quantities. Pending/refused cases stay open or close unexecuted remainder with a recorded decision; defects remain isolated. | No dispatch without both agreement and internal authorization. | UC-81, UC-106, UC-107 |
+| BF-07-A2 | Reuse valid BF-02 decision | Check decision kind, case, version, line/quantity and unexecuted balance; reuse only sufficient authorization, submit changes to UC-106. | No repeated approval of the same decision; UC-67 does not pre-deduct UC-82. | UC-66, UC-67, UC-106 |
+| BF-07-E1 | Short pick or supplier custody | Warehouse checks ownership and actual picked quantity; revise only unexecuted scope. Supplier goods never owned by the store reduce custody only. | Owned dispatch deducts once; custody dispatch does not deduct owned stock. | UC-82 |
+| BF-07-E2 | Supplier receipt mismatch | Accountant records actual ACK without editing GI; Owner UC-106 resolves variance. Returned-back goods increase stock only after actual receipt/inspection with linked documents. | Pending ACK/variance blocks closure; ACK makes no second deduction. | UC-83, UC-106, UC-107 |
+| BF-07-A3 | Replacement or external settlement | Accountant records UC-108 references; replacements need a new arrival/GR. Owner closes warehouse work only after quantities reconcile; finance has an independent status. | Agreement/compensation does not recreate stock. | UC-83, UC-108 |
+
+
+### 4.X — Shared failures across all processes
+
+| ID | Condition | Required outcome |
+|---|---|---|
+| EX-01 | Wrong role/warehouse, self-approval or transfer receiver equals dispatcher | Reject server-side, protect evidence scope and leave data/stock unchanged. |
+| EX-02 | Version conflict or competing claims on the same quantity | Recheck version/source/approval in transaction; roll back the whole failed batch, refresh and handle the remainder. |
+| EX-03 | Retry after connection loss with unknown commit | Look up idempotency and operation keys; return committed result or retry the uncommitted operation with the same key; changed payload conflicts. |
+| EX-04 | Stocktake freeze on affected location | Block quantity/location/quality changes in scope; do not bypass through backdating; wait for completion. |
+| EX-05 | Upload/print/email failure | Required evidence missing blocks posting; post-commit notification failure retries outbox only, without rollback or repeat stock posting. |
+
+Accept each branch by its BF-xx-A/E ID above and EX-01–05. These are implementation acceptance criteria, not reported backend test results.
 
 ## 5. UC change matrix against the existing catalogue
 
@@ -345,7 +442,7 @@ Retain existing IDs for traceability; mark retired/new IDs explicitly rather tha
 
 **BF-07 uses UC-106 for variance-resolution approval and UC-83 for closure**; UC-44 is only for BF-03. UC-107 records/detects discrepancies and routes them to the right case. UC-106 distinguishes initial dispatch approval and later variance decisions by decision kind, version and quantity; old approval does not authorize another deduction.
 
-This catalogue retains UC-105 separately: **108 traceable identifiers, 95 active and 13 retired**. Retired: UC-23–25, UC-42, UC-59–62, UC-74–78. Six new UCs: UC-103–108. Do not renumber/delete history. Sections 4.2/4.4 of the [Report 3 text extract](../01_bao_cao/WMSD_Report3_Fix.docx.txt) use this catalogue. Unsynchronized old specifications/screens/rules cannot reinstate retired scope or rights.
+This catalogue retains UC-105 separately: **108 traceable identifiers, 95 active and 13 retired**. Retired: UC-23–25, UC-42, UC-59–62, UC-74–78. Six new UCs: UC-103–108. Do not renumber/delete history. Sections 4.2/4.4 of the [Report 3 text extract](../01_bao_cao/WMSD_Report3_Fix.docx.txt) use this catalogue. Detailed specifications, screen inventory and rules in the Report 3 text were synchronized on 21 October; retired IDs are historical entries without executable flows.
 
 ## 6. Proposed business permission matrix
 
@@ -359,7 +456,7 @@ V = scoped view; T = create/record; D = approve; X = execute/post; — = no righ
 | PO and supplier confirmation | V | — | V receipt scope | T | — |
 | Inspect, receive, put away | V | V related progress | X | V | — |
 | Same-warehouse relocation | V | — | X | — | — |
-| View/select stock options | V | T | T | — | — |
+| View/select stock options | V only | T | T | — | — |
 | Create inter-warehouse TR | V | V related | T | — | — |
 | Approve TR | D | — | — | — | — |
 | Transfer dispatch | V | V progress | X source | V | — |
@@ -398,8 +495,8 @@ A context diagram shows **data crossing the software boundary**, not physical go
 | Accountant | PO, supplier agreement/acknowledgement, external references | Outstanding PO, received/issued/returned quantities and reconciliation |
 | Store Owner | Approvals, stocktake scope and authorized master data | Pending requests, exceptions, reports and audit |
 | Administrator | Accounts/permissions and technical configuration | Administration results and technical status |
-| SMTP, if retained | Delivery/failure results | Post-commit notifications; no invoice email if invoices are removed |
-| File storage, if Cloudinary is chosen | Controlled asset ID/URL and upload result | Evidence/file upload and server-side authentication |
+| SMTP (API-01) | Delivery/failure results | Post-commit notifications; no invoice email if invoices are removed |
+| Controlled evidence storage (API-02), provider unselected | Controlled asset ID/URL and upload result | Evidence/file upload and server-side authentication |
 
 MISA, Customer, Supplier and Carrier are not direct integration actors without portals/APIs. A separate **business context** may show their staff-mediated handovers/agreements. Do not add synchronization arrows just to make the diagram look complete.
 
@@ -470,7 +567,9 @@ Do not combine quality, location, ownership and delivery state in one enum. “I
 
 These BR IDs are proposed rules. Either make them the canonical SRS catalogue with DR references or retain GB/DR with one-to-one mapping; do not maintain three near-duplicate conflicting sets. GB-NEW-04 (invoice) and GB-NEW-05 (refund eligibility) cease under the narrowed MVP; use BR-18/26/28 and UC-108. GB-POLICY continues excluding a general policy editor, while finite minimum/priority parameters remain explicitly allowed.
 
-## 9. Required Report 1 and Report 3 changes
+## 9. Report 1 and Report 3 synchronization checklist
+
+The checklist below was applied to both `.docx.txt` reports on 21 October 2026 and records the synchronization requirements. Embedded figures, Word and draw.io remain separate unchanged artifacts. API-02 is a controlled-evidence storage contract with no fixed provider; JOB-01 sends warehouse notifications only.
 
 ### 9.1 Report 1
 
@@ -727,7 +826,7 @@ Survey evidence establishes current-practice facts; D1–D8 select design choice
 | [MISA SME supplier returns](https://helpsme.misa.vn/2022/kb/tralai_hangdamuave_nhapkho/) | Agreement, source evidence, actual issue and reconciliation. |
 | [Ministry of Finance return-invoice reference](https://portal.mof.gov.vn/hoidapcstc/home/cthoidap/156063) | Distinguishes returns from incorrect-invoice corrections; Accountant handles case-specific external documents. |
 
-## 14. Synchronization sequence
+## 14. Ongoing synchronization sequence
 
 1. Confirm To-be scope/assumptions with supervisor/store; record scope differences from 17 October.
 2. Establish one glossary, five roles, quantity categories and posting events.
@@ -777,6 +876,8 @@ No email, message or external review request was sent in preparing this proposal
 - One WIR has many OD; one OD has many TO/GI-S. Actual issued quantity comes from ledger, not requested quantity.
 - One GI line has many CR/GR-CR, but accepted returns plus quantities held for open return requests cannot exceed eligible source remainder.
 - **Line-level** links carry allocated quantities; header PO/TR IDs alone cannot prevent source overuse.
+
+Record an external provider revision only when supplied; do not invent it. Internal document/verification version and stable WMS correlation remain recorded. `external_reference.source_version` is nullable; `correlation_id` is UNIQUE and nonblank. Retry uses stable operation/idempotency keys rather than a fresh correlation to bypass deduplication.
 
 ### 15.3 Statuses and edit rights
 

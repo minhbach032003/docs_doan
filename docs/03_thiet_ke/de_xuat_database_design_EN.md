@@ -1,8 +1,8 @@
 # WMSD — Database Design Proposal
 
-> **Technology distinction:** the relational model and SQL DDL here are **design/analysis proposals** for clarifying entities, relationships, integrity rules and transactions. The actual implementation **will use MongoDB (NoSQL)**, per Report 3 and the detailed system design. Do not apply the PostgreSQL DDL as the live database schema.
+> **Technology distinction:** the relational model and SQL DDL here are **design/analysis proposals** for clarifying entities, relationships, integrity rules and transactions. The actual implementation **will use MongoDB (NoSQL)**, per Report 3 and the detailed system design. Do not apply the SQL Server/T-SQL DDL as the live database schema.
 
-Prepared **18 October 2026**, Vietnam time. This is a proposal for review. Authoritative process flows are maintained in the [Vietnamese seven-process proposal](../02_nghiep_vu/De_xuat_7_quy_trinh_sau_review1.md). Warehouse glossary, document types, BF-01–07 and swimlane rules are kept there to avoid duplication.
+Prepared **18 October 2026**; synchronized **21 October 2026**, Vietnam time, under the 20 October survey and D1–D8. This is a proposal for review. Authoritative process flows are maintained in the [Process Proposal 2 — EN](../02_nghiep_vu/de_xuat_quy_trinh_2_EN.md). Warehouse glossary, document types, BF-01–07 and swimlane rules are kept there to avoid duplication.
 
 ## 1. Status, evidence and scope
 
@@ -10,19 +10,19 @@ Prepared **18 October 2026**, Vietnam time. This is a proposal for review. Autho
 
 | ID | Source | Use |
 |---|---|---|
-| S1 | [Seven-process proposal after review 1](../02_nghiep_vu/De_xuat_7_quy_trinh_sau_review1.md), 17 October 2026 | Proposed business baseline: BF-01–07, five roles, reduced sales scope and no direct MISA integration. |
-| S2 | [Report 1 online](https://docs.google.com/document/d/1kb36v5HuFrM75NFCTXvnJcsg6QnPjYkb/edit), modified 17 October 2026, 16:26 Vietnam time | Tan Thuong single-store context, tiles, objectives and boundaries; read through Drive. |
-| S3 | [Report 3 online](https://docs.google.com/document/d/1HvhlCmYjfXj7766ZVNUBAU4J063Lmr71/edit), modified 17 October 2026, 17:17 Vietnam time | Current 102-UC catalogue, actors, permissions, inventory and data rules; read through Drive. It currently specifies MongoDB. |
+| S1 | [Process Proposal 2 — EN](../02_nghiep_vu/de_xuat_quy_trinh_2_EN.md), 21 October 2026 | Proposed business baseline: BF-01–07, five roles, reduced sales scope and no direct MISA integration. |
+| S2 | [Report 1 text](../01_bao_cao/WMSD_Report1_Fix.docx.txt), synchronized 21 October 2026 | Single-store context, survey reporting three or more warehouses, current purpose and scope; As-is is not an implemented To-be. |
+| S3 | [Report 3 text](../01_bao_cao/WMSD_Report3_Fix.docx.txt), synchronized 21 October 2026 | 108 UC IDs: 95 active, 13 retired; actors, specifications, screens and permissions. MongoDB remains runtime. |
 | S4 | [WMSD_Bangach.drawio](../04_so_do/WMSD_Bangach.drawio), **21 pages in the current file** | Reviewed BF01–06b, ERDs and the final two pages. BF03 contains a System lane; BF02/04/05/06a/06b contain WMSD lanes. The new diagrams remove them as requested. |
 | S5 | [SAP WM I](../06_tham_khao/sap/Intro_S4HANA_Using_Global_Bike_Case_Study_WM_I_en_v4.1.pdf), [II](../06_tham_khao/sap/Intro_S4HANA_Using_Global_Bike_Case_Study_WM_II_en_v4.1.pdf), [III](../06_tham_khao/sap/Intro_S4HANA_Using_Global_Bike_Case_Study_WM_III_en_v4.1.pdf), [IV](../06_tham_khao/sap/Intro_S4HANA_Using_Global_Bike_Case_Study_WM_IV_en_v4.1.pdf) | Local **v4.1** set: I GR p.10, TO pp.18/21; II STO p.6, GI p.12, GR p.18, TO pp.26/29; III picking pp.14/19, shipping p.25; IV snapshot/count/recount/clearing pp.4/12/14/21/27. Do not reuse v4.2 page references from the older proposal. |
 | S6 | [Process compilation](../06_tham_khao/quy_trinh/Tổng%20hợp%20quy%20trình.pdf), four pages | Handover documents and business context. Debt, payments and fleet management are not automatically added to the MVP. |
 | S7 | [Reference links](../06_tham_khao/link_tham_khao.md) | Official MISA, Odoo and Microsoft guidance for concept comparison; WMSD-specific decisions are stated separately. |
 
-Priority: the current request for a SQL model → S1 business proposal → compatible S2/S3 requirements → supporting S4–S7 references. SQL is an analysis model here; the MongoDB runtime requirement in Report 3 remains in effect.
+Priority: current instruction → D1–D8 in the [change log](../../change_logs.md) and S1 on 21 October → synchronized Report 1/3 text → survey evidence → historical references S4–S7. The 17–18 October versions are historical and cannot reinstate retired UCs. SQL Server/T-SQL is the reference model; MongoDB is runtime.
 
 ### 1.2 Scope and architecture impact
 
-- One store and its configured warehouses/locations; enable inter-warehouse transfer after confirming at least two physical warehouses.
+- One store; the survey reports three or more warehouses with coded areas/racks. D4 retains transfers with independent dispatch/receipt. Exact warehouse list, addresses and staffing remain unverified; do not seed invented records.
 - Business scope, actors, documents and seven BF flows use the process proposal as the source of truth. This design does not add accounting, tax invoices, payments or a live MISA integration.
 - SQL DDL illustrates a normalized relational model for reviewing data relationships and invariants. It does not change the persistence decision: MongoDB/NoSQL is the runtime database.
 - SQL FK/UNIQUE/CHECK constraints express relationships and business rules. In MongoDB, enforce equivalents with collection validation, unique/partial indexes, ID references and transaction/service logic. MongoDB does not provide SQL foreign keys across collections.
@@ -64,6 +64,7 @@ This table describes how relational design concepts could map to MongoDB. Align 
 | stock_movement + posting_batch | Append-only stock_movements and posting_batches linked by ObjectId and unique idempotency key |
 | reservation + demand_supply_allocation | reservations and demand_supply_allocations with status, quantity and source IDs |
 | stocktake + snapshot + count_attempt | stocktakes/stocktake_snapshots and append-only count attempts with cutoff/version |
+| customer_return_assessment | Append-only return_assessments by returnLineId, assessmentNo and documentVersion; latest-assessment index and version-matched approval reference |
 | evidence, audit_event, outbox_event | evidence_refs, append-only audit_events, and outbox_events with unique event key |
 
 Do not make every SQL table a MongoDB collection. Embed data only when it shares a lifecycle, is read/updated as one unit and cannot grow without bound. Posted documents, ledgers, audit trails and recount attempts need durable append-only history. A multi-document transaction must commit posting batch, movements, balance, reservations, document status, audit and outbox together.
@@ -74,12 +75,13 @@ Create unique indexes for document numbers, idempotency keys, operation keys and
 
 ### 3.1 SQL normalization and type conventions
 
-In this model, PK means primary key, FK means foreign key, UNIQUE enforces distinct values, CHECK validates conditions, and 3NF means third normal form. SQL describes the relational reference model here and does not imply Microsoft SQL Server specifically.
+In this model, PK means primary key, FK means foreign key, UNIQUE enforces distinct values, CHECK validates conditions, and 3NF means third normal form. The current DDL uses Microsoft SQL Server/T-SQL in schema `wmsd`; this remains a relational reference model and does not change the MongoDB runtime.
 - **1NF:** atomic values; no comma-separated product/lot/warehouse lists and no JSON line arrays as the transactional source of truth.
 - **2NF:** complete composite keys on join tables, such as `(role_code, permission_code)` and `(user_id, warehouse_id)`.
 - **3NF:** warehouse, product and supplier master data are referenced by FK. `document` is a supertype with 1:1 typed extensions, not an unconstrained `entity_type/entity_id` pair.
 - Product-name, delivery-address and conversion snapshots intentionally preserve history. `stock_balance` is a controlled denormalized projection/cache updated atomically with the ledger and periodically reconciled.
-- In the SQL reference model, PKs use `BIGINT GENERATED ALWAYS AS IDENTITY`; quantities `NUMERIC(20,6)`, factors `NUMERIC(24,12)`, dates `DATE`, and events `TIMESTAMP WITH TIME ZONE`. These are not runtime storage types; MongoDB uses ObjectId, UTC Date and Decimal128 under the current field contract. Do not use floating point for quantities.
+- In the SQL reference model, PKs use `BIGINT IDENTITY(1,1)`; quantities `NUMERIC(20,6)`, factors `NUMERIC(24,12)`, dates `DATE`, and events `DATETIMEOFFSET`. These are not runtime storage types; MongoDB uses ObjectId, UTC Date and Decimal128 under the current field contract. Do not use floating point for quantities.
+- T-SQL uses `bit` flags, `SYSDATETIMEOFFSET()`, filtered unique indexes for nullable keys and `GO` batches for schema/views. Use a client that understands `GO`; do not submit the whole file as one SQL statement.
 - Finite states and `snake_case` names. No cascade deletion of history. Deactivate master records with `active=false`; retain historical searchability.
 
 ### 3.2 Master data and authorization
@@ -108,8 +110,11 @@ In this model, PK means primary key, FK means foreign key, UNIQUE enforces disti
 | `line_link` | source/target line IDs, relation_code, linked_qty | RR→PO, PO→GR, WIR→OD→GI, receipt→TO by quantity |
 | `approval`, `approval_line` | UNIQUE(document,version,decision_kind); requester≠approver; line/quantity/outcome | Decisions and quantity ceilings, rather than one approved boolean |
 | `evidence` | document FK, object_key, sha256, MIME, uploader/time | Private object references, not public URLs or base64 in transaction lines |
-| `external_reference`, `document_external_reference` | UNIQUE(system,kind,number), document-reference join | MISA source, supplier documents and external resolution references |
+| `external_reference`, `document_external_reference` | UNIQUE(system,kind,number), source_version when supplied, nonblank UNIQUE correlation_id, verifier/time and document-reference join | Never invent provider version; document.version tracks internal revisions; stable correlation supports trace |
 | `external_reference_line` | reference and line_key UNIQUE per reference; product, eligible_qty | Line-level external source entitlement, verified by Accountant |
+
+
+**External source versions:** `external_reference.source_version` is nullable when the provider has no revision ID; `correlation_id` is required, UNIQUE and nonblank for stable WMS trace. `document.version` still governs internal workflow/approval versions. A fresh correlation on every retry must not replace a stable operation key.
 
 ### 3.4 Business-specific tables
 
@@ -130,6 +135,19 @@ Header tables below use **`document_id` as both PK and FK to `document`**. Typed
 | Shared discrepancies | `discrepancy_line`: source_line, SHORT/OVER/DAMAGED/WRONG_LOT/WRONG_PRODUCT, status, resolution document. |
 
 `SUPPLIER_ACK`, `CUSTODY_RECEIPT`, `CUSTODY_RELEASE`, `HANDOVER`, `REVERSAL`, `SCRAP` and `OPENING` are document kinds. A separate empty header table is unnecessary when a kind has no special attributes. Each document has relational lines, not an embedded array. Services must additionally verify source document kinds and product/lot compatibility: an existing FK does not establish business eligibility.
+
+
+### 3.4.1 Return eligibility assessment and packaging observations
+
+| Table/field | Current contract |
+|---|---|
+| `customer_return_assessment` | FK `return_line_id`; UNIQUE(return_line_id,assessment_no); `document_version`, `assessed_by/at`, nonblank reason and `approval_id` linking the post-inspection decision. Append-only; changed conditions/quantity require a new version. |
+| Packaging / use / cause | `packaging_condition`=SEALED/OPENED/TORN/UNKNOWN; `installation_status`=UNUSED/INSTALLED/UNKNOWN; `damage_cause`=NONE/CUSTOMER/SUPPLIER/OTHER/UNKNOWN. Split lines with differing conditions. |
+| Deadline | `deadline_status`=WITHIN/EXCEEDED/NOT_APPLICABLE/UNKNOWN; verified states require nonblank `deadline_reference`, including NOT_APPLICABLE. No default number of days. |
+| Eligibility | Proven installed/customer-damaged/overdue goods are INELIGIBLE; unknown conditions without proven exclusion are PENDING; evidence-complete conditions are CASE_REVIEW, not acceptance. Owner may still reject CASE_REVIEW. |
+| `inspection_line.packaging_condition` | Shared packaging observation on receipts/returns; defaults UNKNOWN and is updated from actual inspection. TORN does not automatically mean DAMAGED. Actual pieces are recorded on quantity lines/conversion snapshots, not inferred from empty cartons. |
+
+Services select the latest assessment for the line and current version, then verify inspection, source, Owner APPROVE and matching approval_line/quantity before GR-CR. CHECK/FK alone do not establish these relationships. Changed conditions invalidate old approval. Physically held PENDING/INELIGIBLE goods remain custody until actual handback. Unverified lots use identification_status=UNKNOWN with openly identified unknown references; never invent calibre or treat nominal dimensions as verified calibre.
 
 ### 3.5 Inventory, reservations and ledger
 
@@ -194,7 +212,7 @@ erDiagram
 
 ### 4.1 DDL scope and limits
 
-The SQL DDL illustrates PK/FK/UNIQUE constraints, exact numeric types, local CHECKs, exclusive source choices, before/after checks and indexes. **It is not the production database schema:** MongoDB has no SQL foreign keys; validators and unique indexes protect only part of the model. Services/transactions must enforce cross-document rules, authorization, append-only history and cumulative quantity limits. A row-level CHECK does not enforce a multi-row aggregate. [PostgreSQL constraints](https://www.postgresql.org/docs/16/ddl-constraints.html).
+The SQL DDL illustrates PK/FK/UNIQUE constraints, exact numeric types, local CHECKs, exclusive source choices, before/after checks and indexes. **It is not the production database schema:** MongoDB has no SQL foreign keys; validators and unique indexes protect only part of the model. Services/transactions must enforce cross-document rules, authorization, append-only history and cumulative quantity limits. A row-level CHECK does not enforce multi-row aggregates; service/transaction logic must enforce them.
 
 | ID | Required rule | Implementation enforcement |
 |---|---|---|
@@ -210,6 +228,9 @@ The SQL DDL illustrates PK/FK/UNIQUE constraints, exact numeric types, local CHE
 | R-10 | Custody excluded from STORE inventory | Check balance owner; acceptance requires a documented ownership movement, not editing the party master |
 | R-11 | Correct conversions and granularity | Snapshot factor; enforce integer quantities for whole_base_units; request actual pieces/boxes when m² conversion is fractional |
 | R-12 | Ledger/balance and batch consistency | batch.document_id=movement.document_id; balance deltas equal movement and before/after; no standalone balance updates |
+| R-13 | D6 line/quantity/version matches | Local eligibility CHECK plus service validation of latest assessment, inspection, source and approval_line; no PENDING/INELIGIBLE posting |
+| R-14 | Actual packaging/units | Record packaging_condition and actual quantity; torn packaging alone does not change quality; conversion versions preserve history |
+| R-15 | UC and role boundary | Exactly 5 roles; 13 retired UCs have no active permissions; UC-107/108 do not post stock; D2 departmental entry |
 
 For tiles with 4 pieces/box and 0.36 m²/piece, 3 boxes +2 pieces =14 pieces =5.04 m². Preserve the entry as separate unit components/lines. Do not rely on “3.5 boxes” without the underlying piece quantity. Square metres may express demand/display; actual issue must respect product granularity. Future conversion versions must not recalculate history.
 
@@ -247,7 +268,7 @@ Reverse an entire batch only if no dependent downstream operation exists and all
 | WIR, OD, proposed CR | Yes | Warehouse execution | Verify sources | Approve CR | No |
 | Immediate isolation and disposition proposal | No | Yes | Reconcile | Approve disposition | No |
 | Count and propose ADJ | No | Yes | Reconcile | Plan, approve/post ADJ | No |
-| Technical permission administration | No | No | No | As explicitly specified | Yes |
+| Technical permission administration | No | No | No | No | Yes |
 
 This is the core operation matrix, not a grant of additional master-data privileges. Source/destination scope is checked by actual user and warehouse assignment. Multiple roles do not permit self-approval. Reports and evidence downloads inherit the same access scope as operational screens. Sales does not receive costs or unrestricted quarantine visibility; Accountants trace only their authorized document chains.
 
@@ -275,16 +296,29 @@ Required reports: owned stock by warehouse/bin/lot/quality; available/reserved; 
 | T16 | Edit posted lot/tone/document | Block; use an appropriate correction and audit |
 | T17 | Stocktake finds no difference | Close/unlock; no ADJ0 |
 | T18 | Historical sale has no WMS GI | CR references verified external history; no fictitious GI |
+| T19 | Installed/customer-damaged/verified overdue return | INELIGIBLE; no GR-CR, custody until handback if held |
+| T20 | Unverified deadline or conditions | PENDING; no invented 7/15/30 days; obtain evidence |
+| T21 | Evidence-complete sealed or unused loose tiles | CASE_REVIEW; Owner decides after inspection, no automatic acceptance |
+| T22 | Assessment/quantity changes after approval | New version and approval; old approval cannot post |
+| T23 | Missing or mismatched supplier ACK | BF-07 remains open; Owner UC-106 resolves; no deduction on closure |
+| T24 | Torn carton with intact inspected tiles | Quality from inspection, not automatic DAMAGED; quantity from actual pieces/version |
+| T25 | Connection loss between commit and response | Look up batch/operation key; no repeat posting or lost audit |
+| T26 | Monthly stocktake | Owner manually creates session; D5 scope freeze; no automatic session job |
 
 These are **acceptance criteria**, not a claim that a complete backend has passed them. DDL and diagrams are checked separately; implement posting services and execute concurrency/integration tests before operational use.
 
-**Artifact verification on 18 October 2026:** DDL successfully created 63 tables and two views on PostgreSQL 18.6 through PGlite 0.5.10. Twenty-one schema/query/illustrative-transaction checks passed, including FKs, negative/duplicate balances, self-approval, duplicate posting keys and the TD100/MWTR98 example. PostgreSQL 16 was not separately exercised; authorization services and multi-connection concurrency were not tested. All 16 draw.io pages were exported to PNG for visual review; the validator reported zero errors/warnings and all lane names represent actors. Both language versions share ten main sections, cover all 63 table names and have no missing internal file links.
+**Verification history:** the 18 October PostgreSQL/PGlite checks concern the pre-conversion DDL and do not validate current T-SQL. The 20 October change log records ScriptDom parsing and SQLite evaluation of D6 expressions; neither runs SQL Server or backend services. The 21 October checks are recorded separately in the [change log](../../change_logs.md); historical results do not validate the changed artifact.
+
+
+### 6.1 Exception traceability
+
+The 35 BF-01–07 branches and EX-01–05 in process section 4 supply data acceptance cases: documents/approvals retain actions and versions; source links retain quantities; stock accounts/balances distinguish owner/location/transit; posting batches/movements prevent duplicate effects; stocktake locks/count attempts preserve scope/history; evidence/audit/outbox support evidence and retries. Transaction failures must leave balances, ledgers and source quantities consistent. A parsed DDL does not prove service-level cases are enforced.
 
 ## 7. Implementation order and decisions to confirm
 
 Suggested order: MongoDB validators/indexes/master data → roles/scope → document shapes/approvals → append-only ledger and posting/idempotency service → BF-01/TO → BF-05 → BF-03 → BF-02/06/07 → BF-04 → reporting/reconciliation. Include tone/calibre differences, partial receipts, custody and transit in early sample data.
 
-Confirm before SRS sign-off: final DBMS, actual warehouse count, independent transfer receivers, acceptance of damaged goods and ownership responsibility, unit granularity, feasible count-freeze duration, substitution policy, historical-source verification, printable forms and numbering. This proposal selects a working baseline without presenting those outstanding business choices as validated survey findings.
+Confirm before SRS sign-off: exact warehouse list/count and addresses (three or more already reported), independent transfer receivers, acceptance of damaged goods and ownership responsibility, unit granularity, feasible count-freeze duration, substitution policy, historical-source verification, printable forms and numbering. This proposal selects a working baseline without presenting those outstanding business choices as validated survey findings.
 
 ### Online references and limits
 

@@ -1,3 +1,61 @@
+# Nhật ký đồng bộ WMSD — 21/10/2026
+
+## 1. Phạm vi và căn cứ hiện hành
+
+- Yêu cầu lần này: đồng bộ toàn bộ bảy file đã chỉ định theo quy trình mới và bổ sung các luồng ngoài happy case. Sửa trực tiếp theo chỉ dẫn mới nhất; không dùng AGY, không stage/commit, không gửi email hoặc yêu cầu review ra ngoài.
+- Căn cứ: quyết định D1–D8 trong nhật ký 20/10 bên dưới, khảo sát một phản hồi lúc 09:04:25 ngày 20/10/2026 (GMT+7), và hai bản Đề xuất quy trình 2. Không tự thay đổi các quyết định đã chốt hoặc bịa thời hạn nhận trả/hệ số SKU/danh sách kho.
+- Git trước sửa sạch. Chỉ bảy file được yêu cầu và nhật ký này thay đổi; tài liệu nguồn cũ/CSV, Word, hình và draw.io giữ nguyên. Bản chụp trước sửa và script kiểm tra ở thư mục tạm của phiên, ngoài repository.
+
+## 2. Nội dung đã đồng bộ
+
+| File | Thay đổi |
+|---|---|
+| [Report 1 text](docs/01_bao_cao/WMSD_Report1_Fix.docx.txt) | Đồng bộ mục tiêu, bối cảnh As-is, giải pháp, đủ 7 BF, 9 FE và giới hạn LI. Tách dữ kiện khảo sát khỏi To-be; bỏ cam kết SO/giá/hóa đơn/hoàn tiền trong WMS. Giữ thông tin dự án/stakeholders và lịch sử chỉnh sửa. Bỏ số trang Word cũ khỏi mục lục text. |
+| [Report 3 text](docs/01_bao_cao/WMSD_Report3_Fix.docx.txt) | Viết lại các phần baseline cũ và gom boilerplate lặp; đồng bộ context/mainflow/model/rules, catalogue, associations, quyền, đặc tả, màn hình/API/job, NFR và appendix. Giữ 108 ID: 95 active, 13 retired; đủ 108 đặc tả và 108 dòng quyền. 49 UC có hợp đồng thao tác cụ thể; UC xem/trace giữ input/display phù hợp và không post. UC-72 là custody/inspection trước Owner; UC-73 chỉ nhận phần đủ điều kiện đúng version/quantity. |
+| [Quy trình VI](docs/02_nghiep_vu/de_xuat_quy_trinh_2_VI.md), [EN](docs/02_nghiep_vu/de_xuat_quy_trinh_2_EN.md) | Thêm 35 nhánh A/E ở ngay từng BF với điều kiện, người xử lý, điểm tiếp tục, tác động tồn và UC; thêm EX-01–05 dùng chung. Cập nhật phạm vi đồng bộ, trạng thái checklist, source version/correlation và tham chiếu database. |
+| [Thiết kế database VI](docs/03_thiet_ke/de_xuat_database_design_VI.md), [EN](docs/03_thiet_ke/de_xuat_database_design_EN.md) | Chuyển căn cứ sang baseline 21/10 và D1–D8; xác nhận từ 3 kho nhưng chưa biết danh sách. Đồng bộ T-SQL/schema wmsd, MongoDB runtime, assessment D6, packaging, external source/correlation, enforcement R-13–15, 26 case nghiệm thu và trace nhánh ngoại lệ. Không gán kết quả PostgreSQL cũ cho T-SQL hiện tại. |
+| [SQL tham chiếu](docs/03_thiet_ke/WMSD_SQL_schema.sql) | Thêm CHECK cố định 5 role; inspection packaging enum độc lập quality; lý do assessment không trống và index tìm assessment theo dòng/version; source_version nullable, correlation_id UNIQUE không trống; bổ sung nghĩa vụ service theo các ngoại lệ. Vẫn 64 bảng, 2 view; không thêm engine runtime hoặc stored procedure giả. |
+| [Nhật ký này](change_logs.md) | Bổ sung bản ghi 21/10; giữ toàn bộ nhật ký 20/10 nguyên văn phía dưới dưới nhãn lịch sử. |
+
+Màn hình Report 3: SC-01–24 tiếp tục active, SC-25–27 retired; thêm SC-28 External Document References. Tổng 28 ID màn hình, 25 active/3 retired. UC-103 dùng SC-10/16; UC-104 tại SC-13; UC-105 tại SC-14; UC-106/107 tại SC-19; UC-108 tại SC-28. API-02 mô tả hợp đồng lưu chứng cứ riêng tư, chưa chọn nhà cung cấp; JOB-01 chỉ xử lý thông báo kho sau commit, không có job tự tạo kiểm kê/PO.
+
+## 3. Phủ luồng ngoài happy case
+
+| BF | Số nhánh mỗi ngôn ngữ | Các tình huống bổ sung |
+|---|---:|---|
+| BF-01 | 6 | Nhu cầu đã có nguồn; từ chối/trả sửa; giao phần/chốt thiếu; thừa/sai; không nhận lượng nào; thùng mở/rách và hàng thay thế. |
+| BF-02 | 4 | Lỗi trên hàng đã giữ/soạn; chưa rõ chủ/cause; duyệt phần/từ chối; chưa thực hủy/trả và chống trừ lặp. |
+| BF-03 | 5 | Nội kho; xuất trực tiếp kho khác; thiếu nguồn/người nhận độc lập; nhận phần/hỏng; thừa/sai lô/thất lạc đã xác minh. |
+| BF-04 | 5 | Task dở/khóa chồng; chưa đếm/0/hàng mới; quality khác mất lượng; không lệch/trả sửa; lỗi mạng khi clearing. |
+| BF-05 | 5 | Nguồn chưa rõ/trùng/tranh hàng; giao phần/đổi lô; soạn lệch; hủy trước PGI/unpick; hủy/trả sau PGI. |
+| BF-06 | 5 | Lịch sử ngoài WMS; D6 chưa rõ/bị loại; trả hỗn hợp; đổi assessment/vượt nguồn; rút yêu cầu/chậm giao trả custody. |
+| BF-07 | 5 | NCC chưa đồng ý/đồng ý phần; tái dùng quyết định BF-02; soạn thiếu/custody; ACK lệch; đổi hàng/bồi thường ngoài WMS. |
+
+EX-01–05: phân quyền/tách người; version/cạnh tranh nguồn; chưa rõ commit/retry; khóa kiểm kê; chứng cứ/in/email lỗi. Nhánh quy định rõ rollback/giữ trạng thái/chờ hoặc tiếp tục, không tự tạo quyền hay tăng/trừ tồn bằng đổi trạng thái.
+
+## 4. Kiểm tra của lượt 21/10
+
+| Kiểm tra | Kết quả và giới hạn |
+|---|---|
+| Catalogue ↔ đặc tả ↔ quyền | 108 ID duy nhất, tên/trạng thái khớp; 95 active/13 retired; mọi retired không có quyền hoặc bước thực thi. |
+| Màn hình | 28 ID, 25 active/3 retired; mọi active UC có màn hình, không màn hình active nào gắn UC retired. |
+| VI–EN và SRS | Cùng 35 mã nhánh theo thứ tự, 5 lỗi chung, 30 BR; BR tiếng Anh trong SRS trùng bộ quy trình. Hai bản quy trình cùng 27 bảng với số dòng tương ứng; hai bản database cùng 13 bảng và 26 case T01–T26. |
+| Liên kết nội bộ | Các liên kết file trong 4 bản quy trình/database không có đích bị thiếu; kiểm range UC trong SRS không có range đảo/vượt 108. |
+| Cú pháp SQL Server | Microsoft ScriptDom 180.140.0, TSql160Parser: 0 lỗi, 6 batch; đếm 64 bảng/2 view. Đây là parse, chưa thực thi trên SQL Server. |
+| Biểu thức CHECK | 750 phép kiểm trên SQLite in-memory dùng nguyên biểu thức CHECK/enum từ DDL và hàm LEN tương thích. Gồm 720 tổ hợp D6, 9 thiếu bằng chứng thời hạn, 2 lý do trống, 1 enum D6 sai; 18 kiểm bổ sung về role/packaging/source-version/correlation và unique nguồn. Không thay thế hành vi collation, FK, service hay concurrency SQL Server. |
+| Diff / phạm vi | Đọc diff các thay đổi, rà các phần nguồn/role/stock effect và whitespace; git diff --check đạt. Không stage hoặc commit; không sửa file ngoài 8 file nêu trên. |
+
+## 5. Giới hạn còn lại
+
+- Chỉ cập nhật các bản text/Markdown/DDL được chỉ định. Word .docx, hình nhúng, PNG và draw.io không được sửa trong lượt này; sơ đồ Mermaid/context/ER và nội dung text hiện hành không làm ảnh cũ tự đổi. Khi dựng Word/PDF mới phải thay hình cũ theo bộ này.
+- Chưa có SQL Server engine hoặc backend runtime để chạy migration, phân quyền, transaction/concurrency và end-to-end. Các nhánh/26 case là tiêu chí nghiệm thu, không tuyên bố hệ thống đã vượt qua chúng.
+- Chưa xác minh danh sách/địa chỉ/số kho chính xác (đã biết từ 3), người từng kho, actual calibre, hệ số từng SKU, thời hạn trả và lịch đối chiếu MISA. Không tự đặt giá trị mặc định.
+- Các tham khảo sản phẩm/thuế/SAP từ bản trước là lịch sử; lượt này không tái xác minh nguồn web hay đưa hướng dẫn pháp lý mới.
+
+---
+
+> **Nhật ký lịch sử 20/10/2026:** phạm vi và giới hạn dưới đây mô tả lượt trước. Phần “Report 3 chưa viết lại toàn bộ”, “không sửa Report 1” và “chưa cập nhật thiết kế database” đã được thay bằng kết quả lượt 21/10 phía trên; không còn là trạng thái hiện tại của bộ text.
+
 # Nhật ký cập nhật quy trình WMSD — 20/10/2026
 
 ## 1. Căn cứ và phạm vi

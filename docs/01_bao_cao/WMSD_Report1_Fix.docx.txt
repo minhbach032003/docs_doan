@@ -20,23 +20,21 @@ Report 1 – Project Introduction
 
 – Hanoi, Oct 2026 –
 Table of Contents
-Change Log        2
-Definition and Acronyms        3
-I. Project Overview        3
-1. Project Information        3
-2. Project Purpose        4
-3. Project Stakeholders        5
-II. Product Background        5
-III. Existing Solutions        15
-1. KiotViet        15
-2. MISA eShop        16
-3. Consolidated Gaps and Section Summary        16
-IV. Proposed Solution        17
-V. Project Scope & Limitations        27
-1. Major Features        27
-2. Limitations & Exclusions        28
-
-
+Change Log
+Definition and Acronyms
+I. Project Overview
+1. Project Information
+2. Project Purpose
+3. Project Stakeholders
+II. Product Background
+III. Existing Solutions
+1. KiotViet
+2. MISA eShop
+3. Consolidated Gaps and Section Summary
+IV. Proposed Solution
+V. Project Scope & Limitations
+1. Major Features
+2. Limitations & Exclusions
 Change Log
 Date
 	A*M, D
@@ -110,10 +108,15 @@ Date
 	M
 	Project Team
 	Aligned the nine major features and corrected limitations for Sales Orders, internal invoicing, external refund recording, SMTP notifications and manual selling prices.
+	21/10/2026
+	M
+	Project Team
+	Synchronized D1–D8, the 20 October survey, warehouse-only scope, seven BF flows and alternate/exception paths; see change_logs.md.
 	*A - Added   M - Modified   D - Deleted
 
 
 Definition and Acronyms
+WIR = Warehouse Issue Request; OD = Outbound Delivery; PGI = Post Goods Issue; TD = Transfer Dispatch; MWTR = destination transfer receipt. Custody is physically held stock owned by another party. Warehouse Staff is the canonical application-role name.
 Acronym
 	Definition
 	WMSD
@@ -135,11 +138,13 @@ I. Project Overview
 – Project code: WMSD
 – Group name: SEP490_G56
 – Software type: Responsive Web Application – warehouse operations for one retail store
-–Baseline scope: One store with configurable warehouse areas, storage positions and warehouse-to-warehouse transfer where used
+– Baseline scope: One retail store; the survey reports three or more warehouses with coded areas/racks. Exact warehouse list, addresses and staffing remain to be verified.
 2. Project Purpose
-Warehouse Management System Development (WMSD) supports the warehouse and sales fulfilment operations of Cửa hàng gạch ốp lát Tân Thương. It connects purchasing, receiving, inspection, put-away, warehouse transfers, Sales Orders, outbound fulfilment, returns and stocktake, with traceability by product, lot, location and quality status.
-The project serves one retail store and its configured warehouse locations. Tile stock is identified by item, lot, tone, actual calibre, quality status and storage position, with consistent box, piece and square-metre quantities. A transfer between configured warehouses is tracked as in transit until the destination records its actual receipt.
-The first release supports the nine major features in Section IV. WMSD includes Sales Orders, Outbound Deliveries, picking Transfer Orders, Post Goods Issue, internal invoice issuance with PDF/print output, SMTP order/invoice status notifications, customer and supplier returns, and approval and evidence recording for externally completed customer-return refunds. Master data and manually entered selling prices are included; any margin calculation is performed outside WMSD. Sales payment collection, deposits, receivables, debt, full accounting, statutory e-invoicing and live MISA integration are excluded. A general-purpose function to create or edit business policies is not implemented.
+Warehouse Management System Development (WMSD) supports the physical warehouse operations of Cửa hàng gạch ốp lát Tân Thương: replenishment needs, purchasing, receiving/inspection, put-away, location movement, inter-warehouse transfer, issue fulfilment, defects, returns and stocktake. Exactly five application roles are Store Owner, Sales Staff, Warehouse Staff, Accountant and Administrator. Each department uses its own personal accounts to record and confirm its work.
+The release serves one store and its configured warehouses. Track product, lot, tone, verified actual calibre where available, location, quality, owner/custody, reservations and transit, with versioned BOX/PIECE/m² conversions. Survey-recorded nominal size does not prove actual calibre has already been collected; unknown identity is kept explicit and unavailable for allocation.
+Sales converts an externally handled commercial order/request into a verified Warehouse Issue Request (WIR). WMSD retains Outbound Deliveries, picking tasks, actual handover/PGI, warehouse document printing and post-commit warehouse notifications. Reservation reduces availability, picking changes location, and PGI reduces physical warehouse stock once at actual handover (D1). MISA may reduce stock at order creation in current practice; reconciliation must distinguish such records from actual WMS dispatches.
+MISA and external processes retain commercial Sales Orders, selling prices, internal/tax invoices, refunds, payment, receivables and full accounting. WMSD records source references and external outcomes without creating, calculating, approving or paying a refund. Live MISA synchronization and general-purpose business-policy editing are excluded. Fixed thresholds and compatible-stock suggestions assist decisions without automatically purchasing or posting stock.
+
 3. Project Stakeholders
 Full Name
 	Role
@@ -178,253 +183,26 @@ Full Name
 	
 
 II. Product Background
-Cửa hàng gạch ốp lát Tân Thương operates at Phố Tân An, xã Tân An, Yên Dũng, Bắc Giang. Its business covers wall and floor tiles. The store sells to customers who purchase goods for construction, renovation and installation.
-The store already uses MISA eShop for product, sales, supplier and customer records, inventory totals and operational reports. Its physical warehouse work is still partly recorded by hand or in separate documents. Staff count stock manually; exact warehouse positions are not maintained in a structured location map; and a total balance does not consistently distinguish lot, tone, actual calibre and goods waiting for inspection, damaged or being transferred. Purchase orders delivered in several trips, receiving discrepancies, returns and stock-count corrections are not linked through one warehouse record. These are gaps in the store's current way of working, not claims that MISA eShop lacks those functions.
-Tile stock requires item code, brand, material, dimensions, packaging, lot, tone and actual calibre. Boxes, pieces and square metres must convert according to the product specification. A usable quantity must also identify its warehouse position and quality status; an overall product balance alone does not tell staff what can be picked.
-In the current purchasing process, warehouse staff check stock, accounting prepares the replenishment proposal, the owner reviews it, and accounting places the supplier order. The supplier may confirm only part of the requested quantity or deliver on several dates. On each arrival, warehouse staff count and inspect the actual item, lot, tone, calibre and packaging condition. Accepted goods are put away; goods requiring inspection or supplier resolution are separated. Accounting compares the supplier documents with the quantity actually accepted.
-During day-to-day warehouse work, staff find stock by product and lot, move it between storage positions, and issue goods against a store request. When goods move between warehouses, dispatch and destination receipt may differ because of shortage or damage. Physical stock counts are made by warehouse area, position and lot; a discrepancy requires recount and a recorded cause before the balance is adjusted. Goods returned from a customer or prepared for return to a supplier are inspected and kept out of usable stock until their disposition is known.
-  
+The store supplies wall/floor tiles for construction and renovation. Earlier project notes place it at Phố Tân An, xã Tân An, Yên Dũng, Bắc Giang; the 20 October survey does not independently verify that address or provide individual warehouse addresses.
 
-[Figure 1: Current purchasing and receiving workflow]
+Evidence baseline: one response submitted at 09:04:25 on 20 October 2026 (GMT+7), in docs/05_khao_sat/khao_sat_kho_gach.csv. It reports three or more warehouses, clear areas/racks and position codes; MISA for sales/orders/invoices, stock movements/balances and party information. The reported difficulties are stock not matching reality and tracking customer-held, defective and returned quantities. The survey does not justify claiming that storage positions or lot/colour/size records are absent.
 
+Observed activities (As-is; external personnel here are business participants, not extra WMSD roles):
+| Activity | Survey evidence and limits |
+|---|---|
+| Replenishment and purchase | Sales/Warehouse report needs; Owner/management or purchasing personnel decide; Accountant orders from suppliers. Exact approval/delegation settings are not supplied. |
+| Supplier receipt | Warehouse counts/checks quality; Owner/Accountant may co-inspect; shortages, excess, wrong sample or breakage have photos/records and are discussed with supplier for replacement or return. |
+| Identity and units | Lot, colour and size are recorded in software or carton photos; receipt/count uses boxes, sales uses boxes/pieces/m². MISA/Excel holds factors; loose pieces and open cartons are counted. Torn packaging with intact tiles may still be sold. Actual calibre and SKU factors remain unverified. |
+| Defects | Isolate, mark/block, photograph or record; Owner/delegate decides supplier return, regrade or destruction. Dynamic delegation is not selected for WMSD (D3). |
+| Transfers | The response selects both transfer and no-transfer options. D4 explicitly resolves this for the proposal: retain physical inter-warehouse transfer and independent dispatch/receipt. Do not edit the contradictory survey record. |
+| Stocktake | Monthly counts; MISA comparison, pausing the area, separate movement records if movement continues, recount/cause and Owner/delegate approval are reported. WMSD selects frozen scope until resolution (D5); concurrent-movement counting is not selected. |
+| Issue fulfilment | Requests arrive via MISA/software, paper, Zalo/phone/verbal channels. Reserved stock is marked; partial delivery/outstanding quantities are followed. Current deduction is at order/request creation; D1 selects physical deduction at actual handover/PGI. |
+| Customer return | Sealed cartons and unused loose tiles are case-by-case; installed, customer-damaged or overdue goods are not accepted. Warehouse counts/checks quality; refund is recorded in MISA. No numerical return deadline is supplied. |
+| Supplier return | Accountant/purchasing personnel or Owner contacts supplier; agreement is required before dispatch, with internal authorization, issue/handover evidence and supplier receipt acknowledgement. |
+| Entry and device | Survey selects Accountant/one shared operator and immediate entry using a phone. D2 instead retains separate departmental entry/personal accounts; D3 retains five roles without new purchasing/delivery roles. Responsive phone use is required, without inferring native/offline software. |
 
-Step
-	Role
-	Description
-	1. Review Inventory Needs 
-	Inventory Staff
-	Review current inventory levels and identify products that need replenishment. 
-	2. Prepare Purchase Request 
-	Accountant 
-	Prepare a purchase request specifying the required products, quantities, and purchasing needs. 
-	3. Review and Approve Request 
-	Owner
-	Review the purchase request and decide whether to approve it based on business needs. 
-	4.1. Revise Request 
-	Accountant 
-	Revise the purchase request based on the owner's feedback and resubmit it for approval. 
-	4.2. Create and Submit Purchase Order 
-	Accountant 
-	Create a purchase order based on the approved request and submit it to the supplier. 
-	5. Confirm Order Availability 
-	Supplier 
-	Check product availability and determine whether the purchase order can be fulfilled.
-	6.1. Revise Purchase Order 
-	Accountant
-	Modify the purchase order when the supplier cannot fulfill the requested items or quantities. 
-	6.2. Prepare and Deliver Goods 
-	Supplier 
-	Prepare the confirmed products and arrange delivery to the store.
-	7. Receive Goods 
-	Inventory Staff
-	Receive the delivered goods and check whether they meet the purchase order requirements. 
-	8.1.0. Record Receipt Discrepancies 
-	Inventory Staff 
-	Record any differences or problems found during receiving, such as missing, incorrect, or damaged goods. 
-	8.1.1. Coordinate Discrepancy Resolution 
-	Supplier
-	Prepare and deliver replacement goods to resolve the reported discrepancies. 
-	8.2. Record Goods Receipt 
-	Inventory Staff
-	Record the receipt of goods that meet the required conditions and quantities. 
-	9. Reconcile Purchase Documents 
-	Accountant
-	Compare purchase orders, goods receipt records, and related documents to verify the purchasing transaction.
-	10. Finalize Purchase Order 
-	Accountant 
-	Complete the purchase order after the related documents have been reviewed and reconciled. 
-	  
-
-                               
-                                                [Figure 2: Current customer return workflow]
-Step
-	Role
-	Description
-	1. Submit return request
-	Customer
-	Customer requests a return and identifies the original sales transaction.
-	2. Receive request and verify original sale
-	Sales Staff
-	Sales staff checks the sales record and verifies the return details against the request.
-	3. Inform return conditions and process
-	Sales Staff
-	Sales staff informs the customer of the return conditions and process.
-	3a. Cancel request
-	Sales Staff
-	Customer declines; the request is cancelled and closed.
-	4. Hand over goods
-	Customer
-	The customer hands the goods over to the store.
-	5. Receive, count and inspect goods
-	Inventory Staff
-	Inventory Staff receives the goods, counts the quantity and inspects their condition against the request.
-	5a. Record non-conforming quantity and confirm accepted quantity
-	Inventory Staff
-	Damaged, unsuitable or differing quantities are recorded separately; the accepted quantity is confirmed.
-	6. Return accepted goods to stock and confirm quantity
-	Inventory Staff
-	Full quantity if all pass, otherwise the accepted portion confirms the quantity taken back to stock.
-	7. Receive return result
-	Accounting / Cashier
-	Accounting receives the warehouse return result.
-	8. Adjust sales documents and determine refund
-	Accounting / Cashier
-	Sales documents are adjusted and the refund amount is determined from the accepted quantity.
-	9. Process refund
-	Accounting / Cashier
-	The cashier processes the customer refund.
-	10. Receive refund and confirm closure
-	Customer
-	The customer receives the refund and confirms the return is closed.
-	
-
-
-
-  
-
-                                                    [Figure 3: Current supplier return workflow]
-Step
-	Role
-	Description
-	1. Identify goods and record return quantity
-	Inventory Staff
-	Warehouse identifies wrong, excess or faulty goods and records the return quantity.
-	2. Send return information
-	Inventory Staff
-	Return information is sent to accounting.
-	3. Receive information and check PO and documents
-	Accountant
-	Accounting checks the related purchase order, receipt records and documents.
-	4. Contact supplier
-	Accountant
-	Accounting contacts the supplier about the return.
-	4a. Discuss return terms and options
-	Supplier
-	Supplier discusses the conditions and options for taking the goods back.
-	4b. Review proposal and renegotiate
-	Accountant
-	Accounting reviews the proposal and renegotiates quantity, timing and handover method until settled.
-	5. Confirm return plan
-	Accountant
-	Agreed quantity and handover plan are confirmed.
-	6. Prepare and count goods
-	Inventory Staff
-	Warehouse prepares and counts the agreed goods.
-	6a. Recheck, adjust and recount
-	Inventory Staff
-	Goods are rechecked, the prepared quantity adjusted and recounted until it matches.
-	7. Hand over goods for delivery
-	Inventory Staff
-	Goods are handed over to delivery staff.
-	8. Verify handover quantity
-	Delivery Staff
-	Delivery staff verifies the handed-over quantity.
-	9. Transport and deliver to supplier
-	Delivery Staff
-	Goods are transported and delivered to the supplier.
-	10. Receive and count returned goods
-	Supplier
-	Supplier receives and counts the returned goods.
-	10a. Record difference and reconcile jointly
-	Supplier
-	Shortage, damage or wrong-lot differences are recorded; delivery, warehouse, accounting and supplier reconcile and recheck the actual quantity.
-	11. Confirm receipt and issue adjustment document
-	Supplier
-	The matched receipt is confirmed and the adjustment document is issued.
-	12. Receive adjustment document
-	Accountant
-	Accounting receives the supplier adjustment document.
-	13. Reconcile payables
-	Accountant
-	Payables are reconciled against the returned goods.
-	13a. Request document correction
-	Accountant
-	Differences are identified and the supplier is asked to correct the document.
-	13b. Correct and resend document
-	Supplier
-	Supplier corrects and resends the document; accounting re-receives and re-reconciles (back to 12).
-	14. Adjust purchase value and close
-	Accountant
-	Purchase value is adjusted and the return transaction is closed.
-	
-
-  
-
-                                                       [Figure 4: Warehouse transfer workflow] 
-
-
-Step
-	Role
-	Description
-	1. Create Transfer Request
-	Inventory Staff
-	Identify transfer needs and prepare a request, specifying source warehouse, destination warehouse, product, lot, required quantity, reason, and expected transfer time. Then submit the request to the Store Owner for review.
-	2. Review Transfer Request
-	Store Owner
-	Check the transfer need, source warehouse, destination warehouse, items, and requested quantities. If approved, permit Inventory Staff to proceed with stock verification and preparation. If rejected, proceed to step 2a.
-	2a. Record Rejection Reason
-	Store Owner
-	Record the rejection reason, notify Inventory Staff of the outcome, and close the transfer request.
-	3. Check Source Stock
-	Inventory Staff
-	Check available stock at the source warehouse by product, lot, position, and item status. Determine the usable quantity for the transfer request.
-	4. Prepare Transfer Goods
-	Inventory Staff
-	Retrieve goods from source warehouse locations and prepare them for transfer. Verify product, lot, shade, size, quantity, and physical condition of the picked items.
-	5. Confirm Transfer Dispatch
-	Inventory Staff
-	Count and confirm the actual quantity departing the source warehouse. Record dispatching personnel, dispatch timestamp, and relevant handover information or documentation.
-	6. Transport Goods
-	Inventory Staff
-	Receive goods from the source warehouse, verify handed-over quantities, and transport them to the destination warehouse. Record responsible personnel, handover timestamp, and supporting evidence if applicable.
-	7. Receive and Inspect Goods
-	Inventory Staff
-	At the destination warehouse, receive and inspect actual delivered goods. Reconcile products, lots, quantities, and condition against dispatch and handover records.
-	8. Record Transfer Differences
-	Inventory Staff
-	Execute when received goods do not match expectations. Record short, excess, incorrect, or damaged items/lots, providing root causes and evidence where available. Submit discrepancy details to the Store Owner for review.
-	9. Review Difference Resolution
-	Store Owner
-	Review discrepancy information and evidence. Confirm accepted quantities at the destination warehouse and define handling solutions for short, excess, incorrect, or damaged quantities.
-	10. Confirm Accepted Quantity and Close Transfer
-	Inventory Staff
-	Confirm final accepted quantities at the destination warehouse, put goods away in designated locations, complete receiving details, and close the transfer document.
-	
-
-  
-
-                                                        [Figure 5: Inventory audit workflow] 
-Step
-	Role
-	Description
-	1. Announce Inventory Audit
-	Warehouse Manager
-	Notify the storekeeper of the audit date verbally or via message. No formal written plan is created; audit scope (area, product category) is determined by the storekeeper.
-	2. Print Stock Count Sheet
-	Storekeeper
-	Export inventory lists from Excel files and print count sheets. Book inventory is not frozen at count commencement; goods are still received and issued during auditing.
-	3. Count Goods on Paper
-	Storekeeper
-	The storekeeper personally counts managed stock and writes quantities by hand onto printed sheets. Counting is typically done by product code only, without breaking down by lot, shade, size, or position.
-	4. Enter Count into Excel
-	Storekeeper
-	Re-enter figures from paper sheets into Excel. Prone to manual transcription errors, with no record of counter identity or timestamp.
-	5. Compare with Book Stock
-	Storekeeper
-	Compare counted quantities against book inventory using Excel formulas. If discrepancies exist, proceed to step 6; otherwise, proceed to step 8.
-	6. Report Discrepancy
-	Storekeeper
-	Record variance quantities and reasons in Excel and forward to the warehouse manager. No formal report is generated, and no photo evidence or documents are attached.
-	7. Review and Sign Off
-	Warehouse Manager
-	Review variance files and sign off. No formal rejection or recount request step exists; variance causes are rarely verified.
-	8. Update Records
-	Accounting
-	Adjust book inventory and valuation based on the received Excel file, then archive the file. Audit sheets lack status tracking and maintain no audit history.
-	
-
-[Figure 6: Current sales workflow]
-
+Design decisions D1–D8 in change_logs.md distinguish selected To-be controls from survey evidence. Custody, staging/put-away, compatible FIFO, versioned decisions, atomic posting and idempotency are proposed controls; this report does not assert they are already deployed.
+Legacy As-is figures in the original Word file are not embedded in this text extract and may depict an earlier baseline. The evidence table above replaces contradictory claims such as no coded locations, no recount/review, or unrestricted movement during the selected stocktake design.
 
 III. Existing Solutions
 
@@ -489,7 +267,7 @@ Gap ID
 	Inspection-to-usable-stock separation: Retail receipts exist, but the store also checks packaging, tone, calibre and damage manually. Its separate notes do not consistently connect each inspection outcome to accepted, waiting, damaged or rejected quantity.
 	Unverified stock can be presented as available for picking.
 	GAP-04
-	Position-level stock and movement trace: MISA eShop documents hierarchical storage positions; the case store has not yet maintained a consistent physical position map or logged every move by lot/status.
+	Position-level stock and movement trace: MISA eShop documents hierarchical storage positions; the survey confirms coded areas/racks, while consistent linkage of every move to lot/status and evidence remains the proposed control.
 	Staff cannot reliably locate the intended lot or explain a misplaced quantity.
 	GAP-05
 	Transfer checkpoints and exception ownership: KiotViet documents dispatch/receipt and difference notes; MISA documents transfer orders. The store needs attributable evidence for dispatch, carrier handover and destination receipt, followed by a documented resolution of short or damaged quantities.
@@ -501,389 +279,87 @@ Gap ID
 	Warehouse treatment of returns: Both products support returns as retail transactions. Tân Thương needs an independent physical check for customer-return quality and supplier-return quarantine, with accepted and rejected quantities recorded before stock disposition.
 	Damaged or unresolved returned goods may be mixed with usable stock.
 	GAP-08
-	Stocktake cut-off and controlled adjustment: Both products support stock counts and variance handling. The store's described practice involves paper/Excel re-entry and transactions during the count, without a consistently recorded snapshot, recount, reason and review decision.
+	Stocktake cut-off and controlled adjustment: Both products support stock counts and variance handling. The survey reports monthly counts, area pauses, recount/cause and approval; durable software snapshot/attempt history and frozen scope through resolution are proposed controls.
 	Discrepancies cannot be reconstructed reliably after a stock adjustment.
 	GAP-09
 	Unified physical warehouse audit trail: MISA eShop provides retail documents and reports, but the store's physical inspection, bins, handovers and exception evidence remain partly in separate records. WMSD will keep source-document references rather than duplicate retail or financial processing.
 	An individual quantity cannot be followed across receiving, storage, movement, issue and return.
-	Section Summary. KiotViet and MISA eShop already offer established retail and inventory functions. The nine GAPs describe the store's unresolved physical controls and fragmented records. WMSD addresses tile-specific inspection, traceable stock events, exception resolution and count accountability, together with Sales Order fulfilment and internal invoicing. Financial accounting and sales payment/debt management remain outside WMSD.
+	Section Summary. KiotViet and MISA eShop already offer established retail and inventory functions. The nine GAPs describe the store's unresolved physical controls and fragmented records. WMSD addresses tile-specific inspection, traceable stock events, exception resolution and count accountability, together with source-linked warehouse issue fulfilment and external-document reconciliation. Financial accounting and sales payment/debt management remain outside WMSD.
 IV. Proposed Solution
-WMSD is a responsive web application for Store Owner, Accountant, Inventory Staff, Sales Staff and Administrator. The proposed solution links warehouse execution with Sales Orders, internal invoicing and accepted customer-return refund records. WMSD includes Sales Orders, Outbound Deliveries, picking Transfer Orders, Post Goods Issue, internal invoice issuance with PDF/print output, SMTP order/invoice status notifications, customer and supplier returns, and approval and evidence recording for externally completed customer-return refunds. Master data and manually entered selling prices are included; any margin calculation is performed outside WMSD. Sales payment collection, deposits, receivables, debt, full accounting, statutory e-invoicing and live MISA integration are excluded. A general-purpose function to create or edit business policies is not implemented.
-Gap ID
-	Proposed solution
-	Operational handling
-	Major FE
-	GAP-01
-	Purchase deliveries and outstanding balances
-	Record the supplier-confirmed order and each receipt separately. On each visit keep ordered, received, accepted, pending/rejected and unreceived quantities, then reconcile completion only when the remaining quantities are resolved.
-	FE-01
-	GAP-02
-	Tile master / lot / conversion rules
-	Store material and dimensions, lot, tone, actual calibre, pack size and controlled conversions between boxes, pieces and m²; validate product specification when goods enter or leave the warehouse.
-	FE-02
-	GAP-03
-	Receiving inspection and stock eligibility
-	Register actual receipt quantities, inspect tile attributes and box condition, classify accepted/pending/damaged/rejected quantities and allow picking only from usable stock.
-	FE-03
-	GAP-04
-	Bin-level stock control
-	Maintain areas and positions; assign accepted stock by lot/tone/calibre/status and record every physical relocation with source and destination locations.
-	FE-04
-	GAP-05
-	Evidence-based transfer reconciliation
-	Record transfer request and owner decision, actual dispatch, carrier handover and destination receipt; retain quantity, actor, time and supporting evidence, keeping differences open until resolved.
-	FE-05
-	GAP-06
-	Sales Order fulfilment and internal invoicing
-	Create Sales Order and Outbound Delivery, create/confirm picking TO into staging, and post actual Goods Issue once. Issue the internal invoice for eligible unbilled quantities and send status email after commit. No sales payment collection or debt ledger is implemented.
-	FE-06
-	GAP-07
-	Quality-controlled returns
-	Inspect customer returns before re-admitting stock; isolate damaged or supplier-return quantities, then record the physical supplier-return handover against the original warehouse receipt. For accepted customer returns, Accountant requests a refund, Store Owner approves it, and Accountant records evidence of completion outside WMSD. Sales payment collection and debt management remain excluded.
-	FE-07
-	GAP-08
-	Controlled inventory stocktake
-	Capture actual counts by location, lot and status against a dated book-stock snapshot; preserve later movements, variance, recount, cause and owner-reviewed adjustment before closure.
-	FE-08
-	GAP-09
-	Cross-process warehouse trace and reporting
-	Link warehouse events with source documents, responsible person, timestamp, quantity and evidence; provide operational on-hand and exception reports while retaining manual references to MISA eShop records without live integration.
-	FE-09
-	  
+The selected solution implements the nine features below across seven linked business processes. The current sources are docs/02_nghiep_vu/de_xuat_quy_trinh_2_VI.md and its English counterpart, synchronized with this Report 1, Report 3 and database proposals on 21 October 2026. Each BF includes alternate and failure paths, not only successful execution.
 
-Figure 1. Proposed WMSD sales and goods issue process.
-Action
-	Role
-	Action Description
-	Receive sales request
-	Sales Staff
-	Receive the customer's request to purchase tiles and collect the required product and quantity information.
-	Check product, quantity, and stock availability
-	Sales Staff
-	Verify the requested products, quantities, and available stock to determine whether the order can be fulfilled.
-	Create Sales Order
-	Sales Staff
-	Create a Sales Order containing the ordered products, quantities, and relevant customer and sales information.
-	Create Outbound Delivery
-	Sales Staff
-	Create an Outbound Delivery based on the Sales Order, specifying the materials, quantities, and planned delivery details.
-	Create Transfer Order (TO)
-	Inventory Staff
-	Create a Transfer Order referencing the Outbound Delivery to instruct Inventory Staff to retrieve the required materials.
-	Determine eligible source storage bin
-	Inventory Staff
-	Select eligible source bins and lots under the fixed picking rules and available usable quantity. No user-created picking policy is provided.
-	Pick material and required quantity
-	Inventory Staff
-	Retrieve the specified materials from the designated storage bins and pick the required quantities according to the Transfer Order.
-	Record shortage / discrepancy and resolve
-	Inventory Staff
-	Record any shortage, incorrect material, or quantity discrepancy identified during picking, investigate the issue, and resolve it before proceeding.
-	Confirm Transfer Order
-	Inventory Staff
-	Confirm the completed picking operation in the system, record the picked quantities, and update the warehouse stock information at the Warehouse Management level.
-	Pack, label, and move to staging area
-	Inventory Staff
-	Pack the picked materials, attach the necessary labels, and move the goods to the staging area for shipment.
-	Post Goods Issue (PGI)
-	Inventory Staff
-	Post actual dispatched quantity once against the confirmed picking TO and Outbound Delivery. Deduct warehouse stock and retain movement history; do not generate accounting ledger entries or collect payment.
-	Hand over goods and shipping documents
-	Inventory Staff
-	Hand over the goods and relevant shipping documents to the carrier or delivery service for transportation to the customer.
-	Create and Issue Internal Invoice
-	Accountant
-	Accountant creates and issues the internal invoice for eligible posted, unbilled quantities. Preserve the issued snapshot, generate PDF/print output and queue SMTP status email after commit. Statutory tax e-invoicing and payment/debt processing are excluded.
-	  
+| Gap | Feature | Proposed operational handling |
+|---|---|---|
+| GAP-01 | FE-01 — Purchase Delivery and Partial Receiving | Sales/Warehouse demand and finite thresholds; Owner-approved replenishment; Accountant PO and supplier confirmation; multiple receipts and outstanding quantities. |
+| GAP-02 | FE-02 — Master Data and Tile Traceability | Product, lot/tone/verified calibre, versioned BOX/PIECE/m² factors, parties and controlled minimum quantities. Selling-price maintenance is excluded. |
+| GAP-03 | FE-03 — Goods Receiving Quality Control | Per-quantity inspection, packaging observation, ownership/custody, good/pending/defective/rejected outcomes, discrepancy evidence and eligible receipt. |
+| GAP-04 | FE-04 — Bin-level Inventory and Location Movement | Coded warehouses/locations, stock by owner/lot/quality, put-away and same-warehouse movements that preserve total and reservations without Owner approval. |
+| GAP-05 | FE-05 — Warehouse Transfer and Discrepancy Management | Approved TR followed by separate source TD and independent destination MWTR; preserve allocations, transit and Owner-reviewed differences; no redundant inter-warehouse TO. |
+| GAP-06 | FE-06 — Warehouse Issue Request, Delivery, Picking and Goods Issue | Verified external order/source → WIR → releases by warehouse → reservation/picking/staging → actual handover/PGI and warehouse print/notification. |
+| GAP-07 | FE-07 — Defective Goods and Physical Returns | Immediate isolation, authorized disposition, Sales customer-return request, Warehouse inspection, Owner post-inspection D6 acceptance, supplier agreement/dispatch/ACK and external references. |
+| GAP-08 | FE-08 — Stocktake and Inventory Adjustment | Owner plans monthly/targeted sessions; atomic scope freeze/snapshot, count sheets, append-only counts/recounts; Warehouse delta request; Owner review and separate Clear Difference. |
+| GAP-09 | FE-09 — Access Administration, Audit and Operational Reporting | Five roles, personal accounts and warehouse scope; immutable stock ledger, evidence and external-source trace; physical/available/custody/transit and exception reports. |
 
-Figure 2. Proposed WMSD Inventory audit workflow.
+BF-01 — Replenishment, purchasing and goods receipt
+Main flow: Sales/Warehouse raises uncovered demand; Owner reviews; Accountant creates PO and records supplier confirmation; Warehouse receives each delivery by actual quantity/quality/ownership and puts away.
+Alternate/exception outcomes: Rejection/revision, partial supply, over/wrong delivery, zero acceptance and replacement receipts retain evidence and outstanding quantities. RR/PO do not increase stock; GR does, put-away does not add a second time.
 
+BF-02 — Defect detection, isolation and disposition
+Main flow: Warehouse immediately blocks/isolates defects and records evidence; Owner authorizes release/regrade, supplier return or actual destruction; Warehouse executes the authorized quantity.
+Alternate/exception outcomes: Unclear ownership/cause and rejected/partial decisions stay isolated. Quarantine preserves owned total; actual destruction deducts once; supplier return deducts only at BF-07 dispatch.
 
-Step
-	Role
-	Description
-	1. Plan and Create Stocktake Session
-	Store Owner
-	Define the warehouse, locations, products/lots, schedule and counters, then create the session and assign its scope. The immutable book snapshot is captured when counting is activated, not by overwriting current stock.
-	2. Freeze Book Quantity and Physical Count
-	Inventory Staff
-	Activate counting, retain the book-quantity snapshot and cutoff, and count physical quantities. Post-cutoff movements remain traceable for reconciliation; this is not a blanket lock of all warehouse transactions.
-	3. Record Count Results and Reconcile Stock
-	Inventory Staff
-	Record quantities, units, condition, counter and time, retaining each count/recount attempt and its evidence rather than overwriting earlier results. Compare the selected results with the snapshot and relevant intervening movements. If there is no discrepancy, complete the session without adjustment; otherwise continue to step 4.
-	4. Create Adjustment Request
-	Inventory Staff
-	Submit the reconciled difference, affected lot/location/status, reason and evidence for Store Owner approval.
-	5. Approve Adjustment and Clear Difference
-	Store Owner
-	Review the reconciliation and approve the specific request/version; approval alone does not change stock, and unapproved requests remain unresolved. Post the approved difference once, retaining before/after quantities and later movements, then close the session only after its differences have been resolved.
-	
+BF-03 — Relocation, inter-warehouse transfer and discrepancies
+Main flow: Local relocation needs no Owner approval and preserves total/reservations. Inter-warehouse transfer uses Owner-approved TR → source TD/handover → independent destination inspection/MWTR and put-away.
+Alternate/exception outcomes: Direct issue from another warehouse uses BF-05 there. Missing receivers/stock wait; partial or damaged receipts split quality and transit; excess/wrong lot/loss needs evidence and Owner resolution. No closure with unresolved quantities.
 
+BF-04 — Stocktake, reconciliation and adjustment
+Main flow: Owner plans monthly/targeted count; Warehouse resolves pending tasks then atomically freezes scope/captures snapshot, prints count sheet and records counts/recounts. Warehouse proposes verified delta; Owner reviews and separately posts Clear Difference.
+Alternate/exception outcomes: Overlapping freezes/open tasks block activation. Blank differs from zero; found stock is separately flagged. Rejection/recount retains freeze; no variance closes/unlocks without ADJ0. Network failure does not unlock or permit concurrent movement.
 
+BF-05 — Issue request, picking and handover
+Main flow: Sales enters verified external-source WIR and agreed releases. Warehouse reserves compatible stock, picks to staging and posts actual handed-over quantity once at PGI. Source-linked documents support MISA reconciliation.
+Alternate/exception outcomes: Shortage suggests other stock/transfer/replenishment; partial delivery and lot changes need customer agreement. Failed handover retains staging or documented unpick. Post-PGI cancellation never restores stock by status edit; actual returns/corrections require linked documents.
 
-  
+BF-06 — Customer return and classification for receipt
+Main flow: Sales registers source and commercial conditions; Accountant verifies external history where needed. Warehouse takes custody, inspects and assesses each D6 quantity; Owner then accepts/rejects; Warehouse posts eligible approved GR-CR and put-away or records actual handback.
+Alternate/exception outcomes: CASE_REVIEW is not acceptance. Installed/customer-damaged/verified overdue → INELIGIBLE; unknown conditions → PENDING. Mixed outcomes split lines; changed assessment requires new version/review. No refund calculation/approval/payment; external results use UC-108.
 
-Figure 3. Proposed WMSD warehouse transfer.
-Step
-	Role
-	Description
-	1. Create Transfer Request
-	Inventory Staff
-	Create the request with source/destination warehouses, product, lot, quantity, reason and intended transfer date.
-	2. Review Transfer Requirement
-	Store Owner
-	Review the transfer need and requested quantity. Approval allows Transfer Order creation; rejection proceeds to step 2a.
-	3. Create Transfer Order
-	Inventory Staff
-	Create the TO from the approved request, specifying eligible source/destination locations, lot and quantity.
-	4. Confirm Transfer Order
-	Inventory Staff
-	Record actual dispatch, handover and receipt as execution information within the confirmation workflow. Track In Transit, validate accepted quantities and post source/destination movements once. Unresolved differences remain open for Store Owner-reviewed resolution before closure.
-	5. Record Reject Reason 
-	Store Owner 
-	Record the reason for rejecting the transfer request. Mark the request as Rejected and close it without changing stock.
-	6. View Reject Reason
-	Inventory Staff
-	View the rejection reason recorded by the Store Owner to understand why the transfer request was rejected.
-	
+BF-07 — Supplier return and quantity reconciliation
+Main flow: Warehouse proposes/isolate goods; Accountant records supplier agreement; Owner approves before dispatch or reuses sufficient BF-02 authorization. Warehouse posts actual handover once; Accountant records later supplier ACK; Owner resolves differences and closes reconciled quantities.
+Alternate/exception outcomes: No agreement/authorization means no issue. Partial refusal/ACK mismatch stays open. Custody dispatch does not reduce owned stock. Replacements need new receipts; compensation and closure do not create stock or deduct again.
 
-  
+Shared failure handling: enforce role/warehouse scope, requester≠approver and independent transfer receiver on the server. Version/source conflicts or frozen locations block the affected transaction. A failed posting rolls back the whole batch; retry after unknown commit looks up the stable operation/idempotency key. Missing mandatory evidence blocks confirmation; print/upload/email retry cannot post stock again.
 
-Figure 4. Proposed WMSD purchasing and receiving.
-
-
-
-
-Step
-	Role
-	Description
-	1. Create purchase request
-	Accountant
-	Create a purchase request and submit it to the Owner for review.
-	2. Review purchase request
-	Owner
-	Review the purchase request and decide whether to approve it. If approved, proceed to Step 4; otherwise, return it for revision at Step 3.
-	3. Revise purchase request
-	Accountant
-	Revise the purchase request based on the review feedback and resubmit it to the Owner at Step 2.
-	4. Create and issue purchase order
-	Accountant
-	Create a PO based on the approved purchase request and issue it to the supplier.
-	5. Record PO fulfilment response
-	Accountant
-	Record the supplier’s response regarding PO fulfilment. If the PO can be fulfilled as issued, proceed to Step 10; otherwise, proceed to Step 6.
-	6. Review affected PO lines and proposed changes
-	Accountant
-	Review the affected PO lines and proposed changes. If any part of the PO can be fulfilled, proceed to Step 8; otherwise, proceed to Step 7.
-	7. Cancel PO
-	Accountant
-	Cancel the PO when no part of it can be fulfilled and end the process.
-	8. Update PO
-	Accountant
-	Update the PO to reflect the agreed changes and the items or quantities that can be fulfilled.
-	9. Issue revised PO
-	Accountant
-	Issue the revised PO to the supplier and return to Step 5 to record the updated fulfilment response.
-	10. Receive, count and inspect goods against the PO
-	Inventory Staff
-	Receive the delivered goods, count the quantities, and inspect them against the PO. If discrepancies are found, proceed to Step 11; otherwise, proceed to Step 13.
-	11. Record discrepancies
-	Inventory Staff
-	Record discrepancies identified during receiving and forward the details to the Accountant for review.
-	12. Review discrepancies and record handling results
-	Accountant
-	Review the reported discrepancies and record how they are handled. If any goods are accepted, proceed to Step 13; if none are accepted, proceed to Step 15.
-	13. Create and confirm goods receipt for accepted goods
-	Inventory Staff
-	Create and confirm a goods receipt covering only the accepted goods and quantities.
-	14. Assign storage location and confirm put-away
-	Inventory Staff
-	Assign storage locations to the accepted goods, place them in the designated locations, and confirm put-away.
-	15. Reconcile the purchase order with confirmed goods receipts
-	Accountant
-	Compare the PO with confirmed goods receipts to identify outstanding quantities. If none remain, proceed to Step 17. If further delivery is agreed, return to Step 10; otherwise, proceed to Step 16.
-	16. Approve closure of the remaining quantity
-	Accountant
-	Closing the outstanding quantity when no further delivery is agreed, then proceed to Step 17.
-	17. Reconcile the invoice with the purchase order and goods receipts
-	Accountant
-	Compare the supplier’s invoice with the PO and confirmed goods receipts to verify consistency before closing the PO.
-	18. Close the purchase order
-	Accountant
-	Close the PO after invoice reconciliation is completed and end the process.
-	  
-
-                                             Figure 5. Proposed WMSD customer return.
-Step
-	Role
-	Description
-	1. Submit return request with original sale reference
-	Inventory Staff
-	Record or coordinate the external customer action; the external party is not a WMSD application role. Request carries the source sale and outbound reference for traceability.
-	2. Record request in WMSD with item, lot, quantity and reason
-	Inventory Staff
-	Request is logged in WMSD with product, lot, tone/calibre where relevant, quantity, reason and source link.
-	2a. Reject request and close
-	Inventory Staff
-	Invalid source, over-claim or out-of-condition request is rejected with a reason. No stock change.
-	3. Approve inspection acceptance
-	Store Owner
-	Authorised approval to receive and inspect the goods. Approval covers inspection only, not the refund.
-	3a. Reject request and close
-	Store Owner
-	Rejected request is closed with a reason. No stock change.
-	4. Receive and count goods against source
-	Inventory Staff
-	Physical receipt is counted and compared with the source product, lot, colour/size and quantity.
-	5. Inspect and classify goods in WMSD
-	Inventory Staff
-	Each quantity is classified as usable, usable with conditions, damaged/write-off, or awaiting supplier return, with photo/notes where needed. Mixed classes never share one sellable line.
-	6a. Create goods receipt for accepted quantity
-	Inventory Staff
-	Confirm the inspected accepted quantity against the original outbound reference, preserving lot, location and quality status. Only eligible usable goods become available after the required placement; nonusable goods remain isolated. This does not create an accounting entry or automatically pay a refund.
-	6b. Assign location and confirm put-away
-	Inventory Staff
-	Accepted goods are stored at the assigned position and placement is confirmed. Goods become sellable only after put-away.
-	7. Isolate and record non-usable quantity
-	Inventory Staff
-	Quarantine, damaged or awaiting-supplier quantities are held in isolation, excluded from usable stock, with a damage dossier where needed. Awaiting-supplier quantities feed the supplier-return flow.
-	8. Reconcile return with source and close
-	Inventory Staff
-	Accepted plus isolated quantities are reconciled to the source; the request is closed.
-	
-
-
-
-
-
-
-
-
-
-  
-
-                                            Figure 6. Proposed WMSD supplier return.
-Step
-	Role
-	Description
-	1. Create return request in WMSD
-	Inventory Staff
-	Request records the supplier, source purchase order and inbound receipt, lot, location, quantity, reason and evidence.
-	1a. Reject or adjust request and close
-	Inventory Staff
-	Ineligible or insufficient-lot requests are rejected or reduced with approval. No stock change.
-	2. Isolate quantity from usable stock in WMSD
-	Inventory Staff
-	Approved quantity is reserved and isolated by lot so sales or transfers cannot consume it.
-	3. Confirm return quantity and plan with supplier
-	Inventory Staff
-	Record the external supplier's accepted quantity and return arrangement. Supplier settlement, supplier debt and payment execution are outside WMSD; only the physical return and evidence are processed.
-	3a. Cancel and release reservation
-	Inventory Staff
-	Record or coordinate the external supplier action; the external party is not a WMSD application role. Rejected return is cancelled and the reservation released after a quality recheck. No stock reduction.
-	3b. Adjust to accepted quantity
-	Inventory Staff
-	Request is reduced to the supplier-accepted quantity; the remainder returns to usable stock or stays isolated after checking.
-	4. Pick and count agreed goods
-	Inventory Staff
-	Agreed lot is picked by location and counted.
-	4a. Recheck, adjust and recount
-	Inventory Staff
-	Lot and goods are rechecked, adjusted and recounted until they match.
-	5. Post goods issue and record dispatch evidence in WMSD
-	Inventory Staff
-	Post actual eligible return dispatch once with original PO/receipt references and evidence. Reduce the appropriate owned stock and release its reservation; do not deduct goods that were never posted into inventory. Preserve original documents and movement history.
-	6. Supplier acknowledges received quantity
-	Inventory Staff
-	Record or coordinate the external supplier action; the external party is not a WMSD application role. Supplier confirms the quantity actually received.
-	6a. Keep open and resolve discrepancy
-	Inventory Staff
-	Discrepancy is kept open and resolved with the supplier; goods re-enter stock only if physically returned and reinspected.
-	7. Reconcile dispatch and acknowledged quantities in WMSD
-	Inventory Staff
-	Dispatched versus acknowledged quantities are reconciled in WMSD.
-	8. Approve and close request
-	Store Owner
-	Owner approves closure once quantity reconciliation is clear.
-	
+Figure policy: the original Word illustrations are separate artifacts and are not revised by editing this extract. The seven text flows above and current process Mermaid define the selected scope; old SO/invoice/refund or combined transfer figures must be replaced when producing a new Word/PDF edition.
 
 V. Project Scope & Limitations
 1. Major Features
-ID
-	Major Feature
-	Core business capability
-	Addressed Gaps
-	FE-01
-	Purchase Delivery and Partial Receiving
-	Replenishment requests, purchase orders, supplier confirmation, partial goods receipts and outstanding quantities.
-	GAP-01
-	FE-02
-	Master Data, Tile Traceability and Selling Price
-	Products, packaging units, lots, suppliers, customers and manually maintained selling prices with warnings.
-	GAP-02
-	FE-03
-	Goods Receiving Quality Control
-	Inbound inspection, accepted and nonusable classifications, discrepancies and release to put-away.
-	GAP-03
-	FE-04
-	Bin-level Inventory and Location Movement
-	Warehouses, storage locations, stock by lot/status, put-away and internal bin movements.
-	GAP-04
-	FE-05
-	Warehouse Transfer and Discrepancy Management
-	Transfer Request, approval, Transfer Order execution and unresolved difference control.
-	GAP-05
-	FE-06
-	Sales Order, Outbound Delivery, Picking, Goods Issue and Internal Invoice
-	Sales Order through Outbound Delivery, picking TO, PGI, internal invoice/PDF and status email.
-	GAP-06
-	FE-07
-	Defective Goods, Returns and Refund Control
-	Defective disposition, customer/supplier returns and evidence-based external refund recording.
-	GAP-07
-	FE-08
-	Stocktake and Inventory Adjustment
-	Owner-created sessions, count history, reconciliation, adjustment approval and Owner Clear Difference.
-	GAP-08
-	FE-09
-	Access Administration, Audit and Operational Reporting
-	Accounts, five-role authorization, stock movement history, traceability and consolidated reports.
-	GAP-09
-	2. Limitations & Exclusions
-ID
-	Excluded Item
-	Reason
-	LI-01
-	Multi-store retail management
-	The release serves one store. Warehouse-to-warehouse transfers apply only to configured warehouses operated by that store.
-	LI-02
-	Sales payment, receivables and full accounting
-	WMSD does not collect customer payments or manage deposits, receivables, customer debt, supplier payment ledgers, general ledger or tax statements. For an accepted customer return, WMSD may approve a refund request and record evidence that the refund was completed outside the application.
-	LI-03
-	Statutory e-invoicing and live MISA integration
-	WMSD issues an internal sales invoice with a number, PDF/print output and email status. Tax-authority e-invoice issuance, statutory invoice transmission and live synchronization with MISA remain excluded.
-	LI-04
-	Fleet and route management
-	Transfer and delivery records may identify the responsible carrier, vehicle or handover evidence. GPS tracking, route optimization, dispatch planning and fleet maintenance are excluded.
-	LI-05
-	Complex purchase approval
-	WMSD supports a purchase proposal, Store Owner review and the resulting supplier order. Multi-level approval, tendering and vendor-selection workflows are excluded.
-	LI-06
-	Quotations, promotions, loyalty and CRM
-	Quotation management, promotional campaigns, discount programmes, loyalty programmes, marketing automation and full CRM are excluded.
-	LI-07
-	Omnichannel and e-commerce integration
-	Marketplace order synchronization, public storefront features and omnichannel orchestration are excluded.
-	LI-08
-	Prediction and automatic pricing recommendations
-	Demand forecasting, automatic replenishment recommendations and dynamic pricing are excluded. Users enter the final selling price or an externally calculated margin; WMSD only validates configured reference values and shows warnings.
-	LI-09
-	HRM and payroll
-	Accounts and roles support operational access only. Recruitment, attendance, payroll and other HR functions are excluded.
-	LI-10
-	General business policy configuration
-	Users cannot create or freely edit business policies, approval rules or workflow definitions. Fixed validations and role/operation permissions are specified in the UCs. Maintaining master data and final selling prices does not provide a policy editor.
-	 
+| ID | Major feature | Capability | Gap |
+|---|---|---|---|
+| FE-01 | Purchase Delivery and Partial Receiving | Sales/Warehouse demand and finite thresholds; Owner-approved replenishment; Accountant PO and supplier confirmation; multiple receipts and outstanding quantities. | GAP-01 |
+| FE-02 | Master Data and Tile Traceability | Product, lot/tone/verified calibre, versioned BOX/PIECE/m² factors, parties and controlled minimum quantities. Selling-price maintenance is excluded. | GAP-02 |
+| FE-03 | Goods Receiving Quality Control | Per-quantity inspection, packaging observation, ownership/custody, good/pending/defective/rejected outcomes, discrepancy evidence and eligible receipt. | GAP-03 |
+| FE-04 | Bin-level Inventory and Location Movement | Coded warehouses/locations, stock by owner/lot/quality, put-away and same-warehouse movements that preserve total and reservations without Owner approval. | GAP-04 |
+| FE-05 | Warehouse Transfer and Discrepancy Management | Approved TR followed by separate source TD and independent destination MWTR; preserve allocations, transit and Owner-reviewed differences; no redundant inter-warehouse TO. | GAP-05 |
+| FE-06 | Warehouse Issue Request, Delivery, Picking and Goods Issue | Verified external order/source → WIR → releases by warehouse → reservation/picking/staging → actual handover/PGI and warehouse print/notification. | GAP-06 |
+| FE-07 | Defective Goods and Physical Returns | Immediate isolation, authorized disposition, Sales customer-return request, Warehouse inspection, Owner post-inspection D6 acceptance, supplier agreement/dispatch/ACK and external references. | GAP-07 |
+| FE-08 | Stocktake and Inventory Adjustment | Owner plans monthly/targeted sessions; atomic scope freeze/snapshot, count sheets, append-only counts/recounts; Warehouse delta request; Owner review and separate Clear Difference. | GAP-08 |
+| FE-09 | Access Administration, Audit and Operational Reporting | Five roles, personal accounts and warehouse scope; immutable stock ledger, evidence and external-source trace; physical/available/custody/transit and exception reports. | GAP-09 |
 
+2. Limitations & Exclusions
+| ID | Excluded item | Boundary |
+|---|---|---|
+| LI-01 | Multi-store retail management | One store with three or more reported warehouses; no multi-branch retail administration. |
+| LI-02 | Sales payments, refunds and accounting | No collection, deposits, receivables/debt, refund amount/approval/payment or financial ledgers. Accountant records verified external references/status only (UC-108). |
+| LI-03 | Sales pricing, internal/tax invoicing and live MISA | Commercial SO, selling prices and internal/tax invoices remain external. No invoice generation/email or live MISA synchronization. Warehouse print/handover evidence remains in scope. |
+| LI-04 | Fleet and routing | Carrier/recipient and evidence may be recorded; GPS, route optimization and fleet maintenance are excluded. |
+| LI-05 | Complex approval/delegation | One Owner decision at the specified business point, version/quantity scoped and without self-approval. No extra purchasing/delivery role, dynamic delegation, tendering or multilevel approval. |
+| LI-06 | Quotation, promotion, loyalty and CRM | Customer records support delivery/contact/source matching only; commercial campaigns and CRM remain external. |
+| LI-07 | Omnichannel integration | Paper/Zalo/phone requests are normalized into verified WIR by staff; no automatic channel sync or public storefront. |
+| LI-08 | Forecasting and automatic purchasing | Finite minimum-stock alerts and compatible-source suggestions are allowed. No demand forecasting, auto-created PO, automatic physical posting or pricing recommendations. |
+| LI-09 | HRM and payroll | Accounts support authorized operations only; no attendance, recruitment or payroll. |
+| LI-10 | General business-policy editor | No arbitrary policy, workflow or approval-chain editor. Controlled finite thresholds/conversion versions do not confer general rule-authoring rights. |
 
-Report 1 (Project Introduction)                Page  /
+Verification limits: the survey is one response, not an inventory of all warehouse names/staff or a signed-off return period. MongoDB is runtime; the T-SQL design is a reference artifact. Document synchronization is not proof that posting services or physical controls have been implemented.
+
+Report 1 (Project Introduction)

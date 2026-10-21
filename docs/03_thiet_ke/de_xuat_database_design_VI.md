@@ -1,8 +1,8 @@
 # WMSD — Đề xuất thiết kế cơ sở dữ liệu
 
-> **Công nghệ cần phân biệt:** mô hình quan hệ và DDL SQL trong tài liệu này là **đề xuất phân tích/thiết kế**, dùng để làm rõ thực thể, quan hệ, ràng buộc và giao dịch. Hệ thống khi triển khai **sẽ dùng MongoDB (NoSQL)** theo baseline của Report 3 và tài liệu thiết kế chi tiết. Không triển khai DDL PostgreSQL như database chạy thật.
+> **Công nghệ cần phân biệt:** mô hình quan hệ và DDL SQL trong tài liệu này là **đề xuất phân tích/thiết kế**, dùng để làm rõ thực thể, quan hệ, ràng buộc và giao dịch. Hệ thống khi triển khai **sẽ dùng MongoDB (NoSQL)** theo baseline của Report 3 và tài liệu thiết kế chi tiết. Không triển khai DDL SQL Server/T-SQL như database chạy thật.
 
-Ngày lập: **18/10/2026**. Đây là thiết kế đề xuất để review. Quy trình nghiệp vụ chuẩn được đặt tại [Đề xuất 7 quy trình sau review 1](../02_nghiep_vu/De_xuat_7_quy_trinh_sau_review1.md). Thuật ngữ kho, chứng từ, bước BF-01–07 và quy ước swimlane nằm trong tài liệu quy trình để tránh lặp.
+Ngày lập: **18/10/2026**; đồng bộ **21/10/2026** theo khảo sát 20/10 và D1–D8. Đây là thiết kế đề xuất để review. Quy trình nghiệp vụ chuẩn được đặt tại [Đề xuất quy trình 2 — VI](../02_nghiep_vu/de_xuat_quy_trinh_2_VI.md). Thuật ngữ kho, chứng từ, bước BF-01–07 và quy ước swimlane nằm trong tài liệu quy trình để tránh lặp.
 
 ## 1. Trạng thái, căn cứ và phạm vi
 
@@ -10,19 +10,19 @@ Ngày lập: **18/10/2026**. Đây là thiết kế đề xuất để review. Q
 
 | Mã | Nguồn | Cách áp dụng |
 |---|---|---|
-| S1 | [Đề xuất 7 quy trình sau review 1](../02_nghiep_vu/De_xuat_7_quy_trinh_sau_review1.md), 17/10/2026 | Baseline nghiệp vụ đề xuất: BF-01–07, năm role, thu hẹp bán hàng, không tích hợp MISA trực tiếp. |
-| S2 | [Report 1 trực tuyến](https://docs.google.com/document/d/1kb36v5HuFrM75NFCTXvnJcsg6QnPjYkb/edit), modified 17/10/2026 16:26 giờ Việt Nam | Bối cảnh một cửa hàng Tân Thương, hàng gạch, mục tiêu và giới hạn; đọc qua Drive. |
-| S3 | [Report 3 trực tuyến](https://docs.google.com/document/d/1HvhlCmYjfXj7766ZVNUBAU4J063Lmr71/edit), modified 17/10/2026 17:17 giờ Việt Nam | Catalogue 102 UC, actor, quyền, nguyên tắc tồn và dữ liệu; đọc qua Drive. Báo cáo hiện yêu cầu MongoDB. |
+| S1 | [Đề xuất quy trình 2 — VI](../02_nghiep_vu/de_xuat_quy_trinh_2_VI.md), 21/10/2026 | Baseline nghiệp vụ đề xuất: BF-01–07, năm role, thu hẹp bán hàng, không tích hợp MISA trực tiếp. |
+| S2 | [Report 1 text](../01_bao_cao/WMSD_Report1_Fix.docx.txt), đồng bộ 21/10/2026 | Bối cảnh một cửa hàng, khảo sát từ 3 kho, mục tiêu và phạm vi hiện hành; không coi phần As-is là To-be đã triển khai. |
+| S3 | [Report 3 text](../01_bao_cao/WMSD_Report3_Fix.docx.txt), đồng bộ 21/10/2026 | 108 mã UC: 95 active, 13 retired; actors, đặc tả, màn hình và quyền. MongoDB vẫn là runtime. |
 | S4 | [WMSD_Bangach.drawio](../04_so_do/WMSD_Bangach.drawio), **21 trang trong file hiện tại** | Kiểm tra BF01–06b, ERD và hai trang cuối. Trang BF03 có lane System; BF02/04/05/06a/06b có lane WMSD. Sơ đồ mới bỏ các lane này theo yêu cầu. |
 | S5 | [SAP WM I](../06_tham_khao/sap/Intro_S4HANA_Using_Global_Bike_Case_Study_WM_I_en_v4.1.pdf), [II](../06_tham_khao/sap/Intro_S4HANA_Using_Global_Bike_Case_Study_WM_II_en_v4.1.pdf), [III](../06_tham_khao/sap/Intro_S4HANA_Using_Global_Bike_Case_Study_WM_III_en_v4.1.pdf), [IV](../06_tham_khao/sap/Intro_S4HANA_Using_Global_Bike_Case_Study_WM_IV_en_v4.1.pdf) | Bộ **v4.1** trong repo: I GR tr.10, TO tr.18/21; II STO tr.6, GI tr.12, GR tr.18, TO tr.26/29; III picking tr.14/19, ship tr.25; IV snapshot/đếm/đếm lại/clear tr.4/12/14/21/27. Không tái dùng số trang v4.2 từ đề xuất cũ. |
 | S6 | [Tổng hợp quy trình](../06_tham_khao/quy_trinh/Tổng%20hợp%20quy%20trình.pdf), 4 trang | Tham khảo chứng từ giao nhận và bối cảnh; phần công nợ/thanh toán/xe không tự trở thành phạm vi MVP. |
 | S7 | [Các link tham khảo](../06_tham_khao/link_tham_khao.md) | Dùng hướng dẫn chính thức MISA, Odoo, Microsoft để đối chiếu khái niệm; các quyết định riêng của WMSD được mô tả dưới đây. |
 
-Thứ tự áp dụng: yêu cầu hiện tại về mô hình SQL → phương án nghiệp vụ S1 → yêu cầu còn tương thích trong S2/S3 → tham khảo S4–S7. SQL ở đây là mô hình phân tích; yêu cầu MongoDB làm database runtime trong Report 3 vẫn được giữ.
+Thứ tự áp dụng: yêu cầu hiện tại → quyết định D1–D8 trong [change log](../../change_logs.md) và S1 ngày 21/10 → Report 1/3 text đã đồng bộ → nguồn khảo sát → tham khảo lịch sử S4–S7. Bản cũ ngày 17–18/10 chỉ là lịch sử; không khôi phục UC đã retired. SQL Server/T-SQL là mô hình tham chiếu, MongoDB là runtime.
 
 ### 1.2 Phạm vi và thay đổi kiến trúc
 
-- Một cửa hàng, các warehouse/location được cấu hình; bật điều chuyển liên kho sau khi xác nhận thực tế có từ hai kho.
+- Một cửa hàng; khảo sát xác nhận từ 3 kho trở lên, đã chia khu/kệ và đánh mã. D4 giữ điều chuyển liên kho với xác nhận độc lập hai đầu. Chưa có danh sách, địa chỉ hoặc số người từng kho; không seed dữ liệu giả.
 - Phạm vi nghiệp vụ, actors, chứng từ và bảy BF dùng nguồn chuẩn ở tài liệu quy trình; WMSD không tự nhận thêm kế toán, hóa đơn thuế, thanh toán hoặc live integration MISA.
 - SQL DDL minh họa mô hình quan hệ chuẩn hóa để review cấu trúc dữ liệu và các bất biến. Nó không thay đổi quyết định lưu trữ: MongoDB/NoSQL là database runtime.
 - FK/UNIQUE/CHECK trong mô hình SQL diễn đạt các quan hệ và quy tắc nghiệp vụ. Khi cài bằng MongoDB, cưỡng chế tương ứng qua collection validation, unique/partial indexes, tham chiếu ID và transaction/service logic. MongoDB không cung cấp FK giữa collection như SQL.
@@ -64,6 +64,7 @@ Bảng dưới đây mô tả cách ánh xạ các khái niệm của mô hình 
 | stock_movement + posting_batch | stock_movements append-only và posting_batches, liên kết ObjectId, idempotency key unique |
 | reservation + demand_supply_allocation | reservations và demand_supply_allocations với trạng thái, lượng và source IDs |
 | stocktake + snapshot + count_attempt | stocktakes/stocktake_snapshots và count attempts append-only, lưu cutoff/version |
+| customer_return_assessment | return_assessments append-only theo returnLineId, assessmentNo và documentVersion; index truy vấn đánh giá mới nhất; approval reference đúng version |
 | evidence, audit_event, outbox_event | evidence_refs, audit_events append-only, outbox_events có event key unique |
 
 Không biến từng bảng SQL thành một MongoDB collection. Chỉ embed dữ liệu khi cùng vòng đời, được đọc/cập nhật như một đơn vị và không tăng vô hạn. Chứng từ đã post, ledger, audit và các lần đếm lại cần lịch sử bền vững, không ghi đè. Transaction cập nhật nhiều document phải commit posting batch, movements, balance, reservations, trạng thái chứng từ, audit và outbox cùng nhau.
@@ -74,12 +75,13 @@ Tạo unique indexes cho document number, idempotency key, operation key và cá
 
 ### 3.1 Chuẩn hóa và quy ước kiểu SQL
 
-Trong mô hình này, PK là khóa chính, FK là khóa ngoại, UNIQUE bảo đảm giá trị không trùng, CHECK kiểm tra điều kiện, 3NF là dạng chuẩn ba. SQL chỉ mô tả mô hình quan hệ tham chiếu, không mặc định Microsoft SQL Server.
+Trong mô hình này, PK là khóa chính, FK là khóa ngoại, UNIQUE bảo đảm giá trị không trùng, CHECK kiểm tra điều kiện, 3NF là dạng chuẩn ba. DDL hiện tại dùng Microsoft SQL Server/T-SQL trong schema `wmsd`; đây là mô hình quan hệ tham chiếu, không đổi runtime MongoDB.
 - **1NF:** một ô chứa một giá trị; không lưu danh sách product/lot/warehouse bằng chuỗi CSV, không nhét dòng chứng từ vào JSON làm nguồn giao dịch chính.
 - **2NF:** bảng nối có PK đầy đủ; ví dụ quyền theo `(role_code, permission_code)`, phân công theo `(user_id, warehouse_id)`.
 - **3NF:** tên kho, sản phẩm, NCC ở master; phiếu tham chiếu FK. `document` là supertype, bảng nghiệp vụ là subtype 1:1, không phải cặp `entity_type/entity_id` không có FK.
 - Snapshot tên hàng, địa chỉ giao, hệ số quy đổi trên chứng từ là dữ liệu lịch sử có chủ đích. `stock_balance` là projection/cache được cập nhật cùng ledger, là phi chuẩn hóa có kiểm soát và phải đối soát.
-- Trong mô hình SQL tham chiếu: PK `BIGINT GENERATED ALWAYS AS IDENTITY`; lượng `NUMERIC(20,6)`, hệ số `NUMERIC(24,12)`, ngày `DATE`, sự kiện `TIMESTAMP WITH TIME ZONE`. Đây không phải kiểu lưu runtime; MongoDB dùng ObjectId, UTC Date và Decimal128 theo hợp đồng hiện hành. Không dùng kiểu floating point cho lượng kho.
+- Trong mô hình SQL tham chiếu: PK `BIGINT IDENTITY(1,1)`; lượng `NUMERIC(20,6)`, hệ số `NUMERIC(24,12)`, ngày `DATE`, sự kiện `DATETIMEOFFSET`. Đây không phải kiểu lưu runtime; MongoDB dùng ObjectId, UTC Date và Decimal128 theo hợp đồng hiện hành. Không dùng kiểu floating point cho lượng kho.
+- T-SQL dùng `bit` cho cờ, `SYSDATETIMEOFFSET()` cho thời gian, filtered unique index cho khóa nullable và `GO` phân batch view/schema. Chạy bằng client hiểu `GO`; không gửi nguyên file như một câu SQL.
 - Trạng thái hữu hạn, tên bảng/cột `snake_case`. Không cascade delete lịch sử. Master ngừng sử dụng bằng `active=false`; lịch sử vẫn tra cứu được.
 
 ### 3.2 Master data và phân quyền
@@ -108,8 +110,11 @@ Trong mô hình này, PK là khóa chính, FK là khóa ngoại, UNIQUE bảo đ
 | `line_link` | source_line_id, target_line_id, relation_code, linked_qty | RR→PO; PO→GR; WIR→OD→GI; receipt→TO, từng lượng |
 | `approval`, `approval_line` | document/version/decision_kind UNIQUE; requester ≠ approver; dòng/lượng/outcome | Lưu quyết định và giới hạn theo lượng; không một boolean approved cho toàn hồ sơ |
 | `evidence` | document_id FK, object_key, sha256, MIME, uploader/time | Lưu tham chiếu tệp riêng tư; không URL công khai hoặc base64 trong bảng dòng |
-| `external_reference`, `document_external_reference` | UNIQUE(system,kind,number), bảng nối document-reference | Nguồn MISA, chứng từ NCC và kết quả xử lý bên ngoài |
+| `external_reference`, `document_external_reference` | UNIQUE(system,kind,number), source_version nếu nguồn có; correlation_id UNIQUE không trống; verifier/time và nối document-reference | Version nguồn không được bịa; document.version quản phiên bản nội bộ; correlation ổn định để truy vết |
 | `external_reference_line` | reference_id, line_key UNIQUE theo reference; product, eligible_qty | Nguồn từng dòng và hạn mức lịch sử; Accountant xác minh |
+
+
+**Nguồn ngoài và phiên bản:** `external_reference.source_version` nullable vì nguồn có thể không có mã phiên bản; `correlation_id` bắt buộc, UNIQUE và không trống để truy vết WMS ổn định. `document.version` vẫn kiểm phiên bản hồ sơ/duyệt nội bộ. Không dùng correlation mới mỗi lần retry thay cho operation key.
 
 ### 3.4 Các bảng nghiệp vụ
 
@@ -130,6 +135,19 @@ Các bảng header dưới đây có **PK đồng thời là FK `document_id →
 | Sai lệch dùng chung | `discrepancy_line`: source_line, SHORT/OVER/DAMAGED/WRONG_LOT/WRONG_PRODUCT, status, resolution_document. |
 
 `SUPPLIER_ACK`, `CUSTODY_RECEIPT`, `CUSTODY_RELEASE`, `HANDOVER`, `REVERSAL`, `SCRAP`, `OPENING` là document kinds. Không cần một bảng header trống riêng cho từng kind khi không có thuộc tính riêng. Một phiếu có nhiều dòng, không có mảng embedded. Mỗi FK nguồn phải được service kiểm tra thêm đúng loại chứng từ và cùng sản phẩm/lô theo quy tắc, vì FK tồn tại chưa chứng minh nguồn hợp lệ về nghiệp vụ.
+
+
+### 3.4.1 Đánh giá điều kiện khách trả và kiểm bao bì
+
+| Bảng/trường | Hợp đồng hiện hành |
+|---|---|
+| `customer_return_assessment` | FK `return_line_id`; UNIQUE(return_line_id,assessment_no); `document_version`, `assessed_by/at`, lý do không trống và `approval_id` tham chiếu quyết định sau kiểm. Append-only; thay điều kiện/lượng tạo phiên bản mới. |
+| Bao bì / sử dụng / nguyên nhân | `packaging_condition`=SEALED/OPENED/TORN/UNKNOWN; `installation_status`=UNUSED/INSTALLED/UNKNOWN; `damage_cause`=NONE/CUSTOMER/SUPPLIER/OTHER/UNKNOWN. Tách dòng nếu điều kiện khác nhau. |
+| Thời hạn | `deadline_status`=WITHIN/EXCEEDED/NOT_APPLICABLE/UNKNOWN; giá trị đã xác minh cần `deadline_reference` không trống, kể cả NOT_APPLICABLE. Không có số ngày mặc định. |
+| Điều kiện xét | INELIGIBLE khi đã thi công/hỏng do khách/quá hạn xác minh; nếu chưa có căn cứ loại mà còn UNKNOWN thì PENDING; đầy đủ căn cứ để xét là CASE_REVIEW, chưa phải chấp nhận. Owner vẫn có thể từ chối CASE_REVIEW. |
+| `inspection_line.packaging_condition` | Quan sát bao bì chung cho nhập/nhận trả. UNKNOWN mặc định, cần cập nhật theo thực kiểm; không tự đặt quality DAMAGED khi TORN. Số viên thực nằm ở dòng quantity và conversion snapshot, không suy từ số vỏ thùng. |
+
+Service chọn assessment mới nhất theo dòng và đúng version hiện tại; kiểm inspection, nguồn đã xác minh, Owner APPROVE và approval_line đúng dòng/lượng trước GR-CR. CHECK/FK không chứng minh những liên kết này. Approval cũ không hợp lệ khi điều kiện thay đổi. PENDING/INELIGIBLE vẫn là custody nếu đang giữ; bàn giao trả thực tế mới giảm custody. Lot chưa xác minh dùng identification_status=UNKNOWN và giá trị tham chiếu chưa rõ được ghi minh bạch; không bịa calibre hoặc dùng kích thước danh nghĩa thay calibre đã kiểm.
 
 ### 3.5 Tồn, giữ hàng và ledger
 
@@ -194,7 +212,7 @@ erDiagram
 
 ### 4.1 Phạm vi DDL và giới hạn ràng buộc
 
-DDL cung cấp PK/FK, UNIQUE, kiểu số chính xác, CHECK cục bộ, XOR nguồn, kiểm tra quantity before/after và index. **DDL này không phải toàn bộ backend đã vận hành được**: chưa cung cấp stored procedure/service post, authorization, trigger bất biến hay API. Quy tắc tổng nhiều dòng không được giả vờ đã giải quyết bằng `CHECK`. PostgreSQL cũng phân biệt CHECK trên một dòng với ràng buộc liên dòng. [PostgreSQL constraints](https://www.postgresql.org/docs/16/ddl-constraints.html).
+DDL cung cấp PK/FK, UNIQUE, kiểu số chính xác, CHECK cục bộ, XOR nguồn, kiểm tra quantity before/after và index. **DDL này không phải toàn bộ backend đã vận hành được**: chưa cung cấp stored procedure/service post, authorization, trigger bất biến hay API. Quy tắc tổng nhiều dòng không được giả vờ đã giải quyết bằng `CHECK`. CHECK cục bộ không thay được kiểm tổng lượng/liên bảng; các kiểm này phải nằm trong service/transaction.
 
 | ID | Ràng buộc | Cách cưỡng chế khi triển khai |
 |---|---|---|
@@ -210,6 +228,9 @@ DDL cung cấp PK/FK, UNIQUE, kiểu số chính xác, CHECK cục bộ, XOR ngu
 | R-10 | Không cộng custody vào STORE | Kiểm owner_party của balance; acceptance có chứng từ chuyển chủ, không chỉ sửa master party |
 | R-11 | Giữ đúng đơn vị/làm tròn | Snapshot conversion; với whole_base_units, kiểm qty nguyên; dữ liệu m² yêu cầu nhập viên/thùng thực khi quy đổi không nguyên |
 | R-12 | Cân đối ledger/balance, đúng batch | batch.document_id = movement.document_id; delta balance khớp movement và before/after; không UPDATE balance riêng |
+| R-13 | D6 đúng dòng/lượng/version | CHECK điều kiện cục bộ + service kiểm assessment mới nhất, inspection, nguồn và approval_line; không post PENDING/INELIGIBLE |
+| R-14 | Bao bì và đơn vị thực | Lưu packaging_condition và actual quantity; bao bì rách không tự đổi quality; version hệ số không sửa lịch sử |
+| R-15 | Đúng phạm vi UC và vai trò | Đúng 5 role; 13 UC retired không permission active; UC-107/108 không post tồn; D2 mỗi bộ phận tự ghi |
 
 Với gạch 4 viên/thùng và 0,36 m²/viên: 3 thùng +2 viên =14 viên =5,04 m². Lưu thành hai dòng nhập hoặc tách các thành phần đơn vị rõ; không lưu “3,5 thùng” rồi suy ra khả năng xuất nửa thùng mà thiếu thông tin viên. M² dùng hiển thị/đặt nhu cầu; xuất thực phải đạt độ hạt sản phẩm. Version quy đổi sau này không tính lại lịch sử.
 
@@ -247,7 +268,7 @@ Chỉ đảo toàn batch khi không có nghiệp vụ sau phụ thuộc và đ�
 | WIR, OD, CR đề nghị | Có | Xem/kiểm/nhận phần kho | Xác minh nguồn | Duyệt CR | Không |
 | Cách ly ngay; đề nghị xử lý | Không | Có | Đối chiếu | Duyệt xử lý | Không |
 | Đếm/đề nghị ADJ | Không | Có | Đối chiếu | Tạo phiên, duyệt/post ADJ | Không |
-| Phân quyền kỹ thuật | Không | Không | Không | Theo quyền đã chốt | Có |
+| Phân quyền kỹ thuật | Không | Không | Không | Không | Có |
 
 Đây là ma trận thao tác cốt lõi, không mở rộng quyền master data của SRS. Kho nguồn/đích phải kiểm theo user ID và warehouse assignment. User có nhiều role không được tự duyệt đề nghị của mình. Các báo cáo và tệp chứng cứ áp cùng phạm vi truy cập như màn hình; Sales không thấy giá vốn hay toàn bộ dữ liệu cách ly. Accountants chỉ xem chuỗi chứng từ được giao trách nhiệm.
 
@@ -275,16 +296,29 @@ Báo cáo cần có: tồn sở hữu theo kho/bin/lot/quality; available và re
 | T16 | Sửa lot/tone hoặc chứng từ đã post | Bị chặn; cần chứng từ đính chính phù hợp và audit |
 | T17 | Không lệch kiểm kê | Đóng và mở khóa; không tạo ADJ0 |
 | T18 | Lịch sử chưa có GI trong WMS | CR tham chiếu nguồn ngoài được xác minh; không GI giả |
+| T19 | Khách trả đã thi công/hỏng do khách/quá hạn đã rõ | INELIGIBLE; không GR-CR, custody đến giao trả nếu đã giữ |
+| T20 | Thời hạn/điều kiện chưa xác minh | PENDING; không tự đặt 7/15/30 ngày; cần bằng chứng |
+| T21 | Nguyên thùng hoặc viên lẻ chưa dùng đủ căn cứ | CASE_REVIEW; chỉ Owner quyết định sau inspection, không tự nhận |
+| T22 | Đổi assessment/lượng sau Owner duyệt | Version mới và duyệt lại; post với approval cũ bị chặn |
+| T23 | NCC chưa ACK hoặc ACK lệch GI | Mở BF-07; Owner UC-106 giải quyết; không trừ thêm khi đóng |
+| T24 | Thùng rách, gạch nguyên và số viên thực được kiểm | Chất lượng theo kiểm, không tự DAMAGED; quantity theo viên/version |
+| T25 | Lỗi mạng giữa posting và trả response | Tra batch/operation key; không post lặp, không mất audit |
+| T26 | Kiểm kê theo tháng | Owner tạo phiên thủ công; D5 khóa phạm vi; không job tạo phiên |
 
 Đây là **acceptance criteria**, không phải tuyên bố toàn bộ backend đã vượt qua kiểm thử. DDL và sơ đồ được kiểm tra độc lập; cần triển khai posting service và chạy concurrency/integration tests trước sử dụng thực tế.
 
-**Kiểm tra artifact ngày 18/10/2026:** DDL tạo thành công 63 bảng và 2 view trên PostgreSQL 18.6 qua PGlite 0.5.10; 21 kiểm tra schema/truy vấn/giao dịch minh họa đã qua, gồm ràng buộc FK, số dư âm/trùng, tự duyệt, khóa post trùng và đối soát ví dụ TD100/MWTR98. Chưa chạy riêng trên PostgreSQL 16, chưa kiểm thử dịch vụ phân quyền hoặc cạnh tranh nhiều kết nối. Cả 16 trang draw.io đã được export PNG để xem bố cục; validator báo 0 lỗi/0 cảnh báo; tên lane đều là actor. Hai bản có cùng 10 mục chính, bao phủ đủ 63 tên bảng và không có liên kết file nội bộ bị thiếu.
+**Lịch sử kiểm tra:** kiểm tra PostgreSQL/PGlite ngày 18/10 áp dụng bản DDL trước chuyển đổi, không xác nhận T-SQL hiện tại. Change log ngày 20/10 ghi ScriptDom parse thành công và test biểu thức D6 trong SQLite; đó không phải chạy SQL Server hoặc backend. Kiểm tra của lượt 21/10 được ghi riêng tại [change log](../../change_logs.md); không gán kết quả lịch sử cho file mới.
+
+
+### 6.1 Truy vết luồng ngoại lệ
+
+35 nhánh BF-01–07 và EX-01–05 trong mục 4 của đề xuất quy trình là đầu vào nghiệm thu dữ liệu: chứng từ/approval lưu hành động và phiên bản; line_link/nguồn lưu lượng; stock_account/balance phân owner/location/transit; posting_batch/movement chống ghi lặp; stocktake/location_lock/count_attempt giữ phạm vi và lịch sử; evidence/audit/outbox giữ chứng cứ và retry. Mỗi lỗi transaction phải để balance, ledger và lượng nguồn đồng nhất. Các case cần service không được coi đã cưỡng chế chỉ vì DDL parse thành công.
 
 ## 7. Thứ tự triển khai và quyết định cần chốt
 
 Triển khai theo thứ tự: MongoDB collection validation/index/master data → role/scope → document shape/approval → ledger append-only và posting/idempotency service → BF-01/TO → BF-05 → BF-03 → BF-02/06/07 → BF-04 → báo cáo và đối soát. Dùng dữ liệu mẫu khác biệt tone/calibre, nhận từng phần, custody và transit ngay từ đầu.
 
-Các quyết định cần nhóm/cửa hàng xác nhận trước chốt SRS: hệ quản trị cuối cùng; số kho thực tế; người nhận độc lập ở liên kho; chính sách chấp nhận hàng lỗi và mốc nhận quyền quản lý; độ hạt đơn vị; thời lượng khóa kiểm kê; quy tắc thay lô; tiêu chí xác minh nguồn lịch sử; mẫu in/mã chứng từ. Đề xuất đã chọn baseline để thiết kế tiếp, không coi các điểm này là đã khảo sát xong.
+Các quyết định cần nhóm/cửa hàng xác nhận trước chốt SRS: danh sách/số lượng chính xác và địa chỉ kho (đã biết từ 3); người nhận độc lập ở liên kho; chính sách chấp nhận hàng lỗi và mốc nhận quyền quản lý; độ hạt đơn vị; thời lượng khóa kiểm kê; quy tắc thay lô; tiêu chí xác minh nguồn lịch sử; mẫu in/mã chứng từ. Đề xuất đã chọn baseline để thiết kế tiếp, không coi các điểm này là đã khảo sát xong.
 
 ### Tham khảo trực tuyến và giới hạn áp dụng
 

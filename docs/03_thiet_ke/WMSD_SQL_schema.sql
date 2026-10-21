@@ -1,4 +1,4 @@
--- WMSD relational analysis/reference DDL, 2026-10-18. NOT a production schema.
+-- WMSD relational analysis/reference DDL, 2026-10-21. NOT a production schema.
 -- Runtime persistence remains MongoDB (NoSQL), per Report 3 and the system design.
 -- SQL Server (T-SQL) syntax is used only to make the proposed relational model executable for review.
 -- Schema only: posting/approval services and authorization are NOT implemented here.
@@ -19,7 +19,10 @@ CREATE TABLE wmsd.app_user (
  credential_hash varchar(255) NOT NULL,
  active bit NOT NULL DEFAULT 1
 );
-CREATE TABLE wmsd.app_role (role_code varchar(30) PRIMARY KEY);
+CREATE TABLE wmsd.app_role (
+ role_code varchar(30) PRIMARY KEY,
+ CONSTRAINT ck_app_role_fixed CHECK(role_code IN ('OWNER','SALES','WAREHOUSE','ACCOUNTANT','ADMIN'))
+);
 INSERT INTO wmsd.app_role VALUES ('OWNER'),('SALES'),('WAREHOUSE'),('ACCOUNTANT'),('ADMIN');
 CREATE TABLE wmsd.user_role (
  user_id bigint NOT NULL REFERENCES wmsd.app_user, role_code varchar(30) NOT NULL REFERENCES wmsd.app_role,
@@ -172,10 +175,16 @@ CREATE TABLE wmsd.external_reference (
  source_system varchar(50) NOT NULL,
  reference_kind varchar(40) NOT NULL,
  reference_no varchar(100) NOT NULL,
+ source_version nvarchar(100),
+ correlation_id varchar(100) NOT NULL UNIQUE
+   CONSTRAINT ck_external_correlation CHECK(LEN(LTRIM(RTRIM(correlation_id))) > 0),
  verified_by bigint REFERENCES wmsd.app_user,
  verified_at datetimeoffset,
  UNIQUE(source_system, reference_kind, reference_no)
 );
+-- source_version is the external revision when supplied; never invent a provider
+-- version. document.version tracks the internal verification/workflow version.
+-- correlation_id is a stable WMS trace identity, not a fresh retry key.
 CREATE TABLE wmsd.document_external_reference (
  document_id bigint NOT NULL REFERENCES wmsd.document, reference_id bigint NOT NULL REFERENCES wmsd.external_reference,
  PRIMARY KEY(document_id, reference_id)
@@ -214,8 +223,12 @@ CREATE TABLE wmsd.inspection_line (
  quality_code varchar(16) NOT NULL REFERENCES wmsd.quality_status,
  ownership_decision varchar(12) NOT NULL CHECK(ownership_decision IN ('ACCEPT','CUSTODY','REJECT')),
  inspected_by bigint NOT NULL REFERENCES wmsd.app_user,
- inspected_at datetimeoffset NOT NULL
+ inspected_at datetimeoffset NOT NULL,
+ packaging_condition varchar(12) NOT NULL DEFAULT 'UNKNOWN'
+   CONSTRAINT ck_inspection_packaging CHECK(packaging_condition IN ('SEALED','OPENED','TORN','UNKNOWN'))
 );
+-- Packaging observation is independent of quality and ownership. Actual accepted/
+-- counted quantities use document_line and its conversion snapshot, not carton count.
 CREATE TABLE wmsd.goods_receipt (
  document_id bigint PRIMARY KEY REFERENCES wmsd.document,
  warehouse_id bigint NOT NULL REFERENCES wmsd.warehouse,
@@ -337,7 +350,8 @@ CREATE TABLE wmsd.customer_return_assessment (
  deadline_reference nvarchar(1000),
  eligibility_status varchar(16) NOT NULL
    CHECK(eligibility_status IN ('PENDING','CASE_REVIEW','INELIGIBLE')),
- assessment_reason nvarchar(2000) NOT NULL,
+ assessment_reason nvarchar(2000) NOT NULL
+   CONSTRAINT ck_return_assessment_reason CHECK(LEN(LTRIM(RTRIM(assessment_reason))) > 0),
  assessed_by bigint NOT NULL REFERENCES wmsd.app_user,
  assessed_at datetimeoffset NOT NULL DEFAULT SYSDATETIMEOFFSET(),
  approval_id bigint REFERENCES wmsd.approval,
@@ -529,6 +543,7 @@ CREATE INDEX ix_reservation_active ON wmsd.reservation(balance_id) WHERE status 
 CREATE INDEX ix_reservation_demand ON wmsd.reservation(demand_line_id, status);
 CREATE INDEX ix_balance_lot ON wmsd.stock_balance(lot_id, quality_code);
 CREATE INDEX ix_pending_outbox ON wmsd.outbox_event(event_id) WHERE delivered_at IS NULL;
+CREATE INDEX ix_return_assessment_latest ON wmsd.customer_return_assessment(return_line_id, document_version, assessment_no DESC);
 CREATE INDEX ix_return_assessment_status ON wmsd.customer_return_assessment(eligibility_status, return_line_id);
 GO
 
@@ -587,3 +602,18 @@ COMMIT TRANSACTION;
 --     Monthly stocktake is a planning cadence, not concurrent-movement mode.
 -- 14. Preserve actual remaining PIECE quantities for opened/torn boxes. Packaging
 --     damage alone must not set DAMAGED quality. Nominal size is not verified calibre.
+
+-- 2026-10-21 synchronization: process section 4 defines 35 alternate/exception
+-- branches and EX-01..05; database proposal section 6 maps acceptance cases.
+-- 15. Exactly five roles; do not seed permissions for retired UC-23..25, UC-42,
+--     UC-59..62 or UC-74..78. UC-107/108 record external evidence, not inventory.
+-- 16. Enforce frozen-scope checks on receipt, dispatch, relocation, picking,
+--     custody/ownership and quality changes, including corrections/backdating.
+--     Clearing uses the authorized stocktake adjustment, not a general bypass.
+-- 17. Unknown source/lot identity cannot create available stock. Nominal dimensions
+--     must not substitute for unverified calibre. No invented warehouse seeds.
+-- 18. Failed handover before PGI retains staged stock or uses documented unpick.
+--     Cancellation after PGI does not restore stock without receipt/correction.
+-- 19. Supplier agreement and later receipt ACK are separate events; ACK/closure
+--     never deducts again. Custody-only returns do not reduce store-owned stock.
+-- These are required application controls, NOT implemented procedures/triggers.
