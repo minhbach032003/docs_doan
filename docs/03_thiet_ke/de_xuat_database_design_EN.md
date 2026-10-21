@@ -1,8 +1,14 @@
 # WMSD — Database Design Proposal
 
-> **Technology distinction:** the relational model and SQL DDL here are **design/analysis proposals** for clarifying entities, relationships, integrity rules and transactions. The actual implementation **will use MongoDB (NoSQL)**, per Report 3 and the detailed system design. Do not apply the SQL Server/T-SQL DDL as the live database schema.
+SQL Server/T-SQL is a relational reference model for design analysis. MongoDB remains runtime; this DDL is not a MongoDB migration and does not implement business services.
 
-Prepared **18 October 2026**; synchronized **21 October 2026**, Vietnam time, under the 20 October survey and D1–D8. This is a proposal for review. Authoritative process flows are maintained in the [Process Proposal 2 — EN](../02_nghiep_vu/de_xuat_quy_trinh_2_EN.md). Warehouse glossary, document types, BF-01–07 and swimlane rules are kept there to avoid duplication.
+Updated 22 October 2026 against the survey, D1–D8 and current BF-06 in [Process Proposal 2 — EN](../02_nghiep_vu/de_xuat_quy_trinh_2_EN.md). Reference SQL: [WMSD_SQL_schema.sql](WMSD_SQL_schema.sql). History: [change_logs.md](../../change_logs.md).
+
+| Version | Date | Revision |
+|---|---|---|
+| 1.0.0 | 21 October 2026, before the sales-flow revision | D1–D8 baseline: WIR directly references external order lines. |
+| 2.0.0 | 21 October 2026 | SO → WIR → PGI → photo POD → PAY-CFM; replace the WIR source contract and add status/confirmation transactions. |
+| 3.0.0 | 22 October 2026 | Separate BF-03 relocation and BF-04 transfer; renumber BF-05–08, without changing SQL tables/columns. |
 
 ## 1. Status, evidence and scope
 
@@ -10,20 +16,20 @@ Prepared **18 October 2026**; synchronized **21 October 2026**, Vietnam time, un
 
 | ID | Source | Use |
 |---|---|---|
-| S1 | [Process Proposal 2 — EN](../02_nghiep_vu/de_xuat_quy_trinh_2_EN.md), 21 October 2026 | Proposed business baseline: BF-01–07, five roles, reduced sales scope and no direct MISA integration. |
+| S1 | [Process Proposal 2 — EN](../02_nghiep_vu/de_xuat_quy_trinh_2_EN.md), sales revision on 21 October and BF-03/BF-04 split on 22 October 2026 | Current business source: eight BFs, five roles, 111 UCs (98 active/13 retired), BR-01–33; no live MISA integration. |
 | S2 | [Report 1 text](../01_bao_cao/WMSD_Report1_Fix.docx.txt), synchronized 21 October 2026 | Single-store context, survey reporting three or more warehouses, current purpose and scope; As-is is not an implemented To-be. |
-| S3 | [Report 3 text](../01_bao_cao/WMSD_Report3_Fix.docx.txt), synchronized 21 October 2026 | 108 UC IDs: 95 active, 13 retired; actors, specifications, screens and permissions. MongoDB remains runtime. |
+| S3 | [Report 3 text](../01_bao_cao/WMSD_Report3_Fix.docx.txt), earlier 21 October baseline | Historical 108 UCs (95 active/13 retired), before UC-109–111. Requires follow-up to S1; MongoDB remains runtime. |
 | S4 | [WMSD_Bangach.drawio](../04_so_do/WMSD_Bangach.drawio), **21 pages in the current file** | Reviewed BF01–06b, ERDs and the final two pages. BF03 contains a System lane; BF02/04/05/06a/06b contain WMSD lanes. The new diagrams remove them as requested. |
 | S5 | [SAP WM I](../06_tham_khao/sap/Intro_S4HANA_Using_Global_Bike_Case_Study_WM_I_en_v4.1.pdf), [II](../06_tham_khao/sap/Intro_S4HANA_Using_Global_Bike_Case_Study_WM_II_en_v4.1.pdf), [III](../06_tham_khao/sap/Intro_S4HANA_Using_Global_Bike_Case_Study_WM_III_en_v4.1.pdf), [IV](../06_tham_khao/sap/Intro_S4HANA_Using_Global_Bike_Case_Study_WM_IV_en_v4.1.pdf) | Local **v4.1** set: I GR p.10, TO pp.18/21; II STO p.6, GI p.12, GR p.18, TO pp.26/29; III picking pp.14/19, shipping p.25; IV snapshot/count/recount/clearing pp.4/12/14/21/27. Do not reuse v4.2 page references from the older proposal. |
 | S6 | [Process compilation](../06_tham_khao/quy_trinh/Tổng%20hợp%20quy%20trình.pdf), four pages | Handover documents and business context. Debt, payments and fleet management are not automatically added to the MVP. |
 | S7 | [Reference links](../06_tham_khao/link_tham_khao.md) | Official MISA, Odoo and Microsoft guidance for concept comparison; WMSD-specific decisions are stated separately. |
 
-Priority: current instruction → D1–D8 in the [change log](../../change_logs.md) and S1 on 21 October → synchronized Report 1/3 text → survey evidence → historical references S4–S7. The 17–18 October versions are historical and cannot reinstate retired UCs. SQL Server/T-SQL is the reference model; MongoDB is runtime.
+Priority: current instruction → S1 and BF-06 revision in the [change log](../../change_logs.md) → D1–D8 → pre-revision Report 1/3 → survey → historical S4–S7. Current catalogue: 111 UCs, 98 active/13 retired; old sources cannot reinstate retired functions. SQL is the reference model; MongoDB remains runtime.
 
 ### 1.2 Scope and architecture impact
 
 - One store; the survey reports three or more warehouses with coded areas/racks. D4 retains transfers with independent dispatch/receipt. Exact warehouse list, addresses and staffing remain unverified; do not seed invented records.
-- Business scope, actors, documents and seven BF flows use the process proposal as the source of truth. This design does not add accounting, tax invoices, payments or a live MISA integration.
+- The current eight-process proposal is authoritative. Add copied SO, photo POD and external receipt confirmation; money collection, receivables, tax invoicing and live MISA integration remain outside scope.
 - SQL DDL illustrates a normalized relational model for reviewing data relationships and invariants. It does not change the persistence decision: MongoDB/NoSQL is the runtime database.
 - SQL FK/UNIQUE/CHECK constraints express relationships and business rules. In MongoDB, enforce equivalents with collection validation, unique/partial indexes, ID references and transaction/service logic. MongoDB does not provide SQL foreign keys across collections.
 
@@ -42,11 +48,12 @@ Priority: current instruction → D1–D8 in the [change log](../../change_logs.
 | Group | Delta to record in the SRS |
 |---|---|
 | BF-01 | Sales/Warehouse raise demand; Accountant prepares PO after approval |
-| BF-03 | Separate same-warehouse relocation from transfer; remove duplicate TR → approval → inter-warehouse TO approval |
-| BF-04 | Owner plans; Warehouse counts/proposes; Owner approves and clears differences |
-| BF-05 | External Warehouse Issue Request; retain delivery/picking/PGI; do not add invoice scope |
-| BF-06 | Custody and inspection precede Owner acceptance; financial follow-up stays external |
-| BF-07 | Warehouse requests; Accountant records supplier agreement; Owner authorizes issue or reuses an eligible BF-02 decision |
+| BF-03 | Same-warehouse relocation: Warehouse TO-RELOCATE, no Owner approval; preserve total and reservations; UC-34–37. |
+| BF-04 | Inter-warehouse transfer: Owner-approved TR → source TD → independent destination MWTR → put-away; UC-38–44/104. |
+| BF-05 | Owner plans; Warehouse counts/proposes; Owner approves and clears differences |
+| BF-06 | Sales copies external SO → linked WIR → picking/PGI → Warehouse photo POD → DELIVERED → Sales PAY-CFM → COMPLETED. UC-45–48/109–111; BR-31–33. |
+| BF-07 | Custody and inspection precede Owner acceptance; financial follow-up stays external |
+| BF-08 | Warehouse requests; Accountant records supplier agreement; Owner authorizes issue or reuses an eligible BF-02 decision |
 | Persistence | MongoDB is runtime; SQL is the analysis model and reference DDL |
 
 ## 2. Mapping the design to MongoDB runtime
@@ -58,6 +65,8 @@ This table describes how relational design concepts could map to MongoDB. Align 
 | app_user, app_role, permission, user_warehouse | users, roles, permissions; references/embedded assigned role IDs |
 | warehouse, location, party, product, uom, lot | warehouses, locations, parties, products, lots; snapshot important attributes on transaction lines |
 | document + typed header + document_line | business_documents with documentType, or bounded-context collections sharing documentId; embed headers/lines when lifecycle and size are bounded |
+| sales_order + line + cancellations | sales_orders with lines/source references; append-only cancellation_events; unique source and order version |
+| customer_delivery + line / external_payment_confirmation / business_operation | customer_deliveries, external_payment_confirmations and business_operations; SO/GI/photo references, unique operation keys; no stock ledger writes |
 | approval + approval_line | approvals with authorized version, actor, decision and quantities |
 | external_reference + line | external_references with sufficient source data for reconciliation/deduplication |
 | stock_balance | stock_balances with unique compound index on account/location + lot + quality + owner |
@@ -107,11 +116,11 @@ In this model, PK means primary key, FK means foreign key, UNIQUE enforces disti
 | `document` | document_id PK; document_no UNIQUE; kind, status, version, creator/timestamps | Stable document identity, lifecycle and version |
 | `document_line` | line_id PK; document FK; UNIQUE(document,line_no); product, optional lot, conversion, entered/base quantities, snapshots | Planning lines can omit lot; posted lines require verified identity or explicitly blocked provisional lots |
 | `document_link` | parent/child document IDs and relation_code PK | Header traceability with real FKs |
-| `line_link` | source/target line IDs, relation_code, linked_qty | RR→PO, PO→GR, WIR→OD→GI, receipt→TO by quantity |
+| `line_link` | source/target line IDs, relation_code, linked_qty | RR→PO, PO→GR, SO→WIR→OD→GI→POD quantities; BF-06 also has typed FKs for parent consistency |
 | `approval`, `approval_line` | UNIQUE(document,version,decision_kind); requester≠approver; line/quantity/outcome | Decisions and quantity ceilings, rather than one approved boolean |
-| `evidence` | document FK, object_key, sha256, MIME, uploader/time | Private object references, not public URLs or base64 in transaction lines |
+| `evidence` | document, object_key, sha256, MIME, uploader/time; UNIQUE(evidence_id,document_id) | Private files. POD/PAY-CFM composite FKs bind evidence to its own document; service checks content and successful upload. |
 | `external_reference`, `document_external_reference` | UNIQUE(system,kind,number), source_version when supplied, nonblank UNIQUE correlation_id, verifier/time and document-reference join | Never invent provider version; document.version tracks internal revisions; stable correlation supports trace |
-| `external_reference_line` | reference and line_key UNIQUE per reference; product, eligible_qty | Line-level external source entitlement, verified by Accountant |
+| `external_reference_line` | reference/line_key unique per source; product, eligible_qty; UNIQUE(external_line_id,reference_id) | Sales verifies current source orders; Accountant supports historical/reconciliation evidence. SO lines use their SO source. |
 
 
 **External source versions:** `external_reference.source_version` is nullable when the provider has no revision ID; `correlation_id` is required, UNIQUE and nonblank for stable WMS trace. `document.version` still governs internal workflow/approval versions. A fresh correlation on every retry must not replace a stable operation key.
@@ -125,13 +134,14 @@ Header tables below use **`document_id` as both PK and FK to `document`**. Typed
 | BF-01 | `replenishment_request`: warehouse, needed_on, trigger_reason. `purchase_order`: supplier, receiving warehouse, expected date, supplier_confirmation. `arrival`: warehouse, optional supplier, arrived_at, delivery_reference. |
 | Shared inspection | `inspection_line`: inspected_source_line, quality, ownership_decision, inspector/time. Split quantities with different quality/ownership outcomes. |
 | Purchase/customer-return receipt | `goods_receipt`: warehouse, PURCHASE/CUSTOMER_RETURN kind; line sources through line_link. |
-| BF-03 | `transfer_request`: different source/destination warehouses. `transfer_dispatch`: request FK, dispatcher/time. `transfer_receipt`: dispatch FK, receiver/time. `transfer_receipt_line`: dispatch_line FK and quality. |
+| BF-03 | warehouse_task kind RELOCATE; warehouse_task_line source/destination within the same warehouse, preserving lot/owner/quality; document/audit retain confirmation. |
+| BF-04 | `transfer_request`: different source/destination warehouses. `transfer_dispatch`: request FK, dispatcher/time. `transfer_receipt`: dispatch FK, receiver/time. `transfer_receipt_line`: dispatch_line FK and quality. |
 | Handover | `handover`: related document FK, recipient_name, optional carrier, time, confirmer; evidence through evidence table. |
-| BF-05 | `issue_request`: customer, requested warehouse, needed date, address snapshot. `issue_request_line`: external line FK, release_key UNIQUE per external line, requested tone/calibre and substitution confirmation. `outbound_delivery`: WIR FK, one warehouse and planned date. `goods_issue`: warehouse, SALE/SUPPLIER_RETURN. |
+| BF-06 | sales_order/line/cancellation; issue_request/line linked to SO; outbound_delivery/line; sales_goods_issue_line; customer_delivery/line; external_payment_confirmation and business_operation. See section 3.4.2. |
 | Warehouse tasks | `warehouse_task`: warehouse, kind, assignee. `warehouse_task_line`: source/destination locations and quality; both locations belong to the task warehouse. |
 | BF-02 | `defect_case`: discovered_at, reason. `disposition_line`: defect_line, outcome, approval. SCRAP uses document/line and links to DISP. |
-| BF-06 | `customer_return`: customer, warehouse, separate financial status. `customer_return_line`: original GI line **or** verified external historical line, reason; exclusive source choice. |
-| BF-07 | `supplier_return`: supplier, warehouse, agreement, financial status. `supplier_return_line`: origin_line, owner_party, agreed_qty, authorization. `supplier_ack_line`: dispatch_line, outcome, acknowledgement time. |
+| BF-07 | `customer_return`: customer, warehouse, separate financial status. `customer_return_line`: original GI line **or** verified external historical line, reason; exclusive source choice. |
+| BF-08 | `supplier_return`: supplier, warehouse, agreement, financial status. `supplier_return_line`: origin_line, owner_party, agreed_qty, authorization. `supplier_ack_line`: dispatch_line, outcome, acknowledgement time. |
 | Shared discrepancies | `discrepancy_line`: source_line, SHORT/OVER/DAMAGED/WRONG_LOT/WRONG_PRODUCT, status, resolution document. |
 
 `SUPPLIER_ACK`, `CUSTODY_RECEIPT`, `CUSTODY_RELEASE`, `HANDOVER`, `REVERSAL`, `SCRAP` and `OPENING` are document kinds. A separate empty header table is unnecessary when a kind has no special attributes. Each document has relational lines, not an embedded array. Services must additionally verify source document kinds and product/lot compatibility: an existing FK does not establish business eligibility.
@@ -149,13 +159,38 @@ Header tables below use **`document_id` as both PK and FK to `document`**. Typed
 
 Services select the latest assessment for the line and current version, then verify inspection, source, Owner APPROVE and matching approval_line/quantity before GR-CR. CHECK/FK alone do not establish these relationships. Changed conditions invalidate old approval. Physically held PENDING/INELIGIBLE goods remain custody until actual handback. Unverified lots use identification_status=UNKNOWN with openly identified unknown references; never invent calibre or treat nominal dimensions as verified calibre.
 
+### 3.4.2 Sales order, delivery evidence and external receipt
+
+The revised BF-06 uses the following typed records. Quantities are held on document_line in base units, except cancellation facts which store cancelled_qty_base. Existing receipt, transfer, defect, return and stocktake models are retained.
+
+| Table | Fields and relationships | Contract |
+|---|---|---|
+| sales_order | document PK/FK; UNIQUE external_reference_id; customer, need date, address snapshot | SALES_ORDER is a manual copy of one verified source order. Keep source evidence; update/reopen the same SO instead of making another copy. |
+| sales_order_line | line PK; SO and source reference; UNIQUE external_line_id; required tone/calibre | Composite FKs bind each line to its own SO document and the source reference belonging to that SO. Validate source product, unit conversion and quantity in the service. |
+| sales_order_cancellation | SO/line, positive cancelled_qty_base, user/time, nonblank reason, UNIQUE operation_id | Append-only facts for unissued remainder. Validate cumulative cancellation; reduce affected unissued WIR/OD commitments and release reservations in the same transaction. |
+| issue_request / issue_request_line | Required SO FK; line contains WIR/SO/SO-line IDs; UNIQUE(SO-line,release_key) | Header and line must refer to the same SO. Composite FKs reject a line from a different order; customer is obtained from SO. |
+| outbound_delivery_line | line, OD, WIR and WIR-line IDs | Composite FKs bind each line to the OD's own WIR. One OD belongs to one warehouse. |
+| sales_goods_issue_line | line, goods_issue_id, outbound_delivery_line_id | SALE-only subtype of actual GI-S lines. Match product/lot/warehouse and check valid posted PGI in the service. Supplier-return issue sources remain unchanged. |
+| customer_delivery / customer_delivery_line | POD document, SO, warehouse, recipient, actual delivery time, confirmer/time, operation; line → sales GI line + required photo_evidence_id | Each line has one posted source GI-S line. A composite photo FK binds the image evidence to this POD document. Service verifies stored image, access and confirmed quantity cap; header alone is not proof of delivery. |
+| external_payment_confirmation | PAY-CFM document, SO, delivered_order_version, full_payment_received=1, confirmer/time, operation; receipt reference/evidence/note | UNIQUE(SO,delivered_order_version) prevents duplicate receipt confirmation for one delivered version. CHECK requires a nonblank reference/note or evidence. Sales confirms full receipt outside WMSD after current SO is DELIVERED; no monetary calculation or transfer. |
+| business_operation | document, operation/key, UNIQUE idempotency_key, payload_hash, document_version, user/time, optional reason | Records non-stock operations, separately from posting_batch. Stable keys return the previous result; same key with changed payload is rejected. |
+
+Per-line ceilings: total non-cancelled WIR commitments (including already issued quantities) ≤ SO ordered quantity minus authorized cancellations; total OD commitments ≤ authorized WIR quantity after cancellation; valid PGI ≤ OD quantity; total confirmed, non-voided POD quantity ≤ valid posted PGI per GI-S line. Parent and child quantities are never added as independent demand. Aggregate checks run in a transaction and cannot be replaced by row-level CHECKs.
+
+| Record | Lifecycle and effect |
+|---|---|
+| SO | DRAFT → OPEN → IN_PROGRESS/PARTIALLY_DELIVERED → DELIVERED → COMPLETED. DELIVERED needs photo-confirmed receipt of every remaining line and a total remaining quantity greater than zero. All cancelled with zero delivery sets CANCELLED. COMPLETED additionally requires Sales full external receipt confirmation. |
+| POD / PAY-CFM | DRAFT → CONFIRMED, or VOIDED through an audited correction with reason. Confirmations do not affect inventory. WIR warehouse completion remains independent from SO delivery/payment completion. |
+
+Retain original confirmation facts when voiding a mistake; record a new business_operation, increment the SO version and recalculate progress and invalidate stale completion authority. PAY-CFM must be confirmed against the current delivered order version. Ordinary customer returns retain historical POD/PAY-CFM evidence and use BF-07 separately. Photo upload failure leaves the POD unconfirmed; notification failure after confirmation retries only the notification.
+
 ### 3.5 Inventory, reservations and ledger
 
 | Table | Keys/fields | Invariant |
 |---|---|---|
 | `stock_account` | account_id; **location_id XOR transit_dispatch_line_id**, each UNIQUE | Either a physical bin or transit dedicated to one TD line; do not assign transit to a fictitious destination bin |
 | `stock_balance` | balance_id; UNIQUE(account,lot,quality,owner_party); qty≥0; version | Non-null dimensions prevent duplicate logical balances caused by NULL semantics |
-| `posting_batch` | batch_id, document; UNIQUE idempotency_key; UNIQUE(document,operation,operation_key); payload_hash; actor/time; UNIQUE reversal_of | One batch per business execution; same key with different payload is rejected |
+| `posting_batch` | batch_id, document; UNIQUE idempotency_key; UNIQUE(document,operation,operation_key); payload_hash; actor/time; UNIQUE reversal_of | One batch per inventory posting; same key/different payload is rejected. POD/PAY-CFM use business_operation instead |
 | `stock_movement` | batch, document line, optional from/to balances, q>0, before/after | At least one endpoint; two for movement, one for entering/leaving the tracked scope |
 | `reservation` | demand_line, execution_line, balance, qty, ACTIVE/CONSUMED/RELEASED | Sum ACTIVE ≤ balance quantity; follow goods and avoid duplicate claims for one demand |
 | `demand_supply_allocation` | PK(demand_line,supply_line), qty, status | Planned PO/TD supply assigned to demand; not available before eligible receipt |
@@ -187,6 +222,20 @@ This diagram shows the main structure; the DDL contains the complete columns, FK
 ```mermaid
 erDiagram
   DOCUMENT ||--o{ DOCUMENT_LINE : contains
+  DOCUMENT ||--o| SALES_ORDER : specializes
+  SALES_ORDER ||--|{ SALES_ORDER_LINE : contains
+  SALES_ORDER ||--o{ ISSUE_REQUEST : fulfills
+  SALES_ORDER_LINE ||--o{ ISSUE_REQUEST_LINE : sources
+  ISSUE_REQUEST ||--o{ OUTBOUND_DELIVERY : releases
+  ISSUE_REQUEST_LINE ||--o{ OUTBOUND_DELIVERY_LINE : releases
+  OUTBOUND_DELIVERY_LINE ||--o{ SALES_GOODS_ISSUE_LINE : issues
+  SALES_GOODS_ISSUE_LINE ||--o{ CUSTOMER_DELIVERY_LINE : proves
+  SALES_ORDER ||--o{ CUSTOMER_DELIVERY : receives
+  CUSTOMER_DELIVERY ||--|{ CUSTOMER_DELIVERY_LINE : contains
+  EVIDENCE ||--o{ CUSTOMER_DELIVERY_LINE : photo
+  SALES_ORDER ||--o{ EXTERNAL_PAYMENT_CONFIRMATION : completes
+  DOCUMENT ||--o{ BUSINESS_OPERATION : records
+  SALES_ORDER_LINE ||--o{ SALES_ORDER_CANCELLATION : cancels
   DOCUMENT ||--o{ APPROVAL : versions
   DOCUMENT ||--o{ POSTING_BATCH : posts
   DOCUMENT ||--o| TRANSFER_REQUEST : specializes
@@ -231,10 +280,16 @@ The SQL DDL illustrates PK/FK/UNIQUE constraints, exact numeric types, local CHE
 | R-13 | D6 line/quantity/version matches | Local eligibility CHECK plus service validation of latest assessment, inspection, source and approval_line; no PENDING/INELIGIBLE posting |
 | R-14 | Actual packaging/units | Record packaging_condition and actual quantity; torn packaging alone does not change quality; conversion versions preserve history |
 | R-15 | UC and role boundary | Exactly 5 roles; 13 retired UCs have no active permissions; UC-107/108 do not post stock; D2 departmental entry |
+| R-16 | SO and WIR source | Unique SO/source line; composite parent FKs; Sales source verification/evidence; reuse SO for correction/reopening |
+| R-17 | SO→WIR→OD→GI ceilings | Check totals at each layer, including issued portions; audited cancellation releases matching reservations; no parent/child double-counting |
+| R-18 | Photo POD within valid PGI | Assigned Warehouse; eligible posted GI; same-document stored photo; concurrent per-GI cumulative POD check |
+| R-19 | Correct DELIVERED/COMPLETED gates | Full remaining qty >0 for DELIVERED; Sales full external receipt on current version for COMPLETED; all cancelled before delivery gives CANCELLED |
+| R-20 | Non-stock, idempotent confirmation | business_operation key/hash; confirmation, SO progress, audit/outbox in one transaction; no POD/PAY-CFM movement |
+| R-21 | Traceable correction | VOIDED with reason; recalculate SO and invalidate stale completion authority. Normal BF-07 preserves original delivery/payment history |
 
 For tiles with 4 pieces/box and 0.36 m²/piece, 3 boxes +2 pieces =14 pieces =5.04 m². Preserve the entry as separate unit components/lines. Do not rely on “3.5 boxes” without the underlying piece quantity. Square metres may express demand/display; actual issue must respect product granularity. Future conversion versions must not recalculate history.
 
-### 4.2 Transactions and idempotent posting
+### 4.2 Transactions for inventory posting
 
 ```text
 BEGIN
@@ -249,6 +304,16 @@ COMMIT
 ```
 
 MongoDB does not use SQL row locks or `SELECT FOR UPDATE`. Update each balance atomically with a filter on ObjectId, version and sufficient quantity; use a conditional increment. Create balances through a unique compound index and handle duplicate-key/retry. Transactions recheck document version, stocktake freeze and source ceilings; retry write conflicts using the same idempotency key. To prevent a stocktake/posting race, activation and posting must update/check the scoped version in a transaction. Commit posting batch, ledger, balance, reservation, document status, audit and outbox together. Exercise transaction limits and load with representative data.
+
+### 4.2.1 Confirmation transactions without inventory posting
+
+1. Authenticate Sales for SO/WIR/cancellation/PAY-CFM, or assigned Warehouse for POD. Check document kind, state and version.
+2. Look up business_operation by stable key and verify payload_hash. Return the stored result on retry; reject changed payload under the same key.
+3. Serialize the relevant SO, WIR/OD and source GI lines. Recheck cumulative quantities, valid PGI, required stored photo and current SO version; pending uploads cannot confirm delivery.
+4. Commit confirmation/cancellation, business_operation, derived SO progress, audit and outbox together. POD/PAY-CFM create no posting_batch, movement, balance or reservation change. Cancellation may release reservations but never changes owned quantity.
+5. For PAY-CFM, recheck full delivery and Sales confirmation of full external receipt in the same transaction; set SO to COMPLETED. Never rely only on a client-supplied status or an old version.
+
+In MongoDB, conditional updates to shared SO/source-line versions must make conflicting confirmations contend on the same documents. Snapshot reads alone do not prevent two distinct PODs jointly exceeding the source. Retrying write conflicts keeps the same operation key. The DDL declares these contracts but does not implement their services.
 
 ### 4.3 Inter-warehouse transaction example
 
@@ -266,13 +331,16 @@ Reverse an entire batch only if no dependent downstream operation exists and all
 | PO, supplier agreement, external financial references | Related view | Receiving view | Yes | View/review when required | No |
 | GR, TO, TD, MWTR, GI | No | Assigned warehouse | Reconcile | View | No |
 | WIR, OD, proposed CR | Yes | Warehouse execution | Verify sources | Approve CR | No |
+| Copy/update SO; cancel unissued remainder | Yes | Related view | Reconcile | View | No |
+| POD: photo-confirmed customer delivery (UC-110) | View | Assigned warehouse | View/reconcile | View | No |
+| PAY-CFM: confirm full external receipt (UC-111) | Yes | View | View/reconcile | View | No |
 | Immediate isolation and disposition proposal | No | Yes | Reconcile | Approve disposition | No |
 | Count and propose ADJ | No | Yes | Reconcile | Plan, approve/post ADJ | No |
 | Technical permission administration | No | No | No | No | Yes |
 
 This is the core operation matrix, not a grant of additional master-data privileges. Source/destination scope is checked by actual user and warehouse assignment. Multiple roles do not permit self-approval. Reports and evidence downloads inherit the same access scope as operational screens. Sales does not receive costs or unrestricted quarantine visibility; Accountants trace only their authorized document chains.
 
-Required reports: owned stock by warehouse/bin/lot/quality; available/reserved; custody by owner; transit by TD and age; outstanding PO/WIR demand; transfer/count/supplier-return discrepancies; external source→WIR/PO→GR/GI→return/adjustment traceability. Reconcile `SUM(inventory_ledger.delta)` against stock_balance regularly, including OPENING postings. Do not initialize balances by bypassing the ledger.
+Reports cover stock/availability/custody/transit, outstanding PO/SO/WIR demand, dispatched versus customer-received quantities, DELIVERED orders awaiting Sales receipt confirmation, COMPLETED orders, cancellations and discrepancies. Trace external source → SO → WIR → OD → GI-S → POD → PAY-CFM and linked returns/corrections. Reconcile SUM(inventory_ledger.delta) to stock_balance, including OPENING; POD/PAY-CFM never enter the stock ledger.
 
 ## 6. Design acceptance scenarios
 
@@ -300,10 +368,24 @@ Required reports: owned stock by warehouse/bin/lot/quality; available/reserved; 
 | T20 | Unverified deadline or conditions | PENDING; no invented 7/15/30 days; obtain evidence |
 | T21 | Evidence-complete sealed or unused loose tiles | CASE_REVIEW; Owner decides after inspection, no automatic acceptance |
 | T22 | Assessment/quantity changes after approval | New version and approval; old approval cannot post |
-| T23 | Missing or mismatched supplier ACK | BF-07 remains open; Owner UC-106 resolves; no deduction on closure |
+| T23 | Missing or mismatched supplier ACK | BF-08 remains open; Owner UC-106 resolves; no deduction on closure |
 | T24 | Torn carton with intact inspected tiles | Quality from inspection, not automatic DAMAGED; quantity from actual pieces/version |
 | T25 | Connection loss between commit and response | Look up batch/operation key; no repeat posting or lost audit |
 | T26 | Monthly stocktake | Owner manually creates session; D5 scope freeze; no automatic session job |
+| T27 | Copy the same external sales order or source line twice | Reject duplicate SO/source; source verification/evidence required; create no stock posting. |
+| T28 | WIR header uses SO A but a line uses SO B; OD line uses another WIR | Composite FKs reject mismatched parents; service also checks product and units. |
+| T29 | Several WIRs/ODs claim one SO line, including already issued commitments | Enforce separate SO→WIR and WIR→OD ceilings; completed WIR does not reopen demand. |
+| T30 | Cancel an unissued remainder already reserved or bound to tasks | Resolve tasks, reduce commitments, release only matching reservations and append reason/user/time. |
+| T31 | POD uses unposted, reversed, wrong-order or wrong-warehouse GI | Reject; customer delivery needs an eligible posted sales issue line. |
+| T32 | POD has no photo, wrong-document evidence, non-image or failed upload | Missing/wrong-document FK is rejected; service rejects non-image/incomplete upload; no DELIVERED. |
+| T33 | PGI 10; two distinct PODs confirm 6 and 5 concurrently | At most 10 confirmed; source-line serialization rejects excess. Valid 6+4 reaches full delivery. |
+| T34 | Retry POD/PAY-CFM with the same key; then change its payload | Return prior result once; changed payload conflicts; no repeat delivered quantity or stock movement. |
+| T35 | PGI/carrier handover complete but customer has not received goods | SO remains IN_PROGRESS; photo-confirmed partial receipt sets PARTIALLY_DELIVERED. |
+| T36 | Unpaid, partially paid or prepaid externally before full delivery | Do not complete SO; after delivery, incomplete external receipt leaves DELIVERED. |
+| T37 | Warehouse/Accountant tries PAY-CFM; Sales confirms full receipt on current DELIVERED SO | Deny wrong role; allow Sales with reference/evidence/note and atomically set COMPLETED, with zero stock change. |
+| T38 | All order quantities cancelled with no customer delivery | SO=CANCELLED, not DELIVERED/COMPLETED. Delivered portion plus authorized unissued cancellation may reach DELIVERED. |
+| T39 | Mistaken POD/PAY-CFM is voided or old delivered version is reused | Keep original evidence, reason/audit and recomputed SO progress; stale completion cannot authorize a new confirmation. |
+| T40 | Confirmation transaction fails, or customer later returns normally | Failed transaction commits no partial operation/state; normal BF-07 returns retain original delivery/payment history and require their own stock documents. |
 
 These are **acceptance criteria**, not a claim that a complete backend has passed them. DDL and diagrams are checked separately; implement posting services and execute concurrency/integration tests before operational use.
 
@@ -312,11 +394,15 @@ These are **acceptance criteria**, not a claim that a complete backend has passe
 
 ### 6.1 Exception traceability
 
-The 35 BF-01–07 branches and EX-01–05 in process section 4 supply data acceptance cases: documents/approvals retain actions and versions; source links retain quantities; stock accounts/balances distinguish owner/location/transit; posting batches/movements prevent duplicate effects; stocktake locks/count attempts preserve scope/history; evidence/audit/outbox support evidence and retries. Transaction failures must leave balances, ledgers and source quantities consistent. A parsed DDL does not prove service-level cases are enforced.
+The 37 BF-01–08 branches and EX-01–05 in process section 4 supply data acceptance cases: documents/approvals retain actions and versions; source links retain quantities; stock accounts/balances distinguish owner/location/transit; posting batches/movements prevent duplicate effects; stocktake locks/count attempts preserve scope/history; evidence/audit/outbox support evidence and retries. Transaction failures must leave balances, ledgers and source quantities consistent. A parsed DDL does not prove service-level cases are enforced.
+
+
+
+Cases T27–T40 cover the revised BF-06 contracts and UC-109–111/BR-31–33. Local SQL checks do not replace MongoDB backend authorization, transaction/concurrency and upload tests.
 
 ## 7. Implementation order and decisions to confirm
 
-Suggested order: MongoDB validators/indexes/master data → roles/scope → document shapes/approvals → append-only ledger and posting/idempotency service → BF-01/TO → BF-05 → BF-03 → BF-02/06/07 → BF-04 → reporting/reconciliation. Include tone/calibre differences, partial receipts, custody and transit in early sample data.
+Suggested order: MongoDB validators/indexes/master data → roles/scope → document shapes/approvals → append-only ledger and posting/idempotency service → BF-01/TO → BF-06 → BF-03/BF-04 → BF-02/07/08 → BF-05 → reporting/reconciliation. Include tone/calibre differences, partial receipts, custody and transit in early sample data.
 
 Confirm before SRS sign-off: exact warehouse list/count and addresses (three or more already reported), independent transfer receivers, acceptance of damaged goods and ownership responsibility, unit granularity, feasible count-freeze duration, substitution policy, historical-source verification, printable forms and numbering. This proposal selects a working baseline without presenting those outstanding business choices as validated survey findings.
 

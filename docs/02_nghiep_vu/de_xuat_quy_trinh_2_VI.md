@@ -1,10 +1,16 @@
 # Đề xuất quy trình 2 — WMSD — Tiếng Việt
 
-Ngày cập nhật: 21/10/2026. Kế thừa bản đối chiếu 17/10 và bổ sung 19/10/2026; đối chiếu 1 phản hồi khảo sát lúc 09:04:25 ngày 20/10/2026 (GMT+7) và quyết định D1–D8 của người dùng. Đây là phương án **To-be đã chốt cho lần cập nhật tài liệu này**, không đồng nghĩa cửa hàng đã vận hành hoặc phê duyệt toàn bộ kiểm soát phần mềm.
+Ngày cập nhật: 22/10/2026. Phương án To-be theo khảo sát 20/10, quyết định D1–D8, luồng bán hàng ngày 21/10 và yêu cầu tách chuyển vị trí/điều chuyển ngày 22/10. Đây là thiết kế đã chọn cho tài liệu, chưa phải xác nhận cửa hàng đã áp dụng mọi kiểm soát.
 
-Bản gốc được giữ nguyên. Ngày 21/10 đồng bộ toàn bộ Report 1/Report 3 dạng `.docx.txt`, hai bản quy trình, hai bản thiết kế database và SQL tham chiếu theo D1–D8; bổ sung luồng thay thế/ngoại lệ dưới từng BF. Không sửa Word `.docx`, hình nhúng hay draw.io trong lượt này; Mermaid và nội dung text trong bộ tài liệu này là đặc tả hiện hành. Bản tiếng Anh: [de_xuat_quy_trinh_2_EN.md](de_xuat_quy_trinh_2_EN.md). Nhật ký: [change_logs.md](../../change_logs.md).
+Luồng BF-06: nhập lại đơn bán từ MISA/giấy tờ → yêu cầu xuất liên kết → soạn/xuất kho → giao khách có ảnh → Đã giao → Sales xác nhận nhận đủ tiền ngoài hệ thống → Hoàn thành. Hai bản quy trình, hai bản thiết kế database và SQL tham chiếu đã đồng bộ theo luồng này. Report 1/3, Word và hình xuất riêng cần đồng bộ tiếp.
 
-**Bổ sung 19/10/2026:** thêm thuật ngữ kho, danh mục chứng từ và quy tắc post; chi tiết database được tách sang [đề xuất thiết kế database](../03_thiet_ke/de_xuat_database_design_VI.md). SQL là mô hình tham chiếu; hệ thống thực tế sẽ dùng MongoDB (NoSQL).
+Bản tiếng Anh: [de_xuat_quy_trinh_2_EN.md](de_xuat_quy_trinh_2_EN.md). Thiết kế dữ liệu: [bản VI](../03_thiet_ke/de_xuat_database_design_VI.md). Nhật ký: [change_logs.md](../../change_logs.md). SQL phục vụ phân tích; hệ thống thực tế dùng MongoDB.
+
+| Phiên bản | Ngày | Nội dung |
+|---|---|---|
+| 1.0.0 | 21/10/2026, trước sửa luồng bán hàng | Tổng hợp khảo sát/D1–D8 và các ngoại lệ. |
+| 2.0.0 | 21/10/2026 | Bổ sung SO, POD, PAY-CFM; đồng bộ thiết kế dữ liệu; rà lại câu chữ và trình bày. |
+| 3.0.0 | 22/10/2026 | Tách chuyển vị trí và điều chuyển liên kho thành BF-03/BF-04; đánh lại mã đến BF-08 và tách sơ đồ, ngoại lệ. |
 
 ## Thuật ngữ quản lý kho
 
@@ -28,14 +34,17 @@ Bản gốc được giữ nguyên. Ngày 21/10 đồng bộ toàn bộ Report 1
 | Custody | Hàng giữ hộ khách/NCC, chưa thuộc tồn của cửa hàng. Theo dõi vật lý nhưng loại khỏi tồn sở hữu và khả dụng. |
 | Replenishment Request — RR | Đề nghị bổ sung hàng do Sales/Warehouse lập, Owner duyệt. Chưa làm tăng tồn. |
 | Purchase Order — PO | Đơn đặt mua do Accountant lập từ nhu cầu đã duyệt; theo dõi số đặt, NCC xác nhận và nhiều đợt nhận. |
-| Goods Receipt — GR | **Phiếu nhập kho**; tên tiếng Anh chuẩn dùng trong tài liệu là “Goods Receipt”, không dùng “Good Receipt”. Post GR ghi tăng lượng được cửa hàng nhận quản lý, đúng chất lượng và vị trí. |
+| Goods Receipt — GR | Phiếu nhập kho; tên tiếng Anh chuẩn dùng trong tài liệu là “Goods Receipt”, không dùng “Good Receipt”. Post GR ghi tăng lượng được cửa hàng nhận quản lý, đúng chất lượng và vị trí. |
+| Sales Order — SO | Đơn bán do Sales nhập lại từ MISA/giấy tờ, lưu nguồn và từng dòng hàng. Là gốc lập WIR và theo dõi Đã giao/Hoàn thành; không tính giá hoặc thực hiện thu tiền. |
+| Warehouse Issue Request — WIR | Yêu cầu xuất từ một SO đã lưu, liên kết cả thông tin chung và từng dòng hàng. Có thể chia thành nhiều đợt xuất theo kho. |
 | Goods Issue — GI / Post Goods Issue — PGI | Phiếu xuất / hành động ghi nhận xuất thực tế. PGI làm giảm lượng tồn đúng một lần khi bàn giao ra ngoài. |
-| Transfer Request — TR | Trong **WMSD**: đề nghị chuyển giữa hai kho vật lý, cần Owner duyệt. Trong SAP WM, TR có thể là *Transfer Requirement*, nghĩa khác; không dịch hai khái niệm thành một. |
-| Transfer Order — TO | Trong **WMSD**: phiếu giao việc nội kho, gồm put-away, picking, relocation, quarantine, unpick. Bảng kỹ thuật gọi `warehouse_task`. Không phải một lần duyệt liên kho thứ hai. |
+| Transfer Request — TR | Trong WMSD: đề nghị chuyển giữa hai kho vật lý, cần Owner duyệt. Trong SAP WM, TR có thể là *Transfer Requirement*, nghĩa khác; không dịch hai khái niệm thành một. |
+| Transfer Order — TO | Trong WMSD: phiếu giao việc nội kho, gồm put-away, picking, relocation, quarantine, unpick. Bảng kỹ thuật gọi `warehouse_task`. Không phải một lần duyệt liên kho thứ hai. |
 | Stock Transport Order — STO | Lệnh điều chuyển giữa các đơn vị/kho trong ví dụ SAP; khác TO thao tác nội kho. WMSD dùng TR đã duyệt để điều phối, không triển khai toàn bộ STO của SAP. |
 | Transfer Dispatch — TD | Phiếu xuất điều chuyển nguồn. Post TD: giảm kho nguồn, tăng in-transit. |
-| Multi-warehouse Transfer Receipt — MWTR | **Tên quy ước của đề xuất WMSD cho phiếu nhập điều chuyển liên kho**. Mỗi phiếu nhận thuộc một kho đích và một đợt xuất nguồn; không phải phiếu cộng tồn đồng thời ở nhiều kho. Nguồn tham khảo không chứng minh đây là thuật ngữ chuẩn chung của mọi WMS. |
-| Handover / POD | Biên bản bàn giao / bằng chứng khách đã nhận (*Proof of Delivery*). Bàn giao cho nhà vận chuyển chưa chứng minh khách đã nhận. |
+| Multi-warehouse Transfer Receipt — MWTR | Tên quy ước của đề xuất WMSD cho phiếu nhập điều chuyển liên kho. Mỗi phiếu nhận thuộc một kho đích và một đợt xuất nguồn; không phải phiếu cộng tồn đồng thời ở nhiều kho. Nguồn tham khảo không chứng minh đây là thuật ngữ chuẩn chung của mọi WMS. |
+| Handover / POD | Biên bản bàn giao / bằng chứng khách đã nhận (*Proof of Delivery*). Bàn giao cho nhà vận chuyển tại PGI chưa chứng minh khách đã nhận; trạng thái đã giao khách (DELIVERED) bắt buộc có xác nhận giao/nhận thực tế kèm ảnh chụp chứng cứ của Warehouse Staff. |
+| External Payment Confirmation — PAY-CFM | Bản xác nhận Sales đã nhận đủ tiền ngoài hệ thống, lưu người, thời điểm và tham chiếu/bằng chứng/ghi chú. Chỉ hoàn thành SO sau khi đã giao đủ hàng có ảnh. |
 | Stocktake / Snapshot / Cutoff | Kiểm kê / ảnh chụp số dư bất biến / thời điểm chốt sổ phục vụ đối chiếu. |
 | Recount / Adjustment / Disposition | Đếm lại / điều chỉnh chênh lệch tồn / quyết định xử lý hàng lỗi, ví dụ cách ly tiếp, trả NCC, hủy. |
 | Posting / Reversal / Idempotency | Ghi nhận có tác động tồn / chứng từ đảo có dấu vết / cùng yêu cầu lặp lại không được ghi nhận hai lần. |
@@ -44,16 +53,16 @@ Bản gốc được giữ nguyên. Ngày 21/10 đồng bộ toàn bộ Report 1
 
 ## 1. Kết luận và căn cứ thiết kế
 
-**Giữ 7 quy trình và mã BF-01 đến BF-07 của Report 3, nhưng thu hẹp phần bán hàng, sửa trách nhiệm, tách các thời điểm ghi nhận tồn và đồng bộ lại toàn bộ tài liệu.** Không cần bỏ quy trình xử lý hàng lỗi để dành chỗ cho chuyển vị trí: chuyển vị trí là nhánh BF-03 và chức năng FE-04; hàng lỗi vẫn là BF-02 dùng chung cho nhập, xuất, trả hàng, kiểm kê.
+Giữ 8 quy trình BF-01–BF-08 và 5 vai trò hiện có. Đơn bán trong WMSD là bản nhập lại từ nguồn ngoài để theo dõi xuất hàng, giao khách và xác nhận nhận tiền; giá bán, hóa đơn và việc thu tiền thực tế vẫn xử lý bên ngoài. Hàng lỗi thuộc BF-02; chuyển vị trí cùng kho là BF-03, điều chuyển liên kho là BF-04.
 
-Phương án này ưu tiên góp ý hội đồng trong review1, bối cảnh một cửa hàng của Report 1, và khả năng triển khai của nhóm. Nó thay đổi một số cam kết phạm vi hiện có, đặc biệt Sales Order, giá bán, hóa đơn nội bộ và quản lý hoàn tiền. Các thay đổi này phải được ghi rõ trong change log, không trình bày như thể bản cũ đã có cùng phạm vi.
+Phương án kế thừa góp ý review1 và bối cảnh một cửa hàng. Thay đổi phạm vi ngày 21/10 là giữ SO để theo dõi đơn từ nguồn ngoài, bổ sung POD và PAY-CFM; không khôi phục quản lý giá bán, hóa đơn nội bộ hoặc quy trình hoàn tiền đã loại khỏi MVP.
 
 ### 1.1 Nguồn thực sự đã đối chiếu
 
 | Nguồn | Cách sử dụng và giới hạn |
 |---|---|
 | [Khảo sát Tân Thương](../05_khao_sat/khao_sat_kho_gach.csv), 20/10/2026 | Một phản hồi, 26 câu hỏi; dùng số câu hỏi gốc để truy vết. Câu 13 chọn đồng thời có/không chuyển hàng; người dùng xác nhận có chuyển liên kho (D4). Giữ nguyên CSV gốc. |
-| Quyết định D1–D8, 20/10/2026 | Giữ thời điểm PGI, người nhập theo từng bộ phận, 5 role và khóa kiểm kê; bổ sung chính sách trả hàng và dữ kiện khảo sát; giữ kiểm soát chưa xác nhận dưới nhãn To-be. |
+| Quyết định D1–D8 (20/10/2026) và chỉ dẫn sửa BF-06 (21/10/2026) | D1–D8 giữ thời điểm PGI, người nhập theo từng bộ phận, 5 role và khóa kiểm kê; bổ sung chính sách trả hàng và dữ kiện khảo sát; giữ kiểm soát chưa xác nhận dưới nhãn To-be. Chỉ dẫn BF-06 ngày 21/10 quy định: Sales Staff tạo SO sao chép từ đơn bán ngoài (MISA/giấy tờ), sau đó tạo WIR liên kết với SO; Warehouse Staff giao hàng và chụp ảnh xác nhận để cập nhật SO sang DELIVERED; khi Sales Staff xác nhận đã nhận đủ tiền ngoài hệ thống thì cập nhật SO sang COMPLETED. |
 | [review1.md](D:/Ky_9/SEP490/review1.md) | Căn cứ phản hồi hội đồng; các action item như gửi email cho cô là nội dung tài liệu, không phải yêu cầu thực hiện trong lượt này. |
 | [Report 1 trực tuyến](https://docs.google.com/document/d/1kb36v5HuFrM75NFCTXvnJcsg6QnPjYkb/edit) | Đã đọc nội dung trực tuyến; thời điểm sửa do Drive trả về: 17/10/2026 16:26:21 giờ Việt Nam. Căn cứ bối cảnh cửa hàng, GAP, FE và LI. |
 | [Report 3 trực tuyến](https://docs.google.com/document/d/1HvhlCmYjfXj7766ZVNUBAU4J063Lmr71/edit) | Đã đọc nội dung và kiểm tra ảnh context/flow trong file trực tuyến; thời điểm sửa: 17/10/2026 17:17:15 giờ Việt Nam. Catalogue hiện ghi 102 UC, UC-01–UC-102. |
@@ -65,7 +74,7 @@ Phương án này ưu tiên góp ý hội đồng trong review1, bối cảnh m�
 
 Theo Report 1, Tân Thương là cửa hàng gạch ốp lát tại Phố Tân An, xã Tân An, Yên Dũng, Bắc Giang, đã sử dụng MISA eShop. Đây là địa chỉ được báo cáo ghi nhận; chưa đối chiếu tên đơn vị hành chính hiện hành. Khách mua phục vụ xây dựng, cải tạo và thi công. Khảo sát câu 1 xác nhận số tồn không khớp thực tế và khó theo dõi hàng giữ cho khách, hàng lỗi hoặc hàng trả. Câu 5 xác nhận kho đã chia khu vực/kệ và đánh mã vị trí; câu 9 xác nhận ghi mã lô, màu, kích thước trên phần mềm và dùng thông tin/ảnh vỏ thùng. Vì vậy không tiếp tục mô tả hiện trạng là chưa có cấu trúc vị trí hoặc chưa theo dõi lô. Chưa xác nhận “kích thước” trong khảo sát là calibre thực tế, và chưa xác nhận chất lượng theo dõi xuyên quy trình.
 
-Phạm vi phù hợp: **một cửa hàng, từ 3 kho trở lên theo câu trả lời khảo sát, có chuyển hàng giữa các kho theo xác nhận D4**. Không mặc định một chuỗi nhiều chi nhánh. Chưa có danh sách, địa chỉ, khoảng cách, số kho chính xác hay quyền xuất trực tiếp của từng kho. Câu 4 chỉ ghi “Kho gach”, chưa xác nhận tên các khu chức năng. Một khu nhận hàng, một khu bán được và một khu cách ly trong cùng địa điểm không tự động trở thành ba kho vật lý. BF-03B được giữ trong phạm vi; dữ liệu kho cụ thể phải được xác minh khi cấu hình.
+Phạm vi phù hợp: một cửa hàng, từ 3 kho trở lên theo câu trả lời khảo sát, có chuyển hàng giữa các kho theo xác nhận D4. Không mặc định một chuỗi nhiều chi nhánh. Chưa có danh sách, địa chỉ, khoảng cách, số kho chính xác hay quyền xuất trực tiếp của từng kho. Câu 4 chỉ ghi “Kho gach”, chưa xác nhận tên các khu chức năng. Một khu nhận hàng, một khu bán được và một khu cách ly trong cùng địa điểm không tự động trở thành ba kho vật lý. BF-04 được giữ trong phạm vi; dữ liệu kho cụ thể phải được xác minh khi cấu hình.
 
 Đặc thù cần giữ: mã sản phẩm + lô + tone + calibre thực tế; quy đổi thùng/viên/m²; kiểm đếm theo từng lần giao; nhận/giao từng phần; giữ riêng hàng lỗi; bảo đảm lô phù hợp khi khách lấy bổ sung cho công trình. Các ví dụ số lượng trong tài liệu này là ví dụ thiết kế, không phải số liệu của cửa hàng.
 
@@ -75,45 +84,46 @@ Phạm vi phù hợp: **một cửa hàng, từ 3 kho trở lên theo câu trả
 |---|---|
 | Nhu cầu bổ sung, chủ duyệt, PO phục vụ kế hoạch nhập và theo dõi giao thiếu | Lựa chọn thương mại phức tạp, thanh toán NCC, công nợ, hạch toán |
 | Kiểm nhận, phân loại, phiếu nhập, put-away, tồn lô/vị trí/trạng thái | Hạch toán giá vốn, thuế và sổ cái |
-| Tiếp nhận yêu cầu xuất, phân bổ, soạn hàng, kiểm đếm, phiếu xuất, bàn giao | Tạo đơn bán thương mại, báo giá, chiết khấu, thu tiền, hóa đơn thuế |
+| Đơn bán SO sao chép từ nguồn ngoài đã xác minh, yêu cầu xuất hàng WIR liên kết, phân bổ, soạn hàng, kiểm đếm, phiếu xuất (PGI), bàn giao, xác nhận giao khách kèm ảnh (DELIVERED) và xác nhận của Sales Staff về việc đã thu đủ tiền ngoài hệ thống (COMPLETED) | Đàm phán/lập đơn thương mại độc lập/POS, báo giá, tính giá bán/chiết khấu, thu/chuyển tiền thực tế/cổng thanh toán, sổ công nợ và hóa đơn thuế |
 | Trả hàng vật lý, chứng từ nhập/xuất trả, hồ sơ đối chiếu | Quyết định/chi hoàn tiền trên hệ thống bán hàng–kế toán; WMS chỉ lưu tham chiếu kết quả |
 | Điều chuyển, hàng đang chuyển, xử lý sai lệch, kiểm kê và nhật ký | Tối ưu tuyến xe, GPS, điều hành đội xe |
 
-**Không có live MISA integration trong baseline.** Sales/Accountant nhập mã nguồn MISA và đính kèm chứng từ hoặc nhập dữ liệu có kiểm tra theo phạm vi nhóm chốt. Không vẽ mũi tên API đồng bộ tự động. WMS là nguồn chuẩn cho chi tiết kho và sự kiện vật lý; MISA giữ đơn thương mại/tài chính. Kế toán đối chiếu hai bên định kỳ, theo mã chứng từ và số lượng; không cho phép hai hệ thống cùng tự sinh một giao dịch kho từ hai nguồn độc lập.
+Không có live MISA integration trong baseline. Sales Staff sao chép/nhập thủ công đơn bán đã xác minh từ bên ngoài (MISA, giấy tờ hoặc nguồn xác minh khác) thành SO trong WMSD kèm mã tham chiếu và tệp/ảnh đính kèm; Sales/Accountant nhập tham chiếu bên ngoài theo phạm vi đã chốt. Không vẽ mũi tên API đồng bộ tự động. WMS là nguồn chuẩn cho chi tiết sự kiện kho vật lý và tiến độ thực hiện đơn nội bộ; MISA giữ giao dịch thương mại, định giá, hóa đơn và tài chính. Kế toán đối chiếu hai bên định kỳ theo mã chứng từ và số lượng; không cho phép hai hệ thống cùng tự sinh một giao dịch kho từ hai nguồn độc lập.
 
-Các chức năng bỏ khỏi MVP được đề xuất, không phải lệnh xóa dữ liệu đã có: quản lý giá bán UC-23–25, hóa đơn nội bộ UC-59–62, quy trình tính/duyệt/ghi hoàn tiền UC-74–78. Thay phần hoàn tiền bằng ghi nhận tham chiếu xử lý bên ngoài. Nếu nhóm quyết định giữ các chức năng này, phải trình bày đây là phạm vi mở rộng và giải trình với GVHD; không thể vừa giữ nguyên toàn bộ vừa nói đã thu hẹp theo review1.
+Các chức năng bỏ khỏi MVP được đề xuất, không phải lệnh xóa dữ liệu đã có: quản lý giá bán UC-23–25, hóa đơn nội bộ UC-59–62, quy trình tính/duyệt/ghi hoàn tiền UC-74–78. Thay phần hoàn tiền bằng ghi nhận tham chiếu xử lý bên ngoài. Nếu nhóm quyết định giữ các chức năng giá bán/hóa đơn/hoàn tiền này, phải trình bày đây là phạm vi mở rộng và giải trình với GVHD; không thể vừa giữ nguyên toàn bộ vừa nói đã thu hẹp theo review1.
 
 ### 1.4 Đối chiếu khảo sát và quyết định áp dụng
 
-| Mã | Hiện trạng / điểm cần phân biệt | Quyết định To-be ngày 20/10/2026 |
+| Mã | Hiện trạng / điểm cần phân biệt | Quyết định To-be ngày 20–21/10/2026 |
 |---|---|---|
-| D1 | Câu 17: giảm tồn khi lập đơn bán/yêu cầu giao. Chưa rõ đó là tồn vật lý hay khả dụng trong cách hiểu của người trả lời. | Giữ bản cũ: reservation giảm khả dụng; PGI khi bàn giao mới giảm tồn vật lý. Đối chiếu MISA phải giải thích lượng đã lập đơn nhưng chưa thực giao. |
+| D1 | Câu 17: giảm tồn khi lập đơn bán/yêu cầu giao. Chưa rõ đó là tồn vật lý hay khả dụng trong cách hiểu của người trả lời. | Tạo SO sao chép hoặc WIR liên kết không làm giảm tồn; reservation giảm khả dụng; PGI khi bàn giao mới giảm tồn vật lý. Đối chiếu MISA phải giải thích lượng đã lập đơn nhưng chưa thực giao. |
 | D2 | Câu 21: kế toán/một người nhập chung; câu 22: cập nhật ngay khi thực hiện. | Giữ từng bộ phận tự nhập/xác nhận theo quyền và userId của mình. Không thêm cơ chế nhập hộ hoặc dùng chung tài khoản. Đây là khác biệt To-be cần bố trí nhân sự. |
 | D3 | Câu 6–7, 12, 20, 23: có kiêm nhiệm, mua hàng, giao hàng và người được ủy quyền. | Giữ đúng 5 application role hiện có. Không thêm role mua hàng/giao hàng hoặc quy trình ủy quyền mới. Quyền duyệt vẫn thuộc Store Owner; kiêm nhiệm không cho phép tự duyệt. Việc ủy quyền ngoài thực tế không tự cấp quyền trong WMSD. |
 | D4 | Câu 13 chọn cả có và không chuyển hàng. | Người dùng xác nhận có chuyển hàng giữa các kho; không sửa dữ liệu khảo sát gốc. Giữ xuất/nhận độc lập và hồ sơ chênh lệch. |
 | D5 | Câu 14–15: kiểm hằng tháng, tạm dừng khu đếm; nếu vẫn nhập/xuất thì ghi riêng phát sinh. | Giữ MVP khóa phạm vi đến khi xử lý xong. Kiểm hằng tháng là lịch nghiệp vụ, không tự tạo job mới. Phương án vừa đếm vừa nhập/xuất chưa được chọn. |
-| D6 | Câu 18–19: điều kiện trả hàng và hoàn tiền trên MISA. | Bổ sung điều kiện tại BF-06, BR-29 và UC-70–73; chưa đặt số ngày trả hàng. WMS chỉ lưu tham chiếu hoàn tiền. |
+| D6 | Câu 18–19: điều kiện trả hàng và hoàn tiền trên MISA. | Bổ sung điều kiện tại BF-07, BR-29 và UC-70–73; chưa đặt số ngày trả hàng. WMS chỉ lưu tham chiếu hoàn tiền. |
 | D7 | Câu 3–11, 20, 22, 24: nhiều kho, mã vị trí, lô/màu/kích thước, quy đổi, phối hợp, điện thoại. | Cập nhật dữ kiện có căn cứ; không suy diễn địa chỉ kho, calibre, hệ số từng SKU hoặc quyền mới. Các bộ phận cập nhật ngay khi làm việc bằng giao diện phù hợp điện thoại. |
-| D8 | Custody, staging/put-away, FIFO, chống post trùng, không tự duyệt, duyệt TR và không live MISA chưa được khảo sát xác nhận đầy đủ. | Giữ nguyên dưới nhãn **To-be**, không trình bày là hiện trạng đã xác nhận. |
+| D8 | Custody, staging/put-away, FIFO, chống post trùng, không tự duyệt, duyệt TR và không live MISA chưa được khảo sát xác nhận đầy đủ. | Giữ nguyên dưới nhãn To-be, không trình bày là hiện trạng đã xác nhận. |
+| BF-06 Rev (21/10) | Bản 20/10 và đầu 21/10 thay SO bằng WIR và đóng đơn ngay khi xuất đủ (PGI). Người dùng yêu cầu bắt đầu bằng tạo SO sao chép từ bên ngoài → tạo WIR liên kết → giao hàng chụp ảnh → xác nhận tiền ngoài hệ thống. | Sales Staff tạo SO trong WMSD (sao chép từ MISA/giấy tờ) rồi mới tạo WIR liên kết với SO. Warehouse Staff xác nhận giao khách kèm ảnh chụp để chuyển SO sang DELIVERED. Chỉ Sales Staff xác nhận đã nhận đủ tiền ngoài hệ thống sau DELIVERED để chuyển SO sang COMPLETED. |
 
-**Đơn vị và bao bì (câu 10–11):** nhập và kiểm kho theo thùng; bán theo thùng/viên/m²; có hệ số trên MISA/Excel, bán lẻ viên và đếm viên còn lại trong thùng mở. Bao bì rách nhưng gạch nguyên vẫn có thể bán; không tự chuyển sang chất lượng DAMAGED chỉ vì rách bao bì. Giữ đề xuất tồn chuẩn theo viên và quy đổi có phiên bản; hệ số cụ thể từng sản phẩm chưa được cung cấp.
+Đơn vị và bao bì (câu 10–11): nhập và kiểm kho theo thùng; bán theo thùng/viên/m²; có hệ số trên MISA/Excel, bán lẻ viên và đếm viên còn lại trong thùng mở. Bao bì rách nhưng gạch nguyên vẫn có thể bán; không tự chuyển sang chất lượng DAMAGED chỉ vì rách bao bì. Giữ đề xuất tồn chuẩn theo viên và quy đổi có phiên bản; hệ số cụ thể từng sản phẩm chưa được cung cấp.
 
-**Phối hợp thực tế không đồng nghĩa thêm quyền phần mềm:** chủ/kế toán có thể cùng kiểm nhận (câu 8), nhưng Warehouse Staff vẫn nhập và chịu trách nhiệm xác nhận kết quả. Chủ/nhân viên mua hàng có thể liên hệ NCC (câu 20); Accountant ghi thỏa thuận và bằng chứng trong WMSD, không tạo application role mua hàng.
+Phối hợp thực tế không đồng nghĩa thêm quyền phần mềm: chủ/kế toán có thể cùng kiểm nhận (câu 8), nhưng Warehouse Staff vẫn nhập và chịu trách nhiệm xác nhận kết quả. Chủ/nhân viên mua hàng có thể liên hệ NCC (câu 20); Accountant ghi thỏa thuận và bằng chứng trong WMSD, không tạo application role mua hàng.
 
-**Thiết bị và nhập liệu:** thiết kế màn hình responsive cho điện thoại (câu 24), hỗ trợ nhập số lượng thùng/viên/m², đọc mã vị trí và đính kèm ảnh; không suy ra yêu cầu app native, offline hay tự quét mã. Đăng nhập cá nhân và quyền theo kho giữ nguyên.
+Thiết bị và nhập liệu: thiết kế màn hình responsive cho điện thoại (câu 24), hỗ trợ nhập số lượng thùng/viên/m², đọc mã vị trí và đính kèm ảnh; không suy ra yêu cầu app native, offline hay tự quét mã. Đăng nhập cá nhân và quyền theo kho giữ nguyên.
 
 ## 2. Các sai lệch còn tồn tại trong bản hiện tại
 
-Bảng dưới giữ lại kết quả rà soát baseline 17/10 để truy vết; không phải tất cả đều còn tồn tại trong các bảng đã cập nhật ngày 20/10. Ngày 21/10 toàn bộ bản Report 1/Report 3 text và hai bản thiết kế database đã được đồng bộ; bảng này lưu phát hiện lịch sử, không mô tả lỗi còn mở trong bộ text.
+Bảng dưới lưu phát hiện của lần review 17/10. Hai bản quy trình, hai bản thiết kế dữ liệu và SQL hiện đã đồng bộ BF-06 mới; Report 1/3 và hình riêng vẫn cần cập nhật theo danh mục tại mục 9.
 
 | Vị trí đã kiểm tra | Phát hiện | Hướng sửa |
 |---|---|---|
 | R3 I.2.1, UC-03, permission matrix; R1 Proposed purchasing | Accountant vẫn là người tạo nhu cầu bổ sung. | Sales/Warehouse Staff lập nhu cầu; Accountant tiếp tục PO và chứng từ sau khi được duyệt. |
-| R3 I.2.3, UC-40–43 và hình BF-03 | TR → owner duyệt → tạo TO → confirm TO; hình còn đưa nhánh same warehouse vào sau bước duyệt. | Phân loại nội bộ/liên kho ngay đầu; nội bộ không owner duyệt; liên kho từ TR được duyệt đi thẳng thực hiện xuất/nhận. |
-| R3 I.2.5, FE-06, UC-45–62; R1 I.2/IV/V | Tạo SO và hóa đơn nội bộ vẫn thuộc WMS. | Đổi SO thành yêu cầu xuất có tham chiếu bên ngoài; bỏ bước billing trong BF-05. |
-| R3 I.2.4, UC-87–93 so với hình BF-04 | Phần chữ đã có snapshot; UC-93 giao Owner Clear Difference, hình đặt Post approved adjustment ở lane thực hiện phía nhân viên kho. | Không nói “chưa có snapshot” cho bản mới; bổ sung danh sách kiểm kê, cơ chế cutoff và thống nhất người ghi nhận điều chỉnh. |
-| R3 I.2.6, UC-70–73 so với hình BF-06 | Chữ quy định Owner duyệt tiếp nhận trước kiểm tra; hình lại thể hiện kiểm tra rồi owner duyệt disposition. | Chọn một trình tự duy nhất; đề xuất tiếp nhận giữ hộ → thủ kho kiểm → owner quyết định nhận trả → nhập theo trạng thái. |
-| Hình BF-06 hiện tại | Đã có nhánh Goods reusable? với hai kết quả khác nhau. | Không lặp lại nguyên xi lỗi Yes/No của bản review cũ; kiểm tra tiếp quyền, chứng từ, ownership và nối nhánh đến trạng thái kết thúc rõ. |
+| R3 I.2.3, UC-34–44 và hình cũ | Hình cũ gộp chuyển vị trí và điều chuyển liên kho, còn vòng TR → duyệt → TO liên kho. | Tách BF-03 chuyển vị trí không Owner duyệt và BF-04 điều chuyển qua TR → TD → MWTR; bỏ vòng duyệt TO liên kho lặp. |
+| R3 I.2.5, FE-06, UC-45–62; R1 I.2/IV/V | WMS vẫn giữ SO thương mại độc lập, tính giá bán, hóa đơn nội bộ và coi xuất kho xong là hoàn thành đơn bán. | Thu hẹp SO (UC-45–48) thành bản ghi theo dõi sao chép từ đơn bán bên ngoài đã xác minh (MISA/giấy tờ), bỏ tính giá và hóa đơn nội bộ (retire UC-23–25, UC-59–62); tạo WIR (UC-109) liên kết với SO đã lưu; bổ sung bước Warehouse Staff chụp ảnh xác nhận giao khách (DELIVERED, UC-110) và Sales Staff xác nhận nhận đủ tiền ngoài hệ thống (COMPLETED, UC-111). |
+| R3 I.2.4, UC-87–93 so với hình BF-05 | Phần chữ đã có snapshot; UC-93 giao Owner Clear Difference, hình đặt Post approved adjustment ở lane thực hiện phía nhân viên kho. | Không nói “chưa có snapshot” cho bản mới; bổ sung danh sách kiểm kê, cơ chế cutoff và thống nhất người ghi nhận điều chỉnh. |
+| R3 I.2.6, UC-70–73 so với hình BF-07 | Chữ quy định Owner duyệt tiếp nhận trước kiểm tra; hình lại thể hiện kiểm tra rồi owner duyệt disposition. | Chọn một trình tự duy nhất; đề xuất tiếp nhận giữ hộ → thủ kho kiểm → owner quyết định nhận trả → nhập theo trạng thái. |
+| Hình BF-07 hiện tại | Đã có nhánh Goods reusable? với hai kết quả khác nhau. | Không lặp lại nguyên xi lỗi Yes/No của bản review cũ; kiểm tra tiếp quyền, chứng từ, ownership và nối nhánh đến trạng thái kết thúc rõ. |
 | R3 I.1 context diagram | Có Cloudinary, nhưng I.5.2 chỉ liệt kê API-01 SMTP. Chiều “Evidence Upload” và “Asset URL / Upload Status” đang ngược luồng kỳ vọng. | Bổ sung interface nếu thực sự dùng, sửa hướng; nếu không dùng dịch vụ ngoài thì bỏ thực thể này. |
 | Context diagram so với permission matrix | Có Sales Return Data từ Sales, Supplier Return Request Data từ Accountant, nhưng UC-70/81 chỉ giao Inventory Staff. | Đồng bộ mọi mũi tên với quyền mới, không chỉ đổi tên actor. |
 | R3 I.3.2 Entity Descriptions | Traceability còn mã cũ: Goods Issue → UC-82–89, Stocktake → UC-70–76, PO → UC-27–32. | Remap bằng catalogue hiện tại và bản đề xuất, không đánh số lại tùy ý. |
@@ -122,27 +132,27 @@ Bảng dưới giữ lại kết quả rà soát baseline 17/10 để truy vết
 
 ## 3. Actors và nguyên tắc phân quyền
 
-Giữ năm application roles; thống nhất **Warehouse Staff** thay cho Inventory Staff trong toàn bộ bản tiếng Anh. Có thể dịch “nhân viên kho/thủ kho” tùy chức danh thực tế, nhưng không dùng hai tên tiếng Anh cho cùng một role.
+Giữ năm application roles; thống nhất Warehouse Staff thay cho Inventory Staff trong toàn bộ bản tiếng Anh. Có thể dịch “nhân viên kho/thủ kho” tùy chức danh thực tế, nhưng không dùng hai tên tiếng Anh cho cùng một role.
 
 | Actor | Trách nhiệm To-be |
 |---|---|
 | Store Owner | Duyệt bổ sung, điều chuyển liên kho, nhận trả hàng, trả NCC, xử lý hàng lỗi và chênh lệch; xem báo cáo. Không duyệt đổi kệ hàng thông thường. |
-| Sales Staff | Ghi nhận yêu cầu xuất và đề nghị khách trả; xác nhận nhu cầu còn lại, giao từng phần, lựa chọn nguồn đáp ứng; liên hệ khách về thay lô/tone. Không xác nhận chất lượng vật lý. |
-| Warehouse Staff | Kiểm nhận/kiểm tra, soạn hàng, put-away, nhập/xuất, chuyển vị trí, kiểm kê, cách ly, đề xuất xử lý. Bị giới hạn theo kho được giao. |
-| Accountant | Lập/theo dõi PO sau duyệt, ghi nhận thỏa thuận NCC, đối chiếu chứng từ, ghi tham chiếu xử lý hóa đơn/hoàn tiền bên ngoài. Không quyết định nhu cầu tồn thay bộ phận vận hành. |
+| Sales Staff | Sao chép/lập đơn bán SO trong WMSD từ đơn bán bên ngoài đã xác minh (MISA/giấy tờ); tạo và quản lý yêu cầu xuất hàng WIR liên kết với SO và đề nghị khách trả; xác nhận nhu cầu còn lại, giao từng phần, hủy phần chưa xuất và lựa chọn nguồn đáp ứng; liên hệ khách về thay lô/tone; xác nhận đã nhận đủ tiền ngoài hệ thống sau khi đơn ở trạng thái DELIVERED để chuyển SO sang COMPLETED. Không xác nhận chất lượng vật lý hoặc post tồn kho. |
+| Warehouse Staff | Kiểm nhận/kiểm tra, soạn hàng, put-away, nhập/xuất (PGI), chuyển vị trí, kiểm kê, cách ly, đề xuất xử lý, và xác nhận đã giao hàng thực tế cho khách kèm ảnh chụp bắt buộc (POD) để cập nhật SO sang DELIVERED. Bị giới hạn theo kho được giao. |
+| Accountant | Lập/theo dõi PO sau duyệt, ghi nhận thỏa thuận NCC, đối chiếu chứng từ kho với MISA, ghi tham chiếu xử lý hóa đơn/hoàn tiền/đối chiếu kế toán bên ngoài (UC-108). Không quyết định nhu cầu tồn thay bộ phận vận hành và không xác nhận hoàn thành đơn bán (COMPLETED) thay Sales Staff. |
 | Administrator | Tài khoản, phân quyền và cấu hình kỹ thuật. Không tự có quyền duyệt nghiệp vụ, ghi tăng/giảm kho hoặc sửa nhật ký. |
 
-Customer, Supplier, Carrier là bên tham gia nghiệp vụ, có thể có pool trong BPMN nhưng không có tài khoản WMSD mặc định. Warehouse Staff tại kho đi và kho nhận là **hai trách nhiệm theo kho**, chưa cần hai loại role. Người làm bước thực tế phải được lưu bằng userId, không chỉ lưu nhãn role.
+Customer, Supplier, Carrier là bên tham gia nghiệp vụ, có thể có pool trong BPMN nhưng không có tài khoản WMSD mặc định. Warehouse Staff tại kho đi và kho nhận là hai trách nhiệm theo kho, chưa cần hai loại role. Người làm bước thực tế phải được lưu bằng userId, không chỉ lưu nhãn role.
 
-**Tách phê duyệt và xác nhận thực hiện:** việc nhân viên xác nhận đã chuyển kệ không phải tự phê duyệt kinh doanh. Nhưng cùng một người không được tạo rồi phê duyệt chính đề nghị bổ sung/điều chuyển/điều chỉnh của mình. Liên kho cần xác nhận nhận hàng độc lập với người xuất. Nếu nhân sự ít, chủ cửa hàng có thể được giao nhiệm vụ kiểm nhận độc lập với quyền rõ ràng; phải xác nhận cách bố trí này khi khảo sát, không dùng chung tài khoản hoặc mặc định có đủ người.
+Tách phê duyệt và xác nhận thực hiện: việc nhân viên xác nhận đã chuyển kệ không phải tự phê duyệt kinh doanh. Nhưng cùng một người không được tạo rồi phê duyệt chính đề nghị bổ sung/điều chuyển/điều chỉnh của mình. Liên kho cần xác nhận nhận hàng độc lập với người xuất. Nếu nhân sự ít, chủ cửa hàng có thể được giao nhiệm vụ kiểm nhận độc lập với quyền rõ ràng; phải xác nhận cách bố trí này khi khảo sát, không dùng chung tài khoản hoặc mặc định có đủ người.
 
 Hệ thống kiểm tra quyền theo **role + thao tác + kho được giao + trạng thái chứng từ + người tạo/người duyệt**. Quyền xem danh sách không đồng nghĩa quyền ghi nhận hoặc duyệt.
 
-## 4. Bảy quy trình To-be
+## 4. Tám quy trình To-be
 
 ### BF-01 — Bổ sung hàng, đặt mua và nhập kho
 
-**Trigger:** (a) yêu cầu xuất còn thiếu sau khi xét nguồn kho khác; (b) tồn khả dụng dưới mức tối thiểu; (c) sau kiểm kê/xử lý hàng lỗi, kho đề xuất bù lượng thiếu. Cảnh báo theo ngưỡng cố định là chức năng bổ sung đề xuất, không phải dự báo AI hoặc tự đặt mua.
+Trigger: (a) yêu cầu xuất còn thiếu sau khi xét nguồn kho khác; (b) tồn khả dụng dưới mức tối thiểu; (c) sau kiểm kê/xử lý hàng lỗi, kho đề xuất bù lượng thiếu. Cảnh báo theo ngưỡng cố định là chức năng bổ sung đề xuất, không phải dự báo AI hoặc tự đặt mua.
 
 **Luồng chính:**
 
@@ -156,11 +166,11 @@ Hệ thống kiểm tra quyền theo **role + thao tác + kho được giao + tr
 8. Hệ thống gợi ý vị trí; Warehouse Staff đưa hàng vào vị trí và xác nhận put-away. Hàng đạt chỉ được phân bổ bán khi thỏa kiểm tra và vị trí sẵn sàng.
 9. Hệ thống cập nhật lũy kế đã nhận/được chấp nhận/còn thiếu. Accountant đối chiếu PO–phiếu nhập–chứng từ NCC; theo dõi giao tiếp hoặc xin Owner chốt phần không giao. Đóng phần việc kho không phải chờ hạch toán tài chính hoàn tất.
 
-**Ngoại lệ:** NCC giao ít → giữ phần còn thiếu mở; giao thừa → giữ riêng và xin chấp nhận phần tăng; sai tone → không tự thay bằng SKU giống tên; nhận 0 hợp lệ → hồ sơ sai lệch vẫn tồn tại nhưng không sinh lượng bán được; trả lại hàng đã nhập → BF-07, hàng thay thế về tạo receipt mới.
+Ngoại lệ: NCC giao ít → giữ phần còn thiếu mở; giao thừa → giữ riêng và xin chấp nhận phần tăng; sai tone → không tự thay bằng SKU giống tên; nhận 0 hợp lệ → hồ sơ sai lệch vẫn tồn tại nhưng không sinh lượng bán được; trả lại hàng đã nhập → BF-08, hàng thay thế về tạo receipt mới.
 
 **Tác động tồn:** đề nghị/duyệt/PO không tăng tồn; receipt đã ghi nhận tăng đúng nhóm tồn; put-away đổi vị trí và khả năng phân bổ, không tăng tổng lần hai.
 
-**Chứng từ:** Replenishment Request, PO, biên bản nhận/kiểm tra, phiếu nhập, nhiệm vụ xếp hàng, hồ sơ sai lệch. Căn cứ tham khảo: SAP WM I trang 2, 10–11, 18–22 và [MISA nhập kho mua hàng](https://helpeshop.misa.vn/kb/huong-dan-su-dung-tinh-nang-nhap-kho-tren-phan-mem-misa-eshop). Các kiểm soát tone/calibre và phân quyền ở trên là thiết kế đề xuất riêng cho WMSD.
+Chứng từ: Replenishment Request, PO, biên bản nhận/kiểm tra, phiếu nhập, nhiệm vụ xếp hàng, hồ sơ sai lệch. Căn cứ tham khảo: SAP WM I trang 2, 10–11, 18–22 và [MISA nhập kho mua hàng](https://helpeshop.misa.vn/kb/huong-dan-su-dung-tinh-nang-nhap-kho-tren-phan-mem-misa-eshop). Các kiểm soát tone/calibre và phân quyền ở trên là thiết kế đề xuất riêng cho WMSD.
 
 #### 01.X — Luồng thay thế và ngoại lệ
 
@@ -177,19 +187,19 @@ Các mã A là luồng thay thế, E là ngoại lệ; số bước tham chiếu
 
 ### BF-02 — Phát hiện, cách ly và xử lý hàng lỗi
 
-**Trigger:** phát hiện nứt vỡ/sai phẩm cấp trong BF-01, BF-03, BF-04, BF-05, BF-06 hoặc kiểm tra thường ngày.
+**Trigger:** phát hiện nứt vỡ/sai phẩm cấp trong BF-01, BF-03, BF-04, BF-05, BF-06, BF-07 hoặc kiểm tra thường ngày.
 
 1. Warehouse Staff ghi sự cố theo nguồn, lot, vị trí, lượng, dấu hiệu lỗi, thời gian, ảnh/biên bản.
 2. Khóa khả năng phân bổ ngay và đưa vào khu cách ly. **Không đợi Owner duyệt mới chặn xuất hàng lỗi.** Nếu hàng đã giữ cho yêu cầu xuất, báo thiếu và lập lại phân bổ.
 3. Kiểm tra xác nhận tình trạng; phân biệt hàng thuộc tồn cửa hàng với hàng khách/NCC gửi chờ xử lý. Không chuyển quyền sở hữu chỉ bằng thao tác cách ly.
 4. Warehouse Staff đề xuất: trả lại tồn đạt sau kiểm lại; chuyển phẩm cấp có điều kiện; trả NCC; hoặc hủy. Bán giảm giá nếu có được xử lý thương mại ở MISA, không làm gạch lỗi tự trở thành hàng đạt.
 5. Store Owner duyệt phương án và lượng cụ thể hoặc trả về bổ sung chứng cứ. Phương án bị từ chối vẫn giữ cách ly.
-6. Warehouse Staff thực hiện phương án đã duyệt. Trả NCC chuyển BF-07; hủy phải có biên bản xác nhận đã hủy và số lượng thực tế; tái phân loại phải lưu trạng thái trước/sau.
+6. Warehouse Staff thực hiện phương án đã duyệt. Trả NCC chuyển BF-08; hủy phải có biên bản xác nhận đã hủy và số lượng thực tế; tái phân loại phải lưu trạng thái trước/sau.
 7. Hệ thống ghi nhận đúng một lần và chỉ đóng hồ sơ khi toàn bộ lượng đã có kết quả hoặc đã liên kết hồ sơ xử lý còn mở.
 
-**Tác động tồn:** cách ly/đổi phẩm cấp không làm mất tổng tồn của cửa hàng; hủy làm giảm đúng lượng hủy; trả NCC giảm ở BF-07 khi xuất, không giảm lại ở BF-02. Lượng đã bị ghi giảm qua hồ sơ khác không được xử lý giảm tiếp.
+Tác động tồn: cách ly/đổi phẩm cấp không làm mất tổng tồn của cửa hàng; hủy làm giảm đúng lượng hủy; trả NCC giảm ở BF-08 khi xuất, không giảm lại ở BF-02. Lượng đã bị ghi giảm qua hồ sơ khác không được xử lý giảm tiếp.
 
-**Chứng từ:** hồ sơ hàng lỗi, kết quả kiểm tra, quyết định xử lý, biên bản hủy/phiếu xuất trả. Đây là bổ sung kiểm soát phù hợp gạch và phản hồi hội đồng; bốn case SAP không cung cấp đầy đủ quy trình này để sao chép nguyên dạng.
+Chứng từ: hồ sơ hàng lỗi, kết quả kiểm tra, quyết định xử lý, biên bản hủy/phiếu xuất trả. Đây là bổ sung kiểm soát phù hợp gạch và phản hồi hội đồng; bốn case SAP không cung cấp đầy đủ quy trình này để sao chép nguyên dạng.
 
 #### 02.X — Luồng thay thế và ngoại lệ
 
@@ -197,96 +207,74 @@ Các mã A là luồng thay thế, E là ngoại lệ; số bước tham chiếu
 
 | Mã | Điều kiện | Người xử lý và hành động | Kết quả tồn / điểm tiếp tục | UC |
 |---|---|---|---|---|
-| BF-02-E1 | Phát hiện lỗi trên hàng đã giữ/đang soạn | Warehouse chặn ngay lượng lỗi, giữ liên kết nhu cầu và báo Sales thiếu; lập phương án nguồn thay thế, không chờ duyệt mới cách ly. | Tổng sở hữu không đổi; BF-05 chờ/soạn lại. | UC-65, UC-103 |
+| BF-02-E1 | Phát hiện lỗi trên hàng đã giữ/đang soạn | Warehouse chặn ngay lượng lỗi, giữ liên kết nhu cầu và báo Sales thiếu; lập phương án nguồn thay thế, không chờ duyệt mới cách ly. | Tổng sở hữu không đổi; BF-06 chờ/soạn lại. | UC-65, UC-103 |
 | BF-02-A1 | Chưa rõ chủ hàng/nguyên nhân | Giữ quality PENDING/BLOCKED và đúng chủ hàng hiện có; bổ sung bằng chứng, không chuyển custody thành hàng cửa hàng chỉ bằng ghi chú. | Chờ bước 3–4; không usable. | UC-65 |
 | BF-02-A2 | Owner từ chối/trả bổ sung hoặc chỉ duyệt một phần | Lưu quyết định theo dòng/lượng/phiên bản; lượng chưa được duyệt tiếp tục cách ly; chỉ Warehouse thực hiện phần đã duyệt. | Trở về bước 4 hoặc tiếp bước 6 cho phần hợp lệ. | UC-66, UC-67 |
-| BF-02-E2 | Chuyển trả NCC/hủy thực tế chưa diễn ra | Chuyển BF-07 kèm quyết định còn hiệu lực; chỉ xuất NCC trừ tồn ở UC-82. Hủy phải có lượng và bằng chứng đã hủy, không chỉ có phê duyệt. | Chưa thực hiện thì hồ sơ mở; không trừ lặp. | UC-67, UC-82, UC-106 |
+| BF-02-E2 | Chuyển trả NCC/hủy thực tế chưa diễn ra | Chuyển BF-08 kèm quyết định còn hiệu lực; chỉ xuất NCC trừ tồn ở UC-82. Hủy phải có lượng và bằng chứng đã hủy, không chỉ có phê duyệt. | Chưa thực hiện thì hồ sơ mở; không trừ lặp. | UC-67, UC-82, UC-106 |
 
-### BF-03 — Di chuyển vị trí, điều chuyển liên kho và xử lý chênh lệch
+### BF-03 — Chuyển vị trí trong cùng kho
 
-**Trigger:** sắp xếp lại hàng trong kho; yêu cầu xuất thiếu tại kho dự kiến; hoặc nhu cầu cân đối giữa các kho cùng cửa hàng.
+Trigger: cần sắp xếp lại hàng giữa các vị trí thuộc cùng một kho vật lý. Warehouse Staff thực hiện; không cần Owner duyệt và không tạo yêu cầu điều chuyển liên kho (TR).
 
-**Nhánh A — Cùng một kho vật lý:**
+1. Warehouse chọn hàng/lô/chất lượng, vị trí nguồn và đích, số lượng và lý do di chuyển. Kiểm tra hai vị trí cùng kho, đích phù hợp, lượng nguồn đủ và không có khóa kiểm kê hoặc nhiệm vụ khác xung đột.
+2. Tạo nhiệm vụ chuyển vị trí (TO-RELOCATE). Với hàng đã giữ cho đơn, giữ nguyên liên kết reservation và nhu cầu được phục vụ.
+3. Di chuyển thực tế, kiểm đếm và xác nhận lượng đã chuyển, vị trí, người thực hiện và thời điểm. Nếu chỉ chuyển một phần, giữ phần còn lại mở hoặc hủy có lý do; không xác nhận khống toàn bộ nhiệm vụ.
+4. Ghi giảm vị trí nguồn và tăng vị trí đích cùng lượng trong một transaction, giữ nguyên kho, chủ sở hữu, lô/tone/calibre và chất lượng. Chuyển liên kết giữ hàng theo vị trí mới và lưu nhật ký; tổng tồn kho không đổi.
 
-1. Warehouse Staff chọn lot/quality và vị trí nguồn–đích; kiểm tra lượng có thể di chuyển, vị trí có phù hợp và có đang kiểm kê hay không.
-2. Di chuyển thực tế và xác nhận số lượng, vị trí, thời gian. Hàng đã giữ cho yêu cầu phải giữ liên kết reservation; không biến thành hàng rảnh chỉ vì đổi kệ.
-3. Hệ thống giảm nguồn, tăng đích cùng lượng trong một giao dịch, giữ nguyên lot/tone/calibre/chất lượng. Ghi nhật ký. **Không có phê duyệt của Owner, không tạo TR liên kho.**
+Kết thúc: nhiệm vụ đã xác nhận đủ hoặc phần chưa thực hiện được hủy có lưu vết. Nếu thực tế cần chuyển sang kho khác, lập hồ sơ riêng theo BF-04.
 
-**Nhánh B — Khác kho vật lý:**
+Chứng từ: nhiệm vụ TO-RELOCATE và nhật ký xác nhận vị trí. Quy trình này dùng UC-34–37; không dùng TR, TD hoặc MWTR.
+
+#### 03.X — Luồng thay thế và ngoại lệ
+
+| Mã | Điều kiện | Người xử lý và hành động | Kết quả tồn / điểm tiếp tục | UC |
+|---|---|---|---|---|
+| BF-03-A1 | Chuyển hàng đã giữ cho đơn | Warehouse giữ nguyên chủ/lô/chất lượng và chuyển reservation theo hàng đến vị trí mới. | Hai vế bằng nhau; không tạo thêm hàng khả dụng cho đơn khác. | UC-36, UC-37 |
+| BF-03-E1 | Khác kho, vị trí bị khóa hoặc lượng nguồn không đủ | Dừng xác nhận; khác kho chuyển BF-04, khóa kiểm kê thì chờ mở khóa, lệch thực tế thì kiểm tra và chuyển BF-05 khi cần. Không sửa số dư hoặc bỏ khóa để chuyển. | Chưa xác nhận thì chưa ghi di chuyển; xử lý nguyên nhân rồi kiểm tra lại. | UC-36, UC-37, UC-87 |
+
+### BF-04 — Điều chuyển giữa các kho và xử lý chênh lệch
+
+Trigger: cần chuyển hàng giữa hai kho vật lý để cân đối tồn hoặc đáp ứng nhu cầu. Warehouse lập TR; Owner duyệt; kho đi và kho nhận xác nhận độc lập. Không dùng quy trình này cho đổi vị trí trong cùng kho.
 
 1. Khi thiếu hàng, hệ thống kiểm tra tồn khả dụng đúng lot/tone/calibre tại các kho đã cấu hình. Đưa ra phương án xuất thẳng kho khác hoặc điều chuyển về. Ưu tiên kho theo cấu hình đơn giản và hạn giao; không gọi là tối ưu quãng đường nếu chưa có dữ liệu khoảng cách.
-2. Sales xác nhận phương án phục vụ khách; Warehouse Staff gửi TR nếu cần chuyển vật lý. Nếu xuất thẳng kho phụ → BF-05 tại kho phụ, **không lập phiếu nhập giả ở kho chính**.
+2. Sales xác nhận phương án phục vụ khách; Warehouse Staff gửi TR nếu cần chuyển vật lý. Nếu xuất thẳng kho phụ → BF-06 tại kho phụ, **không lập phiếu nhập giả ở kho chính**.
 3. Store Owner duyệt TR. Hệ thống giữ lượng nguồn theo cơ chế kiểm tra đồng thời. Không lập thêm Transfer Order để duyệt/xác nhận lặp lại.
 4. Người kho đi soạn, kiểm đếm, lập phiếu xuất điều chuyển và ghi nhận bàn giao. Khi thực xuất: giảm kho nguồn, tăng bucket hàng đang chuyển.
 5. Người kho nhận kiểm độc lập hàng thực nhận, lot/tone/calibre và tình trạng; lập phiếu nhập điều chuyển. Phần nhận hợp lệ giảm hàng đang chuyển, tăng kho nhận theo trạng thái thực tế. Nếu chuyển để đáp ứng yêu cầu xuất cụ thể, giữ liên kết phân bổ suốt quá trình nguồn → đang chuyển → đích; lượng đó không trở thành hàng rảnh cho yêu cầu khác khi vừa nhập đích.
 6. Nếu khớp: put-away và hoàn thành. Nếu thiếu/thừa/hỏng/sai lô: lưu biên bản; ghi nhận phần đã xác minh, giữ phần chưa rõ mở, trình Owner duyệt phương án.
 7. Thực hiện phương án được duyệt: tìm/nhận bổ sung, trả lại nguồn bằng chứng từ mới, cách ly hàng lỗi, hoặc ghi giảm mất mát có chứng cứ. Chỉ đóng khi mọi lượng xuất có kết quả đối chiếu.
 
-**Ví dụ:** kho A xuất 100 thùng; kho B nhận 98, gồm 95 đạt + 3 vỡ. Ghi nhận B +95 đạt, +3 cách ly; còn 2 thùng đang chuyển/chờ giải quyết. Không giữ cả 100 ở hàng đang chuyển sau khi B đã nhận 98; không coi 3 thùng vỡ là mất khỏi kho. Nếu Owner xác nhận mất 2, ghi giảm 2 từ bucket đang chuyển bằng một quyết định xử lý duy nhất.
+Ví dụ: kho A xuất 100 thùng; kho B nhận 98, gồm 95 đạt + 3 vỡ. Ghi nhận B +95 đạt, +3 cách ly; còn 2 thùng đang chuyển/chờ giải quyết. Không giữ cả 100 ở hàng đang chuyển sau khi B đã nhận 98; không coi 3 thùng vỡ là mất khỏi kho. Nếu Owner xác nhận mất 2, ghi giảm 2 từ bucket đang chuyển bằng một quyết định xử lý duy nhất.
 
 **Tác động tồn:** tổng tồn do cửa hàng quản lý, kể cả đang chuyển, không đổi do điều chuyển thông thường; chỉ giảm khi đã có nghiệp vụ mất/hủy/xuất ra ngoài phù hợp.
 
-**Chứng từ:** nhật ký chuyển vị trí; TR; phiếu xuất điều chuyển; biên bản bàn giao; phiếu nhập điều chuyển; hồ sơ chênh lệch. SAP WM II tách Stock Transport Order với Goods Issue/Goods Receipt và TO put-away; đây là căn cứ để không gọi mọi lệnh là TO. [MISA chuyển kho](https://helpeshop.misa.vn/kb/huong-dan-cach-chuyen-kho-tren-phan-mem-misa-eshop) phân biệt chuyển giữa các kho cùng chi nhánh với xuất điều chuyển giữa chi nhánh. WMSD áp dụng theo thực tế kho vật lý của một cửa hàng và yêu cầu hai phiếu của review1, không suy ra Tân Thương có nhiều chi nhánh.
+Chứng từ: TR; phiếu xuất điều chuyển; biên bản bàn giao; phiếu nhập điều chuyển; hồ sơ chênh lệch. SAP WM II tách Stock Transport Order với Goods Issue/Goods Receipt và TO put-away; đây là căn cứ để không gọi mọi lệnh là TO. [MISA chuyển kho](https://helpeshop.misa.vn/kb/huong-dan-cach-chuyen-kho-tren-phan-mem-misa-eshop) phân biệt chuyển giữa các kho cùng chi nhánh với xuất điều chuyển giữa chi nhánh. WMSD áp dụng theo thực tế kho vật lý của một cửa hàng và yêu cầu hai phiếu của review1, không suy ra Tân Thương có nhiều chi nhánh.
 
-#### 03.X — Luồng thay thế và ngoại lệ
-
-Các mã A là luồng thay thế, E là ngoại lệ; số bước tham chiếu luồng chính ngay trên. Mỗi nhánh áp dụng theo từng lượng, không buộc cả phiếu đi cùng một kết quả.
+#### 04.X — Luồng thay thế và ngoại lệ
 
 | Mã | Điều kiện | Người xử lý và hành động | Kết quả tồn / điểm tiếp tục | UC |
 |---|---|---|---|---|
-| BF-03-A1 | Chuyển vị trí cùng kho | Warehouse xác nhận hai vị trí cùng kho, cùng lot/quality/owner; giữ reservation theo hàng, không TR hoặc Owner approval. | Hai vế bằng nhau, tổng không đổi. | UC-36, UC-37 |
-| BF-03-A2 | Xuất trực tiếp kho khác | Sales thống nhất khách, tách OD theo kho thực xuất; Warehouse kho đó làm BF-05, không tạo nhận giả tại kho yêu cầu. | Không transit nếu không có chuyển vật lý. | UC-51, UC-103 |
-| BF-03-E1 | TR bị từ chối, tồn nguồn giảm hoặc chưa có người nhận độc lập | Owner lưu lý do; Warehouse kiểm lại tồn/khóa trước xuất. Thiếu nguồn thì chờ/giảm phần chưa thực hiện có kiểm soát; chưa có người nhận độc lập thì chờ bố trí, không dùng cùng user xác nhận hai đầu. | Không post thiếu điều kiện; duyệt lại khi đổi phạm vi. | UC-41, UC-43, UC-104 |
-| BF-03-E2 | Nhận thiếu/hỏng hoặc nhiều chuyến | Kho đích nhận đúng lượng và từng quality; còn thiếu giữ transit, có thể nhận MWTR tiếp theo. Hỏng đã hiện diện ở đích là quarantine, không đồng thời coi mất transit. | TD100, nhận95GOOD+3DAMAGED → transit2. | UC-104 |
-| BF-03-E3 | Nhận thừa/sai lô hoặc thất lạc đã xác minh | Ghi chứng cứ riêng; không âm transit hay tự nhận thay lô. Owner quyết định; Warehouse thực hiện chứng từ bổ sung/trả nguồn/tổn thất đúng lượng. | Chỉ đóng khi mọi lượng có kết quả; không sửa TD/MWTR cũ. | UC-44, UC-43, UC-104 |
+| BF-04-A1 | Xuất trực tiếp kho khác | Sales thống nhất khách, tách OD theo kho thực xuất; Warehouse kho đó làm BF-06, không tạo nhận giả tại kho yêu cầu. | Không transit nếu không có chuyển vật lý. | UC-51, UC-103 |
+| BF-04-E1 | TR bị từ chối, tồn nguồn giảm hoặc chưa có người nhận độc lập | Owner lưu lý do; Warehouse kiểm lại tồn/khóa trước xuất. Thiếu nguồn thì chờ/giảm phần chưa thực hiện có kiểm soát; chưa có người nhận độc lập thì chờ bố trí, không dùng cùng user xác nhận hai đầu. | Không post thiếu điều kiện; duyệt lại khi đổi phạm vi. | UC-41, UC-43, UC-104 |
+| BF-04-E2 | Nhận thiếu/hỏng hoặc nhiều chuyến | Kho đích nhận đúng lượng và từng quality; còn thiếu giữ transit, có thể nhận MWTR tiếp theo. Hỏng đã hiện diện ở đích là quarantine, không đồng thời coi mất transit. | TD100, nhận95GOOD+3DAMAGED → transit2. | UC-104 |
+| BF-04-E3 | Nhận thừa/sai lô hoặc thất lạc đã xác minh | Ghi chứng cứ riêng; không âm transit hay tự nhận thay lô. Owner quyết định; Warehouse thực hiện chứng từ bổ sung/trả nguồn/tổn thất đúng lượng. | Chỉ đóng khi mọi lượng có kết quả; không sửa TD/MWTR cũ. | UC-44, UC-43, UC-104 |
 
-### BF-04 — Kiểm kê, đối chiếu và điều chỉnh tồn kho
+### BF-05 — Kiểm kê, đối chiếu và điều chỉnh tồn kho
 
 **Trigger:** kiểm kê định kỳ hằng tháng theo câu 14, theo khu vực hoặc khi có dấu hiệu sai lệch.
 
 1. Store Owner tạo phiên, phạm vi kho/vị trí/lô/trạng thái, lịch và người đếm. Người đề xuất điều chỉnh không tự duyệt điều chỉnh.
 2. Trước khi đếm, xử lý các nhiệm vụ nhập/xuất/chuyển dở dang tại phạm vi đếm. Tách rõ hàng staging, cách ly, giữ hộ và đang chuyển; không đếm cả hai đầu của một chuyến điều chuyển.
-3. Kích hoạt phiên: hệ thống chụp **snapshot bất biến** tại cutoff và xuất/in **danh sách kiểm kê** theo vị trí/lô/trạng thái; cho phép ghi hàng phát hiện ngoài danh sách. Khuyến nghị phiếu đếm không hiện tồn sổ để giảm việc chép số.
-4. **Đề xuất MVP: khóa giao dịch làm thay đổi số lượng/vị trí/trạng thái trong phạm vi đang đếm cho đến khi hoàn tất xử lý phiên**, các khu khác hoạt động bình thường. Đây là thay đổi có chủ đích so với Report 3 đang cho phép giao dịch sau cutoff rồi reconcile. Không triển khai nửa khóa nửa không mà thiếu đối soát.
+3. Kích hoạt phiên: hệ thống chụp snapshot bất biến tại cutoff và xuất/in danh sách kiểm kê theo vị trí/lô/trạng thái; cho phép ghi hàng phát hiện ngoài danh sách. Khuyến nghị phiếu đếm không hiện tồn sổ để giảm việc chép số.
+4. Đề xuất MVP: khóa giao dịch làm thay đổi số lượng/vị trí/trạng thái trong phạm vi đang đếm cho đến khi hoàn tất xử lý phiên, các khu khác hoạt động bình thường. Đây là thay đổi có chủ đích so với Report 3 đang cho phép giao dịch sau cutoff rồi reconcile. Không triển khai nửa khóa nửa không mà thiếu đối soát.
 5. Warehouse Staff đếm thực tế, ghi thùng/viên và tình trạng, người đếm, thời điểm. Ô chưa đếm là “chưa đếm”, không mặc định bằng 0. Lưu mỗi lần đếm lại, không ghi đè lần trước.
 6. Hệ thống so snapshot với kết quả hợp lệ. Chênh lệch hoặc lot lạ → kiểm đếm lại, kiểm chứng từ và giải trình. Hàng hỏng còn hiện hữu là sai khác chất lượng, không nhất thiết thiếu tổng số lượng.
 7. Không còn chênh lệch → hoàn tất và mở khóa, không tạo phiếu điều chỉnh 0. Có chênh lệch → Warehouse Staff lập đề nghị điều chỉnh đúng phiên bản số liệu.
 8. Store Owner duyệt hoặc trả về đếm/giải trình lại. Sau duyệt, Owner thực hiện UC-93 Clear Difference theo quyền hiện có; hệ thống ghi đúng delta một lần, tạo phiếu tăng/giảm tương ứng và nhật ký, đóng phiên/mở khóa khi hết sai lệch.
 
-**Lưu ý khả thi:** D5 đã chọn cơ chế khóa; phương án nâng cao dưới đây chỉ là phương án chưa chọn, không thuộc baseline hiện tại. Lên lịch phiên theo khu nhỏ với Owner sẵn sàng xử lý để tránh khóa dài. Nếu cửa hàng bắt buộc vừa đếm vừa xuất, dùng phương án nâng cao hiện có: tồn kỳ vọng tại lúc đếm = snapshot + nhập sau cutoff − xuất sau cutoff; delta = đếm − tồn kỳ vọng; ghi delta vào tồn hiện hành, không ghi đè tồn bằng số đếm cũ. Phải lưu thời điểm đếm từng dòng và kiểm soát giao dịch đến muộn/backdate. Hai phương án là lựa chọn thiết kế khác nhau, cần chọn một khi chốt SRS.
+Lưu ý khả thi: D5 đã chọn cơ chế khóa; phương án nâng cao dưới đây chỉ là phương án chưa chọn, không thuộc baseline hiện tại. Lên lịch phiên theo khu nhỏ với Owner sẵn sàng xử lý để tránh khóa dài. Nếu cửa hàng bắt buộc vừa đếm vừa xuất, dùng phương án nâng cao hiện có: tồn kỳ vọng tại lúc đếm = snapshot + nhập sau cutoff − xuất sau cutoff; delta = đếm − tồn kỳ vọng; ghi delta vào tồn hiện hành, không ghi đè tồn bằng số đếm cũ. Phải lưu thời điểm đếm từng dòng và kiểm soát giao dịch đến muộn/backdate. Hai phương án là lựa chọn thiết kế khác nhau, cần chọn một khi chốt SRS.
 
-**Chứng từ:** phiên kiểm kê, danh sách kiểm kê, kết quả đếm/đếm lại, biên bản chênh lệch, đề nghị điều chỉnh, quyết định duyệt, phiếu tăng/giảm. SAP WM IV trang 2, 4–6, 12–17, 20–21, 26–27 có khóa bin, recount và clearing; WMSD chỉ giữ điều chỉnh số lượng kho, không xây hai sổ WM/MM và điều chỉnh giá trị như SAP. [MISA kiểm kê](https://helpeshop.misa.vn/kb/huong-dan-cach-kiem-ke-kho-tren-phan-mem-misa-eshop) là tham khảo cách so lượng thực tế, lý do và chứng từ tăng/giảm; snapshot bất biến và phân quyền duyệt là kiểm soát của phương án WMSD.
-
-#### 04.X — Luồng thay thế và ngoại lệ
-
-Các mã A là luồng thay thế, E là ngoại lệ; số bước tham chiếu luồng chính ngay trên. Mỗi nhánh áp dụng theo từng lượng, không buộc cả phiếu đi cùng một kết quả.
-
-| Mã | Điều kiện | Người xử lý và hành động | Kết quả tồn / điểm tiếp tục | UC |
-|---|---|---|---|---|
-| BF-04-E1 | Task dở dang hoặc khóa kiểm kê chồng lấn | Owner/Warehouse giải quyết trước kích hoạt; từ chối phạm vi đã khóa phiên khác. Khi khóa, cả nhập/xuất/chuyển/đổi quality trong phạm vi phải bị chặn. | Chưa snapshot nếu chưa khóa nguyên tử được; kho khác tiếp tục. | UC-86, UC-87 |
-| BF-04-A1 | Chưa đếm, đếm 0 hoặc tìm thấy hàng mới | Warehouse lưu trạng thái chưa đếm riêng; 0 là kết quả hợp lệ. Hàng tìm thấy bổ sung dòng có dấu found_after_cutoff, book=0 sau xác minh, không sửa dòng snapshot gốc. | Chưa đếm thì không tự tính mất toàn bộ; đếm lại lưu attempt mới. | UC-87, UC-88 |
-| BF-04-A2 | Lệch chất lượng hoặc lệch lượng chưa có căn cứ | Warehouse đếm lại và kiểm lot/đơn vị/chứng từ; hỏng nhưng đủ lượng xử lý quality/BF-02, không thêm delta âm cho cùng hàng. | Giữ khóa; chưa đủ căn cứ không gửi/duyệt delta cuối. | UC-88, UC-91 |
-| BF-04-A3 | Không chênh hoặc Owner trả/từ chối | Không chênh thì đóng/mở khóa không ADJ0. Owner trả/từ chối có lý do thì phiên tiếp tục mở, Warehouse bổ sung/đếm lại, gửi phiên bản mới. | Duyệt không post; chỉ UC-93 post delta đã duyệt rồi mở khóa khi hết lệch. | UC-92, UC-93 |
-| BF-04-E2 | Đứt kết nối hoặc lỗi khi Clear Difference | Khôi phục phiên và lịch sử đã lưu; giữ khóa phạm vi. Kiểm kết quả batch trước retry cùng operation key; không tự mở khóa hoặc dùng mô hình vừa đếm vừa giao dịch. | Rollback toàn batch lỗi; đã commit thì trả kết quả cũ. | UC-87, UC-93 |
-
-### BF-05 — Tiếp nhận yêu cầu xuất, soạn hàng và bàn giao
-
-**Trigger:** Sales gửi Warehouse Issue Request từ đơn bán đã được xử lý thương mại bên ngoài WMSD. Khách mua tại cửa hàng hay nhận tại công trình đều đi qua cùng kiểm soát kho; không cần mô-đun POS mới.
-
-1. Sales nhập mã đơn nguồn, dòng hàng, lượng yêu cầu, đơn vị, nhu cầu lot/tone/calibre, ngày cần, người/nơi nhận và chỉ dẫn giao. Hệ thống chống nhập trùng theo mã nguồn + dòng + đợt giao. Theo câu 16, yêu cầu thực tế đến qua MISA/phần mềm, phiếu/sổ hoặc Zalo/điện thoại/truyền miệng; Sales phải chuẩn hóa thành WIR có nguồn được xác minh trước khi xuất. Các kênh này không phải tích hợp tự động.
-2. Kiểm tra tổng đã xuất, lượng đang giữ và phần còn lại. Kiểm tra tồn khả dụng ở kho dự kiến; thiếu thì gợi ý kho khác/BF-03 hoặc nhu cầu mua/BF-01. Yêu cầu xuất ở trạng thái chờ, không cho tồn âm.
-3. Sales xác nhận giao đủ/giao từng phần/chờ hàng theo thỏa thuận khách. Thay tone/calibre hoặc trộn lot phải có xác nhận phù hợp, không tự thay chỉ vì cùng SKU.
-4. Hệ thống lập/gợi ý nhiệm vụ soạn theo vị trí–lot và giữ hàng. Trong tập hàng tương thích ưu tiên FIFO theo ngày nhập; quy tắc này là picking vật lý, không quyết định phương pháp tính giá vốn kế toán.
-5. Warehouse Staff kiểm tra tại vị trí, soạn và xác nhận lượng thực soạn. Đưa vào staging, kiểm đếm/đóng gói theo quy cách gạch; giữ thông tin thùng lẻ và viên lẻ.
-6. Phát hiện thiếu vật lý/hỏng: giữ bằng chứng, chặn lượng nghi ngờ, hàng lỗi sang BF-02; tìm nguồn thay thế tương thích hoặc báo Sales giao từng phần/chờ. Chênh lệch sổ–thực chưa rõ chuyển kiểm kê mục tiêu BF-04. Không tự điều chỉnh tồn cho bằng lượng đang thấy.
-7. Lập phiếu xuất dự thảo từ lượng kiểm đếm. Khi bàn giao thực tế, ghi người nhận/vận chuyển, thời gian và chứng cứ; thực hiện Post Goods Issue để giảm đúng lượng đã xuất một lần. Nếu bàn giao thất bại, chưa PGI; hàng còn ở staging hoặc được trả vị trí bằng movement có dấu vết.
-8. Hệ thống cập nhật phần đã xuất/còn thiếu, gửi trạng thái cho Sales và xuất chứng từ kho cho đối chiếu với MISA. Đóng khi đã xuất đủ hoặc phần còn lại được hủy hợp lệ. **Bàn giao vận chuyển không tự đồng nghĩa khách đã nhận hàng.**
-
-**Ngoại lệ sau PGI:** không hủy đơn để cộng lại hàng. Nếu hàng thực tế quay về phải có hồ sơ nhận lại, kiểm tra và chứng từ liên quan; nếu sửa do ghi nhận sai cần quy trình đảo/điều chỉnh có dấu vết, không xóa phiếu đã ghi nhận.
-
-**Tác động tồn:** giữ hàng giảm khả dụng; xác nhận soạn chuyển từ bin sang staging, tổng kho chưa giảm; PGI mới giảm tổng kho và giải phóng phần reservation tương ứng. Không trừ tồn khi tạo yêu cầu, in phiếu hoặc gửi email.
-
-**Chứng từ:** yêu cầu xuất, kế hoạch đợt giao, phiếu soạn, biên bản thiếu/hỏng, phiếu xuất, biên bản bàn giao. SAP WM III trang 2 chỉ rõ luồng tích hợp SD–WM; trang 12–17 là picking/confirmation, trang 21–22 là ship/PGI. Hóa đơn và thanh toán không được hướng dẫn trong case WM III. [MISA xuất kho bán hàng](https://helpsme.misa.vn/2022/kb/xuat_kho_ban_hang/) là tham khảo phân tách yêu cầu, phiếu kho và công việc thủ kho.
+Chứng từ: phiên kiểm kê, danh sách kiểm kê, kết quả đếm/đếm lại, biên bản chênh lệch, đề nghị điều chỉnh, quyết định duyệt, phiếu tăng/giảm. SAP WM IV trang 2, 4–6, 12–17, 20–21, 26–27 có khóa bin, recount và clearing; WMSD chỉ giữ điều chỉnh số lượng kho, không xây hai sổ WM/MM và điều chỉnh giá trị như SAP. [MISA kiểm kê](https://helpeshop.misa.vn/kb/huong-dan-cach-kiem-ke-kho-tren-phan-mem-misa-eshop) là tham khảo cách so lượng thực tế, lý do và chứng từ tăng/giảm; snapshot bất biến và phân quyền duyệt là kiểm soát của phương án WMSD.
 
 #### 05.X — Luồng thay thế và ngoại lệ
 
@@ -294,17 +282,61 @@ Các mã A là luồng thay thế, E là ngoại lệ; số bước tham chiếu
 
 | Mã | Điều kiện | Người xử lý và hành động | Kết quả tồn / điểm tiếp tục | UC |
 |---|---|---|---|---|
-| BF-05-E1 | Nguồn chưa xác minh/trùng hoặc hai yêu cầu tranh hàng | Sales/Accountant xác minh nguồn ngoài; chặn source+line+release trùng. Reservation kiểm nguyên tử, bên đến sau chỉ được phần còn lại/chờ. | Không WIR giả/SO nội bộ; không âm khả dụng. | UC-47, UC-51, UC-108 |
-| BF-05-A1 | Giao một phần/chờ hàng/đổi lô | Sales ghi chấp thuận khách cho lượng/lô tương thích, tách đợt OD; thiếu thì UC-103 chọn BF-01/03; thay đổi đang gắn task phải xử lý task trước. | Chỉ giữ phần có nguồn; phần còn lại outstanding. | UC-48, UC-51, UC-103 |
-| BF-05-E2 | Soạn thiếu/hỏng hoặc hàng không đúng yêu cầu | Warehouse ghi thực tế, chặn lượng nghi lỗi/BF-02; lệch chưa rõ chuyển BF-04 mục tiêu; Sales chọn soạn thay hoặc chờ, không sửa balance trực tiếp. | Picking chỉ đổi vị trí/reservation, không trừ tổng. | UC-55, UC-65 |
-| BF-05-A2 | Hủy/trễ bàn giao trước PGI | Hàng giữ staging hoặc Warehouse unpick có chứng từ về vị trí hợp lệ; giải phóng đúng reservation rồi Sales hủy phần chưa xuất. | Chưa bàn giao thì chưa PGI; tổng kho không đổi. | UC-48, UC-55, UC-58 |
-| BF-05-E3 | Đã PGI rồi mới hủy/trả | Không tăng tồn bằng sửa trạng thái. Hàng thực quay về qua BF-06/kiểm nhận; lỗi post dùng đảo/điều chỉnh liên kết đúng điều kiện. | Đơn chờ đối chiếu; bàn giao carrier không mặc định khách đã nhận. | UC-58, UC-70, UC-73 |
+| BF-05-E1 | Task dở dang hoặc khóa kiểm kê chồng lấn | Owner/Warehouse giải quyết trước kích hoạt; từ chối phạm vi đã khóa phiên khác. Khi khóa, cả nhập/xuất/chuyển/đổi quality trong phạm vi phải bị chặn. | Chưa snapshot nếu chưa khóa nguyên tử được; kho khác tiếp tục. | UC-86, UC-87 |
+| BF-05-A1 | Chưa đếm, đếm 0 hoặc tìm thấy hàng mới | Warehouse lưu trạng thái chưa đếm riêng; 0 là kết quả hợp lệ. Hàng tìm thấy bổ sung dòng có dấu found_after_cutoff, book=0 sau xác minh, không sửa dòng snapshot gốc. | Chưa đếm thì không tự tính mất toàn bộ; đếm lại lưu attempt mới. | UC-87, UC-88 |
+| BF-05-A2 | Lệch chất lượng hoặc lệch lượng chưa có căn cứ | Warehouse đếm lại và kiểm lot/đơn vị/chứng từ; hỏng nhưng đủ lượng xử lý quality/BF-02, không thêm delta âm cho cùng hàng. | Giữ khóa; chưa đủ căn cứ không gửi/duyệt delta cuối. | UC-88, UC-91 |
+| BF-05-A3 | Không chênh hoặc Owner trả/từ chối | Không chênh thì đóng/mở khóa không ADJ0. Owner trả/từ chối có lý do thì phiên tiếp tục mở, Warehouse bổ sung/đếm lại, gửi phiên bản mới. | Duyệt không post; chỉ UC-93 post delta đã duyệt rồi mở khóa khi hết lệch. | UC-92, UC-93 |
+| BF-05-E2 | Đứt kết nối hoặc lỗi khi Clear Difference | Khôi phục phiên và lịch sử đã lưu; giữ khóa phạm vi. Kiểm kết quả batch trước retry cùng operation key; không tự mở khóa hoặc dùng mô hình vừa đếm vừa giao dịch. | Rollback toàn batch lỗi; đã commit thì trả kết quả cũ. | UC-87, UC-93 |
 
-### BF-06 — Tiếp nhận hàng khách trả và phân loại nhập lại
+### BF-06 — Lập đơn bán, xuất kho, giao hàng và hoàn thành đơn
+
+Trigger: Sales Staff nhận đơn bán từ MISA, giấy tờ hoặc nguồn bên ngoài đã xác minh. Sales nhập lại đơn vào WMSD rồi mới lập yêu cầu xuất hàng. Khách nhận tại cửa hàng và giao tới công trình áp dụng cùng quy trình.
+
+1. Sales tạo đơn bán (SO), ghi thông tin khách, ngày cần hàng, địa chỉ nhận, từng mặt hàng, số lượng, đơn vị và yêu cầu lô/tone/calibre. Lưu mã đơn, mã dòng nguồn và ảnh hoặc tệp chứng từ. Với yêu cầu qua điện thoại/Zalo, Sales xác minh và ghi thành đơn nguồn trước khi nhập; không tạo hai SO cho cùng đơn nguồn. Đây là thao tác nhập thủ công, không phải đồng bộ MISA.
+2. Sales tạo yêu cầu xuất hàng (WIR) từ SO đã lưu. WIR phải liên kết đúng SO và từng dòng hàng. Một SO có thể được thực hiện qua nhiều WIR; một WIR có thể có nhiều đợt xuất (OD), mỗi đợt thuộc một kho.
+3. Kiểm tra lượng còn phải xuất, lượng đã giữ, lượng đã xuất và tồn khả dụng theo từng dòng hàng. Nếu thiếu, Sales xem phương án xuất kho khác/điều chuyển (BF-04) hoặc bổ sung hàng (BF-01). Chưa có nguồn thì giữ nhu cầu chờ xử lý, không cho tồn âm.
+4. Sales thống nhất với khách về giao đủ, giao từng phần hoặc chờ hàng. Nếu thay lô/tone/calibre, phải lưu sự đồng ý của khách trước khi soạn hàng thay thế.
+5. Giữ hàng cho đợt xuất đã chọn và tạo nhiệm vụ soạn (TO). Ưu tiên FIFO trong nhóm hàng đáp ứng đúng yêu cầu; không dùng hàng khác tone/calibre chỉ để đủ số lượng.
+6. Warehouse Staff soạn, kiểm đếm và đưa hàng đến khu tập kết chờ bàn giao (staging). Ghi số thùng, viên lẻ, lô và lượng thực tế.
+7. Nếu phát hiện thiếu hoặc hỏng, Warehouse lưu bằng chứng, chặn phần hàng nghi lỗi và báo Sales. Hàng lỗi xử lý qua BF-02; chênh lệch sổ–thực chưa rõ nguyên nhân chuyển BF-05 để kiểm tra. Không tự sửa số dư tồn.
+8. Warehouse lập phiếu xuất (GI-S) từ lượng thực soạn. Khi thực bàn giao cho chuyến giao/nhà vận chuyển hoặc khách nhận tại kho, ghi người nhận, thời gian, biên bản bàn giao (HO) và thực hiện PGI. PGI giảm đúng lượng bàn giao một lần. Chưa bàn giao thì hàng vẫn ở staging hoặc được hoàn về vị trí bằng nhiệm vụ unpick có lưu vết. Bàn giao cho nhà vận chuyển chưa có nghĩa khách đã nhận.
+9. Khi khách thực nhận, Warehouse Staff ghi xác nhận giao hàng (POD): người nhận, thời điểm, lượng khách nhận theo từng dòng phiếu xuất và ảnh chụp bắt buộc. Chỉ dùng dòng GI-S đã post và đúng chuỗi SO–WIR–OD. Thiếu ảnh hoặc còn chờ khách nhận thì tiếp tục bước này, không soạn/xuất lại. Giao một phần giữ SO ở PARTIALLY_DELIVERED; giao đủ phần còn phải thực hiện, có ảnh hợp lệ, mới chuyển SO sang DELIVERED (Đã giao).
+10. Sau khi SO đã DELIVERED, Sales Staff xác nhận cửa hàng đã nhận đủ tiền ngoài hệ thống. Lưu người xác nhận, thời điểm và mã chứng từ thu tiền, tệp bằng chứng hoặc ghi chú xác nhận (PAY-CFM). Khi đủ cả điều kiện giao hàng và xác nhận nhận tiền, SO chuyển sang COMPLETED (Hoàn thành). Chưa nhận đủ tiền hoặc chưa rõ kết quả thì giữ DELIVERED. Khách trả trước cũng không làm đơn hoàn thành trước khi giao đủ hàng.
+
+Kiểm soát số lượng và trạng thái:
+
+| Nội dung | Quy tắc |
+|---|---|
+| SO → WIR | Tổng lượng cam kết của các WIR không vượt lượng đặt trừ phần đã hủy hợp lệ. Tính cả phần đã xuất; WIR hoàn tất không làm phát sinh lại nhu cầu. |
+| WIR → OD → GI-S | Tổng các đợt xuất không vượt lượng WIR được phép thực hiện; lượng PGI không vượt lượng của đợt xuất. Không cộng WIR và OD thành hai nhu cầu. |
+| GI-S → POD | Tổng lượng giao đã xác nhận không vượt PGI hợp lệ của dòng phiếu xuất, sau khi loại phần đã đảo/không đủ điều kiện. Kiểm đồng thời trong cùng transaction; gửi lại cùng mã thao tác chỉ trả kết quả đã lưu. |
+| Hủy phần còn lại | Chỉ hủy phần chưa xuất, có lý do, xử lý task và giải phóng lượng giữ tương ứng. Hủy toàn bộ mà chưa giao hàng thì SO là CANCELLED; không chuyển sang Đã giao hoặc Hoàn thành. |
+| Hoàn tất kho và hoàn thành đơn | WIR có thể hoàn tất khi đã xuất đủ. SO vẫn phải chờ giao khách có ảnh, sau đó chờ Sales xác nhận nhận đủ tiền ngoài hệ thống. |
+
+Sau PGI: hàng thực quay về hoặc khách từ chối nhận xử lý qua BF-07 và chứng từ nhận/kiểm tra phù hợp; không tăng tồn bằng cách sửa trạng thái. Nếu ghi nhầm POD/PAY-CFM, hủy hiệu lực bản xác nhận có lý do và lưu lịch sử, tăng phiên bản và tính lại tiến độ SO; xác nhận hoàn thành cũ không tự áp dụng cho phiên bản đơn đã thay đổi. Hàng khách trả thông thường sau khi đã nhận không xóa bằng chứng giao/nhận tiền gốc; theo dõi riêng tại BF-07.
+
+Tác động tồn: tạo SO/WIR không đổi tồn; giữ hàng giảm khả dụng; soạn hàng chỉ chuyển vị trí; PGI giảm tồn đúng một lần. POD và PAY-CFM chỉ cập nhật tiến độ, không tạo phiếu ghi tăng/giảm tồn hoặc thực hiện thanh toán.
+
+Chứng từ: SO, WIR, OD, TO soạn hàng, GI-S/HO, POD kèm ảnh và PAY-CFM. SAP WM III p. 2, pp. 12–17, pp. 21–22 là tham khảo về soạn hàng và PGI; không quyết định phạm vi thanh toán WMSD. [MISA xuất kho bán hàng](https://helpsme.misa.vn/2022/kb/xuat_kho_ban_hang/) là tham khảo về yêu cầu xuất, phiếu kho và trách nhiệm thủ kho.
+
+#### 06.X — Luồng thay thế và ngoại lệ
+
+Các mã A là luồng thay thế, E là ngoại lệ; số bước tham chiếu luồng chính ngay trên. Mỗi nhánh áp dụng theo từng lượng, không buộc cả phiếu đi cùng một kết quả.
+
+| Mã | Điều kiện | Người xử lý và hành động | Kết quả tồn / điểm tiếp tục | UC |
+|---|---|---|---|---|
+| BF-06-E1 | Đơn nguồn chưa xác minh, trùng bản sao SO/WIR, thiếu liên kết SO hoặc tranh chấp giữ hàng | Sales xác minh đơn nguồn bên ngoài trước khi tạo SO (phối hợp Accountant UC-108 khi cần tra lịch sử/đối chiếu); chặn trùng nguồn+đơn+dòng trên SO, chặn tạo WIR khi chưa có SO đã lưu hoặc vượt lượng dòng SO, và chặn trùng đợt giao. Reservation kiểm nguyên tử, bên đến sau chỉ được phần còn lại hoặc chờ. | Không tạo WIR thiếu SO; không nhân đôi nhu cầu/reservation; không âm khả dụng. | UC-47, UC-109, UC-51, UC-108 |
+| BF-06-A1 | Giao một phần, chờ hàng hoặc đổi lô qua các đợt xuất | Sales ghi chấp thuận của khách về số lượng/lô tương thích trên SO/WIR, tách đợt WIR/OD; thiếu hàng thì UC-103 chọn BF-01/04; sửa/hủy phần chưa xuất trên SO/WIR phải giải phóng task đang gắn trước. | Chỉ giữ phần có nguồn cho đợt giao; phần còn lại tiếp tục chờ thực hiện trên SO/WIR. | UC-48, UC-109, UC-51, UC-103 |
+| BF-06-E2 | Soạn thiếu/hỏng hoặc hàng không đúng yêu cầu | Warehouse ghi thực tế, chặn lượng nghi lỗi/BF-02; lệch chưa rõ chuyển BF-05 mục tiêu; Sales chọn soạn thay hoặc chờ, không sửa balance trực tiếp. | Picking chỉ đổi vị trí/reservation, không trừ tổng. | UC-55, UC-65 |
+| BF-06-A2 | Hủy/trễ bàn giao trước PGI | Hàng giữ staging hoặc Warehouse unpick có chứng từ về vị trí hợp lệ; giải phóng đúng reservation rồi Sales hủy phần chưa xuất trên WIR/SO có lý do. | Chưa bàn giao thì chưa PGI; tổng kho không đổi. | UC-48, UC-109, UC-55, UC-58 |
+| BF-06-E3 | Sau PGI: thiếu ảnh, giao một phần, khách từ chối hoặc trả hàng | Thiếu ảnh/chờ khách nhận thì bổ sung POD trên phiếu đã xuất, không soạn/PGI lại. Chỉ ghi lượng khách thực nhận có ảnh; SO chưa giao đủ giữ IN_PROGRESS hoặc PARTIALLY_DELIVERED. Hàng quay về xử lý BF-07; lỗi ghi nhận dùng chứng từ đính chính. | Không tăng tồn bằng sửa trạng thái; nhận trả/đảo hợp lệ mới xử lý tồn. | UC-58, UC-110, UC-70, UC-73 |
+| BF-06-A3 | Chưa nhận tiền, mới nhận một phần, thông tin tiền chưa rõ hoặc biết trả trước khi DELIVERED | Chỉ Sales Staff xác nhận PAY-CFM (UC-111). Nếu sau DELIVERED khách chưa trả/mới trả một phần/chưa rõ thì giữ SO ở DELIVERED. Nếu khách trả trước bên ngoài khi chưa giao đủ hàng thì chỉ ghi chú tham chiếu; SO không được sang COMPLETED khi chưa DELIVERED đủ lượng kèm ảnh. Đính chính tham chiếu lưu vết đầy đủ. | Không thay đổi tồn khi chuyển DELIVERED hoặc COMPLETED; không chạy cổng thanh toán hay bút toán công nợ trong WMSD. | UC-48, UC-110, UC-111, UC-108 |
+
+### BF-07 — Tiếp nhận hàng khách trả và phân loại nhập lại
 
 **Trigger:** khách đề nghị trả hàng đã xuất. Chấp nhận thương mại, chất lượng và quyền sở hữu là ba câu hỏi khác nhau.
 
-**Điều kiện nhận trả đã chốt D6, theo câu 18:** gạch nguyên thùng và viên lẻ chưa sử dụng được xét từng trường hợp, không tự động chấp nhận. Không nhận gạch đã thi công, hàng hỏng do khách hoặc hàng đã vượt thời hạn nhận trả áp dụng. Chưa có số ngày hoặc căn cứ thời hạn cụ thể: lưu tham chiếu điều kiện/thỏa thuận; nếu chưa xác minh được thì để chờ xác minh, không tự coi là quá hạn hoặc còn hạn. Hàng lỗi do NCC có thể được xét nhận và cách ly; không đồng nhất với hỏng do khách. Bao bì rách không tự quyết định chất lượng hoặc điều kiện nhận trả.
+Điều kiện nhận trả đã chốt D6, theo câu 18: gạch nguyên thùng và viên lẻ chưa sử dụng được xét từng trường hợp, không tự động chấp nhận. Không nhận gạch đã thi công, hàng hỏng do khách hoặc hàng đã vượt thời hạn nhận trả áp dụng. Chưa có số ngày hoặc căn cứ thời hạn cụ thể: lưu tham chiếu điều kiện/thỏa thuận; nếu chưa xác minh được thì để chờ xác minh, không tự coi là quá hạn hoặc còn hạn. Hàng lỗi do NCC có thể được xét nhận và cách ly; không đồng nhất với hỏng do khách. Bao bì rách không tự quyết định chất lượng hoặc điều kiện nhận trả.
 
 Sales kiểm điều kiện thương mại trước tiếp nhận khi đủ bằng chứng; Warehouse xác minh tình trạng thực tế. Trường hợp chắc chắn không đủ điều kiện có thể từ chối trước khi nhận vật lý; nếu hàng đã tới kho thì theo dõi custody và bàn giao lại, không post GR-CR. Mỗi lượng có điều kiện khác nhau phải tách dòng đánh giá.
 
@@ -314,31 +346,31 @@ Sales kiểm điều kiện thương mại trước tiếp nhận khi đủ bằ
 4. Warehouse Staff kiểm, đếm, xác định lot/tone/calibre, phân loại lượng đạt, lỗi, chờ xác minh; đề xuất lượng cửa hàng nhận lại. Hàng không rõ nguồn không tự gán vào lot bán được. Ghi tình trạng bao bì, đã/chưa thi công, nguyên nhân hỏng và kết quả xác minh thời hạn theo từng dòng, lưu phiên bản đánh giá và bằng chứng. Kết quả chưa rõ phải chờ xác minh, không mặc định đủ điều kiện.
 5. Store Owner quyết định chấp nhận trả toàn phần/từng phần/từ chối dựa trên kết quả kiểm và điều kiện đã thỏa thuận; không phê duyệt nhận vào tồn đối với dòng bị loại theo D6 hoặc còn chờ xác minh. Đây là UC-71 sửa nghĩa: duyệt nhận trả sau kiểm tra, không phải bắt chủ duyệt trước để nhân viên được kiểm.
 6. Nhánh đạt và được nhận trả: lập phiếu nhập hàng trả theo nguồn, giữ đúng lot/trạng thái, put-away rồi cho khả dụng.
-7. Nhánh không đạt nhưng cửa hàng vẫn nhận trách nhiệm: lập dòng nhập trả ở trạng thái cách ly, liên kết BF-02/BF-07; không vào hàng bán được. Nhánh không chấp nhận trả: giữ ngoài tồn của cửa hàng, lập bàn giao lại cho khách và đóng phần giữ hộ khi thực bàn giao.
+7. Nhánh không đạt nhưng cửa hàng vẫn nhận trách nhiệm: lập dòng nhập trả ở trạng thái cách ly, liên kết BF-02/BF-08; không vào hàng bán được. Nhánh không chấp nhận trả: giữ ngoài tồn của cửa hàng, lập bàn giao lại cho khách và đóng phần giữ hộ khi thực bàn giao.
 8. Sales thông báo kết quả; Accountant dùng phiếu nhập/biên bản làm căn cứ xử lý hóa đơn, hoàn tiền hoặc bù trừ bên ngoài. WMS lưu mã/tham chiếu và trạng thái xử lý, không sửa đơn/hóa đơn gốc, không tính hoặc chi tiền.
 9. Đóng phần kho khi mọi lượng nhận thực tế đã được nhận lại, trả khách hoặc chuyển hồ sơ chờ xử lý có trách nhiệm. Trạng thái xử lý tài chính được theo dõi riêng, không ép hai trạng thái hoàn thành đồng thời.
 
-**Phân nhánh phải xét theo từng lượng/dòng, không một Yes/No cho toàn bộ chuyến.** Ví dụ khách mang 10 thùng: 7 đạt được nhận lại, 2 lỗi được nhận để khiếu nại NCC, 1 sai nguồn không nhận. Kết quả: +7 tồn đạt sau put-away, +2 cách ly của cửa hàng, 1 giữ hộ rồi bàn giao khách; không +10 bán được.
+Phân nhánh phải xét theo từng lượng/dòng, không một Yes/No cho toàn bộ chuyến. Ví dụ khách mang 10 thùng: 7 đạt được nhận lại, 2 lỗi được nhận để khiếu nại NCC, 1 sai nguồn không nhận. Kết quả: +7 tồn đạt sau put-away, +2 cách ly của cửa hàng, 1 giữ hộ rồi bàn giao khách; không +10 bán được.
 
-**Phần hóa đơn:** không dùng hướng dẫn SME 2022 để kết luận cứng về thủ tục thuế năm 2026. Hướng dẫn của cơ quan thuế về trả hàng nêu người bán lập hóa đơn điều chỉnh, trừ trường hợp có thỏa thuận người mua lập hóa đơn trả hàng; kế toán phải áp dụng đúng hồ sơ cụ thể. WMSD cung cấp chứng cứ và liên kết, không triển khai nghiệp vụ thuế. [Nguồn Bộ Tài chính](https://portal.mof.gov.vn/hoidapcstc/home/cthoidap/156063).
+Phần hóa đơn: không dùng hướng dẫn SME 2022 để kết luận cứng về thủ tục thuế năm 2026. Hướng dẫn của cơ quan thuế về trả hàng nêu người bán lập hóa đơn điều chỉnh, trừ trường hợp có thỏa thuận người mua lập hóa đơn trả hàng; kế toán phải áp dụng đúng hồ sơ cụ thể. WMSD cung cấp chứng cứ và liên kết, không triển khai nghiệp vụ thuế. [Nguồn Bộ Tài chính](https://portal.mof.gov.vn/hoidapcstc/home/cthoidap/156063).
 
 Tham khảo [MISA eShop trả theo hóa đơn](https://helpeshop.misa.vn/v1/kb/doi-tra-hang-cho-khach-theo-hoa-don-thi-thuc-hien-nhu-the-nao) về liên kết chứng từ nguồn và nhập trả; không lấy việc tự sinh chứng từ bán lẻ thay cho kiểm chất lượng gạch.
 
-#### 06.X — Luồng thay thế và ngoại lệ
+#### 07.X — Luồng thay thế và ngoại lệ
 
 Các mã A là luồng thay thế, E là ngoại lệ; số bước tham chiếu luồng chính ngay trên. Mỗi nhánh áp dụng theo từng lượng, không buộc cả phiếu đi cùng một kết quả.
 
 | Mã | Điều kiện | Người xử lý và hành động | Kết quả tồn / điểm tiếp tục | UC |
 |---|---|---|---|---|
-| BF-06-A1 | Nguồn lịch sử chưa có GI WMS | Sales lập hồ sơ từ nguồn ngoài; Accountant UC-108 xác minh dòng/lượng đã giao, đã trả và hồ sơ mở; không tạo GI lịch sử giả. | Chưa rõ → chờ nguồn; hàng đã giữ là custody. | UC-70, UC-108 |
-| BF-06-E1 | Vi phạm D6 hoặc điều kiện chưa rõ | Đã thi công/hỏng do khách/quá hạn đã xác minh → INELIGIBLE. Chưa rõ mà chưa có căn cứ loại → PENDING. Nguyên thùng/lẻ chưa dùng đủ căn cứ → CASE_REVIEW, vẫn cần Owner xét. | Không GR-CR cho PENDING/INELIGIBLE; không tự đặt hạn trả. | UC-71, UC-72, UC-73 |
-| BF-06-A2 | Trả hỗn hợp, Owner chỉ nhận một phần | Warehouse tách dòng theo điều kiện/quality; Owner quyết định sau inspection; nhận 7 đạt+2 lỗi NCC, từ chối1 thì owned+9, custody1 đến giao trả. | Chỉ GOOD sau put-away có thể khả dụng; lỗi NCC cách ly. | UC-71, UC-72, UC-73 |
-| BF-06-E2 | Đánh giá thay đổi sau duyệt hoặc nhận vượt nguồn | Khóa/cộng các hồ sơ đồng thời theo dòng nguồn. Thay điều kiện/lượng tạo assessment và document version mới, duyệt lại; phê duyệt cũ không dùng post mới. | Chặn vượt lượng/phiên bản; không post một phần batch lỗi. | UC-70, UC-71, UC-73 |
-| BF-06-A3 | Khách rút yêu cầu/không nhận lại ngay | Chưa nhận vật lý thì Sales đóng phần chưa thực hiện có lý do; đã giữ thì Warehouse ghi bàn giao trả thực tế. Tài chính bên ngoài có thể vẫn chờ UC-108. | Không đóng custody bằng lời hứa; không phát sinh workflow hoàn tiền. | UC-70, UC-73, UC-108 |
+| BF-07-A1 | Nguồn lịch sử chưa có GI WMS | Sales lập hồ sơ từ nguồn ngoài; Accountant UC-108 xác minh dòng/lượng đã giao, đã trả và hồ sơ mở; không tạo GI lịch sử giả. | Chưa rõ → chờ nguồn; hàng đã giữ là custody. | UC-70, UC-108 |
+| BF-07-E1 | Vi phạm D6 hoặc điều kiện chưa rõ | Đã thi công/hỏng do khách/quá hạn đã xác minh → INELIGIBLE. Chưa rõ mà chưa có căn cứ loại → PENDING. Nguyên thùng/lẻ chưa dùng đủ căn cứ → CASE_REVIEW, vẫn cần Owner xét. | Không GR-CR cho PENDING/INELIGIBLE; không tự đặt hạn trả. | UC-71, UC-72, UC-73 |
+| BF-07-A2 | Trả hỗn hợp, Owner chỉ nhận một phần | Warehouse tách dòng theo điều kiện/quality; Owner quyết định sau inspection; nhận 7 đạt+2 lỗi NCC, từ chối1 thì owned+9, custody1 đến giao trả. | Chỉ GOOD sau put-away có thể khả dụng; lỗi NCC cách ly. | UC-71, UC-72, UC-73 |
+| BF-07-E2 | Đánh giá thay đổi sau duyệt hoặc nhận vượt nguồn | Khóa/cộng các hồ sơ đồng thời theo dòng nguồn. Thay điều kiện/lượng tạo assessment và document version mới, duyệt lại; phê duyệt cũ không dùng post mới. | Chặn vượt lượng/phiên bản; không post một phần batch lỗi. | UC-70, UC-71, UC-73 |
+| BF-07-A3 | Khách rút yêu cầu/không nhận lại ngay | Chưa nhận vật lý thì Sales đóng phần chưa thực hiện có lý do; đã giữ thì Warehouse ghi bàn giao trả thực tế. Tài chính bên ngoài có thể vẫn chờ UC-108. | Không đóng custody bằng lời hứa; không phát sinh workflow hoàn tiền. | UC-70, UC-73, UC-108 |
 
-### BF-07 — Trả nhà cung cấp và đối chiếu lượng giao nhận
+### BF-08 — Trả nhà cung cấp và đối chiếu lượng giao nhận
 
-**Trigger:** hàng sai, lỗi hoặc được NCC đồng ý nhận lại, có nguồn từ BF-01/BF-02/BF-06 hoặc tồn thực tế.
+**Trigger:** hàng sai, lỗi hoặc được NCC đồng ý nhận lại, có nguồn từ BF-01/BF-02/BF-07 hoặc tồn thực tế.
 
 1. Warehouse Staff lập đề nghị trả gắn NCC, PO/receipt nguồn, lot/vị trí, lượng, nguyên nhân và ảnh/biên bản. Hàng lỗi bị chặn bán ngay; hàng đạt xin trả được giữ riêng cho hồ sơ để tránh xuất cho mục đích khác.
 2. Accountant kiểm chứng từ và làm việc với NCC; ghi nhận đồng ý/từ chối, số lượng, lịch, phương thức bàn giao và tham chiếu thỏa thuận. Theo câu 20, chủ hoặc nhân viên mua hàng cũng có thể trực tiếp liên hệ NCC; Accountant vẫn ghi kết quả/bằng chứng trong WMSD, không thêm role mua hàng. NCC không đăng nhập WMSD.
@@ -349,21 +381,21 @@ Các mã A là luồng thay thế, E là ngoại lệ; số bước tham chiếu
 7. Owner duyệt xử lý chênh lệch nếu có. Hàng quay lại kho chỉ được tăng sau khi thực nhận và kiểm tra; tiền bồi thường không tự tạo lại số lượng hàng.
 8. Accountant đối chiếu và xử lý chứng từ tài chính bên ngoài; lưu tham chiếu. Owner đóng hồ sơ khi mọi lượng đã có kết quả, hoặc hệ thống đóng theo quyết định đã được ghi nhận; không ghi giảm thêm ở bước đóng.
 
-**Tác động tồn:** lập đề nghị/duyệt không làm giảm tổng; thực xuất trả mới giảm tồn đã sở hữu; xác nhận NCC nhận và đóng hồ sơ không trừ thêm. Hàng thay thế từ NCC là receipt mới có liên kết, không tăng trực tiếp từ trạng thái “NCC đồng ý”.
+Tác động tồn: lập đề nghị/duyệt không làm giảm tổng; thực xuất trả mới giảm tồn đã sở hữu; xác nhận NCC nhận và đóng hồ sơ không trừ thêm. Hàng thay thế từ NCC là receipt mới có liên kết, không tăng trực tiếp từ trạng thái “NCC đồng ý”.
 
-**Chứng từ:** đề nghị trả, thỏa thuận NCC, duyệt xuất trả, phiếu xuất trả, biên bản giao nhận, hồ sơ sai lệch, tham chiếu xử lý ngoài WMS. [MISA SME trả lại hàng mua](https://helpsme.misa.vn/2022/kb/tralai_hangdamuave_nhapkho/) là tham khảo chuỗi thỏa thuận–chứng từ–xuất trả; không sao chép phần định khoản và hướng dẫn hóa đơn cũ.
+Chứng từ: đề nghị trả, thỏa thuận NCC, duyệt xuất trả, phiếu xuất trả, biên bản giao nhận, hồ sơ sai lệch, tham chiếu xử lý ngoài WMS. [MISA SME trả lại hàng mua](https://helpsme.misa.vn/2022/kb/tralai_hangdamuave_nhapkho/) là tham khảo chuỗi thỏa thuận–chứng từ–xuất trả; không sao chép phần định khoản và hướng dẫn hóa đơn cũ.
 
-#### 07.X — Luồng thay thế và ngoại lệ
+#### 08.X — Luồng thay thế và ngoại lệ
 
 Các mã A là luồng thay thế, E là ngoại lệ; số bước tham chiếu luồng chính ngay trên. Mỗi nhánh áp dụng theo từng lượng, không buộc cả phiếu đi cùng một kết quả.
 
 | Mã | Điều kiện | Người xử lý và hành động | Kết quả tồn / điểm tiếp tục | UC |
 |---|---|---|---|---|
-| BF-07-A1 | NCC chưa đồng ý/từ chối/chỉ đồng ý một phần | Accountant ghi kết quả UC-107; Warehouse chỉ chuẩn bị lượng đã thỏa thuận và Owner duyệt UC-106. Không đồng ý thì giữ mở hoặc chốt phần chưa xuất có quyết định; hàng lỗi vẫn cách ly. | Không xuất khi thiếu một trong hai điều kiện. | UC-81, UC-106, UC-107 |
-| BF-07-A2 | Có quyết định BF-02 hợp lệ | Kiểm decision kind, hồ sơ, version, dòng/lượng và phần còn lại; tái dùng nếu đủ phạm vi, phần thay đổi trình UC-106. | Không duyệt lặp cùng quyết định; UC-67 không trừ trước UC-82. | UC-66, UC-67, UC-106 |
-| BF-07-E1 | Soạn không đủ hoặc hàng là custody NCC | Warehouse kiểm chủ hàng và thực soạn; thiếu thì sửa phần chưa thực hiện đúng phạm vi. Hàng NCC chưa từng thuộc cửa hàng chỉ xuất giảm custody. | Xuất owned giảm owned một lần; custody không giảm owned. | UC-82 |
-| BF-07-E2 | NCC nhận thiếu/hỏng/từ chối sau xuất | Accountant lưu ACK thực nhận riêng, không sửa GI; Owner UC-106 duyệt sai lệch. Hàng bị gửi lại chỉ tăng khi về thực tế và được kiểm nhận/chứng từ liên kết. | Chờ ACK/sai lệch thì không đóng; ACK không trừ thêm. | UC-83, UC-106, UC-107 |
-| BF-07-A3 | NCC đổi hàng/bồi thường ngoài WMS | Accountant lưu tham chiếu UC-108; hàng thay thế phải arrival/GR mới. Đóng phần việc kho khi mọi lượng được đối chiếu và Owner chấp thuận; tài chính có trạng thái riêng. | Thỏa thuận/tiền bồi thường không tự tăng tồn. | UC-83, UC-108 |
+| BF-08-A1 | NCC chưa đồng ý/từ chối/chỉ đồng ý một phần | Accountant ghi kết quả UC-107; Warehouse chỉ chuẩn bị lượng đã thỏa thuận và Owner duyệt UC-106. Không đồng ý thì giữ mở hoặc chốt phần chưa xuất có quyết định; hàng lỗi vẫn cách ly. | Không xuất khi thiếu một trong hai điều kiện. | UC-81, UC-106, UC-107 |
+| BF-08-A2 | Có quyết định BF-02 hợp lệ | Kiểm decision kind, hồ sơ, version, dòng/lượng và phần còn lại; tái dùng nếu đủ phạm vi, phần thay đổi trình UC-106. | Không duyệt lặp cùng quyết định; UC-67 không trừ trước UC-82. | UC-66, UC-67, UC-106 |
+| BF-08-E1 | Soạn không đủ hoặc hàng là custody NCC | Warehouse kiểm chủ hàng và thực soạn; thiếu thì sửa phần chưa thực hiện đúng phạm vi. Hàng NCC chưa từng thuộc cửa hàng chỉ xuất giảm custody. | Xuất owned giảm owned một lần; custody không giảm owned. | UC-82 |
+| BF-08-E2 | NCC nhận thiếu/hỏng/từ chối sau xuất | Accountant lưu ACK thực nhận riêng, không sửa GI; Owner UC-106 duyệt sai lệch. Hàng bị gửi lại chỉ tăng khi về thực tế và được kiểm nhận/chứng từ liên kết. | Chờ ACK/sai lệch thì không đóng; ACK không trừ thêm. | UC-83, UC-106, UC-107 |
+| BF-08-A3 | NCC đổi hàng/bồi thường ngoài WMS | Accountant lưu tham chiếu UC-108; hàng thay thế phải arrival/GR mới. Đóng phần việc kho khi mọi lượng được đối chiếu và Owner chấp thuận; tài chính có trạng thái riêng. | Thỏa thuận/tiền bồi thường không tự tăng tồn. | UC-83, UC-108 |
 
 
 ### 4.X — Lỗi dùng chung cho mọi quy trình
@@ -380,7 +412,7 @@ Các mã A là luồng thay thế, E là ngoại lệ; số bước tham chiếu
 
 ## 5. Ma trận thay đổi use case theo catalogue hiện tại
 
-Các UC mới UC-103 trở đi là **mã đề xuất**, chưa có trong Report 3. Giữ nguyên mã cũ để đối chiếu; UC ngừng dùng phải đánh dấu retired và ghi chức năng thay thế, không tái sử dụng mã cho mục tiêu hoàn toàn khác. Các nhóm dưới đây bao phủ toàn bộ UC-01–102; “giữ” vẫn phải đổi Inventory Staff thành Warehouse Staff và kiểm lại quyền/phạm vi dữ liệu.
+Các UC mới UC-103 trở đi là mã đề xuất, chưa có trong Report 3. Giữ nguyên mã cũ để đối chiếu; UC ngừng dùng phải đánh dấu retired và ghi chức năng thay thế, không tái sử dụng mã cho mục tiêu hoàn toàn khác. Các nhóm dưới đây bao phủ toàn bộ UC-01–102; “giữ” vẫn phải đổi Inventory Staff thành Warehouse Staff và kiểm lại quyền/phạm vi dữ liệu.
 
 | UC hiện tại | Thay đổi đề xuất | Tác động cụ thể |
 |---|---|---|
@@ -404,19 +436,19 @@ Các UC mới UC-103 trở đi là **mã đề xuất**, chưa có trong Report 
 | UC-42: Create Warehouse Transfer Order | Retired | Bỏ lớp chứng từ/lệnh lặp; thực hiện trực tiếp từ TR đã duyệt. Không xóa nhật ký TO lịch sử nếu đã có dữ liệu. |
 | UC-43: Confirm Warehouse Transfer Order | Tách và đổi tên | Thành “Ghi nhận xuất điều chuyển”: Warehouse kho nguồn, phiếu xuất, bàn giao, source giảm/in-transit tăng. Nhận kho đích chuyển UC-104; không một nút xác nhận cả hai đầu. |
 | UC-44: Review Transfer Difference Resolution | Giữ | Owner quyết định chênh lệch; UC-43/104 thực hiện phần xử lý thuộc kho tương ứng, đúng phiên bản duyệt. Phương án mất hàng có movement riêng, không sửa số đã xuất/nhận. |
-| UC-45–48: Sales Order list/detail/create/update | Đổi thành Warehouse Issue Request | Yêu cầu xuất có sourceOrderRef/sourceLineRef, lượng, hạn và nơi nhận; không tính doanh thu/chiết khấu. Chỉ sửa/hủy phần chưa xuất và chưa bị ràng buộc nhiệm vụ thực hiện. |
-| UC-49–51: Outbound Delivery | Giữ vai trò kế hoạch đợt xuất | Một yêu cầu có thể nhiều đợt; tạo đợt theo lượng outstanding, không nhập lại đơn thương mại. Một đợt gắn kho xuất; nếu nhiều kho thì tách đợt và cộng dồn tại yêu cầu. |
+| UC-45–48: Sales Order list/detail/create/update | Giữ đơn bán nhập lại từ nguồn ngoài | Sales tạo/xem/sửa SO từ MISA/giấy tờ kèm nguồn và bằng chứng; theo dõi xuất, giao, xác nhận tiền. Chỉ sửa/hủy phần chưa xuất sau khi xử lý task liên quan; không đổi tồn hoặc tính giá. |
+| UC-49–51: Outbound Delivery | Giữ kế hoạch đợt xuất | Tạo OD từ lượng WIR còn phải xuất; một OD thuộc một kho. Không vượt lượng được phép của dòng WIR/SO; cộng dồn đúng các đợt. |
 | UC-52–55: Picking TO | Đổi thành picking task/list | Hệ thống gợi ý nguồn, Warehouse xác nhận soạn thực tế; xử lý thiếu/hỏng, partial picking, đổi lot có chứng cứ. Không đổi tổng kho ở bước này. |
-| UC-56–58: Goods Issue/PGI | Giữ | Thực xuất và bàn giao là điều kiện post; in phiếu không post; retry không trừ lại; chứng từ đã post không sửa/xóa trực tiếp. |
+| UC-56–58: Goods Issue/PGI | Giữ | Thực xuất và bàn giao là điều kiện post; in phiếu không post; retry không trừ lại; chứng từ đã post không sửa/xóa trực tiếp. PGI và bàn giao cho nhà vận chuyển không tự chuyển SO sang DELIVERED hay COMPLETED. |
 | UC-59–62: Internal Invoice | Đề xuất retired | Bỏ tạo/issue hóa đơn và email hóa đơn; xuất/in phiếu kho nằm trong UC-58, không tái đặt tên invoice thành delivery bill mà giữ logic billing. |
 | UC-63–64: Defect list/detail | Giữ | Thêm nguồn sự cố, ownership/custody, lượng chưa xử lý và hồ sơ liên quan. |
 | UC-65: Inspect defect/submit disposition | Sửa | Quyền cách ly ngay, ghi chứng cứ, giải phóng/thay phân bổ liên quan; không được tự duyệt hủy. |
-| UC-66: Approve defect disposition | Giữ | Owner duyệt đúng hành động, trạng thái và lượng; tái sử dụng quyết định trả NCC tại BF-07. |
+| UC-66: Approve defect disposition | Giữ | Owner duyệt đúng hành động, trạng thái và lượng; tái sử dụng quyết định trả NCC tại BF-08. |
 | UC-67: Record approved disposition | Giữ, siết hiệu lực tồn | Warehouse thực hiện; write-off chỉ sau thực hủy; chuyển trả NCC không trừ tồn tại đây nếu UC-82 sẽ trừ. |
 | UC-68–70: Customer returns | Sửa actor tạo | UC-70 chuyển sang Sales; kiểm nguồn, điều kiện D6 và tham chiếu thời hạn; không tự đặt số ngày. Warehouse tiếp nhận/kiểm ở UC-72, không tự duyệt. Giữ nguồn xuất lịch sử đã xác minh. |
 | UC-71: Review customer return | Đổi mục tiêu và thứ tự | Owner quyết định sau UC-72 trên phiên bản đánh giá D6 đã xác minh. Nguyên thùng/viên chưa dùng xét từng trường hợp; không duyệt dòng đã thi công, hỏng do khách, quá hạn hoặc chưa rõ điều kiện. |
 | UC-72: Inspect customer return | Sửa precondition | Hồ sơ hợp lệ/đang tiếp nhận, chưa cần Owner duyệt. Warehouse giữ hộ, kiểm đếm, phân loại; ghi bao bì, tình trạng thi công, nguyên nhân lỗi và kết quả xác minh điều kiện theo từng lượng; chưa tăng sellable. |
-| UC-73: Confirm customer return receipt | Giữ, bổ sung nhánh | Post lượng đủ điều kiện D6 đã kiểm/được Owner duyệt đúng phiên bản theo quality; lượng từ chối còn custody đến khi trả khách. Liên kết BF-02/07, chống nhận vượt nguồn và không tính hoàn tiền. |
+| UC-73: Confirm customer return receipt | Giữ, bổ sung nhánh | Post lượng đủ điều kiện D6 đã kiểm/được Owner duyệt đúng phiên bản theo quality; lượng từ chối còn custody đến khi trả khách. Liên kết BF-02/08, chống nhận vượt nguồn và không tính hoàn tiền. |
 | UC-74–78: Refund workflow | Đề xuất retired trong MVP | Thay bằng UC-108 lưu kết quả xử lý ngoài WMS; không tính eligibility theo số tiền, duyệt hoàn tiền hoặc triển khai payment. Nếu giữ nguyên đây là phạm vi mở rộng cần đồng bộ lại ranh giới. |
 | UC-79–81: Supplier return list/detail/create | Giữ, thêm phối hợp Accountant | Warehouse đề xuất vật lý; Accountant xem/ghi thỏa thuận qua UC-107, không thay số kiểm thực tế. |
 | UC-82: Supplier return dispatch | Sửa điều kiện và tách mốc | Chỉ xuất khi có duyệt nội bộ + chấp thuận NCC; ghi phiếu xuất và handover. Acknowledgement NCC lưu qua UC-107 sau này, không bắt có trước lúc xuất. |
@@ -426,28 +458,31 @@ Các UC mới UC-103 trở đi là **mã đề xuất**, chưa có trong Report 
 | UC-88: Reconcile stocktake | Giữ, sửa thuật toán theo phương án đã chọn | Không nhầm chất lượng lỗi với mất hàng; ghi discrepancy theo bin/lot/quality. Phân biệt chưa đếm và 0. |
 | UC-89–91: Adjustment list/detail/request | Giữ | Warehouse lập delta và nguyên nhân, không thay trực tiếp Inventory Balance. |
 | UC-92: Approve Inventory Adjustment | Sửa nhánh quyết định | Owner duyệt/trả về bổ sung/từ chối có lý do. Bản hiện tại nói chỉ có approval path cần sửa đồng bộ. Chưa duyệt không post. |
-| UC-93: Clear Stocktake Difference | Giữ Owner để ít xáo trộn quyền hiện có | Ghi delta đã duyệt một lần; Owner không phải người lập yêu cầu điều chỉnh. Sửa hình BF-04 cho khớp. Tách approval và post là tách hành động; không tuyên bố đã tách hai người ở hai bước này. |
+| UC-93: Clear Stocktake Difference | Giữ Owner để ít xáo trộn quyền hiện có | Ghi delta đã duyệt một lần; Owner không phải người lập yêu cầu điều chỉnh. Sửa hình BF-05 cho khớp. Tách approval và post là tách hành động; không tuyên bố đã tách hai người ở hai bước này. |
 | UC-94–98: Login/accounts/permissions | Giữ, bổ sung data scope/SoD | Kiểm kho được giao và cấm tự duyệt theo userId; admin không tự có quyền nghiệp vụ; thay đổi quyền có nhật ký. |
-| UC-99–102: Reports/movement/trace | Giữ, mở rộng nội dung | Tồn vật lý/khả dụng/giữ hộ/đang chuyển; yêu cầu còn thiếu; hàng lỗi; mismatch; trace xuyên nguồn MISA–request–receipt/issue–return–adjustment. Không bổ sung doanh thu/lợi nhuận. |
+| UC-99–102: Reports/movement/trace | Giữ, mở rộng nội dung | Tồn vật lý/khả dụng/giữ hộ/đang chuyển; yêu cầu còn thiếu; hàng lỗi; mismatch; trace xuyên nguồn MISA–SO–WIR–receipt/issue (PGI)–giao khách (POD)–xác nhận tiền (PAY-CFM)–return–adjustment. Không bổ sung doanh thu/lợi nhuận. |
 
 ### 5.1 UC mới đề xuất
 
 | Mã đề xuất | Tên / Actor | Đầu vào và kết quả chính |
 |---|---|---|
-| UC-103 | Xem và chọn phương án đáp ứng hàng thiếu — Sales/Warehouse | Hệ thống tự tính gợi ý khi thiếu; người dùng xem tồn theo kho/lot và chọn xuất trực tiếp, điều chuyển hoặc bổ sung. Gợi ý chưa duyệt không tự post hoặc tự đặt mua. Liên kết BF-01/03/05. |
+| UC-103 | Xem và chọn phương án đáp ứng hàng thiếu — Sales/Warehouse | Hệ thống tự tính gợi ý khi thiếu; người dùng xem tồn theo kho/lot và chọn xuất trực tiếp, điều chuyển hoặc bổ sung. Gợi ý chưa duyệt không tự post hoặc tự đặt mua. Liên kết BF-01/04/06. |
 | UC-104 | Kiểm nhận và ghi nhận nhập điều chuyển — Warehouse kho đích | Phiếu xuất nguồn; nhận thực tế, quality, biên bản, put-away; chuyển đúng lượng từ in-transit về kho đích. Người xác nhận nhận độc lập người xuất theo bố trí đã chốt. |
 | UC-105 | Xuất/in danh sách kiểm kê — Warehouse/Owner | Phiên đã kích hoạt và snapshot; danh sách theo bin/lot/quality, mã phiên/cutoff và chỗ ghi kết quả. Có thể gộp thao tác này trong UC-87 nếu quy ước catalogue không tách xuất/in, nhưng phải có requirement cụ thể. |
 | UC-106 | Duyệt phương án trả NCC — Store Owner | Đề nghị, nguồn và thỏa thuận NCC; quyết định lượng cho phép xuất. Tái sử dụng quyết định BF-02 nếu đủ phạm vi; không duyệt hai lần cùng quyết định. |
-| UC-107 | Ghi nhận thỏa thuận và xác nhận nhận hàng của NCC — Accountant | Hai mốc độc lập: NCC đồng ý trước xuất và NCC xác nhận thực nhận sau xuất. Lưu bằng chứng, lượng, ngày; không cập nhật tồn. Sai lệch chuyển UC-106 để Owner duyệt phương án xử lý trong hồ sơ BF-07. |
-| UC-108 | Ghi nhận tham chiếu chứng từ bên ngoài — Accountant | Xác minh nguồn lịch sử và lưu kết quả hóa đơn/hoàn tiền/đối chiếu bên ngoài, mã chứng từ, ngày, tài liệu và trạng thái. Không tạo doanh thu, công nợ hay chi tiền. |
+| UC-107 | Ghi nhận thỏa thuận và xác nhận nhận hàng của NCC — Accountant | Hai mốc độc lập: NCC đồng ý trước xuất và NCC xác nhận thực nhận sau xuất. Lưu bằng chứng, lượng, ngày; không cập nhật tồn. Sai lệch chuyển UC-106 để Owner duyệt phương án xử lý trong hồ sơ BF-08. |
+| UC-108 | Ghi nhận tham chiếu chứng từ bên ngoài — Accountant | Xác minh nguồn lịch sử và lưu kết quả hóa đơn/hoàn tiền/đối chiếu kế toán bên ngoài, mã chứng từ, ngày, tài liệu và trạng thái. Không tạo doanh thu, công nợ hay chi tiền; không thay thế xác nhận hoàn thành đơn bán UC-111 của Sales Staff. |
+| UC-109 | Quản lý yêu cầu xuất liên kết — Sales Staff | Tạo/xem/sửa/hủy phần chưa xuất của WIR từ SO đã lưu; kiểm trần số lượng theo từng dòng SO và WIR. Owner/Warehouse/Accountant xem theo phạm vi. Lưu yêu cầu không đổi tồn. |
+| UC-110 | Xác nhận giao khách kèm ảnh — Warehouse Staff | Ghi người nhận, thời điểm, lượng thực nhận và ảnh theo dòng GI-S đã post. Kiểm tổng POD không vượt PGI hợp lệ; gửi lại không ghi trùng. Giao đủ phần còn phải thực hiện mới chuyển SO sang DELIVERED. |
+| UC-111 | Xác nhận nhận tiền ngoài hệ thống — Sales Staff | Sau DELIVERED, Sales ghi đã nhận đủ tiền cùng người/thời điểm và tham chiếu/bằng chứng/ghi chú; SO sang COMPLETED. Không thực hiện thu tiền hoặc đổi tồn. |
 
-**BF-07 dùng UC-106 duyệt phương án xử lý sai lệch trả NCC, UC-83 kiểm đóng**; UC-44 chỉ dành cho BF-03. UC-107 chỉ lưu và phát hiện sai lệch rồi chuyển đúng hồ sơ. UC-106 phân biệt lần duyệt cho xuất ban đầu và lần duyệt xử lý sai lệch sau xuất bằng loại quyết định, phiên bản và số lượng; không tái dùng quyết định cũ để ghi giảm mới.
+BF-08 dùng UC-106 duyệt phương án xử lý sai lệch trả NCC, UC-83 kiểm đóng; UC-44 chỉ dành cho BF-04. UC-107 chỉ lưu và phát hiện sai lệch rồi chuyển đúng hồ sơ. UC-106 phân biệt lần duyệt cho xuất ban đầu và lần duyệt xử lý sai lệch sau xuất bằng loại quyết định, phiên bản và số lượng; không tái dùng quyết định cũ để ghi giảm mới.
 
-Catalogue lần này giữ UC-105 riêng theo bảng trên: **108 mã được lưu để truy vết, 95 UC active và 13 UC retired**. Retired: UC-23–25, UC-42, UC-59–62, UC-74–78. UC-103–108 là 6 UC mới; không đánh lại số hoặc xóa các mã lịch sử. Bảng 4.2 và 4.4 trong [Report 3 dạng text](../01_bao_cao/WMSD_Report3_Fix.docx.txt) dùng cùng danh mục. Đặc tả chi tiết, danh mục màn hình và quy tắc trong bản Report 3 text đã đồng bộ ngày 21/10; mã retired chỉ còn là bản ghi lịch sử, không có luồng thực thi.
+Catalogue lần này giữ UC-105 riêng và bổ sung UC-109–111 cho luồng BF-06 sửa đổi: 111 mã được lưu để truy vết (UC-01–UC-111), gồm 98 UC active và 13 UC retired. Retired (không đổi): UC-23–25, UC-42, UC-59–62, UC-74–78. Chín UC mới trong đề xuất: UC-103–111; không đánh lại số hoặc xóa các mã lịch sử. Bảng 4.2, 4.4 và các phần liên quan trong [Report 3 dạng text](../01_bao_cao/WMSD_Report3_Fix.docx.txt) mới đang ở baseline 108 UC (95 active / 13 retired) đồng bộ đầu ngày 21/10 và cần một lượt cập nhật tiếp theo để phản ánh vai trò mới của UC-45–48 cùng UC-109–111; mã retired chỉ còn là bản ghi lịch sử, không có luồng thực thi.
 
 ## 6. Permission matrix nghiệp vụ đề xuất
 
-V = xem theo phạm vi; T = tạo/ghi nhận nghiệp vụ; D = duyệt; X = thực hiện và post; — = không có quyền. Không cấp quyền xem vô hạn chỉ vì có ký hiệu V. Bảng này là phần thay đổi cốt lõi, catalogue đầy đủ vẫn cần giữ quyền list/detail/master data đã nêu.
+V = xem theo phạm vi; T = tạo/ghi nhận nghiệp vụ; D = duyệt; X = thực hiện/xác nhận theo loại nghiệp vụ (chỉ post tồn khi nghiệp vụ có tác động tồn); — = không có quyền. Không cấp quyền xem vô hạn chỉ vì có ký hiệu V. Bảng này là phần thay đổi cốt lõi, catalogue đầy đủ vẫn cần giữ quyền list/detail/master data đã nêu.
 
 | Thao tác | Owner | Sales | Warehouse | Accountant | Admin |
 |---|---:|---:|---:|---:|---:|
@@ -463,8 +498,11 @@ V = xem theo phạm vi; T = tạo/ghi nhận nghiệp vụ; D = duyệt; X = th�
 | Phiếu xuất điều chuyển | V | V (tiến độ) | X kho đi | V | — |
 | Phiếu nhập điều chuyển | V | V (tiến độ) | X kho nhận | V | — |
 | Duyệt xử lý chênh lệch liên kho | D | — | T đề xuất | V | — |
-| Tạo/sửa yêu cầu xuất chưa thực hiện | V | T | V | V | — |
-| Soạn, kiểm đếm, PGI và bàn giao | V | V | X | V | — |
+| Sao chép/cập nhật đơn bán từ nguồn ngoài (SO, UC-45–48) | V | T | V (liên quan) | V | — |
+| Tạo/sửa yêu cầu xuất hàng liên kết (WIR, UC-109) và đợt giao (OD, UC-49–51) | V | T | V | V | — |
+| Soạn, kiểm đếm, PGI và bàn giao kho (GI-S/HO, UC-52–58) | V | V | X | V | — |
+| Xác nhận giao hàng cho khách kèm ảnh (POD → DELIVERED, UC-110) | V | V | X | V | — |
+| Xác nhận đã nhận đủ tiền ngoài hệ thống và hoàn thành SO (PAY-CFM → COMPLETED, UC-111) | V | X | V | V | — |
 | Tạo đề nghị khách trả | V | T | V | V | — |
 | Kiểm chất lượng hàng trả | V | — | T | — | — |
 | Duyệt nhận hàng trả | D | — | — | — | — |
@@ -483,7 +521,7 @@ V = xem theo phạm vi; T = tạo/ghi nhận nghiệp vụ; D = duyệt; X = th�
 | Ghi tham chiếu xử lý bên ngoài | V | V (liên quan) | V (phần kho) | T | — |
 | Tài khoản và phân quyền kỹ thuật | — | — | — | — | T |
 
-Ràng buộc chéo: một người có nhiều role vẫn không được tự duyệt đề nghị của mình; người xuất/nhận liên kho phải được kiểm soát theo danh tính và phạm vi. Owner tạo kế hoạch kiểm kê không đồng nghĩa Owner tạo đề nghị chênh lệch; đề nghị phải xuất phát từ kết quả kiểm/giải trình của người thực hiện. Không cho sửa approval bằng thay đổi quyền sau khi đã post.
+Ràng buộc chéo: một người có nhiều role vẫn không được tự duyệt đề nghị của mình; người xuất/nhận liên kho phải được kiểm soát theo danh tính và phạm vi. Chỉ Sales Staff được tạo/cập nhật bản sao SO, lập/sửa yêu cầu xuất WIR liên kết và xác nhận đã thu đủ tiền ngoài hệ thống (`UC-111`) để chuyển SO sang COMPLETED; chỉ Warehouse Staff được phân công mới xác nhận giao khách kèm ảnh chụp (`UC-110`) để chuyển SO sang DELIVERED. Owner tạo kế hoạch kiểm kê không đồng nghĩa Owner tạo đề nghị chênh lệch; đề nghị phải xuất phát từ kết quả kiểm/giải trình của người thực hiện. Không cho sửa approval bằng thay đổi quyền sau khi đã post.
 
 ## 7. Context diagram mới và sửa hình hiện tại
 
@@ -491,23 +529,23 @@ Context diagram mô tả **dữ liệu vượt biên phần mềm**, không mô 
 
 | Thực thể ngoài WMS | Dữ liệu vào WMS | Dữ liệu ra WMS |
 |---|---|---|
-| Sales Staff | Yêu cầu xuất; đề nghị khách trả; xác nhận giao từng phần/thay nguồn; tham chiếu đơn nguồn | Tồn khả dụng; nguồn gợi ý; tiến độ xuất; thiếu hàng; kết quả trả |
-| Warehouse Staff | Nhu cầu bổ sung; kiểm nhận; soạn/nhập/xuất; chuyển vị trí; hàng lỗi; đếm; giải trình | Nhiệm vụ được giao; thông tin lô/vị trí; chứng từ nguồn; quyết định duyệt; danh sách kiểm kê |
-| Accountant | PO; xác nhận/thỏa thuận NCC; chứng từ tham chiếu ngoài WMS | PO còn thiếu; số liệu nhận/xuất/trả; sai lệch và dữ liệu đối chiếu |
+| Sales Staff | Bản sao đơn bán nguồn ngoài (SO); yêu cầu xuất liên kết (WIR); đề nghị khách trả; xác nhận giao từng phần/thay nguồn; tham chiếu đơn nguồn và xác nhận đã nhận tiền ngoài hệ thống (PAY-CFM) | Tồn khả dụng; nguồn gợi ý; tiến độ SO/WIR/giao khách (DELIVERED)/hoàn thành (COMPLETED); thiếu hàng; kết quả trả |
+| Warehouse Staff | Nhu cầu bổ sung; kiểm nhận; soạn/nhập/xuất (PGI); xác nhận giao hàng cho khách kèm ảnh bắt buộc (POD); chuyển vị trí; hàng lỗi; đếm; giải trình | Nhiệm vụ được giao; thông tin lô/vị trí; chứng từ SO/WIR nguồn; quyết định duyệt; danh sách kiểm kê |
+| Accountant | PO; xác nhận/thỏa thuận NCC; chứng từ tham chiếu kế toán/đối chiếu ngoài WMS (UC-108) | PO còn thiếu; số liệu nhận/xuất/đã giao/trả; sai lệch và dữ liệu đối chiếu |
 | Store Owner | Quyết định duyệt; phạm vi kiểm kê; master data được phép | Đề nghị chờ duyệt; hồ sơ sai lệch; báo cáo và nhật ký |
 | Administrator | Quản lý tài khoản/quyền và cấu hình kỹ thuật | Kết quả thao tác quản trị, trạng thái kỹ thuật |
 | SMTP, nếu giữ thông báo | Kết quả gửi/lỗi | Nội dung thông báo nghiệp vụ sau commit; bỏ email hóa đơn nếu bỏ invoice |
-| Dịch vụ lưu tệp, nếu chọn Cloudinary | Asset ID/URL có kiểm soát, kết quả upload | Yêu cầu upload chứng cứ/tệp và thông tin xác thực phía máy chủ |
+| Dịch vụ lưu tệp, nếu chọn Cloudinary | Asset ID/URL có kiểm soát, kết quả upload | Yêu cầu upload chứng cứ/tệp (gồm ảnh chụp xác nhận giao hàng cho khách) và thông tin xác thực phía máy chủ |
 
-MISA, Customer, Supplier, Carrier không phải integration actor trực tiếp trong baseline không có portal/API. Có thể vẽ riêng **business context** để thể hiện các bên giao nhận/thỏa thuận qua nhân viên. Không nối đường đồng bộ trực tiếp vào software context chỉ để sơ đồ trông đầy đủ.
+MISA, Customer, Supplier, Carrier không phải integration actor trực tiếp trong baseline không có portal/API. Có thể vẽ riêng business context để thể hiện các bên giao nhận/thỏa thuận qua nhân viên. Không nối đường đồng bộ trực tiếp vào software context chỉ để sơ đồ trông đầy đủ.
 
-Đối với hình R3 hiện có, sửa riêng: bỏ Replenishment Request Data từ Accountant; thêm từ Sales/Warehouse; đổi Sales Order Information/Status thành Warehouse Issue Request/Status; bỏ Pricing khỏi dữ liệu Sales nếu bỏ giá; thêm dữ liệu duyệt trả hàng, hàng lỗi, điều chuyển và kiểm kê của Owner. Hướng role/permission management input phải đi Admin → WMS, output kết quả đi ngược lại. Nếu giữ Cloudinary: upload đi WMS → Cloudinary; kết quả/asset reference đi Cloudinary → WMS.
+Đối với hình R3 hiện có, sửa riêng: bỏ Replenishment Request Data từ Accountant; thêm từ Sales/Warehouse; làm rõ dữ liệu của Sales Staff gồm bản sao đơn bán nguồn ngoài (SO), yêu cầu xuất hàng liên kết (WIR) và xác nhận đã nhận tiền ngoài hệ thống (PAY-CFM), đồng thời bổ sung dữ liệu xác nhận giao hàng kèm ảnh (POD) từ Warehouse Staff; bỏ Pricing và Internal Invoice khi giá bán và hóa đơn nội bộ ngoài phạm vi; thêm dữ liệu duyệt trả hàng, hàng lỗi, điều chuyển và kiểm kê của Owner. Hướng role/permission management input phải đi Admin → WMS, output kết quả đi ngược lại. Nếu giữ Cloudinary/lưu tệp: upload đi WMS → dịch vụ lưu tệp; kết quả/asset reference đi ngược lại về WMS.
 
 ```mermaid
 flowchart LR
-  S[Sales Staff] -->|Yêu cầu xuất, đề nghị trả, lựa chọn nguồn| W((WMSD))
-  W -->|Khả dụng, gợi ý, tiến độ và kết quả| S
-  K[Warehouse Staff] -->|Kiểm nhận, nhập xuất, đếm, giải trình| W
+  S[Sales Staff] -->|Đơn SO sao chép, WIR liên kết, đề nghị trả, chọn nguồn, xác nhận tiền| W((WMSD))
+  W -->|Khả dụng, gợi ý, trạng thái SO/WIR/giao hàng/hoàn thành| S
+  K[Warehouse Staff] -->|Kiểm nhận, nhập xuất PGI, ảnh giao khách POD, đếm, giải trình| W
   W -->|Nhiệm vụ, lot vị trí, quyết định, phiếu kiểm kê| K
   A[Accountant] -->|PO, thỏa thuận NCC, tham chiếu ngoài| W
   W -->|Số liệu thực nhận xuất trả, đối chiếu| A
@@ -517,7 +555,7 @@ flowchart LR
   W -->|Kết quả quản trị| AD
   W -->|Thông báo sau commit| E[SMTP nếu giữ]
   E -->|Kết quả gửi| W
-  W -->|Upload chứng cứ| F[Dịch vụ lưu tệp nếu dùng]
+  W -->|Upload chứng cứ và ảnh giao hàng| F[Dịch vụ lưu tệp nếu dùng]
   F -->|Asset reference, kết quả| W
 ```
 
@@ -528,7 +566,7 @@ flowchart LR
 Không gộp chất lượng, vị trí, quyền sở hữu và tình trạng giao nhận vào một enum. Ví dụ “đang chuyển” là tình trạng logistics, còn “hỏng” là chất lượng; một lượng có thể vừa đang chuyển vừa đã được báo hỏng.
 
 - **Tồn tại kho:** lượng của cửa hàng đang có tại các vị trí, gồm khu nhận, khu lưu trữ, staging và cách ly; trình bày riêng theo trạng thái.
-- **Tồn khả dụng để phân bổ:** lượng đạt ở vị trí được phép lấy, trừ lượng đã giữ cho yêu cầu còn hiệu lực. Không tính hàng giữ hộ, chờ kiểm, hỏng, đang chuyển, vị trí khóa kiểm kê.
+- Tồn khả dụng để phân bổ: lượng đạt ở vị trí được phép lấy, trừ lượng đã giữ cho yêu cầu còn hiệu lực. Không tính hàng giữ hộ, chờ kiểm, hỏng, đang chuyển, vị trí khóa kiểm kê.
 - **Hàng đã soạn:** vẫn thuộc tổng kho cho đến PGI, gắn yêu cầu đã phân bổ; không được phân bổ cho đơn khác. Khi tính khả dụng không trừ cùng reservation hai lần.
 - **Hàng đang chuyển:** bucket riêng theo chuyến/lô; không đồng thời nằm trong on-hand kho nguồn hoặc khả dụng kho đích.
 - **Hàng giữ hộ:** theo dõi kiểm đếm và trách nhiệm bảo quản riêng; không cộng vào tồn sở hữu/khả dụng.
@@ -538,7 +576,7 @@ Không gộp chất lượng, vị trí, quyền sở hữu và tình trạng gi
 | BR-01 | Lot identity phải phân biệt product/lot/tone/calibre; không gộp hàng khác tone để đủ lượng. | DR-01, UC-13/16/26/30/54/55/72 |
 | BR-02 | Quy đổi theo sản phẩm và phiên bản đóng gói; chốt hệ số ở dòng chứng từ. Với gạch nguyên viên, không tạo số viên phân số. Dùng diện tích theo quy cách sản phẩm; calibre là thuộc tính tương thích, không tự thay hệ số m². | DR-02, GB-03 |
 | BR-03 | Nhu cầu bổ sung từ Sales/Warehouse hoặc cảnh báo; chỉ Owner duyệt; ngưỡng tồn là tham số được kiểm soát, không tự phát hành PO. | UC-03/04/103, BF-01 |
-| BR-04 | Không tính trùng nhu cầu đã có PO/điều chuyển/phân bổ; lượng dự kiến về chưa phải khả dụng hiện tại. | BF-01/03/05 |
+| BR-04 | Không tính trùng nhu cầu đã có PO/điều chuyển/phân bổ; lượng dự kiến về chưa phải khả dụng hiện tại. | BF-01/04/06 |
 | BR-05 | Người đề xuất và người duyệt khác userId cho cùng quyết định; nhiều role không vượt ràng buộc này. | GB-01, GB-NEW-01, UC-04/41/66/71/92/106 |
 | BR-06 | Receipt/issue/return/adjustment chỉ post một lần, nguyên tử cùng ledger và balance. Không âm tồn khả dụng; retry trả lại kết quả cũ. | DR-09/10/13, GB-09/10/13 |
 | BR-07 | Nhận hàng phân tách thực giao, nhận vào tồn, giữ hộ, từ chối; chưa kiểm hoặc chưa sẵn sàng vị trí thì không khả dụng. | DR-04, GB-04, UC-26/33/73 |
@@ -548,64 +586,67 @@ Không gộp chất lượng, vị trí, quyền sở hữu và tình trạng gi
 | BR-11 | Mọi lượng đã xuất điều chuyển = đã nhận hợp lệ + đang chuyển/chưa giải quyết + lượng đã có kết quả xử lý khác có chứng từ. Không đóng nếu thiếu kết quả. Giữ liên kết phân bổ cho nhu cầu nguồn khi chuyển qua in-transit và kho đích. | UC-43/44/104 |
 | BR-12 | Người kho nhận xác nhận độc lập người xuất theo phương án nhân sự đã chốt; không một confirm cập nhật cả hai đầu. | UC-43/104, permissions |
 | BR-13 | Chọn nguồn theo tương thích lot/tone/calibre trước, FIFO trong tập hợp đó sau. Ghi lý do/chấp thuận khi ngoại lệ; không dùng LIFO làm mặc định nếu chưa khảo sát. | UC-54/55/103 |
-| BR-14 | Giữ hàng không trừ tổng; picking chỉ đổi vị trí; PGI trừ actual dispatched một lần. | GB-NEW-03, UC-51/55/58 |
-| BR-15 | Thiếu/hỏng khi soạn phải chặn lượng ảnh hưởng, ghi bằng chứng, phân bổ lại hoặc chờ; không tự chỉnh balance. | BF-02/04/05 |
+| BR-14 | Tạo SO hoặc WIR không đổi tồn; giữ hàng không trừ tổng; picking chỉ đổi vị trí; PGI trừ actual dispatched một lần; cập nhật trạng thái DELIVERED và COMPLETED không làm thay đổi tồn kho. | GB-NEW-03, UC-47/109/51/55/58/110/111 |
+| BR-15 | Thiếu/hỏng khi soạn phải chặn lượng ảnh hưởng, ghi bằng chứng, phân bổ lại hoặc chờ; không tự chỉnh balance. | BF-02/05/06 |
 | BR-16 | Đề nghị khách trả gắn nguồn xuất có thể xác minh; tổng nhận trả không vượt lượng đã xuất chưa trả, có kiểm soát hồ sơ đang mở. | DR-11, GB-11, UC-70/73/108 |
 | BR-17 | Sales kiểm điều kiện/chứng từ; Warehouse kiểm vật lý; Owner quyết định nhận trả. Đạt kỹ thuật không tự đồng nghĩa được nhận trả và ngược lại. | UC-70/71/72 |
 | BR-18 | Nhận trả phân theo từng lượng: bán được, cách ly của cửa hàng, giữ hộ/từ chối. Không sửa hóa đơn hoặc phiếu xuất gốc. | UC-73/108 |
-| BR-19 | Cách ly ngay khi có dấu hiệu lỗi; chỉ quyết định hợp lệ mới cho tái phân loại/hủy/trả. Không trừ tồn hai lần khi BF-02 chuyển BF-07. | UC-65/66/67/82 |
+| BR-19 | Cách ly ngay khi có dấu hiệu lỗi; chỉ quyết định hợp lệ mới cho tái phân loại/hủy/trả. Không trừ tồn hai lần khi BF-02 chuyển BF-08. | UC-65/66/67/82 |
 | BR-20 | Xuất trả NCC cần chấp thuận nội bộ và thỏa thuận NCC; giữ hộ bị trả không làm giảm tồn sở hữu. NCC chưa nhận đủ thì hồ sơ vẫn mở. | DR-12, GB-12, UC-82/106/107 |
 | BR-21 | Snapshot bất biến tại kích hoạt; xuất danh sách kiểm kê; lưu thời gian và phạm vi. Không lấy tồn hiện tại để thay số snapshot. | DR-08, GB-08, UC-87/105 |
 | BR-22 | MVP khóa thay đổi trong phạm vi đang đếm; đếm lại có lịch sử; chưa đếm không bằng 0; sai khác chất lượng và số lượng được xử lý riêng. | GB-NEW-07, UC-87/88 |
 | BR-23 | Warehouse lập delta; Owner duyệt đúng phiên bản rồi Owner Clear Difference. Không đủ căn cứ → trả về; không chênh → đóng/mở khóa không post điều chỉnh 0. | DR-09, GB-09, GB-NEW-06, UC-91/92/93 |
 | BR-24 | Chứng từ đã post không sửa/xóa để xóa dấu vết. Sai sót cần đảo/điều chỉnh liên kết có thẩm quyền. Master inactive giữ nguyên lịch sử. | DR-14, GB-02/13, UC-97/100–102 |
-| BR-25 | Thông báo và upload không tạo lại giao dịch tồn; gửi mail thất bại không rollback PGI/receipt đã commit. | API-01, JOB-01, UC-58/26 |
-| BR-26 | Không suy ra tình trạng đã giao khách từ bàn giao carrier; không suy ra hoàn tiền từ phiếu nhập trả; không suy ra tăng tồn từ NCC đồng ý đổi hàng. | BF-05/06/07 |
+| BR-25 | Thông báo và upload không tạo lại giao dịch tồn; gửi mail thất bại không rollback PGI/receipt đã commit. | API-01, JOB-01, UC-58/26/110 |
+| BR-26 | Không suy ra tình trạng đã giao khách (DELIVERED) chỉ từ PGI/bàn giao cho nhà vận chuyển, và không suy ra hoàn thành đơn bán (COMPLETED) chỉ từ đã giao hàng; không suy ra hoàn tiền từ phiếu nhập trả; không suy ra tăng tồn từ NCC đồng ý đổi hàng. | BF-06/07/08, UC-58/110/111 |
 | BR-27 | Chỉ các vai trò được phép xem chứng cứ mới lấy được tệp; URL không mặc định công khai. | Cloudinary/interface lưu tệp, GB-NEW-02 |
-| BR-28 | Có source system, source document/line, version và correlation ID để chống nhập/ghi nhận trùng giữa WMS và hồ sơ MISA. | UC-47/51/58/70/108 |
-| BR-29 | Khách trả: nguyên thùng/viên lẻ chưa dùng xét từng trường hợp; không nhận đã thi công, hỏng do khách, quá thời hạn áp dụng. Chưa xác minh điều kiện/thời hạn thì chờ; không tự đặt số ngày. Đánh giá theo từng lượng, lưu phiên bản/bằng chứng; chỉ post phần đủ điều kiện được duyệt sau kiểm tra. | D6, BF-06, UC-70–73 |
-| BR-30 | Bao bì rách/thùng mở không tự đồng nghĩa gạch hỏng. Ghi số viên thực tế; phân loại chất lượng sau kiểm tra. Hệ số thùng/viên/m² theo sản phẩm và phiên bản, không suy từ calibre. | D7, BF-01/04/05/06, UC-13/26/55/72/87 |
+| BR-28 | Có source system, source document/line, version và correlation ID để chống nhập/ghi nhận trùng giữa WMS và hồ sơ MISA trên SO, WIR, OD, GI-S, `CR` và `EXT-REF`. | UC-47/109/51/58/70/108 |
+| BR-29 | Khách trả: nguyên thùng/viên lẻ chưa dùng xét từng trường hợp; không nhận đã thi công, hỏng do khách, quá thời hạn áp dụng. Chưa xác minh điều kiện/thời hạn thì chờ; không tự đặt số ngày. Đánh giá theo từng lượng, lưu phiên bản/bằng chứng; chỉ post phần đủ điều kiện được duyệt sau kiểm tra. | D6, BF-07, UC-70–73 |
+| BR-30 | Bao bì rách/thùng mở không tự đồng nghĩa gạch hỏng. Ghi số viên thực tế; phân loại chất lượng sau kiểm tra. Hệ số thùng/viên/m² theo sản phẩm và phiên bản, không suy từ calibre. | D7, BF-01/05/06/07, UC-13/26/55/72/87 |
+| BR-31 | SO phải có nguồn đã xác minh; WIR liên kết đúng SO và dòng hàng. Tổng cam kết WIR, kể cả phần đã xuất, không vượt lượng đặt trừ phần hủy hợp lệ. Tổng OD nằm trong lượng WIR, không cộng thêm thành nhu cầu mới. | BF-06, UC-45–48/109/51 |
+| BR-32 | Warehouse xác nhận POD theo dòng GI-S đã post, có người nhận, thời điểm, lượng và ảnh hợp lệ. Tổng giao không vượt PGI hợp lệ; gửi lại không ghi trùng. Chỉ DELIVERED khi giao đủ phần còn phải thực hiện và lượng này lớn hơn 0; hủy toàn bộ chưa giao thì CANCELLED. | BF-06, UC-58/110 |
+| BR-33 | Chỉ Sales xác nhận nhận đủ tiền ngoài hệ thống sau DELIVERED để chuyển SO sang COMPLETED. Chưa đủ tiền hoặc trả trước khi chưa giao đủ không làm hoàn thành đơn. POD/PAY-CFM không đổi tồn; đính chính phải giữ lịch sử và tính lại tiến độ đơn. | BF-06, UC-48/110/111/108 |
 
-Các BR-xx ở đây là bộ quy tắc đề xuất. Trong SRS, hoặc dùng bộ này làm catalogue chuẩn và cho DR tham chiếu, hoặc giữ GB/DR rồi ánh xạ một–một; không duy trì ba bản diễn đạt gần giống nhưng khác nội dung. GB-NEW-04 (internal invoice) và GB-NEW-05 (refund eligibility) ngừng áp dụng khi chọn MVP thu hẹp; thay bằng BR-18/26/28 và UC-108. GB-POLICY vẫn giữ giới hạn không có trình chỉnh sửa policy tổng quát; cho phép tham số định mức và ưu tiên kho cần nêu rõ là cấu hình hữu hạn.
+Các BR-xx (BR-01–BR-33) ở đây là bộ quy tắc đề xuất. Trong SRS, hoặc dùng bộ này làm catalogue chuẩn và cho DR tham chiếu, hoặc giữ GB/DR rồi ánh xạ một–một; không duy trì ba bản diễn đạt gần giống nhưng khác nội dung. GB-NEW-04 (internal invoice) và GB-NEW-05 (refund eligibility) ngừng áp dụng khi chọn MVP thu hẹp; thay bằng BR-18/26/28/31–33 và UC-108/109–111. GB-POLICY vẫn giữ giới hạn không có trình chỉnh sửa policy tổng quát; cho phép tham số định mức và ưu tiên kho cần nêu rõ là cấu hình hữu hạn.
 
 ## 9. Danh mục đồng bộ Report 1 và Report 3
 
-Ngày 21/10/2026 đã áp dụng danh mục dưới đây vào hai bản `.docx.txt`; nội dung bảng là truy vết thay đổi. Hình nhúng, Word và draw.io là artifact riêng chưa sửa trong lượt này. API-02 là hợp đồng lưu chứng cứ có kiểm soát, chưa chọn nhà cung cấp; JOB-01 chỉ gửi thông báo kho.
+Report 1/3 dạng text vẫn theo mã quy trình cũ và baseline D1–D8 trước sửa luồng bán hàng. Bảng dưới là yêu cầu đồng bộ tiếp cho hai báo cáo, Word và hình riêng. Hai bản quy trình, hai bản thiết kế database và SQL tham chiếu đã được sửa trong lượt hiện tại. API-02 lưu chứng cứ; JOB-01 chỉ gửi thông báo sau khi lưu nghiệp vụ thành công.
 
 ### 9.1 Report 1
 
 | Mục | Cần thay đổi |
 |---|---|
 | I.1 Project Information | Giữ một cửa hàng; phân biệt warehouse vật lý với area/location; chỉ khẳng định số kho sau khảo sát. |
-| I.2 Project Purpose | Bỏ cam kết WMS tự tạo SO và hóa đơn nội bộ/hoàn tiền trong baseline đề xuất; thay bằng tiếp nhận yêu cầu xuất và chứng từ kho. |
+| I.2 Project Purpose | Bỏ cam kết WMS tự tính giá bán, xuất hóa đơn nội bộ và hoàn tiền; nêu rõ WMSD lưu bản sao đơn bán SO từ đơn ngoài đã xác minh (MISA/giấy tờ), liên kết yêu cầu xuất WIR, theo dõi giao hàng có ảnh chụp (DELIVERED) và hoàn thành đơn khi Sales Staff xác nhận đã thu đủ tiền ngoài hệ thống (COMPLETED). |
 | II Product Background | Giữ hiện trạng nếu đó là kết quả khảo sát thật, kể cả hiện trạng kế toán lập đề nghị. Không viết lại As-is để làm như cửa hàng đã vận hành đúng To-be. Thêm vấn đề và căn cứ thay đổi. |
 | III Existing Solutions / GAP | Tránh khẳng định MISA thiếu tính năng chỉ từ quan sát sử dụng. GAP là khoảng trống thực hành của cửa hàng: kiểm soát lot/tone/calibre/vị trí/chất lượng xuyên quy trình. |
-| IV Proposed Solution | Thay mô tả phạm vi và bộ hình bằng 7 BF tương ứng Report 3; bổ sung BF-02. Ghi rõ các tiểu luồng đổi vị trí/put-away. |
-| V.1 Major Features | FE-01 thêm nhu cầu/định mức; FE-02 bỏ giá bán, giữ traceability; FE-05 bỏ TO liên kho, thêm hai mốc và gợi ý; FE-06 đổi thành xuất kho theo yêu cầu; FE-07 bỏ xử lý số tiền hoàn, giữ trả vật lý và tham chiếu; FE-08 thêm phiếu kiểm kê/khóa phạm vi; FE-09 giữ quyền/log/report. |
-| V.2 Limitations | LI-02 sửa phần hoàn tiền; LI-03 bỏ internal invoice nhưng giữ no live MISA/no tax e-invoice; LI-08 hiện loại trừ automatic replenishment recommendations nên phải cho phép cảnh báo ngưỡng/gợi ý xác định, tiếp tục loại trừ dự báo/tự đặt mua; LI-10 nêu tham số hữu hạn không phải policy editor. |
-| Definition/Change Log | Warehouse Staff, picking task, put-away task, issue request, in-transit, custody; ghi lý do đổi scope từ review1 và phiên bản bộ flow. |
+| IV Proposed Solution | Thay mô tả phạm vi và bộ hình bằng 8 BF tương ứng Report 3; bổ sung BF-02, các tiểu luồng đổi vị trí/put-away và luồng BF-06 mới (SO → WIR → PGI → DELIVERED có ảnh → COMPLETED khi xác nhận tiền ngoài). |
+| V.1 Major Features | FE-01 thêm nhu cầu/định mức; FE-02 bỏ giá bán, giữ traceability; FE-05 bỏ TO liên kho, thêm hai mốc và gợi ý; FE-06 cập nhật thành sao chép SO nguồn ngoài, lập WIR liên kết, xuất kho/PGI, xác nhận giao khách kèm ảnh (DELIVERED) và xác nhận tiền ngoài hệ thống (COMPLETED); FE-07 bỏ xử lý số tiền hoàn, giữ trả vật lý và tham chiếu; FE-08 thêm phiếu kiểm kê/khóa phạm vi; FE-09 giữ quyền/log/report. |
+| V.2 Limitations | LI-02 sửa phần hoàn tiền; LI-03 bỏ internal invoice và cổng thanh toán/tính giá bán, giữ no live MISA/no tax e-invoice (nhưng cho phép nhập bản sao SO và ghi nhận xác nhận đã thu tiền bên ngoài); LI-08 cho phép cảnh báo ngưỡng/gợi ý xác định, tiếp tục loại trừ dự báo/tự đặt mua; LI-10 nêu tham số hữu hạn không phải policy editor. |
+| Definition/Change Log | Warehouse Staff, picking task, put-away task, đơn bán sao chép (SO), yêu cầu xuất liên kết (WIR), xác nhận giao hàng có ảnh (POD), xác nhận tiền ngoài hệ thống (PAY-CFM), in-transit, custody; ghi lý do đổi scope từ review1 và sửa đổi BF-06 ngày 21/10. |
 
 ### 9.2 Report 3
 
 | Mục | Cần thay đổi |
 |---|---|
-| I.1 Context Diagram | Dữ liệu trao đổi theo mục 7; xác định SMTP/lưu tệp; bỏ mũi tên bán hàng–billing vượt scope. |
-| I.2.1–2.7 Main Business Flow | Thay trigger, end condition, decision handling và hình theo 7 BF ở mục 4; không sửa mỗi hình. |
-| I.3.1 ERD / I.3.2 Entity Descriptions | Thêm/biểu diễn Issue Request, đợt xuất, reservation/allocation, movement ledger, transit, receipt/issue lines, count attempts, approval, custody/evidence/external references. Có thể embedded trong MongoDB; đây là khái niệm nghiệp vụ, không bắt buộc mỗi khái niệm một collection. Sửa các UC traceability còn dùng mã cũ. |
-| I.3.3 Data Business Rules | Ánh xạ mục 8, sửa range UC sai và loại trùng; không coi In Transit là một quality status đơn lẻ. |
-| I.4.1 Actors | Giữ 5 role, thay tên Warehouse Staff; cập nhật nhiệm vụ Sales/Accountant/Owner; mô tả trách nhiệm nguồn/đích và hạn chế kiêm nhiệm. |
-| I.4.2 Catalogue | Giữ/sửa/retire/thêm theo mục 5; đánh dấu rõ UC mới; tính lại số active cuối cùng. |
-| I.4.3 UC diagrams | Nối UC-03 với Sales/Warehouse; UC-70 với Sales; UC-72 với Warehouse; Owner UC-71/106; Accountant UC-107/108; bỏ UC-42/23–25/59–62/74–78 nếu chốt MVP. |
-| I.4.4 Permission Matrix | Đồng bộ mục 6 với từng thao tác trong UC gộp; quyền kho nguồn/đích và creator≠approver phải ghi trong precondition. |
-| I.5.1 Screen Flow / Screen List | Cập nhật SC-06,08,10–19,22,23; bỏ SC-25 giá, SC-26 invoice, SC-27 refund nếu chọn MVP. Thêm gợi ý đáp ứng tại yêu cầu xuất, phiếu nhận điều chuyển tại SC-13, danh sách kiểm kê tại SC-14 và phần tham chiếu bên ngoài. |
-| I.5.2 External API Inventory | SMTP chỉ còn thông báo kho nếu giữ; Cloudinary phải có interface tương ứng hoặc xóa khỏi context. Không thêm MISA API mặc định. |
+| I.1 Context Diagram | Dữ liệu trao đổi theo mục 7; bổ sung dữ liệu SO sao chép, WIR liên kết, ảnh giao khách POD và xác nhận tiền ngoài PAY-CFM; xác định SMTP/lưu tệp; bỏ mũi tên định giá–billing vượt scope. |
+| I.2.1–2.8 Main Business Flow | Thay trigger, end condition, decision handling và hình theo 8 BF ở mục 4 (đặc biệt chuỗi BF-06 SO → WIR → PGI → DELIVERED → COMPLETED); không chỉ sửa hình. |
+| I.3.1 ERD / I.3.2 Entity Descriptions | Biểu diễn `Sales Order` (SO) sao chép + dòng, `Issue Request` (WIR) liên kết + dòng, đợt xuất (OD), reservation/allocation, movement ledger, transit, receipt/issue lines, xác nhận giao hàng cho khách kèm ảnh bắt buộc (POD), xác nhận thu đủ tiền ngoài hệ thống (PAY-CFM), count attempts, approval, custody/evidence/external references. Có thể embedded trong MongoDB; đây là khái niệm nghiệp vụ, không bắt buộc mỗi khái niệm một collection. Sửa UC traceability cũ và thêm UC-109–111. |
+| I.3.3 Data Business Rules | Ánh xạ mục 8 (BR-01–BR-33), sửa range UC sai và loại trùng; không coi In Transit là một quality status đơn lẻ. |
+| I.4.1 Actors | Giữ 5 role, thay tên Warehouse Staff; cập nhật nhiệm vụ Sales (sao chép SO, lập WIR liên kết, xác nhận tiền ngoài COMPLETED), Warehouse (xác nhận giao khách kèm ảnh DELIVERED), Accountant, Owner; mô tả trách nhiệm nguồn/đích và hạn chế kiêm nhiệm. |
+| I.4.2 Catalogue | Giữ/sửa/retire/thêm theo mục 5; cập nhật UC-45–48, thêm UC-109–111 và tính lại tổng 111 mã (98 active / 13 retired). |
+| I.4.3 UC diagrams | Nối UC-03 với Sales/Warehouse; Sales với UC-45–48/109/111/70; Warehouse với UC-110/72; Owner với UC-71/106; Accountant với UC-107/108; bỏ UC-42/23–25/59–62/74–78 khỏi sơ đồ active. |
+| I.4.4 Permission Matrix | Đồng bộ mục 6 với từng thao tác trong UC gộp; quyền kho nguồn/đích, creator≠approver, quyền riêng của Warehouse ở UC-110 và quyền riêng của Sales ở UC-111 phải ghi rõ. |
+| I.5.1 Screen Flow / Screen List | Cập nhật SC-06,08,10–19,22,23; bỏ SC-25 giá, SC-26 invoice, SC-27 refund. Hỗ trợ màn hình SO sao chép và WIR liên kết, gợi ý đáp ứng, phiếu nhận điều chuyển tại SC-13, danh sách kiểm kê tại SC-14, xác nhận giao khách kèm ảnh (POD), xác nhận tiền ngoài hệ thống của Sales (PAY-CFM) và tham chiếu bên ngoài. |
+| I.5.2 External API Inventory | SMTP chỉ còn thông báo kho nếu giữ; Cloudinary/lưu tệp phải có interface tương ứng cho bằng chứng và ảnh giao hàng hoặc xóa khỏi context. Không thêm MISA API hay cổng thanh toán mặc định. |
 | I.5.3 Background Jobs | JOB-01 bỏ event invoice; thêm đánh giá ngưỡng nếu chạy định kỳ hoặc mô tả rõ đánh giá sau thay đổi tồn. Chống tạo đề nghị trùng, không tự post. |
-| II Use Case Specifications | Mỗi UC đổi phải sửa primary actor, trigger, precondition, normal/alternate flows, postcondition, nguồn dữ liệu và điểm post. Không để các mô tả chung “update inventory if applicable” thay kết quả tồn cụ thể. |
-| III Functional Requirements | Form cần nguồn tham chiếu, lot/tone/calibre, quantity theo từng loại, snapshot/cutoff, user/time/version, evidence và trạng thái. Sửa title/mockup/field contract theo UC mới. |
-| IV Non-functional Requirements | Khóa đồng thời, idempotency, giới hạn dữ liệu theo kho, bảo vệ chứng cứ, khả năng truy vết; kiểm thử từ yêu cầu đến balance/log thật. Bổ sung responsive trên điện thoại, nhập đơn vị và ảnh thuận tiện ngay khi thao tác; không mặc định native/offline. |
-| V Business Rules / Messages | Đồng bộ catalogue rules, thêm lỗi tự duyệt, đang kiểm kê, sai lot/tone, xuất/nhận trùng, nhận trả vượt nguồn, nguồn bên ngoài chưa xác minh. |
+| II Use Case Specifications | Sửa primary actor, trigger, precondition, normal/alternate flows, postcondition, nguồn dữ liệu và điểm post cho UC-45–58 và thêm đặc tả UC-109–111. Không để các mô tả chung “update inventory if applicable” thay kết quả tồn cụ thể. |
+| III Functional Requirements | Form cần nguồn tham chiếu, liên kết dòng SO↔WIR, lot/tone/calibre, quantity theo từng loại, snapshot/cutoff, user/time/version, ảnh giao hàng bắt buộc, thông tin xác nhận tiền ngoài và trạng thái. Sửa title/mockup/field contract theo UC mới. |
+| IV Non-functional Requirements | Khóa đồng thời, idempotency, giới hạn dữ liệu theo kho, bảo vệ chứng cứ, khả năng truy vết; kiểm thử từ yêu cầu đến balance/log thật. Bổ sung responsive trên điện thoại, nhập đơn vị và chụp/tải ảnh giao hàng thuận tiện ngay khi thao tác; không mặc định native/offline. |
+| V Business Rules / Messages | Đồng bộ catalogue rules (BR-01–BR-33), thêm lỗi tự duyệt, đang kiểm kê, sai lot/tone, trùng SO/WIR/xuất/nhận, thiếu liên kết SO, thiếu ảnh giao hàng, xác nhận hoàn thành sai quyền/chưa đủ điều kiện, nhận trả vượt nguồn, nguồn bên ngoài chưa xác minh. |
 
-**Nguyên tắc UC diagram:** include dùng cho hành vi bắt buộc tái sử dụng, extend dùng cho hành vi tùy điều kiện; không dùng hai quan hệ đó để diễn tả “bước trước/bước sau” hoặc “ai duyệt ai”. Thứ tự nằm ở activity/BPMN. System nằm trong boundary phần mềm; không thêm actor “System” tự gọi chính nó. SMTP/storage chỉ là supporting actor nếu có tương tác thật.
+Nguyên tắc UC diagram: include dùng cho hành vi bắt buộc tái sử dụng, extend dùng cho hành vi tùy điều kiện; không dùng hai quan hệ đó để diễn tả “bước trước/bước sau” hoặc “ai duyệt ai”. Thứ tự nằm ở activity/BPMN. System nằm trong boundary phần mềm; không thêm actor “System” tự gọi chính nó. SMTP/storage chỉ là supporting actor nếu có tương tác thật.
 
 ## 10. Flow rút gọn để vẽ lại
 
@@ -644,7 +685,7 @@ flowchart TD
  E --> C
  D -->|Có| F{Phương án}
  F -->|Đạt sau kiểm lại hoặc đổi phẩm cấp| G[Cập nhật quality có dấu vết]
- F -->|Trả NCC| H[BF-07, chưa trừ tồn tại BF-02]
+ F -->|Trả NCC| H[BF-08, chưa trừ tồn tại BF-02]
  F -->|Hủy| I[Thực hủy và lập biên bản rồi ghi giảm]
  G --> J[Đối chiếu lượng và đóng hoặc theo dõi hồ sơ liên kết]
  H --> J
@@ -655,27 +696,39 @@ flowchart TD
 
 ```mermaid
 flowchart TD
- A[Nhu cầu di chuyển hoặc thiếu hàng] --> B{Chỉ đổi vị trí cùng kho?}
- B -->|Có| C[Warehouse chuyển và xác nhận vị trí]
- C --> D[Cập nhật hai vị trí, tổng kho không đổi]
- B -->|Không| E[Hệ thống gợi ý nguồn kho]
- E --> F{Xuất thẳng tới khách?}
- F -->|Có| G[BF-05 tại kho có hàng]
- F -->|Không, cần chuyển vật lý| H[Warehouse gửi TR]
- H --> I{Owner duyệt?}
- I -->|Không| J[Từ chối hoặc trả đề nghị sửa]
- I -->|Có| K[Kho đi lập phiếu xuất và bàn giao]
- K --> L[Nguồn giảm, đang chuyển tăng]
- L --> M[Kho nhận kiểm độc lập và lập phiếu nhập]
- M --> N{Có sai lệch?}
- N -->|Không| O[Put-away và đóng]
- N -->|Có| P[Ghi phần đã xác minh, giữ sai lệch mở]
- P --> Q[Owner duyệt phương án xử lý]
- Q --> R[Thực hiện và đối chiếu lại]
- R --> N
+ A[Warehouse cần chuyển vị trí] --> B{Nguồn và đích cùng kho?}
+ B -->|Không| C[Lập hồ sơ riêng theo BF-04 nếu chuyển giữa kho]
+ B -->|Có| D[Kiểm lượng, vị trí phù hợp và khóa kiểm kê]
+ D --> E{Đủ điều kiện di chuyển?}
+ E -->|Chưa| F[Dừng, xử lý nguyên nhân hoặc kiểm tra lệch qua BF-05]
+ E -->|Rồi| G[Tạo TO-RELOCATE, di chuyển và xác nhận thực tế]
+ G --> H[Nguồn giảm, đích tăng cùng lượng, giữ reservation]
+ H --> I[Đóng phần đã thực hiện, tổng kho không đổi]
 ```
 
 ### BF-04
+
+```mermaid
+flowchart TD
+ A[Nhu cầu đáp ứng hoặc cân đối giữa các kho] --> B[Kiểm nguồn hàng tương thích]
+ B --> C{Xuất thẳng tới khách?}
+ C -->|Có| D[BF-06 tại kho thực xuất, không lập nhập giả]
+ C -->|Không, cần điều chuyển| E[Warehouse lập TR]
+ E --> F{Owner duyệt?}
+ F -->|Không| G[Từ chối hoặc trả sửa, chưa xuất]
+ F -->|Có| H[Kho đi soạn, lập TD và bàn giao HO]
+ H --> I[Nguồn giảm, đang chuyển tăng]
+ I --> J[Kho nhận kiểm độc lập và lập MWTR]
+ J --> K{Có sai lệch?}
+ K -->|Không| L[Put-away và đóng điều chuyển]
+ K -->|Có| M[Ghi lượng đã xác minh, giữ phần chưa rõ mở]
+ M --> N[Owner duyệt phương án xử lý]
+ N --> O[Thực hiện và đối chiếu lại]
+ O --> K
+```
+
+
+### BF-05
 
 ```mermaid
 flowchart TD
@@ -697,28 +750,38 @@ flowchart TD
  K --> G
 ```
 
-### BF-05
+### BF-06
 
 ```mermaid
 flowchart TD
- A[Sales gửi yêu cầu xuất có nguồn đơn ngoài] --> B[Kiểm lượng còn phải xuất và khả dụng]
+ A[Sales sao chép đơn bán nguồn ngoài đã xác minh thành SO] --> A2[Sales tạo WIR liên kết từ SO đã lưu]
+ A2 --> B[Kiểm lượng SO/WIR còn phải xuất và khả dụng]
  B --> C{Đủ nguồn tương thích?}
- C -->|Chưa| D[Gợi ý kho khác BF-03 hoặc bổ sung BF-01]
- D --> E[Sales xác nhận chờ hoặc giao từng phần]
+ C -->|Chưa| D[Gợi ý kho khác BF-04 hoặc bổ sung BF-01]
+ D --> E[Sales xác nhận chờ hoặc giao từng phần OD]
  E --> B
- C -->|Đủ cho đợt đã thống nhất| F[Giữ hàng và tạo nhiệm vụ soạn]
+ C -->|Đủ cho đợt đã thống nhất| F[Giữ hàng và tạo nhiệm vụ soạn TO]
  F --> G[Warehouse soạn, kiểm đếm và staging]
  G --> H{Thiếu hoặc hỏng?}
- H -->|Có| I[Chặn lượng ảnh hưởng, BF-02 hoặc BF-04, báo Sales]
+ H -->|Có| I[Chặn lượng ảnh hưởng, BF-02 hoặc BF-05, báo Sales]
  I --> B
- H -->|Không| J[Lập phiếu xuất dự thảo và bàn giao]
+ H -->|Không| J[Lập phiếu xuất GI-S và bàn giao kho HO]
  J --> K{Đã thực bàn giao?}
  K -->|Chưa| L[Giữ staging hoặc hoàn vị trí có dấu vết]
  K -->|Rồi| M[PGI một lần, giảm actual dispatched]
- M --> N[Cập nhật tiến độ và chứng từ đối chiếu]
+ M --> N[Warehouse xác nhận giao khách kèm ảnh POD]
+ N --> O{Kết quả giao hàng và ảnh POD?}
+ O -->|Thiếu ảnh hoặc chờ khách nhận chuyến đã xuất| N
+ O -->|Khách từ chối hoặc trả hàng sau PGI| O2[Chuyển nhận trả sau PGI BF-07, giữ SO chờ xử lý]
+ O -->|Đã giao đợt này kèm ảnh, còn lượng SO chưa xuất| B
+ O -->|Mọi lượng SO còn phải giao > 0 đã giao kèm ảnh| P[Cập nhật trạng thái SO = DELIVERED]
+ P --> Q{Sales xác nhận đã nhận đủ tiền ngoài hệ thống?}
+ Q -->|Chưa| R[Giữ SO ở DELIVERED, chờ xác nhận tiền ngoài]
+ R --> Q
+ Q -->|Rồi| S[Cập nhật trạng thái SO = COMPLETED, lưu hồ sơ đối chiếu]
 ```
 
-### BF-06
+### BF-07
 
 ```mermaid
 flowchart TD
@@ -734,14 +797,14 @@ flowchart TD
  F -->|Không| G[Bàn giao lại khách, giảm custody]
  F -->|Có| H{Chất lượng đạt?}
  H -->|Có| I[Phiếu nhập trả và put-away, tăng khả dụng]
- H -->|Không| J[Nhập trạng thái cách ly, BF-02 hoặc BF-07]
+ H -->|Không| J[Nhập trạng thái cách ly, BF-02 hoặc BF-08]
  I --> K[Đối chiếu phần kho và lưu hồ sơ]
  J --> K
  G --> K
  K --> L[Accountant xử lý tài chính bên ngoài, lưu tham chiếu]
 ```
 
-### BF-07
+### BF-08
 
 ```mermaid
 flowchart TD
@@ -784,9 +847,12 @@ flowchart TD
 | Gạch nguyên thùng hoặc viên lẻ chưa dùng được khách đề nghị trả | Xét từng trường hợp sau kiểm và xác minh điều kiện; không tự nhận hoặc tự hoàn tiền. |
 | Khách mang hàng đã thi công, hỏng do khách hoặc đã xác minh quá hạn | Không post GR-CR; nếu đã nhận vật lý thì custody rồi bàn giao lại. |
 | Chưa có căn cứ xác minh thời hạn nhận trả | Chờ xác minh; không tự dùng 7/15/30 ngày, không tự cho là còn hạn. |
-| Hàng lỗi do NCC và đủ điều kiện khác được Owner đồng ý nhận | Nhập cách ly đúng lượng, liên kết BF-02/07; không áp lệnh từ chối hỏng do khách cho mọi loại lỗi. |
+| Hàng lỗi do NCC và đủ điều kiện khác được Owner đồng ý nhận | Nhập cách ly đúng lượng, liên kết BF-02/08; không áp lệnh từ chối hỏng do khách cho mọi loại lỗi. |
 | Thùng rách, gạch nguyên hoặc thùng mở còn viên | Kiểm gạch và đếm viên; không tự đổi quality thành DAMAGED; dùng hệ số quy đổi đã chốt. |
 | Đổi đánh giá điều kiện trả sau khi Owner đã duyệt | Tăng phiên bản, đánh giá/duyệt lại trước post; không dùng approval cũ. |
+| Tạo WIR khi chưa lưu SO, tổng WIR vượt `lượng_đặt − lượng_hủy` trên dòng SO, hoặc tổng OD vượt lượng dòng WIR cha | Chặn lưu WIR/OD; bắt buộc có SO sao chép từ nguồn ngoài đã lưu, `tổng(WIR active) <= lượng_đặt − lượng_hủy` trên từng dòng SO và `tổng(OD active) <= lượng WIR` (không cộng gộp WIR và OD thành hai nhu cầu riêng). |
+| Đã PGI/bàn giao cho nhà vận chuyển, thiếu ảnh POD, tổng POD của một dòng GI-S vượt lượng PGI hợp lệ đã POSTED, hoặc hủy toàn bộ đơn khi lượng thực giao bằng `0` | Tồn kho giảm đúng một lần tại PGI, nhưng SO không sang DELIVERED khi mới bàn giao cho nhà vận chuyển/thiếu ảnh (retry thiếu ảnh chỉ quay lại bước POD, không soạn lại hay PGI lại); chặn nguyên tử mọi POD không gắn dòng GI-S đã POSTED hoặc có lũy kế vượt lượng PGI hợp lệ (không tính lượng đã đảo); hủy toàn bộ đơn khi chưa giao hàng chuyển SO = CANCELLED (tuyệt đối không DELIVERED/COMPLETED), còn giao một phần kèm hủy hợp lệ phần chưa xuất với lượng active đã giao `> 0` thì được chuyển DELIVERED. |
+| SO đã DELIVERED kèm ảnh chụp, hoặc khách trả tiền bên ngoài trước khi giao đủ hàng | Chỉ Sales Staff được xác nhận PAY-CFM (UC-111) sau khi đã DELIVERED để chuyển SO = COMPLETED; chưa trả/trả một phần giữ SO ở DELIVERED, trả tiền trước khi DELIVERED không thể hoàn thành đơn, và cả DELIVERED lẫn COMPLETED đều không làm thay đổi tồn kho. |
 
 Các tình huống này là đề xuất acceptance criteria, chưa phải các test đã chạy trên phần mềm của nhóm.
 
@@ -797,7 +863,7 @@ Các tình huống này là đề xuất acceptance criteria, chưa phải các 
 | Kho và điều chuyển | Câu 3: từ 3 kho; D4: có chuyển liên kho. | Tên, địa chỉ, số kho chính xác, khoảng cách, kho xuất trực tiếp và phân biệt kho với khu chưa đủ. |
 | Vị trí | Câu 5: chia khu/kệ, có mã. Câu 4: “Kho gach”. | Danh sách/mã khu nhận, lưu trữ, staging, cách ly phải cấu hình theo khảo sát bổ sung. |
 | Nhân sự | Có các chức năng, kiêm nhiệm và người thay chủ. D2/D3 giữ từng role tự nhập, đúng 5 role. | Chưa có số người mỗi kho, danh tính người xuất/nhận độc lập. Không coi kiêm nhiệm là quyền tự duyệt; không bổ sung nhập hộ/ủy quyền động. |
-| MISA và đối chiếu | Câu 2: bán hàng, đơn, hóa đơn, nhập/xuất/tồn, khách/NCC; câu 19: hoàn tiền trên MISA. | Chưa rõ phiên bản/gói, trường lot/vị trí và lịch đối chiếu. D1 khác thời điểm giảm tồn trong câu 17; cần đối chiếu đơn chưa giao với tồn vật lý. Không live integration. |
+| MISA và đối chiếu | Câu 2: bán hàng, đơn, hóa đơn, nhập/xuất/tồn, khách/NCC; câu 19: hoàn tiền trên MISA. | Chưa rõ phiên bản/gói, trường lot/vị trí và lịch đối chiếu. D1 khác thời điểm giảm tồn trong câu 17; Sales sao chép thủ công đơn bán nguồn ngoài thành SO và xác nhận đã thu tiền ngoài hệ thống (COMPLETED), Accountant đối chiếu SO/WIR/GI-S với MISA. Không live integration. |
 | Lô/màu/kích thước | Câu 9: trên phần mềm và vỏ thùng. | Calibre thực tế, quy tắc trộn lô cho công trình và người xác nhận thay lô chưa được khảo sát đủ. |
 | Đơn vị/bao bì | Câu 10–11: nhập/kiểm theo thùng, bán thùng/viên/m², có hệ số, bán lẻ và đếm viên còn lại; bao bì rách/gạch nguyên vẫn bán. | Chưa có số viên/thùng, m²/thùng từng SKU. Viên làm tồn chuẩn là quyết định To-be giữ nguyên. |
 | Khách trả | Câu 18 và D6: điều kiện nhận/từ chối; câu 19: kiểm hàng và hoàn tiền MISA. | Thời hạn/số ngày, nguồn chứng minh thời hạn và chính sách sai lô chưa rõ. Owner duyệt sau kiểm và custody là To-be. |
@@ -805,8 +871,9 @@ Các tình huống này là đề xuất acceptance criteria, chưa phải các 
 | Kiểm kê | Hằng tháng, đếm lại, duyệt lệch; D5 giữ khóa phạm vi. | Xác nhận lịch/độ dài phiên và bố trí Owner để tránh khóa lâu. Không triển khai vừa đếm vừa nhập/xuất trong MVP đã chọn. |
 | Bổ sung/ưu tiên | Sales/kho báo nhu cầu, chủ duyệt, kế toán đặt NCC. | Chưa có định mức và thứ tự ưu tiên kho; không tự đặt số liệu. |
 | Điện thoại | Câu 22, 24: nhập ngay khi làm việc, dùng điện thoại. | Chưa xác nhận offline, app native hoặc tự quét mã; không đưa thành yêu cầu mặc định. |
+| Ảnh giao hàng & xác nhận tiền ngoài hệ thống | Câu 16/22/24: dùng điện thoại, đính kèm ảnh; chỉ dẫn BF-06 ngày 21/10 của người dùng. | Quy chuẩn chi tiết ảnh chụp giao hàng và mẫu mã tham chiếu thu tiền ngoài (MISA/sổ quỹ) là quy tắc vận hành To-be; Warehouse Staff xác nhận POD kèm ảnh (DELIVERED) và Sales Staff xác nhận đã thu đủ tiền ngoài hệ thống (COMPLETED). |
 
-Khảo sát xác nhận dữ kiện hiện trạng, quyết định D1–D8 chốt lựa chọn thiết kế cho lần cập nhật này. Các phần chưa được khảo sát chứng minh tiếp tục ghi “To-be đề xuất”; không gọi toàn bộ quy trình là đã được cửa hàng xác nhận.
+Khảo sát xác nhận dữ kiện hiện trạng; quyết định D1–D8 và sửa đổi BF-06 ngày 21/10 chốt lựa chọn thiết kế cho lần cập nhật này. Các phần chưa được khảo sát chứng minh tiếp tục ghi “To-be đề xuất”; không gọi toàn bộ quy trình là đã được cửa hàng xác nhận.
 
 ## 13. Bảng nguồn tham khảo và phần áp dụng
 
@@ -829,11 +896,11 @@ Khảo sát xác nhận dữ kiện hiện trạng, quyết định D1–D8 ch�
 
 ## 14. Quy trình duy trì đồng bộ tài liệu
 
-1. Chốt phạm vi To-be và giả định với GVHD/cửa hàng; ghi delta scope rõ so với bản 17/10/2026.
-2. Chốt glossary, 5 role, các loại quantity và sự kiện post; dùng làm nguồn chuẩn chung.
-3. Duyệt logic 7 BF bằng các tình huống ở mục 11; sửa đồng thời R1 IV và R3 I.2.
-4. Chốt catalogue UC và mã retired/new; sửa actors, permission, detailed UC, context và rules bằng cùng mapping.
-5. Sửa model, màn hình, API/job, NFR và acceptance criteria phụ thuộc. Kiểm mọi tham chiếu UC/FE/BF/SC/BR có đích hợp lệ.
+1. Chốt phạm vi To-be và giả định với GVHD/cửa hàng; ghi delta scope rõ so với bản 17/10/2026 và sửa đổi BF-06 ngày 21/10/2026.
+2. Chốt glossary, 5 role, các loại quantity và sự kiện post (phân biệt rõ PGI, POD → DELIVERED và PAY-CFM → COMPLETED); dùng làm nguồn chuẩn chung.
+3. Duyệt logic 8 BF bằng các tình huống ở mục 11; sửa đồng thời R1 IV và R3 I.2 trong lượt đồng bộ tiếp theo.
+4. Chốt catalogue UC (111 mã: 98 active, 13 retired) và mã retired/new (gồm UC-109–111); sửa actors, permission, detailed UC, context và rules (BR-01–BR-33) bằng cùng mapping.
+5. Sửa model, màn hình, API/job, NFR và acceptance criteria phụ thuộc trong Report 3, thiết kế database và SQL tham chiếu. Kiểm mọi tham chiếu UC/FE/BF/SC/BR có đích hợp lệ.
 6. Xuất cùng bộ hình cho report và slide, gắn version; slide chỉ rút gọn mức chi tiết bằng subprocess có mã, không vẽ lại thành quy trình khác.
 
 Không có email, tin nhắn hay yêu cầu review gửi ra ngoài trong quá trình lập đề xuất này. Các hành động gửi slide/khảo sát trong review1 là kế hoạch của nhóm cần tổ chức riêng.
@@ -855,8 +922,11 @@ Không có email, tin nhắn hay yêu cầu review gửi ra ngoài trong quá tr
 | TD | Transfer Dispatch | Warehouse kho đi | TR đã duyệt | Nguồn −q, in-transit +q |
 | MWTR | Phiếu nhập điều chuyển | Warehouse kho nhận độc lập | TD và từng dòng TD | In-transit −q, đích +q theo chất lượng |
 | HO | Biên bản bàn giao | Warehouse; ghi người nhận | TD, GI hoặc phiếu trả giữ hộ | Bằng chứng; không ghi giảm lần nữa nếu TD/GI đã post |
-| WIR / OD | Yêu cầu xuất / kế hoạch đợt giao | Sales | Dòng đơn nguồn bên ngoài / WIR | Không |
+| SO | Đơn bán WMSD (bản sao nguồn ngoài) | Sales Staff | Đơn/dòng bán bên ngoài đã xác minh (MISA/giấy tờ) + bằng chứng đính kèm | Không |
+| WIR / OD | Yêu cầu xuất liên kết / kế hoạch đợt giao | Sales Staff | SO và các dòng SO đã lưu trong WMSD / WIR | Không; OD có thể giữ hàng tương thích |
 | GI-S | Phiếu xuất giao khách | Warehouse | OD, lượng đã soạn và bàn giao | Staging −q khi PGI |
+| POD | Xác nhận giao hàng cho khách (kèm ảnh) | Warehouse Staff | Một dòng GI-S đã POSTED cùng dòng WIR/SO nguồn (chỉ riêng thông tin chung của OD không đủ căn cứ), người nhận, lượng thực giao và ảnh chụp chứng cứ bắt buộc | Không (lũy kế các POD phân biệt của mỗi dòng GI-S <= lượng PGI hợp lệ đã POSTED không tính lượng đã đảo; chuyển SO = DELIVERED khi tổng lượng đặt còn phải thực hiện còn lại `> 0` đã được giao đủ kèm ảnh) |
+| PAY-CFM | Xác nhận đã nhận tiền ngoài hệ thống | Sales Staff | SO ở trạng thái DELIVERED + mã tham chiếu/bằng chứng/ghi chú thu tiền ngoài | Không (chuyển SO = COMPLETED; không chuyển tiền hay đổi tồn kho) |
 | DC / DISP | Hồ sơ lỗi / quyết định xử lý | Warehouse đề nghị; Owner duyệt | Sự kiện phát hiện, dòng hàng, bằng chứng | Hồ sơ/duyệt chưa giảm tồn |
 | SCRAP | Biên bản hủy và phiếu ghi giảm | Warehouse | DISP đã duyệt, bằng chứng hủy | Tồn cách ly −q đã hủy thực tế |
 | ST / COUNT | Phiên và phiếu đếm | Owner tạo phiên; Warehouse đếm | Phạm vi + snapshot | Không |
@@ -867,16 +937,17 @@ Không có email, tin nhắn hay yêu cầu review gửi ra ngoài trong quá tr
 | ACK / VAR | NCC xác nhận nhận / biên bản sai lệch | Accountant / Warehouse | Dòng xuất trả hoặc điều chuyển | Không tự giảm/tăng tồn |
 | REV | Chứng từ đảo | Người có quyền sau quyết định xử lý | Batch đã post, lý do | Đảo có kiểm soát; không xóa lịch sử |
 
-**TO và MWTR không thay thế nhau.** Trong BF-03, chuỗi liên kho là `TR đã duyệt → TD → MWTR → TO put-away`. TO picking tại nguồn chỉ cần khi kho dùng staging; nó không tạo thêm vòng Owner duyệt. MWTR là một loại receipt riêng: **không tạo thêm GR-P cho cùng lượng đã nhập qua MWTR**.
+TO và MWTR không thay thế nhau. Trong BF-04, chuỗi liên kho là `TR đã duyệt → TD → MWTR → TO put-away`. TO picking tại nguồn chỉ cần khi kho dùng staging; nó không tạo thêm vòng Owner duyệt. MWTR là một loại receipt riêng: không tạo thêm GR-P cho cùng lượng đã nhập qua MWTR.
 
 ### 15.2 Liên kết chứng từ và lượng
 
 - Một PO có nhiều ARR và GR-P; một dòng PO có thể tách vào nhiều receipt line/lô/chất lượng. Một lần giao có thể nhận một phần và giữ hộ một phần.
 - Một TR có nhiều TD; một TD có nhiều MWTR khi nhận từng phần. MVP: một MWTR chỉ nhận một TD; nhiều TD trên cùng xe có thể được nhóm bằng HO/tham chiếu chuyến.
 - Một dòng TD có nhiều dòng MWTR; mỗi dòng MWTR chỉ tham chiếu một dòng TD. Không vượt lượng còn đang chuyển của dòng đó.
-- Một WIR có nhiều OD; một OD có nhiều TO và GI-S. Dòng đã xuất lấy từ ledger, không lấy lượng yêu cầu làm lượng thực xuất.
+- Một đơn/dòng nguồn chỉ có một bản sao SO trong thiết kế này; khi sửa hoặc mở lại dùng chính SO đó. Một SO có nhiều WIR, mỗi dòng WIR gắn đúng một dòng SO. Tổng cam kết WIR gồm cả phần đã xuất không vượt lượng đặt trừ phần hủy hợp lệ.
+- Một WIR có nhiều OD; mỗi OD có nhiệm vụ soạn và GI-S. Tổng OD không vượt lượng WIR được phép sau hủy. Mỗi dòng POD gắn một dòng GI-S đã post và ảnh của chính phiếu POD; tổng lượng POD đã xác nhận, chưa hủy hiệu lực không vượt PGI hợp lệ. PAY-CFM được ghi trên SO đã DELIVERED để hoàn thành đơn.
 - Một dòng GI có nhiều CR/GR-CR nhưng tổng lượng đã nhận trả + lượng đang giữ chỗ cho đề nghị trả không vượt lượng nguồn còn đủ điều kiện.
-- Liên kết **dòng** lưu số lượng phân bổ; chỉ lưu mã PO/TR ở header là chưa đủ để chống vượt nguồn.
+- Liên kết **dòng** lưu số lượng phân bổ; chỉ lưu mã PO/TR/SO/WIR ở thông tin chung của chứng từ là chưa đủ để chống vượt nguồn.
 
 Phiên bản nguồn bên ngoài chỉ ghi khi nguồn có cung cấp; không tự bịa mã revision. `document.version`/phiên bản xác minh nội bộ và correlation ID WMS ổn định vẫn được lưu để truy vết. `external_reference.source_version` nullable; `correlation_id` UNIQUE, không trống. Retry vẫn dùng operation/idempotency key ổn định, không tạo correlation mới để lách chống trùng.
 
@@ -885,8 +956,10 @@ Phiên bản nguồn bên ngoài chỉ ghi khi nguồn có cung cấp; không t�
 | Đối tượng | Trạng thái đề xuất và cách xử lý |
 |---|---|
 | Đề nghị RR/TR/CR/SR/ADJ | DRAFT → SUBMITTED → APPROVED / REJECTED / REVISION_REQUIRED. Sửa nội dung đã duyệt tăng version và duyệt lại phần thay đổi. |
-| PO / WIR / TR thực hiện | OPEN → PARTIAL → COMPLETED; CANCELLED chỉ phần chưa thực hiện. Tổng trạng thái suy ra từ các dòng và quyết định hủy phần còn lại. |
+| Đơn bán WMSD (SO) | DRAFT → OPEN → IN_PROGRESS/PARTIALLY_DELIVERED → DELIVERED → COMPLETED. DELIVERED cần giao đủ có ảnh; COMPLETED cần thêm Sales xác nhận nhận đủ tiền ngoài hệ thống. Hủy toàn bộ trước giao là CANCELLED; hủy phần chưa xuất được lưu riêng. |
+| PO / WIR / TR thực hiện | OPEN → PARTIAL → COMPLETED; chỉ hủy phần chưa thực hiện. WIR hoàn tất khi đã xuất đủ hoặc phần chưa xuất được hủy hợp lệ; không đồng nghĩa SO đã giao/hoàn thành. |
 | GR / TD / MWTR / GI / SCRAP | DRAFT → POSTED. POSTED bất biến; nhãn REVERSED chỉ khi có batch đảo hợp lệ. Không xóa chứng từ đã post. |
+| Xác nhận giao khách (POD) và nhận tiền (PAY-CFM) | DRAFT → CONFIRMED; nếu ghi nhầm thì VOIDED có lý do và lưu lịch sử. Trạng thái giao một phần thuộc SO, không dùng một bộ trạng thái khác cho từng phiếu POD. |
 | TO | OPEN → PARTIAL → CONFIRMED; hủy phần chưa thực hiện. Mỗi lần confirm có operation key riêng. |
 | Stocktake | PLANNED → FROZEN → COUNTED → RECONCILING → APPROVED → POSTED/CLOSED. Không chênh lệch đi thẳng CLOSED. |
 | Defect/discrepancy | OPEN → UNDER_REVIEW → RESOLVING → CLOSED khi mọi lượng có kết quả hoặc chuyển hồ sơ còn mở có trách nhiệm rõ. |
@@ -900,21 +973,21 @@ Mã `TR-202610-000123` dùng để người dùng đọc; PK dùng bigint độc
 |---|---|---|---|
 | BF-01 — Mua và nhận hàng | Sales/Warehouse → Owner → Accountant → Warehouse | RR → duyệt → PO → ARR/INS → GR-P → TO put-away; lập VAR/CUS-IN khi cần | GR-P ghi lượng cửa hàng nhận sở hữu; put-away chỉ chuyển vị trí |
 | BF-02 — Hàng lỗi | Warehouse → Owner → Warehouse | DC → cách ly → INS/DISP → duyệt → SCRAP, regrade/release hoặc chuyển SR | Cách ly/regrade giữ nguyên tổng; SCRAP giảm thực tế; trả NCC chỉ giảm ở GI-SR |
-| BF-03A — Chuyển vị trí | Warehouse | TO-RELOCATE → xác nhận | Nguồn −q, đích +q trong cùng kho |
-| BF-03B — Điều chuyển liên kho | Warehouse kho đi → Owner → Warehouse kho nhận | TR → duyệt → TO-PICK tùy chọn → TD/HO → INS/MWTR → TO put-away → VAR/quyết định nếu lệch | TD chuyển nguồn sang transit; MWTR chuyển lượng thực nhận từ transit sang đích |
-| BF-04 — Kiểm kê | Owner → Warehouse → Owner | ST/snapshot/count sheet → COUNT/recount → VAR/ADJ → duyệt/Clear Difference | Chỉ post delta được duyệt; không tạo ADJ=0 |
-| BF-05 — Xuất khách | Sales → Warehouse → Accountant đối chiếu | WIR → OD → reservation/TO-PICK → GI-S/HO | PGI giảm hàng đã bàn giao; yêu cầu/soạn chưa giảm tổng |
-| BF-06 — Khách trả | Sales → Warehouse → Owner → Warehouse/Accountant | CR → CUS-IN → INS → duyệt → GR-CR hoặc CUS-OUT/HO → tham chiếu xử lý ngoài | GR-CR chuyển đúng lượng được chấp nhận từ custody sang STORE |
-| BF-07 — Trả NCC | Warehouse → Accountant → Owner → Warehouse | SR/thỏa thuận → duyệt → GI-SR hoặc CUS-OUT/HO → ACK/VAR → đối chiếu | Xuất hàng thuộc STORE giảm một lần; hàng NCC giữ hộ chỉ giảm custody |
+| BF-03 — Chuyển vị trí | Warehouse | TO-RELOCATE → xác nhận | Nguồn −q, đích +q trong cùng kho |
+| BF-04 — Điều chuyển liên kho | Warehouse kho đi → Owner → Warehouse kho nhận | TR → duyệt → TO-PICK tùy chọn → TD/HO → INS/MWTR → TO put-away → VAR/quyết định nếu lệch | TD chuyển nguồn sang transit; MWTR chuyển lượng thực nhận từ transit sang đích |
+| BF-05 — Kiểm kê | Owner → Warehouse → Owner | ST/snapshot/count sheet → COUNT/recount → VAR/ADJ → duyệt/Clear Difference | Chỉ post delta được duyệt; không tạo ADJ=0 |
+| BF-06 — Đơn bán, xuất kho, giao khách và hoàn thành đơn | Sales → Warehouse → Sales hoàn thành (Accountant đối chiếu) | SO (sao chép đơn ngoài) → WIR liên kết → OD → reservation/`TO-PICK` → GI-S/HO (PGI) → POD kèm ảnh (SO = DELIVERED) → PAY-CFM xác nhận tiền ngoài (SO = COMPLETED) | PGI giảm lượng bàn giao kho đúng một lần; SO/WIR/soạn/POD/PAY-CFM không giảm tổng tồn |
+| BF-07 — Khách trả | Sales → Warehouse → Owner → Warehouse/Accountant | CR → CUS-IN → INS → duyệt → GR-CR hoặc CUS-OUT/HO → tham chiếu xử lý ngoài | GR-CR chuyển đúng lượng được chấp nhận từ custody sang STORE |
+| BF-08 — Trả NCC | Warehouse → Accountant → Owner → Warehouse | SR/thỏa thuận → duyệt → GI-SR hoặc CUS-OUT/HO → ACK/VAR → đối chiếu | Xuất hàng thuộc STORE giảm một lần; hàng NCC giữ hộ chỉ giảm custody |
 
-**Phân biệt TO, GR và MWTR:** TO là nhiệm vụ nội kho; GR nhận hàng mua hoặc khách trả; MWTR nhận một đợt điều chuyển vào một kho đích và tham chiếu dòng TD. Cùng một lượng MWTR không được post lần nữa thành GR mua.
+Phân biệt TO, GR và MWTR: TO là nhiệm vụ nội kho; GR nhận hàng mua hoặc khách trả; MWTR nhận một đợt điều chuyển vào một kho đích và tham chiếu dòng TD. Cùng một lượng MWTR không được post lần nữa thành GR mua.
 
-Các bước actor, nhánh ngoại lệ và ví dụ nghiệp vụ chi tiết đã mô tả tại [Mục 4 — Bảy quy trình To-be](#4-bảy-quy-trình-to-be).
+Các bước actor, nhánh ngoại lệ và ví dụ nghiệp vụ chi tiết đã mô tả tại [Mục 4 — Tám quy trình To-be](#4-tám-quy-trình-to-be).
 
 ## 16. Quy ước mainflow và swimlane
 
-Mainflow chỉ có lane của actor thực hiện nghiệp vụ: Store Owner, Sales Staff, Warehouse Staff và Accountant. Ở BF-03B có thể tách Warehouse Staff kho đi và kho nhận để thể hiện trách nhiệm theo kho; đây là cùng application role, không phải role mới. Không tạo lane System, WMSD, Database, API, MISA, Supplier, Customer hoặc Carrier. Admin không có bước nghiệp vụ nên không thêm lane trống.
+Mainflow chỉ có lane của actor thực hiện nghiệp vụ: Store Owner, Sales Staff, Warehouse Staff và Accountant. Ở BF-04 có thể tách Warehouse Staff kho đi và kho nhận để thể hiện trách nhiệm theo kho; đây là cùng application role, không phải role mới. Không tạo lane System, WMSD, Database, API, MISA, Supplier, Customer hoặc Carrier. Admin không có bước nghiệp vụ nên không thêm lane trống.
 
 Mỗi activity thể hiện actor, hành động và chứng từ được tạo/xác nhận. Ví dụ “Warehouse Staff — xác nhận nhận điều chuyển — MWTR”; tác động hệ thống sau hành động là hậu điều kiện nghiệp vụ, không vẽ thành lane riêng. Nhánh từ chối, sửa lại, giao/nhận từng phần và sai lệch được ghi chú trong flow và từng BF. Ngoại lệ có thể liên kết sang quy trình khác thay vì dồn mọi chi tiết lên mainflow.
 
-Sơ đồ draw.io chỉnh sửa được, đồng bộ D1–D8 ngày 20/10/2026: [WMSD_Mainflows_VI_EN.drawio](../04_so_do/WMSD_Mainflows_VI_EN.drawio). Ảnh BF-03B xuất lại từ sơ đồ cập nhật: [tiếng Việt](../04_so_do/WMSD_Mainflow_BF03B_VI.png), [English](../04_so_do/WMSD_Mainflow_BF03B_EN.png). Sơ đồ mô tả nghiệp vụ và áp dụng giống nhau với mọi công nghệ lưu trữ.
+Bộ draw.io/PNG ngày 20/10 là hình lịch sử, chưa tách BF-03/BF-04 và chưa cập nhật luồng bán hàng BF-06. Nội dung hiện hành là tám quy trình và Mermaid trong tài liệu này. Tệp draw.io đang bị xóa trong workspace và không được khôi phục ở lượt này: [WMSD_Mainflows_VI_EN.drawio](../04_so_do/WMSD_Mainflows_VI_EN.drawio). Ảnh điều chuyển cũ: [tiếng Việt](../04_so_do/WMSD_Mainflow_BF03B_VI.png), [English](../04_so_do/WMSD_Mainflow_BF03B_EN.png).

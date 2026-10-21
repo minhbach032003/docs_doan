@@ -1,8 +1,14 @@
 # WMSD — Đề xuất thiết kế cơ sở dữ liệu
 
-> **Công nghệ cần phân biệt:** mô hình quan hệ và DDL SQL trong tài liệu này là **đề xuất phân tích/thiết kế**, dùng để làm rõ thực thể, quan hệ, ràng buộc và giao dịch. Hệ thống khi triển khai **sẽ dùng MongoDB (NoSQL)** theo baseline của Report 3 và tài liệu thiết kế chi tiết. Không triển khai DDL SQL Server/T-SQL như database chạy thật.
+SQL Server/T-SQL trong tài liệu là mô hình quan hệ để phân tích thiết kế; hệ thống thực tế dùng MongoDB. DDL không phải migration cho MongoDB và chưa cung cấp service nghiệp vụ.
 
-Ngày lập: **18/10/2026**; đồng bộ **21/10/2026** theo khảo sát 20/10 và D1–D8. Đây là thiết kế đề xuất để review. Quy trình nghiệp vụ chuẩn được đặt tại [Đề xuất quy trình 2 — VI](../02_nghiep_vu/de_xuat_quy_trinh_2_VI.md). Thuật ngữ kho, chứng từ, bước BF-01–07 và quy ước swimlane nằm trong tài liệu quy trình để tránh lặp.
+Cập nhật 22/10/2026 theo khảo sát, D1–D8 và luồng BF-06 hiện hành trong [Đề xuất quy trình 2 — VI](../02_nghiep_vu/de_xuat_quy_trinh_2_VI.md). SQL tham chiếu: [WMSD_SQL_schema.sql](WMSD_SQL_schema.sql). Nhật ký: [change_logs.md](../../change_logs.md).
+
+| Phiên bản | Ngày | Nội dung |
+|---|---|---|
+| 1.0.0 | 21/10/2026, trước sửa luồng bán hàng | Baseline D1–D8: WIR tham chiếu trực tiếp dòng đơn ngoài. |
+| 2.0.0 | 21/10/2026 | SO → WIR → PGI → POD có ảnh → PAY-CFM; sửa liên kết nguồn WIR, thêm kiểm soát trạng thái và giao dịch xác nhận. |
+| 3.0.0 | 22/10/2026 | Tách BF-03 chuyển vị trí và BF-04 điều chuyển; đánh lại mã BF-05–08, không thay đổi bảng/cột SQL. |
 
 ## 1. Trạng thái, căn cứ và phạm vi
 
@@ -10,20 +16,20 @@ Ngày lập: **18/10/2026**; đồng bộ **21/10/2026** theo khảo sát 20/10 
 
 | Mã | Nguồn | Cách áp dụng |
 |---|---|---|
-| S1 | [Đề xuất quy trình 2 — VI](../02_nghiep_vu/de_xuat_quy_trinh_2_VI.md), 21/10/2026 | Baseline nghiệp vụ đề xuất: BF-01–07, năm role, thu hẹp bán hàng, không tích hợp MISA trực tiếp. |
+| S1 | [Đề xuất quy trình 2 — VI](../02_nghiep_vu/de_xuat_quy_trinh_2_VI.md), luồng bán hàng 21/10 và tách BF-03/BF-04 ngày 22/10/2026 | Nguồn nghiệp vụ hiện hành: 8 BF, 5 vai trò, 111 UC (98 active/13 retired), BR-01–33; không đồng bộ MISA tự động. |
 | S2 | [Report 1 text](../01_bao_cao/WMSD_Report1_Fix.docx.txt), đồng bộ 21/10/2026 | Bối cảnh một cửa hàng, khảo sát từ 3 kho, mục tiêu và phạm vi hiện hành; không coi phần As-is là To-be đã triển khai. |
-| S3 | [Report 3 text](../01_bao_cao/WMSD_Report3_Fix.docx.txt), đồng bộ 21/10/2026 | 108 mã UC: 95 active, 13 retired; actors, đặc tả, màn hình và quyền. MongoDB vẫn là runtime. |
+| S3 | [Report 3 text](../01_bao_cao/WMSD_Report3_Fix.docx.txt), baseline đầu ngày 21/10/2026 | Nguồn lịch sử 108 UC (95 active/13 retired), chưa có UC-109–111. Cần đồng bộ tiếp theo S1; MongoDB vẫn là hệ thống lưu trữ thực tế. |
 | S4 | [WMSD_Bangach.drawio](../04_so_do/WMSD_Bangach.drawio), **21 trang trong file hiện tại** | Kiểm tra BF01–06b, ERD và hai trang cuối. Trang BF03 có lane System; BF02/04/05/06a/06b có lane WMSD. Sơ đồ mới bỏ các lane này theo yêu cầu. |
 | S5 | [SAP WM I](../06_tham_khao/sap/Intro_S4HANA_Using_Global_Bike_Case_Study_WM_I_en_v4.1.pdf), [II](../06_tham_khao/sap/Intro_S4HANA_Using_Global_Bike_Case_Study_WM_II_en_v4.1.pdf), [III](../06_tham_khao/sap/Intro_S4HANA_Using_Global_Bike_Case_Study_WM_III_en_v4.1.pdf), [IV](../06_tham_khao/sap/Intro_S4HANA_Using_Global_Bike_Case_Study_WM_IV_en_v4.1.pdf) | Bộ **v4.1** trong repo: I GR tr.10, TO tr.18/21; II STO tr.6, GI tr.12, GR tr.18, TO tr.26/29; III picking tr.14/19, ship tr.25; IV snapshot/đếm/đếm lại/clear tr.4/12/14/21/27. Không tái dùng số trang v4.2 từ đề xuất cũ. |
 | S6 | [Tổng hợp quy trình](../06_tham_khao/quy_trinh/Tổng%20hợp%20quy%20trình.pdf), 4 trang | Tham khảo chứng từ giao nhận và bối cảnh; phần công nợ/thanh toán/xe không tự trở thành phạm vi MVP. |
 | S7 | [Các link tham khảo](../06_tham_khao/link_tham_khao.md) | Dùng hướng dẫn chính thức MISA, Odoo, Microsoft để đối chiếu khái niệm; các quyết định riêng của WMSD được mô tả dưới đây. |
 
-Thứ tự áp dụng: yêu cầu hiện tại → quyết định D1–D8 trong [change log](../../change_logs.md) và S1 ngày 21/10 → Report 1/3 text đã đồng bộ → nguồn khảo sát → tham khảo lịch sử S4–S7. Bản cũ ngày 17–18/10 chỉ là lịch sử; không khôi phục UC đã retired. SQL Server/T-SQL là mô hình tham chiếu, MongoDB là runtime.
+Thứ tự áp dụng: yêu cầu hiện tại → S1 và thay đổi BF-06 trong [change log](../../change_logs.md) → D1–D8 → Report 1/3 trước sửa BF-06 → khảo sát → nguồn lịch sử S4–S7. Hiện có 111 UC (98 active/13 retired). SQL là mô hình tham chiếu, MongoDB là lưu trữ thực tế.
 
 ### 1.2 Phạm vi và thay đổi kiến trúc
 
 - Một cửa hàng; khảo sát xác nhận từ 3 kho trở lên, đã chia khu/kệ và đánh mã. D4 giữ điều chuyển liên kho với xác nhận độc lập hai đầu. Chưa có danh sách, địa chỉ hoặc số người từng kho; không seed dữ liệu giả.
-- Phạm vi nghiệp vụ, actors, chứng từ và bảy BF dùng nguồn chuẩn ở tài liệu quy trình; WMSD không tự nhận thêm kế toán, hóa đơn thuế, thanh toán hoặc live integration MISA.
+- Theo 8 quy trình hiện hành: bổ sung SO sao chép, POD có ảnh và PAY-CFM xác nhận tiền ngoài. Không thêm xử lý thu tiền, công nợ, hóa đơn thuế hoặc đồng bộ MISA tự động.
 - SQL DDL minh họa mô hình quan hệ chuẩn hóa để review cấu trúc dữ liệu và các bất biến. Nó không thay đổi quyết định lưu trữ: MongoDB/NoSQL là database runtime.
 - FK/UNIQUE/CHECK trong mô hình SQL diễn đạt các quan hệ và quy tắc nghiệp vụ. Khi cài bằng MongoDB, cưỡng chế tương ứng qua collection validation, unique/partial indexes, tham chiếu ID và transaction/service logic. MongoDB không cung cấp FK giữa collection như SQL.
 
@@ -42,11 +48,12 @@ Thứ tự áp dụng: yêu cầu hiện tại → quyết định D1–D8 trong
 | Nhóm | Delta cần ghi trong SRS |
 |---|---|
 | BF-01 | Sales/Warehouse tạo nhu cầu; Accountant lập PO sau duyệt |
-| BF-03 | Tách chuyển cùng kho khỏi liên kho; bỏ vòng duyệt lặp TR → approval → TO liên kho |
-| BF-04 | Owner lập phiên; Warehouse đếm/đề nghị; Owner duyệt và Clear Difference |
-| BF-05 | Warehouse Issue Request từ đơn ngoài; giữ delivery/picking/PGI; không mở rộng thành invoice |
-| BF-06 | Custody và kiểm tra hàng trả trước khi Owner quyết định; tài chính theo dõi ngoài WMS |
-| BF-07 | Warehouse đề nghị; Accountant ghi thỏa thuận NCC; Owner duyệt trước xuất hoặc dùng quyết định BF-02 còn hiệu lực |
+| BF-03 | Chuyển vị trí trong cùng kho: Warehouse thực hiện TO-RELOCATE, không Owner duyệt, giữ nguyên tổng tồn và reservation; UC-34–37. |
+| BF-04 | Điều chuyển giữa các kho: TR do Owner duyệt → TD kho đi → MWTR kho nhận độc lập → put-away; UC-38–44/104. |
+| BF-05 | Owner lập phiên; Warehouse đếm/đề nghị; Owner duyệt và Clear Difference |
+| BF-06 | Sales nhập SO từ nguồn ngoài → WIR liên kết → soạn/PGI → Warehouse xác nhận POD có ảnh → DELIVERED → Sales xác nhận PAY-CFM → COMPLETED. UC-45–48/109–111; BR-31–33. |
+| BF-07 | Custody và kiểm tra hàng trả trước khi Owner quyết định; tài chính theo dõi ngoài WMS |
+| BF-08 | Warehouse đề nghị; Accountant ghi thỏa thuận NCC; Owner duyệt trước xuất hoặc dùng quyết định BF-02 còn hiệu lực |
 | Lưu trữ | MongoDB là runtime; SQL là mô hình phân tích và DDL tham chiếu |
 
 ## 2. Ánh xạ thiết kế sang MongoDB runtime
@@ -58,6 +65,8 @@ Bảng dưới đây mô tả cách ánh xạ các khái niệm của mô hình 
 | app_user, app_role, permission, user_warehouse | users, roles, permissions; quan hệ bằng ObjectId reference/role IDs |
 | warehouse, location, party, product, uom, lot | warehouses, locations, parties, products, lots; snapshot thuộc tính quan trọng vào dòng chứng từ |
 | document + typed header + document_line | business_documents phân loại documentType, hoặc collection theo bounded context cùng documentId; embed header/lines nếu cùng vòng đời và giới hạn kích thước |
+| sales_order + line + cancellations | sales_orders với dòng hàng và tham chiếu nguồn; cancellation_events lưu từng lần hủy có kiểm soát; unique source và version trên đơn |
+| customer_delivery + line / external_payment_confirmation / business_operation | customer_deliveries, external_payment_confirmations và business_operations; tham chiếu SO/GI/ảnh, unique operation keys; không ghi ledger tồn |
 | approval + approval_line | approvals, lưu version được duyệt, actor, decision và lượng được phép |
 | external_reference + line | external_references, đủ trường nguồn để đối chiếu và khử trùng |
 | stock_balance | stock_balances; unique compound index theo account/location + lot + quality + owner |
@@ -69,7 +78,7 @@ Bảng dưới đây mô tả cách ánh xạ các khái niệm của mô hình 
 
 Không biến từng bảng SQL thành một MongoDB collection. Chỉ embed dữ liệu khi cùng vòng đời, được đọc/cập nhật như một đơn vị và không tăng vô hạn. Chứng từ đã post, ledger, audit và các lần đếm lại cần lịch sử bền vững, không ghi đè. Transaction cập nhật nhiều document phải commit posting batch, movements, balance, reservations, trạng thái chứng từ, audit và outbox cùng nhau.
 
-Tạo unique indexes cho document number, idempotency key, operation key và các chiều của balance. Xác nhận collation, partial index cho bản ghi active, index báo cáo/truy vết và chiến lược shard theo tải thực; không thêm sharding chỉ vì MongoDB hỗ trợ.
+Tạo unique indexes cho số chứng từ, mã chống ghi lặp, mã thao tác và các thành phần xác định số dư. Xác nhận collation, partial index cho bản ghi active, index báo cáo/truy vết và chiến lược shard theo tải thực; không thêm sharding chỉ vì MongoDB hỗ trợ.
 
 ## 3. Mô hình dữ liệu quan hệ tham chiếu (SQL)
 
@@ -107,11 +116,11 @@ Trong mô hình này, PK là khóa chính, FK là khóa ngoại, UNIQUE bảo đ
 | `document` | document_id PK; document_no UNIQUE; kind, status, version, creator, timestamps | Danh tính chứng từ, trạng thái và phiên bản |
 | `document_line` | line_id PK; document_id FK; UNIQUE(document,line_no); product, lot?, conversion, entered_qty, qty_base, snapshots | Dòng kế hoạch có thể chưa xác định lot; dòng post phải có lot đã xác minh hoặc lot tạm bị chặn |
 | `document_link` | parent_document_id, child_document_id, relation_code PK | Truy vết header qua FK thật |
-| `line_link` | source_line_id, target_line_id, relation_code, linked_qty | RR→PO; PO→GR; WIR→OD→GI; receipt→TO, từng lượng |
+| `line_link` | source_line_id, target_line_id, relation_code, linked_qty | RR→PO, PO→GR, SO→WIR→OD→GI→POD theo lượng; BF-06 còn có FK cụ thể để kiểm đúng chứng từ cha |
 | `approval`, `approval_line` | document/version/decision_kind UNIQUE; requester ≠ approver; dòng/lượng/outcome | Lưu quyết định và giới hạn theo lượng; không một boolean approved cho toàn hồ sơ |
-| `evidence` | document_id FK, object_key, sha256, MIME, uploader/time | Lưu tham chiếu tệp riêng tư; không URL công khai hoặc base64 trong bảng dòng |
+| `evidence` | document_id, object_key, sha256, MIME, người/thời điểm tải; UNIQUE(evidence_id,document_id) | Tệp riêng tư. POD/PAY-CFM dùng FK ghép để chỉ nhận ảnh/tệp thuộc đúng phiếu; service kiểm nội dung và kết quả tải. |
 | `external_reference`, `document_external_reference` | UNIQUE(system,kind,number), source_version nếu nguồn có; correlation_id UNIQUE không trống; verifier/time và nối document-reference | Version nguồn không được bịa; document.version quản phiên bản nội bộ; correlation ổn định để truy vết |
-| `external_reference_line` | reference_id, line_key UNIQUE theo reference; product, eligible_qty | Nguồn từng dòng và hạn mức lịch sử; Accountant xác minh |
+| `external_reference_line` | reference_id, line_key duy nhất trong nguồn; product, eligible_qty; UNIQUE(external_line_id,reference_id) | Sales xác minh đơn nguồn hiện tại; Accountant hỗ trợ nguồn lịch sử/đối chiếu. SO line liên kết đúng nguồn của SO. |
 
 
 **Nguồn ngoài và phiên bản:** `external_reference.source_version` nullable vì nguồn có thể không có mã phiên bản; `correlation_id` bắt buộc, UNIQUE và không trống để truy vết WMS ổn định. `document.version` vẫn kiểm phiên bản hồ sơ/duyệt nội bộ. Không dùng correlation mới mỗi lần retry thay cho operation key.
@@ -125,13 +134,14 @@ Các bảng header dưới đây có **PK đồng thời là FK `document_id →
 | BF-01 | `replenishment_request`: warehouse, needed_on, trigger_reason. `purchase_order`: supplier, receiving warehouse, expected date, supplier_confirmation. `arrival`: warehouse, supplier?, arrived_at, delivery_reference. |
 | Kiểm nhận dùng chung | `inspection_line`: inspected_source_line, quality, ownership_decision, inspector/time. Tách dòng khi khác chất lượng/quyền sở hữu. |
 | Nhập mua/trả khách | `goods_receipt`: warehouse, receipt_kind PURCHASE/CUSTOMER_RETURN; nguồn từng dòng qua line_link. |
-| BF-03 | `transfer_request`: source/destination warehouses khác nhau. `transfer_dispatch`: request FK, dispatcher/time. `transfer_receipt`: dispatch FK, receiver/time. `transfer_receipt_line`: dispatch_line FK, quality. |
+| BF-03 | warehouse_task loại RELOCATE; warehouse_task_line có vị trí nguồn/đích cùng kho, cùng lô/chủ/chất lượng; document/audit lưu xác nhận. |
+| BF-04 | `transfer_request`: source/destination warehouses khác nhau. `transfer_dispatch`: request FK, dispatcher/time. `transfer_receipt`: dispatch FK, receiver/time. `transfer_receipt_line`: dispatch_line FK, quality. |
 | Bàn giao | `handover`: related_document FK, recipient_name, carrier?, time, confirmer; bằng chứng qua evidence. |
-| BF-05 | `issue_request`: customer, requested warehouse, needed date, address snapshot. `issue_request_line`: external_line FK, release_key UNIQUE theo external line, tone/calibre yêu cầu, xác nhận thay thế. `outbound_delivery`: WIR FK, một warehouse, lịch giao. `goods_issue`: warehouse, SALE/SUPPLIER_RETURN. |
+| BF-06 | sales_order/line/cancellation; issue_request/line gắn SO; outbound_delivery/line; sales_goods_issue_line; customer_delivery/line; external_payment_confirmation và business_operation. Chi tiết tại mục 3.4.2. |
 | Công việc kho | `warehouse_task`: warehouse, kind, assigned_to. `warehouse_task_line`: from/to location, quality; hai location cùng warehouse của task. |
 | BF-02 | `defect_case`: discovered_at, reason. `disposition_line`: defect_line, outcome, approval. Chứng từ SCRAP nằm trong document/line, liên kết DISP. |
-| BF-06 | `customer_return`: customer, warehouse, trạng thái tài chính riêng. `customer_return_line`: GI nguồn **hoặc** external historical line, reason; XOR hai nguồn. |
-| BF-07 | `supplier_return`: supplier, warehouse, thỏa thuận và trạng thái tài chính. `supplier_return_line`: origin_line, owner_party, agreed_qty, approval. `supplier_ack_line`: dispatch_line, outcome, acknowledged_at. |
+| BF-07 | `customer_return`: customer, warehouse, trạng thái tài chính riêng. `customer_return_line`: GI nguồn **hoặc** external historical line, reason; XOR hai nguồn. |
+| BF-08 | `supplier_return`: supplier, warehouse, thỏa thuận và trạng thái tài chính. `supplier_return_line`: origin_line, owner_party, agreed_qty, approval. `supplier_ack_line`: dispatch_line, outcome, acknowledged_at. |
 | Sai lệch dùng chung | `discrepancy_line`: source_line, SHORT/OVER/DAMAGED/WRONG_LOT/WRONG_PRODUCT, status, resolution_document. |
 
 `SUPPLIER_ACK`, `CUSTODY_RECEIPT`, `CUSTODY_RELEASE`, `HANDOVER`, `REVERSAL`, `SCRAP`, `OPENING` là document kinds. Không cần một bảng header trống riêng cho từng kind khi không có thuộc tính riêng. Một phiếu có nhiều dòng, không có mảng embedded. Mỗi FK nguồn phải được service kiểm tra thêm đúng loại chứng từ và cùng sản phẩm/lô theo quy tắc, vì FK tồn tại chưa chứng minh nguồn hợp lệ về nghiệp vụ.
@@ -149,13 +159,38 @@ Các bảng header dưới đây có **PK đồng thời là FK `document_id →
 
 Service chọn assessment mới nhất theo dòng và đúng version hiện tại; kiểm inspection, nguồn đã xác minh, Owner APPROVE và approval_line đúng dòng/lượng trước GR-CR. CHECK/FK không chứng minh những liên kết này. Approval cũ không hợp lệ khi điều kiện thay đổi. PENDING/INELIGIBLE vẫn là custody nếu đang giữ; bàn giao trả thực tế mới giảm custody. Lot chưa xác minh dùng identification_status=UNKNOWN và giá trị tham chiếu chưa rõ được ghi minh bạch; không bịa calibre hoặc dùng kích thước danh nghĩa thay calibre đã kiểm.
 
+### 3.4.2 Đơn bán, ảnh giao hàng và xác nhận nhận tiền
+
+BF-06 mới dùng các bản ghi dưới đây. Số lượng nằm tại document_line theo đơn vị tồn chuẩn; riêng bản ghi hủy lưu cancelled_qty_base. Mô hình nhập hàng, điều chuyển, hàng lỗi, trả hàng và kiểm kê hiện có được kế thừa.
+
+| Bảng | Trường và liên kết | Quy tắc |
+|---|---|---|
+| sales_order | document PK/FK; external_reference_id duy nhất; khách, ngày cần, địa chỉ nhận | Loại SALES_ORDER là bản nhập lại thủ công từ một đơn nguồn đã xác minh. Lưu chứng từ nguồn; sửa/mở lại SO cũ thay vì tạo bản sao khác. |
+| sales_order_line | dòng hàng; SO và tham chiếu nguồn; external_line_id duy nhất; tone/calibre yêu cầu | FK ghép giữ dòng hàng trong đúng SO và đúng đơn nguồn của SO đó. Service kiểm sản phẩm, quy đổi và số lượng nguồn. |
+| sales_order_cancellation | SO/dòng hàng, cancelled_qty_base dương, người/thời điểm, lý do không trống, operation_id duy nhất | Lưu từng lần hủy phần chưa xuất, không ghi đè lịch sử. Kiểm tổng hủy; giảm cam kết WIR/OD chưa xuất và giải phóng lượng giữ trong cùng transaction. |
+| issue_request / issue_request_line | SO bắt buộc; dòng lưu WIR/SO/dòng SO; UNIQUE(dòng SO,release_key) | Thông tin chung và dòng WIR phải cùng tham chiếu một SO. FK ghép chặn dùng dòng của đơn khác; thông tin khách lấy từ SO. |
+| outbound_delivery_line | dòng hàng, OD, WIR và dòng WIR | FK ghép buộc dòng hàng thuộc đúng WIR của đợt xuất. Mỗi OD thuộc một kho. |
+| sales_goods_issue_line | dòng hàng, goods_issue_id, outbound_delivery_line_id | Phần mở rộng dành riêng cho dòng GI-S bán hàng. Service kiểm sản phẩm/lô/kho và PGI đã post hợp lệ. Nguồn phiếu xuất trả NCC giữ cách xử lý hiện có. |
+| customer_delivery / customer_delivery_line | chứng từ POD, SO, kho, người nhận, thời điểm khách nhận, người/thời điểm xác nhận, mã thao tác; dòng → GI-S + photo_evidence_id bắt buộc | Mỗi dòng gắn một dòng GI-S đã post. FK ghép buộc ảnh thuộc chính chứng từ POD; service kiểm ảnh đã lưu, quyền truy cập và trần lượng giao. Chỉ có thông tin chung của chuyến giao chưa đủ để xác nhận khách nhận hàng. |
+| external_payment_confirmation | chứng từ PAY-CFM, SO, delivered_order_version, full_payment_received=1, người/thời điểm, mã thao tác; tham chiếu/bằng chứng/ghi chú thu tiền | UNIQUE(SO,delivered_order_version) chặn xác nhận tiền lặp cho cùng phiên bản đã giao. CHECK yêu cầu tham chiếu/ghi chú không trống hoặc tệp bằng chứng. Sales xác nhận đã nhận đủ tiền bên ngoài sau khi SO hiện tại là DELIVERED; không tính tiền hoặc chuyển tiền. |
+| business_operation | chứng từ, thao tác/mã lần thực hiện, idempotency_key duy nhất, payload_hash, document_version, người/thời điểm, lý do khi cần | Lưu thao tác không ghi tăng/giảm tồn, tách khỏi posting_batch. Gửi lại cùng mã trả kết quả cũ; cùng mã nhưng khác nội dung bị từ chối. |
+
+Giới hạn từng dòng: tổng cam kết WIR chưa hủy (kể cả phần đã xuất) không vượt lượng đặt SO trừ phần hủy hợp lệ; tổng OD không vượt lượng WIR được phép sau hủy; PGI hợp lệ không vượt lượng OD; tổng POD đã xác nhận và chưa hủy hiệu lực không vượt PGI hợp lệ của dòng GI-S. Không cộng lượng chứng từ cha và con thành hai nhu cầu. Kiểm tổng trong transaction, không thay bằng CHECK trên một dòng.
+
+| Đối tượng | Trạng thái và tác động |
+|---|---|
+| SO | DRAFT → OPEN → IN_PROGRESS/PARTIALLY_DELIVERED → DELIVERED → COMPLETED. DELIVERED cần giao đủ từng dòng còn phải thực hiện, có ảnh, tổng lượng này lớn hơn 0. Hủy toàn bộ mà chưa giao thì CANCELLED. COMPLETED cần thêm Sales xác nhận đã nhận đủ tiền ngoài hệ thống. |
+| POD / PAY-CFM | DRAFT → CONFIRMED; nếu ghi nhầm thì VOIDED có lý do và nhật ký đính chính. Các xác nhận này không đổi tồn. WIR hoàn tất công việc kho độc lập với trạng thái giao hàng/hoàn thành SO. |
+
+Giữ nội dung xác nhận gốc khi hủy hiệu lực do ghi nhầm; tạo business_operation mới, tăng phiên bản và tính lại tiến độ SO và không tái dùng điều kiện hoàn thành cũ. PAY-CFM phải gắn phiên bản SO hiện đã giao đủ. Khách trả hàng thông thường vẫn giữ lịch sử POD/PAY-CFM và xử lý riêng qua BF-07. Tải ảnh lỗi thì chưa xác nhận POD; gửi thông báo lỗi sau xác nhận chỉ gửi lại thông báo.
+
 ### 3.5 Tồn, giữ hàng và ledger
 
 | Bảng | Khóa/trường | Bất biến |
 |---|---|---|
 | `stock_account` | account_id; **location_id XOR transit_dispatch_line_id**, mỗi cột UNIQUE | Một tài khoản là bin vật lý hoặc transit riêng một dòng TD; transit không gán giả vào kho đích |
 | `stock_balance` | balance_id; UNIQUE(account,lot,quality,owner_party); qty_base ≥0; version | Không NULL trong dimension để tránh hai số dư “giống nhau” do NULL |
-| `posting_batch` | batch_id; document FK; UNIQUE(idempotency_key); UNIQUE(document,operation,operation_key); payload_hash; actor/time; reversal_of UNIQUE | Một lần confirm/post có một batch; retry cùng key khác payload bị từ chối |
+| `posting_batch` | batch_id; document FK; UNIQUE(idempotency_key); UNIQUE(document,operation,operation_key); payload_hash; actor/time; reversal_of UNIQUE | Mỗi lần ghi tăng/giảm tồn có một batch; gửi lại cùng mã khác nội dung bị từ chối. POD/PAY-CFM dùng business_operation riêng |
 | `stock_movement` | batch, document_line, from_balance?, to_balance?, q>0; before/after | Ít nhất một đầu; hai đầu khi di chuyển; một đầu khi nhập/xuất khỏi phạm vi theo dõi |
 | `reservation` | demand_line, execution_line, balance, qty, ACTIVE/CONSUMED/RELEASED | Tổng ACTIVE trên balance ≤ balance.qty; chuyển theo hàng, không tạo hai lượt giữ cho cùng nhu cầu |
 | `demand_supply_allocation` | PK(demand_line,supply_line), qty, trạng thái | PO/TD dự kiến dành cho nhu cầu; không đưa vào available trước khi đủ điều kiện |
@@ -187,6 +222,20 @@ Sơ đồ này thể hiện cấu trúc chính; toàn bộ cột, FK, bảng n�
 ```mermaid
 erDiagram
   DOCUMENT ||--o{ DOCUMENT_LINE : contains
+  DOCUMENT ||--o| SALES_ORDER : specializes
+  SALES_ORDER ||--|{ SALES_ORDER_LINE : contains
+  SALES_ORDER ||--o{ ISSUE_REQUEST : fulfills
+  SALES_ORDER_LINE ||--o{ ISSUE_REQUEST_LINE : sources
+  ISSUE_REQUEST ||--o{ OUTBOUND_DELIVERY : releases
+  ISSUE_REQUEST_LINE ||--o{ OUTBOUND_DELIVERY_LINE : releases
+  OUTBOUND_DELIVERY_LINE ||--o{ SALES_GOODS_ISSUE_LINE : issues
+  SALES_GOODS_ISSUE_LINE ||--o{ CUSTOMER_DELIVERY_LINE : proves
+  SALES_ORDER ||--o{ CUSTOMER_DELIVERY : receives
+  CUSTOMER_DELIVERY ||--|{ CUSTOMER_DELIVERY_LINE : contains
+  EVIDENCE ||--o{ CUSTOMER_DELIVERY_LINE : photo
+  SALES_ORDER ||--o{ EXTERNAL_PAYMENT_CONFIRMATION : completes
+  DOCUMENT ||--o{ BUSINESS_OPERATION : records
+  SALES_ORDER_LINE ||--o{ SALES_ORDER_CANCELLATION : cancels
   DOCUMENT ||--o{ APPROVAL : versions
   DOCUMENT ||--o{ POSTING_BATCH : posts
   DOCUMENT ||--o| TRANSFER_REQUEST : specializes
@@ -231,10 +280,16 @@ DDL cung cấp PK/FK, UNIQUE, kiểu số chính xác, CHECK cục bộ, XOR ngu
 | R-13 | D6 đúng dòng/lượng/version | CHECK điều kiện cục bộ + service kiểm assessment mới nhất, inspection, nguồn và approval_line; không post PENDING/INELIGIBLE |
 | R-14 | Bao bì và đơn vị thực | Lưu packaging_condition và actual quantity; bao bì rách không tự đổi quality; version hệ số không sửa lịch sử |
 | R-15 | Đúng phạm vi UC và vai trò | Đúng 5 role; 13 UC retired không permission active; UC-107/108 không post tồn; D2 mỗi bộ phận tự ghi |
+| R-16 | SO và nguồn WIR | Nguồn SO/dòng duy nhất; FK ghép đúng chứng từ cha; Sales xác minh nguồn và lưu bằng chứng; dùng lại SO khi sửa/mở lại |
+| R-17 | Trần SO→WIR→OD→GI | Kiểm tổng từng tầng, tính cả phần đã xuất; hủy có lịch sử và giải phóng phần giữ phù hợp; không cộng lượng cha/con |
+| R-18 | POD có ảnh và không giao vượt PGI | Warehouse đúng kho; GI đã post hợp lệ; ảnh cùng phiếu, tải thành công; kiểm đồng thời tổng POD trên dòng GI |
+| R-19 | DELIVERED/COMPLETED đúng điều kiện | Giao đủ lượng còn phải thực hiện >0 mới DELIVERED; Sales xác nhận đủ tiền ngoài trên phiên bản hiện tại mới COMPLETED; hủy toàn bộ chưa giao là CANCELLED |
+| R-20 | Xác nhận không ghi tồn và không trùng | business_operation có key/hash; cùng transaction với xác nhận, tiến độ SO, audit/outbox; không tạo movement cho POD/PAY-CFM |
+| R-21 | Đính chính có lưu lịch sử | VOIDED có lý do; tính lại SO và vô hiệu điều kiện hoàn thành cũ. BF-07 thông thường giữ lịch sử giao/nhận tiền gốc |
 
 Với gạch 4 viên/thùng và 0,36 m²/viên: 3 thùng +2 viên =14 viên =5,04 m². Lưu thành hai dòng nhập hoặc tách các thành phần đơn vị rõ; không lưu “3,5 thùng” rồi suy ra khả năng xuất nửa thùng mà thiếu thông tin viên. M² dùng hiển thị/đặt nhu cầu; xuất thực phải đạt độ hạt sản phẩm. Version quy đổi sau này không tính lại lịch sử.
 
-### 4.2 Transaction và chống ghi nhận lặp
+### 4.2 Transaction ghi tăng/giảm tồn
 
 ```text
 BEGIN
@@ -249,6 +304,16 @@ COMMIT
 ```
 
 MongoDB không dùng row lock hay `SELECT FOR UPDATE`. Cập nhật từng balance nguyên tử bằng filter theo ObjectId, version và điều kiện đủ lượng; dùng conditional increment. Balance mới dựa trên unique compound index và xử lý duplicate-key/retry. Transaction đọc lại version chứng từ, cờ stocktake freeze và lượng nguồn; retry write conflict với cùng idempotency key. Để stocktake không đua với posting, activation và posting phải cùng cập nhật/kiểm phiên bản phạm vi trong một transaction. Commit posting batch, ledger, balance, reservation, trạng thái chứng từ, audit và outbox cùng nhau. Kiểm tra giới hạn transaction và tải với dữ liệu đại diện.
+
+### 4.2.1 Transaction xác nhận không ghi tăng/giảm tồn
+
+1. Kiểm quyền Sales cho SO/WIR/hủy/PAY-CFM hoặc Warehouse được giao kho cho POD; kiểm loại chứng từ, trạng thái và phiên bản.
+2. Tra business_operation theo mã thao tác ổn định và kiểm payload_hash. Gửi lại cùng nội dung trả kết quả cũ; cùng mã nhưng đổi nội dung bị từ chối.
+3. Kiểm soát cập nhật đồng thời trên SO, dòng WIR/OD và GI nguồn. Đọc lại tổng lượng, PGI hợp lệ, ảnh đã lưu và phiên bản SO hiện tại; ảnh chưa tải xong chưa đủ điều kiện xác nhận giao.
+4. Lưu xác nhận/hủy, business_operation, tiến độ SO, audit và outbox trong cùng transaction. POD/PAY-CFM không tạo posting_batch, movement hoặc thay đổi balance/reservation. Hủy phần chưa xuất có thể giải phóng reservation nhưng không đổi tồn sở hữu.
+5. Với PAY-CFM, kiểm lại đã giao đủ và Sales xác nhận nhận đủ tiền ngoài hệ thống trong cùng transaction, rồi mới đặt COMPLETED. Không chỉ tin trạng thái client gửi hoặc phiên bản cũ.
+
+Trong MongoDB, cập nhật có điều kiện trên phiên bản SO/dòng nguồn phải khiến các lần xác nhận cạnh tranh cùng một bản ghi. Chỉ đọc snapshot không ngăn được hai POD khác nhau cùng vượt nguồn. Khi retry do xung đột ghi, giữ nguyên mã thao tác. DDL mô tả hợp đồng dữ liệu, chưa triển khai service thực thi các quy tắc này.
 
 ### 4.3 Ví dụ transaction liên kho
 
@@ -266,13 +331,16 @@ Chỉ đảo toàn batch khi không có nghiệp vụ sau phụ thuộc và đ�
 | PO, thỏa thuận NCC, tham chiếu tài chính ngoài | Xem phần liên quan | Xem phần nhận | Có | Xem/duyệt phần cần | Không |
 | GR, TO, TD, MWTR, GI | Không | Theo kho được giao | Đối chiếu | Xem | Không |
 | WIR, OD, CR đề nghị | Có | Xem/kiểm/nhận phần kho | Xác minh nguồn | Duyệt CR | Không |
+| Nhập/sửa SO; hủy phần chưa xuất | Có | Xem phần liên quan | Hỗ trợ đối chiếu | Xem | Không |
+| POD: xác nhận giao khách có ảnh (UC-110) | Xem | Theo kho được giao | Xem/đối chiếu | Xem | Không |
+| PAY-CFM: xác nhận đủ tiền ngoài (UC-111) | Có | Xem | Xem/đối chiếu | Xem | Không |
 | Cách ly ngay; đề nghị xử lý | Không | Có | Đối chiếu | Duyệt xử lý | Không |
 | Đếm/đề nghị ADJ | Không | Có | Đối chiếu | Tạo phiên, duyệt/post ADJ | Không |
 | Phân quyền kỹ thuật | Không | Không | Không | Không | Có |
 
 Đây là ma trận thao tác cốt lõi, không mở rộng quyền master data của SRS. Kho nguồn/đích phải kiểm theo user ID và warehouse assignment. User có nhiều role không được tự duyệt đề nghị của mình. Các báo cáo và tệp chứng cứ áp cùng phạm vi truy cập như màn hình; Sales không thấy giá vốn hay toàn bộ dữ liệu cách ly. Accountants chỉ xem chuỗi chứng từ được giao trách nhiệm.
 
-Báo cáo cần có: tồn sở hữu theo kho/bin/lot/quality; available và reservation; custody theo chủ hàng; transit theo TD và tuổi chờ; PO/WIR còn thiếu; chênh lệch chuyển/đếm/trả NCC; truy vết nguồn ngoài→WIR/PO→GR/GI→return/adjustment. Đối soát định kỳ `SUM(inventory_ledger.delta)` với `stock_balance.qty`, tính cả OPENING lúc khởi tạo; không nạp số dư đầu kỳ bằng UPDATE bỏ qua ledger.
+Báo cáo gồm tồn/khả dụng/giữ hộ/transit, nhu cầu PO/SO/WIR còn thiếu, lượng đã xuất và khách thực nhận, đơn DELIVERED đang chờ xác nhận tiền, đơn COMPLETED, hủy và sai lệch. Truy vết nguồn ngoài → SO → WIR → OD → GI-S → POD → PAY-CFM và hồ sơ trả/điều chỉnh liên quan. Đối chiếu SUM(inventory_ledger.delta) với stock_balance, kể cả OPENING; POD/PAY-CFM không tham gia ledger tồn.
 
 ## 6. Kịch bản nghiệm thu thiết kế
 
@@ -300,10 +368,24 @@ Báo cáo cần có: tồn sở hữu theo kho/bin/lot/quality; available và re
 | T20 | Thời hạn/điều kiện chưa xác minh | PENDING; không tự đặt 7/15/30 ngày; cần bằng chứng |
 | T21 | Nguyên thùng hoặc viên lẻ chưa dùng đủ căn cứ | CASE_REVIEW; chỉ Owner quyết định sau inspection, không tự nhận |
 | T22 | Đổi assessment/lượng sau Owner duyệt | Version mới và duyệt lại; post với approval cũ bị chặn |
-| T23 | NCC chưa ACK hoặc ACK lệch GI | Mở BF-07; Owner UC-106 giải quyết; không trừ thêm khi đóng |
+| T23 | NCC chưa ACK hoặc ACK lệch GI | Mở BF-08; Owner UC-106 giải quyết; không trừ thêm khi đóng |
 | T24 | Thùng rách, gạch nguyên và số viên thực được kiểm | Chất lượng theo kiểm, không tự DAMAGED; quantity theo viên/version |
 | T25 | Lỗi mạng giữa posting và trả response | Tra batch/operation key; không post lặp, không mất audit |
 | T26 | Kiểm kê theo tháng | Owner tạo phiên thủ công; D5 khóa phạm vi; không job tạo phiên |
+| T27 | Nhập lại cùng đơn bán hoặc dòng nguồn lần hai | Chặn trùng SO/nguồn; phải có xác minh và bằng chứng; không tạo giao dịch tồn. |
+| T28 | Thông tin chung WIR gắn SO A nhưng dòng gắn SO B; dòng OD gắn WIR khác | FK ghép chặn sai chứng từ cha; service còn kiểm sản phẩm và đơn vị. |
+| T29 | Nhiều WIR/OD cùng dùng một dòng SO, có phần đã xuất | Kiểm trần riêng SO→WIR và WIR→OD; WIR đã hoàn tất không làm phát sinh lại nhu cầu. |
+| T30 | Hủy phần chưa xuất nhưng đã giữ hàng hoặc gắn task | Xử lý task, giảm cam kết, giải phóng đúng lượng giữ; lưu lý do/người/thời điểm hủy. |
+| T31 | POD dùng GI chưa post, đã đảo, sai đơn hoặc sai kho | Từ chối; giao khách phải dựa trên dòng phiếu xuất bán đã post còn hợp lệ. |
+| T32 | POD thiếu ảnh, ảnh thuộc phiếu khác, tệp không phải ảnh hoặc tải lỗi | FK chặn thiếu/sai chứng từ ảnh; service chặn tệp không phải ảnh/chưa tải xong; không DELIVERED. |
+| T33 | PGI 10; hai POD khác nhau đồng thời xác nhận 6 và 5 | Tổng xác nhận tối đa 10; kiểm đồng thời dòng nguồn chặn vượt. Hai lần 6+4 hợp lệ mới giao đủ. |
+| T34 | Gửi lại POD/PAY-CFM cùng mã, sau đó đổi nội dung với mã cũ | Trả kết quả đã lưu; đổi nội dung bị từ chối; không tăng lượng giao hoặc ghi tồn lần hai. |
+| T35 | Đã PGI/bàn giao vận chuyển nhưng khách chưa nhận | SO còn IN_PROGRESS; khách nhận một phần có ảnh thì PARTIALLY_DELIVERED. |
+| T36 | Chưa nhận tiền, mới nhận một phần hoặc khách trả trước khi giao đủ | Không hoàn thành SO; đã giao mà chưa nhận đủ tiền thì giữ DELIVERED. |
+| T37 | Warehouse/Accountant xác nhận PAY-CFM; Sales xác nhận đủ tiền trên SO DELIVERED hiện tại | Chặn sai vai trò; Sales có tham chiếu/bằng chứng/ghi chú được xác nhận và chuyển COMPLETED cùng transaction, không đổi tồn. |
+| T38 | Hủy toàn bộ số đặt và khách chưa nhận hàng | SO=CANCELLED, không DELIVERED/COMPLETED. Giao một phần kết hợp hủy hợp lệ phần chưa xuất có thể đạt DELIVERED. |
+| T39 | Hủy hiệu lực POD/PAY-CFM ghi nhầm hoặc dùng phiên bản đã giao cũ | Giữ bằng chứng gốc, lý do/audit; tính lại SO; điều kiện hoàn thành cũ không cho phép xác nhận mới. |
+| T40 | Transaction xác nhận lỗi hoặc khách trả hàng thông thường sau đó | Không lưu một phần thao tác/trạng thái khi transaction thất bại; BF-07 giữ lịch sử giao/nhận tiền và dùng chứng từ tồn riêng. |
 
 Đây là **acceptance criteria**, không phải tuyên bố toàn bộ backend đã vượt qua kiểm thử. DDL và sơ đồ được kiểm tra độc lập; cần triển khai posting service và chạy concurrency/integration tests trước sử dụng thực tế.
 
@@ -312,11 +394,15 @@ Báo cáo cần có: tồn sở hữu theo kho/bin/lot/quality; available và re
 
 ### 6.1 Truy vết luồng ngoại lệ
 
-35 nhánh BF-01–07 và EX-01–05 trong mục 4 của đề xuất quy trình là đầu vào nghiệm thu dữ liệu: chứng từ/approval lưu hành động và phiên bản; line_link/nguồn lưu lượng; stock_account/balance phân owner/location/transit; posting_batch/movement chống ghi lặp; stocktake/location_lock/count_attempt giữ phạm vi và lịch sử; evidence/audit/outbox giữ chứng cứ và retry. Mỗi lỗi transaction phải để balance, ledger và lượng nguồn đồng nhất. Các case cần service không được coi đã cưỡng chế chỉ vì DDL parse thành công.
+37 nhánh BF-01–08 và EX-01–05 trong mục 4 của đề xuất quy trình là đầu vào nghiệm thu dữ liệu: chứng từ/approval lưu hành động và phiên bản; line_link/nguồn lưu lượng; stock_account/balance phân owner/location/transit; posting_batch/movement chống ghi lặp; stocktake/location_lock/count_attempt giữ phạm vi và lịch sử; evidence/audit/outbox giữ chứng cứ và retry. Mỗi lỗi transaction phải để balance, ledger và lượng nguồn đồng nhất. Các case cần service không được coi đã cưỡng chế chỉ vì DDL parse thành công.
+
+
+
+Các case T27–T40 kiểm hợp đồng mới của BF-06 và UC-109–111/BR-31–33. Kiểm SQL cục bộ không thay cho kiểm phân quyền, transaction/concurrency và tải ảnh trên backend MongoDB.
 
 ## 7. Thứ tự triển khai và quyết định cần chốt
 
-Triển khai theo thứ tự: MongoDB collection validation/index/master data → role/scope → document shape/approval → ledger append-only và posting/idempotency service → BF-01/TO → BF-05 → BF-03 → BF-02/06/07 → BF-04 → báo cáo và đối soát. Dùng dữ liệu mẫu khác biệt tone/calibre, nhận từng phần, custody và transit ngay từ đầu.
+Triển khai theo thứ tự: MongoDB collection validation/index/master data → role/scope → document shape/approval → ledger append-only và posting/idempotency service → BF-01/TO → BF-06 → BF-03/BF-04 → BF-02/07/08 → BF-05 → báo cáo và đối soát. Dùng dữ liệu mẫu khác biệt tone/calibre, nhận từng phần, custody và transit ngay từ đầu.
 
 Các quyết định cần nhóm/cửa hàng xác nhận trước chốt SRS: danh sách/số lượng chính xác và địa chỉ kho (đã biết từ 3); người nhận độc lập ở liên kho; chính sách chấp nhận hàng lỗi và mốc nhận quyền quản lý; độ hạt đơn vị; thời lượng khóa kiểm kê; quy tắc thay lô; tiêu chí xác minh nguồn lịch sử; mẫu in/mã chứng từ. Đề xuất đã chọn baseline để thiết kế tiếp, không coi các điểm này là đã khảo sát xong.
 

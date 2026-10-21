@@ -1,3 +1,109 @@
+# Tách chuyển vị trí và điều chuyển liên kho — 22/10/2026 — phiên bản 3.0.0
+
+## 1. Yêu cầu và phạm vi
+
+Theo yêu cầu mới nhất, tách hai nội dung của BF-03 cũ thành hai quy trình độc lập; Codex sửa trực tiếp, không dùng AGY. Tiếp tục giữ các cập nhật thiết kế dữ liệu và chỉnh câu chữ từ lượt trước. Sáu tệp được cập nhật: hai bản quy trình EN/VI, hai bản thiết kế database EN/VI, SQL tham chiếu và change log. Không stage/commit, không sửa các báo cáo hoặc hình xuất riêng.
+
+## 2. Ánh xạ mã quy trình
+
+| Mã trước khi tách | Mã hiện tại | Quy trình |
+|---|---|---|
+| BF-01 | BF-01 | Bổ sung hàng, đặt mua và nhập kho |
+| BF-02 | BF-02 | Hàng lỗi |
+| BF-03A, nhánh chuyển vị trí | BF-03 | Chuyển vị trí trong cùng kho |
+| BF-03B, nhánh liên kho | BF-04 | Điều chuyển giữa các kho và xử lý chênh lệch |
+| BF-04 | BF-05 | Kiểm kê, đối chiếu và điều chỉnh |
+| BF-05 | BF-06 | Đơn bán, xuất kho, giao hàng và hoàn thành đơn |
+| BF-06 | BF-07 | Khách trả hàng |
+| BF-07 | BF-08 | Trả nhà cung cấp |
+
+BF-03 có trigger, bốn bước, kết thúc, chứng từ TO-RELOCATE, ngoại lệ và sơ đồ riêng; Warehouse thực hiện, không Owner duyệt, không tạo TR/TD/MWTR. BF-04 có trigger riêng và chuỗi TR → Owner duyệt → TD/HO → MWTR kiểm nhận độc lập → put-away/xử lý sai lệch. Trường hợp xuất thẳng kho khác chuyển BF-06, không tạo điều chuyển hoặc nhập giả.
+
+Đã cập nhật tham chiếu BF đầy đủ và dạng rút gọn, mã nhánh A/E, tên mục/anchor, bảng chứng từ, UC/rule mapping, checklist đồng bộ báo cáo, trình tự triển khai và chú thích SQL. BF-03-A1 dành cho chuyển hàng đã giữ; thêm BF-03-E1 cho sai kho/khóa/thiếu nguồn. Nhánh xuất thẳng BF-03-A2 cũ trở thành BF-04-A1. Các nhánh sau đánh lại mã theo quy trình mới. Tổng hiện có 37 nhánh A/E; giữ 111 UC (98 active/13 retired), 33 BR, 21 quy tắc thiết kế dữ liệu và 40 tình huống nghiệm thu.
+
+Việc tách mã không đổi định nghĩa bảng/cột/ràng buộc/view: SQL vẫn 73 bảng và 2 view. BF-03 ánh xạ warehouse_task/warehouse_task_line; BF-04 ánh xạ transfer_request/dispatch/receipt. Các dữ liệu SO/POD/PAY-CFM từ lượt trước được giữ nguyên, nay thuộc BF-06.
+
+## 3. Kiểm tra và giới hạn
+
+- EN/VI: đủ và đúng thứ tự BF-01–BF-08 ở cả phần mô tả và sơ đồ; 30 bảng có cấu trúc tương ứng; 9 khối Mermaid cùng quan hệ nối (context + 8 BF). Không còn mã quy trình ghép BF-03A/B trong nội dung hiện hành.
+- Mã tham chiếu: khớp 37 nhánh A/E, 33 BR và đủ 111 UC; hai bản database khớp 16 bảng, 21 quy tắc, 40 case và ERD. Không thêm liên kết file lỗi so với bản chụp trước sửa.
+- SQL: so sánh sau loại bỏ chú thích xác nhận toàn bộ lệnh thực thi không đổi so với trước khi tách; kiểm cú pháp ScriptDom hiện tại 0 lỗi/6 batch. Kết quả kiểm dữ liệu 21 trường hợp của lượt đồng bộ trước vẫn được ghi riêng phía dưới, không coi đây là chạy backend.
+- Giữ nguyên nội dung nhật ký cũ làm phần lịch sử; git diff --check đạt; không stage/commit. Giữ nguyên trạng thái xóa draw.io đã có trước lượt này. Script và bản chụp kiểm tra nằm ngoài repository.
+
+Report 1/3, Word và bộ draw.io/PNG vẫn dùng mã cũ; phải cập nhật theo bảng ánh xạ này khi đồng bộ tiếp. Lịch sử bên dưới giữ các mã BF đúng với thời điểm từng lượt, không tự đổi mã trong nhật ký cũ. Chưa chạy SQL Server hoặc backend MongoDB; Mermaid được đối chiếu cấu trúc, chưa xuất lại bộ hình.
+
+---
+
+# Đồng bộ dữ liệu và rà soát BF-05 — 21/10/2026 — phiên bản 2.0.0
+
+## 1. Yêu cầu và phạm vi
+
+Người dùng yêu cầu sửa thiết kế dữ liệu theo quy trình hiện tại, kiểm tra lại nội dung AGY đã tạo, giảm highlight, làm rõ tiếng Việt và cập nhật change log. Lượt này do Codex sửa trực tiếp theo chỉ dẫn mới nhất, không sử dụng AGY, không stage/commit. Nội dung các bản ghi trước được giữ nguyên phía dưới.
+
+| Tệp | Thay đổi |
+|---|---|
+| [SQL tham chiếu](docs/03_thiet_ke/WMSD_SQL_schema.sql) | Bổ sung mô hình SO, hủy phần chưa xuất, dòng OD/GI-S, POD có ảnh và PAY-CFM; thêm khóa ngoại ghép, khóa chống trùng, CHECK trạng thái và hợp đồng transaction. |
+| [Thiết kế database VI](docs/03_thiet_ke/de_xuat_database_design_VI.md), [EN](docs/03_thiet_ke/de_xuat_database_design_EN.md) | Đồng bộ 7 quy trình theo BF-05 mới; cập nhật nguồn, MongoDB mapping, bảng/quan hệ, ERD, quyền, trạng thái, quy tắc và nghiệm thu. |
+| [Quy trình VI](docs/02_nghiep_vu/de_xuat_quy_trinh_2_VI.md), [EN](docs/02_nghiep_vu/de_xuat_quy_trinh_2_EN.md) | Rà nội dung AGY: viết gọn BF-05, bỏ nhấn mạnh dài và định dạng code trên chữ viết tắt nghiệp vụ; chỉnh tiếng Việt; làm rõ số lượng cam kết, trạng thái xác nhận và cách đính chính. |
+| [Nhật ký này](change_logs.md) | Ghi tác động, kết quả kiểm tra thực tế và giới hạn; giữ toàn bộ lịch sử trước lượt sửa. |
+
+## 2. Tác động và quyết định thiết kế
+
+- Luồng thống nhất: SO nhập lại từ MISA/giấy tờ → WIR liên kết → OD/soạn/PGI → Warehouse xác nhận POD kèm ảnh → DELIVERED → Sales xác nhận nhận đủ tiền ngoài hệ thống (PAY-CFM) → COMPLETED.
+- Thay đổi hợp đồng dữ liệu WIR: tham chiếu trực tiếp external_line được thay bằng SO/dòng SO bắt buộc. Các FK ghép giữ đúng chuỗi chứng từ và chặn dòng thuộc đơn/yêu cầu khác. Một nguồn chỉ có một bản sao SO; sửa/mở lại dùng SO cũ. Đây là thay đổi phiên bản lớn của mô hình tham chiếu, không phải migration đã chạy trên cơ sở dữ liệu thực.
+- SQL tăng từ 64 lên 73 bảng, giữ 2 view. Chín bảng mới: sales_order, sales_order_line, sales_order_cancellation, outbound_delivery_line, sales_goods_issue_line, customer_delivery, customer_delivery_line, external_payment_confirmation và business_operation. Tệp ảnh tiếp tục dùng evidence riêng tư; ảnh POD/tệp PAY-CFM phải thuộc đúng phiếu.
+- Tổng cam kết WIR tính cả phần đã xuất; hoàn tất WIR không làm phát sinh lại nhu cầu. Tổng OD nằm trong WIR, tổng POD đã xác nhận chưa hủy hiệu lực nằm trong PGI hợp lệ. Kiểm tổng nhiều dòng và cập nhật đồng thời là trách nhiệm service/transaction, không tuyên bố CHECK/FK đã thực hiện thay.
+- Chuẩn hóa POD/PAY-CFM thành DRAFT → CONFIRMED, hoặc VOIDED khi đính chính có lý do. Giao một phần thuộc trạng thái SO. Hủy toàn bộ khi chưa giao là CANCELLED; không tự thành DELIVERED/COMPLETED. Đính chính tăng phiên bản SO, tính lại tiến độ và không tái dùng điều kiện hoàn thành cũ.
+- POD/PAY-CFM dùng business_operation để chống ghi lặp, cập nhật cùng SO/audit/outbox; không tạo movement hoặc đổi tồn. Hủy phần chưa xuất chỉ giải phóng lượng giữ phù hợp. Khách trả thông thường vẫn giữ lịch sử giao/nhận tiền và dùng BF-06 riêng.
+- Giữ 5 vai trò, 111 UC (98 active/13 retired), BR-01–33 và 36 nhánh A/E. Thiết kế database bổ sung R-16–21 và T27–T40, tổng 40 tình huống nghiệm thu đề xuất. Không thêm phân hệ thu tiền, hóa đơn, công nợ hoặc đồng bộ MISA tự động.
+- Tác động triển khai: cần cập nhật API/service/validator/index MongoDB và kiểm thử đồng thời trước sử dụng. Rủi ro chính là vượt nguồn, xác nhận giao thiếu ảnh, hoàn thành sớm hoặc dùng xác nhận cũ; đã mô tả điểm kiểm và case nghiệm thu. Chưa có mã backend/lịch sprint để ước lượng thời gian triển khai đáng tin cậy.
+
+## 3. Kiểm tra đã thực hiện
+
+| Kiểm tra | Kết quả và giới hạn |
+|---|---|
+| Cú pháp SQL Server | Microsoft ScriptDom TSql160Parser: 0 lỗi, 6 batch. Parse không thay thế chạy SQL Server. |
+| Khóa/FK/CHECK | 21 kiểm tra trên SQLite in-memory sau chuyển đổi cú pháp DDL: chuỗi SO–WIR–OD–GI–POD–PAY hợp lệ; chặn nguồn trùng, sai chứng từ cha, ảnh sai/thiếu, lượng âm, trạng thái sai, xác nhận tiền thiếu căn cứ/không đủ/lặp phiên bản, mã chống trùng và hủy không hợp lệ. Không mô phỏng đầy đủ kiểu số, collation hoặc transaction SQL Server/MongoDB. |
+| Bảo toàn mô hình kho | So sánh với bản chụp trước lượt sửa: định nghĩa 58 bảng cũ ngoài nhóm được sửa và cả hai view inventory_ledger/available_stock giữ nguyên. |
+| Hai bản quy trình | Khớp 111 mã UC, 33 BR, 36 nhánh A/E; 29 bảng cùng cấu trúc và 8 sơ đồ cùng quan hệ nối. Không còn định dạng code trên SO/WIR/POD/PAY-CFM/DELIVERED/COMPLETED hoặc đoạn nhấn mạnh dài. |
+| Hai bản thiết kế database | Khớp 21 mã quy tắc, 40 case T01–T40, 16 bảng cùng cấu trúc và ERD; có đủ thực thể và quyền cho UC-109–111. Đây là kiểm tra tài liệu, không phải 40 case đã chạy trên backend. |
+| Liên kết, lịch sử và Git | Không thêm liên kết file lỗi; giữ lịch sử nhật ký và các thay đổi có sẵn; git diff --check đạt; không stage/commit. Script kiểm tra và bản chụp nằm ở thư mục tạm ngoài repository. |
+
+## 4. Giới hạn và tài liệu còn cần đồng bộ
+
+Report 1/3 dạng text, Word, hình PNG và draw.io chưa được sửa trong lượt này; ghi chú trong tài liệu phân biệt rõ baseline cũ với thiết kế hiện hành. File docs/04_so_do/WMSD_Mainflows_VI_EN.drawio đã ở trạng thái bị xóa khi bắt đầu lượt này và được giữ nguyên trạng thái; liên kết tới file đó vẫn chưa có đích. Chưa chạy SQL Server hoặc backend MongoDB để kiểm phân quyền, lưu ảnh, transaction/concurrency và toàn bộ quy trình đầu cuối.
+
+---
+
+# Nhật ký cập nhật BF-05 trong Đề xuất quy trình 2 — 21/10/2026 (Lượt sửa đổi BF-05)
+
+## 1. Phạm vi và căn cứ thực hiện
+
+- **Yêu cầu người dùng (21/10/2026):** Sửa BF-05 (xuất hàng, soạn hàng, giao hàng) và toàn bộ các phần liên quan trong hai bản Đề xuất quy trình 2 song ngữ theo luồng: bước đầu Sales Staff tạo đơn bán (`Sales Order` — `SO`) bằng cách sao chép/nhập lại đơn bán từ bên ngoài đã xác minh (MISA, giấy tờ, ...), sau đó mới tạo yêu cầu xuất hàng (`Warehouse Issue Request` — `WIR`) liên kết với đơn bán `SO`; có bước giao hàng cho khách kèm chụp ảnh xác nhận để cập nhật trạng thái đơn sang đã giao (`DELIVERED`); khi Sales Staff xác nhận đã nhận đủ tiền ngoài hệ thống thì cập nhật trạng thái đơn sang hoàn thành (`COMPLETED`); cập nhật tất cả phần liên quan trong hai file quy trình và nhật ký này.
+- **Phạm vi 3 file tài liệu được phép sửa của nhiệm vụ này (phân biệt với thay đổi đồng thời ngoài nhiệm vụ trong workspace):**
+  1. [docs/02_nghiep_vu/de_xuat_quy_trinh_2_EN.md](docs/02_nghiep_vu/de_xuat_quy_trinh_2_EN.md)
+  2. [docs/02_nghiep_vu/de_xuat_quy_trinh_2_VI.md](docs/02_nghiep_vu/de_xuat_quy_trinh_2_VI.md)
+  3. [change_logs.md](change_logs.md)
+- **Thực thi, kiểm chứng độc lập của Codex và ghi chú workspace:** Phần triển khai được ủy quyền cho AGY thực hiện; lượt kiểm chứng độc lập ban đầu của Codex đã hoàn tất với kết quả thực tế: hai bản EN/VI đều khớp đúng 33 mã `BR`, 36 mã nhánh `A/E`, 27 bảng với kích thước dòng/cột tương ứng, 8 khối Mermaid đóng/mở fence đầy đủ; toàn bộ nội dung nhật ký trước khi chạy được bảo toàn nguyên vẹn làm phần hậu tố chuẩn hóa line-ending; `git diff --check` đạt; không có stage hay commit. Tiếp theo kết quả review của Codex, lượt hiệu chỉnh tập trung này cập nhật nhánh vòng lặp giao hàng/ảnh chụp trong Mermaid BF-05, trần định lượng theo từng tầng dòng (`SO` → `WIR` → `OD` và `POSTED GI-S` → `POD`) và quy tắc hủy toàn bộ đơn (`CANCELLED` so với `DELIVERED` khi lượng active `> 0`), sau đó Codex thực hiện lượt kiểm chứng độc lập cuối cùng. **Ghi chú trạng thái workspace:** file `docs/04_so_do/WMSD_Mainflows_VI_EN.drawio` đã bị xóa đồng thời ngoài phạm vi nhiệm vụ (`git status D`) trong quá trình chạy trước; thao tác `git checkout` khôi phục trái phép của AGY đối với file đó đã được hoàn tác (sau khi xác minh nội dung khớp `HEAD`) để trả lại đúng trạng thái `DELETED` đã quan sát, nên `git status` tổng thể của workspace gồm 3 file tài liệu được sửa của nhiệm vụ này cùng 1 thay đổi xóa `drawio` độc lập đó.
+
+## 2. Tóm tắt thay đổi trong hai bản Đề xuất quy trình 2 (VI & EN)
+
+| Nhóm nội dung | Nội dung cập nhật chính |
+|---|---|
+| Ranh giới phạm vi & Thuật ngữ (`SO`, `WIR`, `POD`, `PAY-CFM`) | Giữ ngừng (retired) tính giá bán (`UC-23–25`), hóa đơn nội bộ (`UC-59–62`) và workflow hoàn tiền (`UC-74–78`). Thay vì bỏ hoàn toàn `SO` nội bộ, giữ `Sales Order` (`SO`) làm bản ghi theo dõi nội bộ do Sales Staff sao chép thủ công từ đơn bán bên ngoài đã xác minh (MISA/giấy tờ) kèm mã tham chiếu đơn/dòng nguồn và tệp/ảnh bằng chứng. Tách rõ `SO` với `WIR` liên kết, `POD` (xác nhận giao khách kèm ảnh) và `PAY-CFM` (xác nhận của Sales về việc đã thu đủ tiền ngoài hệ thống). |
+| Luồng chính BF-05 & Mermaid BF-05 | Cập nhật thành 10 bước có thứ tự: (1) Sales tạo `SO` sao chép từ đơn ngoài đã xác minh → (2) Sales tạo `WIR` riêng biệt liên kết ở cả cấp header và dòng số lượng với `SO` đã lưu (`tổng WIR active <= lượng_đặt − lượng_hủy` trên dòng `SO`, `tổng OD active <= lượng WIR` mà không cộng gộp `WIR` với `OD`; tạo `SO`/`WIR` không đổi tồn) → (3–4) kiểm tra khả dụng, gợi ý BF-03/BF-01 khi thiếu và thống nhất khách → (5–7) giữ hàng theo FIFO tương thích, tạo task soạn `TO`, soạn/đếm vào staging, xử lý thiếu/lỗi qua BF-02/BF-04 → (8) lập `GI-S`, bàn giao kho `HO` và post `PGI` trừ tồn đúng một lần (bàn giao carrier/`PGI` không tự chuyển `DELIVERED`) → (9) Warehouse Staff xác nhận giao khách thực tế kèm ảnh chụp bắt buộc (`POD`, `UC-110` gắn với dòng `GI-S` đã `POSTED`, kiểm tra nguyên tử `tổng POD <= lượng PGI hợp lệ đã POSTED`) để chuyển `SO` sang `DELIVERED` khi lượng đặt active còn lại `> 0` đã giao đủ kèm ảnh (Mermaid BF-05 tách riêng nhánh thiếu ảnh/chờ khách nhận chỉ quay lại bước `POD`, nhánh từ chối/trả hàng sau `PGI` chuyển `BF-06`, nhánh giao một phần còn lượng chưa xuất mới quay lại bước kiểm nguồn kho `B`) → (10) sau `DELIVERED`, chỉ Sales Staff xác nhận đã nhận đủ tiền ngoài hệ thống (`PAY-CFM`, `UC-111`) để chuyển `SO` sang `COMPLETED`. |
+| Luồng thay thế & ngoại lệ BF-05 (`05.X`) | Cập nhật `BF-05-E1..E3`, `BF-05-A1..A2` và bổ sung `BF-05-A3` (tiền ngoài hệ thống chưa thu/thu một phần/chưa rõ hoặc trả trước khi `DELIVERED`): chặn tạo `WIR` không có `SO` hoặc vượt lượng dòng `SO`; thiếu ảnh chụp giao hàng hoặc giao một phần/từ chối nhận chỉ giữ `PARTIALLY_DELIVERED`; chưa nhận đủ tiền ngoài hệ thống thì giữ `DELIVERED`; biết trả tiền sớm trước khi giao đủ hàng kèm ảnh không thể chuyển `COMPLETED`; không tự cộng/trừ tồn kho khi đổi trạng thái đơn. |
+| Vai trò, Catalogue UC (111 mã) & Ma trận phân quyền | Giữ nguyên 5 role (`Store Owner`, `Sales Staff`, `Warehouse Staff`, `Accountant`, `Administrator`), không thêm role tài xế/thu ngân. Giữ `UC-45–48` cho danh sách/chi tiết/tạo/cập nhật bản sao `SO` và theo dõi tiến độ; bổ sung 3 UC mới: `UC-109` (*Manage Linked Warehouse Issue Requests* — Sales tạo/sửa/hủy phần chưa xuất, các role nghiệp vụ khác xem theo phạm vi), `UC-110` (*Confirm Customer Delivery with Photo Evidence* — Warehouse Staff), `UC-111` (*Confirm External Receipt and Complete Sales Order* — chỉ Sales Staff). Giữ `UC-108` của Accountant cho đối chiếu/tham chiếu chứng từ bên ngoài, không thay thế bước hoàn thành đơn của Sales. Tổng số mã UC: **111 mã (`UC-01–UC-111`), gồm 98 active và 13 retired** (13 mã retired giữ nguyên). |
+| Quy tắc nghiệp vụ (`BR-01–BR-33`), Chứng từ, Trạng thái & Nghiệm thu | Cập nhật `BR-14`, `BR-25`, `BR-26`, `BR-28` và bổ sung `BR-31` (bắt buộc `SO` sao chép từ nguồn ngoài trước `WIR`, trần định lượng từng tầng `SO` → `WIR` → `OD`), `BR-32` (Warehouse xác nhận `POD` gắn dòng `GI-S` đã `POSTED` kèm ảnh chụp bắt buộc, kiểm tra nguyên tử không vượt lượng `PGI` hợp lệ, idempotent cùng operation key không trừ tồn lần hai; chỉ sang `DELIVERED` khi lượng đặt active còn lại `> 0` đã giao đủ kèm ảnh, còn hủy toàn bộ đơn khi thực giao bằng `0` thì chuyển `CANCELLED` chứ không `DELIVERED`/`COMPLETED`), `BR-33` (chỉ Sales xác nhận đã nhận đủ tiền ngoài hệ thống sau `DELIVERED` mới sang `COMPLETED`, không xử lý thanh toán/hóa đơn hay đổi tồn). Cập nhật bảng chứng từ (`SO`, `WIR`/`OD`, `GI-S`, `POD`, `PAY-CFM`), liên kết dòng (15.2), trạng thái `SO` (15.3) tách biệt với `WIR`, chuỗi chứng từ BF-05 và 3 tình huống nghiệm thu BF-05. |
+
+## 3. Các tài liệu ngoài phạm vi lượt này (cần đồng bộ tiếp theo)
+
+- [docs/01_bao_cao/WMSD_Report1_Fix.docx.txt](docs/01_bao_cao/WMSD_Report1_Fix.docx.txt), [docs/01_bao_cao/WMSD_Report3_Fix.docx.txt](docs/01_bao_cao/WMSD_Report3_Fix.docx.txt), [docs/03_thiet_ke/de_xuat_database_design_VI.md](docs/03_thiet_ke/de_xuat_database_design_VI.md), [docs/03_thiet_ke/de_xuat_database_design_EN.md](docs/03_thiet_ke/de_xuat_database_design_EN.md), [docs/03_thiet_ke/WMSD_SQL_schema.sql](docs/03_thiet_ke/WMSD_SQL_schema.sql) cũng như các file Word `.docx`, ảnh PNG và sơ đồ `draw.io` **không nằm trong danh sách file được phép sửa của lượt này** và vẫn đang ở baseline 108 UC (95 active / 13 retired) đầu ngày 21/10/2026. Mục 9 và các ghi chú liên quan trong hai bản Đề xuất quy trình 2 đã được đánh dấu rõ là danh mục yêu cầu cần đồng bộ tiếp theo cho các tài liệu đó.
+
+---
+
+> **Nhật ký lịch sử đầu ngày 21/10/2026 và ngày 20/10/2026:** Toàn bộ nội dung bên dưới được giữ nguyên văn để bảo toàn lịch sử. Các phát biểu trong các bản ghi cũ bên dưới như “không dùng AGY”, “bỏ SO nội bộ / thay SO bằng WIR”, “108 ID: 95 active, 13 retired” hoặc “đã đồng bộ toàn bộ 7 file” phản ánh trạng thái của các lượt trước (trước khi có yêu cầu sửa đổi BF-05 `SO` → `WIR` → `DELIVERED` → `COMPLETED` ở trên).
+
 # Nhật ký đồng bộ WMSD — 21/10/2026
 
 ## 1. Phạm vi và căn cứ hiện hành

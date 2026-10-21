@@ -1,4 +1,4 @@
--- WMSD relational analysis/reference DDL, 2026-10-21. NOT a production schema.
+-- WMSD relational analysis/reference DDL, 2026-10-22. NOT a production schema.
 -- Runtime persistence remains MongoDB (NoSQL), per Report 3 and the system design.
 -- SQL Server (T-SQL) syntax is used only to make the proposed relational model executable for review.
 -- Schema only: posting/approval services and authorization are NOT implemented here.
@@ -7,6 +7,9 @@
 -- Survey alignment 2026-10-20: D1-D5 retain PGI, departmental entry, five roles,
 -- independent transfers and FROZEN stocktake. D6 adds versioned return assessment.
 -- D7 does not seed invented warehouse names, conversion factors or return periods.
+-- Revision 3.0.0, 2026-10-22: eight processes; BF-03 relocation, BF-04 transfer.
+-- Data revision 2.0.0, 2026-10-21: SO -> linked WIR -> PGI -> photo POD -> external receipt.
+-- This replaces the earlier direct external-order-line -> WIR source contract.
 BEGIN TRANSACTION;
 GO
 CREATE SCHEMA wmsd;
@@ -100,7 +103,8 @@ CREATE TABLE wmsd.document (
  document_no varchar(50) NOT NULL UNIQUE,
  document_kind varchar(30) NOT NULL CHECK(document_kind IN (
  'REPLENISHMENT','PO','ARRIVAL','INSPECTION','GR_PURCHASE','TO','TRANSFER_REQUEST',
- 'TRANSFER_DISPATCH','MWTR','HANDOVER','ISSUE_REQUEST','OUTBOUND_DELIVERY','GI_SALE',
+ 'TRANSFER_DISPATCH','MWTR','HANDOVER','SALES_ORDER','ISSUE_REQUEST','OUTBOUND_DELIVERY','GI_SALE',
+ 'DELIVERY_CONFIRMATION','PAYMENT_CONFIRMATION',
  'DEFECT_CASE','DISPOSITION','SCRAP','STOCKTAKE','ADJUSTMENT',
  'CUSTOMER_RETURN','GR_CUSTOMER_RETURN','SUPPLIER_RETURN','GI_SUPPLIER_RETURN',
  'SUPPLIER_ACK','DISCREPANCY','CUSTODY_RECEIPT','CUSTODY_RELEASE','REVERSAL','OPENING')),
@@ -109,7 +113,11 @@ CREATE TABLE wmsd.document (
  created_by bigint NOT NULL REFERENCES wmsd.app_user,
  created_at datetimeoffset NOT NULL DEFAULT SYSDATETIMEOFFSET(),
  occurred_at datetimeoffset,
- note varchar(2000)
+ note varchar(2000),
+ CONSTRAINT ck_sales_order_status CHECK(document_kind <> 'SALES_ORDER' OR workflow_status IN
+   ('DRAFT','OPEN','IN_PROGRESS','PARTIALLY_DELIVERED','DELIVERED','COMPLETED','CANCELLED')),
+ CONSTRAINT ck_customer_confirmation_status CHECK(document_kind NOT IN
+   ('DELIVERY_CONFIRMATION','PAYMENT_CONFIRMATION') OR workflow_status IN ('DRAFT','CONFIRMED','VOIDED'))
 );
 CREATE TABLE wmsd.document_line (
  line_id bigint IDENTITY(1,1) PRIMARY KEY,
@@ -168,7 +176,8 @@ CREATE TABLE wmsd.evidence (
  object_key varchar(600) NOT NULL, sha256 char(64) NOT NULL,
  media_type varchar(100) NOT NULL,
  uploaded_by bigint NOT NULL REFERENCES wmsd.app_user,
- uploaded_at datetimeoffset NOT NULL DEFAULT SYSDATETIMEOFFSET()
+ uploaded_at datetimeoffset NOT NULL DEFAULT SYSDATETIMEOFFSET(),
+ UNIQUE(evidence_id, document_id)
 );
 CREATE TABLE wmsd.external_reference (
  reference_id bigint IDENTITY(1,1) PRIMARY KEY,
@@ -195,7 +204,24 @@ CREATE TABLE wmsd.external_reference_line (
  line_key varchar(100) NOT NULL,
  product_id bigint NOT NULL REFERENCES wmsd.product,
  eligible_qty numeric(20,6) NOT NULL CHECK(eligible_qty >= 0),
- UNIQUE(reference_id, line_key)
+ UNIQUE(reference_id, line_key), UNIQUE(external_line_id, reference_id)
+);
+
+-- Idempotent operations that do NOT post stock: SO/WIR entry, cancellations,
+-- delivery confirmation and external receipt confirmation. Never create stock
+-- movements solely to record one of these operations.
+CREATE TABLE wmsd.business_operation (
+ operation_id bigint IDENTITY(1,1) PRIMARY KEY,
+ document_id bigint NOT NULL REFERENCES wmsd.document,
+ operation varchar(40) NOT NULL CHECK(LEN(LTRIM(RTRIM(operation))) > 0),
+ operation_key varchar(100) NOT NULL CHECK(LEN(LTRIM(RTRIM(operation_key))) > 0),
+ idempotency_key varchar(120) NOT NULL UNIQUE CHECK(LEN(LTRIM(RTRIM(idempotency_key))) > 0),
+ payload_hash char(64) NOT NULL,
+ document_version integer NOT NULL CHECK(document_version > 0),
+ performed_by bigint NOT NULL REFERENCES wmsd.app_user,
+ performed_at datetimeoffset NOT NULL DEFAULT SYSDATETIMEOFFSET(),
+ reason nvarchar(2000),
+ UNIQUE(document_id, operation, operation_key), UNIQUE(operation_id, document_id)
 );
 
 -- Typed headers extend document; typed lines extend document_line.
@@ -266,31 +292,132 @@ CREATE TABLE wmsd.handover (
  handed_over_at datetimeoffset NOT NULL,
  confirmed_by bigint NOT NULL REFERENCES wmsd.app_user
 );
+CREATE TABLE wmsd.sales_order (
+ document_id bigint PRIMARY KEY REFERENCES wmsd.document,
+ external_reference_id bigint NOT NULL UNIQUE REFERENCES wmsd.external_reference,
+ customer_id bigint NOT NULL REFERENCES wmsd.party,
+ needed_on date NOT NULL,
+ delivery_address_snapshot nvarchar(500) NOT NULL,
+ UNIQUE(document_id, external_reference_id)
+);
+CREATE TABLE wmsd.sales_order_line (
+ line_id bigint PRIMARY KEY,
+ sales_order_id bigint NOT NULL,
+ external_reference_id bigint NOT NULL,
+ external_line_id bigint NOT NULL UNIQUE,
+ required_tone varchar(60), required_calibre varchar(60),
+ FOREIGN KEY(line_id, sales_order_id) REFERENCES wmsd.document_line(line_id, document_id),
+ FOREIGN KEY(sales_order_id, external_reference_id)
+   REFERENCES wmsd.sales_order(document_id, external_reference_id),
+ FOREIGN KEY(external_line_id, external_reference_id)
+   REFERENCES wmsd.external_reference_line(external_line_id, reference_id),
+ UNIQUE(line_id, sales_order_id)
+);
+-- Append-only cancellation facts; each operation cancels one unissued SO line.
+-- The service caps cumulative cancellations and releases/reduces unissued WIR/OD
+-- commitments and reservations in the same transaction, without changing stock.
+CREATE TABLE wmsd.sales_order_cancellation (
+ cancellation_id bigint IDENTITY(1,1) PRIMARY KEY,
+ sales_order_id bigint NOT NULL,
+ sales_order_line_id bigint NOT NULL,
+ cancelled_qty_base numeric(20,6) NOT NULL CHECK(cancelled_qty_base > 0),
+ cancelled_by bigint NOT NULL REFERENCES wmsd.app_user,
+ cancelled_at datetimeoffset NOT NULL DEFAULT SYSDATETIMEOFFSET(),
+ reason nvarchar(2000) NOT NULL CHECK(LEN(LTRIM(RTRIM(reason))) > 0),
+ operation_id bigint NOT NULL UNIQUE,
+ FOREIGN KEY(sales_order_line_id, sales_order_id)
+   REFERENCES wmsd.sales_order_line(line_id, sales_order_id),
+ FOREIGN KEY(operation_id, sales_order_id)
+   REFERENCES wmsd.business_operation(operation_id, document_id)
+);
 CREATE TABLE wmsd.issue_request (
  document_id bigint PRIMARY KEY REFERENCES wmsd.document,
- customer_id bigint NOT NULL REFERENCES wmsd.party,
+ sales_order_id bigint NOT NULL REFERENCES wmsd.sales_order(document_id),
  requested_warehouse_id bigint NOT NULL REFERENCES wmsd.warehouse,
  needed_on date NOT NULL,
- delivery_address_snapshot varchar(500) NOT NULL
+ delivery_address_snapshot nvarchar(500) NOT NULL,
+ UNIQUE(document_id, sales_order_id)
 );
 CREATE TABLE wmsd.issue_request_line (
- line_id bigint PRIMARY KEY REFERENCES wmsd.document_line,
- external_line_id bigint NOT NULL REFERENCES wmsd.external_reference_line,
+ line_id bigint PRIMARY KEY,
+ issue_request_id bigint NOT NULL,
+ sales_order_id bigint NOT NULL,
+ sales_order_line_id bigint NOT NULL,
  release_key varchar(60) NOT NULL,
  required_tone varchar(60), required_calibre varchar(60),
  substitution_approval_reference varchar(300),
- UNIQUE(external_line_id, release_key)
+ FOREIGN KEY(line_id, issue_request_id) REFERENCES wmsd.document_line(line_id, document_id),
+ FOREIGN KEY(issue_request_id, sales_order_id) REFERENCES wmsd.issue_request(document_id, sales_order_id),
+ FOREIGN KEY(sales_order_line_id, sales_order_id) REFERENCES wmsd.sales_order_line(line_id, sales_order_id),
+ UNIQUE(sales_order_line_id, release_key), UNIQUE(line_id, issue_request_id)
 );
 CREATE TABLE wmsd.outbound_delivery (
  document_id bigint PRIMARY KEY REFERENCES wmsd.document,
  issue_request_id bigint NOT NULL REFERENCES wmsd.issue_request,
  warehouse_id bigint NOT NULL REFERENCES wmsd.warehouse,
- planned_on date NOT NULL
+ planned_on date NOT NULL,
+ UNIQUE(document_id, issue_request_id)
+);
+CREATE TABLE wmsd.outbound_delivery_line (
+ line_id bigint PRIMARY KEY,
+ outbound_delivery_id bigint NOT NULL,
+ issue_request_id bigint NOT NULL,
+ issue_request_line_id bigint NOT NULL,
+ FOREIGN KEY(line_id, outbound_delivery_id) REFERENCES wmsd.document_line(line_id, document_id),
+ FOREIGN KEY(outbound_delivery_id, issue_request_id)
+   REFERENCES wmsd.outbound_delivery(document_id, issue_request_id),
+ FOREIGN KEY(issue_request_line_id, issue_request_id)
+   REFERENCES wmsd.issue_request_line(line_id, issue_request_id)
 );
 CREATE TABLE wmsd.goods_issue (
  document_id bigint PRIMARY KEY REFERENCES wmsd.document,
  warehouse_id bigint NOT NULL REFERENCES wmsd.warehouse,
  issue_kind varchar(20) NOT NULL CHECK(issue_kind IN ('SALE','SUPPLIER_RETURN'))
+);
+-- SALE-only subtype. Supplier-return GI lines retain their existing source model.
+CREATE TABLE wmsd.sales_goods_issue_line (
+ line_id bigint PRIMARY KEY,
+ goods_issue_id bigint NOT NULL REFERENCES wmsd.goods_issue(document_id),
+ outbound_delivery_line_id bigint NOT NULL REFERENCES wmsd.outbound_delivery_line(line_id),
+ FOREIGN KEY(line_id, goods_issue_id) REFERENCES wmsd.document_line(line_id, document_id)
+);
+CREATE TABLE wmsd.customer_delivery (
+ document_id bigint PRIMARY KEY REFERENCES wmsd.document,
+ sales_order_id bigint NOT NULL REFERENCES wmsd.sales_order(document_id),
+ warehouse_id bigint NOT NULL REFERENCES wmsd.warehouse,
+ recipient_name nvarchar(160) NOT NULL CHECK(LEN(LTRIM(RTRIM(recipient_name))) > 0),
+ delivered_at datetimeoffset NOT NULL,
+ confirmed_by bigint NOT NULL REFERENCES wmsd.app_user,
+ confirmed_at datetimeoffset NOT NULL DEFAULT SYSDATETIMEOFFSET(),
+ operation_id bigint NOT NULL UNIQUE,
+ FOREIGN KEY(operation_id, document_id) REFERENCES wmsd.business_operation(operation_id, document_id)
+);
+CREATE TABLE wmsd.customer_delivery_line (
+ line_id bigint PRIMARY KEY,
+ delivery_id bigint NOT NULL REFERENCES wmsd.customer_delivery(document_id),
+ sales_issue_line_id bigint NOT NULL REFERENCES wmsd.sales_goods_issue_line(line_id),
+ photo_evidence_id bigint NOT NULL,
+ FOREIGN KEY(line_id, delivery_id) REFERENCES wmsd.document_line(line_id, document_id),
+ FOREIGN KEY(photo_evidence_id, delivery_id) REFERENCES wmsd.evidence(evidence_id, document_id),
+ UNIQUE(delivery_id, sales_issue_line_id)
+);
+CREATE TABLE wmsd.external_payment_confirmation (
+ document_id bigint PRIMARY KEY REFERENCES wmsd.document,
+ sales_order_id bigint NOT NULL REFERENCES wmsd.sales_order(document_id),
+ delivered_order_version integer NOT NULL CHECK(delivered_order_version > 0),
+ full_payment_received bit NOT NULL CHECK(full_payment_received = 1),
+ external_receipt_reference nvarchar(300),
+ receipt_evidence_id bigint,
+ confirmation_note nvarchar(2000),
+ confirmed_by bigint NOT NULL REFERENCES wmsd.app_user,
+ confirmed_at datetimeoffset NOT NULL DEFAULT SYSDATETIMEOFFSET(),
+ operation_id bigint NOT NULL UNIQUE,
+ UNIQUE(sales_order_id, delivered_order_version),
+ FOREIGN KEY(operation_id, document_id) REFERENCES wmsd.business_operation(operation_id, document_id),
+ FOREIGN KEY(receipt_evidence_id, document_id) REFERENCES wmsd.evidence(evidence_id, document_id),
+ CHECK(LEN(LTRIM(RTRIM(COALESCE(external_receipt_reference,N'')))) > 0
+    OR receipt_evidence_id IS NOT NULL
+    OR LEN(LTRIM(RTRIM(COALESCE(confirmation_note,N'')))) > 0)
 );
 CREATE TABLE wmsd.warehouse_task (
  document_id bigint PRIMARY KEY REFERENCES wmsd.document,
@@ -545,6 +672,14 @@ CREATE INDEX ix_balance_lot ON wmsd.stock_balance(lot_id, quality_code);
 CREATE INDEX ix_pending_outbox ON wmsd.outbox_event(event_id) WHERE delivered_at IS NULL;
 CREATE INDEX ix_return_assessment_latest ON wmsd.customer_return_assessment(return_line_id, document_version, assessment_no DESC);
 CREATE INDEX ix_return_assessment_status ON wmsd.customer_return_assessment(eligibility_status, return_line_id);
+CREATE INDEX ix_wir_sales_order ON wmsd.issue_request(sales_order_id);
+CREATE INDEX ix_wir_line_sales_order_line ON wmsd.issue_request_line(sales_order_line_id);
+CREATE INDEX ix_od_line_wir_line ON wmsd.outbound_delivery_line(issue_request_line_id);
+CREATE INDEX ix_sale_gi_od_line ON wmsd.sales_goods_issue_line(outbound_delivery_line_id);
+CREATE INDEX ix_pod_so ON wmsd.customer_delivery(sales_order_id, delivered_at);
+CREATE INDEX ix_pod_line_gi ON wmsd.customer_delivery_line(sales_issue_line_id);
+CREATE INDEX ix_payment_so ON wmsd.external_payment_confirmation(sales_order_id, delivered_order_version);
+CREATE INDEX ix_cancellation_so_line ON wmsd.sales_order_cancellation(sales_order_line_id);
 GO
 
 CREATE VIEW wmsd.inventory_ledger AS
@@ -603,7 +738,7 @@ COMMIT TRANSACTION;
 -- 14. Preserve actual remaining PIECE quantities for opened/torn boxes. Packaging
 --     damage alone must not set DAMAGED quality. Nominal size is not verified calibre.
 
--- 2026-10-21 synchronization: process section 4 defines 35 alternate/exception
+-- 2026-10-22 revision 3.0.0: process section 4 defines 37 alternate/exception
 -- branches and EX-01..05; database proposal section 6 maps acceptance cases.
 -- 15. Exactly five roles; do not seed permissions for retired UC-23..25, UC-42,
 --     UC-59..62 or UC-74..78. UC-107/108 record external evidence, not inventory.
@@ -616,4 +751,39 @@ COMMIT TRANSACTION;
 --     Cancellation after PGI does not restore stock without receipt/correction.
 -- 19. Supplier agreement and later receipt ACK are separate events; ACK/closure
 --     never deducts again. Custody-only returns do not reduce store-owned stock.
+-- 20. UC-45..48/109: SALES creates SO copies from verified MISA/paper sources.
+--     Require source evidence and matching source product/quantity. Reuse the same
+--     SO when correcting/reopening it; source/header and source-line UNIQUEs prevent
+--     another copy. Source verification is by Sales, with Accountant support for
+--     historical accounting evidence (UC-108), not a new Owner approval.
+-- 21. Lock each SO source line: sum(non-cancelled WIR commitments, INCLUDING issued
+--     portions) <= ordered qty - authorized cancellations. Per WIR line, sum OD
+--     commitments <= authorized WIR qty after cancellations; per OD line, valid PGI <= released
+--     qty. WIR and OD are parent/child quantities, never two separate demands.
+--     Check source kinds/products/units and GI SALE/warehouse along the typed chain.
+-- 22. UC-110: only assigned WAREHOUSE confirms POD. Each POD line needs a valid
+--     POSTED GI_SALE line, matching SO/product/lot/warehouse, positive actual qty
+--     and a successfully stored, accessible image belonging to that POD document.
+--     A photo FK alone does not prove image MIME/content or successful upload.
+--     Lock GI/SO lines and cap sum(CONFIRMED, non-voided POD qty) at valid posted
+--     PGI qty, excluding reversed/ineligible dispatch. Carrier HO is not POD.
+-- 23. SO is DELIVERED only if ordered-minus-cancelled qty > 0 and every remaining
+--     line is fully photo-confirmed. All cancelled with zero delivery => CANCELLED.
+--     Partial delivery => PARTIALLY_DELIVERED; dispatch/PGI alone => IN_PROGRESS.
+--     WIR warehouse completion is independent of SO delivery/payment completion.
+-- 24. UC-111: only SALES confirms full money receipt OUTSIDE WMSD, after rechecking
+--     current SO=DELIVERED, version and complete valid POD coverage. Record user,
+--     time and receipt reference/evidence/note; set SO=COMPLETED atomically. Partial,
+--     uncertain or early payment does not complete an undelivered SO. No amounts,
+--     gateway, debt, invoice or refund engine is introduced by PAY-CFM.
+-- 25. Commit POD/PAY-CFM/cancellation + business_operation + SO progress + audit +
+--     outbox together, WITHOUT posting_batch/stock_movement/balance writes. Stable
+--     operation keys and payload hashes make retries idempotent; mismatched reuse
+--     conflicts. Validate operation actor/document/version against confirmation.
+-- 26. Keep confirmations/cancellations immutable. A mistaken confirmation is
+--     traceably VOIDED with reason and a new business_operation; retain its data,
+--     increment the SO version, recalculate progress and invalidate stale completion
+--     authority. Re-confirm after valid delivery using the current SO version.
+--     Normal BF-07 returns retain original historical delivery/payment evidence
+--     and follow their own return/financial workflow; never restore stock by status.
 -- These are required application controls, NOT implemented procedures/triggers.
