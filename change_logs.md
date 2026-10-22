@@ -1,3 +1,30 @@
+# Đồng bộ toàn bộ tài liệu hiện hành, giữ Report 2 — 22/10/2026 — baseline 3.0.0
+
+## 1. Phạm vi
+
+Theo yêu cầu sau rà soát, Codex chỉnh sửa trực tiếp, không dùng AGY; không stage/commit. Report 2 được giữ nguyên. Phần dưới đường phân cách là lịch sử các lượt trước; các phát biểu “chưa sửa Report 1/3/hình” trong những lượt đó chỉ đúng tại thời điểm ghi nhận.
+
+Đã xử lý SYNC-01–09 trong [báo cáo trước sửa](docs/07_ra_soat/Bao_cao_dong_bo_tai_lieu_2026-10-22.md); chi tiết và giới hạn tại [kết quả hậu kiểm](docs/07_ra_soat/Ket_qua_dong_bo_tai_lieu_2026-10-22.md). OBS-01 về Report 2 tạm hoãn.
+
+## 2. Thay đổi
+
+- Report 1/3: tám BF; SO UC-45–48, WIR UC-109, Warehouse POD có ảnh UC-110 và Sales PAY-CFM UC-111. Catalogue, actor associations, permissions, đặc tả, BR-01–33, SC-01–31, NFR và lỗi cùng phiên bản. Giữ 111 ID, 98 active/13 retired; 31 screen, 28 active/3 retired.
+- Thay thiết kế chi tiết 1.0/16-10 bằng 3.0.0, giữ MongoDB runtime và ranh giới nghiệp vụ hiện hành; truy vết đủ 111 UC, 33 BR, 21 R, 40 T. Không khôi phục giá bán, hóa đơn/hoàn tiền nội bộ, vai trò mới hoặc live MISA.
+- Database draw.io: 10 trang, 73 bảng đầy đủ/cột/kiểu/PK, 173 FK và 2 view; thêm các khái niệm SO/POD/PAY-CFM và sửa nguồn WIR/OD/GI theo DDL. Stub FK cục bộ có cặp cột và liên kết trang; SQL giữ nguyên.
+- Tạo lại mainflow VI/EN 16 trang, cập nhật EN 8 trang, context và ảnh BF-04 VI/EN. Bản EN riêng có graph giống phần EN của bản song ngữ. Hai workbook cũ gắn nhãn lịch sử trên 24 trang, bảo toàn nội dung/ID và offset nhãn; ảnh BF-03B gốc giữ nguyên.
+- Quy trình/database VI/EN: sửa nhận định nguồn/trạng thái cũ, đồng bộ API-02 chưa chốt provider, sửa căn cứ ảnh POD. Liên kết nguồn hiện hành dùng SAP v4.1 trong repo; review1/v4.2 ngoài repo được ghi rõ là nguồn lịch sử chưa đóng gói.
+- README: mục lục đủ tài liệu hiện hành/lịch sử, 6 biên bản và CSV. Báo cáo trước sửa được thêm nhãn snapshot; kết quả sau sửa nằm ở tệp hậu kiểm riêng.
+
+## 3. Kiểm tra
+
+41 kiểm tra tự động tài liệu đạt, bao gồm liên kết file; đối chiếu 30 bảng/9 Mermaid blocks quy trình VI–EN, 16 bảng/ERD thiết kế dữ liệu, 37 A/E, 33 BR và đủ R/T. Kiểm độc lập 73 PK và từng tuple của 173 FK với SQL, cùng SHA nguồn; các link trang draw.io không treo.
+
+Validator của ba workbook hiện hành báo 0 lỗi/0 cảnh báo, score 0. draw.io desktop 32.5.5 xuất thử toàn bộ 34 trang; đã xem ảnh tổng hợp và trang trọng điểm, xuất lại hai PNG BF-04 từ workbook hiện hành. `git diff --check` đạt, không stage/commit.
+
+Hash 17 tệp cần bảo toàn khớp trước sửa: Report 2, khảo sát/6 biên bản, 5 PDF/link nguồn, SQL và hai PNG lịch sử. Chưa sửa Word/Google Docs ngoài repo, chưa chạy SQL Server/MongoDB/backend; 40 case T là tiêu chí nghiệm thu, không phải báo cáo backend tests. Các tham số thực địa/vận hành chưa xác minh vẫn để mở.
+
+---
+
 # Tách chuyển vị trí và điều chuyển liên kho — 22/10/2026 — phiên bản 3.0.0
 
 ## 1. Yêu cầu và phạm vi

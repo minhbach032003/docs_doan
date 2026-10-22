@@ -1,5 +1,7 @@
 # Đề xuất 7 quy trình nghiệp vụ WMSD sau review 1
 
+> Tài liệu lịch sử: giữ nội dung theo mốc ghi nhận cũ. Phương án hiện hành là [quy trình 2 VI](de_xuat_quy_trinh_2_VI.md) / [EN](de_xuat_quy_trinh_2_EN.md), baseline 3.0.0 ngày 22/10/2026. Các tên nguồn máy cá nhân dưới đây chỉ lưu xuất xứ; bộ SAP v4.1 trong repo không được coi là bản v4.2 đã dùng trước đây.
+
 Ngày đối chiếu: 17/10/2026. Đây là phương án To-be và bản phân tích tác động, chưa phải xác nhận thực địa hay bản SRS đã được cửa hàng phê duyệt. Hai report gốc không bị sửa.
 
 **Bổ sung 19/10/2026:** thêm thuật ngữ kho, danh mục chứng từ và quy tắc post; chi tiết database được tách sang [đề xuất thiết kế database](../03_thiet_ke/de_xuat_database_design_VI.md). SQL là mô hình tham chiếu; hệ thống thực tế sẽ dùng MongoDB (NoSQL).
@@ -50,10 +52,10 @@ Phương án này ưu tiên góp ý hội đồng trong review1, bối cảnh m�
 
 | Nguồn | Cách sử dụng và giới hạn |
 |---|---|
-| [review1.md](D:/Ky_9/SEP490/review1.md) | Căn cứ phản hồi hội đồng; các action item như gửi email cho cô là nội dung tài liệu, không phải yêu cầu thực hiện trong lượt này. |
+| `review1.md` (nguồn lịch sử ngoài repo; chưa đóng gói) | Căn cứ phản hồi hội đồng; các action item như gửi email cho cô là nội dung tài liệu, không phải yêu cầu thực hiện trong lượt này. |
 | [Report 1 trực tuyến](https://docs.google.com/document/d/1kb36v5HuFrM75NFCTXvnJcsg6QnPjYkb/edit) | Đã đọc nội dung trực tuyến; thời điểm sửa do Drive trả về: 17/10/2026 16:26:21 giờ Việt Nam. Căn cứ bối cảnh cửa hàng, GAP, FE và LI. |
 | [Report 3 trực tuyến](https://docs.google.com/document/d/1HvhlCmYjfXj7766ZVNUBAU4J063Lmr71/edit) | Đã đọc nội dung và kiểm tra ảnh context/flow trong file trực tuyến; thời điểm sửa: 17/10/2026 17:17:15 giờ Việt Nam. Catalogue hiện ghi 102 UC, UC-01–UC-102. |
-| SAP Global Bike WM I–IV v4.2, trong [03_Case_Study](D:/Ky_9/SEP490/dóc/03_Case_Study) | Đọc 4 case chính, đối chiếu trang tổng quan và các bước nghiệp vụ; các Data Sheet/Notes phục vụ bối cảnh bài thực hành. Không lấy tài khoản, mã kho hoặc cơ cấu doanh nghiệp mẫu làm yêu cầu của Tân Thương. |
+| SAP Global Bike WM I–IV v4.2, trong `03_Case_Study` (nguồn lịch sử ngoài repo; chưa đóng gói) | Đọc 4 case chính, đối chiếu trang tổng quan và các bước nghiệp vụ; các Data Sheet/Notes phục vụ bối cảnh bài thực hành. Không lấy tài khoản, mã kho hoặc cơ cấu doanh nghiệp mẫu làm yêu cầu của Tân Thương. |
 | [MISA SME – Quy trình nghiệp vụ](https://helpsme.misa.vn/2022/kb/quy-trinh-nghiep-vu/) và các hướng dẫn eShop ở cuối tài liệu | Tham khảo loại chứng từ, giao nhận, kiểm kê và ranh giới kho/kế toán. Không sao chép toàn bộ phân hệ tài chính hoặc khẳng định cửa hàng đã bật mọi tính năng. |
 | [TikTok cửa hàng](https://www.tiktok.com/@gachoplattanthuong), [Facebook cửa hàng](https://www.facebook.com/p/Showroom-T%C3%A2n-Th%C6%B0%C6%A1ng-61567834853149/) | Đã thử truy cập/tìm kiếm, nhưng TikTok bị chặn và Facebook không trả nội dung có thể kiểm chứng. Không suy ra số kho, nhân sự, doanh thu, vận tải hay chính sách trả hàng từ hai liên kết này. |
 
@@ -668,10 +670,10 @@ Các câu hỏi này dùng để kiểm chứng giả định; không ngăn nhó
 
 | Nguồn | Nội dung sử dụng |
 |---|---|
-| [SAP WM I v4.2](D:/Ky_9/SEP490/dóc/03_Case_Study/Intro_S4HANA_Using_Global_Bike_Case_Study_WM_I_en_v4.2.pdf), tr. 2, 10–11, 18–22 | PO, nhận hàng, xếp vào bin và xác nhận; không lấy thanh toán NCC vào WMS. |
-| [SAP WM II v4.2](D:/Ky_9/SEP490/dóc/03_Case_Study/Intro_S4HANA_Using_Global_Bike_Case_Study_WM_II_en_v4.2.pdf), tr. 2, 6–7, 12–13, 17, 23–26 | Phân biệt stock transport, xuất nguồn, nhận đích và put-away. Chuyển từ nhà máy tới distribution center là bối cảnh mẫu, không phải cấu trúc Tân Thương. |
-| [SAP WM III v4.2](D:/Ky_9/SEP490/dóc/03_Case_Study/Intro_S4HANA_Using_Global_Bike_Case_Study_WM_III_en_v4.2.pdf), tr. 2, 8–9, 12–17, 21–22 | Tách sales/outbound request, picking, confirmation và goods issue; case có tích hợp SD, không có nghĩa WMSD phải xây POS/billing. |
-| [SAP WM IV v4.2](D:/Ky_9/SEP490/dóc/03_Case_Study/Intro_S4HANA_Using_Global_Bike_Case_Study_WM_IV_en_v4.2.pdf), tr. 2, 4–6, 12–17, 20–21, 26–27 | Kích hoạt phiên, khóa bin, đếm/đếm lại, clearing; giữ nguyên tắc, giản lược tầng hạch toán. |
+| `SAP WM I v4.2` (nguồn lịch sử ngoài repo; chưa đóng gói), tr. 2, 10–11, 18–22 | PO, nhận hàng, xếp vào bin và xác nhận; không lấy thanh toán NCC vào WMS. |
+| `SAP WM II v4.2` (nguồn lịch sử ngoài repo; chưa đóng gói), tr. 2, 6–7, 12–13, 17, 23–26 | Phân biệt stock transport, xuất nguồn, nhận đích và put-away. Chuyển từ nhà máy tới distribution center là bối cảnh mẫu, không phải cấu trúc Tân Thương. |
+| `SAP WM III v4.2` (nguồn lịch sử ngoài repo; chưa đóng gói), tr. 2, 8–9, 12–17, 21–22 | Tách sales/outbound request, picking, confirmation và goods issue; case có tích hợp SD, không có nghĩa WMSD phải xây POS/billing. |
+| `SAP WM IV v4.2` (nguồn lịch sử ngoài repo; chưa đóng gói), tr. 2, 4–6, 12–17, 20–21, 26–27 | Kích hoạt phiên, khóa bin, đếm/đếm lại, clearing; giữ nguyên tắc, giản lược tầng hạch toán. |
 | [MISA SME quy trình](https://helpsme.misa.vn/2022/kb/quy-trinh-nghiep-vu/) | Phân hệ nghiệp vụ riêng biệt; không dùng toàn bộ làm scope WMS. |
 | [MISA SME mua nhập kho](https://helpsme.misa.vn/2022/kb/muahang_trongnuoc_venhapkho/) | Phân biệt lập chứng từ, kiểm nhận và sổ kho/sổ kế toán. |
 | [MISA eShop nhập kho](https://helpeshop.misa.vn/kb/huong-dan-su-dung-tinh-nang-nhap-kho-tren-phan-mem-misa-eshop) | Chứng từ nhận hàng, lượng thực tế, vị trí và đính kèm. |

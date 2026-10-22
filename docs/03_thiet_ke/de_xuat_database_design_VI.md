@@ -17,14 +17,16 @@ Cập nhật 22/10/2026 theo khảo sát, D1–D8 và luồng BF-06 hiện hành
 | Mã | Nguồn | Cách áp dụng |
 |---|---|---|
 | S1 | [Đề xuất quy trình 2 — VI](../02_nghiep_vu/de_xuat_quy_trinh_2_VI.md), luồng bán hàng 21/10 và tách BF-03/BF-04 ngày 22/10/2026 | Nguồn nghiệp vụ hiện hành: 8 BF, 5 vai trò, 111 UC (98 active/13 retired), BR-01–33; không đồng bộ MISA tự động. |
-| S2 | [Report 1 text](../01_bao_cao/WMSD_Report1_Fix.docx.txt), đồng bộ 21/10/2026 | Bối cảnh một cửa hàng, khảo sát từ 3 kho, mục tiêu và phạm vi hiện hành; không coi phần As-is là To-be đã triển khai. |
-| S3 | [Report 3 text](../01_bao_cao/WMSD_Report3_Fix.docx.txt), baseline đầu ngày 21/10/2026 | Nguồn lịch sử 108 UC (95 active/13 retired), chưa có UC-109–111. Cần đồng bộ tiếp theo S1; MongoDB vẫn là hệ thống lưu trữ thực tế. |
-| S4 | [WMSD_Bangach.drawio](../04_so_do/WMSD_Bangach.drawio), **21 trang trong file hiện tại** | Kiểm tra BF01–06b, ERD và hai trang cuối. Trang BF03 có lane System; BF02/04/05/06a/06b có lane WMSD. Sơ đồ mới bỏ các lane này theo yêu cầu. |
+| S2 | [Report 1 text](../01_bao_cao/WMSD_Report1_Fix.docx.txt), đồng bộ 22/10/2026 | Bối cảnh một cửa hàng, khảo sát từ 3 kho, 8 BF và phạm vi SO/POD/PAY-CFM hiện hành; As-is không phải To-be đã triển khai. |
+| S3 | [Report 3 text](../01_bao_cao/WMSD_Report3_Fix.docx.txt), baseline 3.0.0 ngày 22/10/2026 | 111 UC (98 active/13 retired), BR-01–33, SC-01–31; SO ở UC-45–48, WIR/POD/PAY-CFM ở UC-109–111. MongoDB runtime. |
+| S4 | [WMSD_Bangach.drawio](../04_so_do/WMSD_Bangach.drawio), 21 trang có nhãn lịch sử | Chỉ đối chiếu các phương án cũ; không dùng lane System/WMSD, giá bán hoặc TO liên kho cũ làm yêu cầu hiện hành. |
 | S5 | [SAP WM I](../06_tham_khao/sap/Intro_S4HANA_Using_Global_Bike_Case_Study_WM_I_en_v4.1.pdf), [II](../06_tham_khao/sap/Intro_S4HANA_Using_Global_Bike_Case_Study_WM_II_en_v4.1.pdf), [III](../06_tham_khao/sap/Intro_S4HANA_Using_Global_Bike_Case_Study_WM_III_en_v4.1.pdf), [IV](../06_tham_khao/sap/Intro_S4HANA_Using_Global_Bike_Case_Study_WM_IV_en_v4.1.pdf) | Bộ **v4.1** trong repo: I GR tr.10, TO tr.18/21; II STO tr.6, GI tr.12, GR tr.18, TO tr.26/29; III picking tr.14/19, ship tr.25; IV snapshot/đếm/đếm lại/clear tr.4/12/14/21/27. Không tái dùng số trang v4.2 từ đề xuất cũ. |
 | S6 | [Tổng hợp quy trình](../06_tham_khao/quy_trinh/Tổng%20hợp%20quy%20trình.pdf), 4 trang | Tham khảo chứng từ giao nhận và bối cảnh; phần công nợ/thanh toán/xe không tự trở thành phạm vi MVP. |
 | S7 | [Các link tham khảo](../06_tham_khao/link_tham_khao.md) | Dùng hướng dẫn chính thức MISA, Odoo, Microsoft để đối chiếu khái niệm; các quyết định riêng của WMSD được mô tả dưới đây. |
+| S8 | [Sơ đồ database](WMSD_database_design.drawio), 10 trang | 73 bảng gốc, 173 FK và 2 view, dựng từ cùng DDL; thêm trang riêng SO/POD/PAY-CFM để đọc rõ. |
+| S9 | [Mainflow VI/EN](../04_so_do/WMSD_Mainflows_VI_EN.drawio), 16 trang | 8 BF × 2 ngôn ngữ, chỉ lane actor; bản EN riêng có 8 trang. |
 
-Thứ tự áp dụng: yêu cầu hiện tại → S1 và thay đổi BF-06 trong [change log](../../change_logs.md) → D1–D8 → Report 1/3 trước sửa BF-06 → khảo sát → nguồn lịch sử S4–S7. Hiện có 111 UC (98 active/13 retired). SQL là mô hình tham chiếu, MongoDB là lưu trữ thực tế.
+Thứ tự áp dụng: yêu cầu hiện tại → S1/D1–D8 và [change log](../../change_logs.md) → Report 1/3 cùng baseline → thiết kế/S8/S9 → khảo sát và nguồn tham khảo. S4 là sơ đồ lịch sử, không ghi đè quyết định hiện hành. Hiện có 111 UC (98 active/13 retired). SQL là mô hình tham chiếu, MongoDB là lưu trữ thực tế.
 
 ### 1.2 Phạm vi và thay đổi kiến trúc
 
@@ -43,9 +45,9 @@ Thứ tự áp dụng: yêu cầu hiện tại → S1 và thay đổi BF-06 tron
 | Ghi stock/ledger/chứng từ | Transaction nhiều bảng trong mô hình | MongoDB transaction nhiều document trên môi trường hỗ trợ; cần atomicity, idempotency và concurrency checks |
 | File SQL đính kèm | DDL tham chiếu cho thiết kế/đối chiếu | Không chạy như schema của runtime MongoDB |
 
-### 1.4 Use case cần đồng bộ với thiết kế
+### 1.4 Truy vết use case của thiết kế
 
-| Nhóm | Delta cần ghi trong SRS |
+| Nhóm | Nội dung đã đồng bộ trong SRS |
 |---|---|
 | BF-01 | Sales/Warehouse tạo nhu cầu; Accountant lập PO sau duyệt |
 | BF-03 | Chuyển vị trí trong cùng kho: Warehouse thực hiện TO-RELOCATE, không Owner duyệt, giữ nguyên tổng tồn và reservation; UC-34–37. |
@@ -58,7 +60,7 @@ Thứ tự áp dụng: yêu cầu hiện tại → S1 và thay đổi BF-06 tron
 
 ## 2. Ánh xạ thiết kế sang MongoDB runtime
 
-Bảng dưới đây mô tả cách ánh xạ các khái niệm của mô hình quan hệ sang MongoDB. Cần đồng bộ cách triển khai với thiết kế hệ thống chi tiết trước khi lập trình.
+Bảng dưới đây mô tả cách ánh xạ các khái niệm của mô hình quan hệ sang MongoDB. Ánh xạ này cùng baseline với [thiết kế hệ thống chi tiết](WMSD_Thiet_ke_he_thong_chi_tiet.md); vẫn cần cài và kiểm service/index/transaction trước vận hành.
 
 | Mô hình quan hệ dùng để phân tích | Collection/embedding dự kiến trên MongoDB |
 |---|---|

@@ -1,10 +1,11 @@
-<mxfile host="Electron" pages="3">
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="Electron" pages="3" data-status="historical" data-current-baseline="3.0.0">
   <diagram name="mẫu" id="ygb4s7GtP37ibgbkeHX7">
     <mxGraphModel dx="5135" dy="3043" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <UserObject label="" plantUmlData="{&#xa;  &quot;data&quot;: &quot;@startuml BP01_Procurement_Inbound_Detailed\n\ntitle BP-01 - Quy trình Mua hàng và Nhập kho\n\nscale 2400 width\n\n!pragma useVerticalIf on\n\nskinparam backgroundColor #FFFFFF\nskinparam defaultFontName Arial\nskinparam defaultFontSize 14\nskinparam shadowing false\nskinparam roundcorner 8\n\nskinparam wrapWidth 320\nskinparam swimlaneWidth 480\n\nskinparam activity {\n    BackgroundColor #FFFFFF\n    BorderColor #9CA3AF\n    FontColor #111827\n    ArrowColor #6B7280\n}\n\nskinparam swimlane {\n    BorderColor #9CA3AF\n    TitleBackgroundColor #E5E7EB\n}\n\n\n|Nhân viên kho|\nstart\n:Kiểm tra tình hình tồn kho;\n\n\n|Kế toán|\n:Xác định hàng hóa\\ncần bổ sung;\n:Lập đề xuất mua hàng;\n\n\n|Chủ cửa hàng|\n:Tiếp nhận đề xuất mua hàng;\n:Xem xét và phê duyệt;\n\n\nwhile (Đề xuất chưa được phê duyệt?) is (Có)\n\n    |Kế toán|\n    :Tiếp nhận lý do\\nchưa được phê duyệt;\n    :Điều chỉnh mặt hàng,\\nsố lượng hoặc nhu cầu mua;\n    :Gửi lại đề xuất mua hàng;\n\n    |Chủ cửa hàng|\n    :Tiếp nhận đề xuất\\nđã điều chỉnh;\n    :Xem xét và phê duyệt lại;\n\nendwhile (Không)\n\n\n|Kế toán|\n:Lập đơn mua hàng;\n:Đặt hàng với nhà cung cấp;\n\n\n|Nhà cung cấp|\n:Tiếp nhận đơn đặt hàng;\n:Kiểm tra khả năng cung ứng;\n\n\nwhile (Chưa đáp ứng đầy đủ đơn hàng?) is (Có)\n\n    :Thông báo khả năng cung ứng;\n    :Đề xuất điều chỉnh số lượng,\\nmặt hàng hoặc thời gian giao;\n\n    |Kế toán|\n    :Tiếp nhận phương án cung ứng;\n    :Trao đổi với nhà cung cấp;\n    :Điều chỉnh nội dung đơn mua;\n\n    |Nhà cung cấp|\n    :Tiếp nhận nội dung điều chỉnh;\n    :Kiểm tra lại khả năng cung ứng;\n\nendwhile (Không)\n\n\n|Nhà cung cấp|\n:Xác nhận đơn đặt hàng;\n:Chuẩn bị hàng;\n:Chuẩn bị chứng từ giao hàng;\n:Giao hàng và chứng từ;\n\n\n|Nhân viên kho|\n:Tiếp nhận hàng;\n:Kiểm đếm hàng thực tế;\n:Kiểm tra mã hàng, lô, màu,\\nquy cách và tình trạng hàng;\n\n\nwhile (Hàng chưa đúng hoặc chưa đủ?) is (Có)\n\n    :Ghi nhận số lượng chênh lệch,\\nhàng sai hoặc hàng không đạt;\n    :Thông báo kết quả kiểm nhận\\ncho Kế toán;\n\n    |Kế toán|\n    :Tiếp nhận thông tin chênh lệch;\n    :Đối chiếu với đơn mua;\n    :Trao đổi phương án xử lý\\nvới nhà cung cấp;\n\n    |Nhà cung cấp|\n    :Tiếp nhận thông tin chênh lệch;\n    :Xác định phương án xử lý;\n    :Thực hiện giao bổ sung,\\nđổi hàng hoặc thu hồi hàng;\n\n    |Nhân viên kho|\n    :Tiếp nhận kết quả xử lý;\n    :Kiểm đếm và kiểm tra lại\\nhàng hóa;\n\nendwhile (Không)\n\n\n|Nhân viên kho|\n:Nhập hàng vào kho;\n:Sắp xếp hàng theo lô\\nvà vị trí lưu trữ;\n:Xác nhận kết quả nhận hàng;\n\n\n|Kế toán|\n:Tiếp nhận chứng từ mua hàng;\n:Đối chiếu hàng nhận\\nvà chứng từ;\n\n\nwhile (Chứng từ chưa khớp\\nvới hàng thực nhận?) is (Có)\n\n    :Xác định nội dung\\nchênh lệch chứng từ;\n    :Trao đổi và yêu cầu\\nđiều chỉnh chứng từ;\n\n    |Nhà cung cấp|\n    :Tiếp nhận yêu cầu điều chỉnh;\n    :Điều chỉnh chứng từ;\n    :Gửi lại chứng từ điều chỉnh;\n\n    |Kế toán|\n    :Tiếp nhận chứng từ mới;\n    :Đối chiếu lại với\\nhàng thực nhận;\n\nendwhile (Không)\n\n\n|Kế toán|\n:Ghi nhận công nợ /\\nthanh toán;\n\nstop\n\n@enduml&quot;,&#xa;  &quot;config&quot;: null&#xa;}" id="pXq2V3zsZkD60tRm43RN-1">
+        <UserObject label="" plantUmlData="{&#10;  &quot;data&quot;: &quot;@startuml BP01_Procurement_Inbound_Detailed\n\ntitle BP-01 - Quy trình Mua hàng và Nhập kho\n\nscale 2400 width\n\n!pragma useVerticalIf on\n\nskinparam backgroundColor #FFFFFF\nskinparam defaultFontName Arial\nskinparam defaultFontSize 14\nskinparam shadowing false\nskinparam roundcorner 8\n\nskinparam wrapWidth 320\nskinparam swimlaneWidth 480\n\nskinparam activity {\n    BackgroundColor #FFFFFF\n    BorderColor #9CA3AF\n    FontColor #111827\n    ArrowColor #6B7280\n}\n\nskinparam swimlane {\n    BorderColor #9CA3AF\n    TitleBackgroundColor #E5E7EB\n}\n\n\n|Nhân viên kho|\nstart\n:Kiểm tra tình hình tồn kho;\n\n\n|Kế toán|\n:Xác định hàng hóa\\ncần bổ sung;\n:Lập đề xuất mua hàng;\n\n\n|Chủ cửa hàng|\n:Tiếp nhận đề xuất mua hàng;\n:Xem xét và phê duyệt;\n\n\nwhile (Đề xuất chưa được phê duyệt?) is (Có)\n\n    |Kế toán|\n    :Tiếp nhận lý do\\nchưa được phê duyệt;\n    :Điều chỉnh mặt hàng,\\nsố lượng hoặc nhu cầu mua;\n    :Gửi lại đề xuất mua hàng;\n\n    |Chủ cửa hàng|\n    :Tiếp nhận đề xuất\\nđã điều chỉnh;\n    :Xem xét và phê duyệt lại;\n\nendwhile (Không)\n\n\n|Kế toán|\n:Lập đơn mua hàng;\n:Đặt hàng với nhà cung cấp;\n\n\n|Nhà cung cấp|\n:Tiếp nhận đơn đặt hàng;\n:Kiểm tra khả năng cung ứng;\n\n\nwhile (Chưa đáp ứng đầy đủ đơn hàng?) is (Có)\n\n    :Thông báo khả năng cung ứng;\n    :Đề xuất điều chỉnh số lượng,\\nmặt hàng hoặc thời gian giao;\n\n    |Kế toán|\n    :Tiếp nhận phương án cung ứng;\n    :Trao đổi với nhà cung cấp;\n    :Điều chỉnh nội dung đơn mua;\n\n    |Nhà cung cấp|\n    :Tiếp nhận nội dung điều chỉnh;\n    :Kiểm tra lại khả năng cung ứng;\n\nendwhile (Không)\n\n\n|Nhà cung cấp|\n:Xác nhận đơn đặt hàng;\n:Chuẩn bị hàng;\n:Chuẩn bị chứng từ giao hàng;\n:Giao hàng và chứng từ;\n\n\n|Nhân viên kho|\n:Tiếp nhận hàng;\n:Kiểm đếm hàng thực tế;\n:Kiểm tra mã hàng, lô, màu,\\nquy cách và tình trạng hàng;\n\n\nwhile (Hàng chưa đúng hoặc chưa đủ?) is (Có)\n\n    :Ghi nhận số lượng chênh lệch,\\nhàng sai hoặc hàng không đạt;\n    :Thông báo kết quả kiểm nhận\\ncho Kế toán;\n\n    |Kế toán|\n    :Tiếp nhận thông tin chênh lệch;\n    :Đối chiếu với đơn mua;\n    :Trao đổi phương án xử lý\\nvới nhà cung cấp;\n\n    |Nhà cung cấp|\n    :Tiếp nhận thông tin chênh lệch;\n    :Xác định phương án xử lý;\n    :Thực hiện giao bổ sung,\\nđổi hàng hoặc thu hồi hàng;\n\n    |Nhân viên kho|\n    :Tiếp nhận kết quả xử lý;\n    :Kiểm đếm và kiểm tra lại\\nhàng hóa;\n\nendwhile (Không)\n\n\n|Nhân viên kho|\n:Nhập hàng vào kho;\n:Sắp xếp hàng theo lô\\nvà vị trí lưu trữ;\n:Xác nhận kết quả nhận hàng;\n\n\n|Kế toán|\n:Tiếp nhận chứng từ mua hàng;\n:Đối chiếu hàng nhận\\nvà chứng từ;\n\n\nwhile (Chứng từ chưa khớp\\nvới hàng thực nhận?) is (Có)\n\n    :Xác định nội dung\\nchênh lệch chứng từ;\n    :Trao đổi và yêu cầu\\nđiều chỉnh chứng từ;\n\n    |Nhà cung cấp|\n    :Tiếp nhận yêu cầu điều chỉnh;\n    :Điều chỉnh chứng từ;\n    :Gửi lại chứng từ điều chỉnh;\n\n    |Kế toán|\n    :Tiếp nhận chứng từ mới;\n    :Đối chiếu lại với\\nhàng thực nhận;\n\nendwhile (Không)\n\n\n|Kế toán|\n:Ghi nhận công nợ /\\nthanh toán;\n\nstop\n\n@enduml&quot;,&#10;  &quot;config&quot;: null&#10;}" id="pXq2V3zsZkD60tRm43RN-1">
           <mxCell connectable="0" parent="1" style="group;transparentBounds=1;editIcon=1;lockedGroup=0;groupPadding=10;" vertex="1">
             <mxGeometry as="geometry" />
           </mxCell>
@@ -58,7 +59,7 @@
             </mxGeometry>
           </mxCell>
         </UserObject>
-        <UserObject label="Xác định hàng hóa&#xa;cần bổ sung" plantUmlId="action_6" plantUmlBaseStyle="rounded=1;absoluteArcSize=1;arcSize=8;fillColor=#FFFFFF;strokeColor=#9CA3AF;strokeWidth=0.5;whiteSpace=wrap;fontSize=14;align=left;spacingLeft=6;shadow=0;fontColor=#111827;fontFamily=Arial;" plantUmlBaseValue="Xác định hàng hóa&#xa;cần bổ sung" id="pXq2V3zsZkD60tRm43RN-10">
+        <UserObject label="Xác định hàng hóa&#10;cần bổ sung" plantUmlId="action_6" plantUmlBaseStyle="rounded=1;absoluteArcSize=1;arcSize=8;fillColor=#FFFFFF;strokeColor=#9CA3AF;strokeWidth=0.5;whiteSpace=wrap;fontSize=14;align=left;spacingLeft=6;shadow=0;fontColor=#111827;fontFamily=Arial;" plantUmlBaseValue="Xác định hàng hóa&#10;cần bổ sung" id="pXq2V3zsZkD60tRm43RN-10">
           <mxCell parent="pXq2V3zsZkD60tRm43RN-1" style="rounded=1;absoluteArcSize=1;arcSize=8;fillColor=#FFFFFF;strokeColor=#9CA3AF;strokeWidth=0.5;whiteSpace=wrap;fontSize=14;align=left;spacingLeft=6;shadow=0;fontColor=#111827;fontFamily=Arial;" vertex="1">
             <mxGeometry height="36" width="149" x="605.5" y="710" as="geometry" />
           </mxCell>
@@ -126,12 +127,12 @@
             </mxGeometry>
           </mxCell>
         </UserObject>
-        <UserObject label="Tiếp nhận lý do&#xa;chưa được phê duyệt" plantUmlId="action_20" plantUmlBaseStyle="rounded=1;absoluteArcSize=1;arcSize=8;fillColor=#FFFFFF;strokeColor=#9CA3AF;strokeWidth=0.5;whiteSpace=wrap;fontSize=14;align=left;spacingLeft=6;shadow=0;fontColor=#111827;fontFamily=Arial;" plantUmlBaseValue="Tiếp nhận lý do&#xa;chưa được phê duyệt" id="pXq2V3zsZkD60tRm43RN-20">
+        <UserObject label="Tiếp nhận lý do&#10;chưa được phê duyệt" plantUmlId="action_20" plantUmlBaseStyle="rounded=1;absoluteArcSize=1;arcSize=8;fillColor=#FFFFFF;strokeColor=#9CA3AF;strokeWidth=0.5;whiteSpace=wrap;fontSize=14;align=left;spacingLeft=6;shadow=0;fontColor=#111827;fontFamily=Arial;" plantUmlBaseValue="Tiếp nhận lý do&#10;chưa được phê duyệt" id="pXq2V3zsZkD60tRm43RN-20">
           <mxCell parent="pXq2V3zsZkD60tRm43RN-1" style="rounded=1;absoluteArcSize=1;arcSize=8;fillColor=#FFFFFF;strokeColor=#9CA3AF;strokeWidth=0.5;whiteSpace=wrap;fontSize=14;align=left;spacingLeft=6;shadow=0;fontColor=#111827;fontFamily=Arial;" vertex="1">
             <mxGeometry height="36" width="159" x="880.5" y="996" as="geometry" />
           </mxCell>
         </UserObject>
-        <UserObject label="Điều chỉnh mặt hàng,&#xa;số lượng hoặc nhu cầu mua" plantUmlId="action_21" plantUmlBaseStyle="rounded=1;absoluteArcSize=1;arcSize=8;fillColor=#FFFFFF;strokeColor=#9CA3AF;strokeWidth=0.5;whiteSpace=wrap;fontSize=14;align=left;spacingLeft=6;shadow=0;fontColor=#111827;fontFamily=Arial;" plantUmlBaseValue="Điều chỉnh mặt hàng,&#xa;số lượng hoặc nhu cầu mua" id="pXq2V3zsZkD60tRm43RN-21">
+        <UserObject label="Điều chỉnh mặt hàng,&#10;số lượng hoặc nhu cầu mua" plantUmlId="action_21" plantUmlBaseStyle="rounded=1;absoluteArcSize=1;arcSize=8;fillColor=#FFFFFF;strokeColor=#9CA3AF;strokeWidth=0.5;whiteSpace=wrap;fontSize=14;align=left;spacingLeft=6;shadow=0;fontColor=#111827;fontFamily=Arial;" plantUmlBaseValue="Điều chỉnh mặt hàng,&#10;số lượng hoặc nhu cầu mua" id="pXq2V3zsZkD60tRm43RN-21">
           <mxCell parent="pXq2V3zsZkD60tRm43RN-1" style="rounded=1;absoluteArcSize=1;arcSize=8;fillColor=#FFFFFF;strokeColor=#9CA3AF;strokeWidth=0.5;whiteSpace=wrap;fontSize=14;align=left;spacingLeft=6;shadow=0;fontColor=#111827;fontFamily=Arial;" vertex="1">
             <mxGeometry height="36" width="206" x="857" y="1052" as="geometry" />
           </mxCell>
@@ -157,7 +158,7 @@
             </mxGeometry>
           </mxCell>
         </UserObject>
-        <UserObject label="Tiếp nhận đề xuất&#xa;đã điều chỉnh" plantUmlId="action_26" plantUmlBaseStyle="rounded=1;absoluteArcSize=1;arcSize=8;fillColor=#FFFFFF;strokeColor=#9CA3AF;strokeWidth=0.5;whiteSpace=wrap;fontSize=14;align=left;spacingLeft=6;shadow=0;fontColor=#111827;fontFamily=Arial;" plantUmlBaseValue="Tiếp nhận đề xuất&#xa;đã điều chỉnh" id="pXq2V3zsZkD60tRm43RN-25">
+        <UserObject label="Tiếp nhận đề xuất&#10;đã điều chỉnh" plantUmlId="action_26" plantUmlBaseStyle="rounded=1;absoluteArcSize=1;arcSize=8;fillColor=#FFFFFF;strokeColor=#9CA3AF;strokeWidth=0.5;whiteSpace=wrap;fontSize=14;align=left;spacingLeft=6;shadow=0;fontColor=#111827;fontFamily=Arial;" plantUmlBaseValue="Tiếp nhận đề xuất&#10;đã điều chỉnh" id="pXq2V3zsZkD60tRm43RN-25">
           <mxCell parent="pXq2V3zsZkD60tRm43RN-1" style="rounded=1;absoluteArcSize=1;arcSize=8;fillColor=#FFFFFF;strokeColor=#9CA3AF;strokeWidth=0.5;whiteSpace=wrap;fontSize=14;align=left;spacingLeft=6;shadow=0;fontColor=#111827;fontFamily=Arial;" vertex="1">
             <mxGeometry height="36" width="143" x="888.5" y="1164" as="geometry" />
           </mxCell>
@@ -280,7 +281,7 @@
             <mxGeometry height="36" width="228" x="1126" y="1588" as="geometry" />
           </mxCell>
         </UserObject>
-        <UserObject label="Đề xuất điều chỉnh số lượng,&#xa;mặt hàng hoặc thời gian giao" plantUmlId="action_54" plantUmlBaseStyle="rounded=1;absoluteArcSize=1;arcSize=8;fillColor=#FFFFFF;strokeColor=#9CA3AF;strokeWidth=0.5;whiteSpace=wrap;fontSize=14;align=left;spacingLeft=6;shadow=0;fontColor=#111827;fontFamily=Arial;" plantUmlBaseValue="Đề xuất điều chỉnh số lượng,&#xa;mặt hàng hoặc thời gian giao" id="pXq2V3zsZkD60tRm43RN-42">
+        <UserObject label="Đề xuất điều chỉnh số lượng,&#10;mặt hàng hoặc thời gian giao" plantUmlId="action_54" plantUmlBaseStyle="rounded=1;absoluteArcSize=1;arcSize=8;fillColor=#FFFFFF;strokeColor=#9CA3AF;strokeWidth=0.5;whiteSpace=wrap;fontSize=14;align=left;spacingLeft=6;shadow=0;fontColor=#111827;fontFamily=Arial;" plantUmlBaseValue="Đề xuất điều chỉnh số lượng,&#10;mặt hàng hoặc thời gian giao" id="pXq2V3zsZkD60tRm43RN-42">
           <mxCell parent="pXq2V3zsZkD60tRm43RN-1" style="rounded=1;absoluteArcSize=1;arcSize=8;fillColor=#FFFFFF;strokeColor=#9CA3AF;strokeWidth=0.5;whiteSpace=wrap;fontSize=14;align=left;spacingLeft=6;shadow=0;fontColor=#111827;fontFamily=Arial;" vertex="1">
             <mxGeometry height="36" width="219" x="1130.5" y="1644" as="geometry" />
           </mxCell>
@@ -469,7 +470,7 @@
             </mxGeometry>
           </mxCell>
         </UserObject>
-        <UserObject label="Kiểm tra mã hàng, lô, màu,&#xa;quy cách và tình trạng hàng" plantUmlId="action_94" plantUmlBaseStyle="rounded=1;absoluteArcSize=1;arcSize=8;fillColor=#FFFFFF;strokeColor=#9CA3AF;strokeWidth=0.5;whiteSpace=wrap;fontSize=14;align=left;spacingLeft=6;shadow=0;fontColor=#111827;fontFamily=Arial;" plantUmlBaseValue="Kiểm tra mã hàng, lô, màu,&#xa;quy cách và tình trạng hàng" id="pXq2V3zsZkD60tRm43RN-68">
+        <UserObject label="Kiểm tra mã hàng, lô, màu,&#10;quy cách và tình trạng hàng" plantUmlId="action_94" plantUmlBaseStyle="rounded=1;absoluteArcSize=1;arcSize=8;fillColor=#FFFFFF;strokeColor=#9CA3AF;strokeWidth=0.5;whiteSpace=wrap;fontSize=14;align=left;spacingLeft=6;shadow=0;fontColor=#111827;fontFamily=Arial;" plantUmlBaseValue="Kiểm tra mã hàng, lô, màu,&#10;quy cách và tình trạng hàng" id="pXq2V3zsZkD60tRm43RN-68">
           <mxCell parent="pXq2V3zsZkD60tRm43RN-1" style="rounded=1;absoluteArcSize=1;arcSize=8;fillColor=#FFFFFF;strokeColor=#9CA3AF;strokeWidth=0.5;whiteSpace=wrap;fontSize=14;align=left;spacingLeft=6;shadow=0;fontColor=#111827;fontFamily=Arial;" vertex="1">
             <mxGeometry height="36" width="214" x="293" y="2342" as="geometry" />
           </mxCell>
@@ -495,12 +496,12 @@
             </mxGeometry>
           </mxCell>
         </UserObject>
-        <UserObject label="Ghi nhận số lượng chênh lệch,&#xa;hàng sai hoặc hàng không đạt" plantUmlId="action_99" plantUmlBaseStyle="rounded=1;absoluteArcSize=1;arcSize=8;fillColor=#FFFFFF;strokeColor=#9CA3AF;strokeWidth=0.5;whiteSpace=wrap;fontSize=14;align=left;spacingLeft=6;shadow=0;fontColor=#111827;fontFamily=Arial;" plantUmlBaseValue="Ghi nhận số lượng chênh lệch,&#xa;hàng sai hoặc hàng không đạt" id="pXq2V3zsZkD60tRm43RN-72">
+        <UserObject label="Ghi nhận số lượng chênh lệch,&#10;hàng sai hoặc hàng không đạt" plantUmlId="action_99" plantUmlBaseStyle="rounded=1;absoluteArcSize=1;arcSize=8;fillColor=#FFFFFF;strokeColor=#9CA3AF;strokeWidth=0.5;whiteSpace=wrap;fontSize=14;align=left;spacingLeft=6;shadow=0;fontColor=#111827;fontFamily=Arial;" plantUmlBaseValue="Ghi nhận số lượng chênh lệch,&#10;hàng sai hoặc hàng không đạt" id="pXq2V3zsZkD60tRm43RN-72">
           <mxCell parent="pXq2V3zsZkD60tRm43RN-1" style="rounded=1;absoluteArcSize=1;arcSize=8;fillColor=#FFFFFF;strokeColor=#9CA3AF;strokeWidth=0.5;whiteSpace=wrap;fontSize=14;align=left;spacingLeft=6;shadow=0;fontColor=#111827;fontFamily=Arial;" vertex="1">
             <mxGeometry height="36" width="225" x="287.5" y="2460" as="geometry" />
           </mxCell>
         </UserObject>
-        <UserObject label="Thông báo kết quả kiểm nhận&#xa;cho Kế toán" plantUmlId="action_100" plantUmlBaseStyle="rounded=1;absoluteArcSize=1;arcSize=8;fillColor=#FFFFFF;strokeColor=#9CA3AF;strokeWidth=0.5;whiteSpace=wrap;fontSize=14;align=left;spacingLeft=6;shadow=0;fontColor=#111827;fontFamily=Arial;" plantUmlBaseValue="Thông báo kết quả kiểm nhận&#xa;cho Kế toán" id="pXq2V3zsZkD60tRm43RN-73">
+        <UserObject label="Thông báo kết quả kiểm nhận&#10;cho Kế toán" plantUmlId="action_100" plantUmlBaseStyle="rounded=1;absoluteArcSize=1;arcSize=8;fillColor=#FFFFFF;strokeColor=#9CA3AF;strokeWidth=0.5;whiteSpace=wrap;fontSize=14;align=left;spacingLeft=6;shadow=0;fontColor=#111827;fontFamily=Arial;" plantUmlBaseValue="Thông báo kết quả kiểm nhận&#10;cho Kế toán" id="pXq2V3zsZkD60tRm43RN-73">
           <mxCell parent="pXq2V3zsZkD60tRm43RN-1" style="rounded=1;absoluteArcSize=1;arcSize=8;fillColor=#FFFFFF;strokeColor=#9CA3AF;strokeWidth=0.5;whiteSpace=wrap;fontSize=14;align=left;spacingLeft=6;shadow=0;fontColor=#111827;fontFamily=Arial;" vertex="1">
             <mxGeometry height="36" width="224" x="288" y="2516" as="geometry" />
           </mxCell>
@@ -542,7 +543,7 @@
             </mxGeometry>
           </mxCell>
         </UserObject>
-        <UserObject label="Trao đổi phương án xử lý&#xa;với nhà cung cấp" plantUmlId="action_109" plantUmlBaseStyle="rounded=1;absoluteArcSize=1;arcSize=8;fillColor=#FFFFFF;strokeColor=#9CA3AF;strokeWidth=0.5;whiteSpace=wrap;fontSize=14;align=left;spacingLeft=6;shadow=0;fontColor=#111827;fontFamily=Arial;" plantUmlBaseValue="Trao đổi phương án xử lý&#xa;với nhà cung cấp" id="pXq2V3zsZkD60tRm43RN-79">
+        <UserObject label="Trao đổi phương án xử lý&#10;với nhà cung cấp" plantUmlId="action_109" plantUmlBaseStyle="rounded=1;absoluteArcSize=1;arcSize=8;fillColor=#FFFFFF;strokeColor=#9CA3AF;strokeWidth=0.5;whiteSpace=wrap;fontSize=14;align=left;spacingLeft=6;shadow=0;fontColor=#111827;fontFamily=Arial;" plantUmlBaseValue="Trao đổi phương án xử lý&#10;với nhà cung cấp" id="pXq2V3zsZkD60tRm43RN-79">
           <mxCell parent="pXq2V3zsZkD60tRm43RN-1" style="rounded=1;absoluteArcSize=1;arcSize=8;fillColor=#FFFFFF;strokeColor=#9CA3AF;strokeWidth=0.5;whiteSpace=wrap;fontSize=14;align=left;spacingLeft=6;shadow=0;fontColor=#111827;fontFamily=Arial;" vertex="1">
             <mxGeometry height="36" width="189" x="585.5" y="2684" as="geometry" />
           </mxCell>
@@ -584,7 +585,7 @@
             </mxGeometry>
           </mxCell>
         </UserObject>
-        <UserObject label="Thực hiện giao bổ sung,&#xa;đổi hàng hoặc thu hồi hàng" plantUmlId="action_118" plantUmlBaseStyle="rounded=1;absoluteArcSize=1;arcSize=8;fillColor=#FFFFFF;strokeColor=#9CA3AF;strokeWidth=0.5;whiteSpace=wrap;fontSize=14;align=left;spacingLeft=6;shadow=0;fontColor=#111827;fontFamily=Arial;" plantUmlBaseValue="Thực hiện giao bổ sung,&#xa;đổi hàng hoặc thu hồi hàng" id="pXq2V3zsZkD60tRm43RN-85">
+        <UserObject label="Thực hiện giao bổ sung,&#10;đổi hàng hoặc thu hồi hàng" plantUmlId="action_118" plantUmlBaseStyle="rounded=1;absoluteArcSize=1;arcSize=8;fillColor=#FFFFFF;strokeColor=#9CA3AF;strokeWidth=0.5;whiteSpace=wrap;fontSize=14;align=left;spacingLeft=6;shadow=0;fontColor=#111827;fontFamily=Arial;" plantUmlBaseValue="Thực hiện giao bổ sung,&#10;đổi hàng hoặc thu hồi hàng" id="pXq2V3zsZkD60tRm43RN-85">
           <mxCell parent="pXq2V3zsZkD60tRm43RN-1" style="rounded=1;absoluteArcSize=1;arcSize=8;fillColor=#FFFFFF;strokeColor=#9CA3AF;strokeWidth=0.5;whiteSpace=wrap;fontSize=14;align=left;spacingLeft=6;shadow=0;fontColor=#111827;fontFamily=Arial;" vertex="1">
             <mxGeometry height="36" width="206" x="1137" y="2852" as="geometry" />
           </mxCell>
@@ -613,7 +614,7 @@
             </mxGeometry>
           </mxCell>
         </UserObject>
-        <UserObject label="Kiểm đếm và kiểm tra lại&#xa;hàng hóa" plantUmlId="action_125" plantUmlBaseStyle="rounded=1;absoluteArcSize=1;arcSize=8;fillColor=#FFFFFF;strokeColor=#9CA3AF;strokeWidth=0.5;whiteSpace=wrap;fontSize=14;align=left;spacingLeft=6;shadow=0;fontColor=#111827;fontFamily=Arial;" plantUmlBaseValue="Kiểm đếm và kiểm tra lại&#xa;hàng hóa" id="pXq2V3zsZkD60tRm43RN-89">
+        <UserObject label="Kiểm đếm và kiểm tra lại&#10;hàng hóa" plantUmlId="action_125" plantUmlBaseStyle="rounded=1;absoluteArcSize=1;arcSize=8;fillColor=#FFFFFF;strokeColor=#9CA3AF;strokeWidth=0.5;whiteSpace=wrap;fontSize=14;align=left;spacingLeft=6;shadow=0;fontColor=#111827;fontFamily=Arial;" plantUmlBaseValue="Kiểm đếm và kiểm tra lại&#10;hàng hóa" id="pXq2V3zsZkD60tRm43RN-89">
           <mxCell parent="pXq2V3zsZkD60tRm43RN-1" style="rounded=1;absoluteArcSize=1;arcSize=8;fillColor=#FFFFFF;strokeColor=#9CA3AF;strokeWidth=0.5;whiteSpace=wrap;fontSize=14;align=left;spacingLeft=6;shadow=0;fontColor=#111827;fontFamily=Arial;" vertex="1">
             <mxGeometry height="36" width="188" x="306" y="2964" as="geometry" />
           </mxCell>
@@ -664,7 +665,7 @@
             </mxGeometry>
           </mxCell>
         </UserObject>
-        <UserObject label="Sắp xếp hàng theo lô&#xa;và vị trí lưu trữ" plantUmlId="action_137" plantUmlBaseStyle="rounded=1;absoluteArcSize=1;arcSize=8;fillColor=#FFFFFF;strokeColor=#9CA3AF;strokeWidth=0.5;whiteSpace=wrap;fontSize=14;align=left;spacingLeft=6;shadow=0;fontColor=#111827;fontFamily=Arial;" plantUmlBaseValue="Sắp xếp hàng theo lô&#xa;và vị trí lưu trữ" id="pXq2V3zsZkD60tRm43RN-95">
+        <UserObject label="Sắp xếp hàng theo lô&#10;và vị trí lưu trữ" plantUmlId="action_137" plantUmlBaseStyle="rounded=1;absoluteArcSize=1;arcSize=8;fillColor=#FFFFFF;strokeColor=#9CA3AF;strokeWidth=0.5;whiteSpace=wrap;fontSize=14;align=left;spacingLeft=6;shadow=0;fontColor=#111827;fontFamily=Arial;" plantUmlBaseValue="Sắp xếp hàng theo lô&#10;và vị trí lưu trữ" id="pXq2V3zsZkD60tRm43RN-95">
           <mxCell parent="pXq2V3zsZkD60tRm43RN-1" style="rounded=1;absoluteArcSize=1;arcSize=8;fillColor=#FFFFFF;strokeColor=#9CA3AF;strokeWidth=0.5;whiteSpace=wrap;fontSize=14;align=left;spacingLeft=6;shadow=0;fontColor=#111827;fontFamily=Arial;" vertex="1">
             <mxGeometry height="36" width="164" x="318" y="3102" as="geometry" />
           </mxCell>
@@ -706,7 +707,7 @@
             </mxGeometry>
           </mxCell>
         </UserObject>
-        <UserObject label="Đối chiếu hàng nhận&#xa;và chứng từ" plantUmlId="action_145" plantUmlBaseStyle="rounded=1;absoluteArcSize=1;arcSize=8;fillColor=#FFFFFF;strokeColor=#9CA3AF;strokeWidth=0.5;whiteSpace=wrap;fontSize=14;align=left;spacingLeft=6;shadow=0;fontColor=#111827;fontFamily=Arial;" plantUmlBaseValue="Đối chiếu hàng nhận&#xa;và chứng từ" id="pXq2V3zsZkD60tRm43RN-101">
+        <UserObject label="Đối chiếu hàng nhận&#10;và chứng từ" plantUmlId="action_145" plantUmlBaseStyle="rounded=1;absoluteArcSize=1;arcSize=8;fillColor=#FFFFFF;strokeColor=#9CA3AF;strokeWidth=0.5;whiteSpace=wrap;fontSize=14;align=left;spacingLeft=6;shadow=0;fontColor=#111827;fontFamily=Arial;" plantUmlBaseValue="Đối chiếu hàng nhận&#10;và chứng từ" id="pXq2V3zsZkD60tRm43RN-101">
           <mxCell parent="pXq2V3zsZkD60tRm43RN-1" style="rounded=1;absoluteArcSize=1;arcSize=8;fillColor=#FFFFFF;strokeColor=#9CA3AF;strokeWidth=0.5;whiteSpace=wrap;fontSize=14;align=left;spacingLeft=6;shadow=0;fontColor=#111827;fontFamily=Arial;" vertex="1">
             <mxGeometry height="36" width="158" x="601" y="3270" as="geometry" />
           </mxCell>
@@ -719,7 +720,7 @@
             </mxGeometry>
           </mxCell>
         </UserObject>
-        <UserObject label="Chứng từ chưa khớp&#xa;với hàng thực nhận?" plantUmlId="wdiamond_148" plantUmlBaseStyle="shape=hexagon;perimeter=hexagonPerimeter2;fillColor=#FFFFFF;strokeColor=#9CA3AF;whiteSpace=wrap;fontSize=14;rounded=1;arcSize=8;absoluteArcSize=1;shadow=0;fontColor=#111827;fontFamily=Arial;" plantUmlBaseValue="Chứng từ chưa khớp&#xa;với hàng thực nhận?" id="pXq2V3zsZkD60tRm43RN-103">
+        <UserObject label="Chứng từ chưa khớp&#10;với hàng thực nhận?" plantUmlId="wdiamond_148" plantUmlBaseStyle="shape=hexagon;perimeter=hexagonPerimeter2;fillColor=#FFFFFF;strokeColor=#9CA3AF;whiteSpace=wrap;fontSize=14;rounded=1;arcSize=8;absoluteArcSize=1;shadow=0;fontColor=#111827;fontFamily=Arial;" plantUmlBaseValue="Chứng từ chưa khớp&#10;với hàng thực nhận?" id="pXq2V3zsZkD60tRm43RN-103">
           <mxCell parent="pXq2V3zsZkD60tRm43RN-1" style="shape=hexagon;perimeter=hexagonPerimeter2;fillColor=#fff2cc;strokeColor=#d6b656;whiteSpace=wrap;fontSize=14;rounded=1;arcSize=8;absoluteArcSize=1;shadow=0;fontFamily=Arial;" vertex="1">
             <mxGeometry height="28" width="159" x="600.5" y="3326" as="geometry" />
           </mxCell>
@@ -732,12 +733,12 @@
             </mxGeometry>
           </mxCell>
         </UserObject>
-        <UserObject label="Xác định nội dung&#xa;chênh lệch chứng từ" plantUmlId="action_150" plantUmlBaseStyle="rounded=1;absoluteArcSize=1;arcSize=8;fillColor=#FFFFFF;strokeColor=#9CA3AF;strokeWidth=0.5;whiteSpace=wrap;fontSize=14;align=left;spacingLeft=6;shadow=0;fontColor=#111827;fontFamily=Arial;" plantUmlBaseValue="Xác định nội dung&#xa;chênh lệch chứng từ" id="pXq2V3zsZkD60tRm43RN-105">
+        <UserObject label="Xác định nội dung&#10;chênh lệch chứng từ" plantUmlId="action_150" plantUmlBaseStyle="rounded=1;absoluteArcSize=1;arcSize=8;fillColor=#FFFFFF;strokeColor=#9CA3AF;strokeWidth=0.5;whiteSpace=wrap;fontSize=14;align=left;spacingLeft=6;shadow=0;fontColor=#111827;fontFamily=Arial;" plantUmlBaseValue="Xác định nội dung&#10;chênh lệch chứng từ" id="pXq2V3zsZkD60tRm43RN-105">
           <mxCell parent="pXq2V3zsZkD60tRm43RN-1" style="rounded=1;absoluteArcSize=1;arcSize=8;fillColor=#FFFFFF;strokeColor=#9CA3AF;strokeWidth=0.5;whiteSpace=wrap;fontSize=14;align=left;spacingLeft=6;shadow=0;fontColor=#111827;fontFamily=Arial;" vertex="1">
             <mxGeometry height="36" width="157" x="601.5" y="3388" as="geometry" />
           </mxCell>
         </UserObject>
-        <UserObject label="Trao đổi và yêu cầu&#xa;điều chỉnh chứng từ" plantUmlId="action_151" plantUmlBaseStyle="rounded=1;absoluteArcSize=1;arcSize=8;fillColor=#FFFFFF;strokeColor=#9CA3AF;strokeWidth=0.5;whiteSpace=wrap;fontSize=14;align=left;spacingLeft=6;shadow=0;fontColor=#111827;fontFamily=Arial;" plantUmlBaseValue="Trao đổi và yêu cầu&#xa;điều chỉnh chứng từ" id="pXq2V3zsZkD60tRm43RN-106">
+        <UserObject label="Trao đổi và yêu cầu&#10;điều chỉnh chứng từ" plantUmlId="action_151" plantUmlBaseStyle="rounded=1;absoluteArcSize=1;arcSize=8;fillColor=#FFFFFF;strokeColor=#9CA3AF;strokeWidth=0.5;whiteSpace=wrap;fontSize=14;align=left;spacingLeft=6;shadow=0;fontColor=#111827;fontFamily=Arial;" plantUmlBaseValue="Trao đổi và yêu cầu&#10;điều chỉnh chứng từ" id="pXq2V3zsZkD60tRm43RN-106">
           <mxCell parent="pXq2V3zsZkD60tRm43RN-1" style="rounded=1;absoluteArcSize=1;arcSize=8;fillColor=#FFFFFF;strokeColor=#9CA3AF;strokeWidth=0.5;whiteSpace=wrap;fontSize=14;align=left;spacingLeft=6;shadow=0;fontColor=#111827;fontFamily=Arial;" vertex="1">
             <mxGeometry height="36" width="157" x="601.5" y="3444" as="geometry" />
           </mxCell>
@@ -808,7 +809,7 @@
             </mxGeometry>
           </mxCell>
         </UserObject>
-        <UserObject label="Đối chiếu lại với&#xa;hàng thực nhận" plantUmlId="action_167" plantUmlBaseStyle="rounded=1;absoluteArcSize=1;arcSize=8;fillColor=#FFFFFF;strokeColor=#9CA3AF;strokeWidth=0.5;whiteSpace=wrap;fontSize=14;align=left;spacingLeft=6;shadow=0;fontColor=#111827;fontFamily=Arial;" plantUmlBaseValue="Đối chiếu lại với&#xa;hàng thực nhận" id="pXq2V3zsZkD60tRm43RN-116">
+        <UserObject label="Đối chiếu lại với&#10;hàng thực nhận" plantUmlId="action_167" plantUmlBaseStyle="rounded=1;absoluteArcSize=1;arcSize=8;fillColor=#FFFFFF;strokeColor=#9CA3AF;strokeWidth=0.5;whiteSpace=wrap;fontSize=14;align=left;spacingLeft=6;shadow=0;fontColor=#111827;fontFamily=Arial;" plantUmlBaseValue="Đối chiếu lại với&#10;hàng thực nhận" id="pXq2V3zsZkD60tRm43RN-116">
           <mxCell parent="pXq2V3zsZkD60tRm43RN-1" style="rounded=1;absoluteArcSize=1;arcSize=8;fillColor=#FFFFFF;strokeColor=#9CA3AF;strokeWidth=0.5;whiteSpace=wrap;fontSize=14;align=left;spacingLeft=6;shadow=0;fontColor=#111827;fontFamily=Arial;" vertex="1">
             <mxGeometry height="36" width="126" x="617" y="3724" as="geometry" />
           </mxCell>
@@ -845,7 +846,7 @@
             </mxGeometry>
           </mxCell>
         </UserObject>
-        <UserObject label="Ghi nhận công nợ /&#xa;thanh toán" plantUmlId="action_177" plantUmlBaseStyle="rounded=1;absoluteArcSize=1;arcSize=8;fillColor=#FFFFFF;strokeColor=#9CA3AF;strokeWidth=0.5;whiteSpace=wrap;fontSize=14;align=left;spacingLeft=6;shadow=0;fontColor=#111827;fontFamily=Arial;" plantUmlBaseValue="Ghi nhận công nợ /&#xa;thanh toán" id="pXq2V3zsZkD60tRm43RN-120">
+        <UserObject label="Ghi nhận công nợ /&#10;thanh toán" plantUmlId="action_177" plantUmlBaseStyle="rounded=1;absoluteArcSize=1;arcSize=8;fillColor=#FFFFFF;strokeColor=#9CA3AF;strokeWidth=0.5;whiteSpace=wrap;fontSize=14;align=left;spacingLeft=6;shadow=0;fontColor=#111827;fontFamily=Arial;" plantUmlBaseValue="Ghi nhận công nợ /&#10;thanh toán" id="pXq2V3zsZkD60tRm43RN-120">
           <mxCell parent="pXq2V3zsZkD60tRm43RN-1" style="rounded=1;absoluteArcSize=1;arcSize=8;fillColor=#FFFFFF;strokeColor=#9CA3AF;strokeWidth=0.5;whiteSpace=wrap;fontSize=14;align=left;spacingLeft=6;shadow=0;fontColor=#111827;fontFamily=Arial;" vertex="1">
             <mxGeometry height="36" width="151" x="604.5" y="3806" as="geometry" />
           </mxCell>
@@ -868,6 +869,9 @@
             <mxGeometry height="24" width="316" x="662" y="550" as="geometry" />
           </mxCell>
         </UserObject>
+        <mxCell id="historical-status" value="&lt;b&gt;LỊCH SỬ / HISTORICAL — không dùng làm thiết kế hiện hành&lt;/b&gt;&lt;br&gt;Giữ để đối chiếu phiên bản. Chuẩn 3.0.0 (22/10/2026): WMSD_Mainflows_VI_EN.drawio và Report 3." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=16;align=left;spacing=12;fillColor=#fff2cc;strokeColor=#d6b656;">
+          <mxGeometry x="20" y="10" width="1200" height="100" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
@@ -877,7 +881,7 @@
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="w6Bw88_lZn2PExeKVo6r-1" parent="1" style="swimlane;startSize=20;whiteSpace=wrap;html=1;" value="Warehouse Staff" vertex="1">
-          <mxGeometry height="1500" width="350" x="10" y="150" as="geometry" />
+          <mxGeometry height="1500" width="350" x="10" y="290.0" as="geometry" />
         </mxCell>
         <mxCell id="w6Bw88_lZn2PExeKVo6r-5" edge="1" parent="w6Bw88_lZn2PExeKVo6r-1" source="w6Bw88_lZn2PExeKVo6r-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" target="w6Bw88_lZn2PExeKVo6r-4">
           <mxGeometry relative="1" as="geometry" />
@@ -920,7 +924,7 @@
           <mxGeometry height="60" width="120" x="200" y="1075" as="geometry" />
         </mxCell>
         <mxCell id="w6Bw88_lZn2PExeKVo6r-2" parent="1" style="swimlane;startSize=20;whiteSpace=wrap;html=1;" value="Accounting Staff" vertex="1">
-          <mxGeometry height="1500" width="300" x="360" y="150" as="geometry" />
+          <mxGeometry height="1500" width="300" x="360" y="290.0" as="geometry" />
         </mxCell>
         <mxCell id="w6Bw88_lZn2PExeKVo6r-6" parent="w6Bw88_lZn2PExeKVo6r-2" style="rounded=0;whiteSpace=wrap;html=1;" value="2. Prepare Purchase Request" vertex="1">
           <mxGeometry height="60" width="120" x="85" y="170" as="geometry" />
@@ -964,7 +968,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="w6Bw88_lZn2PExeKVo6r-8" parent="1" style="swimlane;startSize=20;whiteSpace=wrap;html=1;" value="Owner" vertex="1">
-          <mxGeometry height="1500" width="215" x="660" y="150" as="geometry" />
+          <mxGeometry height="1500" width="215" x="660" y="290.0" as="geometry" />
         </mxCell>
         <mxCell id="w6Bw88_lZn2PExeKVo6r-12" edge="1" parent="w6Bw88_lZn2PExeKVo6r-8" source="w6Bw88_lZn2PExeKVo6r-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="w6Bw88_lZn2PExeKVo6r-11">
           <mxGeometry relative="1" as="geometry" />
@@ -980,7 +984,7 @@
         </mxCell>
         <mxCell id="w6Bw88_lZn2PExeKVo6r-14" edge="1" parent="1" source="w6Bw88_lZn2PExeKVo6r-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="w6Bw88_lZn2PExeKVo6r-13">
           <mxGeometry relative="1" x="0.1818" as="geometry">
-            <mxPoint x="310" y="545.0000000000002" as="targetPoint" />
+            <mxPoint x="310" y="685.0000000000002" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="w6Bw88_lZn2PExeKVo6r-15" connectable="0" parent="w6Bw88_lZn2PExeKVo6r-14" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="yes" vertex="1">
@@ -989,7 +993,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="w6Bw88_lZn2PExeKVo6r-29" parent="1" style="swimlane;startSize=20;whiteSpace=wrap;html=1;" value="Supplier" vertex="1">
-          <mxGeometry height="1500" width="225" x="875" y="150" as="geometry" />
+          <mxGeometry height="1500" width="225" x="875" y="290.0" as="geometry" />
         </mxCell>
         <mxCell id="w6Bw88_lZn2PExeKVo6r-18" parent="w6Bw88_lZn2PExeKVo6r-29" style="rounded=0;whiteSpace=wrap;html=1;" value="5.Confirm Order Availability" vertex="1">
           <mxGeometry height="60" width="120" x="45" y="630" as="geometry" />
@@ -1016,7 +1020,7 @@
         </mxCell>
         <mxCell id="w6Bw88_lZn2PExeKVo6r-37" edge="1" parent="1" source="w6Bw88_lZn2PExeKVo6r-30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="w6Bw88_lZn2PExeKVo6r-36">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="310" y="930" as="targetPoint" />
+            <mxPoint x="310" y="1070.0" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="w6Bw88_lZn2PExeKVo6r-38" connectable="0" parent="w6Bw88_lZn2PExeKVo6r-37" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="no" vertex="1">
@@ -1069,6 +1073,9 @@
         <mxCell id="Ya0TJeAxRJGeu1lgu29H-3" edge="1" parent="1" source="Ya0TJeAxRJGeu1lgu29H-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="w6Bw88_lZn2PExeKVo6r-39">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
+        <mxCell id="historical-status" value="&lt;b&gt;LỊCH SỬ / HISTORICAL — không dùng làm thiết kế hiện hành&lt;/b&gt;&lt;br&gt;Giữ để đối chiếu phiên bản. Chuẩn 3.0.0 (22/10/2026): WMSD_Mainflows_VI_EN.drawio và Report 3." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=16;align=left;spacing=12;fillColor=#fff2cc;strokeColor=#d6b656;">
+          <mxGeometry x="20" y="10" width="1200" height="100" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
@@ -1078,7 +1085,7 @@
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="oGNuB8JjH54ikDpzXjjq-1" parent="1" style="swimlane;startSize=20;whiteSpace=wrap;html=1;fontSize=14;" value="Inventory Staff" vertex="1">
-          <mxGeometry height="2140" width="330.5" x="1129.5" y="1370" as="geometry" />
+          <mxGeometry height="2140" width="330.5" x="1129.5" y="1510.0" as="geometry" />
         </mxCell>
         <mxCell id="oGNuB8JjH54ikDpzXjjq-5" edge="1" parent="oGNuB8JjH54ikDpzXjjq-1" source="oGNuB8JjH54ikDpzXjjq-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=14;" target="oGNuB8JjH54ikDpzXjjq-9">
           <mxGeometry relative="1" as="geometry" />
@@ -1136,7 +1143,7 @@
           <mxGeometry height="80" width="100.5" x="209.5" y="1315" as="geometry" />
         </mxCell>
         <mxCell id="oGNuB8JjH54ikDpzXjjq-22" parent="1" style="swimlane;startSize=20;whiteSpace=wrap;html=1;fontSize=14;" value="Accountant" vertex="1">
-          <mxGeometry height="2140" width="390" x="1460" y="1370" as="geometry" />
+          <mxGeometry height="2140" width="390" x="1460" y="1510.0" as="geometry" />
         </mxCell>
         <mxCell id="oGNuB8JjH54ikDpzXjjq-23" parent="oGNuB8JjH54ikDpzXjjq-22" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;" value="1. Create purchase request" vertex="1">
           <mxGeometry height="60" width="120" x="35" y="80" as="geometry" />
@@ -1288,7 +1295,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="oGNuB8JjH54ikDpzXjjq-44" parent="1" style="swimlane;startSize=20;whiteSpace=wrap;html=1;fontSize=14;" value="Owner " vertex="1">
-          <mxGeometry height="2140" width="190" x="1850" y="1370" as="geometry" />
+          <mxGeometry height="2140" width="190" x="1850" y="1510.0" as="geometry" />
         </mxCell>
         <mxCell id="oGNuB8JjH54ikDpzXjjq-45" edge="1" parent="oGNuB8JjH54ikDpzXjjq-44" source="oGNuB8JjH54ikDpzXjjq-46" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=14;" target="oGNuB8JjH54ikDpzXjjq-47">
           <mxGeometry relative="1" as="geometry" />
@@ -1323,8 +1330,8 @@
         </mxCell>
         <mxCell id="oGNuB8JjH54ikDpzXjjq-78" edge="1" parent="1" source="oGNuB8JjH54ikDpzXjjq-47" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fontSize=14;" target="oGNuB8JjH54ikDpzXjjq-25">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1945" y="1650" as="sourcePoint" />
-            <mxPoint x="1616" y="1705" as="targetPoint" />
+            <mxPoint x="1945" y="1790.0" as="sourcePoint" />
+            <mxPoint x="1616" y="1845.0" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="oGNuB8JjH54ikDpzXjjq-79" connectable="0" parent="oGNuB8JjH54ikDpzXjjq-78" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=14;" value="yes" vertex="1">
@@ -1333,7 +1340,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="oGNuB8JjH54ikDpzXjjq-80" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontSize=14;" value="&lt;font&gt;&lt;b&gt;Purchasing and receiving goods&lt;/b&gt;&lt;/font&gt;" vertex="1">
-          <mxGeometry height="30" width="910" x="1130" y="1340" as="geometry" />
+          <mxGeometry height="30" width="910" x="1130" y="1480.0" as="geometry" />
         </mxCell>
         <mxCell id="EXEXgiG1b48VjUZgT6dj-54" edge="1" parent="1" source="EXEXgiG1b48VjUZgT6dj-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=14;" target="oGNuB8JjH54ikDpzXjjq-6">
           <mxGeometry relative="1" as="geometry" />
@@ -1349,10 +1356,10 @@
         <mxCell id="EXEXgiG1b48VjUZgT6dj-93" edge="1" parent="1" source="oGNuB8JjH54ikDpzXjjq-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=14;" target="oGNuB8JjH54ikDpzXjjq-30">
           <mxGeometry relative="1" x="-0.7912" as="geometry">
             <Array as="points">
-              <mxPoint x="1367" y="2610" />
-              <mxPoint x="1558" y="2610" />
+              <mxPoint x="1367" y="2750.0" />
+              <mxPoint x="1558" y="2750.0" />
             </Array>
-            <mxPoint x="1367.005" y="2540" as="targetPoint" />
+            <mxPoint x="1367.005" y="2680.0" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="EXEXgiG1b48VjUZgT6dj-97" edge="1" parent="1" source="oGNuB8JjH54ikDpzXjjq-30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fontSize=14;" target="EXEXgiG1b48VjUZgT6dj-96">
@@ -1369,9 +1376,9 @@
         <mxCell id="EXEXgiG1b48VjUZgT6dj-103" edge="1" parent="1" source="oGNuB8JjH54ikDpzXjjq-38" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="oGNuB8JjH54ikDpzXjjq-6">
           <mxGeometry relative="1" x="-0.0002" as="geometry">
             <Array as="points">
-              <mxPoint x="1748.3" y="2990" />
-              <mxPoint x="1830" y="2990" />
-              <mxPoint x="1830" y="2160" />
+              <mxPoint x="1748.3" y="3130.0" />
+              <mxPoint x="1830" y="3130.0" />
+              <mxPoint x="1830" y="2300.0" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -1379,6 +1386,9 @@
           <mxGeometry relative="1" x="-0.9736" y="-3" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="historical-status" value="&lt;b&gt;LỊCH SỬ / HISTORICAL — không dùng làm thiết kế hiện hành&lt;/b&gt;&lt;br&gt;Giữ để đối chiếu phiên bản. Chuẩn 3.0.0 (22/10/2026): WMSD_Mainflows_VI_EN.drawio và Report 3." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontFamily=Arial;fontSize=16;align=left;spacing=12;fillColor=#fff2cc;strokeColor=#d6b656;">
+          <mxGeometry x="20" y="10" width="1200" height="100" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

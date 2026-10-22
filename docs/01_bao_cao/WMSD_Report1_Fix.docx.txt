@@ -1,4 +1,4 @@
-﻿CAPSTONE PROJECT REPORT
+CAPSTONE PROJECT REPORT
 Report 1 – Project Introduction
 
 
@@ -112,11 +112,15 @@ Date
 	M
 	Project Team
 	Synchronized D1–D8, the 20 October survey, warehouse-only scope, seven BF flows and alternate/exception paths; see change_logs.md.
+	22/10/2026
+	M
+	Project Team
+	Baseline 3.0.0: eight BF IDs; copied SO, linked WIR, photo POD and Sales PAY-CFM; current figures/detailed design. Report 2 unchanged.
 	*A - Added   M - Modified   D - Deleted
 
 
 Definition and Acronyms
-WIR = Warehouse Issue Request; OD = Outbound Delivery; PGI = Post Goods Issue; TD = Transfer Dispatch; MWTR = destination transfer receipt. Custody is physically held stock owned by another party. Warehouse Staff is the canonical application-role name.
+SO = copied external Sales Order; POD = photo Proof of Delivery; PAY-CFM = external payment-receipt confirmation; WIR = Warehouse Issue Request; OD = Outbound Delivery; PGI = Post Goods Issue; TD = Transfer Dispatch; MWTR = destination transfer receipt. Custody is physically held stock owned by another party. Warehouse Staff is the canonical application-role name.
 Acronym
 	Definition
 	WMSD
@@ -142,7 +146,7 @@ I. Project Overview
 2. Project Purpose
 Warehouse Management System Development (WMSD) supports the physical warehouse operations of Cửa hàng gạch ốp lát Tân Thương: replenishment needs, purchasing, receiving/inspection, put-away, location movement, inter-warehouse transfer, issue fulfilment, defects, returns and stocktake. Exactly five application roles are Store Owner, Sales Staff, Warehouse Staff, Accountant and Administrator. Each department uses its own personal accounts to record and confirm its work.
 The release serves one store and its configured warehouses. Track product, lot, tone, verified actual calibre where available, location, quality, owner/custody, reservations and transit, with versioned BOX/PIECE/m² conversions. Survey-recorded nominal size does not prove actual calibre has already been collected; unknown identity is kept explicit and unavailable for allocation.
-Sales converts an externally handled commercial order/request into a verified Warehouse Issue Request (WIR). WMSD retains Outbound Deliveries, picking tasks, actual handover/PGI, warehouse document printing and post-commit warehouse notifications. Reservation reduces availability, picking changes location, and PGI reduces physical warehouse stock once at actual handover (D1). MISA may reduce stock at order creation in current practice; reconciliation must distinguish such records from actual WMS dispatches.
+WMSD stores an SO manually copied from a verified MISA/paper source, then linked WIR releases. Warehouse reserves, picks, posts actual handover/PGI once, and confirms customer delivery with mandatory photo POD. Fully delivered remaining quantities set DELIVERED; only Sales confirms full money receipt outside WMSD (PAY-CFM) to set COMPLETED. These confirmations do not change inventory or execute financial transactions. D1 reconciliation explains external order-time deduction versus physical WMS dispatch.
 MISA and external processes retain commercial Sales Orders, selling prices, internal/tax invoices, refunds, payment, receivables and full accounting. WMSD records source references and external outcomes without creating, calculating, approving or paying a refund. Live MISA synchronization and general-purpose business-policy editing are excluded. Fixed thresholds and compatible-stock suggestions assist decisions without automatically purchasing or posting stock.
 
 3. Project Stakeholders
@@ -286,7 +290,7 @@ Gap ID
 	An individual quantity cannot be followed across receiving, storage, movement, issue and return.
 	Section Summary. KiotViet and MISA eShop already offer established retail and inventory functions. The nine GAPs describe the store's unresolved physical controls and fragmented records. WMSD addresses tile-specific inspection, traceable stock events, exception resolution and count accountability, together with source-linked warehouse issue fulfilment and external-document reconciliation. Financial accounting and sales payment/debt management remain outside WMSD.
 IV. Proposed Solution
-The selected solution implements the nine features below across seven linked business processes. The current sources are docs/02_nghiep_vu/de_xuat_quy_trinh_2_VI.md and its English counterpart, synchronized with this Report 1, Report 3 and database proposals on 21 October 2026. Each BF includes alternate and failure paths, not only successful execution.
+The selected solution implements nine features across eight linked processes, synchronized to baseline 3.0.0 on 22 October 2026 with process VI/EN, Report 3, detailed design, reference SQL and current editable figures. Original meeting evidence remains historical.
 
 | Gap | Feature | Proposed operational handling |
 |---|---|---|
@@ -295,42 +299,46 @@ The selected solution implements the nine features below across seven linked bus
 | GAP-03 | FE-03 — Goods Receiving Quality Control | Per-quantity inspection, packaging observation, ownership/custody, good/pending/defective/rejected outcomes, discrepancy evidence and eligible receipt. |
 | GAP-04 | FE-04 — Bin-level Inventory and Location Movement | Coded warehouses/locations, stock by owner/lot/quality, put-away and same-warehouse movements that preserve total and reservations without Owner approval. |
 | GAP-05 | FE-05 — Warehouse Transfer and Discrepancy Management | Approved TR followed by separate source TD and independent destination MWTR; preserve allocations, transit and Owner-reviewed differences; no redundant inter-warehouse TO. |
-| GAP-06 | FE-06 — Warehouse Issue Request, Delivery, Picking and Goods Issue | Verified external order/source → WIR → releases by warehouse → reservation/picking/staging → actual handover/PGI and warehouse print/notification. |
+| GAP-06 | FE-06 — Copied Sales Order, Warehouse Fulfilment and Completion | Verified external source → copied SO → linked WIR/OD → picking/PGI → photo POD/DELIVERED → Sales PAY-CFM/COMPLETED. No pricing, invoice or payment execution. |
 | GAP-07 | FE-07 — Defective Goods and Physical Returns | Immediate isolation, authorized disposition, Sales customer-return request, Warehouse inspection, Owner post-inspection D6 acceptance, supplier agreement/dispatch/ACK and external references. |
 | GAP-08 | FE-08 — Stocktake and Inventory Adjustment | Owner plans monthly/targeted sessions; atomic scope freeze/snapshot, count sheets, append-only counts/recounts; Warehouse delta request; Owner review and separate Clear Difference. |
 | GAP-09 | FE-09 — Access Administration, Audit and Operational Reporting | Five roles, personal accounts and warehouse scope; immutable stock ledger, evidence and external-source trace; physical/available/custody/transit and exception reports. |
 
 BF-01 — Replenishment, purchasing and goods receipt
-Main flow: Sales/Warehouse raises uncovered demand; Owner reviews; Accountant creates PO and records supplier confirmation; Warehouse receives each delivery by actual quantity/quality/ownership and puts away.
-Alternate/exception outcomes: Rejection/revision, partial supply, over/wrong delivery, zero acceptance and replacement receipts retain evidence and outstanding quantities. RR/PO do not increase stock; GR does, put-away does not add a second time.
+Main flow: Sales/Warehouse raises uncovered demand; Owner reviews; Accountant creates PO and records supplier confirmation; Warehouse receives each actual delivery by quality/ownership then puts away.
+Alternate/exception outcomes: Rejected/revised needs, partial supply, over/wrong/zero acceptance and replacements preserve source and evidence. GR adds accepted ownership once; put-away does not add again.
 
 BF-02 — Defect detection, isolation and disposition
-Main flow: Warehouse immediately blocks/isolates defects and records evidence; Owner authorizes release/regrade, supplier return or actual destruction; Warehouse executes the authorized quantity.
-Alternate/exception outcomes: Unclear ownership/cause and rejected/partial decisions stay isolated. Quarantine preserves owned total; actual destruction deducts once; supplier return deducts only at BF-07 dispatch.
+Main flow: Warehouse immediately blocks defects; Owner authorizes the precise release/regrade/return/destruction; Warehouse executes.
+Alternate/exception outcomes: Unclear ownership or rejected decisions remain isolated. Actual destruction deducts once; supplier return deducts only at BF-08 dispatch.
 
-BF-03 — Relocation, inter-warehouse transfer and discrepancies
-Main flow: Local relocation needs no Owner approval and preserves total/reservations. Inter-warehouse transfer uses Owner-approved TR → source TD/handover → independent destination inspection/MWTR and put-away.
-Alternate/exception outcomes: Direct issue from another warehouse uses BF-05 there. Missing receivers/stock wait; partial or damaged receipts split quality and transit; excess/wrong lot/loss needs evidence and Owner resolution. No closure with unresolved quantities.
+BF-03 — Same-warehouse relocation
+Main flow: Warehouse creates and confirms TO-RELOCATE between locations in the same warehouse, carrying reservations and identity. No Owner approval, TR, TD or MWTR.
+Alternate/exception outcomes: Different warehouses use BF-04. Frozen/short source blocks execution; partial moves leave the remainder open or explicitly cancelled. Equal source/destination quantities preserve total.
 
-BF-04 — Stocktake, reconciliation and adjustment
-Main flow: Owner plans monthly/targeted count; Warehouse resolves pending tasks then atomically freezes scope/captures snapshot, prints count sheet and records counts/recounts. Warehouse proposes verified delta; Owner reviews and separately posts Clear Difference.
-Alternate/exception outcomes: Overlapping freezes/open tasks block activation. Blank differs from zero; found stock is separately flagged. Rejection/recount retains freeze; no variance closes/unlocks without ADJ0. Network failure does not unlock or permit concurrent movement.
+BF-04 — Inter-warehouse transfer and discrepancies
+Main flow: Owner-approved TR → source Warehouse TD/handover → independent destination inspection/MWTR → put-away; preserve demand allocation through transit.
+Alternate/exception outcomes: Direct customer dispatch from another warehouse follows BF-06 there without fictitious receipt. Partial/damaged/wrong/over receipts preserve separate quality/transit; Owner resolves evidence-backed differences before closure.
 
-BF-05 — Issue request, picking and handover
-Main flow: Sales enters verified external-source WIR and agreed releases. Warehouse reserves compatible stock, picks to staging and posts actual handed-over quantity once at PGI. Source-linked documents support MISA reconciliation.
-Alternate/exception outcomes: Shortage suggests other stock/transfer/replenishment; partial delivery and lot changes need customer agreement. Failed handover retains staging or documented unpick. Post-PGI cancellation never restores stock by status edit; actual returns/corrections require linked documents.
+BF-05 — Stocktake, reconciliation and adjustment
+Main flow: Owner plans scope; Warehouse resolves open tasks then atomically freezes/captures snapshot, prints sheets and appends counts/recounts. Warehouse requests delta; Owner reviews and separately clears.
+Alternate/exception outcomes: Overlap/open tasks block activation; blank differs from zero. Rejection/recount retains freeze. No difference closes/unlocks without ADJ0; failed/unknown commit cannot unlock or double-post.
 
-BF-06 — Customer return and classification for receipt
-Main flow: Sales registers source and commercial conditions; Accountant verifies external history where needed. Warehouse takes custody, inspects and assesses each D6 quantity; Owner then accepts/rejects; Warehouse posts eligible approved GR-CR and put-away or records actual handback.
-Alternate/exception outcomes: CASE_REVIEW is not acceptance. Installed/customer-damaged/verified overdue → INELIGIBLE; unknown conditions → PENDING. Mixed outcomes split lines; changed assessment requires new version/review. No refund calculation/approval/payment; external results use UC-108.
+BF-06 — Copied SO, issue, customer delivery and completion
+Main flow: Sales copies verified external SO and creates linked WIR/OD; Warehouse picks and posts actual PGI, then confirms customer receipt with mandatory photo POD. Full remaining quantity greater than zero sets DELIVERED; Sales PAY-CFM sets COMPLETED.
+Alternate/exception outcomes: Cap SO→WIR→OD→GI→POD cumulatively, including issued commitments. Partial delivery stays PARTIALLY_DELIVERED; missing photos or unpaid/partial/early money receipt cannot complete. Full unissued cancellation before delivery sets CANCELLED. Corrections retain history/recompute progress; returns use BF-07.
 
-BF-07 — Supplier return and quantity reconciliation
-Main flow: Warehouse proposes/isolate goods; Accountant records supplier agreement; Owner approves before dispatch or reuses sufficient BF-02 authorization. Warehouse posts actual handover once; Accountant records later supplier ACK; Owner resolves differences and closes reconciled quantities.
-Alternate/exception outcomes: No agreement/authorization means no issue. Partial refusal/ACK mismatch stays open. Custody dispatch does not reduce owned stock. Replacements need new receipts; compensation and closure do not create stock or deduct again.
+BF-07 — Customer return and classified receipt
+Main flow: Sales registers source/conditions, Accountant verifies external history if needed; Warehouse records custody and inspection/D6; Owner decides after inspection; Warehouse posts accepted GR-CR or actual handback.
+Alternate/exception outcomes: CASE_REVIEW is not acceptance; installed/customer-damaged/verified-overdue are INELIGIBLE, unknown conditions PENDING. Mixed quantities split; changed assessment needs renewed approval. Finance uses external references, not a refund workflow.
+
+BF-08 — Supplier return and quantity reconciliation
+Main flow: Warehouse proposes/isolates; Accountant records agreement; Owner approves before dispatch or reuses valid BF-02 decision; Warehouse posts actual handover; Accountant records later ACK; Owner resolves variance and closes.
+Alternate/exception outcomes: Missing authorization/agreement blocks dispatch. Unmatched ACK stays open; custody issue does not reduce owned stock. Replacement needs actual receipt, and ACK/closure never deduct again.
 
 Shared failure handling: enforce role/warehouse scope, requester≠approver and independent transfer receiver on the server. Version/source conflicts or frozen locations block the affected transaction. A failed posting rolls back the whole batch; retry after unknown commit looks up the stable operation/idempotency key. Missing mandatory evidence blocks confirmation; print/upload/email retry cannot post stock again.
 
-Figure policy: the original Word illustrations are separate artifacts and are not revised by editing this extract. The seven text flows above and current process Mermaid define the selected scope; old SO/invoice/refund or combined transfer figures must be replaced when producing a new Word/PDF edition.
+Figure policy: current editable VI/EN mainflows contain 16 pages (8 processes × 2 languages); the English-only file has 8 pages. Figures share baseline 3.0.0 with this text. Historical workbooks/20 October BF-03B exports remain explicitly historical. Updating this extract does not update external Word/Google Docs editions.
 
 V. Project Scope & Limitations
 1. Major Features
@@ -341,7 +349,7 @@ V. Project Scope & Limitations
 | FE-03 | Goods Receiving Quality Control | Per-quantity inspection, packaging observation, ownership/custody, good/pending/defective/rejected outcomes, discrepancy evidence and eligible receipt. | GAP-03 |
 | FE-04 | Bin-level Inventory and Location Movement | Coded warehouses/locations, stock by owner/lot/quality, put-away and same-warehouse movements that preserve total and reservations without Owner approval. | GAP-04 |
 | FE-05 | Warehouse Transfer and Discrepancy Management | Approved TR followed by separate source TD and independent destination MWTR; preserve allocations, transit and Owner-reviewed differences; no redundant inter-warehouse TO. | GAP-05 |
-| FE-06 | Warehouse Issue Request, Delivery, Picking and Goods Issue | Verified external order/source → WIR → releases by warehouse → reservation/picking/staging → actual handover/PGI and warehouse print/notification. | GAP-06 |
+| FE-06 | Copied Sales Order, Warehouse Fulfilment and Completion | Verified external source → copied SO → linked WIR/OD → picking/PGI → photo POD/DELIVERED → Sales PAY-CFM/COMPLETED. No pricing, invoice or payment execution. | GAP-06 |
 | FE-07 | Defective Goods and Physical Returns | Immediate isolation, authorized disposition, Sales customer-return request, Warehouse inspection, Owner post-inspection D6 acceptance, supplier agreement/dispatch/ACK and external references. | GAP-07 |
 | FE-08 | Stocktake and Inventory Adjustment | Owner plans monthly/targeted sessions; atomic scope freeze/snapshot, count sheets, append-only counts/recounts; Warehouse delta request; Owner review and separate Clear Difference. | GAP-08 |
 | FE-09 | Access Administration, Audit and Operational Reporting | Five roles, personal accounts and warehouse scope; immutable stock ledger, evidence and external-source trace; physical/available/custody/transit and exception reports. | GAP-09 |
@@ -355,7 +363,7 @@ V. Project Scope & Limitations
 | LI-04 | Fleet and routing | Carrier/recipient and evidence may be recorded; GPS, route optimization and fleet maintenance are excluded. |
 | LI-05 | Complex approval/delegation | One Owner decision at the specified business point, version/quantity scoped and without self-approval. No extra purchasing/delivery role, dynamic delegation, tendering or multilevel approval. |
 | LI-06 | Quotation, promotion, loyalty and CRM | Customer records support delivery/contact/source matching only; commercial campaigns and CRM remain external. |
-| LI-07 | Omnichannel integration | Paper/Zalo/phone requests are normalized into verified WIR by staff; no automatic channel sync or public storefront. |
+| LI-07 | Omnichannel integration | Paper/Zalo/phone requests are verified and recorded as source evidence before staff copies SO and creates linked WIR; no automatic channel sync or public storefront. |
 | LI-08 | Forecasting and automatic purchasing | Finite minimum-stock alerts and compatible-source suggestions are allowed. No demand forecasting, auto-created PO, automatic physical posting or pricing recommendations. |
 | LI-09 | HRM and payroll | Accounts support authorized operations only; no attendance, recruitment or payroll. |
 | LI-10 | General business-policy editor | No arbitrary policy, workflow or approval-chain editor. Controlled finite thresholds/conversion versions do not confer general rule-authoring rights. |

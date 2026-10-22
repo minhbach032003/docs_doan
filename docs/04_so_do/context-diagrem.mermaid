@@ -1,77 +1,17 @@
----
-config:
-  flowchart:
-    curve: basis
-    nodeSpacing: 60
-    rankSpacing: 120
----
+%% WMSD current context · 3.0.0 · 22/10/2026
+%% API-02 provider remains unselected; no direct MISA/payment integration.
 flowchart LR
-    %% ==========================================
-    %% ĐỊNH NGHĨA CÁC TÁC NHÂN & HỆ THỐNG
-    %% ==========================================
-    subgraph LeftSide [" "]
-        direction TB
-        SO["<b>Store Owner</b>"]
-        IS["<b>Inventory Staff</b>"]
-        ADM["<b>Admin</b>"]
-    end
-
-    WMSD((("<b>WMSD</b><br/>System")))
-
-    subgraph RightSide [" "]
-        direction TB
-        ACC["<b>Accountant</b>"]
-        SS["<b>Sales Staff</b>"]
-        SMTP["<b>EMAIL SERVICE</b><br/>(SMTP)"]
-        CLD["<b>Cloudinary</b>"]
-    end
-
-    %% ==========================================
-    %% LUỒNG BÊN TRÁI (Store Owner, Inventory, Admin)
-    %% ==========================================
-    
-    %% 1. Store Owner
-    SO -->|"• Product/Lot Configuration Data<br/>• Replenishment Approval Decision"| WMSD
-    WMSD -->|"• Purchase Request for Review<br/>• Replenishment & Purchase Info<br/>• Inventory & Exception Info<br/>• Warehouse Reports & Audit Info"| SO
-
-    %% 2. Inventory Staff
-    IS -->|"• Receipt & Inspection Data<br/>• Inventory/Location Movement Data<br/>• Transfer Data<br/>• Stocktake & Adjustment Data<br/>• Issue & Return Data"| WMSD
-    WMSD -->|"• Purchase/Receipt Information<br/>• Inventory by Lot/Location/Status<br/>• Issue Request Information<br/>• Transfer/Stocktake/Return Info"| IS
-
-    %% 3. Admin
-    ADM -->|"• User management data"| WMSD
-    WMSD -->|"• Role & permission management data"| ADM
-
-    %% ==========================================
-    %% LUỒNG BÊN PHẢI (Accountant, Sales, SMTP, Cloudinary)
-    %% ==========================================
-
-    %% 4. Accountant
-    WMSD -->|"• Purchase & Receipt Information<br/>• Outstanding Purchase Information<br/>• Supplier Return Information<br/>• Purchase & Receipt Report"| ACC
-    ACC -->|"• Supplier Data<br/>• Replenishment Request Data<br/>• Purchase Order Management<br/>• Supplier Return Request Data"| WMSD
-
-    %% 5. Sales Staff
-    WMSD -->|"• Sales Order Status<br/>• Product, Pricing & Available Stock"| SS
-    SS -->|"• Warehouse Issue Request<br/>• Sales Order Information<br/>• Customer Delivery Request<br/>• Sales Return Data"| WMSD
-
-    %% 6. EMAIL SERVICE (SMTP)
-    WMSD -->|"• Email delivery data"| SMTP
-    SMTP -->|"• Email delivery status"| WMSD
-
-    %% 7. Cloudinary
-    WMSD -->|"• Evidence Upload"| CLD
-    CLD -->|"• Asset URL / Upload Status"| WMSD
-
-    %% ==========================================
-    %% TÙY CHỈNH GIAO DIỆN (STYLING)
-    %% ==========================================
-    style LeftSide fill:none,stroke:none
-    style RightSide fill:none,stroke:none
-
-    style WMSD fill:#1e293b,stroke:#0f172a,stroke-width:3px,color:#ffffff,font-size:16px
-    
-    classDef actor fill:#f8fafc,stroke:#334155,stroke-width:2px,color:#0f172a,rx:6,ry:6;
-    classDef extService fill:#eff6ff,stroke:#2563eb,stroke-width:2px,color:#1e3a8a,rx:6,ry:6;
-    
-    class SO,IS,ACC,ADM,SS actor;
-    class SMTP,CLD extService;
+  S[Sales Staff] -->|Copied SO, WIR, replenishment/returns, source choice, PAY-CFM| W((WMSD))
+  W -->|Availability, suggestions, SO/WIR/delivery/completion status| S
+  K[Warehouse Staff] -->|Replenishment, inspection, receipts, PGI, photo POD, counts, reasons| W
+  W -->|Tasks, lot locations, approvals, count sheets| K
+  A[Accountant] -->|PO, supplier agreements, external references| W
+  W -->|Actual quantities and reconciliation| A
+  O[Store Owner] -->|Approval, stocktake plan, master data| W
+  W -->|Requests, exceptions, reports| O
+  AD[Administrator] -->|Accounts, permissions, technical settings| W
+  W -->|Administration results| AD
+  W -->|Post-commit notifications| E[SMTP API-01]
+  E -->|Delivery results| W
+  W -->|Evidence and delivery photo upload| F[Controlled storage API-02]
+  F -->|Asset reference and result| W

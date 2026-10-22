@@ -2,7 +2,7 @@
 
 Updated: 22 October 2026. Selected To-be based on the 20 October survey, D1–D8 and the 21 October sales-flow direction and 22 October relocation/transfer split. This is a documentation design, not a claim that every control is already used by the store.
 
-BF-06: copy MISA/paper order → linked issue request → picking/PGI → photo-confirmed customer receipt → DELIVERED → Sales confirms full external receipt → COMPLETED. Both process proposals, both database proposals and reference SQL now follow this flow. Report 1/3, Word and separately exported figures still need follow-up synchronization.
+BF-06: copy MISA/paper order → linked issue request → picking/PGI → photo-confirmed customer receipt → DELIVERED → Sales confirms full external receipt → COMPLETED. Both process proposals, both database proposals and reference SQL now follow this flow. Report 1/3 text, the detailed design and current figures are synchronized to this baseline on 22 October. External Word/Google Docs editions require publication separately; Report 2 is unchanged by request.
 
 Vietnamese: [de_xuat_quy_trinh_2_VI.md](de_xuat_quy_trinh_2_VI.md). Data design: [EN proposal](../03_thiet_ke/de_xuat_database_design_EN.md). Change log: [change_logs.md](../../change_logs.md). SQL supports analysis; MongoDB remains runtime.
 
@@ -62,10 +62,10 @@ The proposal follows review1 and the single-store context. The 21 October scope 
 |---|---|
 | [Tân Thương survey](../05_khao_sat/khao_sat_kho_gach.csv), 20 October 2026 | One response covering 26 questions; reference original question numbers. Q13 selects both transfer/no transfer; the user confirmed inter-warehouse transfers in D4. The original CSV remains unchanged. |
 | User decisions D1–D8, 20 October 2026, and BF-06 revision, 21 October 2026 | D1–D8 retain PGI timing, departmental entry, five roles and frozen stocktake, add return conditions and supported facts, and label other controls To-be. The 21 October BF-06 revision specifies: Sales Staff copies the external sales order into a WMSD Sales Order (SO), then creates a linked WIR; Warehouse Staff confirms actual customer delivery with required photo evidence to set SO to DELIVERED; Sales Staff confirms full payment received outside WMSD to set SO to COMPLETED. |
-| [review1.md](D:/Ky_9/SEP490/review1.md) | Review-panel feedback; action items such as emailing the supervisor are document content, not instructions for this update. |
+| `review1.md` (historical source outside this repo; not packaged) | Review-panel feedback; action items such as emailing the supervisor are document content, not instructions for this update. |
 | [Online Report 1](https://docs.google.com/document/d/1kb36v5HuFrM75NFCTXvnJcsg6QnPjYkb/edit) | The original review recorded reading its contents and Drive modification time of 17 October 2026, 16:26:21 Vietnam time. Basis for store context, GAP, FE and LI. |
 | [Online Report 3](https://docs.google.com/document/d/1HvhlCmYjfXj7766ZVNUBAU4J063Lmr71/edit) | The original review recorded checking text and context/flow figures; modification time 17 October 2026, 17:17:15 Vietnam time. Its baseline catalogue had 102 UCs, UC-01–UC-102. |
-| SAP Global Bike WM I–IV v4.2 in [03_Case_Study](D:/Ky_9/SEP490/dóc/03_Case_Study) | The earlier review compared four main cases, overview pages and business steps. Data Sheets/Notes provide exercise context. Sample users, warehouse codes and organization are not Tân Thương requirements. |
+| SAP Global Bike WM I–IV v4.1, [local PDFs](../06_tham_khao/sap/) | Current citations use bundled v4.1 pages, verified on 22 October. The earlier review used external v4.2 sources; its page numbers are not carried over. Sample users, warehouse codes and organization are not store requirements. |
 | [MISA SME processes](https://helpsme.misa.vn/2022/kb/quy-trinh-nghiep-vu/) and eShop references below | References for documents, handover, stocktake and warehouse/accounting boundaries. Do not copy all finance modules or claim the store enables every feature. |
 | [Store TikTok](https://www.tiktok.com/@gachoplattanthuong), [Store Facebook](https://www.facebook.com/p/Showroom-T%C3%A2n-Th%C6%B0%C6%A1ng-61567834853149/) | The earlier review could not obtain verifiable content. Do not infer warehouses, staffing, revenue, transport or return policy from these links. |
 
@@ -113,7 +113,7 @@ Devices and entry: responsive phone screens (Q24) support BOX/PIECE/m² entry, r
 
 ## 2. Differences identified in the earlier baseline
 
-The table retains the 17 October review findings. Both process proposals, both data proposals and SQL now follow the revised BF-06; Report 1/3 and separate figures still need section 9 synchronization.
+The table retains the 17 October review findings. Process/database proposals, SQL, Report 1/3 text and current figures now follow the revised BF-06 and eight process IDs. The table below is historical evidence, not a current unresolved-work list.
 
 | Reviewed location | Finding | Correction |
 |---|---|---|
@@ -471,13 +471,13 @@ Retain existing IDs for traceability; mark retired/new IDs explicitly rather tha
 | UC-106 | Approve Supplier Return and Variance Resolution — Owner | Proposal/source/agreement; authorize dispatch quantity. Reuse sufficient BF-02 approval. Later supplier-return variance resolution is a separate decision, not duplicate approval. |
 | UC-107 | Record Supplier Agreement and Receipt Acknowledgement — Accountant | Separate pre-dispatch agreement and post-dispatch receipt. Evidence, quantities and dates; no inventory effect. Variances go to UC-106 in BF-08. |
 | UC-108 | Record External Document References — Accountant | Verify historical sources and record external invoice/refund/accounting reconciliation code, date, evidence/status. No revenue, debt or payment creation; does not replace Sales Staff's UC-111 order completion confirmation. |
-| UC-109 | Manage Linked Warehouse Issue Requests — Sales Staff | Create/view/update/cancel unissued WIR demand from a saved SO; enforce per-SO/WIR line caps. Owner/Warehouse/Accountant have scoped view. Saving demand changes no stock. |
+| UC-109 | Manage Linked Warehouse Issue Request — Sales Staff | Create/view/update/cancel unissued WIR demand from a saved SO; enforce per-SO/WIR line caps. Owner/Warehouse/Accountant have scoped view. Saving demand changes no stock. |
 | UC-110 | Confirm Customer Delivery with Photo Evidence — Warehouse Staff | Record recipient, time, actual received quantity and photo per posted GI-S line. Cap cumulative POD at valid PGI; retries do not duplicate confirmation. Full remaining delivery sets SO to DELIVERED. |
-| UC-111 | Confirm External Receipt and Complete Sales Order — Sales Staff | After DELIVERED, record full external receipt with user/time and reference/evidence/note; set SO to COMPLETED. No collection or stock change. |
+| UC-111 | Confirm Full External Payment Receipt — Sales Staff | After DELIVERED, record full external receipt with user/time and reference/evidence/note; set SO to COMPLETED. No collection or stock change. |
 
 BF-08 uses UC-106 for variance-resolution approval and UC-83 for closure; UC-44 is only for BF-04. UC-107 records/detects discrepancies and routes them to the right case. UC-106 distinguishes initial dispatch approval and later variance decisions by decision kind, version and quantity; old approval does not authorize another deduction.
 
-This catalogue retains UC-105 separately and adds UC-109–111 for the revised BF-06 flow: 111 traceable identifiers (UC-01–UC-111), 98 active and 13 retired. Retired (unchanged): UC-23–25, UC-42, UC-59–62, UC-74–78. Nine new UCs across the proposal: UC-103–111. Do not renumber/delete history. Sections 4.2/4.4 and related sections of the [Report 3 text extract](../01_bao_cao/WMSD_Report3_Fix.docx.txt) were synchronized to the earlier 108-UC (95 active / 13 retired) baseline on 21 October and require a follow-up update to incorporate the revised UC-45–48 scope and UC-109–111; retired IDs remain historical entries without executable flows.
+This catalogue retains UC-105 separately and adds UC-109–111 for the revised BF-06 flow: 111 traceable identifiers (UC-01–UC-111), 98 active and 13 retired. Retired (unchanged): UC-23–25, UC-42, UC-59–62, UC-74–78. Nine new UCs across the proposal: UC-103–111. Do not renumber/delete history. Sections 4.2/4.4, detailed UC specifications and screens in the [Report 3 text extract](../01_bao_cao/WMSD_Report3_Fix.docx.txt) now contain 111 IDs, the copied-SO scope of UC-45–48 and UC-109–111, synchronized on 22 October; retired IDs remain historical entries without executable flows.
 
 ## 6. Proposed business permission matrix
 
@@ -533,18 +533,18 @@ A context diagram shows **data crossing the software boundary**, not physical go
 | Accountant | PO, supplier agreement/acknowledgement, external accounting/reconciliation references (UC-108) | Outstanding PO, received/issued/delivered/returned quantities and reconciliation |
 | Store Owner | Approvals, stocktake scope and authorized master data | Pending requests, exceptions, reports and audit |
 | Administrator | Accounts/permissions and technical configuration | Administration results and technical status |
-| SMTP (API-01) | Delivery/failure results | Post-commit notifications; no invoice email if invoices are removed |
+| SMTP (API-01) | Delivery/failure results | Post-commit notifications; no internal-invoice email |
 | Controlled evidence storage (API-02), provider unselected | Controlled asset ID/URL and upload result | Evidence/file upload (including required customer delivery photos) and server-side authentication |
 
 MISA, Customer, Supplier and Carrier are not direct integration actors without portals/APIs. A separate business context may show their staff-mediated handovers/agreements. Do not add synchronization arrows just to make the diagram look complete.
 
-For the old R3 figure: remove Accountant replenishment input and add Sales/Warehouse; clarify Sales Staff input to include copied external Sales Orders (SO), linked Warehouse Issue Requests (WIR) and external payment confirmations (PAY-CFM), and Warehouse Staff input to include customer delivery photo confirmations (POD); remove Pricing/Internal Invoice flows when prices and billing are out of scope; include Owner return/defect/transfer/stocktake decisions. Role/permission input goes Admin → WMS, result returns. If Cloudinary/file storage stays, upload goes WMS → storage and asset/result returns.
+The current Report 3 and standalone context were synchronized on 22 October: Sales/Warehouse submit replenishment needs; Accountant submits PO/agreements/references; Sales submits SO/WIR/PAY-CFM; Warehouse submits photo POD. Owner supplies decisions and stocktake plans; Administrator supplies permissions and receives results. SMTP is API-01 and controlled evidence storage is API-02, with provider selection still open. Pricing, internal invoices, live MISA and payment gateways are outside the software boundary.
 
 ```mermaid
 flowchart LR
-  S[Sales Staff] -->|Copied SO, linked WIR, returns, source choice, payment confirm| W((WMSD))
+  S[Sales Staff] -->|Copied SO, WIR, replenishment/returns, source choice, PAY-CFM| W((WMSD))
   W -->|Availability, suggestions, SO/WIR/delivery/completion status| S
-  K[Warehouse Staff] -->|Inspection, receipts, PGI, delivery photo POD, counts, reasons| W
+  K[Warehouse Staff] -->|Replenishment, inspection, receipts, PGI, photo POD, counts, reasons| W
   W -->|Tasks, lot locations, approvals, count sheets| K
   A[Accountant] -->|PO, supplier agreements, external references| W
   W -->|Actual quantities and reconciliation| A
@@ -552,9 +552,9 @@ flowchart LR
   W -->|Requests, exceptions, reports| O
   AD[Administrator] -->|Accounts, permissions, technical settings| W
   W -->|Administration results| AD
-  W -->|Post-commit notifications| E[SMTP if retained]
+  W -->|Post-commit notifications| E[SMTP API-01]
   E -->|Delivery results| W
-  W -->|Evidence and delivery photo upload| F[File storage if used]
+  W -->|Evidence and delivery photo upload| F[Controlled storage API-02]
   F -->|Asset reference and result| W
 ```
 
@@ -598,7 +598,7 @@ Do not combine quality, location, ownership and delivery state in one enum. “I
 | BR-24 | Posted documents cannot be edited/deleted to remove history. Authorized linked reversal/adjustment corrects errors; inactive masters preserve history. | DR-14, GB-02/13, UC-97/100–102 |
 | BR-25 | Notification/upload retries never repeat stock posting. Email failure does not roll back committed PGI/receipt. | API-01, JOB-01, UC-58/26/110 |
 | BR-26 | Carrier handover or PGI is not customer delivery (DELIVERED), and customer delivery alone is not Sales Order completion (COMPLETED); return receipt is not refund; supplier replacement agreement is not received stock. | BF-06/07/08, UC-58/110/111 |
-| BR-27 | Only evidence-authorized users retrieve files; URLs are not public by default. | Storage interface, GB-NEW-02 |
+| BR-27 | Only evidence-authorized users retrieve files; URLs are not public by default. | API-02 evidence storage, GB-NEW-02 |
 | BR-28 | Source system/document/line, version and correlation ID prevent duplicate WMS/MISA recording across SO, WIR, OD, GI-S, `CR` and `EXT-REF`. | UC-47/109/51/58/70/108 |
 | BR-29 | Returns: sealed/unused loose tiles case-by-case; reject installed, customer-damaged and confirmed overdue goods. Unverified terms/deadline remain pending; no invented days. Assess each quantity with version/evidence and post only eligible approved quantities after inspection. | D6, BF-07, UC-70–73 |
 | BR-30 | Torn/opened packaging alone is not tile damage. Count actual pieces and inspect quality. BOX/PIECE/m² conversions follow product/version, not inferred calibre. | D7, BF-01/05/06/07, UC-13/26/55/72/87 |
@@ -610,7 +610,7 @@ These BR IDs (BR-01–BR-33) are proposed rules. Either make them the canonical 
 
 ## 9. Report 1 and Report 3 synchronization checklist
 
-Report 1/3 text still uses the previous process IDs and D1–D8 baseline before the sales-flow revision. The table specifies follow-up work for those reports, Word and separate figures. Both process proposals, both database proposals and SQL are updated in this run. API-02 stores evidence; JOB-01 sends post-commit notifications only.
+Report 1/3 text, detailed design, process/database proposals and current figures are synchronized to baseline 3.0.0 on 22 October. The table is an ongoing publication checklist, not an outstanding-work list. External Word/Google Docs editions and Report 2 were not edited in this revision. API-02 stores evidence; JOB-01 sends post-commit notifications only.
 
 ### 9.1 Report 1
 
@@ -870,7 +870,7 @@ These are proposed acceptance criteria, not claims that the team's software has 
 | Stocktake | Monthly, recount and variance approval; D5 frozen scope. | Schedule/session length and Owner availability need operational confirmation. No concurrent counting/movements in selected MVP. |
 | Replenishment/priority | Sales/Warehouse demand, Owner approval, Accountant supplier order. | No thresholds or warehouse priorities supplied; do not invent values. |
 | Phone use | Q22/24: update during work on phones. | Offline/native/automatic scanning not confirmed or assumed. |
-| Delivery photo & external payment confirmation | Q16/Q22/Q24: phone usage and photo attachments; 21 Oct user direction for BF-06. | Exact customer-delivery photo checklist and external payment receipt reference format in MISA/cashbook are To-be operational rules; Warehouse Staff confirms POD with photo (DELIVERED) and Sales Staff confirms external payment (COMPLETED). |
+| Delivery photo & external payment confirmation | Q16: demand channels, holds and partial delivery; Q22/Q24: entry timing and phone use; Q8/Q12: inbound/defect evidence photos. Mandatory customer POD photos and PAY-CFM follow the 21 October BF-06 design instruction. | Exact customer-delivery photo checklist and external payment receipt reference format in MISA/cashbook are To-be operational rules; Warehouse Staff confirms POD with photo (DELIVERED) and Sales Staff confirms external payment (COMPLETED). |
 
 Survey evidence establishes current-practice facts; D1–D8 and the 21 October BF-06 revision select design choices for this revision. Controls not demonstrated by the survey remain “To-be proposed”, not an assertion that the store confirmed every process.
 
@@ -878,10 +878,10 @@ Survey evidence establishes current-practice facts; D1–D8 and the 21 October B
 
 | Source | Applied content |
 |---|---|
-| [SAP WM I v4.2](D:/Ky_9/SEP490/dóc/03_Case_Study/Intro_S4HANA_Using_Global_Bike_Case_Study_WM_I_en_v4.2.pdf), pp. 2, 10–11, 18–22 | PO, receipt, bin placement and confirmation; no supplier payments in WMS. |
-| [SAP WM II v4.2](D:/Ky_9/SEP490/dóc/03_Case_Study/Intro_S4HANA_Using_Global_Bike_Case_Study_WM_II_en_v4.2.pdf), pp. 2, 6–7, 12–13, 17, 23–26 | Separate transport, source issue, destination receipt and put-away. Factory/DC sample organization is not Tân Thương's structure. |
-| [SAP WM III v4.2](D:/Ky_9/SEP490/dóc/03_Case_Study/Intro_S4HANA_Using_Global_Bike_Case_Study_WM_III_en_v4.2.pdf), pp. 2, 8–9, 12–17, 21–22 | Separate sales/outbound demand, picking, confirmation and issue. Integrated SD does not require WMSD POS/billing. |
-| [SAP WM IV v4.2](D:/Ky_9/SEP490/dóc/03_Case_Study/Intro_S4HANA_Using_Global_Bike_Case_Study_WM_IV_en_v4.2.pdf), pp. 2, 4–6, 12–17, 20–21, 26–27 | Activation, bin lock, count/recount and clearing; retain principles with simplified accounting layers. |
+| [SAP WM I v4.1](../06_tham_khao/sap/Intro_S4HANA_Using_Global_Bike_Case_Study_WM_I_en_v4.1.pdf), pp. 2, 10, 18, 21 | PO, receipt, bin placement and confirmation; no supplier payments in WMS. |
+| [SAP WM II v4.1](../06_tham_khao/sap/Intro_S4HANA_Using_Global_Bike_Case_Study_WM_II_en_v4.1.pdf), pp. 2, 6, 12, 18, 26, 29 | Separate transport, source issue, destination receipt and put-away. Factory/DC sample organization is not Tân Thương's structure. |
+| [SAP WM III v4.1](../06_tham_khao/sap/Intro_S4HANA_Using_Global_Bike_Case_Study_WM_III_en_v4.1.pdf), pp. 2, 14, 19, 25 | Separate sales/outbound demand, picking, confirmation and issue. Integrated SD does not require WMSD POS/billing. |
+| [SAP WM IV v4.1](../06_tham_khao/sap/Intro_S4HANA_Using_Global_Bike_Case_Study_WM_IV_en_v4.1.pdf), pp. 2, 4, 12, 14, 21, 27 | Activation, bin lock, count/recount and clearing; retain principles with simplified accounting layers. |
 | [MISA SME processes](https://helpsme.misa.vn/2022/kb/quy-trinh-nghiep-vu/) | Separate business modules; not the entire WMS scope. |
 | [MISA SME purchase receipt](https://helpsme.misa.vn/2022/kb/muahang_trongnuoc_venhapkho/) | Document creation, physical inspection and warehouse/accounting records. |
 | [MISA eShop receipt](https://helpeshop.misa.vn/kb/huong-dan-su-dung-tinh-nang-nhap-kho-tren-phan-mem-misa-eshop) | Receipt documents, actual quantities, locations and attachments. |
@@ -897,7 +897,7 @@ Survey evidence establishes current-practice facts; D1–D8 and the 21 October B
 
 1. Confirm To-be scope/assumptions with supervisor/store; record scope differences from 17 October and the 21 October BF-06 revision.
 2. Establish one glossary, five roles, quantity categories and posting events (distinguishing PGI, POD → DELIVERED and PAY-CFM → COMPLETED).
-3. Review eight BFs using section 11 scenarios; align R1 IV and R3 I.2 together in the follow-up SRS/report synchronization.
+3. Review eight BFs using section 11 scenarios; keep R1 IV, R3 I.2 and current figures synchronized whenever a flow changes.
 4. Finalize UC catalogue (111 IDs: 98 active, 13 retired) and retired/new IDs (including UC-109–111); synchronize actors, permissions, detailed UCs, context and rules (BR-01–BR-33) with one mapping.
 5. Align model, screens, API/jobs, NFR and acceptance criteria in Report 3, database design proposals and reference SQL. Every UC/FE/BF/SC/BR reference must resolve.
 6. Use the same versioned figure set for reports/slides. Slides simplify through identified subprocesses, not different flows.
@@ -989,4 +989,4 @@ Mainflows contain only business-performing actor lanes: Store Owner, Sales Staff
 
 Each activity names actor, action and created/confirmed document, for example “Warehouse Staff — confirm transfer receipt — MWTR”. System consequences are postconditions, not a separate lane. Rejection, revision, partial receipt/delivery and discrepancy branches are noted in the flow and process. Exceptions may reference another process rather than crowding every detail into the mainflow.
 
-The 20 October draw.io/PNG set is historical: it has neither the BF-03/BF-04 split nor the revised BF-06 sales flow. The eight processes and Mermaid in this document are current. The draw.io file is already deleted in the workspace and is not restored in this run: [WMSD_Mainflows_VI_EN.drawio](../04_so_do/WMSD_Mainflows_VI_EN.drawio). Old transfer images: [Vietnamese](../04_so_do/WMSD_Mainflow_BF03B_VI.png), [English](../04_so_do/WMSD_Mainflow_BF03B_EN.png).
+Current figures: [VI/EN draw.io, 16 pages](../04_so_do/WMSD_Mainflows_VI_EN.drawio), [EN draw.io, 8 pages](../04_so_do/WMSD_Mainflows_EN.drawio), BF-04 [VI](../04_so_do/WMSD_Mainflow_BF04_VI.png)/[EN](../04_so_do/WMSD_Mainflow_BF04_EN.png). They follow the eight processes including copied SO/POD/PAY-CFM. The 20 October BF-03B [VI](../04_so_do/WMSD_Mainflow_BF03B_VI.png)/[EN](../04_so_do/WMSD_Mainflow_BF03B_EN.png) exports remain historical.

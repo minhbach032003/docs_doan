@@ -17,14 +17,16 @@ Updated 22 October 2026 against the survey, D1–D8 and current BF-06 in [Proces
 | ID | Source | Use |
 |---|---|---|
 | S1 | [Process Proposal 2 — EN](../02_nghiep_vu/de_xuat_quy_trinh_2_EN.md), sales revision on 21 October and BF-03/BF-04 split on 22 October 2026 | Current business source: eight BFs, five roles, 111 UCs (98 active/13 retired), BR-01–33; no live MISA integration. |
-| S2 | [Report 1 text](../01_bao_cao/WMSD_Report1_Fix.docx.txt), synchronized 21 October 2026 | Single-store context, survey reporting three or more warehouses, current purpose and scope; As-is is not an implemented To-be. |
-| S3 | [Report 3 text](../01_bao_cao/WMSD_Report3_Fix.docx.txt), earlier 21 October baseline | Historical 108 UCs (95 active/13 retired), before UC-109–111. Requires follow-up to S1; MongoDB remains runtime. |
-| S4 | [WMSD_Bangach.drawio](../04_so_do/WMSD_Bangach.drawio), **21 pages in the current file** | Reviewed BF01–06b, ERDs and the final two pages. BF03 contains a System lane; BF02/04/05/06a/06b contain WMSD lanes. The new diagrams remove them as requested. |
+| S2 | [Report 1 text](../01_bao_cao/WMSD_Report1_Fix.docx.txt), synchronized 22 October 2026 | One-store context, at least three reported warehouses, eight BF flows and current copied-SO/POD/PAY-CFM scope; As-is is not deployed To-be. |
+| S3 | [Report 3 text](../01_bao_cao/WMSD_Report3_Fix.docx.txt), baseline 3.0.0, 22 October 2026 | 111 UC IDs (98 active/13 retired), BR-01–33, SC-01–31; SO UC-45–48, WIR/POD/PAY-CFM UC-109–111. MongoDB runtime. |
+| S4 | [WMSD_Bangach.drawio](../04_so_do/WMSD_Bangach.drawio), 21 historically labelled pages | Prior alternatives only; old System/WMSD lanes, prices and inter-warehouse TO do not define current behavior. |
 | S5 | [SAP WM I](../06_tham_khao/sap/Intro_S4HANA_Using_Global_Bike_Case_Study_WM_I_en_v4.1.pdf), [II](../06_tham_khao/sap/Intro_S4HANA_Using_Global_Bike_Case_Study_WM_II_en_v4.1.pdf), [III](../06_tham_khao/sap/Intro_S4HANA_Using_Global_Bike_Case_Study_WM_III_en_v4.1.pdf), [IV](../06_tham_khao/sap/Intro_S4HANA_Using_Global_Bike_Case_Study_WM_IV_en_v4.1.pdf) | Local **v4.1** set: I GR p.10, TO pp.18/21; II STO p.6, GI p.12, GR p.18, TO pp.26/29; III picking pp.14/19, shipping p.25; IV snapshot/count/recount/clearing pp.4/12/14/21/27. Do not reuse v4.2 page references from the older proposal. |
 | S6 | [Process compilation](../06_tham_khao/quy_trinh/Tổng%20hợp%20quy%20trình.pdf), four pages | Handover documents and business context. Debt, payments and fleet management are not automatically added to the MVP. |
 | S7 | [Reference links](../06_tham_khao/link_tham_khao.md) | Official MISA, Odoo and Microsoft guidance for concept comparison; WMSD-specific decisions are stated separately. |
+| S8 | [Database drawing](WMSD_database_design.drawio), 10 pages | 73 home tables, 173 FK constraints and two views from the same DDL; dedicated SO/POD/PAY-CFM page improves readability. |
+| S9 | [VI/EN mainflows](../04_so_do/WMSD_Mainflows_VI_EN.drawio), 16 pages | Eight BF flows × two languages, actor lanes only; separate EN workbook has eight pages. |
 
-Priority: current instruction → S1 and BF-06 revision in the [change log](../../change_logs.md) → D1–D8 → pre-revision Report 1/3 → survey → historical S4–S7. Current catalogue: 111 UCs, 98 active/13 retired; old sources cannot reinstate retired functions. SQL is the reference model; MongoDB remains runtime.
+Priority: current instruction → S1/D1–D8 and the [change log](../../change_logs.md) → Report 1/3 at the same baseline → design/S8/S9 → survey and reference evidence. S4 is historical and cannot override current decisions. The current catalogue has 111 UCs (98 active/13 retired). SQL is the reference model; MongoDB remains runtime.
 
 ### 1.2 Scope and architecture impact
 
@@ -43,9 +45,9 @@ Priority: current instruction → S1 and BF-06 revision in the [change log](../.
 | Stock/ledger/document update | Multi-table transaction | Multi-document MongoDB transaction on a supported deployment; atomic, idempotent and concurrency-aware |
 | SQL attachment | Reference DDL for analysis | Not a schema for the live MongoDB database |
 
-### 1.4 Use cases to align with the design
+### 1.4 Use-case traceability of the design
 
-| Group | Delta to record in the SRS |
+| Group | Scope synchronized in the SRS |
 |---|---|
 | BF-01 | Sales/Warehouse raise demand; Accountant prepares PO after approval |
 | BF-03 | Same-warehouse relocation: Warehouse TO-RELOCATE, no Owner approval; preserve total and reservations; UC-34–37. |
@@ -58,7 +60,7 @@ Priority: current instruction → S1 and BF-06 revision in the [change log](../.
 
 ## 2. Mapping the design to MongoDB runtime
 
-This table describes how relational design concepts could map to MongoDB. Align the implementation with the detailed system design before coding.
+This table describes how relational design concepts map to MongoDB at the same baseline as the [detailed system design](WMSD_Thiet_ke_he_thong_chi_tiet.md). Services, indexes and transactions still require implementation and verification before operation.
 
 | Relational analysis model | Proposed MongoDB collection/embedding |
 |---|---|
