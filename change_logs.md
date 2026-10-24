@@ -1,3 +1,37 @@
+# Cập nhật quy trình theo góp ý GVHD — 24/10/2026 — phiên bản 3.1.0
+
+## 1. Phạm vi và căn cứ
+
+Cập nhật trực tiếp hai bản [quy trình VI](docs/02_nghiep_vu/de_xuat_quy_trinh_2_VI.md) và [quy trình EN](docs/02_nghiep_vu/de_xuat_quy_trinh_2_EN.md) lên 3.1.0, theo [báo cáo rà soát 24/10](docs/07_ra_soat/Bao_cao_ra_soat_quy_trinh_theo_gop_y_GVHD_2026-10-24.md), biên bản góp ý và note draw.io được cung cấp. Ưu tiên biên bản Markdown, sau đó note; không lấy đường nối cũ chưa sửa làm chuẩn cao hơn nhận xét.
+
+Người dùng chốt A1, B1, C2 và bỏ toàn bộ Owner approval trong BF-08. Không dùng AGY, không stage/commit. Lượt bổ sung nhật ký này chỉ sửa change_logs.md; hai bản quy trình giữ nguyên kết quả đã sửa ở lượt trước. Các mục 22/10 trở về trước dưới đường phân cách là lịch sử theo phiên bản tại thời điểm đó, không phải xác nhận toàn bộ tài liệu đã đồng bộ 3.1.0.
+
+## 2. Thay đổi đã ghi nhận
+
+- **BF-01/BF-03:** tách hàng chấp nhận, custody và từ chối trên Mermaid; hàng từ chối không đi qua put-away như tồn sở hữu. Làm rõ tạo/xác nhận TO và tên activity thể hiện thao tác trên phần mềm.
+- **BF-04/BF-06:** tạo TD/GI-S nháp trước Picking; xác nhận thực hiện TO khi áp dụng, chỉ post khi thực bàn giao. Nháp không đổi tồn. BF-04 có vòng lặp nhận/xuất nhiều đợt và chỉ đóng TR khi hết nhu cầu, transit, sai lệch và nhiệm vụ liên quan.
+- **BF-05:** có hai hướng khi chênh lệch: đủ căn cứ thì giải trình/lập phương án trực tiếp; chưa rõ hoặc chọn đếm lại thì Start Recount → Enter Recount → so sánh lại. Không bắt mọi chênh lệch phải recount.
+- **A1 — BF-07-FD:** nhánh riêng nhận hàng giao thất bại theo GI-S đã post và chứng cứ, không áp D6 của khách trả sau nhận, không cần POD giả, Owner approval hoặc custody thuộc khách. Warehouse post GR-FD theo lượng thực về/quality; cùng commit tái mở đúng nhu cầu ròng trên SO/WIR/OD gốc để Sales chọn chờ/giao lại/hủy phần đã nhận về. Kiểm chung trần POD/FD/CR, chuyển claim thành receipt không tính hai lần, giữ nguyên ledger xuất/nhận và kiểm nghiệp vụ phụ thuộc khi đảo.
+- **B1 — kiểm kê có hàng lỗi:** ghi defect hold/evidence ngay, không thay balance bằng giao dịch thường dưới khóa. Warehouse lập và xác nhận thực hiện phương án; Owner UC-92 duyệt, UC-93 post batch delta thực tế và RECLASS/vị trí có kiểm soát trước mở khóa. Quality-only không ADJ=0; đếm đủ 50 gồm 48 đạt + 2 vỡ không bị ghi thiếu 2 rồi hủy thêm 2.
+- **C2 — BF-07 trả thông thường:** Sales chấp nhận/từ chối sau Warehouse kiểm và có thể là người lập CR. Owner chỉ duyệt ngoại lệ đủ điều kiện, không vượt điều cấm D6; chưa rõ thời hạn/điều kiện vẫn chờ. Warehouse post GR-CR theo quyết định đúng loại/phiên bản; CR thông thường không tự mở lại nhu cầu bán.
+- **BF-08:** bỏ Owner duyệt xuất, xử lý sai lệch và đóng; Accountant xác minh thỏa thuận NCC, đối chiếu và đóng phần kho qua UC-83; Warehouse post xuất/nhận thực tế. Không đặt quyết định BF-02 lịch sử làm điều kiện xuất trả. Hủy/đổi phẩm cấp/giải phóng hàng lỗi còn tại kho vẫn theo quyền BF-02 hoặc batch B1. Bổ sung tham chiếu Invoice/Credit Note ngoài WMS; trạng thái tài chính độc lập phần kho.
+- **UC và phân quyền:** UC-106 retired, giữ ID/lịch sử và năm role; catalogue vẫn 111 ID, nay 97 active/14 retired. Retired: UC-23–25, UC-42, UC-59–62, UC-74–78, UC-106. Đồng bộ UC mapping, permissions, BR-01–33, chứng từ/trạng thái, mainflow/Mermaid và tiêu chí nghiệm thu trong hai bản quy trình.
+- **Mục 17:** lưu cả phương án A1/A2/A3 và B1/B2/B3, ưu/nhược điểm, lựa chọn đã chốt, quyền C2/BF-08 và tác động triển khai. Báo cáo rà soát giữ là snapshot phát hiện trước sửa.
+
+## 3. Kiểm tra và giới hạn
+
+- Ở lượt sửa quy trình: mỗi bản có 34 bảng, 9 khối Mermaid (context + tám BF), 15 liên kết tệp nội bộ được kiểm tra; không có liên kết lỗi được phát hiện. Cấu trúc nhánh/nút và đường nối Mermaid VI/EN khớp; thứ tự 17 mục và mã UC trong phạm vi catalogue hợp lệ.
+- Đây là kiểm tra cấu trúc tài liệu và đối chiếu nội dung; chưa render lại Mermaid/draw.io hoặc kiểm thử backend, MongoDB, SQL, API hay transaction. Các tình huống nghiệm thu là yêu cầu đề xuất, không phải test phần mềm đã chạy.
+- Lượt bổ sung change log: đối chiếu nội dung với hai bản 3.1.0, kiểm liên kết mới, bảo toàn nguyên phần nhật ký cũ và nội dung hai bản quy trình; git diff --check đạt. Không stage/commit.
+
+## 4. Phần còn cần đồng bộ
+
+Report 1/3, thiết kế dữ liệu VI/EN, SQL tham chiếu, thiết kế chi tiết liên quan, bộ draw.io/PNG và Word/Google Docs ngoài repo chưa được cập nhật theo lượt 3.1.0 này. Report 2 giữ nguyên. Các tuyên bố đồng bộ toàn bộ bộ tài liệu ở mục 22/10 chỉ ứng với baseline 3.0.0.
+
+Cần đánh giá/cập nhật CR/FD, decision_kind, liên kết dòng GI/POD/GR-FD và claim, lượng thực hiện ròng/tái mở/OD thay thế, defect hold/RECLASS/batch chốt và quyền UC-71/73/83/92/93; ngừng gọi UC-106. Chưa có schema/API/backend nào được sửa hoặc chạy thử trong lượt này.
+
+---
+
 # Đồng bộ toàn bộ tài liệu hiện hành, giữ Report 2 — 22/10/2026 — baseline 3.0.0
 
 ## 1. Phạm vi

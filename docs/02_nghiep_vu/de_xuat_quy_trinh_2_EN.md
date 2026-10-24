@@ -1,8 +1,8 @@
 # Process Proposal 2 — WMSD — English
 
-Updated: 22 October 2026. Selected To-be based on the 20 October survey, D1–D8 and the 21 October sales-flow direction and 22 October relocation/transfer split. This is a documentation design, not a claim that every control is already used by the store.
+Updated: 24 October 2026. Version 3.1.0 revises flows against supervisor minutes/draw.io notes. User selections: A1, a failed-delivery intake branch within BF-07; B1, immediate defect blocking with controlled quality posting at stocktake closure; C2, Sales accepts ordinary customer returns and Owner reviews exceptions only; BF-08 has no Owner approval. This is a To-be design, not verified implementation; alternatives and impacts are in section 17.
 
-BF-06: copy MISA/paper order → linked issue request → picking/PGI → photo-confirmed customer receipt → DELIVERED → Sales confirms full external receipt → COMPLETED. Both process proposals, both database proposals and reference SQL now follow this flow. Report 1/3 text, the detailed design and current figures are synchronized to this baseline on 22 October. External Word/Google Docs editions require publication separately; Report 2 is unchanged by request.
+BF-06: copy MISA/paper order → linked WIR/OD → draft GI-S → picking and TO confirmation → handover/PGI → photo POD → DELIVERED → Sales confirms full external payment receipt → COMPLETED. The 24 October revision updates only the VI/EN process proposals. Database design, SQL, Report 1/3 and draw.io/image assets remain at the 22 October 3.0.0 baseline and require relevant updates before publication. The complete document set is not claimed synchronized to 3.1.0.
 
 Vietnamese: [de_xuat_quy_trinh_2_VI.md](de_xuat_quy_trinh_2_VI.md). Data design: [EN proposal](../03_thiet_ke/de_xuat_database_design_EN.md). Change log: [change_logs.md](../../change_logs.md). SQL supports analysis; MongoDB remains runtime.
 
@@ -11,6 +11,7 @@ Vietnamese: [de_xuat_quy_trinh_2_VI.md](de_xuat_quy_trinh_2_VI.md). Data design:
 | 1.0.0 | 21 October 2026, before the sales-flow revision | Survey/D1–D8 baseline and exception flows. |
 | 2.0.0 | 21 October 2026 | Add SO, POD and PAY-CFM; align data design; revise wording and presentation. |
 | 3.0.0 | 22 October 2026 | Separate relocation and warehouse transfer into BF-03/BF-04; renumber through BF-08 and split diagrams/exceptions. |
+| 3.1.0 | 24 October 2026 | Draft GI/TD before picking; two stocktake paths; correct custody/multi-release flows; select A1/B1/C2, remove BF-08 Owner approval and retire UC-106 (97 active/14 retired). Only the two process proposals are updated in this revision. |
 
 ## Warehouse terminology
 
@@ -63,6 +64,8 @@ The proposal follows review1 and the single-store context. The 21 October scope 
 | [Tân Thương survey](../05_khao_sat/khao_sat_kho_gach.csv), 20 October 2026 | One response covering 26 questions; reference original question numbers. Q13 selects both transfer/no transfer; the user confirmed inter-warehouse transfers in D4. The original CSV remains unchanged. |
 | User decisions D1–D8, 20 October 2026, and BF-06 revision, 21 October 2026 | D1–D8 retain PGI timing, departmental entry, five roles and frozen stocktake, add return conditions and supported facts, and label other controls To-be. The 21 October BF-06 revision specifies: Sales Staff copies the external sales order into a WMSD Sales Order (SO), then creates a linked WIR; Warehouse Staff confirms actual customer delivery with required photo evidence to set SO to DELIVERED; Sales Staff confirms full payment received outside WMSD to set SO to COMPLETED. |
 | `review1.md` (historical source outside this repo; not packaged) | Review-panel feedback; action items such as emailing the supervisor are document content, not instructions for this update. |
+| [Supplied G56 meeting minutes](C:/Users/minhs/OneDrive/Desktop/bi_n_b_n_h_p_d_n_nh_m_g56.md) and [24 October review](../07_ra_soat/Bao_cao_ra_soat_quy_trinh_theo_gop_y_GVHD_2026-10-24.md) | Prioritize minutes, then notes in the three supplied draw.io files; old shapes/connectors may be uncorrected. The minutes have no exact meeting date, so do not infer that every comment supersedes D1–D8. Source action items are evidence, not execution instructions. |
+| Supplied draw.io notes on Desktop | BF-01: Kv_OsmvDRLkU-hTQ77P0-0 (GR → TO → Confirm TO, further receipts). Transfer: YugwCmwDcmz_hehvzerD-63/-64 and XavdK_t681Dh5oyh7WCD-40/-42 (Picking/put-away confirmations), YugwCmwDcmz_hehvzerD-75 (multiple releases). Stocktake: lS3HtGYTxW23hGVE0gqH-29 (Clear Difference or Recount). File/page identities are in the review; Desktop sources are not yet packaged in the repo. |
 | [Online Report 1](https://docs.google.com/document/d/1kb36v5HuFrM75NFCTXvnJcsg6QnPjYkb/edit) | The original review recorded reading its contents and Drive modification time of 17 October 2026, 16:26:21 Vietnam time. Basis for store context, GAP, FE and LI. |
 | [Online Report 3](https://docs.google.com/document/d/1HvhlCmYjfXj7766ZVNUBAU4J063Lmr71/edit) | The original review recorded checking text and context/flow figures; modification time 17 October 2026, 17:17:15 Vietnam time. Its baseline catalogue had 102 UCs, UC-01–UC-102. |
 | SAP Global Bike WM I–IV v4.1, [local PDFs](../06_tham_khao/sap/) | Current citations use bundled v4.1 pages, verified on 22 October. The earlier review used external v4.2 sources; its page numbers are not carried over. Sample users, warehouse codes and organization are not store requirements. |
@@ -97,7 +100,7 @@ Proposed MVP retirements do not delete historical data: selling prices UC-23–2
 |---|---|---|
 | D1 | Q17: deduct stock when creating a sales order/delivery request. Whether the respondent means physical or available stock is unclear. | Creating a copied SO or linked WIR does not change stock; reservation reduces availability and physical deduction occurs only at handover/PGI. Reconciliation with MISA explains ordered-but-undelivered quantities. |
 | D2 | Q21: Accountant/one shared data-entry person; Q22: update immediately during work. | Retain each department's own authorized entry/confirmation under personal userId. No proxy entry or shared accounts. Staffing must support this To-be difference. |
-| D3 | Q6–7, 12, 20, 23: multiple responsibilities, purchasing/delivery personnel and delegated decisions. | Retain exactly five application roles. No purchasing/delivery role or new delegation workflow. Approval stays with Store Owner; multiple roles do not permit self-approval. External delegation does not automatically grant WMSD rights. |
+| D3 | Q6–7,12,20,23: multiple responsibilities and external delegation. | Retain five roles without dynamic delegation. 24 October scope: Sales accepts inspected ordinary CR, Owner only exceptions; BF-08 no Owner approval. Independent approval remains for scoped Owner decisions and TR/RR/ST. |
 | D4 | Q13 selects both transfers and no transfers. | User confirms inter-warehouse transfers. Preserve raw survey; retain independent source/destination confirmation and discrepancy records. |
 | D5 | Q14–15: monthly counting, pausing the area, and recording movements separately if they continue. | Retain frozen scope until resolution. Monthly is an operational cadence, not a new scheduler job. Concurrent counting/movement is not selected. |
 | D6 | Q18–19: return conditions and refunds recorded in MISA. | Add conditions to BF-07, BR-29 and UC-70–73; do not invent return days. WMS stores refund references only. |
@@ -135,10 +138,10 @@ Retain five application roles. Use **Warehouse Staff** consistently instead of I
 
 | Actor | To-be responsibility |
 |---|---|
-| Store Owner | Approve replenishment, inter-warehouse transfers, customer acceptance, supplier returns, defects and variances; view reports. No routine shelf-change approval. |
-| Sales Staff | Copy/record WMSD Sales Orders (SO) from verified external orders (MISA/paper); create/manage linked Warehouse Issue Requests (WIR) and customer-return requests; confirm outstanding demand, partial deliveries, unissued remainder cancellations and supply selection; obtain customer agreement for lot/tone substitution; confirm full external payment receipt after DELIVERED to complete the Sales Order (COMPLETED). No physical-quality confirmation or stock posting. |
-| Warehouse Staff | Inspect, pick, put away, receive/issue (PGI), relocate, count, quarantine, propose disposition, and confirm actual customer delivery/pickup with required photo evidence (POD) to update the Sales Order to DELIVERED within assigned warehouses. |
-| Accountant | Create/track approved POs, record supplier agreements, reconcile warehouse documents with MISA, and record external accounting/invoice/refund/reconciliation references (UC-108). Does not decide operational replenishment needs or confirm Sales Order completion in place of Sales Staff. |
+| Store Owner | Approves replenishment, inter-warehouse TR, defect destruction/regrade/release and stocktake plans; reviews customer-return exceptions only. Views reports. No approval of ordinary customer returns, relocation or BF-08. |
+| Sales Staff | Copies external SO; manages WIR/OD, outstanding demand and redelivery/cancellation of received-back GR-FD quantity. Accepts/rejects ordinary CR after Warehouse inspection and may be its creator; submits exceptions to Owner. Confirms PAY-CFM after DELIVERED. No physical-quality inspection or Warehouse stock posting. |
+| Warehouse Staff | Inspects, drafts GI, confirms TO/PGI, POD, GR-CR and GR-FD within assigned warehouses; records FD source/quality without Owner approval for FD/BF-08. In B1 records immediate defect holds and confirms quarantine execution against the approved closure batch, never ordinary freeze-bypassing posting. No commercial CR acceptance for Sales/Owner. |
+| Accountant | Creates/tracks approved PO; records supplier agreement, MISA reconciliation and UC-108 external references. In BF-08 verifies agreement, reconciles variances and closes warehouse work through UC-83 against Warehouse documents, without Owner approval. Does not post stock or confirm SO completion for Sales. |
 | Administrator | Accounts, permissions and technical settings. No automatic business approval, stock posting or audit-editing rights. |
 
 Customer, Supplier and Carrier are business participants, potentially separate BPMN pools, with no default WMSD account. Source/destination Warehouse Staff are two warehouse responsibilities, not two application roles. Record actual users by userId, not just role labels.
@@ -162,7 +165,7 @@ Trigger: (a) issue demand remains short after checking other warehouses; (b) ava
 5. For every delivery, Warehouse records PO-based arrival, actual quantity, product, BOX/PIECE, lot, tone, calibre, cracks and packaging. A PO may have multiple receipts. Q8 permits Owner/Accountant co-inspection recorded in evidence; GR posting stays with Warehouse. Torn packaging alone is not a tile defect; opened cartons require actual piece counts.
 6. Split quantities into accepted good, pending inspection/agreement, defective, or rejected/immediately returned. Record short/over/wrong-product/wrong-lot evidence.
 7. Receive only quantities accepted into store ownership at actual status/location. Custody/pending-supplier goods remain separate and unavailable. Owned defective goods enter BF-02; immediately rejected goods must not be fictitiously received then issued.
-8. Suggest storage; Warehouse physically puts away and confirms. Accepted goods become allocatable only when quality/location checks pass.
+8. Warehouse Staff creates or receives a put-away TO from GR, selects suggested storage and confirms actual placed quantity/location. Only accepted store-owned goods meeting quality/location checks become allocatable. Custody has separate records/holding positions; rejected goods are handed back, not processed as accepted GR/put-away stock.
 9. Update cumulative received/accepted/outstanding quantities. Accountant reconciles PO, receipt and supplier documents; follow up or obtain Owner cancellation of undelivered remainder. Warehouse completion need not await accounting.
 
 Exceptions: shortage leaves remainder open; over-delivery stays separate pending acceptance; wrong tone is not substituted merely because SKU names match; zero accepted quantity still has a discrepancy case; return of previously received goods uses BF-08; replacements are new linked receipts.
@@ -186,14 +189,14 @@ A denotes an alternate path and E an exception; step numbers refer to the main f
 
 ### BF-02 — Defect detection, isolation and disposition
 
-**Trigger:** cracks/quality defects discovered in BF-01/04/05/06/07 or routine work.
+**Trigger:** cracks/quality defects discovered in BF-01/03/04/05/06/07 or routine work.
 
 1. Warehouse records source, lot, location, quantity, symptoms, time and photos/record.
-2. Immediately block allocation and quarantine. **Do not wait for Owner approval to block defective stock.** Replan affected reservations and notify shortages.
+2. Immediately record allocation blocking and a quarantine case without awaiting Owner approval. In B1 frozen stocktake scope, initially record defect hold/evidence only; quality/location changes use the approved BF-05 closure batch, never ordinary posting to bypass the freeze. Retain blocking until reclassification/quarantine completes. Replan affected reservations and notify Sales.
 3. Verify condition and ownership/custody. Quarantine alone never transfers ownership.
-4. Propose release after reinspection, conditional regrade, supplier return or destruction. Discounted sales remain in MISA; a discount does not make defective goods good quality.
-5. Owner approves precise action/quantity or requests more evidence. Rejected proposals remain quarantined.
-6. Warehouse executes. Supplier return continues in BF-08; destruction requires actual destruction evidence/quantity; regrade records before/after condition.
+4. Warehouse proposes release after reinspection, regrade, supplier return or destruction. Supplier return follows BF-08 with Accountant-recorded agreement, without Owner dispatch approval; destruction/regrade/release outside stocktake still uses step 5 Owner authorization. Discounted sales remain external and do not turn defects into good stock.
+5. For destruction/regrade/release outside stocktake, Owner approves precise action/quantity or requests evidence; otherwise retain isolation. Supplier return bypasses this approval. B1 stocktake reclassification uses UC-92 approval and UC-93 closure rather than duplicate UC-66 approval.
+6. Warehouse confirms authorized destruction/regrade/release; destruction requires actual evidence/quantity. Supplier return goes to BF-08 on Accountant/supplier agreement without Owner approval. In B1 quality/location posts only through stocktake closure, never ordinary UC-67.
 7. Post exactly once. Close only when every quantity is resolved or linked to an accountable open case.
 
 Inventory effect: quarantine/regrade preserves store-owned totals. Destruction reduces actual destroyed quantity; supplier return deducts in BF-08, not again here. Previously deducted quantities cannot be deducted through another case.
@@ -208,8 +211,8 @@ A denotes an alternate path and E an exception; step numbers refer to the main f
 |---|---|---|---|---|
 | BF-02-E1 | Defect in reserved or picked stock | Warehouse immediately blocks defective quantity, preserves demand linkage and informs Sales; seek replacement supply without awaiting quarantine approval. | Owned total unchanged; BF-06 waits/replans. | UC-65, UC-103 |
 | BF-02-A1 | Ownership or cause unclear | Keep PENDING/BLOCKED quality and recorded owner; obtain evidence, never turn custody into store stock through a note. | Wait at steps 3–4; unavailable. | UC-65 |
-| BF-02-A2 | Rejected or partial disposition | Record line/quantity/version decision; unapproved quantity stays isolated; Warehouse executes only the approved portion. | Return to step 4 or execute eligible portion at step 6. | UC-66, UC-67 |
-| BF-02-E2 | Return or destruction not executed | Route to BF-08 with valid approval; supplier dispatch deducts at UC-82 only. Destruction needs actual quantity/evidence, not approval alone. | Keep open until execution; no duplicate deduction. | UC-67, UC-82, UC-106 |
+| BF-02-A2 | Owner returns/rejects scoped plan or approves partly | Applies to destruction/regrade/release outside stocktake; unapproved quantity stays isolated. Supplier return needs no Owner and uses BF-08; B1 uses UC-92/93. | No fictitious issue/destruction; follow branch authority. | UC-66, UC-67, UC-92 |
+| BF-02-E2 | Supplier return/destruction not executed | Supplier return needs Accountant/supplier agreement, not Owner; UC-82 deducts at dispatch. Destruction outside stocktake needs approval/actual evidence; B1 never uses ordinary scrap/reclass posting. | Keep unexecuted work open without duplicate deduction. | UC-67, UC-82, UC-93 |
 
 ### BF-03 — Same-warehouse relocation
 
@@ -217,7 +220,7 @@ Trigger: goods must move between locations within one physical warehouse. Wareho
 
 1. Select product/lot/quality, source/destination, quantity and reason. Check both locations belong to the same warehouse, destination suitability, sufficient source quantity and absence of stocktake locks or conflicting tasks.
 2. Create a relocation task (TO-RELOCATE). Preserve reservations and demand links for already committed goods.
-3. Physically move, count and confirm actual quantity, locations, user and time. Partial execution leaves the remainder open or traceably cancelled; do not confirm unperformed quantities.
+3. Warehouse enters execution results and confirms TO-RELOCATE: actual moved quantity, locations, user and time. Physical movement/counting supports confirmation rather than a standalone software activity. Partial execution leaves the remainder open or traceably cancelled; do not confirm unperformed quantities.
 4. Atomically decrease source/increase destination by the same quantity, preserving warehouse, owner, lot/tone/calibre and quality. Move the reservation with the stock and retain audit history; warehouse total is unchanged.
 
 End: the task is fully confirmed or its unexecuted remainder is traceably cancelled. A physical move to another warehouse requires a separate BF-04 case.
@@ -237,11 +240,11 @@ Trigger: stock must move between two physical warehouses for balancing or fulfil
 
 1. Check compatible availability at configured warehouses. Suggest direct dispatch or transfer. Use simple warehouse priority and due date; do not claim distance optimization without distance data.
 2. Sales confirms customer fulfilment. Warehouse submits TR if physical transfer is needed. Direct dispatch from another warehouse uses BF-06 there, without a fictitious receipt at the main warehouse.
-3. Owner approves TR. Reserve source stock with concurrency checks. Do not add a redundant Transfer Order approval/confirmation.
-4. Source staff pick, count and record dispatch/handover. Actual dispatch decreases source and increases transit.
+3. Owner approves TR and reserves source stock with concurrency checks. Do not add another inter-warehouse order or Owner approval of TO; picking/put-away TOs are internal tasks with execution confirmation where applicable.
+4. Source Warehouse creates a draft TD from approved TR lines before picking, without stock effect. With staging, create/receive and confirm the picking TO using actual quantity/lot/location; without staging, record actual picking on TD without another order layer. At actual handover, confirm HO and post TD: source decreases/transit increases. TD is the transfer goods issue; do not post an additional GI for the same quantity.
 5. Independent destination staff inspect quantity, lot/tone/calibre and condition and create MWTR. Verified receipt reduces transit/increases destination by actual quality. Preserve demand allocation throughout source → transit → destination; newly received allocated stock is not free for other requests.
-6. If matched, put away and complete. For shortage/overage/damage/wrong lot, record evidence, post only verified quantities and keep unresolved amounts open for Owner decision.
-7. Execute approved recovery, additional receipt, return-to-source with new documents, quarantine or evidenced loss. Close only when every dispatched quantity is accounted for.
+6. Destination records shortage/overage/damage/wrong-lot evidence and verified quantities; unresolved amounts remain open for Owner decision. For valid receipts, create/receive and confirm put-away TO by actual location/quality without a second receipt increase. A matched release does not automatically complete the entire TR.
+7. Confirm approved additional receipt, new return-to-source documents, quarantine or evidenced loss. Continue MWTR for dispatched quantities still in transit; create another TD for approved TR demand not yet dispatched. Close TR only when unexecuted demand is fulfilled/validly cancelled, all dispatched quantity is accounted for, transit/variances are resolved and related TOs are confirmed or traceably cancelled for unexecuted portions.
 
 Example: A dispatches 100 boxes; B receives 98: 95 good + 3 broken. B receives 95 good and 3 quarantined; 2 remain transit/unresolved. Do not leave all 100 in transit or treat the 3 physically present damaged boxes as lost. Owner-approved loss of 2 deducts that transit quantity through one resolution.
 
@@ -266,10 +269,10 @@ Documents: TR, TD, handover, MWTR, discrepancy case. SAP WM II distinguishes STO
 2. Resolve unfinished receipt/issue/transfer tasks in scope. Separate staged, quarantined, custody and transit stock; never count both ends of a transfer.
 3. Activate an **immutable cutoff snapshot** and export/print a **count sheet** by location/lot/status. Allow newly found items. Prefer blind count sheets without book quantities.
 4. Selected MVP: lock quantity/location/status-changing transactions in the counted scope until the session is resolved. Other areas continue. This replaces the earlier Report 3 post-cutoff reconciliation model. Do not implement partial locking without reconciliation.
-5. Warehouse counts BOX/PIECE and condition with user/time. Blank means uncounted, not zero. Keep every recount attempt.
-6. Compare valid counts to snapshot. Recount unfamiliar lots/discrepancies and investigate documents/reasons. Physically present damaged stock may be a quality variance, not missing quantity.
-7. No variance: complete/unlock without a zero adjustment. Otherwise Warehouse proposes the delta against the correct version.
-8. Owner approves or returns for recount/explanation, then separately performs UC-93 Clear Difference. Post the approved delta once with adjustment documents/audit; close/unlock after all variances resolve.
+5. Warehouse enters physical BOX/PIECE counts, condition, user and time. Blank means uncounted, not zero. Each Enter Recount creates a retained count attempt rather than overwriting a previous one.
+6. Compare complete/valid counts with snapshot across quantity, location and quality. Variance with insufficient evidence uses Start Recount → Enter Recount → compare again, repeatable; sufficient evidence proceeds to explanation/resolution in step 7 without mandatory recount. Present damaged goods are not automatically missing quantity. Under B1 immediately record defect hold/evidence without ordinary balance/quality/location posting in the frozen scope.
+7. No quantity/location/quality variance and no unresolved defect hold → close/unlock without ADJ=0. Otherwise Warehouse proposes a versioned plan: actual shortage/overage delta, total-preserving RECLASS and quarantine location with execution evidence. Book 50 good / count 48 good + 2 broken means total delta=0 and RECLASS2, never shortage -2 or ADJ=0. Unsubstantiated portions retain freeze/recount.
+8. Owner approves/returns the plan through UC-92. Warehouse records actual quarantine/placement confirmation against that plan under controlled session closure; Owner performs UC-93 to post nonzero delta if any and RECLASS/location movements in the same authorized, idempotent ledger batch. Retain freeze until every line, defect hold and quarantine task is resolved; failure rolls back the entire batch without partial unlocking. Quality-only resolution still needs a decision/RECLASS but no ADJ=0. Owner cannot approve a self-originated plan.
 
 Feasibility: D5 selected locking; the following advanced alternative is not selected. Count small areas with Owner available to avoid prolonged locks. If operations must continue during counting, expected quantity at count time = snapshot + receipts after cutoff − issues after cutoff; delta = physical count − expected quantity. Apply delta to current stock, never replace current stock with an old count. This requires per-line count timestamps and late/backdated movement controls. These are distinct designs and cannot be mixed casually.
 
@@ -283,8 +286,8 @@ A denotes an alternate path and E an exception; step numbers refer to the main f
 |---|---|---|---|---|
 | BF-05-E1 | Open tasks or overlapping freeze | Owner/Warehouse resolve before activation; reject overlap with another frozen session. Freeze blocks receipt, issue, movement and quality changes in scope. | No snapshot until atomic freeze succeeds; other scope continues. | UC-86, UC-87 |
 | BF-05-A1 | Blank, zero or newly found stock | Warehouse distinguishes uncounted from valid zero. Verified found stock gets a flagged found_after_cutoff row with book=0; original snapshot rows remain immutable. | Blank never implies total loss; recount appends a new attempt. | UC-87, UC-88 |
-| BF-05-A2 | Quality variance or unexplained count | Warehouse recounts and checks lot/units/documents; damaged but present stock uses quality/BF-02, not an extra negative quantity adjustment. | Keep freeze; no final delta approval without evidence. | UC-88, UC-91 |
-| BF-05-A3 | No variance or returned adjustment | No variance closes/unlocks without ADJ0. Owner rejection/revision keeps session open; Warehouse adds evidence/recounts and resubmits a new version. | Approval does not post; UC-93 posts authorized delta and unlocks only after resolution. | UC-92, UC-93 |
+| BF-05-A2 | Quality variance or unsubstantiated cause | Record immediate hold; unclear cases recount/reconcile. Substantiated cases propose delta and RECLASS/location for B1 closure; present damage is not loss. | Freeze remains until both quality and quantity resolve. | UC-65, UC-88, UC-91–93 |
+| BF-05-A3 | No variance or Owner rejection/revision | Direct closure requires no quantity/quality/location variance or open hold. Revise plan or choose recount with new version; quality-only still approves/posts RECLASS without ADJ=0. | UC-93 unlocks after completed batch, not approval alone. | UC-92, UC-93 |
 | BF-05-E2 | Interrupted clearing | Recover saved session/history and retain scope freeze. Check committed batch before retry with the same operation key; do not auto-unlock or switch to concurrent-movement counting. | Failed batch rolls back; committed batch returns prior result. | UC-87, UC-93 |
 
 ### BF-06 — Sales order, warehouse issue, customer delivery and completion
@@ -293,26 +296,27 @@ Trigger: Sales Staff receives a verified external order from MISA, paper or anot
 
 1. Sales creates a Sales Order (SO) with customer, need date, destination, products, quantities, units and lot/tone/calibre requirements. Keep original order/line references and source evidence. Verify phone/Zalo instructions and record a source order before entry; do not duplicate the same external order. Entry is manual, without live MISA synchronization.
 2. Sales creates a Warehouse Issue Request (WIR) from the saved SO, linked to that order and its individual lines. One SO may have several WIRs; each WIR may have several outbound releases (OD), with one warehouse per release.
-3. Check outstanding, reserved and issued quantities and compatible availability per line. Shortages use direct dispatch/transfer options (BF-04) or replenishment (BF-01). Uncovered demand waits; no negative stock.
+3. Check net SO/WIR/OD outstanding fulfilment, commitments/reservations and compatible availability per line. Net = valid PGI less posted GR-FD; absent goods do not reopen demand. Shortages use other supply/BF-04 or BF-01, without negative stock or duplicate demand.
 4. Sales agrees full delivery, partial delivery or waiting with the customer. Record customer consent before substituting lot/tone/calibre.
-5. Reserve stock for the agreed release and create a picking task (TO). Prefer FIFO within compatible stock; do not substitute incompatible tone/calibre merely to fill quantity.
-6. Warehouse Staff picks, counts and stages goods, recording cartons, loose pieces, lot and actual quantity.
+5. Sales creates or continues a warehouse-specific OD for agreed WIR demand. Warehouse creates or reuses draft GI-S for the planned handover before picking, recording planned quantities rather than requiring actual handover. Reserve compatible stock and create/receive the picking TO; FIFO applies within compatible supply. Draft GI does not reduce stock.
+6. Warehouse enters actual picked quantity/lot/location, cartons/loose pieces and confirms the picking TO into staging. Physical picking/counting supplies the execution evidence; TO confirmation only changes location, not inventory total.
 7. On shortage or damage, Warehouse records evidence, blocks suspect stock and informs Sales. Defects use BF-02; unexplained book/physical differences use BF-05. Never overwrite the balance directly.
-8. Warehouse drafts GI-S from actual picked quantities. At actual handover to a delivery trip/carrier or pickup customer, record recipient, time and handover (HO), then post PGI. PGI deducts actual handover once. Before handover, retain staged stock or traceably unpick it. Carrier handover alone does not establish customer receipt.
-9. When the customer receives goods, authorized Warehouse Staff records POD: recipient, time, quantity per issue line and required delivery photo. Use valid posted GI-S lines in the correct SO–WIR–OD chain. Missing photos or awaiting receipt returns to this step, without picking/PGI again. Partial receipt keeps SO at PARTIALLY_DELIVERED; full photo-confirmed receipt of the remaining obligation sets DELIVERED.
+8. Warehouse updates draft GI-S to confirmed actual picking; retries reuse document/operation key rather than creating another issue. Distinct valid handovers may have separate GI-S within the OD's remaining fulfilment quantity. At actual handover record recipient, time, HO and PGI the actual quantity once. Before handover GI remains DRAFT and stock stays staged or is traceably unpicked. Carrier handover does not prove customer receipt.
+9. Warehouse records actual customer POD with recipient, time, quantity per posted GI-S in the same SO/WIR/OD and required photo. Enforce shared POD/GR-FD/open-FD cap below; no POD for FD quantity. Missing photo/awaiting receipt updates only POD without repeated picking/PGI. Partial delivery → PARTIALLY_DELIVERED; full active quantity > 0 with photos → DELIVERED.
 10. After SO is DELIVERED, Sales Staff confirms full money receipt outside WMSD. Keep confirmer, time and receipt reference, evidence or confirmation note (PAY-CFM). Both delivery and external receipt confirmation are required for COMPLETED. Unpaid/partial/unclear payment leaves DELIVERED; prepayment cannot complete an undelivered order.
 
 Quantity and status controls:
 
 | Subject | Rule |
 |---|---|
-| SO → WIR | Total WIR commitments cannot exceed ordered quantity less authorized cancellations. Include already issued portions; closing a WIR must not reopen the same demand. |
-| WIR → OD → GI-S | Releases cannot exceed authorized WIR quantity; PGI cannot exceed the release. Parent WIR and child OD are not separate additive demands. |
-| GI-S → POD | Cumulative confirmed delivery cannot exceed valid PGI per issue line, excluding reversed/ineligible quantity. Recheck concurrently in one transaction; same-operation retries return the stored result. |
-| Remainder cancellation | Cancel only unissued quantities with reasons, resolved tasks and released reservations. Full cancellation with zero delivery sets CANCELLED, never DELIVERED or COMPLETED. |
+| SO → WIR | WIR commitments include net fulfilment and remaining demand, capped by SO after valid cancellation. GR-FD reopens the same WIR source quantity without duplicate demand. |
+| WIR → OD → GI-S | OD commitments remain within WIR; valid PGI less posted GR-FD cannot exceed authorized fulfilment. Replacement OD transfers reopened commitment without double-counting; retain gross dispatch history. |
+| GI-S → POD | Per GI line, effective POD + posted GR-FD + open FD claims cannot exceed valid unreversed PGI, checked atomically. FD-received/claimed quantity cannot receive POD; same-key retries return stored result. |
+| Remainder cancellation | Sales cancels only unissued or received-back GR-FD quantity not redelivered, resolving tasks/reservations/version. No cancellation of goods not yet returned. Full cancellation at zero delivery → CANCELLED; partial delivery plus valid remainder cancellation permits DELIVERED only for active quantity > 0 with full POD. |
 | Warehouse fulfilment versus order completion | WIR may close on full issue. SO still requires photo-confirmed customer delivery followed by Sales confirmation of full external receipt. |
 
-After PGI: actual returned/refused goods use BF-07 and appropriate receipt/inspection documents, never a stock-restoring status edit. Correct mistaken POD/PAY-CFM by traceably voiding the confirmation with a reason, incrementing the SO version and recalculating progress; old completion authority does not carry over to a changed order version. Ordinary returns after customer receipt retain original delivery/payment evidence and follow BF-07 separately.
+After PGI, failed-delivery goods returning use BF-07-FD (A1): posted GI-S + failure evidence → inspection → GR-FD. No fictitious POD or ordinary D6 return eligibility is required. Posted GR-FD reopens exactly its net-fulfilment quantity on the original SO/WIR/OD; Sales chooses waiting/redelivery/cancellation of that reopened portion. Status edits cannot restore stock or rewrite issues. Mistaken POD/PAY-CFM is traceably voided with reason/history and recalculated progress. Ordinary post-delivery CUSTOMER_RETURN uses D6, preserves original POD/PAY-CFM and does not automatically reopen sales demand.
+**Net fulfilment:** cumulative valid PGI less posted GR-FD for the same source lines. SO/WIR/OD execution caps use net fulfilment and remaining commitments, not gross physical dispatch without deducting accepted failed-delivery receipts. Redelivery uses reopened demand on the same SO/WIR; reuse an eligible OD or transfer only the reopened commitment to a linked/versioned replacement OD, without duplicate demand. Preserve all gross PGI/GR-FD ledger events. Cancel only unissued demand or received-back GR-FD quantity not yet redelivered; unresolved off-site goods cannot be cancelled to bypass controls.
 
 Inventory effect: SO/WIR creation changes no stock; reservation reduces availability; picking changes location; PGI deducts once. POD and PAY-CFM only update progress, without stock postings or payment execution.
 
@@ -328,44 +332,48 @@ A denotes an alternate path and E an exception; step numbers refer to the main f
 | BF-06-A1 | Partial, delayed or substituted fulfilment across releases | Sales records customer agreement on quantities/compatible lots on SO/WIR and splits WIR/OD releases; shortage uses UC-103→BF-01/04. Resolve bound tasks before editing/cancelling unissued SO/WIR remainder. | Reserve covered release quantity only; remainder stays outstanding on SO/WIR. | UC-48, UC-109, UC-51, UC-103 |
 | BF-06-E2 | Picking discrepancy | Warehouse records actuals and isolates defects/BF-02; unexplained mismatch triggers targeted BF-05. Sales chooses replacement/waiting; no direct balance edit. | Picking changes position/reservation only, not total. | UC-55, UC-65 |
 | BF-06-A2 | Cancelled or delayed handover before PGI | Keep staged stock or document Warehouse unpick to eligible storage; release corresponding reservation before Sales cancels unissued WIR/SO remainder with reason. | No PGI without handover; warehouse total unchanged. | UC-48, UC-109, UC-55, UC-58 |
-| BF-06-E3 | After PGI: missing photo, partial/refused delivery or return | Missing photo/awaiting receipt retries POD on the existing issue, never picking/PGI. Record only photo-confirmed customer receipt; incomplete SO remains IN_PROGRESS or PARTIALLY_DELIVERED. Actual returns use BF-07; recording errors use linked corrections. | Status edits never restore stock; eligible return receipt/reversal handles stock. | UC-58, UC-110, UC-70, UC-73 |
+| BF-06-E3 | After PGI: missing photo, awaiting receipt or physical return | Missing photo updates only POD. Unreceived goods actually returning use BF-07-FD/GR-FD with shared source caps/net reopening; POD-confirmed returns use CR/D6. Sales cancels only unissued or GR-FD-received-back quantity. | No fictitious POD, GI rewrite or status-based stock restoration. | UC-58, UC-70–73, UC-109, UC-110 |
 | BF-06-A3 | External payment pending, partial, unclear or known early before DELIVERED | Only Sales Staff confirms PAY-CFM (UC-111). If payment is unpaid/partial/unclear after DELIVERED, keep SO at DELIVERED. If customer prepaid externally before full delivery, record reference note only; SO cannot become COMPLETED until DELIVERED with required photos is satisfied. Traceable correction if reference note is updated. | No stock change on DELIVERED or COMPLETED; no payment gateway or accounting ledger post in WMSD. | UC-48, UC-110, UC-111, UC-108 |
 
-### BF-07 — Customer return and classification for receipt
+### BF-07 — Post-delivery customer returns and failed-delivery intake
 
-**Trigger:** customer requests return of dispatched goods. Commercial acceptance, physical quality and ownership are separate questions.
+**Select the source branch:** CUSTOMER_RETURN for goods actually received by the customer; FAILED_DELIVERY (BF-07-FD) for posted issues not confirmed by POD that physically return. Neither branch inherits the other's eligibility or ownership assumptions.
 
-D6 conditions from Q18: sealed boxes and unused loose pieces are assessed case by case, never accepted automatically. Reject installed tiles, customer-caused damage and goods confirmed beyond the applicable return period. No specific number of days or deadline basis has been supplied: retain policy/agreement references; unverified deadlines remain pending, neither assumed overdue nor assumed valid. Supplier-defective goods may be considered and quarantined; do not equate them with customer damage. Torn packaging alone determines neither quality nor eligibility.
+#### 07.CR — Return after customer receipt
 
-Sales checks commercial conditions before intake when evidence permits; Warehouse verifies physical condition. Proven ineligible requests may be rejected before physical receipt. Goods already physically received remain custody until handback, without GR-CR. Split quantities with different conditions into separate assessment lines.
+D6: sealed boxes/unused loose pieces are assessed individually. Installed/customer-damaged/verified-overdue goods are ineligible; Owner cannot override these exclusions. Do not invent a return period; unverified conditions/deadlines remain PENDING. Supplier defects may be reviewed as exceptions, distinct from customer-caused damage.
 
-1. Sales registers source order/GI, product, quantity and reason. For pre-WMS transactions, Accountant verifies external history; do not invent a historical GI merely to enable returns.
-2. Validate dispatched, previously returned and pending-return quantities per line to prevent duplicate/excess returns. Sales checks documents/commercial conditions, not technical quality.
-3. Warehouse physically receives into pending-inspection custody and records customer-owned quantity. This does not increase sellable stock or confirm a refund.
-4. Count, verify lot/tone/calibre and classify good/defective/pending quantities; propose acceptance. Unknown origin is not assigned a sellable lot. Record packaging, installation/use, damage cause and deadline verification per line with assessment version/evidence. Unknown conditions remain pending.
-5. Owner accepts all/some/none based on inspection and agreed conditions; do not approve stock acceptance for D6-ineligible or unverified lines. UC-71 is acceptance after inspection, not prior permission to inspect.
-6. Accepted good quantities: source-linked GR-CR with correct lot/status, then put-away and availability.
-7. Accepted defective quantities for which the store assumes responsibility: quarantine receipt linked to BF-02/08. Rejected quantities stay outside store-owned stock and are handed back; close custody on actual handback.
-8. Sales communicates the result. Accountant uses warehouse evidence for external invoice/refund/offset handling. WMS stores references/status; it does not edit the original sale/invoice, calculate or pay refunds.
-9. Close warehouse processing when every physically received quantity is accepted, handed back or linked to an accountable open case. Financial status remains independent.
+1. Sales creates CR from POD/GI lines or Accountant-verified external history, recording reason/quantity without fictitious historical GI/POD.
+2. Per source line, posted ordinary receipts plus open claims cannot exceed eligible actual customer-received quantity. Verified externally delivered quantity substitutes for internal POD only for historical sources. Unknown origin waits for verification.
+3. Warehouse records customer custody pending inspection, without owned/available increase; enters actual lot/tone/calibre, quantity, packaging, use/installation, damage-cause and deadline evidence.
+4. **C2 — Ordinary case:** verified source/quantity, sealed or unused loose tiles, good condition, verified return terms/deadline and no dispute/deviation. After inspection Sales Staff accepts/rejects each quantity and may be the CR creator. This is explicitly selected ordinary commercial acceptance authority, not self-granted Owner approval or automatic acceptance of sealed goods.
+5. **Exception:** supplier defects, disputes or agreement deviations that are not D6 exclusions go to Owner after inspection/evidence, with a different user from the exception proposer. Unknown eligibility stays PENDING; approval cannot replace verification. No Owner approval for ordinary cases and no repeated approval after GR.
+6. Warehouse posts GR-CR only for the current inspected/eligible version accepted by Sales or exception-approved by Owner: good goods use confirmed put-away TO before availability; accepted defects enter quarantine/BF-02/08. Rejected goods remain custody until actual handback. Commercial acceptance itself posts no stock. GR-CR posting/rejection/closure releases the exact CR claim so resolved quantity is not held twice.
+7. Sales communicates; Accountant records external invoice/refund references. Close warehouse work once every quantity is received/handed back or assigned to an accountable open case, independently of finance. Ordinary returns preserve original POD/PAY-CFM and do not automatically reopen sales demand.
 
-Branch per quantity/line, not one Yes/No for the entire delivery. Example: 10 boxes returned; 7 good accepted, 2 defective accepted for supplier claim, 1 wrong-source rejected. Result: 7 good after put-away, 2 store-owned quarantine, 1 custody then handback; not 10 sellable.
+Example: 10 returned boxes: Sales accepts 7 good, Owner approves 2 supplier-defective as exceptions, and 1 wrong-source box is rejected → +7 good after put-away, +2 quarantine, custody1 until handback.
 
-Invoice boundary: the inherited proposal warns against applying SME 2022 instructions as definitive 2026 tax procedure. Its [Ministry of Finance reference](https://portal.mof.gov.vn/hoidapcstc/home/cthoidap/156063) discusses seller adjustment invoices and agreed buyer return invoices. Accountant determines the applicable external procedure for the actual case; WMSD supplies evidence/links and implements no tax workflow. This update does not independently revalidate that legal reference.
+#### 07.FD — A1: Failed-delivery receipt
 
-[MISA eShop invoice-linked returns](https://helpeshop.misa.vn/v1/kb/doi-tra-hang-cho-khach-theo-hoa-don-thi-thuc-hien-nhu-the-nao) informs source linkage and return receipts; automatic retail documents do not replace tile quality inspection.
+1. Warehouse creates FD from POSTED GI-S and the same SO/WIR/OD lines, failure/handover evidence and expected returning quantity. No commercial CR or Owner approval is required; no fictitious POD or D6 test for goods the customer never received.
+2. Atomically claim/check each GI line: effective POD + posted GR-FD + open FD claimed quantity cannot exceed valid unreversed PGI. POD-confirmed quantity cannot also use FD; customer-received goods use 07.CR.
+3. Warehouse records ARR/INS with actual returned quantity, lot, quality and dispatch-trip evidence. Track receipt against the issue, not customer-owned custody. Only verified quantities may post; wrong-source/unresolved goods remain separately held/unposted, outside owned/available balances.
+4. Warehouse posts GR-FD exactly once using UC-73 failed-delivery mode: increase actual received quantity by quality; GOOD awaits put-away TO, DAMAGED goes to quarantine/BF-02/08. Never edit the original GI/PGI or post GR-CR for the same quantity. Atomically convert received FD claim into GR-FD and release the corresponding open claim; never count both for one quantity. Cancelling an unposted claim only releases its hold, without stock/net-fulfilment changes.
+5. In the GR-FD commit, update net fulfilment = valid PGI − posted GR-FD, reopen exactly linked SO/WIR/OD demand, increment version and recalculate status. Sales chooses wait/redeliver/cancel received-back demand without duplicate SO/WIR. Redelivery has new GI/POD within net caps; any replacement OD transfers the reopened commitment with traceable linkage rather than adding demand.
+6. Close FD only when every claimed quantity has evidenced receipt/correction/non-return outcome. Goods not physically received cannot increase stock or reduce executed fulfilment. SO becomes DELIVERED only for a fully POD-confirmed active obligation greater than zero; total cancellation with zero actual delivery means CANCELLED, never COMPLETED. Old PAY-CFM authority does not carry over to a changed version.
 
 #### 07.X — Alternate and exception flows
 
-A denotes an alternate path and E an exception; step numbers refer to the main flow above. Apply outcomes per quantity rather than forcing one result for the whole document.
-
-| ID | Condition | Responsible actor and action | Stock outcome / re-entry | UC |
+| ID | Condition | Responsible actor and action | Outcome / re-entry | UC |
 |---|---|---|---|---|
-| BF-07-A1 | Historical sale without WMS GI | Sales references external history; Accountant UC-108 verifies dispatched, returned and open quantities; never fabricate a historical GI. | Unverified → pending source; held goods stay custody. | UC-70, UC-108 |
-| BF-07-E1 | Ineligible or unknown D6 conditions | Installed/customer-damaged/verified overdue → INELIGIBLE. Unknown without a proven exclusion → PENDING. Evidence-complete sealed/unused loose quantities → CASE_REVIEW, still subject to Owner decision. | No GR-CR for PENDING/INELIGIBLE; no invented return deadline. | UC-71, UC-72, UC-73 |
-| BF-07-A2 | Mixed return or partial acceptance | Warehouse splits lines by conditions/quality; Owner decides after inspection. Accept7good+2supplier-defective, reject1 → owned+9, custody1 until handback. | Only GOOD after put-away can become available; supplier defects stay quarantined. | UC-71, UC-72, UC-73 |
-| BF-07-E2 | Changed assessment or excess return | Serialize cumulative source claims. Changed conditions/quantities create a new assessment/document version and renewed review; old approval cannot authorize the changed receipt. | Reject over-claim/stale version; no half-posted failed batch. | UC-70, UC-71, UC-73 |
-| BF-07-A3 | Withdrawn request or delayed handback | Before intake, Sales closes unexecuted demand with reason; after intake, Warehouse records actual handback. External finance may remain pending through UC-108. | No custody release on a promise; no refund workflow. | UC-70, UC-73, UC-108 |
+| BF-07-A1 | Historical external transaction | Accountant verifies delivered/returned/open quantities; no fictitious GI/POD. | Unverified waits; CR intake is customer custody. | UC-70, UC-108 |
+| BF-07-A2 | Mixed return | Sales decides ordinary portions; Owner only eligible exceptions; Warehouse splits GR-CR by quality. | No all-or-nothing outcome; rejected goods stay custody until handback. | UC-71, UC-72, UC-73 |
+| BF-07-E1 | D6 excluded or unverified | Installed/customer-damaged/verified overdue → reject; unknown → PENDING and substantiate. | No GR-CR or approval bypass of eligibility. | UC-70–73 |
+| BF-07-E2 | Changed assessment/excess claim | Serialize source claims; changed quantity/case type/terms increments version and requires the proper role's fresh decision. | Ordinary acceptance cannot authorize exceptions or stale versions. | UC-70, UC-71, UC-73 |
+| BF-07-A3 | Withdrawn request/delayed handback | Sales closes unreceived remainder; Warehouse releases custody only on actual handback. | No release on a promise. | UC-70, UC-73 |
+| BF-07-FD1 | PGI10/POD0, all10 return | Warehouse verifies failure and posts GR-FD10, without commercial CR/D6/customer custody/Owner approval. Sales decides reopened demand. | Net issue0; redelivery10 permitted, retaining PGI10 + GR-FD10 + new PGI. | UC-58, UC-72, UC-73, UC-109, UC-110 |
+| BF-07-FD2 | PGI10/POD7, unreceived3 return | FD cap3; return of any of the received7 requires separate CR. | Both caps share source controls; no same quantity in both branches. | UC-70–73, UC-110 |
+| BF-07-FD3 | Goods absent/wrong source/retry | Retain evidence/case; unverified quantities do not post; retry with same operation key. | No stock increase/demand reopening before posted GR-FD. | UC-72, UC-73 |
 
 ### BF-08 — Supplier return and quantity reconciliation
 
@@ -373,16 +381,16 @@ A denotes an alternate path and E an exception; step numbers refer to the main f
 
 1. Warehouse proposes return linked to supplier, source PO/receipt, lot/location, quantity, reason and evidence. Defects are immediately blocked; good goods proposed for return are reserved for the case.
 2. Accountant verifies documents and records supplier agreement/refusal, quantity, schedule, handover method and references. Q20 also permits Owner/purchasing personnel to contact suppliers externally; Accountant still records WMS evidence without a purchasing role. Supplier has no WMSD login.
-3. Owner approves before dispatch. Reuse a BF-02 supplier-return decision only if its version/scope/quantity matches; do not approve the same decision twice.
-4. Warehouse picks/counts/drafts issue. Both internal authorization and supplier agreement are required. Otherwise keep open; supplier refusal does not make defective goods sellable.
+3. Accountant verifies supplier agreement against source/lines/quantity before dispatch; Warehouse checks case quantity and duplicate handling. BF-08 requires no Owner dispatch, variance or closure approval. A historical BF-02 decision is a reference if present, never a mandatory dispatch prerequisite.
+4. Warehouse creates draft GI-SR against source and supplier-agreed quantity, records correct-lot picking and confirms actual handover. Missing agreement or unclear source/quantity keeps the case open without dispatch; supplier refusal does not make defective goods available.
 5. Record actual handover/issue. Store-owned stock deducts once; goods rejected at arrival and held for supplier custody only reduce custody.
 6. Accountant records supplier receipt evidence; Warehouse provides transport evidence. Compare dispatched versus acknowledged quantity. Short/damaged/partially refused amounts remain open; do not rewrite dispatch to the supplier's desired quantity.
-7. Owner approves variance resolution. Goods coming back increase stock only after actual receipt/inspection; compensation money does not recreate quantities.
-8. Accountant reconciles external finance and stores references. Owner or the system acting on the recorded decision closes only when every quantity is accounted for; closure does not deduct again.
+7. Accountant reconciles and records supplier-agreed resolution per quantity; Warehouse confirms supporting physical documents. Unresolved disputes remain open without a BF-08 Owner approval step. Goods coming back increase stock only after linked receipt/inspection; compensation does not recreate quantities. Destruction/release of defective stock still on site uses BF-02 authorization.
+8. Accountant records Invoice/Credit Note or applicable external references through UC-108: type, ID/date, purchase/GI-SR lines and reconciled quantity, evidence/verification state. UC-107 messages do not prove debt adjustment; unverified finance remains PENDING_EXTERNAL and no Credit Note is required before dispatch. Accountant closes warehouse work through UC-83 when every quantity reconciles to Warehouse-confirmed documents, without Owner approval; finance remains independent and closure makes no further deduction.
 
-Inventory effect: request/approval does not reduce total. Actual return dispatch reduces owned stock; acknowledgement/closure does not. Replacements are linked new receipts, never direct stock increases from supplier agreement.
+BF-08 inventory effect: SR/agreement verification does not reduce total; actual Warehouse dispatch reduces source-correct owned/custody stock once. ACK/closure never deducts again. Replacement requires actual new receipt, never stock from agreement/money.
 
-Documents: supplier-return request, agreement, approval, GI/handover, receipt acknowledgement, discrepancy case and external references. [MISA purchased-goods returns](https://helpsme.misa.vn/2022/kb/tralai_hangdamuave_nhapkho/) informs agreement/document/physical issue/reconciliation, not copied accounting entries or old invoice instructions.
+BF-08 documents: SR, Accountant-verified supplier agreement, GI-SR or CUS-OUT/HO, ACK/VAR, reconciliation outcome and EXT-REF. No Owner/UC-106 approval. Section 13 MISA purchased-goods-return guidance is reference only, not a WMSD approval/accounting requirement.
 
 #### 08.X — Alternate and exception flows
 
@@ -390,11 +398,11 @@ A denotes an alternate path and E an exception; step numbers refer to the main f
 
 | ID | Condition | Responsible actor and action | Stock outcome / re-entry | UC |
 |---|---|---|---|---|
-| BF-08-A1 | Pending, refused or partial supplier agreement | Accountant records UC-107; Warehouse prepares only agreed and Owner-authorized UC-106 quantities. Pending/refused cases stay open or close unexecuted remainder with a recorded decision; defects remain isolated. | No dispatch without both agreement and internal authorization. | UC-81, UC-106, UC-107 |
-| BF-08-A2 | Reuse valid BF-02 decision | Check decision kind, case, version, line/quantity and unexecuted balance; reuse only sufficient authorization, submit changes to UC-106. | No repeated approval of the same decision; UC-67 does not pre-deduct UC-82. | UC-66, UC-67, UC-106 |
+| BF-08-A1 | Pending/refused/partial supplier agreement | Accountant UC-107 records agreed quantity; Warehouse UC-82 issues only source-backed agreed amounts. Unclear work stays open and defects blocked. | No Owner approval or UC-106. | UC-81, UC-82, UC-107 |
+| BF-08-A2 | Historical BF-02 decision exists | Retain reference if present, never require it for supplier return. UC-107 checks source/quantity/agreement and duplicate handling. | Historical decision permits no extra dispatch/earlier deduction. | UC-67, UC-82, UC-107 |
 | BF-08-E1 | Short pick or supplier custody | Warehouse checks ownership and actual picked quantity; revise only unexecuted scope. Supplier goods never owned by the store reduce custody only. | Owned dispatch deducts once; custody dispatch does not deduct owned stock. | UC-82 |
-| BF-08-E2 | Supplier receipt mismatch | Accountant records actual ACK without editing GI; Owner UC-106 resolves variance. Returned-back goods increase stock only after actual receipt/inspection with linked documents. | Pending ACK/variance blocks closure; ACK makes no second deduction. | UC-83, UC-106, UC-107 |
-| BF-08-A3 | Replacement or external settlement | Accountant records UC-108 references; replacements need a new arrival/GR. Owner closes warehouse work only after quantities reconcile; finance has an independent status. | Agreement/compensation does not recreate stock. | UC-83, UC-108 |
+| BF-08-E2 | Supplier acknowledges shortage/damage/refusal | Accountant keeps actual ACK and supplier resolution; Warehouse confirms any return-back receipt. Never rewrite GI or route to Owner; disputes stay open. | ACK never deducts again; return-back increase requires actual receipt. | UC-82, UC-83, UC-107 |
+| BF-08-A3 | Replacement/external settlement | Accountant UC-108 records documents; replacements require new GR. Accountant UC-83 closes reconciled warehouse quantity independently from finance, without Owner approval. | Money/agreement never creates stock. | UC-83, UC-108 |
 
 
 ### 4.X — Shared failures across all processes
@@ -404,7 +412,7 @@ A denotes an alternate path and E an exception; step numbers refer to the main f
 | EX-01 | Wrong role/warehouse, self-approval or transfer receiver equals dispatcher | Reject server-side, protect evidence scope and leave data/stock unchanged. |
 | EX-02 | Version conflict or competing claims on the same quantity | Recheck version/source/approval in transaction; roll back the whole failed batch, refresh and handle the remainder. |
 | EX-03 | Retry after connection loss with unknown commit | Look up idempotency and operation keys; return committed result or retry the uncommitted operation with the same key; changed payload conflicts. |
-| EX-04 | Stocktake freeze on affected location | Block quantity/location/quality changes in scope; do not bypass through backdating; wait for completion. |
+| EX-04 | Stocktake-frozen location | Block ordinary quantity/location/quality postings and backdating. Allow balance-neutral defect hold/evidence; only version-matched UC-92-approved B1 plan/UC-93 closure with Warehouse evidence may post. Retain freeze until batch/holds/tasks resolve; failure rolls back without unlock. |
 | EX-05 | Upload/print/email failure | Required evidence missing blocks posting; post-commit notification failure retries outbox only, without rollback or repeat stock posting. |
 
 Accept each branch by its BF-xx-A/E ID above and EX-01–05. These are implementation acceptance criteria, not reported backend test results.
@@ -433,31 +441,31 @@ Retain existing IDs for traceability; mark retired/new IDs explicitly rather tha
 | UC-40: Create Transfer Request | Revise trigger | Warehouse creates from UC-103 suggestion or valid transfer need; not for local relocation. |
 | UC-41: Review Transfer Request | Retain; no subsequent TO approval | Authorize dispatch, separate requester/approver and validate/reserve source quantity. |
 | UC-42: Create Warehouse Transfer Order | Retired | Remove redundant order layer; execute approved TR. Preserve historical TO records. |
-| UC-43: Confirm Warehouse Transfer Order | Split/rename | “Record Transfer Dispatch”: source Warehouse issues/hands over; source decreases/transit increases. Destination receipt is UC-104; no single confirmation for both ends. |
+| UC-43: Record Transfer Dispatch | Separate draft/post | Source Warehouse drafts TD from TR before picking, confirms TO where staging applies and posts TD/HO on actual handover; no added Owner approval. UC-104 handles destination receipt. |
 | UC-44: Review Transfer Difference Resolution | Retain | Owner decides transfer variances; UC-43/104 executes relevant warehouse actions against approved version. Loss has its own movement, not edited dispatch/receipt. |
-| UC-45–48: Sales Order list/detail/create/update | Retain manually copied external orders | Sales creates/views/updates SO with MISA/paper source evidence and tracks issue, delivery and receipt confirmation. Edit/cancel only unissued remainder after resolving tasks; no stock change or pricing. |
-| UC-49–51: Outbound Delivery | Retain release planning | Create OD from WIR outstanding demand; one warehouse per OD. Enforce WIR/SO line ceilings and aggregate releases correctly. |
+| UC-45–48: Sales Order list/detail/create/update | External SO and net demand | Sales copies/views/updates sourced SO; edit/cancel only unexecuted or GR-FD-received-back demand not redelivered, resolving tasks/version first. No unresolved off-site cancellation, pricing or stock posting. |
+| UC-49–51: Outbound Delivery | Release planning/redelivery | Create/continue warehouse OD within net outstanding WIR fulfilment. GR-FD reopens original OD or traceably transfers versioned commitment to replacement OD without double-counting. |
 | UC-52–55: Picking TO | Rename picking task/list | Suggest stock; Warehouse confirms actual picking. Handle shortages/defects, partial picks and evidenced lot changes. No total deduction here. |
-| UC-56–58: Goods Issue/PGI | Retain | Actual dispatch/handover required. Printing is not posting; retry does not deduct again; posted documents cannot be directly edited/deleted. PGI and carrier handover do not set SO to DELIVERED or COMPLETED. |
+| UC-56–58: Goods Issue/PGI | Split UC-58 operations | UC-58 creates/updates draft GI-S from OD before picking, then posts confirmed handover; each operation checks role/state. No repeated deduction on retry. PGI never sets DELIVERED/COMPLETED; redelivery uses net caps after GR-FD. |
 | UC-59–62: Internal Invoice | Retired | Remove invoice creation/issue/email. Warehouse document print is in UC-58; do not rename invoice as “delivery bill” while retaining billing logic. |
 | UC-63–64: Defect list/detail | Retain | Include event source, ownership/custody, unresolved quantity and linked cases. |
 | UC-65: Inspect defect/submit disposition | Revise | Immediate quarantine/evidence and affected allocation release/replacement; no self-approved destruction. |
-| UC-66: Approve defect disposition | Retain | Owner approves action/status/quantity; reuse sufficient supplier-return decision in BF-08. |
-| UC-67: Record approved disposition | Retain; tighten stock effects | Warehouse executes. Write-off only after destruction; route supplier return without deduction here when UC-82 will deduct. |
-| UC-68–70: Customer returns | Change creator | UC-70 belongs to Sales; check source, D6 and deadline reference without invented days. Warehouse receives/inspects at UC-72 and does not self-approve. Keep verified historical sources. |
-| UC-71: Review customer return | Change purpose/order | Owner decides after UC-72 on verified D6 assessment version. Sealed/unused loose goods are case-by-case; installed, customer-damaged, overdue or unverified conditions cannot be accepted. |
-| UC-72: Inspect customer return | Revise precondition | Valid/pending intake case, no prior Owner permission. Warehouse counts/classifies custody; records packaging/use/damage/deadline evidence per quantity. No sellable increase. |
-| UC-73: Confirm customer return receipt | Retain; add branches | Post inspected, D6-eligible Owner-approved quantity/version by quality. Rejected goods stay custody until handback; link BF-02/08, prevent over-return, no refund calculation. |
+| UC-66: Approve defect disposition | Limit actions | Owner authorizes destruction/regrade/release outside stocktake. Supplier return uses BF-08 without Owner; B1 quality uses UC-92/93 without duplicate UC-66 approval. |
+| UC-67: Record defect disposition | Separate execution | Warehouse records approved destruction/regrade; supplier routing makes no deduction before UC-82 GI-SR. B1 quality/location posts through UC-93 closure rather than ordinary operations. |
+| UC-68–70: Customer returns | Commercial CR | Sales creates CR against customer-received/verified historical quantity and D6. UC-70 is not mandatory for Warehouse-created FD under UC-72/73. |
+| UC-71: Decide customer return acceptance | Two C2 modes | Sales accepts/rejects ordinary cases after UC-72 and may be CR creator. Owner approves eligible exceptions only, against version and a different exception proposer. Never override D6 exclusions; UC-71 does not apply to FD. |
+| UC-72: Inspect return/intake | Distinguish source | Warehouse inspects CR customer custody; FD records ARR/INS and GI-S failure evidence without assumed customer ownership/D6/Owner approval. Unverified intake remains unposted. |
+| UC-73: Post return/intake receipt | GR-CR and GR-FD | Warehouse posts GR-CR against current Sales acceptance/Owner exception; FD posts GR-FD from issued GI and actual return without commercial acceptance. Prevent POD/FD/CR source overlap; GR-FD atomically reopens net demand and never triggers refund. |
 | UC-74–78: Refund workflow | Retired in selected MVP | Replace with UC-108 external outcomes; no monetary eligibility, refund approval or payment implementation. Retaining these would expand scope. |
 | UC-79–81: Supplier returns | Retain; coordinate Accountant | Warehouse proposes physical return; Accountant sees/records agreement through UC-107 without changing physical counts. |
-| UC-82: Supplier return dispatch | Revise conditions/separate events | Require internal approval + supplier agreement before issue/handover. Later acknowledgement is UC-107, not a pre-dispatch requirement. |
-| UC-83: Supplier return closure | Retain | Owner checks reconciliation; not a substitute for pre-dispatch approval and no second deduction. |
+| UC-82: Supplier return dispatch | Remove Owner approval | Warehouse drafts/posts GI-SR against source, Accountant-verified supplier agreement and actual handover. Neither UC-106 nor Owner decision is required; actual ACK follows dispatch. |
+| UC-83: Supplier return closure | Accountant executes | Accountant reconciles all quantity against Warehouse documents and ACK/settlement evidence, then closes warehouse work. Open disputes block closure; no Owner approval/extra deduction; finance remains separate. |
 | UC-84–86: Stocktake/session | Retain | Specify scope, counter and activation time. Planning is not snapshot activation. |
 | UC-87: Count and record results | Revise | Activate snapshot/frozen scope; retain count history; use UC-105 count sheet. |
-| UC-88: Reconcile stocktake | Retain; selected algorithm | Separate quality change from loss; reconcile bin/lot/quality and distinguish uncounted from zero. |
-| UC-89–91: Adjustment list/detail/request | Retain | Warehouse proposes delta/reason, never directly overwrites balance. |
-| UC-92: Approve Inventory Adjustment | Revise decision branches | Owner approves/returns/rejects with reasons. Remove approval-only wording; no posting before approval. |
-| UC-93: Clear Stocktake Difference | Retain Owner | Post approved delta once; Owner is not adjustment requester. Align BF-05 figure. Approval/post are separate actions, not a claim of two different people. |
+| UC-88: Reconcile stocktake | Alternatives + B1 | No quantity/quality/location variance permits closure; substantiated variance proceeds directly to plan, otherwise repeat recount. Separate shortage from total-preserving RECLASS. |
+| UC-89–91: Adjustment/resolution list/detail/request | ST plan | Warehouse proposes actual delta and evidenced RECLASS/location; quality-only is ST resolution without ADJ=0. No direct balance edit. |
+| UC-92: Approve Stocktake Resolution | B1 plan | Owner approves/returns the exact actual-delta, RECLASS and quarantine-location plan, independently from proposer; approval never bypasses snapshot/freeze. |
+| UC-93: Clear Stocktake Difference | B1 closure batch | Owner posts nonzero delta if any plus approved RECLASS/location with Warehouse execution evidence and idempotent ledger; unlock only after full resolution. Quality-only creates no ADJ=0. |
 | UC-94–98: Login/accounts/permissions | Retain; scope/SoD | Check assigned warehouses and same-user self-approval; Admin has no default business rights. Audit permission changes. |
 | UC-99–102: Reports/movement/trace | Retain; expand content | Physical/available/custody/transit, shortages, defects, mismatch and trace across MISA source → SO → WIR → receipt/issue (PGI) → delivery (POD) → payment confirmation (PAY-CFM) → return → adjustment. No revenue/profit reports. |
 
@@ -468,16 +476,16 @@ Retain existing IDs for traceability; mark retired/new IDs explicitly rather tha
 | UC-103 | View and Select Shortage Fulfilment Options — Sales/Warehouse | Suggested compatible warehouse/lot supply; choose direct dispatch, transfer or replenishment. No automatic posting/purchasing. Links BF-01/04/06. |
 | UC-104 | Inspect and Post Transfer Receipt — destination Warehouse | Dispatch lines, actual receipt/quality/evidence/put-away. Move actual quantity from transit to destination. Receiver independent from dispatcher under agreed staffing. |
 | UC-105 | Export or Print Stocktake Count Sheet — Warehouse/Owner | Activated session/snapshot; bin/lot/quality, session/cutoff and count spaces. Could be merged into UC-87 under another catalogue convention, but this version retains it separately. |
-| UC-106 | Approve Supplier Return and Variance Resolution — Owner | Proposal/source/agreement; authorize dispatch quantity. Reuse sufficient BF-02 approval. Later supplier-return variance resolution is a separate decision, not duplicate approval. |
-| UC-107 | Record Supplier Agreement and Receipt Acknowledgement — Accountant | Separate pre-dispatch agreement and post-dispatch receipt. Evidence, quantities and dates; no inventory effect. Variances go to UC-106 in BF-08. |
-| UC-108 | Record External Document References — Accountant | Verify historical sources and record external invoice/refund/accounting reconciliation code, date, evidence/status. No revenue, debt or payment creation; does not replace Sales Staff's UC-111 order completion confirmation. |
-| UC-109 | Manage Linked Warehouse Issue Request — Sales Staff | Create/view/update/cancel unissued WIR demand from a saved SO; enforce per-SO/WIR line caps. Owner/Warehouse/Accountant have scoped view. Saving demand changes no stock. |
-| UC-110 | Confirm Customer Delivery with Photo Evidence — Warehouse Staff | Record recipient, time, actual received quantity and photo per posted GI-S line. Cap cumulative POD at valid PGI; retries do not duplicate confirmation. Full remaining delivery sets SO to DELIVERED. |
+| UC-106 | Retired — supplier-return approval | Inactive from 24 October after removing BF-08 Owner approval. No active permission/call; preserve identifier/history. UC-107 records agreement/variance, UC-82 issues and Accountant UC-83 closes. |
+| UC-107 | Record supplier agreement, ACK and variance reconciliation — Accountant | Separate pre-issue agreement and later actual receipt; record quantity/resolution evidence without stock posting or Owner/UC-106 routing. Unresolved quantities keep the case open. |
+| UC-108 | Record External Document References — Accountant | Actual Invoice/Credit Note or applicable type, ID/date, purchase/GI-SR lines, reconciled quantity, evidence/status; verify historical sources. No revenue/debt/payment creation or replacement for UC-111. |
+| UC-109 | Manage WIR and reopened demand — Sales | Create/update/cancel unexecuted or received-back GR-FD demand not yet redelivered; reuse SO/WIR, traceably transfer OD commitment and enforce net caps. No cancellation of unresolved off-site goods. |
+| UC-110 | Confirm POD — Warehouse | Posted GI-S, quantity/recipient/time/photo; effective POD + posted GR-FD + open FD claims cannot exceed valid PGI. POD-confirmed quantity returns through CR, never FD. |
 | UC-111 | Confirm Full External Payment Receipt — Sales Staff | After DELIVERED, record full external receipt with user/time and reference/evidence/note; set SO to COMPLETED. No collection or stock change. |
 
-BF-08 uses UC-106 for variance-resolution approval and UC-83 for closure; UC-44 is only for BF-04. UC-107 records/detects discrepancies and routes them to the right case. UC-106 distinguishes initial dispatch approval and later variance decisions by decision kind, version and quantity; old approval does not authorize another deduction.
+BF-08 uses neither UC-106 nor Owner approval. Accountant UC-107 records agreement/ACK/reconciliation; Warehouse UC-82 posts actual dispatch; Accountant UC-83 closes evidenced quantities. UC-44 belongs only to BF-04. Keep UC-106 history without making old decisions a prerequisite or new posting authority.
 
-This catalogue retains UC-105 separately and adds UC-109–111 for the revised BF-06 flow: 111 traceable identifiers (UC-01–UC-111), 98 active and 13 retired. Retired (unchanged): UC-23–25, UC-42, UC-59–62, UC-74–78. Nine new UCs across the proposal: UC-103–111. Do not renumber/delete history. Sections 4.2/4.4, detailed UC specifications and screens in the [Report 3 text extract](../01_bao_cao/WMSD_Report3_Fix.docx.txt) now contain 111 IDs, the copied-SO scope of UC-45–48 and UC-109–111, synchronized on 22 October; retired IDs remain historical entries without executable flows.
+Catalogue 3.1.0 retains 111 IDs, 97 active/14 retired: UC-23–25, UC-42, UC-59–62, UC-74–78 and UC-106. UC-103–111 were additions, but UC-106 is now historical only. FD/B1 add no IDs, extending UC-72/73 and UC-92/93 modes. Report 3 specifications, permissions and screens require synchronization and are not updated in this revision.
 
 ## 6. Proposed business permission matrix
 
@@ -504,23 +512,25 @@ V = scoped view; T = create/record; D = approve; X = execute/confirm as defined 
 | Confirm full external money receipt and complete SO (PAY-CFM → COMPLETED, UC-111) | V | X | V | V | — |
 | Create customer return | V | T | V | V | — |
 | Inspect returned quality | V | — | T | — | — |
-| Approve customer acceptance | D | — | — | — | — |
+| Accept ordinary CR after inspection (UC-71) | V | X (may be creator) | V | V | — |
+| Approve eligible CR exceptions (UC-71) | D | T proposal | V | V | — |
+| Receive failed-delivery GR-FD (UC-72/73) | V | V/redelivery choice | X | V | — |
 | Return receipt / customer handback | V | V | X | V | — |
 | Immediate quarantine / disposition proposal | V | — | T | V | — |
-| Approve destruction/regrade/supplier return | D | — | — | — | — |
-| Execute approved disposition | V | — | X | V | — |
+| Approve destruction/regrade/release outside stocktake (not supplier return) | D | — | — | V | — |
+| Execute approved destruction/regrade/release outside stocktake | V | — | X | V | — |
 | Create supplier return | V | — | T | V | — |
 | Record supplier agreement/acknowledgement | V | — | V | T | — |
 | Dispatch supplier return | V | — | X | V | — |
-| Approve supplier-return closure | D | — | V | V | — |
+| Reconcile supplier variance/close warehouse work (UC-83/107) | V | — | V/confirm documents | X | — |
 | Plan stocktake | T | — | V | V | — |
 | Snapshot, count sheet, count/recount | V | — | T | V reconciliation | — |
 | Explain/propose adjustment | V | — | T | V | — |
-| Approve and Clear Difference | D/X | — | — | V | — |
+| Approve/post B1 closure batch (delta/RECLASS) | D/X | — | X execution confirmation, not ordinary posting | V | — |
 | Record external outcomes | V | V related | V warehouse part | T | — |
 | Technical accounts/permissions | — | — | — | — | T |
 
-Cross-cutting constraints: multiple roles do not permit same-user self-approval; warehouse dispatch/receipt checks identity and scope. Only Sales Staff may record/update SO copies, create/modify linked WIR demand, and confirm external payment receipt (`UC-111`) to set SO = COMPLETED; only authorized Warehouse Staff in the assigned warehouse may confirm customer delivery with photo evidence (`UC-110`) to set SO = DELIVERED. Owner planning a stocktake is not Owner creating its adjustment request; that request comes from the counter's evidence. Changing rights after posting cannot rewrite approval.
+Cross-cutting constraints: same-user approval is prohibited for RR/TR, CR exceptions, destruction/regrade and stocktake plans regardless of multiple roles. The user-selected exception lets Sales accept an ordinary CR they created after Warehouse inspection; it is not Owner approval and never authorizes exception cases. Only assigned Warehouse posts stock/POD/GR-FD; only Sales manages SO/WIR, reopened demand and PAY-CFM after DELIVERED. BF-08 has no Owner approval; Accountant reconciles/closes without Warehouse stock posting. Only approved B1 closure batches may change quality/location under freeze; rights changes cannot rewrite posted authority.
 
 ## 7. Software context and figure corrections
 
@@ -576,41 +586,41 @@ Do not combine quality, location, ownership and delivery state in one enum. “I
 | BR-02 | Version product/packaging conversions and snapshot them on lines. Whole tiles cannot be fractional pieces. Use product area specifications; calibre does not determine m² factors. | DR-02, GB-03 |
 | BR-03 | Sales/Warehouse or fixed alerts originate needs; only Owner approves. Controlled thresholds do not automatically issue POs. | UC-03/04/103, BF-01 |
 | BR-04 | Do not double-count demand already covered by PO/transfer/allocation. Planned receipts are not current availability. | BF-01/04/06 |
-| BR-05 | Requester and approver differ by userId for each decision, regardless of multiple roles. | GB-01, GB-NEW-01, UC-04/41/66/71/92/106 |
+| BR-05 | Same-user approval prohibited for RR/TR, CR exceptions, destruction/regrade and stocktake plans. C2 permits Sales ordinary acceptance of own CR after Warehouse inspection, never exception/Owner approval. BF-08 has no Owner approval. | UC-04/41/66/71/92 |
 | BR-06 | Post receipt/issue/return/adjustment once, atomically with ledger/balance. No negative availability; retry returns prior result. | DR-09/10/13, GB-09/10/13 |
 | BR-07 | Separate actual delivery, accepted ownership, custody and rejection. Uninspected/not-ready stock is unavailable. | DR-04, GB-04, UC-26/33/73 |
 | BR-08 | PO supports multiple receipts; posted parts are immutable. Short closure/excess change requires reasons and authorization. | DR-03, GB-05, UC-07/10/26 |
 | BR-09 | Local relocation preserves total/lot/quality and reservations; no Owner approval. | DR-06, GB-06, UC-36/37 |
-| BR-10 | Approved TR authorizes execution with separate dispatch/receipt documents and events. | DR-07, GB-07, UC-41/43/104 |
-| BR-11 | Dispatched = validly received + transit/unresolved + documented other outcomes. No closure with unresolved quantity. Preserve demand allocation through transit/destination. | UC-43/44/104 |
+| BR-10 | Approved TR → draft TD before picking → execution confirmation → TD/HO post at handover → MWTR → confirmed put-away TO. No Owner TO approval or additional GI for the same TD. | UC-41/43/104 |
+| BR-11 | Posted TD cannot exceed approved TR after cancellation. Dispatch = valid receipt + transit/unresolved + documented other outcomes. TR closes only after demand, dispatched quantities and related TOs are resolved; a matched release alone is insufficient. | UC-43/44/104 |
 | BR-12 | Destination confirmation is independent of source dispatch under verified staffing; one confirm cannot update both ends. | UC-43/104, permissions |
 | BR-13 | Compatibility precedes FIFO. Record exception reasons/consent; do not assume LIFO without evidence. | UC-54/55/103 |
-| BR-14 | Creating SO or WIR does not change stock; reservation does not reduce total; picking changes location; PGI deducts actual dispatch once; DELIVERED and COMPLETED status updates do not change stock. | GB-NEW-03, UC-47/109/51/55/58/110/111 |
+| BR-14 | SO/WIR/draft GI change no stock; picking TO only relocates; PGI deducts actual handover once. GR-FD increases actual receipt and reopens exact net demand; POD/PAY-CFM change no stock. Retain redelivery ledger history. | UC-47/109/55/58/73/110/111 |
 | BR-15 | Picking shortage/defects block affected quantity, preserve evidence and reallocate/wait; never silently change balance. | BF-02/05/06 |
-| BR-16 | Returns require verifiable source issue; cumulative receipts cannot exceed unreturned source quantity, including open requests. | DR-11, GB-11, UC-70/73/108 |
-| BR-17 | Sales checks terms/documents, Warehouse checks physical goods, Owner decides acceptance. Technical quality alone does not decide commercial acceptance or vice versa. | UC-70/71/72 |
-| BR-18 | Return outcomes are per quantity: sellable, store-owned quarantine or custody/rejected. Never alter original invoice/GI. | UC-73/108 |
-| BR-19 | Immediately isolate suspected defects; only valid decisions authorize release/regrade/scrap/return. BF-02 → BF-08 never deducts twice. | UC-65/66/67/82 |
-| BR-20 | Supplier return requires internal approval + supplier agreement. Releasing supplier custody does not deduct owned stock. Unmatched acknowledgement remains open. | DR-12, GB-12, UC-82/106/107 |
+| BR-16 | Ordinary CR cap is customer-received POD/verified historical quantity less returned/open claims. FD uses PGI not covered by POD/GR-FD/open FD. Atomically share source controls; no quantity belongs to both branches. | UC-70/72/73/108/110 |
+| BR-17 | Sales accepts/rejects ordinary CR after Warehouse inspection and may be creator; Owner approves eligible exceptions only. Warehouse GR-CR requires proper decision kind/version. FD needs no commercial acceptance/Owner approval. | UC-70–73 |
+| BR-18 | CR splits good/quarantine/custody-rejection, preserving original POD/GI/invoice. FD uses GI/failure evidence, not customer custody or automatic refund; post GR-FD once and atomically reopen net demand. | UC-73/108/109 |
+| BR-19 | Block defects immediately; outside stocktake destruction/regrade/release requires Owner. B1 retains hold until UC-93 closure. BF-08 supplier return has no Owner approval and deducts only at GI-SR, never also BF-02. | UC-65/66/67/82/93 |
+| BR-20 | Supplier return requires source/quantity agreement verified by Accountant and actual Warehouse dispatch; no Owner approval, UC-106 retired. Accountant reconciles/closes UC-83/107 when all quantities resolve; UC-108 finance stays separate. Custody release never deducts owned stock. | UC-82/83/107/108 |
 | BR-21 | Snapshot is immutable at activation; export count sheet with time/scope. Never replace snapshot with current balance. | DR-08, GB-08, UC-87/105 |
-| BR-22 | MVP locks counted scope, keeps recount history, distinguishes uncounted/zero and separates quality/quantity variances. | GB-NEW-07, UC-87/88 |
-| BR-23 | Warehouse proposes delta; Owner approves version then performs Clear Difference. Insufficient evidence returns for review; no variance closes/unlocks without zero posting. | DR-09, GB-09, GB-NEW-06, UC-91/92/93 |
+| BR-22 | Freeze ordinary stocktake-scope postings; record balance-neutral defect hold/evidence immediately. B1 only approved closure posts delta/RECLASS/location, retaining freeze/holds until resolution. Uncounted differs from zero; preserve recount history. | UC-87/88/92/93 |
+| BR-23 | Substantiated variance may proceed directly to a plan; unclear variance recounts. Warehouse proposes, Owner approves/posts version-matched actual delta plus total-preserving RECLASS without duplicate deductions; quality-only creates no ADJ=0. | UC-88/91/92/93 |
 | BR-24 | Posted documents cannot be edited/deleted to remove history. Authorized linked reversal/adjustment corrects errors; inactive masters preserve history. | DR-14, GB-02/13, UC-97/100–102 |
 | BR-25 | Notification/upload retries never repeat stock posting. Email failure does not roll back committed PGI/receipt. | API-01, JOB-01, UC-58/26/110 |
 | BR-26 | Carrier handover or PGI is not customer delivery (DELIVERED), and customer delivery alone is not Sales Order completion (COMPLETED); return receipt is not refund; supplier replacement agreement is not received stock. | BF-06/07/08, UC-58/110/111 |
 | BR-27 | Only evidence-authorized users retrieve files; URLs are not public by default. | API-02 evidence storage, GB-NEW-02 |
 | BR-28 | Source system/document/line, version and correlation ID prevent duplicate WMS/MISA recording across SO, WIR, OD, GI-S, `CR` and `EXT-REF`. | UC-47/109/51/58/70/108 |
-| BR-29 | Returns: sealed/unused loose tiles case-by-case; reject installed, customer-damaged and confirmed overdue goods. Unverified terms/deadline remain pending; no invented days. Assess each quantity with version/evidence and post only eligible approved quantities after inspection. | D6, BF-07, UC-70–73 |
+| BR-29 | CR sealed/unused goods are individually assessed; installed/customer-damaged/verified overdue is rejected and unknown waits. C2 Sales decides eligible ordinary cases; Owner only substantiated exceptions, never excluded conditions. D6 does not apply to FD never received by customer. | BF-07, UC-70–73 |
 | BR-30 | Torn/opened packaging alone is not tile damage. Count actual pieces and inspect quality. BOX/PIECE/m² conversions follow product/version, not inferred calibre. | D7, BF-01/05/06/07, UC-13/26/55/72/87 |
-| BR-31 | SO requires verified source evidence; WIR links the saved SO and its lines. Total WIR commitments, including issued portions, cannot exceed ordered less cancelled quantity. OD releases allocate within WIR quantity and are not additional demand. | BF-06, UC-45–48/109/51 |
-| BR-32 | Warehouse confirms POD against posted GI-S lines with recipient, time, quantity and valid photo. Cumulative delivery cannot exceed valid PGI; retries do not duplicate it. Full remaining quantity greater than zero sets DELIVERED; full cancellation before delivery sets CANCELLED. | BF-06, UC-58/110 |
+| BR-31 | Verified SO and line-linked WIR/OD commitments stay within SO after cancellation. Execution caps use valid PGI less posted GR-FD; redelivery reuses original SO/WIR demand without adding replacement OD as new demand. | UC-45–48/51/58/73/109 |
+| BR-32 | POD requires POSTED GI-S, recipient/time/quantity/photo. Effective POD + posted GR-FD + open FD ≤ valid PGI per line. DELIVERED requires full active quantity > 0; full cancellation at zero delivery → CANCELLED. | UC-58/73/110 |
 | BR-33 | Only Sales confirms full external receipt after DELIVERED to set COMPLETED. Partial payment or prepayment before full delivery cannot complete SO. POD/PAY-CFM change no stock; corrections preserve history and recalculate order progress. | BF-06, UC-48/110/111/108 |
 
 These BR IDs (BR-01–BR-33) are proposed rules. Either make them the canonical SRS catalogue with DR references or retain GB/DR with one-to-one mapping; do not maintain three near-duplicate conflicting sets. GB-NEW-04 (invoice) and GB-NEW-05 (refund eligibility) cease under the narrowed MVP; use BR-18/26/28/31–33 and UC-108/109–111. GB-POLICY continues excluding a general policy editor, while finite minimum/priority parameters remain explicitly allowed.
 
 ## 9. Report 1 and Report 3 synchronization checklist
 
-Report 1/3 text, detailed design, process/database proposals and current figures are synchronized to baseline 3.0.0 on 22 October. The table is an ongoing publication checklist, not an outstanding-work list. External Word/Google Docs editions and Report 2 were not edited in this revision. API-02 stores evidence; JOB-01 sends post-commit notifications only.
+The 22 October record describes synchronization to 3.0.0. The 24 October revision changes only these two process proposals to 3.1.0. The following tables now identify required follow-up for Report 1/3, data design, SQL and figures; they are not claimed aligned to A1/B1/C2 or removal of BF-08 Owner approval. Report 2/external Word/Google Docs are unchanged. API-02 stores evidence; JOB-01 notifies after commit.
 
 ### 9.1 Report 1
 
@@ -631,11 +641,11 @@ Report 1/3 text, detailed design, process/database proposals and current figures
 |---|---|
 | I.1 Context Diagram | Section 7 data; include copied SO, linked WIR, delivery photo POD and external payment confirmation PAY-CFM; decide SMTP/storage; remove out-of-scope pricing/billing arrows. |
 | I.2.1–2.8 Main Business Flow | Align trigger, completion, decisions and figures with section 4 (especially BF-06 SO → WIR → PGI → DELIVERED → COMPLETED), not figures alone. |
-| I.3.1 ERD / I.3.2 Entity Descriptions | Represent copied Sales Order (SO) + lines, linked Issue Request (WIR) + lines, delivery release (OD), reservations/allocations, ledger, transit, receipt/issue lines, customer delivery confirmation (POD with required photo evidence), external payment confirmation (PAY-CFM), count attempts, approvals, custody/evidence/external references. MongoDB may embed concepts; not necessarily one collection each. Repair old UC mappings and add UC-109–111. |
+| I.3.1 ERD / I.3.2 Entity Descriptions | Retain SO/WIR/OD/ledger; represent CR/FD return_kind, GI/POD/GR-FD lines/claims, reopened quantity/replacement OD, CR decision_kind, defect holds/B1 RECLASS plans/batches and Invoice/Credit Note EXT-REF type. Follow-up design impact, not implemented schema/API; MongoDB may embed concepts. |
 | I.3.3 Data Business Rules | Map section 8 (BR-01–BR-33); fix invalid ranges/duplicates; transit is not a quality enum. |
 | I.4.1 Actors | Five roles, Warehouse Staff naming, revised Sales (SO copy, linked WIR, external payment COMPLETED), Warehouse (POD photo confirmation DELIVERED), Accountant and Owner responsibilities, and source/destination independence. |
-| I.4.2 Catalogue | Retain/revise/retire/add per section 5; update UC-45–48, add UC-109–111 and recompute count to 111 IDs (98 active / 13 retired). |
-| I.4.3 UC diagrams | Sales/Warehouse UC-03; Sales UC-45–48/109/111/70; Warehouse UC-110/72; Owner UC-71/106; Accountant UC-107/108. Remove retired UC-42/23–25/59–62/74–78 from active diagrams. |
+| I.4.2 Catalogue | Align 111 IDs: 97 active/14 retired including UC-106. UC-71 Sales ordinary/Owner exception, UC-73 CR/FD, UC-83 Accountant closure, UC-92/93 B1. No new ID for FD/RECLASS. |
+| I.4.3 UC diagrams | Sales UC-71 ordinary; Owner UC-71 exceptions and scoped UC-66/92; Warehouse UC-72/73 FD and B1 execution; Accountant UC-83/107/108. Remove UC-106 and other retired UCs from active diagrams; no Owner in BF-08. |
 | I.4.4 Permission Matrix | Align section 6 with sub-operations, warehouse scope, creator≠approver preconditions, Warehouse-only UC-110 and Sales-only UC-111. |
 | I.5.1 Screen Flow / List | Revise SC-06,08,10–19,22,23; remove SC-25 price, SC-26 invoice and SC-27 refund under narrowed MVP. Support copied SO and linked WIR, fulfilment suggestions, destination receipt at SC-13, count sheet at SC-14, customer delivery photo confirmation (POD), Sales external payment confirmation (PAY-CFM) and external references. |
 | I.5.2 External API Inventory | SMTP only warehouse notifications if retained; declare Cloudinary/file storage interface for evidence/delivery photos or remove it. No automatic MISA API or payment gateway. |
@@ -655,172 +665,208 @@ These diagrams show principal decisions, not complete BPMN swimlanes. Use sectio
 
 ```mermaid
 flowchart TD
- A[Shortage or minimum-stock alert] --> B[Sales or Warehouse raises RR]
+ A[Shortage or threshold alert] --> B[Sales or Warehouse creates RR]
  B --> C{Owner approves?}
  C -->|Revise| B
- C -->|Reject| Z[Close request, no stock change]
+ C -->|Reject| Z[Close RR without stock effect]
  C -->|Approve| D[Accountant creates PO and supplier confirmation]
- D --> E[Warehouse receives each delivery and inspects]
+ D --> E[Warehouse records arrival and inspection per delivery]
  E --> F{Classify each quantity}
- F -->|Accepted| G[Receipt by quality and ownership]
- F -->|Pending or custody| H[Segregate, separate case]
- F -->|Immediately rejected| I[Record and hand back, no sellable increase]
- G --> J[Put away and update PO remainder]
+ F -->|Accept ownership| G[Post source-linked GR by quality]
+ F -->|Pending or custody| H[Separate holding record without owned GR]
+ F -->|Reject| I[Record handback without stock increase]
+ G --> T[Create and confirm put-away TO]
+ T --> J[Update PO outstanding quantity]
  H --> J
  I --> J
- J --> K{Further delivery required?}
+ J --> K{Further receipt required?}
  K -->|Yes| E
- K -->|No, reconciled or remainder cancelled| L[Close warehouse work]
+ K -->|No, fulfilled or validly short-closed| L[Close warehouse work]
 ```
 
 ### BF-02
 
 ```mermaid
 flowchart TD
- A[Defect detected] --> B[Warehouse immediately isolates and blocks allocation]
- B --> C[Inspect, record evidence and propose]
- C --> D{Owner approves disposition?}
- D -->|No| E[Keep isolated, supplement case]
+ A[Defect detected] --> B[Warehouse records immediate defect hold and evidence]
+ B --> C[Record inspection and proposal]
+ C --> X{Resolution type?}
+ X -->|Supplier return| H[BF-08 on supplier agreement without Owner approval]
+ X -->|Destroy or release outside stocktake| D{Owner approves scoped plan?}
+ D -->|No| E[Retain block and add evidence]
  E --> C
- D -->|Yes| F{Outcome}
- F -->|Good after reinspection or regrade| G[Traceable quality update]
- F -->|Supplier return| H[BF-08, no deduction in BF-02]
- F -->|Destroy| I[Actual destruction and record, then deduction]
- G --> J[Reconcile and close or track linked case]
+ D -->|Yes| F{Authorized action}
+ F -->|Regrade or release| G[Warehouse confirms traceable execution]
+ F -->|Destroy| I[Confirm actual destruction then deduction]
+ X -->|B1| K[Retain hold, BF-05 closure posts RECLASS under freeze]
+ G --> J[Reconcile quantities and linked cases]
  H --> J
  I --> J
+ K --> J
 ```
 
 ### BF-03
 
 ```mermaid
 flowchart TD
- A[Warehouse needs relocation] --> B{Same source and destination warehouse?}
- B -->|No| C[Open separate BF-04 case for physical warehouse transfer]
- B -->|Yes| D[Check quantity, suitable locations and stocktake freeze]
- D --> E{Movement eligible?}
- E -->|Not yet| F[Stop, resolve cause or investigate mismatch through BF-05]
- E -->|Yes| G[Create TO-RELOCATE, move and confirm actuals]
- G --> H[Equal source decrease and destination increase, preserve reservation]
- H --> I[Close executed portion, warehouse total unchanged]
+ A[Warehouse records relocation need] --> B{Same source and destination warehouse?}
+ B -->|No| C[Create separate BF-04 case]
+ B -->|Yes| D[Validate quantity, locations and freeze]
+ D --> E{Eligible?}
+ E -->|No| F[Stop and resolve cause or BF-05]
+ E -->|Yes| G[Create TO-RELOCATE and enter actual execution]
+ G --> H[Confirm TO with equal source and destination movements]
+ H --> I[Preserve reservation and close executed portion]
 ```
 
 ### BF-04
 
 ```mermaid
 flowchart TD
- A[Fulfilment or balancing need across warehouses] --> B[Check compatible source supply]
- B --> C{Dispatch directly to customer?}
- C -->|Yes| D[BF-06 at actual dispatch warehouse, no fictitious receipt]
- C -->|No, physical transfer needed| E[Warehouse creates TR]
- E --> F{Owner approves?}
- F -->|No| G[Reject or revise, no dispatch]
- F -->|Yes| H[Source picks, creates TD and HO]
- H --> I[Source decreases, transit increases]
- I --> J[Destination independently inspects and creates MWTR]
- J --> K{Discrepancy?}
- K -->|No| L[Put away and close transfer]
- K -->|Yes| M[Post verified quantity, keep unresolved remainder open]
- M --> N[Owner approves resolution]
- N --> O[Execute and reconcile]
+ A[Inter-warehouse need] --> B[Check compatible supply]
+ B --> C{Direct customer dispatch?}
+ C -->|Yes| D[BF-06 at actual dispatch warehouse]
+ C -->|No| E[Warehouse creates TR]
+ E --> F{Owner approves TR?}
+ F -->|Reject or revise| G[Record reason without dispatch]
+ F -->|Yes| H[Source creates draft TD from TR]
+ H --> T[Confirm picking TO with staging or actual pick on TD]
+ T --> Q{Actual handover completed?}
+ Q -->|No| W[Retain DRAFT awaiting handover]
+ W --> Q
+ Q -->|Yes| I[Post TD and HO, source decreases, transit increases]
+ I --> J[Destination records inspection and posts actual MWTR]
+ J --> K{Unresolved variance?}
+ K -->|Yes| M[Record verified quantity and variance]
+ M --> N[Owner approves transfer resolution]
+ N --> O[Confirm execution and reconcile again]
  O --> K
+ K -->|No| L[Create and confirm put-away TO]
+ L --> R{TR demand, transit, variances and TOs all resolved?}
+ R -->|Yes| Z[Close TR]
+ R -->|No| P{Next outstanding work?}
+ P -->|Receive dispatched remainder| J
+ P -->|Dispatch approved TR remainder| H
+ P -->|Resolve variance| M
 ```
-
 
 ### BF-05
 
 ```mermaid
 flowchart TD
- A[Owner plans session and scope] --> B[Resolve unfinished operations in scope]
- B --> C[Activate snapshot, freeze scope, export count sheet]
- C --> D[Warehouse counts and records]
- D --> E{All counts complete and valid?}
+ A[Owner plans inventory document and scope] --> B[Resolve unfinished tasks]
+ B --> C[Freeze, snapshot and count sheet]
+ C --> D[Warehouse enters count or recount and any defect hold]
+ D --> E{All data complete and valid?}
  E -->|No| D
- E -->|Yes| F{Variance?}
- F -->|No| G[Close and unlock]
- F -->|Yes| H[Recount and explain]
- H --> R{Verified variance remains?}
- R -->|No| G
- R -->|Yes| P[Warehouse proposes delta]
- P --> I{Owner approves exact version?}
- I -->|No| H
- I -->|Yes| J[Owner Clear Difference]
- J --> K[Post delta once, audit and adjustment document]
- K --> G
+ E -->|Yes| F{Quantity, location, quality variance or unresolved hold?}
+ F -->|No| G[Close and unlock after all work resolves]
+ F -->|Yes| X{Select resolution path}
+ X -->|Unclear or choose recount| H[Start Recount and retain earlier attempt]
+ H --> D
+ X -->|Substantiated, recount not mandatory| P[Warehouse proposes actual delta and total-preserving RECLASS]
+ P --> I{Owner UC-92 approves exact version?}
+ I -->|No| Y[Record return reason and revise plan]
+ Y --> X
+ I -->|Yes| T[Warehouse confirms quarantine execution against plan]
+ T --> J[Owner UC-93 posts delta and RECLASS batch once]
+ J --> K{Batch committed, all holds and TOs resolved?}
+ K -->|No| W[Retain freeze, check commit and retry same key]
+ W --> J
+ K -->|Yes| G
 ```
 
 ### BF-06
 
 ```mermaid
 flowchart TD
- A[Sales copies verified external order into WMSD SO] --> A2[Sales creates linked WIR from saved SO]
- A2 --> B[Check SO/WIR outstanding quantity and availability]
- B --> C{Compatible supply sufficient?}
- C -->|Not yet| D[Suggest BF-04 or replenishment BF-01]
- D --> E[Sales confirms waiting or partial release OD]
+ A[Sales copies verified external SO] --> A2[Create or continue linked WIR]
+ A2 --> B[Check supply, commitments and net fulfilment]
+ B --> C{Supply sufficient for agreed release?}
+ C -->|Not yet| D[Suggest BF-01 or BF-04]
+ D --> E[Sales chooses waiting or covered partial delivery]
  E --> B
- C -->|Enough for agreed release| F[Reserve and create picking task TO]
- F --> G[Warehouse picks, counts and stages]
- G --> H{Shortage or damage?}
- H -->|Yes| I[Block affected stock, BF-02 or BF-05, inform Sales]
+ C -->|Yes| F0[Sales creates or continues warehouse OD]
+ F0 --> F1[Warehouse creates or reuses GI-S DRAFT before picking]
+ F1 --> F[Reserve and create picking TO]
+ F --> G[Enter results and confirm TO into staging]
+ G --> H{Shortage or defect in picked quantity?}
+ H -->|Yes| I[Record hold, BF-02 or BF-05, inform Sales]
  I --> B
- H -->|No| J[Draft GI-S and warehouse handover HO]
+ H -->|No| J[Update draft GI-S to actual quantity]
  J --> K{Actual handover completed?}
- K -->|No| L[Keep staged or traceably unpick]
- K -->|Yes| M[PGI once for actual dispatch]
- M --> N[Warehouse confirms customer delivery with photo POD]
- N --> O{Delivery and photo outcome?}
- O -->|Missing photo or awaiting customer receipt| N
- O -->|Refused or returned after PGI| O2[Route to BF-07, keep SO pending resolution]
- O -->|Partial delivery, unissued demand remains| B
- O -->|All active SO qty > 0 delivered with photos| P[Set SO status = DELIVERED]
- P --> Q{Sales confirms full external payment received?}
- Q -->|Not yet| R[Keep SO at DELIVERED, await external payment]
+ K -->|Not yet| L[Keep staged or traceably unpick]
+ L --> B
+ K -->|Yes| M[Record HO and PGI once]
+ M --> N[Warehouse records GI-linked photo POD within shared FD cap]
+ N --> O{Delivery outcome?}
+ O -->|Missing photo or awaiting receipt| N
+ O -->|Unreceived goods physically return| O2[BF-07-FD posts GR-FD and reopens exact source]
+ O2 --> O3{Sales choice for reopened quantity?}
+ O3 -->|Redeliver| B
+ O3 -->|Wait| O4[Keep SO pending without duplicate demand]
+ O4 --> O3
+ O3 -->|Cancel received-back quantity| O5[Record cancellation and version, recalculate active SO]
+ O -->|Partly received, demand remains| B
+ O -->|Active quantity greater than zero fully POD-confirmed| P[SO DELIVERED]
+ P --> Q{Sales confirms full external payment?}
+ Q -->|Not yet| R[Keep DELIVERED awaiting payment]
  R --> Q
- Q -->|Yes| S[Set SO status = COMPLETED, retain reconciliation records]
+ Q -->|Yes| S[Record PAY-CFM and SO COMPLETED]
 ```
 
 ### BF-07
 
 ```mermaid
 flowchart TD
- A[Sales checks source and D6 conditions] --> B{Source, quantity and conditions substantiated?}
- B -->|Not yet| C[Verify further or reject, no posting]
- B -->|Yes| D[Warehouse takes custody pending decision]
- D --> E[Inspect each quantity, D6 and evidence]
- E --> Q{D6 conditions verified?}
- Q -->|Unknown| P[Keep custody, obtain evidence, no posting]
- P --> E
- Q -->|Ineligible| G[Hand back to customer, release custody]
- Q -->|Eligible| F{Owner accepts?}
- F -->|No| G[Hand back to customer, release custody]
- F -->|Yes| H{Good quality?}
- H -->|Yes| I[Return receipt and put-away, available stock]
- H -->|No| J[Quarantine receipt, BF-02 or BF-08]
- I --> K[Reconcile warehouse outcome and retain records]
- J --> K
- G --> K
- K --> L[Accountant handles external finance and references]
+ A[Warehouse or Sales identifies intake source] --> B{Customer received this quantity?}
+ B -->|No, failed delivery physically returns| F1[Warehouse creates FD from GI-S and evidence]
+ F1 --> F2{PGI less POD, GR-FD and claims permits intake?}
+ F2 -->|Unclear or exceeded| W[Hold case without posting]
+ F2 -->|Yes| F3[Enter ARR and actual quantity, lot and quality]
+ F3 --> F4[Post verified GR-FD, without CR or D6]
+ F4 --> F5[Atomically reopen net SO WIR OD demand]
+ F5 --> F6[Sales chooses wait, redelivery or received-back cancellation]
+ F6 --> Z[Reconcile and close resolved work]
+ B -->|Yes, ordinary customer return| C1[Sales creates CR and checks source and D6]
+ C1 --> C2{Source and eligibility substantiated?}
+ C2 -->|Unknown| W
+ C2 -->|Ineligible| R[Reject and hand back any held custody]
+ C2 -->|Yes| C3[Warehouse records custody and actual inspection]
+ C3 --> C4{Eligible ordinary case or exception?}
+ C4 -->|Ordinary| S[Sales accepts or rejects after inspection]
+ C4 -->|Substantiated exception| O[Owner decides exact version]
+ S --> D{Accepted by correct authority?}
+ O --> D
+ D -->|No| R
+ D -->|Yes| Q{Good quality?}
+ Q -->|Yes| G[Warehouse GR-CR, confirmed TO then availability]
+ Q -->|No| H[Warehouse quarantine GR-CR, BF-02 or BF-08]
+ R --> Z
+ G --> Z
+ H --> Z
+ Z --> X[Accountant records external finance references if applicable]
 ```
 
 ### BF-08
 
 ```mermaid
 flowchart TD
- A[Warehouse proposes return and segregates stock] --> B[Accountant records supplier agreement]
- B --> C{Supplier agrees?}
- C -->|No| D[Renegotiate or retain defects in BF-02]
- C -->|Yes| E{Valid scoped Owner decision?}
- E -->|Not yet| F[Owner reviews]
- F -->|Approve| G[Warehouse prepares and hands over]
- F -->|Reject| D
- E -->|Yes| G
- G --> H[Return issue, reduce owned stock or custody correctly]
- H --> I[Accountant records supplier receipt]
- I --> J{All quantities reconciled?}
- J -->|No| K[Keep open, Owner approves variance resolution]
- K --> I
- J -->|Yes| L[Close case, retain external financial references]
+ A[Warehouse creates SR and segregates quantity] --> B[Accountant records supplier agreement]
+ B --> C{Valid source, quantity and agreement?}
+ C -->|Not yet| D[Keep case, negotiate or BF-02]
+ D --> B
+ C -->|Yes| G[Warehouse drafts GI-SR and enters actual picking]
+ G --> H{Actual handover completed?}
+ H -->|Not yet| W[Retain draft and segregated stock]
+ W --> H
+ H -->|Yes| I[Post source-correct GI-SR or CUS-OUT once]
+ I --> J[Accountant records ACK and reconciles quantity]
+ J --> K{Every quantity accounted for?}
+ K -->|Not yet| M[Accountant records supplier resolution, Warehouse confirms documents]
+ M --> J
+ K -->|Yes| L[Accountant closes warehouse work UC-83 without Owner approval]
+ L --> N[Record Invoice or Credit Note, unverified finance stays pending]
 ```
 
 ## 11. Business acceptance scenarios
@@ -838,7 +884,7 @@ flowchart TD
 | Original transaction predates WMS | Accountant verifies external history; no fabricated historical PGI. |
 | Supplier retrieves 4 boxes rejected at arrival, never store-owned | Release custody only; do not deduct another 4 from store-owned stock. |
 | Snapshot 50, physical 48 in locked area | Propose −2; balance unchanged before approval/post. Post once to 48; retry must not produce 46. |
-| Count 50: 48 good + 2 broken | Total remains 50; reclassify 2 to quarantine rather than recording loss then destruction. |
+| Count50:48 good+2 broken under freeze | Record hold2 immediately; Warehouse proposes RECLASS/quarantine, Owner UC-92 approves and UC-93 closes after execution evidence. Total50, no ADJ=0/shortage-2; no unlock before committed batch. |
 | Count sheet has blank lines | Cannot close as no-variance; count or traceably exclude from scope. |
 | TR creator switches to Owner role to approve | Block by same userId. |
 | Warehouse A confirms B's receipt without assignment | Block by scope/independent receiver responsibility. |
@@ -855,6 +901,21 @@ flowchart TD
 
 These are proposed acceptance criteria, not claims that the team's software has passed them.
 
+**Additional 3.1.0 scenarios**
+
+| Scenario | Required outcome |
+|---|---|
+| Draft GI-S/TD before picking, no actual handover yet | Draft changes no stock; TO only relocates; PGI/TD posts after actual handover. Retry creates no extra issue/deduction. |
+| TR100, fully received TD60, unissued40 remains | Do not close TR; unissued40 is not transit. Continue TD or validly cancel; all TO/variance outcomes must resolve. |
+| Snapshot50/count48, substantiated or unclear | Substantiated -2 plan may proceed without recount; unclear cases Start/Enter Recount then compare. Retried closure never produces46. |
+| PGI10/POD0/GR-FD10 then redeliver10 | No fictitious POD/D6/Owner approval; receipt increases10 and reopens10 on original SO/WIR. Gross PGI20, GR-FD10, net10; no excess order/double intake. |
+| PGI10/POD7, attempted FD4 or CR8 | Reject FD above unreceived3 and CR above received7; atomically share claim/POD/receipt source caps. No quantity can be received through both branches. |
+| Ordinary CR versus supplier-defect exception | Sales may accept own inspected, D6-eligible ordinary CR; supplier defect routes to Owner exception. Ordinary acceptance never authorizes exceptions, nor Owner excluded installed/verified-overdue goods. |
+| Supplier dispatch without Owner approval, no Credit Note yet | Dispatch permitted with Accountant-verified source/agreement and Warehouse actual handover. Accountant UC-83 closes accounted warehouse quantity; finance remains PENDING_EXTERNAL until verification. No UC-106. |
+| B1 closure failure or open hold/quarantine TO | Roll back failed batch and retain freeze/hold; check commit before same-key retry. No availability release before full completion. |
+
+These additions are also proposed criteria, not executed software tests.
+
 ## 12. Confirmed facts and remaining verification
 
 | Topic | Current evidence | Unresolved / To-be treatment |
@@ -865,7 +926,7 @@ These are proposed acceptance criteria, not claims that the team's software has 
 | MISA/reconciliation | Q2: sales/orders/invoices, receipt/issue/stock, customers/suppliers; Q19: refunds in MISA. | Version/package, exact lot/location fields and cadence unknown. D1 differs from Q17; Sales manually copies verified external orders into WMSD SOs and confirms external payment receipt (COMPLETED), while Accountant reconciles SO/WIR/GI-S against MISA. No live integration. |
 | Lot/color/size | Q9: software and cartons. | Actual calibre, mixing lots for a project and substitution approver remain unverified. |
 | Units/packaging | Q10–11: BOX receipts/counts; BOX/PIECE/m² sales; factors, loose sales/counts and intact tiles in torn packaging. | Per-SKU pieces/box and m²/box not supplied. PIECE base unit remains To-be. |
-| Customer returns | Q18/D6 conditions; Q19 inspection and MISA refunds. | Return days/deadline evidence and wrong-lot policy unknown. Owner-after-inspection and custody remain To-be. |
+| Customer returns | Q18/D6 eligibility, Q19 external MISA refund; user selected C2 on 24 October. | Sales decides inspected ordinary cases; Owner only exceptions. Unknown deadline waits without invented days; never-received FD is separate from D6. |
 | Ownership | Survey mentions defects/returns. | Responsibility-transfer timing and signatories for pending customer/supplier goods remain unknown; retain custody as To-be. |
 | Stocktake | Monthly, recount and variance approval; D5 frozen scope. | Schedule/session length and Owner availability need operational confirmation. No concurrent counting/movements in selected MVP. |
 | Replenishment/priority | Sales/Warehouse demand, Owner approval, Accountant supplier order. | No thresholds or warehouse priorities supplied; do not invent values. |
@@ -898,7 +959,7 @@ Survey evidence establishes current-practice facts; D1–D8 and the 21 October B
 1. Confirm To-be scope/assumptions with supervisor/store; record scope differences from 17 October and the 21 October BF-06 revision.
 2. Establish one glossary, five roles, quantity categories and posting events (distinguishing PGI, POD → DELIVERED and PAY-CFM → COMPLETED).
 3. Review eight BFs using section 11 scenarios; keep R1 IV, R3 I.2 and current figures synchronized whenever a flow changes.
-4. Finalize UC catalogue (111 IDs: 98 active, 13 retired) and retired/new IDs (including UC-109–111); synchronize actors, permissions, detailed UCs, context and rules (BR-01–BR-33) with one mapping.
+4. Align the 111-ID catalogue: 97 active/14 retired including UC-106, revised UC-71/73/83/92/93, C2/B1/BF-08 permissions, specifications, context, screens and rules. Preserve history and five roles.
 5. Align model, screens, API/jobs, NFR and acceptance criteria in Report 3, database design proposals and reference SQL. Every UC/FE/BF/SC/BR reference must resolve.
 6. Use the same versioned figure set for reports/slides. Slides simplify through identified subprocesses, not different flows.
 
@@ -918,34 +979,37 @@ No email, message or external review request was sent in preparing this proposal
 | GR-P | Purchase Goods Receipt | Warehouse | PO line, ARR, INS | Increases accepted owned quantity; not automatically available |
 | TO | Put-away / picking / relocation task | Warehouse | GR, delivery, TR or relocation need | Confirmation changes internal location; total unchanged |
 | TR | Transfer request | Warehouse; Owner approval | Need, source and destination | None; may reserve source after approval |
-| TD | Transfer dispatch | Source Warehouse | Approved TR | Source −q, transit +q |
+| TD | Transfer dispatch | Source Warehouse | Draft from approved TR before picking; posting requires actual picking/handover confirmation | Post source −q, transit +q; draft changes no stock |
 | MWTR | Inter-warehouse receipt | Independent destination Warehouse | TD and TD lines | Transit −q, destination +q by quality |
 | HO | Handover record | Warehouse; record recipient | TD, GI or custody handback | Evidence, not another deduction if TD/GI posted |
 | SO | WMSD Sales Order (external copy) | Sales Staff | Verified external order/lines (MISA/paper) + attachment/evidence | None |
 | WIR / OD | Linked issue request / delivery release | Sales Staff | Saved WMSD SO and SO lines / WIR | None; OD may reserve compatible stock |
-| GI-S | Customer goods issue | Warehouse | OD, actual picked/handed-over quantity | Staging −q at PGI |
-| POD | Customer delivery confirmation (with photo) | Warehouse Staff | One actual POSTED GI-S line and originating WIR/SO line (OD header alone insufficient), recipient, delivered qty and required photo evidence | None (updates delivered qty within valid POSTED PGI cap; sets SO = DELIVERED when active order qty `> 0` is fully delivered) |
+| GI-S | Customer issue | Warehouse | Draft from OD before picking; posting requires actual picked/handover quantity and net caps after GR-FD | PGI deducts actual handover once; draft changes no stock |
+| POD | Actual customer receipt with photo | Warehouse | POSTED GI-S, SO/WIR lines, recipient/time/quantity/photo | No stock effect. Effective POD + posted GR-FD + open FD ≤ valid PGI per line; DELIVERED requires full active quantity >0 |
 | PAY-CFM | External payment receipt confirmation | Sales Staff | SO in DELIVERED state + external payment reference/evidence/note | None (sets SO = COMPLETED; no money movement or stock change) |
-| DC / DISP | Defect case / disposition | Warehouse proposes; Owner approves | Detection event, quantity lines and evidence | Case/approval does not deduct |
+| DC / DISP | Defect case / resolution | Warehouse proposes; Owner only destruction/regrade/release outside stocktake | Event/lines/evidence; supplier return has no Owner, B1 uses ST | No deduction before execution; hold is balance-neutral |
 | SCRAP | Destruction record / deduction | Warehouse | Approved DISP and destruction evidence | Quarantine −actual destroyed q |
 | ST / COUNT | Stocktake session / count | Owner plans; Warehouse counts | Scope + snapshot | None |
-| ADJ | Adjustment request / posting | Warehouse proposes; Owner approves/posts | Selected count and snapshot | Approved delta only; no ADJ = 0 |
-| CR / GR-CR | Customer-return request / receipt | Sales / Warehouse; Owner accepts | Original GI line or verified historical source | Increase owned stock only for accepted quantity |
+| ADJ | Stocktake quantity adjustment | Warehouse proposes; Owner approves/posts | Count/snapshot and current B1 plan | Only nonzero total delta; separate total-preserving RECLASS in same batch |
+| RECLASS | B1 quality/location movement | Warehouse confirms execution; Owner UC-93 posts | UC-92-approved plan, count/snapshot, DC/hold and evidence | Equal source/destination quantities preserve total; no ADJ=0 |
+| CR / GR-CR | Customer-return request / receipt | Sales ordinary acceptance; Owner exceptions only; Warehouse posts | POD/GI or verified delivered history, D6 and proper decision/version | Increase accepted quantity only; no automatic sales-demand reopening |
+| FD / GR-FD | Failed-delivery case / receipt | Warehouse UC-72/73 | Posted GI-S, unused POD/FD cap, failure evidence and actual returned quantity; no D6/Owner/customer custody | GR-FD increases by quality and atomically reopens exact net demand; draft/claim changes no stock |
 | CUS-IN / CUS-OUT | Custody intake / release | Warehouse | ARR or CR and owner | Custody ledger only, not store-owned total |
-| SR / GI-SR | Supplier-return request / issue | Warehouse; Accountant agreement; Owner approval | Source GR/lot + agreement + authorization | GI-SR reduces owned stock; CUS-OUT releases supplier custody |
+| SR / GI-SR | Supplier request / return issue | Warehouse; Accountant verifies agreement | Source GR/lot + quantity-matched agreement; no Owner/UC-106 | GI-SR deducts owned stock once; custody uses CUS-OUT |
 | ACK / VAR | Supplier acknowledgement / discrepancy | Accountant / Warehouse | Return dispatch or transfer lines | No automatic stock change |
+| EXT-REF | External Invoice/Credit Note reference | Accountant UC-108 | Type/ID/date, purchase/GI-SR lines, reconciled quantity, evidence/state | No inventory/debt/money posting; finance status is independent |
 | REV | Reversal document | Authorized user after resolution | Posted batch and reason | Controlled reversal, no history deletion |
 
-TO and MWTR are not interchangeable. BF-04 inter-warehouse sequence: `approved TR → TD → MWTR → put-away TO`. Source picking TO is needed only when staging is used and adds no Owner approval. MWTR is a separate receipt type: do not also create GR-P for the same MWTR quantity.
+TO and MWTR are not interchangeable. BF-04: approved TR → draft TD → picking TO confirmation with staging → post TD/HO at handover → MWTR → create/confirm put-away TO. No second GR-P for MWTR. Without staging record actual picking on TD without another Owner approval layer. FD/GR-FD is UC-72/73 failed-delivery mode, not post-receipt customer GR-CR.
 
 ### 15.2 Document and quantity links
 
 - One PO has many ARR/GR-P; a PO line may split across receipt lines/lots/qualities. A delivery may partly enter ownership and partly remain custody.
 - One TR has many TD; one TD has many MWTR for partial receipt. MVP: each MWTR receives one TD; TDs on one vehicle may share handover/trip reference.
 - One TD line has multiple MWTR lines; each MWTR line refers to exactly one TD line and cannot exceed its outstanding transit quantity.
-- One source order/line has one SO copy in this design; reuse that SO for correction/reopening. One SO has many WIRs, each WIR line referencing one SO line. Total WIR commitments include already issued portions and cannot exceed ordered less cancelled quantity.
-- One WIR has many OD, each with picking tasks and GI-S. Total OD commitments stay within authorized WIR quantity after cancellation. Each POD line references one posted GI-S line and its own POD photo; total confirmed, non-voided POD cannot exceed valid PGI. PAY-CFM completes a DELIVERED SO.
-- One GI line has many CR/GR-CR, but accepted returns plus quantities held for open return requests cannot exceed eligible source remainder.
+- One source order/line has one SO; one SO has many WIRs with each WIR line linked to one SO line. Commitments comprise net fulfilment plus remaining demand, capped by SO after cancellation. Redelivery PGI never creates another SO/WIR or duplicate commitment. Preserve gross dispatch and GR-FD separately.
+- One WIR has many OD; an OD has picking tasks and GI-S per handover. Draft GI precedes picking; valid PGI less GR-FD stays within OD/WIR quantity. Reopened GR-FD reuses or traceably transfers source/version commitment to replacement OD without double-counting. POD links its GI-S/photo and excludes FD-received/claimed quantity. PAY-CFM requires current DELIVERED SO.
+- A GI line supports CR/GR-CR from delivered POD quantity and FD/GR-FD from undelivered quantity. Posted CR + open CR claims ≤ eligible customer-received quantity; effective POD + posted GR-FD + open FD claims ≤ valid PGI. Atomically validate/record claims and posting per line. GR-FD reopens net demand, GR-CR does not. Verified external delivered quantity substitutes for POD only for historical sources, without fictitious POD.
 - **Line-level** links carry allocated quantities; header PO/TR/SO/WIR IDs alone cannot prevent source overuse.
 
 Record an external provider revision only when supplied; do not invent it. Internal document/verification version and stable WMS correlation remain recorded. `external_reference.source_version` is nullable; `correlation_id` is UNIQUE and nonblank. Retry uses stable operation/idempotency keys rather than a fresh correlation to bypass deduplication.
@@ -954,13 +1018,16 @@ Record an external provider revision only when supplied; do not invent it. Inter
 
 | Object | Proposed status / handling |
 |---|---|
-| RR/TR/CR/SR/ADJ requests | DRAFT → SUBMITTED → APPROVED / REJECTED / REVISION_REQUIRED. Changes to approved content increase version and require renewed approval. |
-| WMSD Sales Order (SO) | DRAFT → OPEN → IN_PROGRESS/PARTIALLY_DELIVERED → DELIVERED → COMPLETED. DELIVERED requires full photo-confirmed receipt; COMPLETED also requires Sales full external receipt confirmation. Full cancellation before delivery sets CANCELLED; partial unissued cancellation is recorded separately. |
-| Executing PO/WIR/TR | OPEN → PARTIAL → COMPLETED; cancel only unexecuted quantities. WIR completes on full issue or authorized unissued cancellation, independently of SO delivery/completion. |
-| GR/TD/MWTR/GI/SCRAP | DRAFT → POSTED. Posted is immutable; REVERSED only with valid reversing batch. No deletion. |
+| RR/TR/ADJ requests | DRAFT → SUBMITTED → APPROVED / REJECTED / REVISION_REQUIRED by version-matched authority. CR has decision modes below; SR has no Owner approval. |
+| CR | DRAFT → SUBMITTED → APPROVED / REJECTED / REVISION_REQUIRED; APPROVED records decision_kind=STANDARD_ACCEPTANCE by Sales or EXCEPTION_APPROVAL by Owner after inspection. Changed kind/eligibility/version needs a fresh proper-role decision; status alone never accepts stock. |
+| SR | DRAFT → AGREEMENT_PENDING → READY → PARTIAL / COMPLETED; READY requires Accountant agreement verification and Warehouse source checks. Accountant UC-83 closes accounted quantity without Owner approval. |
+| FD | OPEN → INSPECTED → PARTIAL / RECEIVED → CLOSED; unresolved quantities remain explicit. No commercial APPROVED state is required; GR-FD posts stock/net reopening. |
+| WMSD Sales Order (SO) | DRAFT → OPEN → IN_PROGRESS/PARTIALLY_DELIVERED → DELIVERED → COMPLETED. GR-FD reopens net quantity/version and recalculates status; old PAY-CFM never authorizes a changed version. Cancel only unexecuted/received-back not-redelivered quantity; full cancellation at zero delivery → CANCELLED. |
+| Executing PO/WIR/TR | OPEN → PARTIAL → COMPLETED. WIR/OD may reopen exact posted GR-FD quantity in the same commit with version/net fulfilment. Cancel only unexecuted or received-back demand not redelivered, never unresolved off-site stock. WIR completion does not imply customer delivery. |
+| GR/GR-FD/TD/MWTR/GI/SCRAP/RECLASS | DRAFT → POSTED with history. B1 RECLASS posts only in approved UC-93 batch; valid linked reversal never edits/deletes original. |
 | Customer delivery (POD) and external receipt (PAY-CFM) | DRAFT → CONFIRMED; mistakes are traceably VOIDED with reasons and retained history. Partial delivery progress belongs to SO, not a separate POD status set. |
 | TO | OPEN → PARTIAL → CONFIRMED; cancel unexecuted part. Each confirmation has its own operation key. |
-| Stocktake | PLANNED → FROZEN → COUNTED → RECONCILING → APPROVED → POSTED/CLOSED. No variance goes directly to CLOSED. |
+| Stocktake | PLANNED → FROZEN → COUNTED → RECONCILING → APPROVED → POSTED/CLOSED. Direct CLOSED requires no variance/open hold. Quality-only still APPROVED/POSTED via RECLASS without ADJ=0; freeze persists through batch/execution completion. |
 | Defect/discrepancy | OPEN → UNDER_REVIEW → RESOLVING → CLOSED once all quantities are resolved or assigned to accountable open cases. |
 | Return financial follow-up | NOT_RECORDED / PENDING_EXTERNAL / RECORDED_EXTERNAL, independent of warehouse completion. |
 
@@ -971,13 +1038,13 @@ Human-readable number example: `TR-202610-000123`; independent bigint PK. Use lo
 | Process | Principal actors | Document chain | Inventory event |
 |---|---|---|---|
 | BF-01 — Purchase/receipt | Sales/Warehouse → Owner → Accountant → Warehouse | RR → approval → PO → ARR/INS → GR-P → put-away TO; VAR/CUS-IN as needed | GR-P accepts ownership; put-away only relocates |
-| BF-02 — Defects | Warehouse → Owner → Warehouse | DC → quarantine → INS/DISP → approval → SCRAP, regrade/release or SR | Quarantine/regrade preserves total; SCRAP deducts actual destruction; supplier return deducts at GI-SR |
+| BF-02 — Defects | Warehouse; Owner only scoped actions | DC/hold → inspect → BF-08 without Owner, or approved destruction/regrade/release; B1 via ST | Case changes no total; actual SCRAP or GI-SR deducts once; B1 RECLASS preserves total |
 | BF-03 — Relocation | Warehouse | TO-RELOCATE → confirmation | Source −q, destination +q in one warehouse |
-| BF-04 — Inter-warehouse transfer | Source Warehouse → Owner → destination Warehouse | TR → approval → optional TO-PICK → TD/HO → INS/MWTR → put-away TO → VAR/resolution if needed | TD source → transit; MWTR actual receipt transit → destination |
-| BF-05 — Stocktake | Owner → Warehouse → Owner | ST/snapshot/count sheet → COUNT/recount → VAR/ADJ → approval/Clear Difference | Approved delta only; no zero ADJ |
-| BF-06 — Sales Order, issue, delivery & completion | Sales → Warehouse → Sales completion (Accountant reconciliation) | SO (copied external order) → linked WIR → OD → reservation/`TO-PICK` → GI-S/HO (PGI) → POD with photo (SO = DELIVERED) → PAY-CFM external payment confirmation (SO = COMPLETED) | PGI deducts actual warehouse handover once; SO/WIR/picking/POD/PAY-CFM do not reduce total |
-| BF-07 — Customer return | Sales → Warehouse → Owner → Warehouse/Accountant | CR → CUS-IN → INS → approval → GR-CR or CUS-OUT/HO → external references | GR-CR transfers accepted quantity from custody to STORE |
-| BF-08 — Supplier return | Warehouse → Accountant → Owner → Warehouse | SR/agreement → approval → GI-SR or CUS-OUT/HO → ACK/VAR → reconciliation | Owned stock deducts once; supplier custody release affects custody only |
+| BF-04 — Inter-warehouse transfer | Source Warehouse → Owner TR → destination Warehouse | Approved TR → draft TD → picking TO with staging → posted TD/HO → MWTR → confirmed put-away TO → reconcile whole TR | TD source to transit, MWTR transit to destination; close only after demand/transit/TO/variances resolve |
+| BF-05 — Stocktake | Owner → Warehouse → Owner | ST/snapshot → COUNT → compare → optional recount or delta/RECLASS plan → UC-92/93 | Nonzero delta records real difference; RECLASS/location preserves total before unlock |
+| BF-06 — Sales Order, issue and delivery | Sales → Warehouse → Sales | SO → WIR/OD → draft GI-S → confirmed picking TO → GI-S/HO PGI → POD → PAY-CFM; failed returns via BF-07-FD | PGI deducts actual handover; GR-FD increases actual receipt/reopens net demand; POD/PAY-CFM change no stock |
+| BF-07 — CR and FD | Sales/Owner exceptions → Warehouse for CR; Warehouse → Sales for FD | CR/custody/INS → Sales ordinary or Owner exception → GR-CR; FD/GI-S/INS → GR-FD without Owner/D6 | CR receives accepted quantity without demand reopening; FD receives actual return and reopens source net demand |
+| BF-08 — Supplier return | Warehouse → Accountant → Warehouse → Accountant | SR/agreement → GI-SR or CUS-OUT/HO → ACK/VAR → UC-83 close → EXT-REF; no Owner approval | Owned decreases at issue; custody release affects custody only; closure/ACK never deducts again |
 
 TO, GR and MWTR: TO is an internal task; GR receives purchased/customer-returned goods; MWTR receives one dispatch into one destination with TD-line links. The same MWTR quantity must not also be posted as a purchase GR.
 
@@ -989,4 +1056,47 @@ Mainflows contain only business-performing actor lanes: Store Owner, Sales Staff
 
 Each activity names actor, action and created/confirmed document, for example “Warehouse Staff — confirm transfer receipt — MWTR”. System consequences are postconditions, not a separate lane. Rejection, revision, partial receipt/delivery and discrepancy branches are noted in the flow and process. Exceptions may reference another process rather than crowding every detail into the mainflow.
 
-Current figures: [VI/EN draw.io, 16 pages](../04_so_do/WMSD_Mainflows_VI_EN.drawio), [EN draw.io, 8 pages](../04_so_do/WMSD_Mainflows_EN.drawio), BF-04 [VI](../04_so_do/WMSD_Mainflow_BF04_VI.png)/[EN](../04_so_do/WMSD_Mainflow_BF04_EN.png). They follow the eight processes including copied SO/POD/PAY-CFM. The 20 October BF-03B [VI](../04_so_do/WMSD_Mainflow_BF03B_VI.png)/[EN](../04_so_do/WMSD_Mainflow_BF03B_EN.png) exports remain historical.
+Reference figures remain 22 October 3.0.0: [VI/EN draw.io, 16 pages](../04_so_do/WMSD_Mainflows_VI_EN.drawio), [EN draw.io, 8 pages](../04_so_do/WMSD_Mainflows_EN.drawio), BF-04 [VI](../04_so_do/WMSD_Mainflow_BF04_VI.png)/[EN](../04_so_do/WMSD_Mainflow_BF04_EN.png). Not revised to 3.1.0 here; redraw from current sections 4/10/15 rather than restoring old BF-08 Owner approval or mandatory recount. The 20 October BF-03B images remain historical.
+
+## 17. 24 October decisions, risk alternatives and impact
+
+### 17.1 Selected A1 — Failed-delivery intake
+
+| Alternative | Organization | Benefit | Cost / decision |
+|---|---|---|---|
+| A1 — BF-07-FD branch | GI-S/failure evidence → ARR/INS → GR-FD through UC-72/73 FD mode, without D6/Owner/customer custody. | Retains eight BFs and reuses source-linked inspection/receipt. | **Selected by user.** Requires distinct POD/FD/CR caps and net reopening, not merely another connector. |
+| A2 — BF-06 exception | Handle incoming failed-delivery goods in delivery flow, keeping BF-07 post-receipt CR only. | Entire delivery/failure lifecycle in one BF. | Not selected; expands receipt operations and related UC/screens in BF-06. |
+| A3 — Separate BF-09 | Dedicated failed-delivery intake process. | Clear separation for larger operational responsibility. | Not selected; adds a BF and more report/diagram synchronization than the retained-eight-flow scope. |
+
+**Quantity example:** SO10 → PGI10 → POD0 → GR-FD10 → new PGI10 → new POD10. Ledger retains gross dispatch20 and return receipt10; net fulfilment10, never an order for20. PGI10/POD7 permits FD at most3. Only posted actual GR-FD reopens demand; a claim/refusal message alone cannot permit replacement dispatch.
+
+Quantities described as posted PGI/GR-FD mean valid, unreversed events. Reversals must recheck dependent claims, POD, reopened commitments and redelivery; reject a reversal that would invalidate these until the dependencies are traceably resolved. Control source lines, not merely SO headers. Atomically share POD/FD claims/GR-FD/CR claims to avoid double delivery/intake. Ordinary CR never reopens sales demand; that behavior belongs specifically to A1 GR-FD.
+
+### 17.2 Selected B1 — Defects in frozen stocktake scope
+
+| Alternative | Organization | Benefit | Cost / decision |
+|---|---|---|---|
+| B1 — Immediate hold, closure RECLASS | Record balance-neutral blocking/evidence; Warehouse proposes/confirms execution, Owner UC-92/93 posts delta/RECLASS/location before unlock. | Retains D5 and immutable snapshot; resolves condition before releasing availability. | **Selected by user.** Closure must support quality-only, rollback and holds rather than quantity ADJ alone. |
+| B2 — In-session exception | Approved logged quality/location postings during count, reconciled to snapshot. | Posts/isolation without waiting for entire-scope closure. | Not selected; more reconciliation complexity and missed-event risk. |
+| B3 — End affected scope and recount | Keep defect block, traceably close/cancel affected session, isolate and start another session. | Fewer posting-exception modes within a session. | Not selected; additional counting and no availability gap may occur between sessions. |
+
+**B1 does not let ordinary operations bypass freeze.** Closure plan has ID/version and an independent approver; Warehouse records linked actual quarantine, Owner posts only authorized scope. Quality/location and actual delta share idempotent ledger batch; release only resolved freeze/holds after committed completion. Missing physical confirmation or open tasks blocks closure/unlock.
+
+Book50 good/count48 good+2 broken → RECLASS2, total50, no ADJ=0. Count 46 good + 2 broken means total 48: actual delta-2 plus RECLASS2, never shortage-4. Quality-only uses ST resolution and UC-92/93 rather than a zero-quantity ADJ request to obtain approval.
+
+### 17.3 Selected C2 and BF-08 authority
+
+- **Ordinary CR:** Sales individually accepts after Warehouse inspection and may be CR creator. Require verified source/quantity, unused good goods, substantiated deadline/terms and no dispute/deviation. Owner only reviews eligible exceptions; D6 exclusions still block. Owner self-approval constraints cannot negate explicitly selected ordinary Sales authority.
+- **FD:** Warehouse receives against GI-S/evidence without commercial acceptance or Owner approval. Sales decides outstanding demand only after GR-FD.
+- **BF-08:** no Owner dispatch, variance or closure approval. Accountant verifies agreement/reconciles/closes; Warehouse posts actual stock events. Retire UC-106, retain ID/history and five roles. Destruction/release of defective goods still on site remains BF-02; removing BF-08 approval does not permit unauthorized destruction.
+- **Catalogue:** 111 IDs, 97 active/14 retired: UC-23–25, UC-42, UC-59–62, UC-74–78, UC-106.
+
+### 17.4 Scope and follow-up synchronization
+
+| Impact | Result |
+|---|---|
+| Documents updated | Only VI/EN process proposals 3.1.0: mainflows, Mermaid, UC mapping, permissions, rules, documents/statuses and acceptance scenarios. The 24 October review remains a snapshot of findings before corrections. |
+| Documents pending | Report 1/3, VI/EN data designs, reference SQL, draw.io/PNG assets and shared change log. They are not claimed synchronized in this revision. |
+| Data/API implementation assessment | CR/FD modes, decision_kind, GR-FD/POD line claims, net/reopened fulfilment/replacement OD, defect hold/RECLASS and closure batch, UC-71/73/83/92/93 authority and inactive UC-106. No schema/API/backend was changed or tested in this document revision. |
+| Verification criteria | Section 11 draft/post, two stocktake paths, capped GR-FD/redelivery, disjoint CR/FD, Sales ordinary/Owner exceptions, Owner-free BF-08 and B1 quality-only/rollback scenarios. Proposed criteria, not software test results. |
+| Schedule | Finalize paired process logic, then align detailed design/UCs and figures to the same version. No implementation story-point/deadline estimate without backend assessment. |
