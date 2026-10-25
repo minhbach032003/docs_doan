@@ -1,4 +1,4 @@
--- WMSD relational analysis/reference DDL, 2026-10-22. NOT a production schema.
+-- WMSD relational analysis/reference DDL, 2026-10-25. NOT a production schema.
 -- Runtime persistence remains MongoDB (NoSQL), per Report 3 and the system design.
 -- SQL Server (T-SQL) syntax is used only to make the proposed relational model executable for review.
 -- Schema only: posting/approval services and authorization are NOT implemented here.
@@ -7,6 +7,8 @@
 -- Survey alignment 2026-10-20: D1-D5 retain PGI, departmental entry, five roles,
 -- independent transfers and FROZEN stocktake. D6 adds versioned return assessment.
 -- D7 does not seed invented warehouse names, conversion factors or return periods.
+-- Revision 3.1.0, 2026-10-25: A1 failed-delivery receipt/net reopening; B1
+-- stocktake hold/resolution/RECLASS; C2 ordinary Sales acceptance; no BF-08 Owner.
 -- Revision 3.0.0, 2026-10-22: eight processes; BF-03 relocation, BF-04 transfer.
 -- Data revision 2.0.0, 2026-10-21: SO -> linked WIR -> PGI -> photo POD -> external receipt.
 -- This replaces the earlier direct external-order-line -> WIR source contract.
@@ -106,6 +108,7 @@ CREATE TABLE wmsd.document (
  'TRANSFER_DISPATCH','MWTR','HANDOVER','SALES_ORDER','ISSUE_REQUEST','OUTBOUND_DELIVERY','GI_SALE',
  'DELIVERY_CONFIRMATION','PAYMENT_CONFIRMATION',
  'DEFECT_CASE','DISPOSITION','SCRAP','STOCKTAKE','ADJUSTMENT',
+ 'FAILED_DELIVERY','GR_FAILED_DELIVERY','ST_RESOLUTION','RECLASS',
  'CUSTOMER_RETURN','GR_CUSTOMER_RETURN','SUPPLIER_RETURN','GI_SUPPLIER_RETURN',
  'SUPPLIER_ACK','DISCREPANCY','CUSTODY_RECEIPT','CUSTODY_RELEASE','REVERSAL','OPENING')),
  workflow_status varchar(30) NOT NULL DEFAULT 'DRAFT',
@@ -162,7 +165,10 @@ CREATE TABLE wmsd.approval (
  decided_at datetimeoffset NOT NULL DEFAULT SYSDATETIMEOFFSET(),
  reason varchar(2000) NOT NULL,
  UNIQUE(document_id, document_version, decision_kind),
- CHECK(requested_by <> decided_by)
+ -- STANDARD_ACCEPTANCE is the explicit C2 exception: Sales may decide own
+ -- ordinary CR after Warehouse inspection. Service enforces CR kind, role,
+ -- verified GOOD/UNUSED terms and latest assessment. All other approvals differ.
+ CHECK(requested_by <> decided_by OR decision_kind = 'STANDARD_ACCEPTANCE')
 );
 CREATE TABLE wmsd.approval_line (
  approval_id bigint NOT NULL REFERENCES wmsd.approval, line_id bigint NOT NULL REFERENCES wmsd.document_line,
@@ -184,6 +190,7 @@ CREATE TABLE wmsd.external_reference (
  source_system varchar(50) NOT NULL,
  reference_kind varchar(40) NOT NULL,
  reference_no varchar(100) NOT NULL,
+ reference_date date,
  source_version nvarchar(100),
  correlation_id varchar(100) NOT NULL UNIQUE
    CONSTRAINT ck_external_correlation CHECK(LEN(LTRIM(RTRIM(correlation_id))) > 0),
@@ -258,7 +265,7 @@ CREATE TABLE wmsd.inspection_line (
 CREATE TABLE wmsd.goods_receipt (
  document_id bigint PRIMARY KEY REFERENCES wmsd.document,
  warehouse_id bigint NOT NULL REFERENCES wmsd.warehouse,
- receipt_kind varchar(20) NOT NULL CHECK(receipt_kind IN ('PURCHASE','CUSTOMER_RETURN'))
+ receipt_kind varchar(20) NOT NULL CHECK(receipt_kind IN ('PURCHASE','CUSTOMER_RETURN','FAILED_DELIVERY'))
 );
 CREATE TABLE wmsd.transfer_request (
  document_id bigint PRIMARY KEY REFERENCES wmsd.document,
@@ -313,7 +320,7 @@ CREATE TABLE wmsd.sales_order_line (
    REFERENCES wmsd.external_reference_line(external_line_id, reference_id),
  UNIQUE(line_id, sales_order_id)
 );
--- Append-only cancellation facts; each operation cancels one unissued SO line.
+-- Append-only cancellation facts: unexecuted or GR-FD-received-back, not-redelivered quantity.
 -- The service caps cumulative cancellations and releases/reduces unissued WIR/OD
 -- commitments and reservations in the same transaction, without changing stock.
 CREATE TABLE wmsd.sales_order_cancellation (
@@ -459,7 +466,8 @@ CREATE TABLE wmsd.customer_return_line (
 );
 -- D6: one return line represents a quantity with homogeneous eligibility conditions.
 -- Split mixed quantities into separate lines. Assessment is evidence, NOT acceptance
--- or a stock posting. Owner approval still follows Warehouse inspection (UC-71/72).
+-- or a stock posting. Sales STANDARD_ACCEPTANCE or Owner EXCEPTION_APPROVAL
+-- follows Warehouse inspection (UC-71/72); D6 never applies to FD intake.
 -- Unknown is explicit; no default number of return days is introduced.
 CREATE TABLE wmsd.customer_return_assessment (
  assessment_id bigint IDENTITY(1,1) PRIMARY KEY,
@@ -514,7 +522,10 @@ CREATE TABLE wmsd.supplier_return_line (
  origin_line_id bigint NOT NULL REFERENCES wmsd.document_line,
  owner_party_id bigint NOT NULL REFERENCES wmsd.party,
  agreed_qty numeric(20,6) NOT NULL CHECK(agreed_qty >= 0),
- authorization_id bigint REFERENCES wmsd.approval
+ agreement_version integer NOT NULL CHECK(agreement_version > 0),
+ agreement_verified_by bigint NOT NULL REFERENCES wmsd.app_user,
+ agreement_verified_at datetimeoffset NOT NULL,
+ agreement_evidence_id bigint NOT NULL REFERENCES wmsd.evidence
 );
 CREATE TABLE wmsd.supplier_ack_line (
  line_id bigint PRIMARY KEY REFERENCES wmsd.document_line,
@@ -640,6 +651,117 @@ CREATE TABLE wmsd.adjustment_line (
  approval_id bigint REFERENCES wmsd.approval,
  delta_qty numeric(20,6) NOT NULL CHECK(delta_qty <> 0)
 );
+-- 3.1.0 A1: source GI is mandatory for failed delivery; no fictitious POD,
+-- D6 acceptance decision or customer custody. Quantities live on document_line.
+CREATE TABLE wmsd.failed_delivery (
+ document_id bigint PRIMARY KEY REFERENCES wmsd.document,
+ warehouse_id bigint NOT NULL REFERENCES wmsd.warehouse,
+ failure_evidence_id bigint NOT NULL REFERENCES wmsd.evidence,
+ reason nvarchar(2000) NOT NULL CHECK(LEN(LTRIM(RTRIM(reason))) > 0)
+);
+CREATE TABLE wmsd.failed_delivery_line (
+ line_id bigint PRIMARY KEY,
+ failed_delivery_id bigint NOT NULL REFERENCES wmsd.failed_delivery(document_id),
+ sales_issue_line_id bigint NOT NULL REFERENCES wmsd.sales_goods_issue_line(line_id),
+ FOREIGN KEY(line_id, failed_delivery_id) REFERENCES wmsd.document_line(line_id, document_id),
+ UNIQUE(line_id, sales_issue_line_id)
+);
+-- Shared CR/FD claims reserve source allowance, not stock. CONSUMED claims are
+-- replaced by posted receipt quantities when capping; never count both.
+CREATE TABLE wmsd.return_source_claim (
+ claim_id bigint IDENTITY(1,1) PRIMARY KEY,
+ request_line_id bigint NOT NULL REFERENCES wmsd.document_line,
+ sales_issue_line_id bigint REFERENCES wmsd.sales_goods_issue_line(line_id),
+ historical_external_line_id bigint REFERENCES wmsd.external_reference_line,
+ claim_kind varchar(2) NOT NULL CHECK(claim_kind IN ('CR','FD')),
+ qty_base numeric(20,6) NOT NULL CHECK(qty_base > 0),
+ status varchar(12) NOT NULL CHECK(status IN ('OPEN','CONSUMED','RELEASED')),
+ operation_id bigint NOT NULL REFERENCES wmsd.business_operation,
+ CHECK((sales_issue_line_id IS NOT NULL AND historical_external_line_id IS NULL)
+    OR (sales_issue_line_id IS NULL AND historical_external_line_id IS NOT NULL)),
+ CHECK(claim_kind <> 'FD' OR sales_issue_line_id IS NOT NULL),
+ UNIQUE(request_line_id, operation_id), UNIQUE(claim_id, request_line_id)
+);
+CREATE TABLE wmsd.failed_delivery_receipt_line (
+ line_id bigint PRIMARY KEY,
+ goods_receipt_id bigint NOT NULL REFERENCES wmsd.goods_receipt(document_id),
+ failed_delivery_line_id bigint NOT NULL,
+ sales_issue_line_id bigint NOT NULL,
+ inspection_line_id bigint NOT NULL REFERENCES wmsd.inspection_line(line_id),
+ claim_id bigint,
+ FOREIGN KEY(line_id, goods_receipt_id) REFERENCES wmsd.document_line(line_id, document_id),
+ FOREIGN KEY(failed_delivery_line_id, sales_issue_line_id)
+   REFERENCES wmsd.failed_delivery_line(line_id, sales_issue_line_id),
+ FOREIGN KEY(claim_id, failed_delivery_line_id)
+   REFERENCES wmsd.return_source_claim(claim_id, request_line_id)
+);
+-- An immutable reopening fact is committed with each GR-FD receipt line/batch.
+-- Reversal dependencies and actual net quantity are application checks.
+CREATE TABLE wmsd.demand_reopening (
+ receipt_line_id bigint PRIMARY KEY REFERENCES wmsd.failed_delivery_receipt_line(line_id),
+ sales_order_line_id bigint NOT NULL REFERENCES wmsd.sales_order_line(line_id),
+ issue_request_line_id bigint NOT NULL REFERENCES wmsd.issue_request_line(line_id),
+ outbound_delivery_line_id bigint NOT NULL REFERENCES wmsd.outbound_delivery_line(line_id),
+ reopened_qty numeric(20,6) NOT NULL CHECK(reopened_qty > 0),
+ source_version integer NOT NULL CHECK(source_version > 0),
+ posting_batch_id bigint NOT NULL REFERENCES wmsd.posting_batch
+);
+CREATE TABLE wmsd.od_commitment_transfer (
+ transfer_id bigint IDENTITY(1,1) PRIMARY KEY,
+ reopening_receipt_line_id bigint NOT NULL REFERENCES wmsd.demand_reopening(receipt_line_id),
+ from_od_line_id bigint NOT NULL REFERENCES wmsd.outbound_delivery_line(line_id),
+ to_od_line_id bigint NOT NULL REFERENCES wmsd.outbound_delivery_line(line_id),
+ qty_base numeric(20,6) NOT NULL CHECK(qty_base > 0),
+ source_version integer NOT NULL CHECK(source_version > 0),
+ target_version integer NOT NULL CHECK(target_version > 0),
+ operation_id bigint NOT NULL REFERENCES wmsd.business_operation,
+ CHECK(from_od_line_id <> to_od_line_id),
+ UNIQUE(operation_id, from_od_line_id, to_od_line_id)
+);
+-- B1: hold blocks allocation immediately WITHOUT changing balance dimensions.
+-- Only the approved UC-93 closure batch posts delta/RECLASS/location under freeze.
+CREATE TABLE wmsd.defect_hold (
+ hold_id bigint IDENTITY(1,1) PRIMARY KEY,
+ defect_document_id bigint NOT NULL REFERENCES wmsd.defect_case(document_id),
+ balance_id bigint NOT NULL REFERENCES wmsd.stock_balance,
+ stocktake_id bigint REFERENCES wmsd.stocktake(document_id),
+ qty_base numeric(20,6) NOT NULL CHECK(qty_base > 0),
+ evidence_id bigint NOT NULL REFERENCES wmsd.evidence,
+ recorded_by bigint NOT NULL REFERENCES wmsd.app_user,
+ recorded_at datetimeoffset NOT NULL DEFAULT SYSDATETIMEOFFSET(),
+ status varchar(12) NOT NULL CHECK(status IN ('ACTIVE','RESOLVED'))
+);
+CREATE TABLE wmsd.stocktake_resolution (
+ document_id bigint PRIMARY KEY REFERENCES wmsd.document,
+ stocktake_id bigint NOT NULL REFERENCES wmsd.stocktake(document_id),
+ plan_version integer NOT NULL CHECK(plan_version > 0),
+ approval_id bigint REFERENCES wmsd.approval,
+ closure_batch_id bigint REFERENCES wmsd.posting_batch,
+ UNIQUE(document_id, plan_version)
+);
+CREATE TABLE wmsd.stocktake_resolution_line (
+ line_id bigint PRIMARY KEY,
+ resolution_id bigint NOT NULL REFERENCES wmsd.stocktake_resolution(document_id),
+ count_id bigint NOT NULL REFERENCES wmsd.count_attempt,
+ hold_id bigint REFERENCES wmsd.defect_hold,
+ action_kind varchar(12) NOT NULL CHECK(action_kind IN ('DELTA','RECLASS','RELOCATE')),
+ from_balance_id bigint REFERENCES wmsd.stock_balance,
+ to_balance_id bigint REFERENCES wmsd.stock_balance,
+ delta_qty numeric(20,6),
+ executed_by bigint REFERENCES wmsd.app_user,
+ executed_at datetimeoffset,
+ execution_evidence_id bigint REFERENCES wmsd.evidence,
+ FOREIGN KEY(line_id, resolution_id) REFERENCES wmsd.document_line(line_id, document_id),
+ CHECK((action_kind = 'DELTA' AND delta_qty IS NOT NULL AND delta_qty <> 0
+        AND ((delta_qty > 0 AND from_balance_id IS NULL AND to_balance_id IS NOT NULL)
+          OR (delta_qty < 0 AND from_balance_id IS NOT NULL AND to_balance_id IS NULL)))
+    OR (action_kind IN ('RECLASS','RELOCATE') AND delta_qty IS NULL
+        AND from_balance_id IS NOT NULL AND to_balance_id IS NOT NULL
+        AND from_balance_id <> to_balance_id)),
+ CHECK((executed_by IS NULL AND executed_at IS NULL AND execution_evidence_id IS NULL)
+    OR (executed_by IS NOT NULL AND executed_at IS NOT NULL AND execution_evidence_id IS NOT NULL))
+);
+
 CREATE TABLE wmsd.audit_event (
  event_id bigint IDENTITY(1,1) PRIMARY KEY,
  document_id bigint REFERENCES wmsd.document,
@@ -658,6 +780,10 @@ CREATE TABLE wmsd.outbox_event (
  attempts integer NOT NULL DEFAULT 0 CHECK(attempts >= 0)
 );
 
+CREATE INDEX ix_return_claim_source ON wmsd.return_source_claim(sales_issue_line_id, claim_kind, status);
+CREATE INDEX ix_return_claim_history ON wmsd.return_source_claim(historical_external_line_id, status);
+CREATE INDEX ix_fd_receipt_source ON wmsd.failed_delivery_receipt_line(sales_issue_line_id);
+CREATE INDEX ix_active_defect_hold ON wmsd.defect_hold(balance_id) WHERE status = 'ACTIVE';
 CREATE INDEX ix_document_kind_status ON wmsd.document(document_kind, workflow_status, created_at);
 CREATE INDEX ix_line_lot ON wmsd.document_line(lot_id);
 CREATE INDEX ix_line_link_target ON wmsd.line_link(target_line_id);
@@ -706,7 +832,8 @@ CREATE VIEW wmsd.available_stock AS
  WHERE p.party_kind='STORE' AND b.quality_code='GOOD'
    AND lot_ref.identification_status='VERIFIED' AND pr.active = 1
    AND l.active = 1 AND w.active = 1 AND l.allocatable = 1
-   AND NOT EXISTS (SELECT 1 FROM wmsd.location_lock k WHERE k.location_id=l.location_id);
+   AND NOT EXISTS (SELECT 1 FROM wmsd.location_lock k WHERE k.location_id=l.location_id)
+   AND NOT EXISTS (SELECT 1 FROM wmsd.defect_hold h WHERE h.balance_id=b.balance_id AND h.status='ACTIVE');
 GO
 
 COMMIT TRANSACTION;
@@ -727,7 +854,8 @@ COMMIT TRANSACTION;
 --     INELIGIBLE/PENDING assessments cannot authorize GR_CUSTOMER_RETURN; goods
 --     physically held remain custody until handback. CASE_REVIEW is not approval.
 --     Any condition change creates a new assessment and document version and
---     requires new review; historical assessments/approvals remain immutable.
+--     requires new proper-role review; historical assessments/approvals remain immutable.
+--     C2 decision kinds and the distinct FD path are specified in controls 27-29.
 -- 12. Departmental users record their own operations; no proxy-entry/delegation
 --     workflow or purchasing/delivery application role is introduced. Co-inspection
 --     and external supplier contacts are recorded in document notes/evidence/audit;
@@ -738,13 +866,14 @@ COMMIT TRANSACTION;
 -- 14. Preserve actual remaining PIECE quantities for opened/torn boxes. Packaging
 --     damage alone must not set DAMAGED quality. Nominal size is not verified calibre.
 
--- 2026-10-22 revision 3.0.0: process section 4 defines 37 alternate/exception
+-- 2026-10-25 revision 3.1.0: process section 4 defines alternate/exception
 -- branches and EX-01..05; database proposal section 6 maps acceptance cases.
 -- 15. Exactly five roles; do not seed permissions for retired UC-23..25, UC-42,
---     UC-59..62 or UC-74..78. UC-107/108 record external evidence, not inventory.
+--     UC-59..62, UC-74..78 or UC-106. UC-107/108 record external evidence, not inventory.
 -- 16. Enforce frozen-scope checks on receipt, dispatch, relocation, picking,
 --     custody/ownership and quality changes, including corrections/backdating.
---     Clearing uses the authorized stocktake adjustment, not a general bypass.
+--     B1 holds/evidence are balance-neutral; only approved UC-93 closure posts
+--     real delta plus RECLASS/location with Warehouse execution before unlock.
 -- 17. Unknown source/lot identity cannot create available stock. Nominal dimensions
 --     must not substitute for unverified calibre. No invented warehouse seeds.
 -- 18. Failed handover before PGI retains staged stock or uses documented unpick.
@@ -758,15 +887,16 @@ COMMIT TRANSACTION;
 --     historical accounting evidence (UC-108), not a new Owner approval.
 -- 21. Lock each SO source line: sum(non-cancelled WIR commitments, INCLUDING issued
 --     portions) <= ordered qty - authorized cancellations. Per WIR line, sum OD
---     commitments <= authorized WIR qty after cancellations; per OD line, valid PGI <= released
---     qty. WIR and OD are parent/child quantities, never two separate demands.
+--     commitments <= authorized WIR qty after cancellations; per OD line,
+--     valid PGI minus valid posted GR-FD <= released qty. WIR/OD are one demand; transfer
+--     replacement OD commitment traceably without counting both as new demand.
 --     Check source kinds/products/units and GI SALE/warehouse along the typed chain.
 -- 22. UC-110: only assigned WAREHOUSE confirms POD. Each POD line needs a valid
 --     POSTED GI_SALE line, matching SO/product/lot/warehouse, positive actual qty
 --     and a successfully stored, accessible image belonging to that POD document.
 --     A photo FK alone does not prove image MIME/content or successful upload.
 --     Lock GI/SO lines and cap sum(CONFIRMED, non-voided POD qty) at valid posted
---     PGI qty, excluding reversed/ineligible dispatch. Carrier HO is not POD.
+--     PGI less posted GR-FD and OPEN FD claims. Carrier HO is not POD.
 -- 23. SO is DELIVERED only if ordered-minus-cancelled qty > 0 and every remaining
 --     line is fully photo-confirmed. All cancelled with zero delivery => CANCELLED.
 --     Partial delivery => PARTIALLY_DELIVERED; dispatch/PGI alone => IN_PROGRESS.
@@ -787,3 +917,37 @@ COMMIT TRANSACTION;
 --     Normal BF-07 returns retain original historical delivery/payment evidence
 --     and follow their own return/financial workflow; never restore stock by status.
 -- These are required application controls, NOT implemented procedures/triggers.
+
+-- 27. C2: STANDARD_ACCEPTANCE only for Sales ordinary CR after Warehouse inspection:
+--     verified received source/qty, GOOD/UNUSED, proven deadline/terms, no dispute.
+--     Same Sales creator may accept. EXCEPTION_APPROVAL is Owner-only with distinct
+--     requester. Neither decision can override D6 INELIGIBLE/PENDING exclusions.
+--     Changed decision_kind/conditions/version requires the appropriate new decision.
+-- 28. Share a conditional source-line write guard across POD, CR/FD claims/receipts:
+--     valid POD + posted GR-FD + OPEN FD claims <= valid PGI on each GI line;
+--     posted GR-CR + OPEN CR claims <= eligible received POD (or verified history).
+--     Consume the claim and post receipt atomically; never count a consumed claim
+--     in addition to its receipt. A CR source must be customer-received, not PGI alone.
+-- 29. GR-FD actual receipt by WAREHOUSE commits stock, claim consumption, reopening
+--     facts, original SO/WIR/OD net progress/version, audit/outbox in ONE transaction.
+--     Claim or failure evidence alone cannot reopen demand. Ordinary GR-CR never
+--     reopens it. New OD reuses/transfers commitment, not another demand allocation.
+--     Reversal rechecks POD/claims/reopening/redelivery and rejects unresolved dependencies.
+-- 30. BF-08 has NO Owner dispatch/variance/closure approval or UC-106 route.
+--     ACCOUNTANT verifies agreement/source/qty, reconciles ACK and closes UC-83;
+--     WAREHOUSE posts actual owned GI-SR or custody release. No second deduction.
+--     Invoice/Credit Note source/date/qty/evidence is an external_reference link;
+--     financial follow-up is independent. On-site scrap/regrade/release remains BF-02/B1.
+-- 31. B1: retain immutable snapshot and active hold/freeze. Count50=48GOOD+2broken
+--     means RECLASS2, total50, no ADJ0. Count48=46GOOD+2broken means delta-2 plus
+--     RECLASS2, never shortage-4. Latest plan/version/count, Owner UC-92 decision,
+--     Warehouse execution/evidence and all linked tasks must match UC-93 closure.
+--     Delta magnitude = line qty; transfers preserve product/lot/owner/total.
+--     Post batch/movements/balances/holds/plan/progress/audit/outbox atomically.
+--     Failed/unknown commit retains freeze until resolved; same-key retry only.
+--     Sufficiently substantiated variance may proceed directly; recount is optional.
+-- 32. Draft TD/GI-S exists before picking, changes no stock; TO confirmation is
+--     execution, not approval. Actual TD/PGI posts only on evidenced handover.
+--     TR closes only after all request remainder/transit/variance/TO is resolved.
+-- All 3.1.0 cross-row, immutable-history, role and transaction controls remain
+-- APPLICATION REQUIREMENTS, not implemented services or SQL Server test results.

@@ -99,6 +99,7 @@ erDiagram
         attr Quality
         attr Quantity
         attr Reservations
+        attr DefectHolds
         attr TransitReference
     }
 
@@ -128,6 +129,9 @@ erDiagram
         attr SourceReference
         attr Items
         attr InspectionEvidence
+        attr ReturnClaims
+        attr AcceptanceDecision
+        attr DemandReopening
         attr Status
     }
 
@@ -138,6 +142,9 @@ erDiagram
         attr DeliveryContact
         attr NeedDate
         attr Items
+        attr NetFulfilment
+        attr ReopenedDemand
+        attr ODCommitmentTransfers
         attr Status
     }
 
@@ -157,7 +164,10 @@ erDiagram
         attr FrozenAt
         attr SnapshotItems
         attr CountAttempts
+        attr DefectHolds
         attr ResolutionPlans
+        attr ExecutionEvidence
+        attr ClosureBatch
         attr Status
     }
 ```

@@ -1,5 +1,8 @@
 # Báo cáo rà soát quy trình WMSD theo góp ý của giảng viên
 
+> Snapshot lịch sử theo ngày trong tiêu đề, giữ nguyên kết luận/số liệu/đường dẫn nguồn tại thời điểm ghi nhận. Trạng thái tài liệu hiện tại: [hậu kiểm đồng bộ 25/10/2026](Ket_qua_dong_bo_tai_lieu_2026-10-25.md). Các mục “chưa sửa/giữ Report 2”, quyền cũ hoặc số bảng cũ bên dưới không mô tả baseline hiện hành.
+
+
 - Ngày rà soát lại: **24/10/2026**.
 - Tài liệu được đánh giá: **Đề xuất quy trình 2 — WMSD — Tiếng Việt**, phiên bản 3.0.0, cập nhật 22/10/2026.
 - Phạm vi: tám luồng BF-01–BF-08; đối chiếu mô tả, ngoại lệ, Mermaid, quyền, business rules và chuỗi chứng từ liên quan.

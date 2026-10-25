@@ -1,8 +1,8 @@
 # Process Proposal 2 — WMSD — English
 
-Updated: 24 October 2026. Version 3.1.0 revises flows against supervisor minutes/draw.io notes. User selections: A1, a failed-delivery intake branch within BF-07; B1, immediate defect blocking with controlled quality posting at stocktake closure; C2, Sales accepts ordinary customer returns and Owner reviews exceptions only; BF-08 has no Owner approval. This is a To-be design, not verified implementation; alternatives and impacts are in section 17.
+Updated: 25 October 2026. Document revision 3.1.2 reviews/synchronizes text while retaining the 24 October business baseline 3.1.0. Baseline 3.1.0 revises flows against supervisor minutes/draw.io notes. User selections: A1, a failed-delivery intake branch within BF-07; B1, immediate defect blocking with controlled quality posting at stocktake closure; C2, Sales accepts ordinary customer returns and Owner reviews exceptions only; BF-08 has no Owner approval. This is a To-be design, not verified implementation; alternatives and impacts are in section 17.
 
-BF-06: copy MISA/paper order → linked WIR/OD → draft GI-S → picking and TO confirmation → handover/PGI → photo POD → DELIVERED → Sales confirms full external payment receipt → COMPLETED. The 24 October revision updates only the VI/EN process proposals. Database design, SQL, Report 1/3 and draw.io/image assets remain at the 22 October 3.0.0 baseline and require relevant updates before publication. The complete document set is not claimed synchronized to 3.1.0.
+BF-06: copy MISA/paper order → linked WIR/OD → draft GI-S → picking and TO confirmation → handover/PGI → photo POD → DELIVERED → Sales confirms full external payment receipt → COMPLETED. On 25 October, Report 1/2/3, detailed design, paired data design, reference SQL, README and change log are synchronized to business baseline 3.1.0. The 25 October follow-up updates embedded Mermaid, standalone context, BF-04 PNGs and the reduced ERD package; only draw.io files stay unchanged. The old draw.io baseline does not define revised behavior. See [25 October verification](../07_ra_soat/Ket_qua_dong_bo_tai_lieu_2026-10-25.md).
 
 Vietnamese: [de_xuat_quy_trinh_2_VI.md](de_xuat_quy_trinh_2_VI.md). Data design: [EN proposal](../03_thiet_ke/de_xuat_database_design_EN.md). Change log: [change_logs.md](../../change_logs.md). SQL supports analysis; MongoDB remains runtime.
 
@@ -12,6 +12,10 @@ Vietnamese: [de_xuat_quy_trinh_2_VI.md](de_xuat_quy_trinh_2_VI.md). Data design:
 | 2.0.0 | 21 October 2026 | Add SO, POD and PAY-CFM; align data design; revise wording and presentation. |
 | 3.0.0 | 22 October 2026 | Separate relocation and warehouse transfer into BF-03/BF-04; renumber through BF-08 and split diagrams/exceptions. |
 | 3.1.0 | 24 October 2026 | Draft GI/TD before picking; two stocktake paths; correct custody/multi-release flows; select A1/B1/C2, remove BF-08 Owner approval and retire UC-106 (97 active/14 retired). Only the two process proposals are updated in this revision. |
+
+| 3.1.1 | 25 October 2026 | Review wording/POD–FD acceptance caps and document synchronization status for 3.1.0; preserve all diagrams/Mermaid and selected business decisions. |
+
+| 3.1.2 | 25 October 2026 | Follow-up updates current Mermaid and related exports: FD bypasses POD, B1 separates commit failure from missing execution, C2 and BF-08 finance. Only draw.io files are excluded. |
 
 ## Warehouse terminology
 
@@ -116,6 +120,8 @@ Devices and entry: responsive phone screens (Q24) support BOX/PIECE/m² entry, r
 
 ## 2. Differences identified in the earlier baseline
 
+> Historical findings recorded before synchronization; Report 1/2/3 and designs are updated on 25 October. Current Mermaid and related exports are now updated; only old draw.io findings remain outside the edit scope.
+
 The table retains the 17 October review findings. Process/database proposals, SQL, Report 1/3 text and current figures now follow the revised BF-06 and eight process IDs. The table below is historical evidence, not a current unresolved-work list.
 
 | Reviewed location | Finding | Correction |
@@ -124,7 +130,7 @@ The table retains the 17 October review findings. Process/database proposals, SQ
 | R3 I.2.3, UC-34–44 and old figure | The old figure combines relocation and warehouse transfer, with redundant TR → approval → inter-warehouse TO. | Separate BF-03 relocation without Owner approval from BF-04 TR → TD → MWTR transfer; remove repeated inter-warehouse TO approval. |
 | R3 I.2.5, FE-06, UC-45–62; R1 I.2/IV/V | WMS still owns independent commercial Sales Orders, pricing and internal invoices, and equates issue with order completion. | Narrow SO (UC-45–48) to an internal tracking copy of a verified external order (MISA/paper) without pricing or internal billing (retire UC-23–25, UC-59–62); link WIR (UC-109) to the saved SO; add Warehouse photo-evidenced customer delivery (DELIVERED, UC-110) and Sales external payment confirmation (COMPLETED, UC-111). |
 | R3 I.2.4, UC-87–93 versus BF-05 | Text already has snapshot; UC-93 assigns Owner Clear Difference, but figure puts posting in Warehouse lane. | Do not claim snapshot is absent. Add count sheet/cutoff and align posting actor. |
-| R3 I.2.6, UC-70–73 versus BF-07 | Text requires Owner acceptance before inspection; figure inspects before Owner disposition. | Use custody → Warehouse inspection → Owner acceptance → receipt by status. |
+| R3 I.2.6, UC-70–73 versus BF-07 | Old text requires Owner acceptance before inspection; figure inspects before Owner disposition. | CR: custody → Warehouse inspection → Sales ordinary acceptance or eligible Owner exception → receipt by status. Undelivered FD uses GI-S/GR-FD without D6/Owner/customer custody. |
 | Existing BF-07 figure | Already contains Goods reusable? with distinct outcomes. | Do not repeat an obsolete Yes/No criticism; check permissions, documents, ownership and complete branch endings. |
 | R3 I.1 context | Cloudinary appears, but only SMTP API-01 is listed; upload/result arrows are reversed. | Add interface if used and correct direction; otherwise remove the external service. |
 | Context versus permissions | Sales sends customer-return data and Accountant sends supplier-return requests, while UC-70/81 only authorize Inventory Staff. | Align arrows and permissions rather than merely renaming actors. |
@@ -485,7 +491,7 @@ Retain existing IDs for traceability; mark retired/new IDs explicitly rather tha
 
 BF-08 uses neither UC-106 nor Owner approval. Accountant UC-107 records agreement/ACK/reconciliation; Warehouse UC-82 posts actual dispatch; Accountant UC-83 closes evidenced quantities. UC-44 belongs only to BF-04. Keep UC-106 history without making old decisions a prerequisite or new posting authority.
 
-Catalogue 3.1.0 retains 111 IDs, 97 active/14 retired: UC-23–25, UC-42, UC-59–62, UC-74–78 and UC-106. UC-103–111 were additions, but UC-106 is now historical only. FD/B1 add no IDs, extending UC-72/73 and UC-92/93 modes. Report 3 specifications, permissions and screens require synchronization and are not updated in this revision.
+Catalogue 3.1.0 retains 111 IDs, 97 active/14 retired: UC-23–25, UC-42, UC-59–62, UC-74–78 and UC-106. UC-103–111 were additions, but UC-106 is now historical only. FD/B1 add no IDs, extending UC-72/73 and UC-92/93 modes. Report 3 specifications, permissions and screens are synchronized to this catalogue on 25 October.
 
 ## 6. Proposed business permission matrix
 
@@ -548,24 +554,25 @@ A context diagram shows **data crossing the software boundary**, not physical go
 
 MISA, Customer, Supplier and Carrier are not direct integration actors without portals/APIs. A separate business context may show their staff-mediated handovers/agreements. Do not add synchronization arrows just to make the diagram look complete.
 
-The current Report 3 and standalone context were synchronized on 22 October: Sales/Warehouse submit replenishment needs; Accountant submits PO/agreements/references; Sales submits SO/WIR/PAY-CFM; Warehouse submits photo POD. Owner supplies decisions and stocktake plans; Administrator supplies permissions and receives results. SMTP is API-01 and controlled evidence storage is API-02, with provider selection still open. Pricing, internal invoices, live MISA and payment gateways are outside the software boundary.
+Current Mermaid contexts in paired processes, Report 3 and the standalone file are synchronized on 25 October: Sales ordinary CR/net demand, Warehouse CR/FD and B1 execution/hold, Accountant SR reconciliation/closure and scoped Owner decisions. Five roles, SMTP API-01 and provider-undecided evidence API-02; no MISA/payment integration.
 
 ```mermaid
+%% WMSD business baseline 3.1.0 - synchronized 2026-10-25
 flowchart LR
-  S[Sales Staff] -->|Copied SO, WIR, replenishment/returns, source choice, PAY-CFM| W((WMSD))
-  W -->|Availability, suggestions, SO/WIR/delivery/completion status| S
-  K[Warehouse Staff] -->|Replenishment, inspection, receipts, PGI, photo POD, counts, reasons| W
-  W -->|Tasks, lot locations, approvals, count sheets| K
-  A[Accountant] -->|PO, supplier agreements, external references| W
-  W -->|Actual quantities and reconciliation| A
-  O[Store Owner] -->|Approval, stocktake plan, master data| W
-  W -->|Requests, exceptions, reports| O
-  AD[Administrator] -->|Accounts, permissions, technical settings| W
+  S[Sales Staff] -->|Copied SO and WIR, net demand, ordinary CR decision, PAY-CFM| W((WMSD))
+  W -->|Availability, source options, delivery and reopened demand, completion status| S
+  K[Warehouse Staff] -->|Draft GI and TO execution, PGI, photo POD, CR or FD intake, count and hold evidence| W
+  W -->|Scoped tasks and sources, inspection results, B1 plans and count sheets| K
+  A[Accountant] -->|PO, verified supplier agreement, ACK reconciliation and SR closure, external references| W
+  W -->|Actual receipt and issue quantities, unresolved returns, separate financial follow-up| A
+  O[Store Owner] -->|RR and TR decisions, eligible CR exceptions, scoped dispositions, B1 review and closure| W
+  W -->|Scoped requests and exceptions, stocktake execution evidence, reports| O
+  AD[Administrator] -->|Accounts, permissions and technical configuration| W
   W -->|Administration results| AD
   W -->|Post-commit notifications| E[SMTP API-01]
   E -->|Delivery results| W
-  W -->|Evidence and delivery photo upload| F[Controlled storage API-02]
-  F -->|Asset reference and result| W
+  W -->|Private evidence and delivery photo upload| F[Controlled storage API-02]
+  F -->|Asset reference and upload result| W
 ```
 
 ## 8. Business rules to revise/add
@@ -616,11 +623,11 @@ Do not combine quality, location, ownership and delivery state in one enum. “I
 | BR-32 | POD requires POSTED GI-S, recipient/time/quantity/photo. Effective POD + posted GR-FD + open FD ≤ valid PGI per line. DELIVERED requires full active quantity > 0; full cancellation at zero delivery → CANCELLED. | UC-58/73/110 |
 | BR-33 | Only Sales confirms full external receipt after DELIVERED to set COMPLETED. Partial payment or prepayment before full delivery cannot complete SO. POD/PAY-CFM change no stock; corrections preserve history and recalculate order progress. | BF-06, UC-48/110/111/108 |
 
-These BR IDs (BR-01–BR-33) are proposed rules. Either make them the canonical SRS catalogue with DR references or retain GB/DR with one-to-one mapping; do not maintain three near-duplicate conflicting sets. GB-NEW-04 (invoice) and GB-NEW-05 (refund eligibility) cease under the narrowed MVP; use BR-18/26/28/31–33 and UC-108/109–111. GB-POLICY continues excluding a general policy editor, while finite minimum/priority parameters remain explicitly allowed.
+BR-01–BR-33 are the canonical rule catalogue synchronized in the SRS and design; DR/GB are mapped historical aliases, not competing rule sets. These remain To-be requirements rather than implemented-service claims. GB-NEW-04 (invoice) and GB-NEW-05 (refund eligibility) cease under the narrowed MVP; use BR-18/26/28/31–33 and UC-108/109–111. GB-POLICY excludes a general policy editor while finite minimum/priority parameters remain allowed.
 
 ## 9. Report 1 and Report 3 synchronization checklist
 
-The 22 October record describes synchronization to 3.0.0. The 24 October revision changes only these two process proposals to 3.1.0. The following tables now identify required follow-up for Report 1/3, data design, SQL and figures; they are not claimed aligned to A1/B1/C2 or removal of BF-08 Owner approval. Report 2/external Word/Google Docs are unchanged. API-02 stores evidence; JOB-01 notifies after commit.
+On 25 October the text of Report 1/2/3, detailed design, paired data design and reference SQL is synchronized to A1/B1/C2/Owner-free BF-08. The tables below remain a contract checklist for maintenance; Mermaid and related exports are updated in the follow-up; only draw.io files stay unchanged. Report 2 scope/test priorities are updated without effort/schedule re-estimation; external Word/Google Docs have not been republished. API-02 stores evidence with provider undecided; JOB-01 notifies after commit.
 
 ### 9.1 Report 1
 
@@ -641,12 +648,12 @@ The 22 October record describes synchronization to 3.0.0. The 24 October revisio
 |---|---|
 | I.1 Context Diagram | Section 7 data; include copied SO, linked WIR, delivery photo POD and external payment confirmation PAY-CFM; decide SMTP/storage; remove out-of-scope pricing/billing arrows. |
 | I.2.1–2.8 Main Business Flow | Align trigger, completion, decisions and figures with section 4 (especially BF-06 SO → WIR → PGI → DELIVERED → COMPLETED), not figures alone. |
-| I.3.1 ERD / I.3.2 Entity Descriptions | Retain SO/WIR/OD/ledger; represent CR/FD return_kind, GI/POD/GR-FD lines/claims, reopened quantity/replacement OD, CR decision_kind, defect holds/B1 RECLASS plans/batches and Invoice/Credit Note EXT-REF type. Follow-up design impact, not implemented schema/API; MongoDB may embed concepts. |
+| I.3.1 ERD / I.3.2 Entity Descriptions | Text/reference DDL now represents CR/FD, GI/POD/GR-FD lines/claims, reopening/replacement OD, decision_kind, defect holds/B1 plans and Invoice/Credit Note EXT-REF. Mermaid ERD updated for A1/B1/C2; runtime schema/API remains unimplemented and MongoDB may embed bounded lifecycle concepts. |
 | I.3.3 Data Business Rules | Map section 8 (BR-01–BR-33); fix invalid ranges/duplicates; transit is not a quality enum. |
 | I.4.1 Actors | Five roles, Warehouse Staff naming, revised Sales (SO copy, linked WIR, external payment COMPLETED), Warehouse (POD photo confirmation DELIVERED), Accountant and Owner responsibilities, and source/destination independence. |
 | I.4.2 Catalogue | Align 111 IDs: 97 active/14 retired including UC-106. UC-71 Sales ordinary/Owner exception, UC-73 CR/FD, UC-83 Accountant closure, UC-92/93 B1. No new ID for FD/RECLASS. |
 | I.4.3 UC diagrams | Sales UC-71 ordinary; Owner UC-71 exceptions and scoped UC-66/92; Warehouse UC-72/73 FD and B1 execution; Accountant UC-83/107/108. Remove UC-106 and other retired UCs from active diagrams; no Owner in BF-08. |
-| I.4.4 Permission Matrix | Align section 6 with sub-operations, warehouse scope, creator≠approver preconditions, Warehouse-only UC-110 and Sales-only UC-111. |
+| I.4.4 Permission Matrix | Align section 6 with sub-operations/warehouses: Owner decisions require creator≠approver; C2 permits Sales own ordinary CR acceptance; BF-08 has no Owner approval. Warehouse-only UC-110 and Sales-only UC-111. |
 | I.5.1 Screen Flow / List | Revise SC-06,08,10–19,22,23; remove SC-25 price, SC-26 invoice and SC-27 refund under narrowed MVP. Support copied SO and linked WIR, fulfilment suggestions, destination receipt at SC-13, count sheet at SC-14, customer delivery photo confirmation (POD), Sales external payment confirmation (PAY-CFM) and external references. |
 | I.5.2 External API Inventory | SMTP only warehouse notifications if retained; declare Cloudinary/file storage interface for evidence/delivery photos or remove it. No automatic MISA API or payment gateway. |
 | I.5.3 Background Jobs | Remove invoice events from JOB-01. Describe threshold evaluation periodically or after balance changes; no duplicate proposals or automatic posting. |
@@ -664,6 +671,7 @@ These diagrams show principal decisions, not complete BPMN swimlanes. Use sectio
 ### BF-01
 
 ```mermaid
+%% WMSD business baseline 3.1.0 - synchronized 2026-10-25
 flowchart TD
  A[Shortage or threshold alert] --> B[Sales or Warehouse creates RR]
  B --> C{Owner approves?}
@@ -687,27 +695,34 @@ flowchart TD
 ### BF-02
 
 ```mermaid
+%% WMSD business baseline 3.1.0 - synchronized 2026-10-25
 flowchart TD
- A[Defect detected] --> B[Warehouse records immediate defect hold and evidence]
- B --> C[Record inspection and proposal]
- C --> X{Resolution type?}
- X -->|Supplier return| H[BF-08 on supplier agreement without Owner approval]
- X -->|Destroy or release outside stocktake| D{Owner approves scoped plan?}
- D -->|No| E[Retain block and add evidence]
- E --> C
- D -->|Yes| F{Authorized action}
- F -->|Regrade or release| G[Warehouse confirms traceable execution]
- F -->|Destroy| I[Confirm actual destruction then deduction]
- X -->|B1| K[Retain hold, BF-05 closure posts RECLASS under freeze]
- G --> J[Reconcile quantities and linked cases]
+ A[Defect detected] --> B[Warehouse records immediate hold and evidence]
+ B --> C{Inside frozen stocktake scope?}
+ C -->|Yes, B1| K[Balance-neutral hold, preserve snapshot and freeze]
+ K --> K2[BF-05 plan and execution, Owner UC-92 and UC-93 closure batch]
+ C -->|No| X{Proposed action?}
+ X -->|Supplier return| H[BF-08 Accountant-verified agreement, no Owner approval]
+ X -->|Scrap, regrade or release| D{Owner approves exact plan and quantity?}
+ D -->|No| E[Retain block and revise with evidence]
+ E --> X
+ D -->|Yes| F{Authorized execution}
+ F -->|Regrade or release| G[Warehouse records actual total-preserving execution]
+ F -->|Scrap| I[Record actual destruction and deduct once]
+ G --> J[Reconcile quantities and accountable linked cases]
  H --> J
  I --> J
- K --> J
+ K2 --> J
+ J --> R{All quantities resolved or assigned to open cases?}
+ R -->|No| W[Keep unresolved quantity blocked]
+ W --> J
+ R -->|Yes| Z[Close resolved defect work]
 ```
 
 ### BF-03
 
 ```mermaid
+%% WMSD business baseline 3.1.0 - synchronized 2026-10-25
 flowchart TD
  A[Warehouse records relocation need] --> B{Same source and destination warehouse?}
  B -->|No| C[Create separate BF-04 case]
@@ -722,6 +737,7 @@ flowchart TD
 ### BF-04
 
 ```mermaid
+%% WMSD business baseline 3.1.0 - synchronized 2026-10-25
 flowchart TD
  A[Inter-warehouse need] --> B[Check compatible supply]
  B --> C{Direct customer dispatch?}
@@ -729,144 +745,173 @@ flowchart TD
  C -->|No| E[Warehouse creates TR]
  E --> F{Owner approves TR?}
  F -->|Reject or revise| G[Record reason without dispatch]
- F -->|Yes| H[Source creates draft TD from TR]
- H --> T[Confirm picking TO with staging or actual pick on TD]
+ F -->|Yes| H[Source creates draft TD before picking]
+ H --> T[Confirm picking TO if staging, otherwise actual pick on TD]
  T --> Q{Actual handover completed?}
  Q -->|No| W[Retain DRAFT awaiting handover]
  W --> Q
- Q -->|Yes| I[Post TD and HO, source decreases, transit increases]
- I --> J[Destination records inspection and posts actual MWTR]
- J --> K{Unresolved variance?}
+ Q -->|Yes| I[Post TD and HO once, source to transit]
+ I --> J[Independent destination inspects and posts actual MWTR by quality]
+ J --> L[Create and confirm put-away TO for verified received quantity]
+ L --> K{Unresolved variance?}
  K -->|Yes| M[Record verified quantity and variance]
  M --> N[Owner approves transfer resolution]
- N --> O[Confirm execution and reconcile again]
- O --> K
- K -->|No| L[Create and confirm put-away TO]
- L --> R{TR demand, transit, variances and TOs all resolved?}
+ N --> O[Warehouse confirms approved execution]
+ O --> R
+ K -->|No| R{TR demand, transit, variances and TOs all resolved?}
  R -->|Yes| Z[Close TR]
  R -->|No| P{Next outstanding work?}
  P -->|Receive dispatched remainder| J
  P -->|Dispatch approved TR remainder| H
  P -->|Resolve variance| M
+ P -->|Finish or traceably cancel TO remainder| L
 ```
 
 ### BF-05
 
 ```mermaid
+%% WMSD business baseline 3.1.0 - synchronized 2026-10-25
 flowchart TD
- A[Owner plans inventory document and scope] --> B[Resolve unfinished tasks]
- B --> C[Freeze, snapshot and count sheet]
- C --> D[Warehouse enters count or recount and any defect hold]
- D --> E{All data complete and valid?}
+ A[Owner plans stocktake and scope] --> B[Resolve unfinished tasks]
+ B --> C[Atomically freeze, snapshot and produce count sheet]
+ C --> D[Warehouse enters count, records balance-neutral defect hold and evidence]
+ D --> E{All required counts valid?}
  E -->|No| D
- E -->|Yes| F{Quantity, location, quality variance or unresolved hold?}
- F -->|No| G[Close and unlock after all work resolves]
- F -->|Yes| X{Select resolution path}
- X -->|Unclear or choose recount| H[Start Recount and retain earlier attempt]
- H --> D
- X -->|Substantiated, recount not mandatory| P[Warehouse proposes actual delta and total-preserving RECLASS]
- P --> I{Owner UC-92 approves exact version?}
- I -->|No| Y[Record return reason and revise plan]
+ E -->|Yes| F{Quantity, quality, location variance or open hold?}
+ F -->|No| G[Close and unlock resolved scope without ADJ0]
+ F -->|Yes| X{Substantiated variance or recount?}
+ X -->|Unclear or choose recount| H[Start Recount, retain previous attempt]
+ H --> H2[Enter Recount with actor, time and evidence]
+ H2 --> E
+ X -->|Substantiated, no mandatory recount| P[Warehouse proposes real delta and balanced RECLASS or location plan]
+ P --> I{Owner UC-92 approves current plan version?}
+ I -->|No| Y[Retain freeze, record reason and revise]
  Y --> X
- I -->|Yes| T[Warehouse confirms quarantine execution against plan]
- T --> J[Owner UC-93 posts delta and RECLASS batch once]
- J --> K{Batch committed, all holds and TOs resolved?}
- K -->|No| W[Retain freeze, check commit and retry same key]
- W --> J
- K -->|Yes| G
+ I -->|Yes| T[Warehouse confirms actual execution against approved plan]
+ T --> V{Execution evidence and closure tasks ready?}
+ V -->|No| T2[Resolve pending execution or task, retain hold and freeze]
+ T2 --> T
+ V -->|Yes| J[Owner UC-93 atomically posts delta if nonzero plus RECLASS and resolves holds]
+ J --> K{Batch outcome?}
+ K -->|Committed, all scope resolved| G
+ K -->|Failed or unknown| W[Retain freeze and hold, look up stable operation key]
+ W --> R{Stored commit result?}
+ R -->|Not committed| J
+ R -->|Unknown| W
+ R -->|Committed| S{All tasks, holds and variances resolved?}
+ S -->|Yes| G
+ S -->|No| T2
 ```
 
 ### BF-06
 
 ```mermaid
+%% WMSD business baseline 3.1.0 - synchronized 2026-10-25
 flowchart TD
- A[Sales copies verified external SO] --> A2[Create or continue linked WIR]
- A2 --> B[Check supply, commitments and net fulfilment]
- B --> C{Supply sufficient for agreed release?}
- C -->|Not yet| D[Suggest BF-01 or BF-04]
- D --> E[Sales chooses waiting or covered partial delivery]
- E --> B
- C -->|Yes| F0[Sales creates or continues warehouse OD]
+ A[Sales copies verified external SO] --> A2[Create or continue original linked WIR]
+ A2 --> B[Check source, commitments and net PGI less valid GR-FD]
+ B --> C{Supply and net allowance sufficient for release?}
+ C -->|No| D[Suggest BF-01 or BF-04, wait or covered partial delivery]
+ D --> B
+ C -->|Yes| F0[Sales reuses OD or transfers versioned reopened commitment to replacement]
  F0 --> F1[Warehouse creates or reuses GI-S DRAFT before picking]
- F1 --> F[Reserve and create picking TO]
- F --> G[Enter results and confirm TO into staging]
- G --> H{Shortage or defect in picked quantity?}
+ F1 --> F[Reserve once and create picking TO]
+ F --> G[Enter actual results and confirm TO into staging]
+ G --> H{Picking shortage or defect?}
  H -->|Yes| I[Record hold, BF-02 or BF-05, inform Sales]
  I --> B
  H -->|No| J[Update draft GI-S to actual quantity]
  J --> K{Actual handover completed?}
- K -->|Not yet| L[Keep staged or traceably unpick]
+ K -->|No| L[Retain staging or traceably unpick]
  L --> B
- K -->|Yes| M[Record HO and PGI once]
- M --> N[Warehouse records GI-linked photo POD within shared FD cap]
- N --> O{Delivery outcome?}
- O -->|Missing photo or awaiting receipt| N
- O -->|Unreceived goods physically return| O2[BF-07-FD posts GR-FD and reopens exact source]
- O2 --> O3{Sales choice for reopened quantity?}
+ K -->|Yes| M[Record HO and PGI once, preserve gross ledger]
+ M --> O{Outcome of dispatched quantity?}
+ O -->|Awaiting customer receipt| W[Keep delivery pending, no second PGI]
+ W --> O
+ O -->|Unreceived goods physically return| O2[BF-07-FD GR-FD and net reopening in one commit]
+ O2 --> O3{Sales choice for received-back quantity?}
  O3 -->|Redeliver| B
- O3 -->|Wait| O4[Keep SO pending without duplicate demand]
+ O3 -->|Wait| O4[Keep original demand pending without duplication]
  O4 --> O3
- O3 -->|Cancel received-back quantity| O5[Record cancellation and version, recalculate active SO]
- O -->|Partly received, demand remains| B
- O -->|Active quantity greater than zero fully POD-confirmed| P[SO DELIVERED]
- P --> Q{Sales confirms full external payment?}
- Q -->|Not yet| R[Keep DELIVERED awaiting payment]
+ O3 -->|Cancel not-redelivered quantity| O5[Resolve tasks, record cancellation and current version]
+ O5 --> N2
+ O -->|Customer actually received| N[Warehouse enters GI-linked recipient, quantity, time and stored photo]
+ N --> N0{Photo, version and shared POD-FD source cap valid?}
+ N0 -->|No| N
+ N0 -->|Yes| N1[Confirm POD once, recompute SO]
+ N1 --> N2{Current remaining obligation?}
+ N2 -->|Unexecuted or validly reopened demand| B
+ N2 -->|Dispatched, still unreceived| O
+ N2 -->|All cancelled, zero delivery| S0[SO CANCELLED]
+ N2 -->|Positive active quantity fully delivered| P[SO DELIVERED]
+ P --> Q{Sales confirms full external receipt on current version?}
+ Q -->|No| R[Keep DELIVERED awaiting full receipt]
  R --> Q
- Q -->|Yes| S[Record PAY-CFM and SO COMPLETED]
+ Q -->|Yes| S[Record PAY-CFM and SO COMPLETED without stock change]
 ```
 
 ### BF-07
 
 ```mermaid
+%% WMSD business baseline 3.1.0 - synchronized 2026-10-25
 flowchart TD
  A[Warehouse or Sales identifies intake source] --> B{Customer received this quantity?}
- B -->|No, failed delivery physically returns| F1[Warehouse creates FD from GI-S and evidence]
- F1 --> F2{PGI less POD, GR-FD and claims permits intake?}
- F2 -->|Unclear or exceeded| W[Hold case without posting]
- F2 -->|Yes| F3[Enter ARR and actual quantity, lot and quality]
- F3 --> F4[Post verified GR-FD, without CR or D6]
- F4 --> F5[Atomically reopen net SO WIR OD demand]
- F5 --> F6[Sales chooses wait, redelivery or received-back cancellation]
- F6 --> Z[Reconcile and close resolved work]
- B -->|Yes, ordinary customer return| C1[Sales creates CR and checks source and D6]
- C1 --> C2{Source and eligibility substantiated?}
+ B -->|No, failed delivery physically returns| F1[Warehouse creates FD from valid posted GI-S and failure evidence]
+ F1 --> F2{Shared POD-FD source allowance and actual intake valid?}
+ F2 -->|Unclear or exceeded| W[Keep pending case without posting or reopening]
+ F2 -->|Yes| F3[Record ARR and INS, actual quantity, lot and quality]
+ F3 --> F4[One commit: GR-FD, consume claim, stock and original SO-WIR-OD net reopening]
+ F4 --> F5[Keep gross ledger and new source version, no D6, Owner or customer custody]
+ F5 --> F6[Sales waits, redelivers or cancels received-back not-redelivered remainder]
+ F6 --> Z[Reconcile resolved quantities and accountable open cases]
+ B -->|Yes, post-receipt customer return| C1[Sales creates CR from POD or verified historical delivery and D6 evidence]
+ C1 --> C2{Source and conditions substantiated?}
  C2 -->|Unknown| W
- C2 -->|Ineligible| R[Reject and hand back any held custody]
- C2 -->|Yes| C3[Warehouse records custody and actual inspection]
- C3 --> C4{Eligible ordinary case or exception?}
- C4 -->|Ordinary| S[Sales accepts or rejects after inspection]
- C4 -->|Substantiated exception| O[Owner decides exact version]
- S --> D{Accepted by correct authority?}
+ C2 -->|Ineligible| R[Reject, actual handback of held customer custody]
+ C2 -->|Yes| C3[Warehouse records custody and per-quantity inspection and assessment]
+ C3 --> C31{Latest D6 and received-source cap valid after inspection?}
+ C31 -->|Unknown| W
+ C31 -->|Ineligible| R
+ C31 -->|Yes| C4{Ordinary GOOD-UNUSED proven terms or eligible exception?}
+ C4 -->|Ordinary| S[Sales STANDARD_ACCEPTANCE or rejection, own CR allowed]
+ C4 -->|Eligible exception| O[Distinct-requester Owner EXCEPTION_APPROVAL or rejection]
+ S --> D{Accepted kind, role, version and quantity match?}
  O --> D
- D -->|No| R
- D -->|Yes| Q{Good quality?}
- Q -->|Yes| G[Warehouse GR-CR, confirmed TO then availability]
- Q -->|No| H[Warehouse quarantine GR-CR, BF-02 or BF-08]
+ D -->|No acceptance| R
+ D -->|Stale or mismatched decision| C3
+ D -->|Yes| Q{Accepted quality?}
+ Q -->|GOOD| G[Warehouse posts GR-CR, consumes claim and confirms put-away TO]
+ Q -->|Approved defective exception| H[Warehouse posts quarantine GR-CR and links BF-02 or BF-08]
  R --> Z
  G --> Z
  H --> Z
- Z --> X[Accountant records external finance references if applicable]
+ Z --> X[CR never reopens sales demand, external finance remains separate]
 ```
 
 ### BF-08
 
 ```mermaid
+%% WMSD business baseline 3.1.0 - synchronized 2026-10-25
 flowchart TD
- A[Warehouse creates SR and segregates quantity] --> B[Accountant records supplier agreement]
- B --> C{Valid source, quantity and agreement?}
- C -->|Not yet| D[Keep case, negotiate or BF-02]
+ A[Warehouse creates SR and segregates quantity] --> B[Accountant verifies supplier agreement, source, quantity and version]
+ B --> C{Source, agreed quantity and evidence valid?}
+ C -->|No| D[Keep case open and defects blocked, negotiate or scoped BF-02]
  D --> B
- C -->|Yes| G[Warehouse drafts GI-SR and enters actual picking]
+ C -->|Yes, no Owner gate| G[Warehouse drafts GI-SR and records actual picking]
  G --> H{Actual handover completed?}
- H -->|Not yet| W[Retain draft and segregated stock]
+ H -->|No| W[Retain draft and segregated stock]
  W --> H
- H -->|Yes| I[Post source-correct GI-SR or CUS-OUT once]
- I --> J[Accountant records ACK and reconciles quantity]
- J --> K{Every quantity accounted for?}
- K -->|Not yet| M[Accountant records supplier resolution, Warehouse confirms documents]
+ H -->|Yes| I[Post owned GI-SR or supplier CUS-OUT once with HO]
+ I --> J[Accountant records later ACK and compares actual quantities]
+ J --> K{All dispatched quantities accounted for?}
+ K -->|No| M[Accountant reconciles supplier resolution, Warehouse records actual stock events]
  M --> J
- K -->|Yes| L[Accountant closes warehouse work UC-83 without Owner approval]
- L --> N[Record Invoice or Credit Note, unverified finance stays pending]
+ K -->|Yes| L[Accountant UC-83 closes warehouse work, no Owner or UC-106]
+ I --> N[Accountant links external Invoice or Credit Note, source, date and matched quantity]
+ N --> N2{External documents verified?}
+ N2 -->|No| N3[Financial follow-up PENDING_EXTERNAL]
+ N2 -->|Yes| N4[Financial follow-up RECORDED_EXTERNAL]
+ L --> Z[ACK and closure never deduct again, finance does not gate warehouse closure]
 ```
 
 ## 11. Business acceptance scenarios
@@ -895,7 +940,7 @@ flowchart TD
 | Supplier-defective goods meet other conditions and Owner accepts | Receive approved quantity into quarantine and link BF-02/08; customer-damage rejection does not cover every defect. |
 | Torn packaging with intact tiles or remaining pieces in open box | Inspect/count actual pieces; do not automatically set DAMAGED; use snapshotted conversion. |
 | Eligibility assessment changes after Owner approval | New version and renewed review/approval before posting; old approval cannot be reused. |
-| Attempt to create WIR without a saved SO, or with WIR/OD/POD line quantities exceeding their layer caps | Block save/confirm: `sum(active WIR) ≤ ordered − authorized_cancelled` per SO line; `sum(active OD) ≤ authorized WIR qty` per WIR line (never summing WIR and OD as separate demand); each POD line must reference one POSTED GI-S line and WIR/SO line with `sum(distinct POD qty) ≤ valid POSTED PGI qty` (excluding reversed/ineligible dispatch), while same-key retries return prior result without a second stock deduction. |
+| Attempt to create WIR without a saved SO, or with WIR/OD/POD line quantities exceeding their layer caps | Block save/confirm: `sum(active WIR) ≤ ordered − authorized_cancelled` per SO line; `sum(active OD) ≤ authorized WIR qty` per WIR line (never summing WIR and OD as separate demand); each POD line must reference one POSTED GI-S line and WIR/SO line with `effective POD + valid GR-FD + OPEN FD ≤ valid PGI` (excluding reversed/ineligible dispatch), while same-key retries return prior result without a second stock deduction. |
 | PGI/carrier handover completed, or customer delivery submitted without required photo / only partial quantity delivered / all quantities cancelled with zero delivery | Stock deducts once at PGI, but SO does not become DELIVERED; missing photo loops only to POD confirmation (no re-picking/re-PGI), partial delivery keeps SO in PARTIALLY_DELIVERED, and cancelling all quantities with zero actual delivery sets SO = CANCELLED (never DELIVERED or COMPLETED). |
 | SO is DELIVERED with photos, or customer paid externally before full delivery | Only Sales Staff may confirm PAY-CFM (UC-111) after DELIVERED to set SO = COMPLETED; unpaid/partial payment keeps SO at DELIVERED, early payment before DELIVERED cannot complete the order, and neither DELIVERED nor COMPLETED changes stock. |
 
@@ -961,7 +1006,7 @@ Survey evidence establishes current-practice facts; D1–D8 and the 21 October B
 3. Review eight BFs using section 11 scenarios; keep R1 IV, R3 I.2 and current figures synchronized whenever a flow changes.
 4. Align the 111-ID catalogue: 97 active/14 retired including UC-106, revised UC-71/73/83/92/93, C2/B1/BF-08 permissions, specifications, context, screens and rules. Preserve history and five roles.
 5. Align model, screens, API/jobs, NFR and acceptance criteria in Report 3, database design proposals and reference SQL. Every UC/FE/BF/SC/BR reference must resolve.
-6. Use the same versioned figure set for reports/slides. Slides simplify through identified subprocesses, not different flows.
+6. When figures are within update scope, publish the same versioned set for reports/slides using identified subprocesses for simplification. The follow-up updates Mermaid and related exports; only draw.io files stay unchanged with explicit version limits.
 
 No email, message or external review request was sent in preparing this proposal. review1's slide/survey communications are separate team actions.
 
@@ -1056,7 +1101,7 @@ Mainflows contain only business-performing actor lanes: Store Owner, Sales Staff
 
 Each activity names actor, action and created/confirmed document, for example “Warehouse Staff — confirm transfer receipt — MWTR”. System consequences are postconditions, not a separate lane. Rejection, revision, partial receipt/delivery and discrepancy branches are noted in the flow and process. Exceptions may reference another process rather than crowding every detail into the mainflow.
 
-Reference figures remain 22 October 3.0.0: [VI/EN draw.io, 16 pages](../04_so_do/WMSD_Mainflows_VI_EN.drawio), [EN draw.io, 8 pages](../04_so_do/WMSD_Mainflows_EN.drawio), BF-04 [VI](../04_so_do/WMSD_Mainflow_BF04_VI.png)/[EN](../04_so_do/WMSD_Mainflow_BF04_EN.png). Not revised to 3.1.0 here; redraw from current sections 4/10/15 rather than restoring old BF-08 Owner approval or mandatory recount. The 20 October BF-03B images remain historical.
+Draw.io files remain the 22 October 3.0.0 snapshot: [VI/EN draw.io, 16 pages](../04_so_do/WMSD_Mainflows_VI_EN.drawio), [EN draw.io, 8 pages](../04_so_do/WMSD_Mainflows_EN.drawio), BF-04 [VI](../04_so_do/WMSD_Mainflow_BF04_VI.png)/[EN](../04_so_do/WMSD_Mainflow_BF04_EN.png) are regenerated from section 10 Mermaid on 25 October at baseline 3.1.0, not from old draw.io. Current Mermaid/context/ERDs are synchronized; old draw.io cannot restore BF-08 Owner approval or mandatory recount. The 20 October BF-03B images remain historical.
 
 ## 17. 24 October decisions, risk alternatives and impact
 
@@ -1095,8 +1140,8 @@ Book50 good/count48 good+2 broken → RECLASS2, total50, no ADJ=0. Count 46 good
 
 | Impact | Result |
 |---|---|
-| Documents updated | Only VI/EN process proposals 3.1.0: mainflows, Mermaid, UC mapping, permissions, rules, documents/statuses and acceptance scenarios. The 24 October review remains a snapshot of findings before corrections. |
-| Documents pending | Report 1/3, VI/EN data designs, reference SQL, draw.io/PNG assets and shared change log. They are not claimed synchronized in this revision. |
-| Data/API implementation assessment | CR/FD modes, decision_kind, GR-FD/POD line claims, net/reopened fulfilment/replacement OD, defect hold/RECLASS and closure batch, UC-71/73/83/92/93 authority and inactive UC-106. No schema/API/backend was changed or tested in this document revision. |
+| Documents updated | 25 October: Report 1/2/3, detailed design, paired data design, reference DDL and overview/history align to business baseline 3.1.0. Process document 3.1.2 also updates current Mermaid; older review reports remain snapshots. |
+| Documents pending | Only draw.io files are excluded/preserved; Mermaid, context and related PNG/HTML exports are updated. External Word/Google Docs have not been republished; old draw.io is not claimed to match revised text. |
+| Data/API implementation assessment | Reference DDL now represents A1/B1/C2 and API/authority/acceptance contracts are aligned. Runtime MongoDB/API/backend remain unmodified and untested; service/transaction controls still require implementation. |
 | Verification criteria | Section 11 draft/post, two stocktake paths, capped GR-FD/redelivery, disjoint CR/FD, Sales ordinary/Owner exceptions, Owner-free BF-08 and B1 quality-only/rollback scenarios. Proposed criteria, not software test results. |
-| Schedule | Finalize paired process logic, then align detailed design/UCs and figures to the same version. No implementation story-point/deadline estimate without backend assessment. |
+| Schedule | Implement/verify R-01–26/T01–T56 against current processes; revise draw.io separately when requested. No invented story-point/deadline/Report 2 effort re-estimate. |

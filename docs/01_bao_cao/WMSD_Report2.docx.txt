@@ -42,6 +42,7 @@ ________________
 
 
 Change Log
+25/10/2026 — Version 3.1.0: align scope, change control and test priorities with A1/B1/C2 and Owner-free BF-08. Original effort/capacity/milestone figures retained pending implementation impact estimation.
 Date
 	A*
 M, D
@@ -150,7 +151,12 @@ I. Project Overview
 Warehouse Management System Development (WMSD) is a responsive web application for the warehouse operations of Cửa hàng điện nước gạch ốp lát Tân Thương. The project focuses on physical-stock accuracy and traceability for one business establishment with configured warehouse areas and storage locations. The system records and links replenishment requests, purchase orders, supplier confirmations, goods receiving and inspection, lot/location inventory, defective goods, stock movements and transfers, stocktake and approved adjustments, warehouse issues, customer returns, supplier returns, reports and audit history.
 Tile inventory is controlled by product, unit of measure, lot, tone, actual calibre, quality status and storage location. Box, piece and square-metre quantities follow the product conversion rule. Stock-affecting transactions preserve their source document, responsible user, time, quantity and status so warehouse staff can trace how recorded inventory changed.
 Out of scope for the first release are full accounting, customer debt management, statutory electronic invoicing, and live integration with MISA eShop. MISA eShop remains the store’s existing retail system; WMSD keeps the references required to reconcile warehouse operations without replacing the full retail/accounting solution.
-WMSD is developed as the project’s warehouse-focused operational layer and is aligned with the approved Report 1 scope and the current SRS/use-case baseline.
+WMSD is developed as the project’s warehouse-focused operational layer and follows the selected Report 1/SRS process baseline 3.1.0, synchronized 25 October 2026: eight BFs, nine features, five application roles, 111 UC IDs (97 active/14 retired), BR-01–33 and 31 screens (28 active/3 retired).
+Current fulfilment: verified external order → copied SO → linked WIR/OD → GI-S draft before picking/TO → actual PGI → Warehouse photo POD/DELIVERED → Sales full external receipt PAY-CFM/COMPLETED. No sales pricing, internal invoicing, refund/payment execution or live MISA synchronization.
+A1 adds Warehouse failed-delivery intake/GR-FD against undelivered GI-S, without D6, fictitious POD, Owner or customer custody; actual receipt atomically reopens original SO/WIR/OD net demand/version. Claims alone cannot reopen. Preserve gross ledger and transfer replacement OD commitments without duplicate demand; ordinary GR-CR does not reopen.
+B1 retains FROZEN immutable snapshot; Warehouse records immediate balance-neutral defect hold, proposes/confirms resolution execution; Owner UC-92/93 approves/posts actual nonzero delta plus RECLASS/location before resolved-scope unlock. Substantiated differences may proceed directly; unclear/chosen recount retains attempt history. Quality-only requires no ADJ=0.
+C2 permits Sales to accept/reject own ordinary CR after Warehouse inspection under verified D6 conditions; Owner only eligible exceptions with distinct requester, never overriding D6 exclusions/UNKNOWN. BF-08 has no Owner dispatch/variance/closure approval: Accountant verifies agreement/reconciles/closes UC-83/107, Warehouse posts actual stock events. UC-106 retired; ID/history retained.
+Planning impact: assess source-claim concurrency, net reopening/version, typed decisions, B1 closure atomicity and affected UI/API/MongoDB work before estimating revised effort or iteration allocation. Sections 3–4 retain the original 14-week/five-member plan and effort/capacity values, not a new cost or delivery commitment. Current Mermaid and related PNG/HTML exports are updated in the follow-up; only draw.io files remain excluded. Meeting/survey/PDF evidence and external Word/Google Docs are not rewritten/published by this update.
 2. Assumptions & Constraints
 The project is planned under the following assumptions and constraints. The items below are limited to factors that directly affect scope, schedule, resources, quality and external-system boundaries.
 No
@@ -452,7 +458,7 @@ The project tracks a maximum of four major risks. Risks are reviewed during week
 	Receiving, transfer or return exceptions are implemented only as happy paths.
 	Medium
 	High
-	Test shortage, surplus, damage, wrong characteristics, pending inspection, in-transit and rejected-return cases.
+	Test shortage, surplus, damage, wrong characteristics, pending inspection/transit and CR/FD source caps, same-key receipt/reopening, B1 quality-only/rollback, Sales ordinary versus Owner exception and Owner-free supplier return/closure.
 	R04
 	Parallel development creates inconsistent stock-posting logic.
 	Medium
@@ -517,7 +523,7 @@ Activity
 	Verify individual functions and services before they participate in end-to-end warehouse flows.
 	Integration Testing
 	• Integration testing is performed after related modules are combined.
-• Test flows include purchase-to-receipt, receipt-to-stock, stock movement/transfer, stocktake-to-adjustment, issue, and return scenarios.
+• Test flows include purchase/inspection/put-away, multi-trip transfer, GI draft-before-pick/PGI/POD/PAY-CFM, A1 GR-FD/net redelivery, C2 CR and Owner-free BF-08; B1 hold/count/direct explanation or recount/plan/execution/closure.
 • Each iteration maintains integration test evidence and defect results.
 	Verify that data, quantities, statuses and references are transferred correctly between connected modules.
 	System Testing
@@ -531,6 +537,8 @@ Activity
 	Ensure that fixes do not break previously working warehouse functions.
 	Table 2.1 Quality Management
 A defect is considered closed only after the fix is implemented and verified by re-test. Critical defects that can corrupt inventory quantity, expose unauthorized operations, or block a main warehouse flow must be resolved before the related software package is accepted for the next testing stage.
+3.1.0 verification priorities (proposed work, not executed test results): paired data/detailed designs define R-01–26 and T01–T56. Run UI→API→MongoDB/evidence checks with wrong role/scope, source/version conflict, concurrent POD/FD/CR claims, partial receipt, unknown commit/retry, downstream reversal and failure rollback. Verify B1 book50/count48GOOD+2broken retains total50, and 46GOOD+2broken posts delta−2 plus RECLASS2. Ensure retired UC-106 has no action/route and no Owner gate remains in BF-08.
+
 3. Project Training Plan
 Training activities are planned according to the knowledge required by each project role. The objective is not to train every member on every technology in depth, but to ensure that the members responsible for a work package have enough knowledge to implement and review it correctly. Training is performed mainly during the early planning/design period and reinforced before the related iteration.
 Training Area
@@ -542,7 +550,7 @@ Training Area
 	All members
 	Weeks 1-2; 2 internal sessions
 	Mandatory
-	Review purchase/receipt, lot-tone-calibre, UOM conversion, stock status, transfer, stocktake, issue and return rules.
+	Review purchase/receipt, lot-tone-calibre/UOM, draft/post and multi-trip transfer; A1 shared POD/FD/CR caps/net reopening; B1 holds/RECLASS/closure and C2/BF-08 authority.
 	Requirement Analysis & Use Case Consistency
 	Project Manager, Business Analyst, Tester
 	Weeks 1-3; 2-3 hours/week

@@ -1,3 +1,41 @@
+# Cập nhật Mermaid và bản xuất liên quan, chỉ loại trừ draw.io — 25/10/2026
+
+Theo yêu cầu bổ sung, phạm vi loại trừ chỉ còn **file draw.io**. Các mục nhật ký cũ về “giữ nguyên diagrams/Mermaid” bên dưới phản ánh lượt trước, không mô tả trạng thái hiện tại. Chi tiết tại [hậu kiểm mục 6](docs/07_ra_soat/Ket_qua_dong_bo_tai_lieu_2026-10-25.md#6-bổ-sung-mermaid--chỉ-loại-trừ-file-drawio).
+
+- Hai quy trình lên bản tài liệu 3.1.2, baseline nghiệp vụ giữ 3.1.0: cập nhật 18 Mermaid context/BF. BF-06/07 tách kết quả sau PGI khỏi POD trước nhánh FD; GR-FD/claim/tái mở nguồn cùng commit. BF-02/05 làm rõ freeze/hold, recount, thực hiện B1 và lỗi/unknown commit. BF-04 theo dõi toàn TR, put-away phần nhận hợp lệ; BF-08 không Owner, tài chính riêng.
+- Database VI/EN và Report 3 dùng cùng ba ERD Mermaid hiện hành cho A1, B1, C2/BF-08; có các khóa/trường quan trọng, không vẽ đủ 82 bảng DDL. Context Report 3 và file `.mermaid` đồng bộ cùng bản EN trong quy trình.
+- Đồng bộ generator/Mermaid/Markdown/README/HTML của gói ERD rút gọn; giữ 14 thực thể/32 quan hệ, thêm nhóm thuộc tính claim/quyết định/tái mở/OD transfer và B1 hold/execution/closure. Dựng lại PNG BF-04 VI/EN từ Mermaid, có nhãn baseline/ngày; không lấy draw.io cũ làm nguồn.
+- Mermaid 12.2.0 parse/render thành công 31 nguồn hiện hành, 22 graph khác nhau. Tám khối Mermaid lịch sử parse được và giữ nguyên. Đã xem render đại diện; kiểm cấu trúc VI–EN và đồng bộ các bản nguồn/bản xuất.
+- SHA-256 xác nhận sáu file draw.io không thay đổi. Giữ Mermaid/PNG lịch sử và nguồn khảo sát/biên bản/PDF; không sửa DDL/backend trong lượt bổ sung. README, phạm vi ở Report 1/2/3, thiết kế và báo cáo hậu kiểm phản ánh yêu cầu mới. Không stage/commit.
+
+---
+
+# Đồng bộ tài liệu theo quy trình 3.1.0, loại trừ diagrams — 25/10/2026
+
+## 1. Phạm vi và chuẩn hiện hành
+
+Theo yêu cầu rà soát toàn repo dựa trên hai bản quy trình vừa cập nhật, đã đồng bộ tài liệu hiện hành với quyết định A1/B1/C2 và BF-08 không Owner approval. Baseline nghiệp vụ giữ **3.1.0 ngày 24/10**; hai bản quy trình lên patch tài liệu **3.1.1** để sửa trạng thái phát hành/khuyến nghị còn sót và làm rõ trần nguồn trong nghiệm thu, không đổi các quyết định đã chốt. Chi tiết tại [hậu kiểm 25/10](docs/07_ra_soat/Ket_qua_dong_bo_tai_lieu_2026-10-25.md).
+
+Kiểm kê trước sửa: 47 file; 30 file ngoài sơ đồ và 17 file diagrams/gói ERD. Sửa 15 file có sẵn và thêm một báo cáo hậu kiểm. Các mục nhật ký từ 24/10 trở về trước dưới đây là lịch sử theo đúng mốc ghi nhận, gồm cả tuyên bố “Report 2 giữ nguyên/chưa đồng bộ” ở lượt cũ.
+
+## 2. Nội dung đã cập nhật
+
+- Report 1/2/3, thiết kế hệ thống, database VI/EN, SQL tham chiếu, README và trạng thái hai quy trình cùng baseline: 8 BF, 5 role, 111 UC với **97 active/14 retired**, BR-01–33, SC-01–31 với 28 active/3 retired. UC-106 giữ ID/lịch sử, không quyền thực thi/association/action/route mới.
+- A1: Warehouse nhận FD theo GI-S chưa POD và bằng chứng, không D6/Owner/POD giả/custody khách; GR-FD thực về và tái mở đúng SO/WIR/OD gốc ròng cùng commit. POD/FD/CR chia trần dòng nguồn; consume claim không cộng trùng receipt, OD thay thế chuyển cam kết có version, đảo kiểm downstream. GR-CR thông thường không tự tái mở nhu cầu.
+- B1: giữ FROZEN/snapshot, hold/evidence không đổi balance được ghi ngay. Cho phép giải trình trực tiếp hoặc recount; Warehouse lập/xác nhận thực hiện phương án, Owner UC-92/93 duyệt/post delta thực tế và RECLASS/vị trí cùng batch trước mở khóa. Quality-only không ADJ=0; không thiếu/hủy hai lần một lượng lỗi.
+- C2: Sales STANDARD_ACCEPTANCE CR thông thường sau Warehouse kiểm, có thể cùng creator; Owner EXCEPTION_APPROVAL chỉ ngoại lệ đủ điều kiện và khác người đề xuất. Không vượt điều cấm D6/UNKNOWN. BF-08 bỏ Owner duyệt xuất/sai lệch/đóng; Accountant UC-107/83 xác minh/đối chiếu/đóng, Warehouse thực xuất, tài chính Invoice/Credit Note độc lập.
+- TD/GI-S nháp trước picking; TO xác nhận thực hiện, post tại bàn giao. TR chỉ đóng khi hết phần cần thực hiện/transit/sai lệch/TO. SRS đồng bộ cả catalogue, quyền, associations, đặc tả và hợp đồng màn hình, không chỉ thêm ghi chú tổng quát.
+- DDL tham chiếu 3.1.0: 82 bảng, 215 FK, 2 view; thêm 9 bảng cho FD/claim/tái mở/OD transfer và B1 hold/resolution; thêm `reference_date`, ngoại lệ CHECK C2 và thông tin xác minh thỏa thuận SR thay Owner authorization. Thiết kế giữ MongoDB runtime, mở rộng **R-01–26/T01–T56**.
+- Report 2 cập nhật phạm vi, rủi ro/ưu tiên kiểm thử/đào tạo; giữ số liệu effort/capacity/lịch gốc, chưa tái ước lượng OBS-01. Đề xuất bảy quy trình và ba báo cáo rà soát lịch sử chỉ sửa banner/chỉ mục; thân nội dung cũ được bảo toàn.
+
+## 3. Hậu kiểm và phần giữ nguyên
+
+Đã kiểm đối chiếu dãy mã, tên/trạng thái/quyền và screens/specs/appendix, BR/R/T VI–EN, 40 mã nhánh A/E/FD; cấu trúc bảng/fence/Unicode và liên kết nội bộ hiện hành. ScriptDom 180.140.0 / TSql160Parser parse DDL đạt **0 lỗi**, 6 batch; kiểm tĩnh 82 bảng/PK, 215 FK và 2 view. `git diff --check` đạt. Kết quả chi tiết nằm trong báo cáo hậu kiểm; các case nghiệm thu không phải backend tests đã chạy.
+
+SHA-256 xác nhận 17 file sơ đồ/gói ERD, 13 file nguồn (CSV, sáu biên bản, năm PDF, link tham khảo) và file đánh giá database 23/10 chưa tracked giữ nguyên. Các khối Mermaid nhúng và thân snapshot lịch sử không đổi. Không sửa hai file chưa tracked từ đầu, không sửa `debug.log`. Không render/xuất lại hình, sửa Word/Google Docs ngoài repo hoặc chạy SQL Server/MongoDB/backend. Script/bản chụp QA và parser đặt ngoài repo. Không stage/commit.
+
+---
+
 # Cập nhật quy trình theo góp ý GVHD — 24/10/2026 — phiên bản 3.1.0
 
 ## 1. Phạm vi và căn cứ

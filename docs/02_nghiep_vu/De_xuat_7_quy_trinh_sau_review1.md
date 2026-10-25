@@ -1,6 +1,6 @@
 # Đề xuất 7 quy trình nghiệp vụ WMSD sau review 1
 
-> Tài liệu lịch sử: giữ nội dung theo mốc ghi nhận cũ. Phương án hiện hành là [quy trình 2 VI](de_xuat_quy_trinh_2_VI.md) / [EN](de_xuat_quy_trinh_2_EN.md), baseline 3.0.0 ngày 22/10/2026. Các tên nguồn máy cá nhân dưới đây chỉ lưu xuất xứ; bộ SAP v4.1 trong repo không được coi là bản v4.2 đã dùng trước đây.
+> Tài liệu lịch sử: giữ nội dung theo mốc ghi nhận cũ. Phương án hiện hành là [quy trình 2 VI](de_xuat_quy_trinh_2_VI.md) / [EN](de_xuat_quy_trinh_2_EN.md), baseline nghiệp vụ 3.1.0 ngày 24/10, đồng bộ tài liệu 25/10/2026; xem [hậu kiểm mới](../07_ra_soat/Ket_qua_dong_bo_tai_lieu_2026-10-25.md). Các tên nguồn máy cá nhân dưới đây chỉ lưu xuất xứ; bộ SAP v4.1 trong repo không được coi là bản v4.2 đã dùng trước đây.
 
 Ngày đối chiếu: 17/10/2026. Đây là phương án To-be và bản phân tích tác động, chưa phải xác nhận thực địa hay bản SRS đã được cửa hàng phê duyệt. Hai report gốc không bị sửa.
 

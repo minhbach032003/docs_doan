@@ -1,5 +1,8 @@
 # Báo cáo rà soát tính nhất quán và đồng bộ tài liệu dự án WMSD (22/10/2026)
 
+> Snapshot lịch sử theo ngày trong tiêu đề, giữ nguyên kết luận/số liệu/đường dẫn nguồn tại thời điểm ghi nhận. Trạng thái tài liệu hiện tại: [hậu kiểm đồng bộ 25/10/2026](Ket_qua_dong_bo_tai_lieu_2026-10-25.md). Các mục “chưa sửa/giữ Report 2”, quyền cũ hoặc số bảng cũ bên dưới không mô tả baseline hiện hành.
+
+
 > **Bản ghi trước chỉnh sửa.** Các phát hiện và số dòng bên dưới phản ánh snapshot commit fdf6e7a. Đã thực hiện một lượt đồng bộ tiếp theo theo yêu cầu người dùng, giữ nguyên Report 2; xem [kết quả hậu kiểm](Ket_qua_dong_bo_tai_lieu_2026-10-22.md) để biết trạng thái hiện tại. Không dùng số dòng lịch sử này làm số dòng sau sửa.
 
 - **Dự án:** Warehouse Management System Development (WMSD) — Capstone SEP490_G56 (Cửa hàng gạch ốp lát Tân Thương)

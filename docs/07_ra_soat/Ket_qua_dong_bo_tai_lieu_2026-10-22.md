@@ -1,5 +1,8 @@
 # Kết quả đồng bộ tài liệu WMSD — 22/10/2026
 
+> Snapshot lịch sử theo ngày trong tiêu đề, giữ nguyên kết luận/số liệu/đường dẫn nguồn tại thời điểm ghi nhận. Trạng thái tài liệu hiện tại: [hậu kiểm đồng bộ 25/10/2026](Ket_qua_dong_bo_tai_lieu_2026-10-25.md). Các mục “chưa sửa/giữ Report 2”, quyền cũ hoặc số bảng cũ bên dưới không mô tả baseline hiện hành.
+
+
 Đã cập nhật bộ tài liệu hiện hành trong repository theo baseline **3.0.0**, xử lý các phát hiện SYNC-01–09 của [báo cáo trước sửa](Bao_cao_dong_bo_tai_lieu_2026-10-22.md). Codex chỉnh trực tiếp theo yêu cầu, không dùng AGY. **Report 2 được giữ nguyên**; OBS-01 về effort/buffer tạm hoãn. Không stage hoặc commit.
 
 ## 1. Chuẩn nội dung sau sửa
