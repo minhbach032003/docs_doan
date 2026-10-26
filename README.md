@@ -25,7 +25,8 @@ Thay đổi chính: A1 nhận hàng giao thất bại bằng GR-FD và tái mở
 | [Thiết kế database VI](docs/03_thiet_ke/de_xuat_database_design_VI.md) / [EN](docs/03_thiet_ke/de_xuat_database_design_EN.md) | Mô hình tham chiếu và MongoDB mapping; 26 quy tắc, 56 case nghiệm thu |
 | [SQL tham chiếu](docs/03_thiet_ke/WMSD_SQL_schema.sql) | 82 bảng, 2 view; T-SQL tham chiếu 3.1.0 có A1/B1/C2, chưa chạy SQL Server/MongoDB |
 | [Nhật ký](change_logs.md) | Thay đổi, kiểm tra thực tế và giới hạn theo từng mốc |
-| [Report 2](docs/01_bao_cao/WMSD_Report2.docx.txt) | Đã cập nhật phạm vi/ưu tiên kiểm thử 3.1.0; effort/buffer/lịch gốc chưa tái ước lượng |
+| [Report 2](docs/01_bao_cao/WMSD_Report2.docx.txt) | Kế hoạch còn lại 5 tuần 26/10–29/11/2026 (tuần 8–12); 5 người theo nhóm nghiệp vụ; 92,25 pd / 100 pd khả dụng; review thử tuần 13 chưa chốt ngày |
+| [Project Tracking](docs/01_bao_cao/Project_Tracking_Template.xlsx) | Điền trực tiếp 97 UC active theo format gốc; danghh chỉ bán/xuất hàng, bachhm nhận UC-20–22 danh mục khách hàng; giữ nguyên phông chữ và các sheet |
 
 Các file .docx.txt là bản văn bản, không phải Word .docx. Bản Google Docs/Word báo cáo bên ngoài repo cần phát hành riêng từ nội dung đã đồng bộ; không suy ra đã sửa các bản trực tuyến.
 
