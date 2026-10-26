@@ -1,11 +1,12 @@
-# ERD tổng thể rút gọn — 14 thực thể
+# ERD khái niệm rút gọn — các thực thể cốt lõi WMSD
 
-7 master data/quản trị + 7 bảng nghiệp vụ còn lại từ ERD gốc. [Cách đọc và giới hạn](README.md).
+14 thực thể: 7 thực thể danh mục/quản trị và 7 thực thể nghiệp vụ. Sơ đồ thể hiện góc nhìn tổng quan, với các bảng dòng và bảng trung gian được rút gọn thành nhóm thuộc tính hoặc quan hệ. Đối chiếu thiết kế chi tiết tại [SQL schema](../WMSD_SQL_schema.sql).
 
 ```mermaid
 %% 14 conceptual entities: original ERD after README merges + identified master data.
 %% attr is only a Mermaid syntax placeholder, not a physical data type.
 %% Items retain source-linked lines and quantities. SO -> GI is traced THROUGH WIR/OD.
+%% Each SalesOrder requires one CUSTOMER Partner; each PurchaseOrder requires one SUPPLIER Partner.
 erDiagram
     direction LR
     Warehouse ||--o{ Location : "containing"
@@ -26,7 +27,7 @@ erDiagram
     GoodsReceipt }o--o{ ProductLot : "receiving"
     GoodsReceipt }o--o{ Location : "using"
     GoodsReceipt |o--o{ StockMovement : "recording"
-    Partner |o--o{ SalesOrder : "ordering"
+    Partner ||--o{ SalesOrder : "ordering"
     SalesOrder }o--o{ Product : "ordering"
     SalesOrder |o--o{ GoodsIssue : "fulfilling"
     Warehouse ||--o{ GoodsIssue : "issuing"
@@ -42,8 +43,8 @@ erDiagram
     User ||--o{ StockCount : "planning"
 
     User {
+        attr Username
         attr FullName
-        attr Email
         attr Roles
         attr AccountStatus
     }
@@ -57,9 +58,8 @@ erDiagram
 
     Location {
         attr Code
-        attr AreaCode
         attr LocationType
-        attr CapacityLimit
+        attr Allocatable
         attr Status
     }
 
@@ -67,15 +67,13 @@ erDiagram
         attr SKU
         attr Name
         attr NominalSize
-        attr Surface
         attr Status
     }
 
     ProductConversion {
+        attr Unit
+        attr BasePerUnit
         attr Version
-        attr PiecesPerBox
-        attr AreaPerPieceM2
-        attr BoxesPerPallet
         attr EffectiveFrom
     }
 
@@ -173,3 +171,7 @@ erDiagram
 ```
 
 `attr` chỉ là token cú pháp Mermaid, không phải kiểu dữ liệu. [Bản HTML](erd.html) không hiển thị cột này.
+
+`Unit`, `BasePerUnit`, `Version`, `EffectiveFrom` tương ứng với `uom_code`, `base_per_unit`, `version`, `valid_from` trong `product_uom_version`. Mỗi SalesOrder bắt buộc gắn một Partner loại CUSTOMER.
+
+Quan hệ SalesOrder–GoodsIssue là truy vết qua SO → WIR → OD → GI-S. Các thực thể điều chuyển, trả hàng, giao nhận và xác nhận thanh toán không có ô riêng trong góc nhìn này; quan hệ trên hình có thể tổng hợp qua nhiều bảng, không nhất thiết là FK trực tiếp.
