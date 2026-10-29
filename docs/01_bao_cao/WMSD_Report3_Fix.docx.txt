@@ -61,11 +61,13 @@ Baseline 3.1.0, synchronized 25 October 2026. Process VI/EN section 4 is authori
 
 2.1 BF-01 — Replenishment, purchasing and goods receipt
 
-Trigger: (a) issue demand remains short after checking other warehouses; (b) availability falls below a fixed minimum; (c) stocktake/defect outcomes cause a replenishment proposal. Fixed-threshold alerts are proposed functionality, not AI forecasting or automatic purchasing.
+Trigger: (a) issue demand remains short after checking other warehouses; (b) availability falls below a fixed minimum; (c) stocktake/defect outcomes cause a replenishment proposal; or (d) Sales/Warehouse proactively records another reasoned need. Fixed-threshold alerts are proposed functionality, not AI forecasting or automatic purchasing.
+
+Sales Staff or Warehouse Staff may also open Create replenishment request directly from the menu for a reasoned other need, without a sales shortage, a low-stock alert or a stocktake result. An RR may consist entirely of MANUAL_OTHER lines. For each such line, select the product, enter a positive quantity/unit and a nonblank business reason, and specify the receiving warehouse and need date for the request. Review current stock, existing requests and incoming supply to avoid duplicate purchasing. Availability at or above the minimum does not by itself block this path. Do not invent SO/stocktake references or source-specific evaluation snapshots for MANUAL_OTHER. Submit to a different Store Owner for approval; Accountant creates the PO only after approval. RR creation and approval do not change stock.
 
 **Main flow:**
 
-1. Sales records customer shortages linked to issue demand; Warehouse records reserve-stock needs linked to alerts/counts. Show available/reserved stock, open POs, incoming transfers and need date.
+1. Sales records customer shortages linked to issue demand; Warehouse records reserve-stock needs linked to alerts/counts. Show available/reserved stock, open POs, incoming transfers and need date. Sales/Warehouse may instead open the form from the menu and enter other needs as MANUAL_OTHER with a reason per line.
 2. Check existing supply coverage. Planned inbound supply offsets demand only if compatible, timely and not already allocated.
 3. Submit RR. Owner approves, rejects or returns with reasons. No PO before approval.
 4. Accountant creates PO and records supplier quantity/schedule confirmation. Changes beyond approval require renewed approval; do not overwrite executed documents.
@@ -598,7 +600,7 @@ Version 25 October 2026, baseline 3.1.0. Exactly 111 traceable IDs: 97 ACTIVE an
 |---|---|---|---|---|
 | UC-01 | View replenishment request list | FE-01 | ACTIVE | Sales and Warehouse Staff view their own/assigned replenishment needs; Owner and Accountant view within responsibility and warehouse scope. |
 | UC-02 | View replenishment request details | FE-01 | ACTIVE | Show requested and available quantities, source demand, pending supply allocations and versioned approval history within authorized scope. |
-| UC-03 | Create replenishment request | FE-01 | ACTIVE | Sales Staff raises customer shortages; Warehouse Staff raises stock needs after checking compatible stock, existing PO/transfer supply and minimum levels. Accountant does not originate operational demand. |
+| UC-03 | Create replenishment request | FE-01 | ACTIVE | Sales Staff raises customer shortages; Warehouse Staff raises stock needs after checking compatible stock, existing PO/transfer supply and minimum levels. Accountant does not originate operational demand. Direct menu creation also permits a request containing only MANUAL_OTHER lines with mandatory reasons, without shortage/alert/stocktake prerequisites. |
 | UC-04 | Approve or reject replenishment request | FE-01 | ACTIVE | Store Owner approves, rejects or returns the exact request version for revision. Requester and approver must be different userIds; no PO before approval. |
 | UC-05 | View purchase order list | FE-01 | ACTIVE | Filter orders by supplier, date, status, and outstanding quantity. |
 | UC-06 | View purchase order details | FE-01 | ACTIVE | Display order lines, supplier confirmations, and partial receipt history. Display ordered, confirmed, received, accepted and outstanding quantities with source receipts. This is read-only, not a separate outstanding-quantity UC. |
@@ -922,13 +924,13 @@ UC-03: Create replenishment request
 Status: ACTIVE. Feature: FE-01.
 Primary actors and operations: Warehouse Staff — Create; Sales Staff — Create.
 Screen(s): SC-06.
-Description: Sales Staff raises customer shortages; Warehouse Staff raises stock needs after checking compatible stock, existing PO/transfer supply and minimum levels. Accountant does not originate operational demand.
-Preconditions / required inputs: Sales shortage or Warehouse stock need with visible current stock and incoming allocations.
+Description: Sales Staff raises customer shortages; Warehouse Staff raises stock needs after checking compatible stock, existing PO/transfer supply and minimum levels. Accountant does not originate operational demand. Sales/Warehouse may create the entire request directly from the menu using MANUAL_OTHER with a reason; no shortage, low-stock alert or stocktake is required.
+Preconditions / required inputs: Sales/Warehouse creation permission in the receiving warehouse, need date, products, positive quantities and valid units/conversions. Each MANUAL_OTHER line requires a nonblank business reason; no SO/stocktake reference is required for that line. Source-backed lines require their actual current source references and applicable evaluation. Review stock, existing RR and incoming supply for duplication; stock at or above minimum does not block a reasoned MANUAL_OTHER request.
 Normal flow:
-1. Select warehouse/products, need date, units and uncovered quantity.
-2. Deduplicate compatible timely PO/transfer coverage; link shortage/threshold/count evidence.
+1. Open creation from a shortage/alert/count context or directly from the menu. Select warehouse/products, need date, units and positive requested quantities; direct other-need creation can use MANUAL_OTHER on every line.
+2. Review stock, existing RR and compatible timely PO/transfer supply to avoid duplicate demand. Link actual shortage/threshold/count evidence for source-backed lines; require a business reason for each MANUAL_OTHER line without inventing a source link or snapshot.
 3. Submit RR version to a different Owner user.
-Alternate/exception flows: Covered demand reduces request; duplicate demand/invalid quantity remains draft.
+Alternate/exception flows: Covered demand reduces request; duplicate demand/invalid quantity remains draft. A missing/blank MANUAL_OTHER reason blocks saving/submission and preserves valid inputs. Missing shortage/alert/count evidence alone does not block MANUAL_OTHER; it remains mandatory when the selected line claims that source.
 Business branch coverage: BF-01-A1.
 Shared failures: applicable EX-01 permission/identity, EX-02 version/source concurrency, EX-03 unknown-commit retry, EX-04 freeze, EX-05 evidence/output failure use I.2.9 state/recovery. Read-only export does not itself require posting key.
 Postconditions / exact inventory effect: Pending RR saved; physical and available stock unchanged.
@@ -2574,14 +2576,14 @@ Validation/recovery: exact linked UC source/version/qty/identity/scope/freeze gu
 
 SC-06: Replenishment Requests
 State: ACTIVE. Linked UCs: UC-01, UC-02, UC-03, UC-04.
-Layout: scoped worklist/filter→source-linked detail→authorized entry/review/confirmation→committed result/history. Distinguish Save, approval, physical posting and Print.
-Field contract: warehouse/product/source; requestedQty/unit/conversion; neededOn/reason; covered supply derived; creator/version/decision.
+Layout: scoped worklist/filter→source-linked detail→authorized entry/review/confirmation→committed result/history. Distinguish Save, approval, physical posting and Print. Direct menu entry is available without a warning or source document and supports an RR containing only MANUAL_OTHER lines.
+Field contract: warehouse/product/source; requestedQty/unit/conversion; neededOn/reason; covered supply derived; creator/version/decision. Each MANUAL_OTHER line has its own mandatory business reason and no required SO/stocktake source reference; source refs/snapshots are required only for actual source-backed lines.
 Actions/outcomes:
 - UC-01: Read-only scoped list/detail; no state or stock effect.
 - UC-02: Read-only scoped list/detail; no state or stock effect.
 - UC-03: Pending RR saved; physical and available stock unchanged.
 - UC-04: Decision saved; no stock or PO posting.
-Validation/recovery: exact linked UC source/version/qty/identity/scope/freeze guards. Keep valid draft inputs on validation failure; unknown commit looks up existing result before retry. Private evidence, mandatory evidence before confirmation.
+Validation/recovery: exact linked UC source/version/qty/identity/scope/freeze guards. Keep valid draft inputs on validation failure; unknown commit looks up existing result before retry. Private evidence, mandatory evidence before confirmation. A fully MANUAL_OTHER request with valid warehouse/date/positive quantities and reasons can be submitted even with stock above minimum and no shortage/alert/count. Blank other-need reasons block saving/submission; do not fabricate source evidence to pass validation.
 
 SC-07: Purchase Orders
 State: ACTIVE. Linked UCs: UC-05, UC-06, UC-07.
@@ -2838,7 +2840,7 @@ BR-01–33 are the single current catalogue shared with process VI/EN. Historica
 |---|---|---|
 | BR-01 | Lot identity distinguishes product/lot/tone/calibre; do not pool different tones to fill demand. | DR-01, UC-13/16/26/30/54/55/72 |
 | BR-02 | Version product/packaging conversions and snapshot them on lines. Whole tiles cannot be fractional pieces. Use product area specifications; calibre does not determine m² factors. | DR-02, GB-03 |
-| BR-03 | Sales/Warehouse or fixed alerts originate needs; only Owner approves. Controlled thresholds do not automatically issue POs. | UC-03/04/103, BF-01 |
+| BR-03 | Sales/Warehouse originates replenishment needs from shortage/threshold/count evidence or directly from the menu as MANUAL_OTHER with a reason per line; the entire RR may use MANUAL_OTHER without shortage/alert/count prerequisites. Validate warehouse/date/positive quantities and review stock/existing requests/incoming supply for duplication. Actual source evidence is required for source-backed lines only; do not invent refs/snapshots for MANUAL_OTHER. A different Owner approves before Accountant creates a PO; no automatic PO. | UC-03/04/103, BF-01 |
 | BR-04 | Do not double-count demand already covered by PO/transfer/allocation. Planned receipts are not current availability. | BF-01/04/06 |
 | BR-05 | Same-user approval prohibited for RR/TR, CR exceptions, destruction/regrade and stocktake plans. C2 permits Sales ordinary acceptance of own CR after Warehouse inspection, never exception/Owner approval. BF-08 has no Owner approval. | UC-04/41/66/71/92 |
 | BR-06 | Post receipt/issue/return/adjustment once, atomically with ledger/balance. No negative availability; retry returns prior result. | DR-09/10/13, GB-09/10/13 |

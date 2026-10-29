@@ -1,6 +1,6 @@
 # Process Proposal 2 — WMSD — English
 
-Updated: 25 October 2026. Document revision 3.1.2 reviews/synchronizes text while retaining the 24 October business baseline 3.1.0. Baseline 3.1.0 revises flows against supervisor minutes/draw.io notes. User selections: A1, a failed-delivery intake branch within BF-07; B1, immediate defect blocking with controlled quality posting at stocktake closure; C2, Sales accepts ordinary customer returns and Owner reviews exceptions only; BF-08 has no Owner approval. This is a To-be design, not verified implementation; alternatives and impacts are in section 17.
+Updated: 29 October 2026. Document revision 3.1.3 reviews/synchronizes text while retaining the 24 October business baseline 3.1.0. Baseline 3.1.0 revises flows against supervisor minutes/draw.io notes. User selections: A1, a failed-delivery intake branch within BF-07; B1, immediate defect blocking with controlled quality posting at stocktake closure; C2, Sales accepts ordinary customer returns and Owner reviews exceptions only; BF-08 has no Owner approval. This is a To-be design, not verified implementation; alternatives and impacts are in section 17.
 
 BF-06: copy MISA/paper order → linked WIR/OD → draft GI-S → picking and TO confirmation → handover/PGI → photo POD → DELIVERED → Sales confirms full external payment receipt → COMPLETED. On 25 October, Report 1/2/3, detailed design, paired data design, reference SQL, README and change log are synchronized to business baseline 3.1.0. The 25 October follow-up updates embedded Mermaid, standalone context, BF-04 PNGs and the reduced ERD package; only draw.io files stay unchanged. The old draw.io baseline does not define revised behavior. See [25 October verification](../07_ra_soat/Ket_qua_dong_bo_tai_lieu_2026-10-25.md).
 
@@ -16,6 +16,8 @@ Vietnamese: [de_xuat_quy_trinh_2_VI.md](de_xuat_quy_trinh_2_VI.md). Data design:
 | 3.1.1 | 25 October 2026 | Review wording/POD–FD acceptance caps and document synchronization status for 3.1.0; preserve all diagrams/Mermaid and selected business decisions. |
 
 | 3.1.2 | 25 October 2026 | Follow-up updates current Mermaid and related exports: FD bypasses POD, B1 separates commit failure from missing execution, C2 and BF-08 finance. Only draw.io files are excluded. |
+
+| 3.1.3 | 29 October 2026 | Clarify UC-03/BF-01/BR-03: Sales/Warehouse can create an entire reasoned MANUAL_OTHER RR from the menu without shortage/alert/count prerequisites; add acceptance scenarios. |
 
 ## Warehouse terminology
 
@@ -160,11 +162,13 @@ Authorization checks **role + operation + assigned warehouse + document state + 
 
 ### BF-01 — Replenishment, purchasing and goods receipt
 
-Trigger: (a) issue demand remains short after checking other warehouses; (b) availability falls below a fixed minimum; (c) stocktake/defect outcomes cause a replenishment proposal. Fixed-threshold alerts are proposed functionality, not AI forecasting or automatic purchasing.
+Trigger: (a) issue demand remains short after checking other warehouses; (b) availability falls below a fixed minimum; (c) stocktake/defect outcomes cause a replenishment proposal; or (d) Sales/Warehouse proactively records another reasoned need. Fixed-threshold alerts are proposed functionality, not AI forecasting or automatic purchasing.
+
+Sales Staff or Warehouse Staff may also open Create replenishment request directly from the menu for a reasoned other need, without a sales shortage, a low-stock alert or a stocktake result. An RR may consist entirely of MANUAL_OTHER lines. For each such line, select the product, enter a positive quantity/unit and a nonblank business reason, and specify the receiving warehouse and need date for the request. Review current stock, existing requests and incoming supply to avoid duplicate purchasing. Availability at or above the minimum does not by itself block this path. Do not invent SO/stocktake references or source-specific evaluation snapshots for MANUAL_OTHER. Submit to a different Store Owner for approval; Accountant creates the PO only after approval. RR creation and approval do not change stock.
 
 **Main flow:**
 
-1. Sales records customer shortages linked to issue demand; Warehouse records reserve-stock needs linked to alerts/counts. Show available/reserved stock, open POs, incoming transfers and need date.
+1. Sales records customer shortages linked to issue demand; Warehouse records reserve-stock needs linked to alerts/counts. Show available/reserved stock, open POs, incoming transfers and need date. Sales/Warehouse may instead open the form from the menu and enter other needs as MANUAL_OTHER with a reason per line.
 2. Check existing supply coverage. Planned inbound supply offsets demand only if compatible, timely and not already allocated.
 3. Submit RR. Owner approves, rejects or returns with reasons. No PO before approval.
 4. Accountant creates PO and records supplier quantity/schedule confirmation. Changes beyond approval require renewed approval; do not overwrite executed documents.
@@ -430,7 +434,7 @@ Retain existing IDs for traceability; mark retired/new IDs explicitly rather tha
 | Existing UC | Proposed change | Specific impact |
 |---|---|---|
 | UC-01–02: View replenishment | Revise access | Sales/Warehouse sees own/assigned requests; Owner/Accountant sees responsibility-scoped demand. |
-| UC-03: Create replenishment request | Change primary actor/trigger | Sales/Warehouse creates from issue shortage, minimum level or count. Accountant does not originate operational demand, but may record reconciliation notes. No PO before approval. |
+| UC-03: Create replenishment request | Change primary actor/trigger | Sales/Warehouse creates from issue shortage, minimum level or count. Accountant does not originate operational demand, but may record reconciliation notes. No PO before approval. Direct menu creation permits all-MANUAL_OTHER lines with reasons, without shortage/alert/count prerequisites. |
 | UC-04: Approve/reject replenishment | Retain with constraints | Owner approves exact version, with userId different from requester. Support revision and cancellation of unexecuted remainder. |
 | UC-05–07: PO | Retain; revise sources/exceptions | Accountant uses approved demand and supplier confirmation. Partial PO stays open; excess changes require reapproval. No payments. |
 | UC-08–10: Receipt list/detail/create | Retain; expand delivery data | Each delivery has its own receipt, PO/line linkage, actual quantity and transport source. |
@@ -591,7 +595,7 @@ Do not combine quality, location, ownership and delivery state in one enum. “I
 |---|---|---|
 | BR-01 | Lot identity distinguishes product/lot/tone/calibre; do not pool different tones to fill demand. | DR-01, UC-13/16/26/30/54/55/72 |
 | BR-02 | Version product/packaging conversions and snapshot them on lines. Whole tiles cannot be fractional pieces. Use product area specifications; calibre does not determine m² factors. | DR-02, GB-03 |
-| BR-03 | Sales/Warehouse or fixed alerts originate needs; only Owner approves. Controlled thresholds do not automatically issue POs. | UC-03/04/103, BF-01 |
+| BR-03 | Sales/Warehouse originates replenishment needs from shortage/threshold/count evidence or directly from the menu as MANUAL_OTHER with a reason per line; the entire RR may use MANUAL_OTHER without shortage/alert/count prerequisites. Validate warehouse/date/positive quantities and review stock/existing requests/incoming supply for duplication. Actual source evidence is required for source-backed lines only; do not invent refs/snapshots for MANUAL_OTHER. A different Owner approves before Accountant creates a PO; no automatic PO. | UC-03/04/103, BF-01 |
 | BR-04 | Do not double-count demand already covered by PO/transfer/allocation. Planned receipts are not current availability. | BF-01/04/06 |
 | BR-05 | Same-user approval prohibited for RR/TR, CR exceptions, destruction/regrade and stocktake plans. C2 permits Sales ordinary acceptance of own CR after Warehouse inspection, never exception/Owner approval. BF-08 has no Owner approval. | UC-04/41/66/71/92 |
 | BR-06 | Post receipt/issue/return/adjustment once, atomically with ledger/balance. No negative availability; retry returns prior result. | DR-09/10/13, GB-09/10/13 |
@@ -918,6 +922,8 @@ flowchart TD
 
 | Scenario | Required outcome |
 |---|---|
+| Sales/Warehouse opens from the menu; no sales shortage, alert or stocktake, stock at/above minimum; valid warehouse/date, positive quantities and reasons per MANUAL_OTHER line | Allow an RR containing only MANUAL_OTHER lines after permission and duplication checks; no fabricated source refs/snapshots. A different Owner approves before PO; stock is unchanged. |
+| MANUAL_OTHER line has a missing or whitespace-only reason | Block saving/submission, retain valid inputs and request the reason; never require a fabricated SO/count source. |
 | Need 80 boxes; main warehouse has 30 free and another has 50 compatible | Suggest direct dispatch/transfer of 50; do not immediately create purchase demand for 50. |
 | Two requests both see 50 free boxes | Recheck after the first reservation; total reservations cannot exceed allocatable stock. |
 | PO 100, first delivery 60 including 5 defective accepted for resolution | 55 good after put-away, 5 quarantine. PO fulfilment and replacement obligation follow agreement; not all 60 are sellable. |
@@ -1018,7 +1024,7 @@ No email, message or external review request was sent in preparing this proposal
 
 | Code | Document | Creator / confirmer | Required source | Effect when posted |
 |---|---|---|---|---|
-| RR | Replenishment request | Sales/Warehouse; Owner approval | Shortage/threshold/count need | None |
+| RR | Replenishment request | Sales/Warehouse; Owner approval | Shortage/threshold/count need or reasoned MANUAL_OTHER need | None |
 | PO | Purchase order | Accountant | Approved RR lines/quantities | None |
 | ARR / INS | Arrival / inspection record | Warehouse | PO or appropriate return/transfer source | INS itself does not increase stock; ARR records presence/custody before ownership acceptance |
 | GR-P | Purchase Goods Receipt | Warehouse | PO line, ARR, INS | Increases accepted owned quantity; not automatically available |

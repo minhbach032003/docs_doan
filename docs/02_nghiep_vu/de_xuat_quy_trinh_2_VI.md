@@ -1,6 +1,6 @@
 # Đề xuất quy trình 2 — WMSD — Tiếng Việt
 
-Ngày cập nhật: 25/10/2026. Bản tài liệu 3.1.2 rà soát/đồng bộ, giữ baseline nghiệp vụ 3.1.0 ngày 24/10. Baseline 3.1.0 sửa luồng theo biên bản góp ý GVHD và note draw.io. Người dùng chốt A1: nhận hàng giao thất bại bằng nhánh riêng trong BF-07; B1: chặn hàng lỗi ngay, chuyển quality có kiểm soát khi chốt kiểm kê; C2: Sales chấp nhận trả thông thường, Owner chỉ duyệt ngoại lệ; BF-08 bỏ Owner duyệt. Đây là thiết kế To-be, chưa phải xác nhận triển khai; phương án thay thế và tác động tại mục 17.
+Ngày cập nhật: 29/10/2026. Bản tài liệu 3.1.3 rà soát/đồng bộ, giữ baseline nghiệp vụ 3.1.0 ngày 24/10. Baseline 3.1.0 sửa luồng theo biên bản góp ý GVHD và note draw.io. Người dùng chốt A1: nhận hàng giao thất bại bằng nhánh riêng trong BF-07; B1: chặn hàng lỗi ngay, chuyển quality có kiểm soát khi chốt kiểm kê; C2: Sales chấp nhận trả thông thường, Owner chỉ duyệt ngoại lệ; BF-08 bỏ Owner duyệt. Đây là thiết kế To-be, chưa phải xác nhận triển khai; phương án thay thế và tác động tại mục 17.
 
 Luồng BF-06: nhập lại đơn bán từ MISA/giấy tờ → WIR/OD liên kết → tạo GI-S nháp → soạn và xác nhận TO → bàn giao/PGI → POD có ảnh → DELIVERED → Sales xác nhận đủ tiền ngoài hệ thống → COMPLETED. Lượt 25/10 đồng bộ Report 1/2/3, thiết kế chi tiết, database VI/EN, SQL tham chiếu, README và change log theo baseline 3.1.0. Lượt bổ sung 25/10 cập nhật Mermaid nhúng, context độc lập, PNG BF-04 và gói ERD; chỉ file draw.io được giữ nguyên. Draw.io 3.0.0 không phải chuẩn cho logic mới. Xem [hậu kiểm 25/10](../07_ra_soat/Ket_qua_dong_bo_tai_lieu_2026-10-25.md).
 
@@ -16,6 +16,8 @@ Bản tiếng Anh: [de_xuat_quy_trinh_2_EN.md](de_xuat_quy_trinh_2_EN.md). Thi�
 | 3.1.1 | 25/10/2026 | Rà soát câu chữ/trần POD–FD trong nghiệm thu và trạng thái đồng bộ tài liệu 3.1.0; giữ nguyên tất cả sơ đồ/Mermaid và quyết định nghiệp vụ đã chọn. |
 
 | 3.1.2 | 25/10/2026 | Theo phạm vi bổ sung: cập nhật các Mermaid hiện hành và bản xuất liên quan; tách FD khỏi POD, B1 commit/thiếu thực hiện, C2 và tài chính BF-08. Chỉ loại trừ file draw.io. |
+
+| 3.1.3 | 29/10/2026 | Làm rõ UC-03/BF-01/BR-03: Sales/Warehouse chủ động tạo toàn bộ RR bằng MANUAL_OTHER có lý do từ menu, không cần thiếu hàng/cảnh báo/kiểm kê; bổ sung tiêu chí nghiệm thu. |
 
 ## Thuật ngữ quản lý kho
 
@@ -161,11 +163,13 @@ Hệ thống kiểm tra quyền theo **role + thao tác + kho được giao + tr
 
 ### BF-01 — Bổ sung hàng, đặt mua và nhập kho
 
-Trigger: (a) yêu cầu xuất còn thiếu sau khi xét nguồn kho khác; (b) tồn khả dụng dưới mức tối thiểu; (c) sau kiểm kê/xử lý hàng lỗi, kho đề xuất bù lượng thiếu. Cảnh báo theo ngưỡng cố định là chức năng bổ sung đề xuất, không phải dự báo AI hoặc tự đặt mua.
+Trigger: (a) yêu cầu xuất còn thiếu sau khi xét nguồn kho khác; (b) tồn khả dụng dưới mức tối thiểu; (c) sau kiểm kê/xử lý hàng lỗi, kho đề xuất bù lượng thiếu; hoặc (d) Sales/Warehouse chủ động đề xuất nhu cầu khác có lý do. Cảnh báo theo ngưỡng cố định là chức năng bổ sung đề xuất, không phải dự báo AI hoặc tự đặt mua.
+
+Sales Staff hoặc Warehouse Staff được chủ động mở Tạo yêu cầu bổ sung từ menu cho nhu cầu khác có lý do, không cần có đơn bán thiếu hàng, cảnh báo tồn thấp hay kết quả kiểm kê. Toàn bộ các dòng của một RR có thể là MANUAL_OTHER. Mỗi dòng phải chọn sản phẩm, nhập số lượng dương/đơn vị và lý do nghiệp vụ không để trống; phiếu phải có kho nhận và ngày cần hàng. Đối chiếu tồn hiện tại, yêu cầu đã có và nguồn sắp về để tránh mua trùng. Tồn khả dụng bằng hoặc cao hơn mức tối thiểu không phải điều kiện chặn riêng nhánh này. Không tạo giả tham chiếu SO/kiểm kê hoặc snapshot đánh giá nguồn cho MANUAL_OTHER. Gửi Store Owner khác người đề xuất duyệt; Accountant chỉ lập PO sau duyệt. Tạo và duyệt RR không làm thay đổi tồn.
 
 **Luồng chính:**
 
-1. Sales ghi nhu cầu thiếu gắn yêu cầu xuất; Warehouse Staff ghi nhu cầu dự trữ gắn cảnh báo/kiểm kê. Hệ thống hiển thị tồn khả dụng, hàng đã giữ, PO đang chờ, điều chuyển đang về và ngày cần hàng.
+1. Sales ghi nhu cầu thiếu gắn yêu cầu xuất; Warehouse Staff ghi nhu cầu dự trữ gắn cảnh báo/kiểm kê. Hệ thống hiển thị tồn khả dụng, hàng đã giữ, PO đang chờ, điều chuyển đang về và ngày cần hàng. Sales/Warehouse cũng có thể mở từ menu và nhập nhu cầu khác bằng MANUAL_OTHER kèm lý do từng dòng.
 2. Hệ thống kiểm tra nhu cầu đã được đáp ứng bởi nguồn khác chưa. Hàng dự kiến về chỉ được trừ vào nhu cầu nếu đúng hàng/lô tương thích, đúng hạn và chưa phân bổ cho nhu cầu khác.
 3. Người đề xuất gửi Replenishment Request. Store Owner duyệt/từ chối/trả về sửa với lý do. Chưa duyệt chưa tạo PO từ đề nghị này.
 4. Accountant lập PO, ghi nhận NCC xác nhận số lượng và lịch giao. Thay đổi vượt nội dung đã duyệt phải trình duyệt lại phần thay đổi; không sửa đè chứng từ đã thực hiện.
@@ -431,7 +435,7 @@ Catalogue 3.1.0 giữ UC-01–111: 97 active và 14 retired, gồm UC-106 ngừn
 | UC hiện tại | Thay đổi đề xuất | Tác động cụ thể |
 |---|---|---|
 | UC-01–02: View replenishment | Sửa quyền xem | Sales/Warehouse xem đề nghị của mình và nhu cầu được giao; Owner/Accountant xem theo trách nhiệm. |
-| UC-03: Create replenishment request | Sửa primary actor và trigger | Sales/Warehouse tạo từ thiếu xuất, mức tối thiểu, kết quả kiểm kê. Accountant bỏ quyền tự tạo nhu cầu, có thể ghi chú đối chiếu. Chưa duyệt không tạo PO. |
+| UC-03: Create replenishment request | Sửa primary actor và trigger | Sales/Warehouse tạo từ thiếu xuất, mức tối thiểu, kết quả kiểm kê. Accountant bỏ quyền tự tạo nhu cầu, có thể ghi chú đối chiếu. Chưa duyệt không tạo PO. Bổ sung nhánh mở từ menu, toàn bộ dòng MANUAL_OTHER kèm lý do; không bắt buộc thiếu hàng/cảnh báo/kiểm kê. |
 | UC-04: Approve/reject replenishment | Giữ, siết điều kiện | Owner duyệt đúng phiên bản, userId khác người đề xuất. Có trả về sửa và hủy phần chưa thực hiện. |
 | UC-05–07: PO | Giữ, sửa nguồn và ngoại lệ | Accountant lập từ đề nghị đã duyệt, ghi NCC xác nhận; PO thiếu một phần mở tiếp; thay đổi vượt duyệt phải duyệt lại. Không xử lý thanh toán. |
 | UC-08–10: Receipt list/detail/create | Giữ, mở rộng dữ liệu đợt nhận | Mỗi lần giao có receipt riêng, tham chiếu PO/dòng, lượng thực nhận và nguồn vận chuyển. |
@@ -592,7 +596,7 @@ Không gộp chất lượng, vị trí, quyền sở hữu và tình trạng gi
 |---|---|---|
 | BR-01 | Lot identity phải phân biệt product/lot/tone/calibre; không gộp hàng khác tone để đủ lượng. | DR-01, UC-13/16/26/30/54/55/72 |
 | BR-02 | Quy đổi theo sản phẩm và phiên bản đóng gói; chốt hệ số ở dòng chứng từ. Với gạch nguyên viên, không tạo số viên phân số. Dùng diện tích theo quy cách sản phẩm; calibre là thuộc tính tương thích, không tự thay hệ số m². | DR-02, GB-03 |
-| BR-03 | Nhu cầu bổ sung từ Sales/Warehouse hoặc cảnh báo; chỉ Owner duyệt; ngưỡng tồn là tham số được kiểm soát, không tự phát hành PO. | UC-03/04/103, BF-01 |
+| BR-03 | Sau lưu SO/chốt kiểm kê, hệ thống đánh giá nguồn và hỏi/cảnh báo nếu còn thiếu. Sales/Warehouse cũng được mở cùng form từ menu và tạo toàn bộ RR bằng MANUAL_OTHER có lý do từng dòng, không cần SO thiếu/cảnh báo tồn thấp/kiểm kê. Chỉ Lưu nháp/Gửi duyệt hợp lệ mới ghi RR; kiểm kho/ngày cần/số lượng dương và chống trùng. Dòng có nguồn phải giữ refs/snapshot thật; MANUAL_OTHER không bị buộc tạo giả nguồn. Owner khác người đề xuất duyệt trước khi Accountant lập PO; không tự phát hành PO. | UC-03/04/103, BF-01 |
 | BR-04 | Không tính trùng nhu cầu đã có PO/điều chuyển/phân bổ; lượng dự kiến về chưa phải khả dụng hiện tại. | BF-01/04/06 |
 | BR-05 | Cấm tự duyệt RR/TR, ngoại lệ CR, hủy/đổi phẩm cấp và phương án kiểm kê theo userId. Sales được chấp nhận CR thông thường mình lập sau Warehouse kiểm, theo C2; không tự duyệt ngoại lệ hoặc cấp quyền Owner. BF-08 không có approval Owner. | UC-04/41/66/71/92 |
 | BR-06 | Receipt/issue/return/adjustment chỉ post một lần, nguyên tử cùng ledger và balance. Không âm tồn khả dụng; retry trả lại kết quả cũ. | DR-09/10/13, GB-09/10/13 |
@@ -919,6 +923,8 @@ flowchart TD
 
 | Tình huống minh họa | Kết quả bắt buộc |
 |---|---|
+| Sales/Warehouse mở từ menu; không SO thiếu, không cảnh báo/kiểm kê, tồn bằng hoặc trên ngưỡng; nhập kho/ngày cần, lượng dương và lý do từng dòng MANUAL_OTHER | Cho phép tạo và gửi duyệt RR chỉ gồm MANUAL_OTHER sau kiểm quyền và chống trùng; không bịa refs/snapshot nguồn; Owner khác người đề xuất duyệt trước PO; tồn không đổi. |
+| Dòng MANUAL_OTHER thiếu lý do hoặc chỉ có khoảng trắng | Chặn lưu/gửi, giữ nội dung hợp lệ và yêu cầu bổ sung lý do; không buộc chọn giả SO/kiểm kê. |
 | Cần 80 thùng, kho chính rảnh 30, kho phụ rảnh 50 cùng tone | Gợi ý xuất thẳng 50 hoặc chuyển 50; không tự tạo đề nghị mua 50 trước khi xét nguồn. |
 | Hai yêu cầu cùng nhìn thấy 50 thùng rảnh | Sau khi một yêu cầu giữ hàng, yêu cầu còn lại phải kiểm lại; tổng giữ không vượt tồn có thể phân bổ. |
 | PO 100, đợt một giao 60 có 5 lỗi được cửa hàng nhận để xử lý | 55 đạt sau put-away, 5 cách ly; số đáp ứng PO và phần cần NCC bù/đổi phải được xác định theo thỏa thuận, không tự coi 60 đều bán được. |
@@ -1019,7 +1025,7 @@ Không có email, tin nhắn hay yêu cầu review gửi ra ngoài trong quá tr
 
 | Mã | Chứng từ | Người lập/xác nhận | Nguồn bắt buộc | Tác động tồn khi post |
 |---|---|---|---|---|
-| RR | Đề nghị bổ sung | Sales/Warehouse; Owner duyệt | Nhu cầu thiếu/ngưỡng/kiểm kê | Không |
+| RR | Đề nghị bổ sung | Sales/Warehouse; Owner duyệt | Nhu cầu thiếu/ngưỡng/kiểm kê hoặc nhu cầu khác MANUAL_OTHER có lý do | Không |
 | PO | Đơn đặt mua | Accountant | RR đã duyệt và dòng lượng được duyệt | Không |
 | ARR / INS | Biên bản tiếp nhận / kiểm nhận | Warehouse | PO hoặc nguồn trả/điều chuyển phù hợp | INS không tự tăng tồn; ARR chỉ ghi hiện diện/giữ hộ nếu chưa nhận sở hữu |
 | GR-P | Goods Receipt mua hàng | Warehouse | Dòng PO, ARR, INS | Tăng tồn sở hữu đúng lượng được nhận, không tự tăng khả dụng |
